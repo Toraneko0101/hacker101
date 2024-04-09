@@ -702,7 +702,7 @@
     partition句を省いてみた
     以下の場合、パーティション名はp0, p1, ...と割り振られる
 
-    なお、partitions 4の部分を省くと、
+    なお、partitionを省略し、partitions 4の部分も省くと、
     パーディション数はデフォルトの1になる
     */
     create table t1 (
@@ -772,4 +772,87 @@
 ## Q143 複合分割について知っていますか?
 
 ??? success
+    ### 異なる種類の分割方式を使う
+
+    ```text
+    ・1つ目の分割方式でパーティションを定義し、
+      2つ目の分割方式でサブパーティションを定義する
+    ```
+
+    ### 制限
+
+    ```text
+    ・サブパーション化できるのは、RANGE/LISTで
+      パーティション化されたテーブルだけ
     
+    ・サブパーティショニングにはHASH/KEYが使用できる
+    ```
+
+    ### サブパーティショニングの例
+
+    ```sql
+    /*
+    partition(3) * subpartition(2) = テーブルは6分割される
+    ※以下の例では、サブパーティションのSUBPARTION句を
+      省いている
+      ⇒その場合、サブパーティション名は
+        パーティション名 + S0等になる
+        (サブパーティション名もテーブル内で重複しては
+        いけないので一意になるようにしている)
+    */
+    create table ts(id int, purchased date)
+      partition by range (year(purchased))
+      subpartition by hash(to_days(purchased))
+      subpartitions 2 
+      (
+        partition p0 values less than (1990),
+        partition p1 values less than (2000),
+        partition p2 values less than maxvalue
+      )
+      ;
+
+      select
+        partition_name,
+        subpartition_name
+      from information_schema.partitions 
+      where table_name = "ts"
+      order by
+        partition_ordinal_position,
+        subpartition_ordinal_position
+      ;
+
+      /*
+    +----------------+-------------------+
+    | partition_name | subpartition_name |
+    +----------------+-------------------+
+    | p0             | p0sp0             |
+    | p0             | p0sp1             |
+    | p1             | p1sp0             |
+    | p1             | p1sp1             |
+    | p2             | p2sp0             |
+    | p2             | p2sp1             |
+    +----------------+-------------------+
+    6 rows in set (0.001 sec)
+      */
+
+
+    /*冗長な例*/
+    create table ts (id int , purchased date)
+    partition by range (year(purchased))
+    subpartition by hash (to_days(purchased))
+    -- subpartitions 2
+    (
+      partition p0 values less than (1990) (
+        subpartition s0,
+        subpartition s1
+      ),
+      partition p1 values less than (maxvalue) (
+        subpartition s2,
+        subpartition s3
+      )
+    )
+    ;
+
+    ```
+
+    ### 1つのサブパーティションからデータを取得する
