@@ -679,3 +679,97 @@
 
 ??? success
     ### ハッシュ分割
+
+    ```text
+    ・一連のパーティションに行を均等に分割する?
+      ⇒均等と言っているのに、パーティションキーが必要な理由
+        は以下でわかる。
+
+    ・パーティションキーとして選択する列が、
+      範囲分割やリスト分割に適していない場合に使用
+      ⇒たとえば、列の種類が数種類に定まっている場合は
+        リスト分割で済む。
+      ⇒列の種類が多い方がいい（理由は後述）
+    
+    ・呼称の利用は、DBサーバが列の値に
+      ハッシュ関数を適用するところから
+    ```
+
+    ### ハッシュ分割の例
+
+    ```sql
+    /*
+    partition句を省いてみた
+    以下の場合、パーティション名はp0, p1, ...と割り振られる
+
+    なお、partitions 4の部分を省くと、
+    パーディション数はデフォルトの1になる
+    */
+    create table t1 (
+      col1 int,
+      con2 char(5),
+      col3 date
+    )
+    partition by hash (year(col3))
+    partitions 3
+    ;
+
+    insert into t1 values
+    (1, "aaaaa", "2005-01-01"),
+    (1, "aaaab", "2006-01-01"),
+    (1, "aaaac", "2007-01-01"),
+    (1, "aaaad", "2005-01-01"),
+     (1, "aaaaa", "2005-01-02"),
+    (1, "aaaae", "2005-01-01")
+    ;
+
+    select concat("rows in p0 = ", count(*)) p_count
+    from t1 partition (p0) union all
+    select concat("rows in p1 = ", count(*)) p_count
+    from t1 partition (p1) union all
+    select concat("rows in p2 = ", count(*)) p_count
+    from t1 partition (p2)
+    ;
+
+    /*
+    +----------------+
+    | p_count        |
+    +----------------+
+    | rows in p0 = 1 |
+    | rows in p1 = 4 |
+    | rows in p2 = 1 |
+    +----------------+
+    3 rows in set (0.001 sec)
+    */
+
+    ```
+
+    ### 列の種類が少ないと役に立たないわけ
+
+    ```text
+    ・前項のp_countを見ると、1,4,1と等しく割り振られている
+      わけではないことが分かる
+    
+    ・それはこのような計算が行われているからである
+    ```
+
+    ```sql
+    -- year(col) == 2005なら
+
+    select mod(year("2005-01-01"), 4) ans;
+
+    -- 1なのでp1に格納される
+    /*
+    +------+
+    | ans  |
+    +------+
+    |    1 |
+    +------+
+    1 row in set (0.000 sec)
+    */
+    ```
+
+## Q143 複合分割について知っていますか?
+
+??? success
+    
