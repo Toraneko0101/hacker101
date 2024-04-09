@@ -784,6 +784,7 @@
     ```text
     ・サブパーション化できるのは、RANGE/LISTで
       パーティション化されたテーブルだけ
+      ⇒RANGE COLUMNS等も可能
     
     ・サブパーティショニングにはHASH/KEYが使用できる
     ```
@@ -796,7 +797,7 @@
     ※以下の例では、サブパーティションのSUBPARTION句を
       省いている
       ⇒その場合、サブパーティション名は
-        パーティション名 + S0等になる
+        パーティション名 + SP0等になる
         (サブパーティション名もテーブル内で重複しては
         いけないので一意になるようにしている)
     */
@@ -856,3 +857,42 @@
     ```
 
     ### 1つのサブパーティションからデータを取得する
+
+    ```sql
+    create table ts(id int, purchased date)
+      partition by range (year(purchased))
+      subpartition by hash(to_days(purchased))
+      subpartitions 2 
+      (
+        partition p0 values less than (1990),
+        partition p1 values less than (2000),
+        partition p2 values less than maxvalue
+      )
+      ;
+
+    insert into ts values
+    (1, "1989-01-01"),
+    (2, "1989-01-14"),
+    (3, "1989-01-27"),
+    (4, "1989-02-11"),
+    (5, "1989-03-14"),
+    (6, "1989-04-17"),
+    (7, "2001-05-04")
+    ;
+
+    select * from ts partition (p0sp0);
+    /*
+    +------+------------+
+    | id   | purchased  |
+    +------+------------+
+    |    1 | 1989-01-01 |
+    |    3 | 1989-01-27 |
+    |    5 | 1989-03-14 |
+    |    6 | 1989-04-17 |
+    +------+------------+
+    4 rows in set (0.000 sec)
+    */
+
+    ```
+
+## Q144 線形ハッシュについて知っていますか?
