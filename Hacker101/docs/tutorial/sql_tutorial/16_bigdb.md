@@ -197,20 +197,34 @@
     ```text
     ・もっとも一般的な分割手法
     ・日付の範囲でテーブルを分割するのが一般的
+
+    ・範囲には、連続しているが、重複しないものを指定する
+    　そのために、values less than演算子が使われる
+    
+    ・less thanなので、
+    　2020を指定すれば、< 2020になる
+    　2020年第1週までのデータを格納したいなら202002と指定する
+
+    ・次第に増加していく必要があるので、
+      1つ目で < 2018とし、2つ目で < 2017とする事はできない
+      順番を間違えると、以下のようなエラーが出る
+      ERROR 1493 (HY000): 
+        VALUES LESS THAN value must be strictly 
+        increasing for each partition
+    
+    ・MAXVALUESは明示的に指定されている最大値を超える
+      全ての値を受け入れる
+      ⇒つまり、範囲(RANGE)の場合、最後に指定する
+
     ```
 
     ```sql
 
     /*
-    範囲は、連続しているが、重複しないものでなければならない
-    そのために、values less than演算子が使われる
+    partition by <分割方法> 
 
-    MAXVALUESは明示的に指定されている最大値を超える
-    全ての値を受け入れる
-
-    less thanなので、
-    2020を指定すれば、< 2020になる
-    2020年第1週までのデータを格納したいなら202002と指定する
+    ⇒rangeの場合、
+      整数値, または返り値が整数値になる物以外を指定できない
     */
     create table sales
     (
@@ -399,3 +413,269 @@
     ```
 
 ## Q140 リスト分割について知っていますか?
+
+??? success
+    ### リスト分割
+
+    ```text
+    ・partition-keyが列挙値の場合は、リスト分割が優れている
+    ・MAXVALUEのような受け皿は定義できない
+    ```
+
+    ```text
+    [listとlist columnの違い]
+    partition by list
+      ・values inに整数値しか指定できない
+    
+    partition by list column
+      ・values inに整数値以外も指定可能
+    ```
+
+    ```sql
+    create table sales
+    (
+      sale_id int not null,
+      cust_id int not null,
+      store_id int not null,
+      sale_date date not null,
+      geo_region_cd varchar(6) not null,
+      amount decimal(9,2)
+    )
+    partition by list columns (geo_region_cd)
+    (
+      partition northamerica values in (
+        "US_NE", "US_SE", "US_MW", "US_NW",
+        "US_SW", "CAN", "MEX"
+      ),
+      partition europe values in ("EUR_E", "EUR_W"),
+      partition asia values in ("CHN", "JPN", "IND")
+    );
+    ```
+
+    ### パーティション外の値を指定した場合
+
+    ```sql
+    insert into sales
+    values
+    (1,1,1, "2001-01-01", "US_NE", 100),
+    (2,3,4, "2001-01-01", "CAN", 200),
+    (3,5,6, "2001-01-01", "KOR", 300)
+    ;
+    -- ERROR 1526 (HY000): 
+    -- Table has no partition for value from column_list
+    ```
+
+    ### IGNOREを使って挿入した場合
+
+    ```sql
+    -- 一致しないパーティショニングカラム値が含まれる行は
+    --　挿入されず、エラーは報告されない
+
+    insert ignore into sales
+    values
+    (1,1,1, "2001-01-01", "US_NE", 100),
+    (2,3,4, "2001-01-01", "CAN", 200),
+    (3,5,6, "2001-01-01", "KOR", 300)
+    ;
+
+    -- Query OK, 2 rows affected, 1 warning (0.003 sec)
+    -- Records: 3  Duplicates: 1  Warnings: 1
+
+    show warnings;
+
+    /*
+    +---------+------+---------------------------------------------------+
+    | Level   | Code | Message                                           |
+    +---------+------+---------------------------------------------------+
+    | Warning | 1526 | Table has no partition for value from column_list |
+    +---------+------+---------------------------------------------------+
+    */
+
+    select sale_id, geo_region_cd from sales;
+    /*
+    +---------+---------------+
+    | sale_id | geo_region_cd |
+    +---------+---------------+
+    |       1 | US_NE         |
+    |       2 | CAN           |
+    +---------+---------------+
+    2 rows in set (0.001 sec)
+    */
+
+    alter table sales
+      reorganize partition asia into (
+        partition asia values in ("CHN", "JPN", "IND", "KOR")
+      )
+    ;
+
+    insert into sales
+    values
+    (3,5,6, "2001-01-01", "KOR", 300)
+    ;
+    -- Query OK, 1 row affected (0.003 sec)
+    ```
+
+## Q141 RANGE COLUMNSによって知っていますか?
+
+??? success
+
+    ### RANGEとの差異
+
+    ```text
+    ・range columnsは式を受け入れない
+    ・range columnsは複数のカラムのリストを受け入れ
+      タプル単位で比較する
+    ・rabnge columnsには整数以外も指定可能
+    
+    ```
+
+    ### タプル単位での比較
+
+    ```sql
+    select 
+      row(5,10) < row(5, 11),
+      row(5, 11) < row(5, 11)
+    ;
+
+    /*
+    +------------------------+-------------------------+
+    | row(5,10) < row(5, 11) | row(5, 11) < row(5, 11) |
+    +------------------------+-------------------------+
+    |                      1 |                       0 |
+    +------------------------+-------------------------+
+    1 row in set (0.000 sec)
+    */
+    ```
+
+    ```sql
+    /*
+    RANGEの項でも触れたが、指定する順番を間違えやすいので注意
+    ⇒条件は、次第に増加していく必要がある
+    */
+    create table rc1 (
+      a int,
+      b varchar(5)
+    )
+    partition by range columns (a, b) (
+      partition 0a values less than (0, "b"),
+      partition 0b values less than (0, "c"),
+      partition 1a values less than (1, "b"),
+      partition 9z values less than (maxvalue, maxvalue)
+    );
+
+    insert into rc1 values
+    (0, "a"),
+    (0, "bz"),
+    (1, "azfds"),
+    (4, "a")
+    ;
+
+    select 
+      concat("rows in 0a = ", count(*)) partition_count
+    from rc1 partition (0a) partition_count union all
+    select 
+      concat("rows in 0b = ", count(*))
+    from rc1 partition (0b) partition_count union all
+    select 
+      concat("rows in 1a = ", count(*))
+    from rc1 partition (1a) partition_count union all
+    select 
+      concat("rows in 9z = ", count(*))
+    from rc1 partition (9z) partition_count
+    ;
+
+    /*
+    +-----------------+
+    | partition_count |
+    +-----------------+
+    | rows in 0a = 1  |
+    | rows in 0b = 1  |
+    | rows in 1a = 1  |
+    | rows in 9z = 1  |
+    +-----------------+
+    4 rows in set (0.001 sec)
+    */
+    ```
+
+    !!! warning 
+        ### MAXVALUEの使い方
+
+        ```text
+        ・複数のpartition定義の最初のカラムの制限値として、
+          MAXVALUEを使うことはできない
+
+          たとえば、以下のようなケースはダメ
+          partition 0a values less than (MAXVALUE, "b")
+          partition 0a values less than (MAXVALUE, MAXVALUE)
+        ```
+
+    ### よくあるRANGE COLUMNSの例(時間型)
+
+    ```sql
+    create table e1 (
+      employee_id int,
+      employed_date date
+    )
+
+    partition by range columns (employed_date) (
+      partition p0 values less than ("1970-01-01"),
+      partition p1 values less than ("1980-01-01"),
+      partition p2 values less than ("1990-01-01"),
+      partition p3 values less than ("2000-01-01"),
+      partition p4 values less than ("2010-01-01"),
+      partition p5 values less than ("2020-01-01"),
+      partition p6 values less than (maxvalue)
+    );
+
+    insert into e1 values
+    (1, "1969-01-01"),
+    (2, "1989-01-01"),
+    (3, "1998-01-01"),
+    (4, "2012-01-01"),
+    (5, "2023-01-01"),
+    (6, now())
+    ;
+
+    select
+      concat("rows in p0 = ", count(*)) partition_count
+    from e1 partition (p0) union all
+    select
+      concat("rows in p1 = ", count(*)) partition_count
+    from e1 partition (p1) union all
+    select
+      concat("rows in p2 = ", count(*)) partition_count
+    from e1 partition (p2) union all
+    select
+      concat("rows in p3 = ", count(*)) partition_count
+    from e1 partition (p3) union all
+    select
+      concat("rows in p4 = ", count(*)) partition_count
+    from e1 partition (p4) union all
+    select
+      concat("rows in p5 = ", count(*)) partition_count
+    from e1 partition (p5) union all
+    select
+      concat("rows in p6 = ", count(*)) partition_count
+    from e1 partition (p6)
+    ;
+
+    /*
+    +-----------------+
+    | partition_count |
+    +-----------------+
+    | rows in p0 = 1  |
+    | rows in p1 = 0  |
+    | rows in p2 = 1  |
+    | rows in p3 = 1  |
+    | rows in p4 = 0  |
+    | rows in p5 = 1  |
+    | rows in p6 = 2  |
+    +-----------------+
+    7 rows in set (0.003 sec)
+    */
+    ```
+
+## Q142 ハッシュ分割について知っていますか?
+
+??? success
+    ### ハッシュ分割
