@@ -1,0 +1,109 @@
+site_name: My Docs
+
+theme:
+    name: material
+    language: "ja"
+    search:
+        lang: "ja"
+    palette:
+        # Palette toggle for light mode
+        - scheme: default
+          toggle:
+            icon: material/brightness-7 
+            name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - scheme: slate
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+    font:
+        code: coursera new
+    features:
+        - content.code.copy #code-copy
+        # - content.code.select #code-select
+        # - content.code.annotate #注釈
+        - content.tabs.link
+        # - navigation.tabs
+        - navigation.top
+        # - navigation.footer
+    icon:
+        annotation: material/arrow-right-circle
+
+
+
+site_name: Hacker101
+copyright: "&copy; 2024 Toraneko0101"
+extra:
+    generator: false
+
+nav:
+    - ... | tutorial/**/*.md
+    - ... | practice/**/*.md
+    - others/introduction.md
+    - others/material.md
+
+markdown_extensions:
+    - attr_list
+    - md_in_html #grid
+    - admonition #詳細ブロック
+    - pymdownx.details #折り畳み詳細ブロック
+    - footnotes #注釈
+    - nl2br #末尾に半角スペースを入れることなく改行
+    - pymdownx.inlinehilite #inlineハイライト
+    - pymdownx.snippets #他ファイルから
+    - pymdownx.tasklist: #tasklist
+        custom_checkbox: true
+        clickable_checkbox: true
+    - pymdownx.superfences:
+        custom_fences:
+            - name: mermaid
+              class: mermaid
+              format: !!python/name:pymdownx.superfences.fence_code_format
+    - pymdownx.tabbed: #tab切り替え
+        alternate_style : true
+    - pymdownx.arithmatex: #数式
+        generic: true
+    - pymdownx.emoji: #絵文字
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg 
+    - tables #tableを有効化
+    - pymdownx.critic
+    - pymdownx.caret
+    - pymdownx.mark
+    - pymdownx.tilde
+    - pymdownx.keys #Keys
+    # - codehilite:
+    #     linenums: true
+    - pymdownx.highlight:
+        # pygments_style: defalut
+        # pygments_lang_class: true
+        use_pygments: false
+        # anchor_linenums: true
+        # line_spans: __span
+
+extra_javascript:
+    #highlight.jsはcode.select等と仲が悪い
+    # - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js
+    # - javascripts/config.js
+    - javascripts/mathjax.js #数式
+    - https://polyfill.io/v3/polyfill.min.js?features=es6 #数式
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js #数式
+    - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js #table
+    - javascripts/tablesort.js #table
+    - javascripts/custom.js
+    - javascripts/prism.js
+extra_css:
+    # - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/one-light.min.css
+    - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    - css/custom.css
+    - css/prism.css
+    #- css/pygments.css
+
+use_directory_urls: false
+
+plugins:
+    - glightbox
+    - search
+    - awesome-pages
+    - offline
