@@ -895,4 +895,397 @@
 
     ```
 
-## Q144 線形ハッシュについて知っていますか?
+## Q144 その他の分割法について知っていますか?
+
+??? success
+    ### 線形ハッシュ
+
+    ```text
+    [hashとの差異]
+    ・partitionの追加/削除/merge/分割の速度が上がる
+    ・均等に配分される可能性は低い
+    ```
+
+    ```sql
+    create table t1 (
+      id int not null,
+      hired date not null default "1970-01-01"
+    )
+    partition by linear hash( year(hired))
+    partitions 4;
+    ```
+
+    ### KEY
+
+    ```text
+    ・パーティショニングには、カラム名のみが指定可能
+    ・カラム名を加工した式は不可
+    ・ただし、指定できる列は整数値やNULL値に限定されない
+    ```
+
+    ```sql
+    /*
+    カラム名を指定しない場合、テーブルの主キーが使われる
+    ⇒今回の場合、id
+    */
+    create table k1 (
+      id int not null primary key,
+      name varchar(20)
+    )
+    partition by key()
+    partition 2;
+
+    /*
+    主キーがない && 一意キーがある場合
+    ⇒一意キーが使われる(NOT NULLでないと失敗する)
+    */
+    create table k2 (
+      id int not null,
+      name varchar(20),
+      unique key(id) not null
+    )
+    partition by key()
+    partitions 2;
+    ```
+
+    !!! info
+        ### 線形キーを用いることもできる
+
+        ```sql
+        create table tk (
+          col1 int not null,
+          col2 char(5),
+          col3 date
+        )
+        partition by linear key (col1)
+        partitions 3
+        ;
+        ```
+
+## Q145 パーティショニングでNULLを用いたときの挙動を知っていますか?
+
+??? success
+    ### NULLの扱い
+
+    ```text
+    基本
+      ・パーティショニング実装の際、NULLはNULLでない値より
+        小さい値とみなされる
+
+    RANGE
+      ・一番初めのパーティションに挿入される
+    
+    LIST
+      ・明示的にリストにNULLを指定する必要がある
+    
+    HASH&KEY
+      ・今のところ不明
+      ・公式には戻り値が0扱いになると書いてあったが、
+        partitions 3にした例ではそうでないように思える
+    ```
+
+    ```sql
+    -- hash && null
+
+    create table h1 (
+      id int
+    )
+    partition by hash(id)
+    partitions 3;
+
+    -- 2,1,1になるはず
+    insert into h1 values
+    (0), (null), (1), (2);
+
+    select * 
+    from h1 partition (p2);
+
+    /*
+    +------+
+    | id   |
+    +------+
+    | NULL |
+    |    2 |
+    +------+
+    2 rows in set (0.001 sec)
+    */
+    ```
+
+## Q146 パーティションを削除/追加/データ削除を行う方法を知っていますか?
+
+??? success
+    ### パーティションの削除(RANGE)
+
+    ```sql
+    -- パーティションの内のデータも消える
+
+    create table tr (id int, purchased date)
+      partition by range columns (purchased)
+      (
+        partition p0 values less than ("1990-01-01"),
+        partition p1 values less than ("1995-01-01"),
+        partition p2 values less than ("2000-01-01"),
+        partition p3 values less than (maxvalue)
+      );
+    
+    insert into tr values
+    (1, "1989-12-31"),
+    (2, "1999-12-31"),
+    (3, "1993-12-31"),
+    (4, "2004-12-31")
+    ;
+
+    --　削除
+    alter table tr drop partition p2;
+    -- Query OK, 0 rows affected (0.042 sec)
+    -- Records: 0  Duplicates: 0  Warnings: 0
+    
+    select * from tr;
+    -- 行が削除されても報告されていないことが分かる
+    /*
+    +------+------------+
+    | id   | purchased  |
+    +------+------------+
+    |    1 | 1989-12-31 |
+    |    3 | 1993-12-31 |
+    |    4 | 2004-12-31 |
+    +------+------------+
+    3 rows in set (0.001 sec)
+    */
+
+    -- dataを失いたくないなら
+    alter table tr reorganize partition p3 into (
+      partition p1_1 values less than ("2005-01-01"),
+      partition p1_2 values less than (maxvalue)
+    ) ;
+
+    -- 実際にはp1_1, p1_2ではなく、p3とp4にしたかった
+    alter table tr reorganize partition p1_1 into (
+      partition p3 values less than ("2005-01-01")
+    );
+
+    alter table tr reorganize partition p1_2 into (
+      partition p4 values less than (maxvalue)
+    );
+
+    select * from tr partition (p3);
+    /*
+    +------+------------+
+    | id   | purchased  |
+    +------+------------+
+    |    4 | 2004-12-31 |
+    +------+------------+
+    1 row in set (0.001 sec)
+    */
+    ```
+
+    ### パーティションの追加(RANGE)
+
+    ```sql
+    create table k1 (
+      id int,
+      name varchar(10)
+    );
+    -- 無い状態で追加
+    alter table k1 
+    partition by range columns (name) (
+      partition p0 values less than ("a"),
+      partition p1 values less than ("b"),
+      partition p2 values less than ("c")
+    );
+
+    insert into k1 values
+    (1, "8"),
+    (2, "abc"),
+    (3, "bneko")
+    ;
+
+    -- 範囲の末尾に追加するときはaddが使える
+    -- 末尾以外はreorganize partition ... intoがよさそう
+    alter table k1
+    add partition (
+      partition p3 values less than maxvalue
+    );
+    ```
+
+    ### パーティションをマージする(RANGEの隣接するものを)
+
+    ```sql
+    alter table k1
+    reorganize partition p0, p1, p2 into (
+      partition p0 values less than ("c")
+    );
+
+    select * 
+    from k1 partition (p0);
+
+    /*
+    +------+-------+
+    | id   | name  |
+    +------+-------+
+    |    1 | 8     |
+    |    2 | abc   |
+    |    3 | bneko |
+    +------+-------+
+    3 rows in set (0.001 sec)
+    */
+    ```
+
+    ### パーティションの削減/増加(HASH)
+
+    ```sql
+    create table h1 (
+      id int
+    )
+
+    partition by hash(id)
+    partitions 10;
+
+    -- 削減(合体) 4つ分減らす
+    -- hash, key, linear (hash/key)で機能する
+    alter table h1 coalesce partition 4;
+
+    -- 追加(4つ分増やす)
+    alter table h1 add partition partitions 4;
+    ```
+
+    ### パーティション自体を削除
+
+    ```sql
+    alter table h1 remove partitioning;
+    ```
+
+## Q147 パーティションをテーブルと交換する方法を知っていますか?
+
+??? success
+
+    ### 補足(create table ... like)
+
+    ```sql
+    -- 元のテーブルに定義されているカラム属性やインデックス
+    -- を引き継いだ空のテーブルを作成できる
+
+    create table e (
+      id int not null,
+      fname varchar(20),
+      lname varchar(20)
+    )
+    partition by range (id) (
+      partition p0 values less than (50),
+      partition p1 values less than (100),
+      partition p2 values less than (150),
+      partition p3 values less than (maxvalue)
+    );
+
+    insert into e values
+    (1000, "NekoMoti", "Taro"),
+    (320, "Nekogasira", "Zyuzaburo"),
+    (24, "Nekota", "Nekokiti"),
+    (2005, "Nekozyarasi", "Musyanosuke")
+    ;
+
+
+    -- コピーを作成
+    create table e2 like e;
+
+    -- コピーからパーティションを削除
+    alter table e2 remove partitioning;
+
+    ```
+
+    ### パーティションとテーブルを交換
+
+    ```sql
+    select * from e partition(p0);
+    /*
+    +----+--------+----------+
+    | id | fname  | lname    |
+    +----+--------+----------+
+    | 24 | Nekota | Nekokiti |
+    +----+--------+----------+
+    1 row in set (0.000 sec)
+    */
+
+
+    alter table e
+    exchange partition p0
+    with table e2;
+    -- Query OK, 0 rows affected (0.024 sec)
+
+    /*中身を入れ替えている*/
+    select * from e partition(p0);
+    -- Empty set (0.000 sec)
+
+    select * from e2;
+    /*
+    +----+--------+----------+
+    | id | fname  | lname    |
+    +----+--------+----------+
+    | 24 | Nekota | Nekokiti |
+    +----+--------+----------+
+    1 row in set (0.001 sec)
+    */
+    ```
+
+## Q148 パーティションプルーニングについて知っていますか?
+
+??? success
+    ### パーティショニングの大きな利点
+
+    ```text
+    ・パーティション分割されたテーブルがあるとする
+
+    ・ここで、クエリにパーティションキー列に基づく条件を含む
+
+    ・するとDBサーバはクエリに関連するデータを含んでいない
+      パーティションを考慮の対象から外す
+    
+    ⇒検索を制限することで、すべてのパーティションをスキャン
+      するより、検索時間を減らすことができる
+      これを、「プルーニング」という
+    
+    ・プルーニングは、等号や、比較、INやBetweenなどで
+      使うことができる
+    ```
+
+    ```sql
+    --プルーニングの例
+
+    create table t1 (
+      fname varchar(50) not null,
+      lname varchar(50) not null,
+      region_code int unsigned not null,
+      dob date not null
+    )
+
+    partition by range(region_code) (
+      partition p0 values less than (64),
+      partition p1 values less than (128),
+      partition p2 values less than (192),
+      partition p3 values less than maxvalue
+    );
+
+    insert into t1 
+    values
+    ("Abraham", "Lincoln", 111, "1809-02-12"),
+    ("Buster", "Keaton", 111, "1895-10-04"),
+    ("Robert", "Nelson", 156, "1794-08-08"),
+    ("Charles", "Chaplin", 112, "1889-04-16")
+    ;
+
+    -- partionkeyであるregion_codeを含んでいる
+    -- そのため、p2だけを探せている
+    select fname, lname, region_code, dob
+    from t1
+    where region_code > 150 and region_code < 160
+    ;
+
+    /*
+    +--------+--------+-------------+------------+
+    | fname  | lname  | region_code | dob        |
+    +--------+--------+-------------+------------+
+    | Robert | Nelson |         156 | 1794-08-08 |
+    +--------+--------+-------------+------------+
+    1 row in set (0.001 sec)
+    */
+    ```
