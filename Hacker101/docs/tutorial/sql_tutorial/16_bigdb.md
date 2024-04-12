@@ -1677,7 +1677,192 @@
         元のデータを分からなくするように乱している
     ```
 
+    ### 前提（識別子/準識別子）
+
+    ```text
+    識別子
+      ・個人をはっきり指し示す属性（マイナンバーとか）
+    
+    準識別子
+      ・年齢、性別、居住地など組み合わせることで
+        個人の特定が可能になる属性
+      
+    要配慮情報
+      ・センシティブ属性とも呼ぶ
+      ・人に知られたくないことは全部そう
+      ・年収とかも
+    
+    ⇒要配慮情報と個人を結び付けられないよう匿名化を行う
+    ```
+
+
     ### K-匿名化(摂動法)
 
     ```text
+    ・同じような人が、必ずK人以上いる状態を作ること
+      （準識別子が全く同一の個人が少なくともK人存在）
+
+    [抑制]
+      ・特定の属性の値を*で変換
+      ・識別子は必ず変換
+      ・必要であれば準識別子も
+    
+    [一般化]
+      ・97歳を90代などに変換
+      ・個々の属性値を広い範囲に置換する
+    
+    1 抑制、一般化を行ったうえで、準識別子の組み合わせを
+      調べる
+    
+    2 どの組み合わせを用いても、K個以上のレコードが
+      残る場合、K-匿名性を満たすという
+    
+    [弱点：一般的に]
+      ・ランダム性を含まないため、推測が可能
+
+    [弱点:背景知識攻撃]
+      ・攻撃者が何らかの背景知識を持っている場合、
+      （たとえば要配慮情報の中身を大まかに知っている場合）
+      　明らかに当てはまらないものを除くことで、
+      　個人が特定される可能性がある
+    
+    [弱点：同種攻撃]
+      ・要配慮情報を含めたすべての機密属性が同じ場合、
+        レコードを特定できなくとも、機密情報がばれる
     ```
+
+    ```sql
+    -- 前処理前
+    -- 宗教を要配慮情報とした場合
+
+    select 
+      "Nekotaro" name,
+      38 age,
+      1 sex,
+      "Tokyo" region,
+      "Nekozyara-Kyo" belief
+    union all
+    select 
+      "Torakiti" name,
+      32 age,
+      1 sex,
+      "Tokyo" region,
+      "Nekozyara-kyo" belief
+    union all
+    select 
+      "LionMaru" name,
+      59 age,
+      1 sex,
+      "Osaka" region,
+      "Tategami-Kyo" belief
+    union all
+    select 
+      "Kabanosuke" name,
+      52 age,
+      1 sex,
+      "Osaka" region,
+      "Mizuabi-Club" belief
+    ;
+
+    /*
+    +------------+-----+-----+--------+---------------+
+    | name       | age | sex | region | belief        |
+    +------------+-----+-----+--------+---------------+
+    | Nekotaro   |  38 |   1 | Tokyo  | Nekozyara-Kyo |
+    | Torakiti   |  32 |   1 | Tokyo  | Nekozyara-kyo |
+    | LionMaru   |  59 |   1 | Osaka  | Tategami-Kyo  |
+    | Kabanosuke |  52 |   1 | Osaka  | Mizuabi-Club  |
+    +------------+-----+-----+--------+---------------+
+    4 rows in set (0.000 sec)
+    */
+
+    -- K-多様性適用後
+    select 
+      "*" name,
+      "30s-50s" age,
+      1 sex,
+      "Japan" region,
+      "Nekozyara-Kyo" belief
+    union all
+    select 
+      "*" name,
+      "30s-50s" age,
+      1 sex,
+      "Japan" region,
+      "Nekozyara-kyo" belief
+    union all
+    select 
+      "*" name,
+      "30s-50s" age,
+      1 sex,
+      "Japan" region,
+      "Tategami-Kyo" belief
+    union all
+    select 
+      "*" name,
+      "30s-50s" age,
+      1 sex,
+      "Japan" region,
+      "Mizuabi-Club" belief
+    ;
+
+    /*
+    準識別子をage,sex,regionとすると、
+    2-匿名性が担保されているが......
+
+    30代と判明した場合、同種攻撃で突破されることが分かる
+    */
+
+    /*
+    +------+-----+-----+--------+---------------+
+    | name | age | sex | region | belief        |
+    +------+-----+-----+--------+---------------+
+    | *    | 30s |   1 | Tokyo  | Nekozyara-Kyo |
+    | *    | 30s |   1 | Tokyo  | Nekozyara-kyo |
+    | *    | 50s |   1 | Osaka  | Tategami-Kyo  |
+    | *    | 50s |   1 | Osaka  | Mizuabi-Club  |
+    +------+-----+-----+--------+---------------+
+    4 rows in set (0.001 sec)
+    */
+    ```
+
+    ### L-多様性(摂動法)
+
+    ```text
+    ・漏えいさせたくない属性が、
+      同一グループ内で、「L種類以上ある」状態を作ること
+    
+    [Lを増やすには]
+      ・一般化の手法を見直して、少数のグループをなくす
+
+      ・たとえば以下の例の場合、ageとregionの幅を
+        大きくすることで、Lを増加させている
+      
+      ・どうしてもLが広げられない場合は、
+        そこだけ*で匿名化する方法もある
+    
+    ・以下の場合、L = 1である
+      +------+-----+-----+--------+---------------+
+      | name | age | sex | region | belief        |
+      +------+-----+-----+--------+---------------+
+      | *    | 30s |   1 | Tokyo  | Nekozyara-Kyo |
+      | *    | 30s |   1 | Tokyo  | Nekozyara-kyo |
+      | *    | 50s |   1 | Osaka  | Tategami-Kyo  |
+      | *    | 50s |   1 | Osaka  | Mizuabi-Club  |
+      +------+-----+-----+--------+---------------+
+      4 rows in set (0.001 sec)
+    
+    ・これはL = 3
+    +------+---------+-----+--------+---------------+
+    | name | age     | sex | region | belief        |
+    +------+---------+-----+--------+---------------+
+    | *    | 30s-50s |   1 | Japan  | Nekozyara-Kyo |
+    | *    | 30s-50s |   1 | Japan  | Nekozyara-kyo |
+    | *    | 30s-50s |   1 | Japan  | Tategami-Kyo  |
+    | *    | 30s-50s |   1 | Japan  | Mizuabi-Club  |
+    +------+---------+-----+--------+---------------+
+    4 rows in set (0.001 sec)  
+  
+    ```
+
+    ### T-近接性(摂動法)
