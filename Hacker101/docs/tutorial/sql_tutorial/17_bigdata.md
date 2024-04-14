@@ -2111,6 +2111,41 @@
 
     ### MariaDBで試してみる(Serializable)
 
+    ```sql
+    -- トランザクション2つをスタートさせる
+    begin;
+
+    -- トランザクションAの分離レベルをserializableに
+    set session transaction isolation level
+    serializable;
+
+    -- Aで検索しておく
+    select * from player_data2;
+    /*
+    +----+------+
+    | id | coin |
+    +----+------+
+    |  1 |  200 |
+    +----+------+
+    1 row in set (0.000 sec)
+    */
+
+    -- Bで追加しようとする
+    insert into player_data2 values
+    (2, 400);
+
+    -- 止まった
+    -- Aが読み取ったすべての行に共有ロックをかけているため
+    -- ERROR 1317 (70100): Query execution was interrupted
+    
+    -- Aのトランザクションを終了
+    commit;
+
+    --　再度追加(終了したので可能になる)
+    insert into player_data2 values
+    (2, 400);
+    ```
+
 ## Q172 MVCCについて知っていますか?
 
 ??? success
