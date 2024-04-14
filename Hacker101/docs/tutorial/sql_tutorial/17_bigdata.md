@@ -2188,12 +2188,15 @@
     ・select * ... lock in share mode(共有ロック)
     ・select * ... for update (排他ロック)
     ・insert/update/delete操作
+
+    ⇒後述のReadViewは生成されない
     ```
 
     ### snapshotを介して必要なバージョンを読み取る場合
 
     ```text
     ・ロックのないselect
+    ⇒後述のReadViewを生成
     ```
 
     ### undoログ
@@ -2234,6 +2237,12 @@
       現在のデータはname = test, db_trx_id = 3
     
     5 name = test1, db_trx_id = 2のデータはundoログに移動
+
+    | version   | name  | db_trx_id | db_roll_pointer |
+    | --------- | ----- | --------- | --------------- |
+    | latest    | test  | 3         | undo log2を示す |
+    | undo log2 | test1 | 2         | undo log1を示す |
+    | undo log1 | test2 | 1         | 0x0001          |
     ```
 
     ### ReadViewについて
@@ -2289,11 +2298,18 @@
 
     ```text
     1 トランザクション開始。trx_idを取得
+
     2 Select文が実行されるとReadViewを取得
+
     3 データが見つかったら、ReadViewのトランザクションIDと
       比較を行う
+
     4 アクセス不可ならundo logを使って、バージョンを遡る
+
     5 アクセス可なら該当行の情報を表示する
 
     ⇒上記の様にしてPhantom Readを防いでいる
     ```
+
+## Q173 NoSQLについて知っていますか?
+
