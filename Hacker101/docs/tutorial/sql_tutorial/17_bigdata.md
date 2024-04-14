@@ -2149,25 +2149,151 @@
 ## Q172 MVCCについて知っていますか?
 
 ??? success
-    ### MVCC
+    ### MVCC基礎
 
     ```text
     ・Multi-Version Concurrency Control
 
-    ・InnoDBは、各行に、3つのフィールドを追加する
+    ・InnoDBは、各行に、非表示の3つの列を追加する
 
-    DB_ROW_ID
-      ・レコードを登録したtransaction識別子が登録される
+      DB_ROW_ID
+        ・unique or primary keyがない場合に追加される
 
-    DB_TRX_ID
-      ・行を挿入/更新した最後のtransaction識別子が入る
+      DB_TRX_ID
+        ・行を挿入/更新した最後のtransaction識別子が入る
+      
+      DB_ROLL_PTR
+        ・行が更新された場合、undoログレコードに
+          更新前の内容を再構築するための情報が書かれる
+
+    ・InnoDBは、insert/update/deleteをundoログに記録する
+      ただし、deleteは内部的にはupdateとして記録される
+      これはInnoDBが行を物理的に削除するのではなく、
+      削除フラグを更新しているためである
     
-    DB_ROLL_PTR
-      ・行が更新された場合、undoログレコードに
-        更新前の内容を再構築するための情報が書かれる
+    ・論理的な削除フラグを用いることで、
+      行の前のバージョンをundoログを用いて取得可能になる
+      ※行が削除されている場合では不可能
+    ```
 
-    ・削除の場合は、すぐに物理的に削除されるわけではなく
-      削除用に書き込まれた更新undoログレコードが破棄された
-      時に行われる。
+    ### トランザクションID
+    ```text
+    ・新しいトランザクションが開始された時に取得される
+    ・start transactionやbeginが実行されるとき
+    ```
+
+    ### 最新バージョンを読み取る場合
+
+    ```text
+    ・select * ... lock in share mode(共有ロック)
+    ・select * ... for update (排他ロック)
+    ・insert/update/delete操作
+    ```
+
+    ### snapshotを介して必要なバージョンを読み取る場合
+
+    ```text
+    ・ロックのないselect
+    ```
+
+    ### undoログ
+
+    ```text
+    挿入取り消しログ
+      ・insertで生成
+      ・rollback時に使用される
+      ・commitされたら破棄
     
+    更新取り消しログ
+      ・update/deleteで生成
+      ・rollback時に使用
+      ・snapshotの読み取りにも使用
+      ・commit後、logレコードがDBで使用されているsnapshotに
+        含まれていない場合は、破棄される
+
+    ```
+
+    ### バージョンチェーンについて
+
+    ```text
+    複数のトランザクションが同一レコードに対して
+    同時に動作する場合を考える
+
+    1 たとえば、トランザクションID1によって
+      name = test2と更新されていたデータがあるとする
+
+    2 ここで、トランザクションID2がname = test1と更新する。
+      すると、現在のデータは
+      name = test1, db_trx_id = 2となる
+      また、db_roll_pointerは以前のデータを指し示す
+    
+    3  name = test2, db_trx_id = 1のデータはundoログに移動
+       2つのバージョン間はdb_roll_pointerで参照可能
+
+    4 トランザクションID3でname = testと更新する
+      現在のデータはname = test, db_trx_id = 3
+    
+    5 name = test1, db_trx_id = 2のデータはundoログに移動
+    ```
+
+    ### ReadViewについて
+
+    ```text
+    ・TransactionがSnapshotを介して読み取りを行う時に
+      生成される(つまりロックを行わないselect)
+    
+    ・該当行が、現在のトランザクションで表示されるか否かを
+      チェックするために使用
+    
+    ReadViewは以下のものを保存する
+
+      trx_ids:
+        アクティブなトランザクションID
+        自分自身と、既にcommitしたものは含まない
+      
+      low_limit_id
+        ・割り当てられる次のトランザクションID
+        ・トランザクションIDはincrementなので
+
+      up_limit_id
+        ・trx_idsの最小トランザクションID
+
+      creator_trx_id
+        ・ReadViewを生成したトランザクションID
+        ・自身で変更したデータならアクセスしたいので必要
+    
+    [ルール]
+      アクセスversion = Creator_trx_idなら
+        ・該当行は現在のトランザクションで変更されているので
+          そのverにアクセスして終了
+    
+      アクセスversion < up_limit_idなら
+        ・このversionを生成したトランザクションは
+          ReadViewを生成する前にcommitされている
+        ・よって、現行のトランザクションからアクセス可能
+      
+      アクセスversion > low_limit_id
+        ・このversionを生成したトランザクションは
+          ReadViewを生成後に、開かれている
+        ・よってアクセス不可能
+      
+      up_limit_id < アクセスver < low_limit_id
+        ・アクセスversionを生成したトランザクションIDが
+        　trx_idsにあるか確認
+        ・ある場合、未commitなのでアクセス不可能
+        ・ない場合は、commit済みなので、アクセス可能
+      
+    ```
+
+    ### 実際の流れ
+
+    ```text
+    1 トランザクション開始。trx_idを取得
+    2 Select文が実行されるとReadViewを取得
+    3 データが見つかったら、ReadViewのトランザクションIDと
+      比較を行う
+    4 アクセス不可ならundo logを使って、バージョンを遡る
+    5 アクセス可なら該当行の情報を表示する
+
+    ⇒上記の様にしてPhantom Readを防いでいる
     ```
