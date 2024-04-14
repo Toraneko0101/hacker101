@@ -1906,7 +1906,7 @@
        ⇒待機時間が増えるので実用的ではない
     ```
 
-    ### MariaDBで実際に試してみる(Read Uncommitted/Committed)
+    ### MariaDBで実際に試してみる(Uncommitted/Committed)
 
     ```sql
     create table player_data (
@@ -2072,11 +2072,11 @@
     -- Empty set (0.000 sec)
     ``` 
 
-    ### 予め読み取っていなかった時の挙動
+    ### [補足]予め読み取っていなかった時の挙動
 
     ```sql
     -- 予め読み取っていない場合の挙動
-    -- 読み取っていない(=一度もスキャンされていない)
+    -- 読み取っていない(=一度も該当行がスキャンされていない)
 
     --　現在の中身
     /*
@@ -2110,3 +2110,29 @@
     ```
 
     ### MariaDBで試してみる(Serializable)
+
+## Q172 MVCCについて知っていますか?
+
+??? success
+    ### MVCC
+
+    ```text
+    ・Multi-Version Concurrency Control
+
+    ・InnoDBは、各行に、3つのフィールドを追加する
+
+    DB_ROW_ID
+      ・レコードを登録したtransaction識別子が登録される
+
+    DB_TRX_ID
+      ・行を挿入/更新した最後のtransaction識別子が入る
+    
+    DB_ROLL_PTR
+      ・行が更新された場合、undoログレコードに
+        更新前の内容を再構築するための情報が書かれる
+
+    ・削除の場合は、すぐに物理的に削除されるわけではなく
+      削除用に書き込まれた更新undoログレコードが破棄された
+      時に行われる。
+    
+    ```
