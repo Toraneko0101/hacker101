@@ -1449,12 +1449,150 @@
     ⇒これは{社員ID, チームコード} -> {チーム補佐}
       という関係が正規化によりなくなってしまったからである
       (元テーブルの関数従属性を失っている)
-    
+
       この登録を防ぐには、制約やアプリ側でのvalidationが
       必要になってくる。
+
+    ・また補助する人間が変われば、チームが変わるという関係が
+      直感に反していることも考える必要がある
+
+    ⇒　処理ロジックを考え直した方がいいかもしれない
+        たとえば、{社員ID, チームコード、補佐メンバー}の
+        Tableと、{補佐メンバー、所属チーム}のTableを用意。
+        補佐メンバーの所属チームが変わった場合
+        1つ目のTableの補佐メンバーの欄はNULLにする。
+
     
-    ⇒無損失分解でない分解をしてしまうリスクを考え
+    ・無損失分解でない分解をしてしまうリスクを考え
       敢えてBC正規化を行わない場合もある
+    ```
+
+    ### テーブルを再設計する場合
+
+    ```text
+    ・ペット、グループ、職員という関係性を考える
+    ・ここで、ペットは特定の1つのグループに属し、職員は
+      特定の1つのグループの中から、数体のペットの世話をする
+    
+    ・グループとは、危険度(safe, warning, danger)を表し、
+      職員は免許を持っていないとグループの世話に従事できない
+    
+    ・したがって職員が属すグループは決まっている
+
+    ・しかし、ペットの危険度は後々見直される可能性があり、
+      たとえばsafe -> wanringに変更された時、
+      整合性を保つため、担当の職員は一時的に空欄となる
+    
+    ・そのうえで、職員が世話をするペットの一覧をfetch
+      する場合について考える
+    ```
+
+    ```sql
+    -- グループエンティティ
+    CREATE TABLE groups (
+        group_id INT PRIMARY KEY,
+        danger_level VARCHAR(50) CHECK (danger_level IN ('safe', 'warning', 'danger'))
+    );
+
+    -- ペットエンティティ
+    CREATE TABLE pets (
+        pet_id INT PRIMARY KEY,
+        pet_name VARCHAR(100),
+        group_id INT,
+        CONSTRAINT fk_group FOREIGN KEY (group_id) REFERENCES groups(group_id)
+    );
+
+    -- 職員エンティティ
+    CREATE TABLE staffs (
+        staff_id INT PRIMARY KEY,
+        staff_name VARCHAR(100),
+        group_id INT,
+        CONSTRAINT fk_group2 FOREIGN KEY (group_id) REFERENCES groups(group_id)
+    );
+
+    CREATE TABLE staff_pets (
+      staff_id int,
+      pet_id int,
+      constraint fk_staff foreign key (staff_id)
+        references staffs(staff_id),
+      constraint fk_pet foreign key (pet_id)
+        references pets (pet_id)
+    );
+
+
+    insert into groups
+    values
+    (1, "safe"),
+    (2, "warning"),
+    (3, "danger")
+    ;
+
+    insert into pets
+    values
+    (1, "dog", 1),
+    (2, "crocodile", 2),
+    (3, "cobra", 2)
+    ;
+
+    insert into staffs
+    values
+    (1, "John", 1),
+    (2, "Bob", 2),
+    (3, "Anonymous", 3),
+    (4, "I_like_danger", 3)
+    ;
+
+    /*
+    たとえばペットの世話に従事する職員を新規登録する際は、
+    アプリ側のプルダウンに、危険度にあった職員のみを表示する
+    */
+    
+    -- その結果、以下のデータが登録されたとする
+
+    insert into staff_pets
+    values
+    (1, 1),
+    (2, 2),
+    (2, 3)
+    ;
+
+    select
+      pets.pet_name,
+      groups.danger_level,
+      staffs.staff_name
+    from pets
+      inner join groups
+      on pets.group_id = groups.group_id
+      inner join staff_pets
+      on staff_pets.pet_id = pets.pet_id
+      inner join staffs
+      on staff_pets.staff_id = staffs.staff_id
+    ;
+
+    /*
+    +-----------+--------------+------------+
+    | pet_name  | danger_level | staff_name |
+    +-----------+--------------+------------+
+    | dog       | safe         | John       |
+    | crocodile | warning      | Bob        |
+    | cobra     | warning      | Bob        |
+    +-----------+--------------+------------+
+    3 rows in set (0.001 sec)
+    */
+
+    -- 更新する際
+    -- cobraの危険度をdangerにする場合、bobには任せられない
+    -- 従って一度担当職員を空欄にする
+    
+    delimiter //
+    create trigger update_check
+    after update on pets
+    for each row
+    begin
+      if old.group_id <> new.group_id then
+        delete from staff_pets
+        where pet_id = new.pet_id
+
     ```
 
 
