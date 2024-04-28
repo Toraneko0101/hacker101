@@ -252,8 +252,98 @@
     | apt search         | パッケージ検索(部分一致)       |
     | apt clean          | cacheディレクトリのお掃除      |
     | apt autoclean      | 未installのcache削除           |
+    | apt depends        | 依存関係を表示                 |
 
-    ### サブコマンドの差異
+    ### サブコマンドの補足説明
 
     ```text
+    apt upgrade
+      ・現在システムにinstallされている全てのパッケージに対し
+        aptリポジトリ内のパッケージリストを参照し、
+        利用可能な最新versionをinstallする
+      
+      ・既存のパッケージが削除されることはない
+
+    apt full-upgrade
+      ・システム全体をupgradeするために、
+        必要な場合は、現在install済みのpackageを削除可能
+    
+    apt remove
+      ・installした実行ファイルやライブラリを削除
+      ・設定ファイルは削除しない
+      ・再びinstallした時は、前の設定が引き継がれる
+    
+    apt purge
+      ・installした実行ファイルやライブラリを削除
+      ・設定ファイルも削除
+    
+    apt list --installed
+      ・install済みのパッケージ一覧を表示している
+    
+    apt list --upgradable
+      ・upgrade可能なpackage一覧を表示
     ```
+
+    ```bash
+    # install一覧を表示した例
+    $ sudo apt list --installed | grep vim
+
+    vim-common/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 all [インストール済み、自動]
+    vim-runtime/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 all [インストール済み、自動]
+    vim-tiny/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 amd64 [インストール済み、自動]
+    vim/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 amd64 [インストール済み、自動]
+
+
+    # 依存関係を表示した例
+    $ sudo apt depends vim    
+
+    vim
+      依存: vim-common (= 2:8.2.3995-1ubuntu2.16)
+      依存: vim-runtime (= 2:8.2.3995-1ubuntu2.16)
+      依存: libacl1 (>= 2.2.23)
+      依存: libc6 (>= 2.34)
+      依存: libgpm2 (>= 1.20.7)
+      依存: libpython3.10 (>= 3.10.0)
+      依存: libselinux1 (>= 3.1~)
+      依存: libsodium23 (>= 1.0.14)
+      依存: libtinfo6 (>= 6)
+      提案: <ctags>
+        exuberant-ctags
+        universal-ctags
+      提案: vim-doc
+      提案: vim-scripts
+    
+    # パッケージの説明を表示した例
+    $ sudo apt show vim 2> /dev/null | head -2
+
+    Package: vim
+    Version: 2:8.2.3995-1ubuntu2.16
+    ```
+
+    ### aptリポジトリを追加する
+
+    ```text
+    ・サードパーティ製のリポジトリを追加する方法
+    ```
+
+    ```bash
+    # add-apt-repository
+    $ sudo add-apt-repository ppa:jonathonf/vim
+
+    # 更新
+    $ sudo apt update
+    $ sudo apt upgrade
+
+    $ sudo apt show vim 2> /dev/null | head -2
+    Package: vim
+    Version: 2:9.0.0749-0york0~22.04
+
+    # /etc/apt/sources.list.d配下を見ると
+    # 以下のものが増えている
+    # jonathonf-ubuntu-vim-jammy.list
+    ```
+
+## Q8 cron(コマンド予定実行)について知っていますか?
+
+??? success
+    ### cron
