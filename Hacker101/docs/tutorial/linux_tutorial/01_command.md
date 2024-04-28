@@ -475,7 +475,7 @@
     # ログアウト
     ```
 
-## Q5 権限、ユーザ関連の基本的なコマンドを知っていますか?
+## Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)
 
 ??? success
 
@@ -637,9 +637,276 @@
     $ ls -l test.sh
     -rw-r--r-- 1 user user 13  4月 28 10:57 test.sh  
 
-    $ chmod 744 test.sh
+    $ chmod 774 test.sh
 
-    # これで所有者である場合test.shを実行可能
+    # これで所有者,所有グループである場合test.shを実行可能
     $ ./test.sh
     success
+
+    $ ls -l test.sh
+    -rwxr--r-- 1 user user 13  4月 28 10:57 test.sh
+
+    #実行権限を剥奪
+    $ chmod ug-x test.sh
+
+    $ ls -l test.sh
+    -rw-r--r-- 1 user user 13  4月 28 10:57 test.sh
+
+    # イコールでの指定方法(指定されなかった権限は消える)
+    $ chmod o=wx test.sh
+
+    $ ls -l test.sh
+    -rw-r---wx 1 user user 13  4月 28 10:57 test.sh  
     ```
+
+## Q6 ユーザ/グループを操作するコマンドについて知っていますか?
+
+??? success
+
+    ### 一覧
+
+    | コマンド等  | 意味                                |
+    | ----------- | ----------------------------------- |
+    | who         | ログイン中のユーザを表示            |
+    | id          | ユーザID, グループID等の表示        |
+    | chown       | ファイルの所有者変更                |
+    | sudo        | 一時的に他user,他グループの権限付与 |
+    | su          | 別ユーザとしてログイン              |
+    | adduser     | 新規ユーザを対話的に作成            |
+    | useradd     | ユーザを非対話的に作成              |
+    | /etc/passwd | ユーザ一覧の確認                    |
+    | passwd      | パスワードの変更                    |
+    | exit        | ログアウト                          |
+    | groupadd    | 新規グループを作成                  |
+    | /etc/group  | グループ一覧の確認                  |
+    | gpasswd     | グループメンバを整理(groupのpassも) |
+    | userdel     | ユーザの削除                        |
+    | groupdel    | グループの削除                      |
+    | groups      | ユーザが所属しているグループ表示    |
+
+    ### who(ログインしているユーザを表示)
+
+    ```bash
+    $ who
+    user pts/1        2024-04-25 10:44
+    ```
+
+    ### chown(ファイルの所有者を変更)
+
+    ```bash
+    # chown <user>:<group> <file_name>
+    $ sudo chown root:root test.sh
+    $ ls -l test.sh
+    -rw-r---wx 1 root root 13  4月 28 10:57 test.sh
+    ```
+
+    ### sudo 
+
+    ```text
+    ・コマンド実行の単位で
+      現在のユーザに他のユーザ、他のグループの権限を与える
+    
+    ・一般ユーザにroot権限を一時的に付与するという目的で
+      使われることが多い
+    ```
+
+    ###  sudoのパスワードは何を入力するの?
+
+    ```texst
+    ・実行しているユーザのパスワード
+    ・root/他ユーザのパスワードではない
+    ```
+
+    ### sudoを使えば誰でもroot権限で実行できるってこと?
+
+    ```text
+    ・current_userが、sudoコマンドを使ったとき、
+      どの権限で何を実行できるのか
+    
+    ・これは、/etc/sudoersというファイルに書かれている
+
+    ・/etc/sudoersはたとえrootでも、Editor越しに編集できず
+      編集する際はvisudoを用いる必要がある
+
+    ・sudoコマンドを使った履歴は、CentOSなら/var/log/secure
+      Debian系なら、/var/log/auth.logに残される
+    ⇒記録される！
+    ```
+
+    ```bash
+    $ sudo less /etc/sudoers
+
+    # user/group ホスト名=(User名:Group名)　できること
+
+    # %を付けると、グループに関する指示となる
+    # 下記の場合、root, sudoグループに属しているuser
+    # は、任意のユーザ名/グループ名で任意のコマンドを実行可能
+
+    # adminグループに属している場合、他のユーザとしてコマンド
+    # 実行はできるが、他のグループとしては実行できない
+
+    # User privilege specification
+    root    ALL=(ALL:ALL) ALL
+
+    # Members of the admin group may gain root privileges        
+    %admin ALL=(ALL) ALL
+
+    # Allow members of group sudo to execute any command
+    %sudo   ALL=(ALL:ALL) ALL
+    ```
+
+    ### adduser/useradd(新規ユーザを作成する)
+
+    ```bash
+    #こっちなら作成される(対話式にuserを作成する)
+    $ sudo adduser nezumi
+
+    #homeが作成されない
+    $ sudo useradd nezumi
+
+    ```
+    
+    ### id(userid等の表示)
+
+    ```bash
+    $ id nezumi
+    uid=1001(nezumi) gid=1002(nezumi) groups=1002(nezumi)
+    ```
+
+    ### /etc/passwd (ユーザの一覧を確認する)
+
+    | field | 意味                        |
+    | ----- | --------------------------- |
+    | 1     | user名                      |
+    | 2     | passwd(security上の理由でX) |
+    | 3     | UserID                      |
+    | 4     | GroupID                     |
+    | 5     | Comment                     |
+    | 6     | Homeディレクトリ            |
+    | 7     | ログインシェル              |
+
+    ```bash
+    $ cat /etc/passwd | grep nezumi
+    nezumi:x:1001:1002:,,,:/home/nezumi:/bin/bash
+    ```
+
+    ### passwd(パスワードの変更)
+
+    ```bash
+    # sudo passwd <user_name>
+    $ sudo passwd nezumi
+    ```
+
+    ### su(別のユーザとしてログイン)
+
+    ```bash
+    #ディレクトリは変わらない
+    $ su nezumi
+
+    #別ユーザのホームディレクトリに移動する
+    $ su - nezumi
+
+    ```
+
+    ### exit(ログアウト)
+
+    ```bash
+    # suコマンドを実行する前のユーザに戻る
+    $ exit
+    ```
+
+    ### groupadd(新規グループを追加)
+
+    ```bash
+    sudo groupadd animal
+    ```
+
+    ### /etc/group(グループの一覧を表示)
+
+    ```bash
+    $ cat /etc/group | grep animal
+    animal:x:1003:
+    ```
+    
+    ### gpasswd (グループのメンバを整理+passwd)
+
+    ```bash
+    # gpasswd  <user_name> <group_name>
+    # -a : 追加
+    # -d : 削除
+
+    $ sudo gpasswd -a nezumi animal
+    ユーザ nezumi をグループ animal に追加
+
+    $ cat /etc/group | grep animal
+    animal:x:1003:nezumi
+
+    $ sudo gpasswd -d nezumi animal
+    ユーザ nezumi をグループ animal から削除
+
+    $ cat /etc/group | grep animal
+    animal:x:1003:
+
+    # グループにパスワード設定
+    $ gpasswd animal
+
+    # グループからパスワード削除
+    $ gpasswd -r animal
+    ```
+
+    ### groupdel(グループの削除)
+
+    ```bash
+    $ sudo groupdel animal
+    $ cat /etc/group | grep animal
+    # ヒットなし
+    ```
+
+    ### userdel(userの削除)
+
+    ```bash
+    $ sudo userdel nezumi
+    $ cat /etc/passwd | grep nezumi
+    # ヒットなし
+    ```
+
+    ### groups(所属しているグループ一覧を見る)
+
+    ```bash
+    $ groups 
+    nezumi
+    ```
+
+    ### 補足(wsl2からのログイン)
+
+    ```text
+    ・windows terminal等から、wslを介してubuntuを起動した
+    　場合、defaultのユーザはsudoグループに所属している
+
+    ・そのため、sudo su -を用いる事で、
+      rootのpasswd等を再設定可能
+    ```
+
+    ### visudoでsudoersファイルを編集する
+
+    ```bash
+    # User:nezumiがaddUserコマンドを使えるように編集する
+    
+    $ sudo visudo
+
+    # nezumi ALL=(ALL) /usr/sbin/adduser
+
+    $ sudo adduser neko
+    # 正常に処理可能
+
+    $ sudo userdel neko
+    # 残念ですが、ユーザー nezumi は
+    # '/usr/sbin/userdel neko' を root として 
+    # ******* 上で実行することは許可されていません。
+
+    # visudoが実行できる元のuserに戻る
+    $ sudo visudo
+    # 以前の設定を取り消しておく
+    ```
+
+    
