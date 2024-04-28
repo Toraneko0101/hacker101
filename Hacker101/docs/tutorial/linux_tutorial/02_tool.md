@@ -216,5 +216,44 @@
       2 install時のpackageは、/var/cache/apt/archivesに
         cacheされる
       
-      3 cacheはsudo apt-get cleanで消すことが可能
+      3 cacheはsudo apt cleanで消すことが可能
+    ```
+
+    ### よく使用するaptのサブコマンド一覧
+
+    ```text
+    サブコマンド
+      ・git,awsのように、第1引数にさらにコマンドのような
+     　 文字列が続くものを指す
+      
+      例) aws codecommit,  git commit
+    
+    Unix哲学
+      ・各プログラムが1つのことをうまくやる
+
+      ⇒サブコマンドはこれに反しているように感じるが、
+        そもそもコマンドは1つ以上のことを行う
+      
+      ⇒gitはバージョン管理という1つのことをこなしている
+        だから問題はない
+    ```
+
+    | サブコマンドを含む | 説明                           |
+    | ------------------ | ------------------------------ |
+    | apt update         | パッケージインデックスの更新   |
+    | apt upgrade        | パッケージの更新               |
+    | apt full-upgrade   | 保留されているパッケージの更新 |
+    | apt autoremove     | 不要になったパッケージの削除   |
+    | apt install        | パッケージのinstall            |
+    | apt remove         | パッケージの削除               |
+    | apt purge          | パッケージの完全削除           |
+    | apt show           | パッケージの詳細情報表示       |
+    | apt list           | パッケージ検索(完全一致)       |
+    | apt search         | パッケージ検索(部分一致)       |
+    | apt clean          | cacheディレクトリのお掃除      |
+    | apt autoclean      | 未installのcache削除           |
+
+    ### サブコマンドの差異
+
+    ```text
     ```
