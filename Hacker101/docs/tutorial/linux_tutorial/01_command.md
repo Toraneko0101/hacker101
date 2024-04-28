@@ -408,6 +408,33 @@
     foo
     ```
 
+    ### which(コマンドの場所を入手する)
+
+    ```bash
+    $ which ls
+    /usr/bin/ls
+    ```
+
+    ### history(コマンド履歴)とコマンド入力の注意点
+
+    ```bash
+    $ history
+    # ...
+    2044 which ls
+    2045 history
+
+    # たとえば、mysql -u<user> -p<passwd>という
+    # コマンドを入力したとする
+    # この場合、passwordの入力履歴が残ってしまう
+
+    # 消すこともできるけど...
+    # -dで特定の行番号を削除。-cなら全体clear
+    $ history -d 2047
+
+    # たとえばmysqlなら以下の様にすることでpassを残さずに済む
+    $ mysql -uuser -p # passwordはEnter password:で入力
+    ```
+
 ## Q4 コマンド入力時の便利なショートカットを知っていますか?
 
 ??? success
@@ -710,11 +737,26 @@
       使われることが多い
     ```
 
+    ```bash
+    # -uや-gがない場合、rootユーザとして実行する
+    $ sudo cat /etc/shadow
+
+    # 実行するuser名を指定
+    $ sudo -u root cat /etc/shadow
+
+    # 実行するgroup名を指定
+    $ sudo -g nezumi cat /etc/shadow
+    cat: /etc/shadow: 許可がありません
+    ```
+
     ###  sudoのパスワードは何を入力するの?
 
     ```texst
     ・実行しているユーザのパスワード
     ・root/他ユーザのパスワードではない
+
+    ⇒一定期間内であれば2回目以降のパスワード入力は省略可能
+    ⇒ sudo -kとすると、認証情報を破棄できる
     ```
 
     ### sudoを使えば誰でもroot権限で実行できるってこと?
@@ -758,7 +800,7 @@
     ### adduser/useradd(新規ユーザを作成する)
 
     ```bash
-    #こっちなら作成される(対話式にuserを作成する)
+    #こっちなら作成される(対話的にuserを作成する)
     $ sudo adduser nezumi
 
     #homeが作成されない
@@ -803,7 +845,7 @@
     #ディレクトリは変わらない
     $ su nezumi
 
-    #別ユーザのホームディレクトリに移動する
+    #別ユーザのHomeディレクトリに移動、環境変数も変更
     $ su - nezumi
 
     ```
@@ -891,6 +933,7 @@
 
     ```bash
     # User:nezumiがaddUserコマンドを使えるように編集する
+    # コマンドの場所はwhich等で入手可能
     
     $ sudo visudo
 
