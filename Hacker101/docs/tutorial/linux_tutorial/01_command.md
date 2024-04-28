@@ -9,6 +9,7 @@
     ```text
     ・便利なオプションなどは紹介しない
     ・1日1回は使うものを紹介
+    ・その他の便利なコマンドについては用途別に後程触れる
     ```
 
     ### ファイル関連の用語
@@ -346,7 +347,7 @@
         出力/エラー出力は仮想ターミナルに表示される
     ```
 
-## Q3 基本的なファイル操作のコマンドについて理解していますか?(後半)
+## Q3 基本的なファイル操作等のコマンドについて理解していますか?(後半)
 
 ??? success
 
@@ -408,7 +409,7 @@
     foo
     ```
 
-    ### which(コマンドの場所を入手する)
+    ### which(コマンドの場所を絶対パスを入手する)
 
     ```bash
     $ which ls
@@ -433,6 +434,64 @@
 
     # たとえばmysqlなら以下の様にすることでpassを残さずに済む
     $ mysql -uuser -p # passwordはEnter password:で入力
+    ```
+
+    ### locale(現在のロケールと使用可能なロケール情報表示)
+
+    ```bash
+    $ locale
+    # LANG=ja_JP.UTF-8
+    # LANGUAGE=
+    # LC_CTYPE="ja_JP.UTF-8"
+
+    # 指定可能なlocaleの一覧表示
+    $ locale -a | grep ja
+    ja_JP.utf8
+
+    # 言語名の表示
+    $ locale language
+    Japanese
+
+    # 地域名の表示
+    $ locale territory
+    Japan
+    ```
+
+    ### man(コマンドのマニュアルが読める)
+
+    ```bash
+    $ man ls
+    ```
+    
+    ### manを日本語化する
+
+    ```bash
+    # 1 manコマンドの日本語化packageをinstall
+    # sudo, aptについては後述
+    
+    $ sudo apt update
+    $ sudo apt install manpages-ja
+    $ sudo apt install manpages-ja-dev
+
+    $ locale
+    # 2 LANG=ja_JP.utf8でなければ下に進む
+
+    $ locale -a
+    # 3 ja_JP.utf8がなければ次のコマンドを実行
+
+    # 4 日本語localeをinstall
+    $ sudo apt install language-pack-ja
+
+    # 5 日本語localeに設定する
+    $ sudo update-locale LANG=ja_JP.utf8
+
+    # 6 再起動して、manが日本語になっているか確認
+    ```
+
+    ### 英語に戻したいとき
+
+    ```bash
+    $ sudo update-locale LANG=en_US.utf8
     ```
 
 ## Q4 コマンド入力時の便利なショートカットを知っていますか?
@@ -694,7 +753,7 @@
 
     | コマンド等  | 意味                                |
     | ----------- | ----------------------------------- |
-    | who         | ログイン中のユーザを表示            |
+    | who         | ログイン中のユーザ一覧を表示        |
     | id          | ユーザID, グループID等の表示        |
     | chown       | ファイルの所有者変更                |
     | sudo        | 一時的に他user,他グループの権限付与 |
@@ -716,7 +775,18 @@
     ```bash
     $ who
     user pts/1        2024-04-25 10:44
+    user pts/2       2024-04-25 10:44
     ```
+
+    ### whoami(現在のセッションのユーザ名を表示)
+
+    ```bash
+    $ whoami
+    user
+    ```
+
+    ```bash
+    $ who
 
     ### chown(ファイルの所有者を変更)
 
@@ -952,4 +1022,7 @@
     # 以前の設定を取り消しておく
     ```
 
-    
+## Q6.5 チュートリアルで使ったコマンドリスト(未分類)
+
+??? success
+    ### wc
