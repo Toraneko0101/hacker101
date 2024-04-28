@@ -41,7 +41,7 @@
     ```text
     ・ソフトウェアに関するファイル一式をまとめたもの
 
-    ・実行ファイルや設定ファイル、ドキュメント、
+    ・実行ファイルや設定ファイル、ドキュメント
       プログラムを動かすためのライブラリやソースが含まれる
     
     ・パッケージはバイナリ形式(既にコンパイル済み)の場合や、
@@ -86,7 +86,7 @@
       ・ローカルにあるパッケージしかinstallできない
         (事前にDLしておく必要がある)
     
-   　apt
+    apt
       ・自動で依存関係を解決する
       ⇒依存関係のあるpackageをrepositoryから自動install
       ⇒依存関係のあるpackageを自動uninstall
@@ -99,18 +99,122 @@
 
       ・apt-getとapt-cacheを包括するコマンドである
 
-      apt-get
-        ・パッケージのintall/uninstallを行う
-      
-      apt-cache
-        ・パッケージの情報を参照、検索するコマンド
-      
-      使い分け
-        ・基本的にCLIではaptを用いる
-
-        ・bashやDockerfile等のスクリプトを介して使用する
-          場合は、apt-getやapt-cacheを用いる
-
-
       ・内部的にはdpkgを使用して、installしている
+
+    apt-get
+      ・パッケージのintall/uninstallを行う
+    
+    apt-cache
+      ・パッケージの情報を参照、検索するコマンド
+      
+    使い分け
+      ・基本的にCLIではaptを用いる
+
+      ・bashやDockerfile等のスクリプトを介して使用する
+        場合は、apt-getやapt-cacheを用いる
+    ```
+
+    ### aptリポジトリの場所
+
+    ```text
+    ・package管理システムではデフォルトで幾つかのリポジトリ
+      が設定されている
+    
+    ・目的のパッケージが標準のリポジトリにない場合
+      サードパーティのリポジトリを追加する
+    
+    ・aptコマンドが利用するリポジトリの情報は、以下の通り
+    ```
+
+    ```bash
+    # /etc/apt/sources.listには標準のaptリポジトリが記載
+
+    # deb         : debパッケージを取得する
+    # http://...  : 取得先のURL
+    # jammy       : バージョン名
+    # main        : 後述
+    $ cat /etc/apt/sources.list | grep ^[^#] | less -SFX
+    deb http://archive.ubuntu.com/ubuntu/ jammy main restricted  
+    deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+    deb http://archive.ubuntu.com/ubuntu/ jammy universe
+    deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe 
+    deb http://archive.ubuntu.com/ubuntu/ jammy multiverse       
+    deb http://archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+    deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+    deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted
+    deb http://security.ubuntu.com/ubuntu/ jammy-security universe
+    deb http://security.ubuntu.com/ubuntu/ jammy-security multiverse
+
+    # /etc/apt/sources.list.d ディレクトリ配下には
+    # サードパーティのリポジトリ情報が記載
+    # mariadbやgroongaをinstallした時の情報が残っている
+
+    $ ls /etc/apt/sources.list.d 
+    archive_uri-http_sfo1_mirrors_digitalocean_com_mariadb_repo_10_6_ubuntu-jammy.list
+    groonga-ubuntu-ppa-jammy.list
+    ubuntu-toolchain-r-ubuntu-test-jammy.list
+    ```
+
+    ### 補足(main, restricted, universe, multiverse)
+
+    ```text
+    ※Ubuntu特有
+
+    main
+      ・再配布フリー
+      ・Ubuntuチームが完全にサポートしているリポジトリ
+    
+    Resticted
+      ・制限付きのライセンス
+      ・公式にサポートされる
+    
+    Universe
+      ・すべてフリー、OSS
+      ・公式にはサポートされない
+
+    Multiverse
+      ・フリーでないソフトウェアが含まれる
+    ```
+
+    ### deb vs deb-src
+
+    ```text
+    deb : バイナリパッケージ
+    deb-src: ソースパッケージ
+
+    ※通常は、バイナリパッケージだけで十分
+    ※ソースパッケージを有効化するとDLするメタデータの情報
+      等が増加する。defaultでコメントアウトされているので安心
+    ```
+
+    ### aptを用いたinstall
+
+    ```bash
+    sudo apt update
+    sudo apt install <package_name>
+    ```
+
+    ```text
+    sudo apt update
+      1 /etc/apt/sources.listを参考に
+        それぞれのaptリポジトリが保有している
+        パッケージのリストを取得する
+      
+      2 保有しているパッケージは/var/lib/apt/lists
+        に格納される
+      
+      ※リポジトリが保有するパッケージのリスト
+        (=パッケージインデックス)は日々更新されているので
+        install前にはこのコマンドを実行する
+      
+      ※パッケージリストに載っていないパッケージは
+        downloadできない
+    
+    sudo apt install <package_name>
+      1 aptリポジトリから、packageをdownload/installする
+
+      2 install時のpackageは、/var/cache/apt/archivesに
+        cacheされる
+      
+      3 cacheはsudo apt-get cleanで消すことが可能
     ```
