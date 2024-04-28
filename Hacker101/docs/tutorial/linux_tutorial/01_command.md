@@ -309,7 +309,7 @@
     ls: unrecognized option '---'
     詳しくは 'ls --help' を実行して下さい。
 
-    # Error出力/出力を、出力したくない場合
+    # 出力/Error出力を、出力したくない場合
     # FD1の参照先が/dev/nullになる
     # FD2の参照先がFD1(/dev/null)になる
     $ ls --- > /dev/null 2>&1
@@ -350,6 +350,61 @@
 
 ??? success
 
-    ### more
+    ### less/more/head/tail(ファイル内容の表示)
+
+    ```bash
+    # less :qで表示終了, vimに近い操作
+    # more: 末尾まで行くと自動的にプロンプトに戻る
+    # たぶん、lessしか使わないと思う
+
+    # head, tailそれぞれ、先頭、末尾から指定行表示
+
+    # 適当な行数のファイルを用意しておく
+
+    # 使い方
+    $ cat alphabet.txt | head -3
+    $ cat alphabet.txt | tail -3
+    $ cat alphabet.txt | more
+    $ cat alphabet.txt | less
+    ```
+
+    ### grep(パターンマッチ検索)
+
+    ```bash
+    # grep <正規表現> <file名>
+    # file内の特定の文字列がある行を抽出する
+
+    # -oならonly matchingでマッチした部分だけ
+    # -Eなら拡張正規表現, -PでPerl正規表現
+    # ディレクトリ内のサブファイルまで検索範囲に含めたい場合
+    # -r, シンボリックリンクの先まで含めたいときは-R
+
+    $ grep [abc] alphabet.txt
+    a
+    b
+    c
+
+    # 複数ファイル検索
+    $ grep ^b.*$ alphabet.txt animal.txt
+    alphabet.txt:b
+    animal.txt:bear
+
+    # ディレクトリ配下のファイル検索
+    $ grep ^b.*$ -r cmd_test
+    cmd_test2/animal.txt:bear
+    cmd_test2/alphabet.txt:b
+
+    # 拡張正規表現
+    $ grep -E c{2}o{2} animal.txt
+    Raccoon
+
+    # \bは単語の境界 \wは単語のみ
+    $ echo "Neko inu nezumi" | grep -oE "\b\w*mi\b"
+    nezumi
+
+    # Perl正規表現(meta文字, 先読み, 最長一致などが使える)
+    $ echo "foobar" | grep -oP "foo(?=bar)"
+    foo
+    ```
 
 ## Q4 ターミナル操作の便利なショートカットを知っていますか?
