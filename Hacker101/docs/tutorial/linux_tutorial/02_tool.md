@@ -1129,6 +1129,10 @@
 
     ・日付、月、曜日、週を指定する
       (※時間指定はできない。1日1回のみ実行される)
+      (実際にはanacronが1時間ごとに
+      /var/spool/anacron/cron.*を見て
+      最終実行日時が今日の日付と異なっていれば実行する
+      )
     
     ★指定した日時にPCの電源が落ちていると、
       起動後にジョブを実行するという特徴あり
@@ -1182,6 +1186,7 @@
     /etc/cron.d
       ・システム全体のcronとして任意のタイミングで実行したい
         そんな時に、スクリプトを置く
+      ・anacronのファイルもここに置かれる
     ```
 
     ### anacron例
@@ -1196,7 +1201,13 @@
     # 5 = jobの開始までの遅延時間
     # cron.daily: タイムスタンプを記録するファイル
     $ cat /etc/anacrontab | grep daily
-    1 5 cron.daily  run-parts --report /etc/cron/daily
+    1 5 cron.daily  run-parts --report /etc/cron.daily
+
+    # /etc/cron.d/anacronを見ると以下の様にある
+    # defaultでは7~23時の30分 + 遅延を加えた時間に
+    # /var/spool/anacron/cron.*のtimestampを見るようだ
+    30 7-23 * * *   root    [ -x /etc/init.d/anacron ] ...
+
     ```
 
     ### at, atq, atrm(1回のみの実行)
@@ -1247,3 +1258,7 @@
     # 表示されなくなった
     $ atq
     ```
+
+## Q11 journald(ログ管理ツール)について知っていますか?
+
+??? success
