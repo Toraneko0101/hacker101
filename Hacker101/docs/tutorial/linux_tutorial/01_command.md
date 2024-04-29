@@ -566,14 +566,45 @@
     ```text
     1. Ctrl + Shift + Pでコマンドパレットを開く
     2. Preferences: Open Keyboard Shortcutsを選択
-    3. Control + <選択したいコマンド>
-    4. When式に!terminalFocusInAnyを入力
-    5. ターミナルにfoucsしているときはVSCodeの
+    3. 右上のキーボードショートカットを開く(JSON)をクリック
+    4. 以下を[]内に追記し、terminalにfoucsしているときはVSCodeの
        ショートカットが効かないようにしておく
     
-    ⇒ おそらくDefaultでは、Ctrl + E, Q等が競合しているので
+    ⇒ おそらくDefaultでは、Ctrl + PEFKQS等が競合しているので
        この設定が必要だろうと思われる(ないとイライラする)
-    
+    ```
+
+    ```json
+    {
+        "key": "ctrl+p",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+f",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+q",
+        "command": "",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+s",
+        "command": "",
+        "when": "terminalFocus"
+    },
     ```
 
 ## Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)
