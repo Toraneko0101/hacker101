@@ -1064,6 +1064,9 @@
     ```text
     ・crontab -rでcronの設定ファイルは削除される
     ・rとeは隣り合わせなので誤タップが起きる
+
+    ⇒頻繁に編集するものではないので、
+      復元できないという悲劇がおきたり......
     ```
 
     ```bash
@@ -1090,4 +1093,35 @@
 
     ### cronとログ出力
 
+    ```text
+    ・Ubuntu22では、/var/log/cron.logへの
+      cron実行履歴書き出しが無効化されている
     
+    ・理由としては、機密保護とパフォーマンスの問題が
+      上げられる
+    ```
+
+    ```bash
+    # 履歴を記録したい場合
+    $ sudo vim /etc/rsyslog.d/50-default.conf
+
+    # 以下の行をコメントアウト
+    # cron.* /var/log/cron.log
+
+    # 再起動させて反映
+    $ sudo systemctl restart rsyslog
+
+    # cronジョブが行われた後で確認
+
+    $ cat /var/log/cron.log
+    Apr 29 22:53:01 YOUR_TERMINAL cron[158]: (user) RELOAD (crontabs/user)
+    Apr 29 22:54:01 YOUR_TERMINAL CRON[193135]: (user) CMD (touch /tmp/test.txt)
+
+    # logを保存する必要がなければdefaultに戻しておく
+
+    ```
+
+    ### anacron
+
+    ```text
+    ```
