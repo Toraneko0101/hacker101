@@ -834,7 +834,128 @@
     $ screen -S <session_name> -X quit
     ```
 
-    ### tmux
+    ### tmux概要
+
+    ```text
+    ・Terminal Multiplexerの略
+
+    terminal
+      -> 複数のsession
+        -> 複数のwindow
+          -> 複数のpane
+
+    session
+      ・tmuxを起動すると生成される
+      ・sessionごとに状態を維持可能
+    
+    window
+      ・sessionがもつ複数のwindow
+      ・screenの水平/垂直画面分割と同じ
+    
+    pane
+      ・windowがもつ複数の区画
+    ```
+
+    ### よく使われるtmuxのキー操作
+
+    ```text
+    ・window操作の場合、
+      最初にprefix-keyである、CTRL + bを入力する事が多い
+    ```
+
+    ### session関連
+
+    ```bash
+    # session起動
+    $ tmux
+
+    # 名前付きsessionの起動
+    $ tmux new -s <session_name>
+
+    # sessionの終了
+    $ exit
+
+    # sessionの一時的な中断
+    # (Ctrl + b) + d
+
+    # 中断していたsessionに戻る
+    $ tmux a -t <session_name>
+
+    # session一覧を表示
+    # (Ctrl + b) + s : tmux上で
+    $ tmux list-sessions
+
+    # 指定したsessionをsession外から終了させる
+    $ tmux kill-session -t <session_name>
+
+    #
+    ```
+
+    ### window関連
+
+    | Window関連キー | 意味                     |
+    | -------------- | ------------------------ |
+    | ?              | 各キーの説明表示         |
+    | ctrl+z         | tmuxを一時中断           |
+    | fg             | tmuxに復帰               |
+    | c              | 新規window作成           |
+    | w              | window選択               |
+    | 数字           | 指定したwindowに移動     |
+    | p,n            | 前/次のwindowに移動      |
+    | l              | 以前のwindowに移動       |
+    | '              | window番号を指定して移動 |
+    | ,              | window名の変更           |
+    | .              | window番号の変更         |
+    | &              | 現在のwindow破棄         |
+    | exit           | window削除               |
+
+    ### pane関連
+
+    | pane関連キー | 意味                         |
+    | ------------ | ---------------------------- |
+    | "            | pane垂直分割                 |
+    | %            | pane水平分割                 |
+    | o            | 次のpaneに移動               |
+    | <arrow>      | pane間のfocusを移動          |
+    | ;            | 以前のpaneに移動             |
+    | x            | pane破棄(確認あり)           |
+    | exit         | pane破棄(確認なし)           |
+    | z            | pane最大化/復帰              |
+    | q            | pane番号の表示               |
+    | t            | 時計を表示                   |
+    | space        | レイアウト変更               |
+    | {            | paneの順序を前方向に入れ替え |
+    | }            | paneの順序を後方向に入れ替え |
+    | !            | paneのwindow化               |
+
+
+    ### copy
+
+    ```text
+    ~/.tmux.confに
+    set-window-option -g mode-keys viとして
+    vimライクに操作することが一般的
+    ```
+
+    | コピー関連キー | 説明             |
+    | -------------- | ---------------- |
+    | [              | copyモードの開始 |
+    | space          | copy選択開始     |
+    | enter          | copy選択終了     |
+    | esc            | 選択内容削除     |
+    | h,j,k,l        | カーソル移動     |
+    | ]              | paste            |
+    | v              | 矩形モード       |
+    | q              | copyモード終了   |
+    | Ctrl+u         | scrollUp         |
+    | Ctrl+d         | scrollDown       |
+    | Ctrl+b         | pageUp           |
+    | Ctrl+f         | pagedown         |
+
+    ### その他
+    | :              | コマンド入力 |
+
+
 
 ## Q10 cron(ジョブ管理ツール)について知っていますか?
 

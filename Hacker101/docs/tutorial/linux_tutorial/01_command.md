@@ -1072,3 +1072,29 @@
 
 ??? success
     ### wc
+
+
+## Tips1 ログイン時に奇妙な表示が出る場合
+
+??? success
+
+    ### -bash: /usr/share/modules/init/sh:
+
+    ```text
+    ・ubuntu16で必要だったファイルが残っている可能性がある
+
+    ・/etc/profile.d/modules.shが残っている場合
+    ⇒ rmする
+    ```
+
+    ### grep: (標準入力): binary file matches
+
+    ```text
+    ・.bashrcの中の、
+    export DISPLAY=$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
+
+    ⇒これをコメントアウトする
+      ・DISPLAY環境変数は X Window SystemがXサーバと
+      　通信する為に利用される
+      ・GUIを実行していないならひとまず要らない
+    ```
