@@ -640,6 +640,17 @@
     補足(KILLALL)
       ・killと異なり、プロセス名を指定することで、
       　複数のプロセスを一度に終了可能
+      ・プロセス名は完全一致する必要がある
+
+      $ sleep 100 &
+      $ sleep 200 &
+      $ ps | grep sleep
+      148637 pts/0    00:00:00 sleep
+      148650 pts/0    00:00:00 sleep
+
+      $ killall sleep
+      [1]-  Terminated              sleep 100
+      [2]+  Terminated              sleep 200
     
     補足(終了と強制終了)
       ・SIGTERMのような終了では、終了前に使用していたリソース
