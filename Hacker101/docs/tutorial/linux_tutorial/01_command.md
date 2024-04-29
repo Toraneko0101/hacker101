@@ -561,6 +561,21 @@
     # ログアウト
     ```
 
+    ### VScodeで使う場合
+
+    ```text
+    1. Ctrl + Shift + Pでコマンドパレットを開く
+    2. Preferences: Open Keyboard Shortcutsを選択
+    3. Control + <選択したいコマンド>
+    4. When式に!terminalFocusInAnyを入力
+    5. ターミナルにfoucsしているときはVSCodeの
+       ショートカットが効かないようにしておく
+    
+    ⇒ おそらくDefaultでは、Ctrl + E, Q等が競合しているので
+       この設定が必要だろうと思われる(ないとイライラする)
+    
+    ```
+
 ## Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)
 
 ??? success

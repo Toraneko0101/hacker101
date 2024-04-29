@@ -450,29 +450,90 @@
         その子であるプロセスグループを簡単にKillできる！
     ```
 
-    ### bgコマンドとSTAT
+    ### bg/fgコマンドとSTAT
 
     ```bash
     # フォアグラウンドで実行中のプロセスを
-    # バックグラウンドに回してみる
+    # バックグラウンドで再開してみる
 
     $ sleep 100
 
     # Ctrl + Z : プロセスを一時停止
+    # プロセスは自動的にバックグラウンドに移動する
     # この時、左端に表示されているのがジョブ番号となる
     [1]+  停止                  sleep 100
+    
     # STATを見ると、Tになっている。
     $ ps u
     USER     PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
     user   96986  0.0  0.0   9420  1016 pts/0    T    07:26   0:00 sleep 100
 
-    # bg <digit>で該当するジョブ番号をバックグラウンドに回す
-    # 一時停止していない場合、bgは何の効果もない
+    # bg <digit>で該当するジョブ番号を
+    # バックグラウンドで実行する
     # バックグラウンドで実行されているためS+ではなく、S
     $ bg 1
+    [1]+ sleep 100 &
+
     $ ps u
     user   96986  0.0  0.0   9420  1016 pts/0    S    07:26   0:00 sleep 100
+
+    # fg <digit>で該当するジョブ番号をフォアグラウントに戻す
+    $ fg 1
+    sleep 100
     ```
+
+    ### SIGNAL一覧(SIGNAL詳細については別途説明)
+
+    | 動作 | 説明                         |
+    | ---- | ---------------------------- |
+    | TERM | プロセス終了                 |
+    | CORE | プロセス終了とコアダンプ出力 |
+    | STOP | プロセス一時停止             |
+    | IGN  | このシグナルを無視           |
+    | CONT | 停止中の場合、プロセス再開   |
+
+    | SIGNAL名 | 動作 | 意味                       |
+    | -------- | ---- | -------------------------- |
+    | SIGINT   | TERM | keyboardからの割り込み     |
+    | SIGTSTP  | STOP | 端末から入力された一時停止 |
+    | SIGSTOP  | STOP | プロセスの一時停止         |
+    | SIGCONT  | CONT | 一時停止からの再開         |
+    | SIGTERM  | TERM | 終了シグナル               |
+    | SIGKILL  | TERM | KILLシグナル               |
+
+
+    ### KILLとCTRL + C
+
+    ```text
+    ・フォアグラウンドで実行中の処理を強制終了させたい
+      場合、CTRL + Cが使える
+
+    
+    ・バックグラウンドで実行中の処理を強制終了させたい場合、
+      KILLコマンドが使える
+    
+    KILL
+      ・KILL <signal-id>として使用
+      ・デフォルトの場合、SIGNAL名は、TERM(15)
+      ・SIGTERMはプログラムに対して終了指示を行う
+      ・プログラムが異常状態で、終了指示が効かない場合は、
+        KILL(9):強制終了を使う場合がある
+      
+      例)
+        KILL -15 <process_id>
+        KILL -9 <process_id>
+        KILL -TERM, KILL -KILLという形で名前で指定してもよい
+    
+    CTRL+C
+      ・fgで実行しているプロセスにSIGINTシグナルを送る
+    
+    CTRL+Z
+      ・fgで実行しているプロセスにSIGTSTPシグナルを送る
+    
+    fg,bg
+      ・SIGCONTを送り、一時停止されたプロセスを再開する
+    ```
+
 
     ### スレッドとプロセス
 
@@ -535,6 +596,48 @@
     # 1つのjobになっていることがうかがえる)
     jobs
     [1]+  停止 ps u -u user | less -SFX 
+    ```
+
+    ### pstree(プロセスの親子関係を表示)
+
+    ```bash
+    #本当にプロセスが親から作成されるのか確認してみる
+
+    # <user_name>: 指定したユーザのプロセスを表示する
+    
+    # ※pstreeとlessが、bashから作成されている
+    $ pstree user | less -SFX
+    bash---su---bash-+-less
+                     `-pstree
+    bash
+
+    systemd---(sd-pam)
+
+    # 全体表示(-pを付けるとPIDが見れる)
+    # systemd : システムの初期化プロセス
+    # agetty: システムのコンソールにログインする為のプロセス
+    # cron: 定期的に実行されるタスクを管理する
+    # dbus-daemon: プロセス間通信を可能にするサービス
+    # init-systemd(Ub): systemdの一部
+    # SessionLeader: プロセスグループの親
+    # Relay(1214): プロセス間の通信を中継している
+    # bash: システムと対話する用のシェル
+    # su: 別ユーザに切り替えて使用しているので表示されている
+    # bash: 切り替えた後のシェル
+    # less: 実際に実行しているコマンド
+  
+    $ pstree | less -SFX
+
+    systemd-+-2*[agetty]
+           |-chronyd(269)---chronyd(273)
+           |-cron(158)
+           |-dbus-daemon(160)
+           |-init-systemd(Ub(2)-+-SessionLeader(1208)---Relay(1214)(1209)---bash(1214)---su(1525)---bash(1549)-+-less(15225)
+           |                    |                                                                              `-pstree(15224)
+           |                    |-init(6)---{init}(7)
+           |                    |-login(550)---bash(616)
+           |                    `-{init-systemd(Ub}(8)
+    ...skipping...
     ```
 
 
