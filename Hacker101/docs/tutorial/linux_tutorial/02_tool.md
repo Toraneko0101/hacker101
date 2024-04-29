@@ -1130,12 +1130,15 @@
     ・日付、月、曜日、週を指定する
       (※時間指定はできない。1日1回のみ実行される)
     
-    ・指定した日時にPCの電源が落ちていると、
+    ★指定した日時にPCの電源が落ちていると、
       起動後にジョブを実行するという特徴あり
       ( -> cronの場合は実行しない)
     
     ・設定ファイルは/etc/anacrontab
       rootユーザのみが設定可能
+    
+    ・ランダムにジョブの実行タイミングをずらすので
+      負荷分散が可能
     ```
 
     ### 補足(run-parts)
@@ -1196,4 +1199,51 @@
     1 5 cron.daily  run-parts --report /etc/cron/daily
     ```
 
-    ### at
+    ### at, atq, atrm(1回のみの実行)
+
+    ```text
+    ・1回きりの実行ならatがよい
+
+    ・atは特定の日時を指定する
+    ・atqはatで予約している登録を表示
+    ・atrm <job_id>でatで登録された処理を削除可能
+    ```
+
+    ```bash
+    # install等
+    $ apt list | grep ^at/
+    at/jammy 3.2.5-1ubuntu1 amd64
+
+    $ sudo apt install at
+
+    # 日時を入力すると、コマンドの入力を促される
+    # Ctrl + Dで終了できる
+    $ at 0:22 2024-04-30
+    warning: commands will be executed using /bin/sh
+    at Tue Apr 30 00:22:00 2024
+    at> echo "neko" > hoge.txt
+    at> <EOT>
+    job 1 at Tue Apr 30 00:22:00 2024
+
+    # 指定時刻以降に
+    $ cat hoge.txt
+    neko
+
+    # 時間のみの指定も可能(次に22:02になったときに実行)
+    $ at 22:02
+
+    # 現在時刻を基準とした指定
+    $ at now +1minute
+
+    # 実行予定のジョブ一覧(at -lも可)
+    # userならuserが予約したジョブのみ
+    # rootなら全員のジョブが表示される
+    $ atq
+    2       Tue Apr 30 00:24:00 2024 a toraneko
+
+    # ジョブ削除
+    $ atrm 2
+
+    # 表示されなくなった
+    $ atq
+    ```
