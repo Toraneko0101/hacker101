@@ -1091,6 +1091,7 @@
     crontab: really delete user's crontab? (y/n) n
     ```
 
+
     ### cronとログ出力
 
     ```text
@@ -1124,4 +1125,75 @@
     ### anacron
 
     ```text
+    ・定期的にジョブを実行するdaemon
+
+    ・日付、月、曜日、週を指定する
+      (※時間指定はできない。1日1回のみ実行される)
+    
+    ・指定した日時にPCの電源が落ちていると、
+      起動後にジョブを実行するという特徴あり
+      ( -> cronの場合は実行しない)
+    
+    ・設定ファイルは/etc/anacrontab
+      rootユーザのみが設定可能
     ```
+
+    ### 補足(run-parts)
+
+    ```bash
+    # 指定directory内の実行ファイルを一括で実行する
+    $ ls -gG
+    -rwxr--r-- 1 25  4月 29 23:25 test
+    
+    $ file test
+    -test: Bourne-Again shell script, ASCII text executable
+
+    # --reportは実行されたファイル名を表示
+    $ run-parts --report ./
+    .//test:
+    success
+
+    # 注意点
+    # run-partsは.を含むファイルを実行できない
+    # #!/bin/bashや#!/bin/shがないと以下のような
+    # エラーを吐いて停止する
+    run-parts: failed to exec .//test: Exec format error  
+    ```
+
+    ### (補足)cron関連の他ファイル
+
+    ```text
+    /etc/crontab
+      ・システム全体に適用したいジョブを記載
+      ・すべてroot権限で実行される
+
+      ・defaultでも記載があるが、anacronがある場合は、
+        そちらの設定が優先される(日単位以上の場合は)
+      ⇒ない場合は、run-partsとcronを用いて
+        /etc/cron.*内のファイルが一定間隔で実行されるように
+        なっている。(たとえばhourlyなら1時間毎)
+    
+    /etc/cron.hourly, daily, weekly, monthly
+      ・directory配下のfileは1時間/日/週/月毎に実行
+
+    /etc/cron.d
+      ・システム全体のcronとして任意のタイミングで実行したい
+        そんな時に、スクリプトを置く
+    ```
+
+    ### anacron例
+
+    ```bash
+    # installされているか確認。
+    # されていないならsudo install anacron
+    $ apt list 2> /dev/null | grep anacron
+    anacron/jammy,now 2.3-31ubuntu2 amd64 [インストール済み] 
+
+    # 1 = ジョブの実行頻度。@monthly等の指定も可能
+    # 5 = jobの開始までの遅延時間
+    # cron.daily: タイムスタンプを記録するファイル
+    $ cat /etc/anacrontab | grep daily
+    1 5 cron.daily  run-parts --report /etc/cron/daily
+    ```
+
+    ### at
