@@ -1002,3 +1002,92 @@
     ・ジョブを予約して、指定日時/間隔にジョブを実行させる
     ・主に反復的なタスクを予約するのに使う
     ```
+
+    ### crontab
+
+    ```text
+    ・実行したいコマンド/スクリプトを
+      /var/spool/cron/crontabs/<user_name>配下に
+      登録することで定期的な実行が可能となる
+
+    ・最初にcrontab -eとすると、上記フォルダに、
+    　ファイルが自動で作成される
+
+    ・crondというデーモンは、上記フォルダを参照して、
+      定期的にコマンドを実行する
+
+    ```
+
+    ### cronの記述方法
+
+    ```bash
+    $ crontab -e
+
+    # 編集の仕方を聞かれるので、vim.basicを選ぶといい
+    # vim-tinuはvimの簡易版
+
+    # たとえば以下の様に記載する(*時2分にtouch)
+    # 分,時,日,月,曜日,コマンド
+    # 毎分/時/...に実行したい場合は*とする
+    2 * * * * touch /tmp/test.txt
+    ```
+
+    ### allowとdeny
+
+    ```text
+    ・crontabはdefaultでroot/一般ユーザの両方が使える
+
+    ・ユーザのcrontabの使用を制限したい場合、
+      User名を、/etc/cron.allow, /etc/cron.denyに記述する
+    
+    ・cron.allowにユーザが登録されていると、
+      ホワイトリストとして扱われる
+      ⇒登録されていないユーザは使えない
+    ```
+
+    ```bash
+    $ cat /etc/cron.allow
+
+    # 以下の様に記載
+    root
+    user
+    
+    # allowリストに載っていないユーザでcrontabを行う
+    $ su nezumi
+    $ crontab -e
+    You (nezumi) are not allowed to use this program (crontab)   
+    See crontab(1) for more information
+    ```
+
+    ### crontab -eは危険?
+
+    ```text
+    ・crontab -rでcronの設定ファイルは削除される
+    ・rとeは隣り合わせなので誤タップが起きる
+    ```
+
+    ```bash
+    # 解決法1(手動バックアップ)
+    $ crontab -l > crontab_backup_$(whoami)_$(date -I)
+
+    # cronの設定を削除
+    $ crontab -r
+
+    # バックアップから復元
+    $ sudo cp ./crontab_backup_user_2024-04-29 /var/spool/cron/crontabs/user
+
+    # 解決法2 aliasに記載する
+    # alias = コマンドの置き換え, 常に指定するoptionを選択
+
+    # ~/.bashrcを開く
+    # -iは削除時に常に確認する
+    alias crontab='crontab -i'
+
+    # 助かったってわけ
+    $ crontab -r
+    crontab: really delete user's crontab? (y/n) n
+    ```
+
+    ### cronとログ出力
+
+    
