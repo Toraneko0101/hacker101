@@ -1262,3 +1262,115 @@
 ## Q11 journald(ログ管理ツール)について知っていますか?
 
 ??? success
+
+    ### 補足(ユーザのアクセスログ:who,users,last,lastlog)
+
+    ```text
+    who
+      ・ログイン中のユーザを表示する
+      ・wコマンドでもユーザの情報を表示可能
+      ・/var/run/utempを参照する
+    
+    users
+      ・ログイン中のユーザを一覧表示
+    
+    last
+      ・ユーザのログイン履歴を一覧表示
+      ・/var/log/wtmpを参照する
+    
+    lastlog
+      ・ユーザが最後にログインした情報を一覧表示
+      ・/var/log/lastlogを参照
+
+    ※WSL2では機能しない。
+      以下で例示する
+    ```
+
+    ```bash
+    $ su - nezumi
+    # lastlog
+    $ lastlog | grep nezumi   
+    nezumi **一度もログインしていません**
+
+    # who(PSから起動した時間になる)
+    $ who
+    user pts/1        2024-04-30 07:10
+
+    # users
+    $ users
+    user
+
+    # last
+    $ last | grep nezumi
+    # 出力無し
+    ```
+
+    ```text
+    ・virtualboxの場合
+    ```
+
+    ```bash
+    # nezumiとしてログイン
+    $ who
+    nezumi seat0  2024-04-30 13:11 (login screen)
+    nezumi tty  2024-04-30 13:11 (tty2)
+
+    $ users
+    nezumi nezumi
+    
+
+    $ last
+    nezumi tty2  tty2         Tue Apr 30 13:11 still logged in
+    nezumi seat0 login screen Tue Apr 30 13:11 still logged in
+
+    $ lastlog
+    # 機能しなかった(/var/log/lastlogが空)
+    # 以下のような形で代用できそう
+    $ last | grep $(whoami) | head -1
+
+    ```
+
+    ### (補足)VirtualBOXのinstall
+
+    ```text
+    1 https://www.virtualbox.org/wiki/Download_Old_Builds
+      から使いたいversionを選ぶ
+      (最新versionでもいいけれど)
+    
+    2 https://www.ubuntulinux.jp/home
+      からubuntuの.isoファイルをdownload
+      (※たぶん、ミラーサーバからdownloadすることになるよ！)
+      (勿論違うdistributionでもいい)
+
+    3 .exeを起動して、VirtualBoxをinstall
+    
+    4 .isoファイルをあてて、
+      memory容量や、core数、storage容量を決める
+      (windowsで使う分も残しておくように)
+    
+    5 手動インストールを選択
+      (keyboardレイアウトを変更したい場合は特に)
+    
+    6 起動
+
+    7 Ubuntuをinstall
+      (住んでいる地域やkeyboardレイアウトを選択)
+    
+    8 仮想ディスクは削除しておく
+    ```
+
+    ### Virtualboxの注意点
+
+    ```text
+    自動installを選んだ場合
+      ・keyboard配列が異なる場合がある
+      ・たとえば_が入力できないとか
+    
+    HOSTキーとかいうやつ
+      ・Windowsでは右CTRL
+      ・ファイル⇒環境設定⇒入力⇒仮想マシン
+        ホストキーの組み合わせ⇒ショートカットから変更可能
+    
+    Terminalの起動
+      ・CTRL + ALT + T
+    ```
