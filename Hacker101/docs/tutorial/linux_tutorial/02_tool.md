@@ -1259,13 +1259,14 @@
     $ atq
     ```
 
-## Q11 journald(ログ管理ツール)について知っていますか?
-
+## Q11 wsl2ではできないことがあることを知っていますか?(VirtualBoxの初期設定についても話す)
 ??? success
 
-    ### 補足(ユーザのアクセスログ:who,users,last,lastlog)
+    ### ユーザのアクセスログ(who,users,last,lastlog)
 
     ```text
+    ※以下のコマンドは、(2024年現在)wsl2では機能しない
+    　https://github.com/microsoft/WSL/issues/573
     who
       ・ログイン中のユーザを表示する
       ・wコマンドでもユーザの情報を表示可能
@@ -1281,9 +1282,6 @@
     lastlog
       ・ユーザが最後にログインした情報を一覧表示
       ・/var/log/lastlogを参照
-
-    ※WSL2では機能しない。
-      以下で例示する
     ```
 
     ```bash
@@ -1374,3 +1372,5 @@
     Terminalの起動
       ・CTRL + ALT + T
     ```
+
+## Q12 journald(ログ管理ツール)について知っていますか?
