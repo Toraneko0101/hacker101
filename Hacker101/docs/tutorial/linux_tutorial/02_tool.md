@@ -1396,6 +1396,7 @@
     
     Daemon(デーモン)
       ・Unix系OSの常駐プログラム
+      ・末尾にdがついていることが多い
     ```
 
     ### syslog(昔のログ管理システム)
@@ -1458,12 +1459,81 @@
     ### rsyslogの設定ファイルについて
 
     ```text
+    ・/etc/rsyslog.conf
+      ・設定ファイルについては 
+        $IncludeConfig /etc/rsyslog.d/*.conf
+        という記述が末尾に見られる
+      
+      ・設定ファイルの読み込み順番は数字を参考にしている
+        たとえば20-*.confと、50-*.confなら、20が先。
+        facilityとpriorityが同じ場合上書きされる
+    
+    ・/etc/rsyslog.d/*
+      
+      記法：
+        [facility].[priority] <output>
+      
+      意味：
+        [ログの種類].[ログのレベル] <出力先>
+      
+      例： 
+        mail.* -/var/log/mail.log
+
+      補足：
+        ・ディレクトリの前の-は、同期をとらないことを意味する
+        ・大量のログの場合、付けるとパフォがよくなる
+        ・ただし、書き込み直後にシステムがクラッシュすると、
+          情報が失われる可能性がある
+        ・重要なメッセージの場合は、付けない。errorログも
+        ・たいていの場合、/var/log配下に出力する
+      
+     *.emerg :omusrmsg:*
+      ・emergレベルのメッセージはすべてのユーザの
+        コンソール画面に通知する
+      
+      ・omusrmsg:root,nezumiとすれば、ログイン中のルートと
+        nezumiというユーザのコンソール画面のみに通知される
+      
+      ・omusrmsg
+        (=output module for sending user messages
+        https://github.com/rsyslog/rsyslog/blob/master/tools/omusrmsg.c)
+      
     ```
 
-    ### journald
+    ### facilityとdefaultの設定
+
+    | 種類     | 有効 | 非同期 | 説明              |
+    | -------- | ---- | ------ | ----------------- |
+    | kern     | 〇   | 〇     | カーネル関連      |
+    | auth     | 〇   | ✖      | 認証関連          |
+    | authpriv | 〇   | ✖      | 認証関連(private) |
+    | cron     | ✖    | ✖      | cron関連          |
+    | mail     | 〇   | 〇     | errorは非同期     |
+    | news     | -    | -      | news関連          |
+    | uucp     | -    | -      | uucp関連          |
+    | daemon   | ✖    | 〇     | daemon関連        |
+    | user     | ✖    | 〇     | user関連          |
+    | lpr      | ✖    | 〇     | プリンタ関連      |
+    | syslog   | -    | -      | syslog関連        |
+    | local    | -    | -      | 自由設定          |
+
+    ### priority
+
+    | 種類    | 説明           |
+    | ------- | -------------- |
+    | emerg   | 緊急           |
+    | alert   | 即時対応必須   |
+    | crit    | 重要           |
+    | err     | 一般的なエラー |
+    | warning | 一般的な警告   |
+    | notice  | 一般的な通知   |
+    | info    | 一般的な情報   |
+    | debug   | デバッグ情報   |
+    | none    | 出力しない     |
+
+
+    ### journald(systemd環境で用いられるログツール)
 
     ```text
 
     ```
-
-    ### 
