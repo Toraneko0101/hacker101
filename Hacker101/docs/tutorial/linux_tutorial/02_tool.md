@@ -1488,7 +1488,7 @@
         ・たいていの場合、/var/log配下に出力する
       
      *.emerg :omusrmsg:*
-      ・emergレベルのメッセージはすべてのユーザの
+      ・emergレベルのメッセージは、全ユーザの
         コンソール画面に通知する
       
       ・omusrmsg:root,nezumiとすれば、ログイン中のルートと
@@ -1500,7 +1500,7 @@
       
     ```
 
-    ### facilityとdefaultの設定
+    ### facility(defaultの設定)
 
     | 種類     | 有効 | 非同期 | 説明              |
     | -------- | ---- | ------ | ----------------- |
@@ -1532,8 +1532,59 @@
     | none    | 出力しない     |
 
 
-    ### journald(systemd環境で用いられるログツール)
+    ### journald(systemd環境で用いられるログツール)概要
 
     ```text
+    systemd概要
+      ・Linuxシステムを起動、運用するための中心的なツール
+      ・様々なサービスやプロセスを管理する
+      ・自前のログシステムであるjournalを搭載している
+      ⇒syslogd, rsyslogdの起動は必要なくなる
+    
+    rsyslogはお役御免になったのか?
+      1 journaldがシステム上のログを受け取る
+      2 必要に応じてrsyslogへ転送する(defaultは転送しない)
+    ```
 
+    ### journaldはどのログを管理しているか
+
+    ```text
+    kernelからのmessage
+      1 リングバッファに保存される
+      2 journaldが、/dev/kmsg, /proc/kmsgという
+        仮想ファイルを経由して読み取り
+    
+    Userからのmessage
+      0 (例として、logger "hello"とする)
+      1 /var/log/syslogに送られる(Ubuntuの場合)
+      2 journaldが/var/log/syslogを読み取る
+
+    ⇒　結果として、全てのログをjournaldで把握可能
+    ```
+
+    ### ログの消滅と保存
+
+    ```text
+    /etc/systemd/journald.conf
+      ・journaldの設定ファイル
+      ・Storageはログの保存方法を意味する
+      ・persistentなら永続化
+      ・autoなら/var/log/journalの存在による
+    
+    /var/log/journal
+      ・Ubuntu18,20,22ならinstall時に含まれる
+      ・つまりdefaultの場合、journaldログは永続保存！
+      (=> わざわざrsyslogに転送する必要はなさそうだ)
+    ```
+
+    ```bash
+    # ForwardToSyslog(rsyslogに送るか)
+    # MaxLevelSyslog(どのレベルの情報を送るか)
+    # がoffになっている。そのためrsyslogへは転送されていない
+
+    $ cat /etc/systemd/journald.conf |  \
+      grep -E ForwardToSyslog\|MaxLevelSyslog
+
+    #ForwardToSyslog=yes
+    #MaxLevelSyslog=debug
     ```
