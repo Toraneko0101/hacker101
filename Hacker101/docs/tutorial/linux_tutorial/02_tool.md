@@ -1882,6 +1882,6 @@
     # 3回目のrotate (2世代までになっていることが確認できた)
     $ sudo logrotate -f /etc/logrotate.d/test.conf
     test.log  test.log.1  test.log.2
-
-
     ```
+
+## Q14 Linuxの標準的なDirectory構成について知っていますか?
