@@ -1383,6 +1383,18 @@
 ## Q12 journald(ログ管理ツール)について知っていますか?
 
 ??? success
+
+    ### logger
+
+    ```text
+    ・任意のログを生成する。
+    ・以下で検証したいときに使える
+    ```
+
+    ```bash
+    $ logger "neko"
+    ```
+
     ### サービスとデーモン
 
     ```text
@@ -1396,7 +1408,10 @@
     
     Daemon(デーモン)
       ・Unix系OSの常駐プログラム
+      ・一般的に、PID1が親で、ttyが?であることが多い
       ・末尾にdがついていることが多い
+      ・由来は守護神。昔神々は雑事を守護神に任せ、サボった。
+      　我々も雑事は常駐プログラムに任せ、サボることにしよう
     ```
 
     ### syslog(昔のログ管理システム)
@@ -1568,13 +1583,20 @@
     /etc/systemd/journald.conf
       ・journaldの設定ファイル
       ・Storageはログの保存方法を意味する
-      ・persistentなら永続化
+
+      ・persistentなら/var/log/journalに保存
+      ・volatileなら/run/log/journalに保存。揮発性
       ・autoなら/var/log/journalの存在による
+        なければ/run/log/journalに保存。揮発性
     
     /var/log/journal
       ・Ubuntu18,20,22ならinstall時に含まれる
       ・つまりdefaultの場合、journaldログは永続保存！
       (=> わざわざrsyslogに転送する必要はなさそうだ)
+    
+    SystemMaxUse, RuntimeMaxUse
+      ・logが大きくなりすぎないように上限を記載するといい
+      ・デフォルトはファイルシステムの10%
     ```
 
     ```bash
@@ -1588,3 +1610,73 @@
     #ForwardToSyslog=yes
     #MaxLevelSyslog=debug
     ```
+
+    ### journalを使う
+
+    ```bash
+    # 全てのログを読む
+    $ journalctl
+
+    # 起動番号でフィルタ(-b)
+    # 現在の起動が0で、-1が前回, -2が...
+    $ journalctl --list-boots
+
+    # 前回起動時のログを見る
+    $ journalctl -b -1
+
+    # 時間をもとにしたフィルタ
+    # (今日の0~10時までのログ)
+    $ journalctl --since "today" --until "10:00"
+
+    # 直近のメッセージを表示(更新があると追加)
+    $ journalctl -f
+
+    # 現在以降のメッセージを表示
+    $ journalctl --since "now" -f
+    # 別ttyで
+    $ logger "neko"
+    # 表示された
+    5月 01 10:39:41 PC toraneko[199971]: neko
+
+    # その他にも以下のoptionがある
+    # -r: 逆順
+    # -k; カーネルに関するmessageのみを表示
+    # -u: 指定ユニット(サービス)に対するメッセージ表示
+    # -n <digit>: 新しい方からdigit件取得
+    # -e:初期のカーソル位置が最新行
+    # -x:詳細情報(-bとは併用できない)
+    # -b <-digit>: digit回前の起動時のログ取得
+    # _UID: 指定したユーザIDのログを出力
+    # -o verbose: ログの全情報を出力する
+
+    $ journalctl --since "2024-05-01 10:00:00" \
+      --until "2024-05-01 11:00:00" \
+      -u cron
+
+    $ journalctl --since "2024-01-01" \
+      --until "2024-01-01 23:59:59" \
+      -rn 100 -u systemd-timesyncd
+
+    # UID=1001の全行動を、最も詳しいレベルで出力する
+    $ journalctl _UID=1001 -o verbose
+    ```
+
+    ### journalの削除(必要に応じてbackupを取ること)
+
+    ```text
+    ・rmを使って、/var/log/journal/*を削除するのは
+      一般的ではない
+    ```
+
+    ```bash
+    # 100MB以下になるまでjournalファイルを削除する
+    $ sudo journalctl --vacuum-size=100M
+
+    # 1週間前より前のjournalファイルを削除する
+    $ sudo journalctl --vacuum-time=1weeks
+    ```
+
+## Q13 logrorate(ログ世代管理ツール)について知っていますか?
+
+??? success
+    ### logrotate
