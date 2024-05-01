@@ -1674,9 +1674,214 @@
 
     # 1週間前より前のjournalファイルを削除する
     $ sudo journalctl --vacuum-time=1weeks
+
+    # journalファイルの容量が確認できる
+    $ journalctl --disk-usage
+    Archived and active journals take up 72.0M in the file system.
     ```
 
-## Q13 logrorate(ログ世代管理ツール)について知っていますか?
+## Q13 logrotate(ログ世代管理ツール)について知っていますか?
 
 ??? success
     ### logrotate
+
+
+    ```text
+    ・ログが増え続けるとディスクが圧迫されるため、
+      一定量や一定期間でログを削除/上書きすることが一般的
+    
+    ・全体設定は/etc/logrotate.confに記載され
+    ・個々の設定は/etc/logrotate.d/配下の*.confに記載される
+      logrotate.d/*に設定がある場合は、個々の設定を優先
+    ```
+
+    ### cronとlogrotate
+
+    ```text
+    ・logrotateはdaemonではなく、cronによって実行される
+    ・そのため動作していることを確認すべき
+    ```
+
+    ```bash
+    $ sudo systemctl status cron | grep active
+    Active: active (running) since Tue 2024-04-30 07:10:05 JST; 1 day 4h ago
+    ```
+
+    ### logrotate.confと主要なlogrotateの記法
+
+    ```text
+    daily/weekly/monthly/yearly
+      ・ローテーション周期(rotate)
+      ・デフォルトはweekly
+    
+    rotate N
+      ・管理する世代
+      ・デフォルトはrotate 4
+      ・指定しないとrotate 0になり、古いログが全削除される
+      ・※0にしても、現在のログファイルは消えない
+          rotate 1なら、*.logと、*.log.1が残る
+    
+    compress/nocompress/delaycompress
+      ・圧縮するか否か
+      ・デフォルトはnocompress
+      ・1世代目は圧縮されない
+      ・圧縮する場合は、compressで(gzipファイルを作成)
+    
+    ifempty/notifempty
+      ・空ファイルでもrotateするか
+      ・デフォルトはnotifempty(しない)
+      ・する場合は、ifemptyに
+      ・notifemptyの場合、古いデータが残り続けることがある
+    
+    missingok
+      ・ログファイルが存在しなくてもエラーを出さず処理続行
+    
+    create/nocreate
+      ・rotate時に、logファイルを古いlogファイルにmv
+      ・同名の空ファイルを作る
+      ・permissionを設定しない場合、元fileの属性を引き継ぐ
+      ・(つまり、*.log -> *.log.1となり、新しい*.logを作成)
+      ・nocreateなら行わない
+    
+    maxage N
+      ・N日より前のログを削除
+    
+    size/maxsize/minsize N
+      ・基本的にNバイトを超えたらrotate
+      ・size : rotate期間を無視
+      ・maxsize : rotate期間中でもrotate
+      ・minsize : rotate期間中ならrotateしない
+      ・k,M,Gで単位を指定可能
+    
+    oldfir [dir]/mail [add]
+      ・古いログを転送
+      ・olddirなら古いログを指定dirに転送
+      ・mailなら古いログを指定mail-addressに転送
+    
+    dateext
+      ・古いログファイルを更新する際、suffixを日付にする
+
+    ~ endscript
+      ・endscript -> scriptを終了
+      ・prerotate -> rotate前にscriptを実行する
+      ・postrotate -> rotate後にscriptを実行する
+      ・preremove -> 削除前に実行
+      ・sharedscripts -> 同じlogファイルに関するscriptは
+                         rotate前/後に一度だけ実行される
+
+    copytruncate
+      ・createの場合、logファイルをrenameしてから
+        同名の空ファイルを作る
+      ⇒daemonでfileを開いていた場合、
+        *.log.1ファイルが開いており、
+        *.logファイルが閉じている状態になることがある。
+      
+      copytruncateの場合
+        1 *.logをcopyしたものを、*.log.1とする
+        2 *.logの中身を削除する
+        ⇒*.log.1を閉じて、*.logを開き直す必要はなくなる
+
+      
+        
+    ```
+
+    ### logrotate.dの例
+
+    ```bash
+    # /etc/logrotate.d/apt
+
+    # 12カ月保持されるようだ
+    # 空でもエラーを出さないようにしている。
+    /var/log/apt/term.log {
+      rotate 12
+      monthly
+      compress
+      missingok
+      notifempty
+    }
+
+    /var/log/apt/history.log {
+      rotate 12
+      monthly
+      compress
+      missingok
+      notifempty
+    }
+
+    # 実際に上記のファイルを見てみる
+    $ ls /var/log/apt/* | grep history
+    /var/log/apt/history.log
+    /var/log/apt/history.log.1.gz
+    /var/log/apt/history.log.2.gz
+    /var/log/apt/history.log.3.gz
+    /var/log/apt/history.log.4.gz
+    /var/log/apt/history.log.5.gz
+    /var/log/apt/history.log.6.gz
+
+    # 1か月以内にinstallしていたatコマンドについてみる
+    # ※journalctlでもわかるだろうけど
+
+    $ cat /var/log/apt/history.log | \
+      grep "apt install at" -A 3 -B 1
+    
+    Start-Date: 2024-04-30  00:19:28
+    Commandline: apt install at
+    Requested-By: user (1000)
+    Install: at:amd64 (3.2.5-1ubuntu1)
+    End-Date: 2024-04-30  00:19:29
+    ```
+
+    ### journald vs logrotate
+
+    ```text
+    journald
+      ・binary形式でログを保存
+      ・journaldが収集したログをjournalctlを使用して見る
+      ・journalctlには強力なフィルタリング機能がある
+    
+    logrotate
+      ・/var/log/*配下にログを保存するのはそれぞれのアプリ
+      ・logrotateはappやdaemon単位で、ログを世代管理する
+      ・そのため、テキスト形式
+    ```
+
+    ### logrotateを試してみる
+
+    ```text
+    ・次のrotateまで待つことは面倒なので、-fを使う
+    ・-fは強制的にrotateする(logファイルは事前に閉じること)
+    ```
+
+    ```bash
+    # rotate用のtestファイルを作成
+    $ mkdir /tmp/rotate
+    $ touch /tmp/rotate/test.log
+    $ sudo chmod 755 /tmp/rotate
+
+    # 設定ファイルを作成
+    $ sudo vim /etc/logrotate.d/test.conf
+
+    /tmp/rotate/test.log {
+        daily
+        maxsize 1M
+        create 660 root root
+        rotate 2
+    }
+
+    # -f で rotate
+    $ sudo logrotate -f /etc/logrotate.d/test.conf
+
+    $ ls /tmp/rotate
+    test.log  test.log.1
+
+    # 2回目のrotate
+    $ sudo logrotate -f /etc/logrotate.d/test.conf
+    $ ls /tmp/rotate
+    test.log  test.log.1  test.log.2
+
+    # 3回目のrotate (2世代までになっていることが確認できた)
+    $ sudo logrotate -f /etc/logrotate.d/test.conf
+    test.log  test.log.1  test.log.2
+
+
+    ```
