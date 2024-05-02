@@ -2140,4 +2140,75 @@
 
 ??? success
 
-    ### UEFI
+    ### 自分のPCがBIOSかUEFIか確かめる
+
+    ```text
+    ・そもそもVirtualBoxの場合
+      設定⇒システム⇒EFIを有効化に✓がついているか
+      確認すればいいだけの話だが......
+
+    ・✓：UEFI
+    ・✖：BIOS
+    ```
+
+    ```bash
+    # BIOSの場合
+    $ ls /sys/firmware/efi
+    ls: '/sys/firmware/efi'にアクセスできません
+        そのようなファイルやディレクトリはありません
+    
+    $ efibootmgr
+    EFI variables are not supported on this system.
+    ```
+
+    ```bash
+    # UEFIの場合
+    $ ls /sys/firmware/efi
+    config_table  fw_platform_size  
+    mok-variables  runtime-map
+    efivars       fw_vendor         
+    runtime        systab
+
+    $ efibootmgr
+    BootCurrent: 0002
+    Timeout: 0 seconds
+    BootOrder: 0004,0000,0001,0002,0003
+    Boot0000* UiApp
+    Boot0001* UEFI VBOX CD-ROM VB2-01700376 
+    Boot0002* UEFI VBOX HARDDISK VB971aaef7-e7aa9ac9 
+    Boot0003  EFI Internal Shell
+    Boot0004* ubuntu
+
+    ```
+
+    ### BIOSとUEFI
+
+    ```text
+    BIOS
+      ・Basic Input Output System
+    
+    UEFI
+      ・Unified Extensible Firmware Interface
+    
+    共通点
+      ・PCのハードウェアに組み込まれている、ファームウェア
+      ・NVRAM(Non-Volatile RAM): 不揮発性メモリに格納
+    
+    相違点
+      ・起動方法
+      ・大容量ハードに対応しているか
+      ・セキュリティの追加
+      ・インターフェースの向上
+      ・ネットワーク機能の追加
+
+    ファームウェア
+      ・ハードウェアを制御するためのソフトウェア
+
+    マザーボード
+      ・もっとも主要な電子回路基板
+    ```
+
+    ### UEFIの起動方法
+
+    ```text
+    ```
