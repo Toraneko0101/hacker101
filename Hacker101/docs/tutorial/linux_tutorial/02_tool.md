@@ -2322,13 +2322,99 @@
     ```
 
     ```bash
+    # Bootローダの順番は、0001->0002->0003となる
+    $ efibootmgr -o 0001,0002,0003
+
+    # Bootエントリを追加する
+    $ efibootmgr -c \
+      -L "<displayname>" \
+      -d "<your_disk>" \
+      -l "<your_boot_loader>"
     ```
 
     ### 補足(ブートローダについて)
 
+    ```text
+    ブートローダ
+      ・カーネルをメモリにロードするためのプログラム
+    
+    LILO(Linux Loader)
+      ・古くからLinuxで使われてきたブートローダ
+      ・ファイルシステムを認識しない
+      ・カーネルの位置はストレージの物理的な位置情報で判断
+    
+    GRUB Legacy(GRand Unified BootLoader)
+      ・カーネルの位置はファイルパスで判断可能
+      ・BIOSの場合、こちらを用いる
+      ・MBRの容量上、2つのステージに分かれており、
+        Stage1はStage2をロードするために存在する。
+    
+    GRUB2
+      ・Stageは分けない
+      ・動的に読み込まれる複数のモジュールで構成
+      ・ブートエントリを見る限り、自分の環境では、ubuntuの
+      　ブートローダとして、下記が呼び出されているようだ
+        /boot/efi/EFI/ubuntu/shimx64.efi
+      
+      ・shimx64.efiはセキュアブートをサポートするための物で
+        Linuxカーネルやinitramfsをロードするために使われる
+    ```
+
     ### 補足(セキュアブートについて)
 
-    ### 補足(GPTについて)
+    ```text
+    ・検証されたブートローダやカーネル、EFIアプリのみを
+      起動するようにする仕組み
+    
+    ・事前に署名されていない、カスタマイズされたOSを起動する
+      際は、セキュアブートをOFFにする必要がある
+    
+    ・VirtualBoxなら、設定から適用可能
+      (v7.0.0でバグがあるので注意)
+
+    ・以下の様にし、5バイト目が1ならSecureBoot有効
+    $ cat /sys/firmware/efi/efivars/SecureBoot* | od
+    ```
+
+    ### 補足(GUID Partition Tableについて)
+
+    ```text
+    ・Master Boot Recordの代替として作られたもの
+
+    ・外部記憶装置のパーティションを管理するために使う
+
+    ・従来のMBRが2TiBまでの領域しか管理できないのに対し、
+      8ZiBまでの領域を管理可能
+    
+    ・保護用MBR -> GPTヘッダの順で配置されており、
+      最初のセクションはMBRとの互換性のために存在
+      GPTヘッダにPartition Tableの位置情報を格納する
+      (⇒そのため、その領域のブートローダを使える)
+    
+    ・UEFIではディスク上の特定のパーティション(ESP)の中身を
+      ブート対象にすると予め決めている
+
+    ・たとえば以下の場合、ディスク/dev/sdaのESPは2なので
+      /dev/sda2がブート対象となる
+    
+    ・ここで、ブート対象の中には、複数のブートローダが存在
+      する可能性がある。そこでエントリを見て、ブート対象を
+      特定する必要があるわけだ
+
+    $ sudo parted /dev/sda print
+    モデル: ATA VBOX HARDDISK (scsi)
+    ディスク /dev/sda: 26.8GB
+    セクタサイズ (論理/物理): 512B/512B
+    パーティションテーブル: gpt
+    ディスクフラグ: 
+
+    番号  開始    終了    サイズ  ファイルシステム  名前                  フラグ
+    1    1049kB  2097kB  1049kB                                          bios_grub
+    2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
+    3    540MB   26.8GB  26.3GB  ext4
+    ```
+
+    ### 補足(EFIについて)
 
     ### 補足(vmlinuzについて)
 
