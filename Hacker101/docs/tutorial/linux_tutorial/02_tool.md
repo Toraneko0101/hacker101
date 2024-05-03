@@ -2247,8 +2247,9 @@
 
     11 カーネルが初期化処理を行う
 
-    12 カーネルが、initramfsを仮のルートファイルシステム
-       としてマウントする
+    12 カーネルによりinitramfsが仮のルートとしてmountされる
+       (本物のルートファイルシステムをマウントするために
+       必要なドライバやスクリプトにアクセスできるように)
 
     13 initramfsのinitからsystemdを起動する
 
@@ -2305,10 +2306,13 @@
     ログイン可能状態に
     ```
 
-    ### 補足(ブートエントリとefibootmgrについて)
+## Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsという言葉の意味を理解できましたか?
+
+??? success
+    ### ブートエントリとefibootmgr
 
     ```text
-    ・前述のとおり、ブートエントリはブートローダの
+    ・前項のとおり、ブートエントリはブートローダの
       読み込み順を指定する
     
     ・NVRAMは、不揮発性のランダムメモリ
@@ -2328,7 +2332,7 @@
       -l "<your_boot_loader>"
     ```
 
-    ### 補足(ブートローダについて)
+    ### ブートローダ
 
     ```text
     ブートローダ
@@ -2356,7 +2360,7 @@
         Linuxカーネルやinitramfsをロードするために使われる
     ```
 
-    ### 補足(セキュアブートについて)
+    ### セキュアブート
 
     ```text
     ・検証されたブートローダやカーネル、EFIアプリのみを
@@ -2372,7 +2376,7 @@
     $ cat /sys/firmware/efi/efivars/SecureBoot* | od
     ```
 
-    ### 補足(GUID Partition Tableについて)
+    ### GUID Partition Table
 
     ```text
     ・Master Boot Recordの代替として作られたもの
@@ -2412,16 +2416,19 @@
     3    540MB   26.8GB  26.3GB  ext4
     ```
 
-    ### 補足(EFI system partitionについて)
+    ### EFI system partition
 
     ```text
     ・EFI(=Extensible Firmware Interface)
     
     ・partedコマンドでわかる通り、FAT形式のパーティション
     ・ブートローダを含んでいる
-    ・partedコマンドでは、boot, espフラグが相当する
-    ・gdiskコマンドではEF00コードが、EFIパーティション
 
+    ・partedコマンドでは、boot, espフラグが相当する
+    $ sudo parted /dev/sda print | grep fat32
+    2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
+
+    ・gdiskコマンドではEF00コードが、EFIパーティション
     $ sudo gdisk -l /dev/sda | grep EF00
     2  4096 1054719  513.0 MiB  EF00  EFI System Partition
 
@@ -2431,9 +2438,122 @@
       ・Windowsでいうと95以降でサポートされているFAT
     ```
 
-    ### 補足(vmlinuzについて)
+    ### vmlinuz
 
-    ### 補足(initramfsについて)
+    ```text
+    ・Linux(カーネル)は、/bootに、vmlinuzというファイル名で
+      保存される
+    ```
+
+    ```bash
+    ls -gG /boot/vmlinuz* --time-style="+"
+    lrwxrwxrwx 1       24  /boot/vmlinuz -> vmlinuz-6.5.0-28-generic
+    -rw------- 1 14284040  /boot/vmlinuz-6.5.0-28-generic
+    -rw-r--r-- 1 14271880  /boot/vmlinuz-6.5.0-9-generic
+    lrwxrwxrwx 1       23  /boot/vmlinuz.old -> vmlinuz-6.5.0-9-generic
+    ```
+
+    !!! info
+
+        ### シンボリックリンクとバージョン管理
+
+        ```text
+        ・たとえば、vmlinuzのversionを、6.5.0-9に戻したく
+          なった場合のことを考える
+        
+        ・特定のversionをそのまま呼び出していた場合、
+          呼び出し先を変更する必要がある
+        
+        ・上記の例の場合、シンボリックリンクを介して
+          呼び出しているので、リンク先を変えるだけでいい
+          (ln -fs: sだけだとファイルが存在するとなるため)
+          (参照先がdの場合は、-nオプションも必要)
+          (-vも付けると、リンク先を表示してくれるのでよい)
+        ```
+
+    ```bash
+    # kernelのvを見る
+    $ uname -r
+    6.5.0-28-generic
+
+    # fileの種類を見る
+    $ sudo file /boot/vmlinuz-6.5.0-28-generic 
+    /boot/vmlinuz-6.5.0-28-generic: 
+      Linux kernel x86 boot executable bzImage, 
+      version 6.5.0-28-generic (buildd@lcy02-amd64-001) 
+      #29-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 28 23:46:48 
+      UTC 2024, RO-rootFS, swap_dev 0XD, Normal VGA
+    
+    # bzImage形式：つまり圧縮されていることが分かる
+    ```
+
+    ### 補足(kernelとkernel-modules)
+
+    ```text
+    ・圧縮されているにしても、vmlinuzの大きさは14M
+    ・これは、ハードウェアにアクセスし操作するためのドライバ
+      を、カーネルモジュールとして切り出しているからである
+    
+    カーネルモジュールの利点
+      ・カーネルのサイズを小さくできる
+      ・使う時だけロード、不要になったらアンロードできる
+      ・ハードウェア構成が変わってもカーネルの再構築が
+        必要ないため、停止時間が生じない
+    ```
+
+    ```bash
+    # 現在読み込まれているカーネルモジュール一覧を表示
+    $ lsmod
+
+    # 該当のversionのカーネルモジュールのバイナリが存在する
+    $ /lib/modules/$(uname -r)/kernel
+
+    # モジュール構成ファイル
+    $ /lib/modules/$(uname -r)/modules.*
+
+    # モジュールの依存関係を確認する
+    $ modprobe -D isofs
+    insmod /lib/modules/6.5.0-28-generic/kernel/fs/isofs/isofs.ko.zst 
+
+    # モジュールの格納場所を確認する
+    # ※tr -sは連続文字をまとめるためのコマンド
+    $ modinfo isofs | grep filename | tr -s "[:space:]"
+    filename: /lib/modules/6.5.0-28-generic/kernel/fs/isofs/isofs.ko.zst
+    ```
+
+    ### initramfs
+
+    ```text
+    前提
+      1 カーネルがブートローダに起動される
+      2 ルートファイルシステムをmountしたい
+
+      2における問題点
+        ・ルートファイルシステムをマウントするためには、
+          ディスクのドライバをカーネルに組み込む必要がある
+        
+        ・カーネルの肥大化は本意ではない
+      
+      解決策
+        ・カーネルでは小さなルートファイルシステム用の
+        　ドライバやスクリプトだけを用意
+        
+        ・実際のルートのマウントに必要なドライバなどは
+        　小さなルートファイルシステムの中に含んでおく
+    
+    initramfs(RAM上の初期ファイルシステム)
+      ・ミニルートと呼ばれる
+      ・メモリ上に展開可能な、極小のルートファイルシステム
+      ・cpio形式でアーカイブされたうえで、gzipで圧縮済み
+      ・実際のルートファイルシステムにアクセスするために
+        必要なモジュールを提供する
+
+    ※initramfsは本物のルートがマウントされ、
+      PID=1のプロセスが起動し始めると、RAMから削除される
+
+    ※カーネルモジュールの中でも、起動に必要な一部分が
+      initramfsの中に含まれていると考えてよさそうだ
+    ```
 
     ### 補足(default.targetについて)
 
