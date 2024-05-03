@@ -2306,9 +2306,72 @@
     ログイン可能状態に
     ```
 
-## Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsという言葉の意味を理解できましたか?
+## Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsについて理解できましたか?(Q15補足)
 
 ??? success
+
+    ### GUID Partition Table
+
+    ```text
+    ・Master Boot Recordの代替として作られたもの
+
+    ・外部記憶装置のパーティションを管理するために使う
+
+    ・従来のMBRが2TiBまでの領域しか管理できないのに対し、
+      8ZiBまでの領域を管理可能
+    
+    ・保護用MBR -> GPTヘッダ->パーティション情報
+    　の順で配置されており、
+      最初のセクションはMBRとの互換性のために存在
+      次のセクションでPartition Tableの位置情報を格納する
+      (⇒そのため、その領域のブートローダを使える)
+    
+    ・次に、パーティションのうち、どこをブート対象にするか
+    　という話なのだが、UEFIではディスク上の特定の領域(ESP)
+      の中身をブート対象にすると予め決めている
+
+    ・たとえば以下の場合、ディスク/dev/sdaのESPは2なので
+      /dev/sda2がブート対象となる
+    
+    ・ここで、ブート対象の中には、複数のブートローダが存在
+      する可能性がある。そこでエントリを見て、ブート対象を
+      特定する必要があるわけだ
+
+    $ sudo parted /dev/sda print
+    モデル: ATA VBOX HARDDISK (scsi)
+    ディスク /dev/sda: 26.8GB
+    セクタサイズ (論理/物理): 512B/512B
+    パーティションテーブル: gpt
+    ディスクフラグ: 
+
+    番号  開始    終了    サイズ  ファイルシステム  名前                  フラグ
+    1    1049kB  2097kB  1049kB                                          bios_grub
+    2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
+    3    540MB   26.8GB  26.3GB  ext4
+    ```
+
+    ### EFI system partition
+
+    ```text
+    ・EFI(=Extensible Firmware Interface)
+    
+    ・partedコマンドでわかる通り、FAT形式のパーティション
+    ・ブートローダを含んでいる
+
+    ・partedコマンドでは、boot, espフラグが相当する
+    $ sudo parted /dev/sda print | grep fat32
+    2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
+
+    ・gdiskコマンドではEF00コードが、EFIパーティション
+    $ sudo gdisk -l /dev/sda | grep EF00
+    2  4096 1054719  513.0 MiB  EF00  EFI System Partition
+
+    
+    FAT32
+      ・FATはファイルの位置情報を記録する領域
+      ・Windowsでいうと95以降でサポートされているFAT
+    ```
+
     ### ブートエントリとefibootmgr
 
     ```text
@@ -2375,69 +2438,7 @@
     ・以下の様にし、5バイト目が1ならSecureBoot有効
     $ cat /sys/firmware/efi/efivars/SecureBoot* | od
     ```
-
-    ### GUID Partition Table
-
-    ```text
-    ・Master Boot Recordの代替として作られたもの
-
-    ・外部記憶装置のパーティションを管理するために使う
-
-    ・従来のMBRが2TiBまでの領域しか管理できないのに対し、
-      8ZiBまでの領域を管理可能
     
-    ・保護用MBR -> GPTヘッダ->パーティション情報
-    　の順で配置されており、
-      最初のセクションはMBRとの互換性のために存在
-      次のセクションでPartition Tableの位置情報を格納する
-      (⇒そのため、その領域のブートローダを使える)
-    
-    ・次に、パーティションのうち、どこをブート対象にするか
-    　という話なのだが、UEFIではディスク上の特定の領域(ESP)
-      の中身をブート対象にすると予め決めている
-
-    ・たとえば以下の場合、ディスク/dev/sdaのESPは2なので
-      /dev/sda2がブート対象となる
-    
-    ・ここで、ブート対象の中には、複数のブートローダが存在
-      する可能性がある。そこでエントリを見て、ブート対象を
-      特定する必要があるわけだ
-
-    $ sudo parted /dev/sda print
-    モデル: ATA VBOX HARDDISK (scsi)
-    ディスク /dev/sda: 26.8GB
-    セクタサイズ (論理/物理): 512B/512B
-    パーティションテーブル: gpt
-    ディスクフラグ: 
-
-    番号  開始    終了    サイズ  ファイルシステム  名前                  フラグ
-    1    1049kB  2097kB  1049kB                                          bios_grub
-    2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
-    3    540MB   26.8GB  26.3GB  ext4
-    ```
-
-    ### EFI system partition
-
-    ```text
-    ・EFI(=Extensible Firmware Interface)
-    
-    ・partedコマンドでわかる通り、FAT形式のパーティション
-    ・ブートローダを含んでいる
-
-    ・partedコマンドでは、boot, espフラグが相当する
-    $ sudo parted /dev/sda print | grep fat32
-    2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
-
-    ・gdiskコマンドではEF00コードが、EFIパーティション
-    $ sudo gdisk -l /dev/sda | grep EF00
-    2  4096 1054719  513.0 MiB  EF00  EFI System Partition
-
-    
-    FAT32
-      ・FATはファイルの位置情報を記録する領域
-      ・Windowsでいうと95以降でサポートされているFAT
-    ```
-
     ### vmlinuz
 
     ```text
@@ -2540,6 +2541,9 @@
         
         ・実際のルートのマウントに必要なドライバなどは
         　小さなルートファイルシステムの中に含んでおく
+
+        ・initramfsの中で、本物のルートファイルシステムを
+        　マウントし置き換える
     
     initramfs(RAM上の初期ファイルシステム)
       ・ミニルートと呼ばれる
@@ -2555,5 +2559,7 @@
       initramfsの中に含まれていると考えてよさそうだ
     ```
 
-    ### 補足(default.targetについて)
+## Q17 systemdについて知っていますか?
+
+
 
