@@ -1,15 +1,19 @@
-# document用に作成したリポジトリ
+# 学習用リポジトリ
 
 ## 導入方法
-```terminal linenums="1"
+```terminal
+# windows
 python -m venv .venv
 .venv\scripts\activate
-pip install mkdocs
-pip install mkdocs-material
+
+# pip install mkdocs
+# pip install mkdocs-material
 ```
 ## サーバ立ち上げ
 ```
 mkdocs serve
+mkdocs serve -a localhost:<host>
+
 ※デフォルトの場合、localhost:8000で閲覧可能
 ```
 
