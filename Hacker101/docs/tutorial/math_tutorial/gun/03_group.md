@@ -251,11 +251,60 @@
 
     ```text
     ・合成写像が何に相当するか考える
+
+    ※矢印の上に、写像が載っている下の表記は
+      写像による、左の像が右であることを示している
+    ```
+
+
+    $$
+      \begin{align}
+        & 1 \stackrel{a}{\longmapsto} 2 \stackrel{r}{\longmapsto} 3 \\
+        & 2 \stackrel{a}{\longmapsto} 1 \stackrel{r}{\longmapsto} 2 \\
+        & 3 \stackrel{a}{\longmapsto} 3 \stackrel{r}{\longmapsto} 1 \\
+        \\
+        & つまり\\
+        & 1 \stackrel{r \circ a}{\longmapsto} 3 \\
+        & 2 \stackrel{r \circ a}{\longmapsto} 2 \\
+        & 3 \stackrel{r \circ a}{\longmapsto} 1 \\
+        \\
+        & r \circ a = 
+        \begin{pmatrix}
+          1 & 2 & 3 \\
+          3 & 2 & 1 \\
+        \end{pmatrix} = c
+      \end{align}
+    $$
+
+    ### ${r \circ a \neq a \circ r ?}$
+
+    ```text
+    ・実際に確かめて考える
     ```
 
     $$
-      \stackrel{a}{\longmapsto}
+    \begin{align}
+      & a \circ r = 
+      \begin{pmatrix}
+        1 & 2 & 3
+        2 & 1 & 3
+      \end{pmatrix} 
+      \circ
+      \begin{pmatrix}
+        1 & 2 & 3
+        2 & 3 & 1
+      \end{pmatrix}
+      = 
+      \begin{pmatrix}
+        1 & 2 & 3
+        1 & 3 & 2
+      \end{pmatrix}  
+      = b \\
+      & よって、 r \circ a \neq a \circ r
+    \end{align}
     $$
+
+    ### 二項演算の演算表について考える
 
 
 
