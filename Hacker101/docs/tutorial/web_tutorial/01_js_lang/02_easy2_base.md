@@ -86,7 +86,7 @@
 ## Q17. 外部スクリプトを読み込んで、ブラウザ上のページに`alert`を表示できますか?
 
 ??? success
-    ```html title="index.html"
+    ```text
     <!DOCTYPE html>
     <html>
       <body>
