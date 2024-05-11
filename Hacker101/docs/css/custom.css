@@ -87,3 +87,34 @@ details.tips {
     margin-inline: auto; */
     font-size: 16px;
 }
+
+/*add */
+body {
+    text-shadow: none;
+    box-shadow: 0, 0, 0;
+}
+
+code[class*=language] {
+    background-color: white;
+}
+
+code {
+    font-family: Consolas, 'Courier New', Courier, monospace;
+}
+
+span.token.function {
+    color: #268bd2;
+}
+
+header.md-header.md-header--shadow {
+    background-color: white;
+    color: black;
+}
+
+input.md-search__input {
+    background-color: white;
+}
+
+input.md-search__input::placeholder {
+    color: black;
+}
