@@ -1,0 +1,6903 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="01_introduction.html">
+      
+      
+        <link rel="next" href="03_phrase.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(2:基本) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/prism.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(2:基本)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02_base.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      方針
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13-mysqlmariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13 mysql/mariadbユーティリティを使う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q13 mysql/mariadbユーティリティを使う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      以下の様に入力
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14 データベース一覧を表示する方法と、操作したいデータベースを作成/指定する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q14 データベース一覧を表示する方法と、操作したいデータベースを作成/指定する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      show databases;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      create database ;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      use ;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      drop database ;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15-mariadbmysqlnow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15 MariaDB/MySQLの組み込み関数であるnow関数を用いて、現在の日付と時刻を取得することはできますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q15 MariaDB/MySQLの組み込み関数であるnow関数を用いて、現在の日付と時刻を取得することはできますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      SELECT now();
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q16-1from" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q16 データベースサーバによっては、クエリを実行するとき、1つ以上のfrom句がないと失敗するが、その対処法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q16 データベースサーバによっては、クエリを実行するとき、1つ以上のfrom句がないと失敗するが、その対処法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oracleデータベースが有名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysqlmariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL/MariaDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q17-mysqlmariadbunixexitquit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q17 mysql/mariaDBユーティリティを終了して、Unixシェルに制御を戻したいとき、exit;やquit;が使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q17 mysql/mariaDBユーティリティを終了して、Unixシェルに制御を戻したいとき、exit;やquit;が使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      どちらでもいい
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q18-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q18 MariaDBの文字データ型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q18 MariaDBの文字データ型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      固定長または可変長
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charvarchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      char/varchar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q19-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q19 SQLで扱える文字セットについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q19 SQLで扱える文字セットについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字セットとは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysqlmariadb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL/MariaDBでの文字セットの表示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      デフォルトの文字セット等を確認したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      特定のデータベースのデフォルトの文字セットを確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      列ごとに別の文字セットを選択したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      データベース作成時に文字セットを設定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q20-varchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q20 varchar型を超えたサイズのデータを格納したい場合、テキスト型が使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q20 varchar型を超えたサイズのデータを格納したい場合、テキスト型が使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      テキスト型一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      テキスト型の注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用ケース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q21-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q21 MariaDBの整数型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q21 MariaDBの整数型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#12348" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数型(1,2,3,4,8バイト)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      bool,boolean
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-unsigned" class="md-nav__link">
+    <span class="md-ellipsis">
+      signed, unsigned
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zerofill" class="md-nav__link">
+    <span class="md-ellipsis">
+      zerofill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#int3" class="md-nav__link">
+    <span class="md-ellipsis">
+      INT(3)について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q22-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q22 Mariadbの小数点型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q22 Mariadbの小数点型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮動小数点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      (p,s)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q23-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q23 Mariadbの時間データ型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q23 Mariadbの時間データ型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      時間データ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      フォーマットについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      年について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      13月について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      マイクロミリ秒について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time838" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考(time型の上限が838である原因の考察)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他の使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q24 テーブルを作成しようと考えてから、正規化を行うまでの流れが分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q24 テーブルを作成しようと考えてから、正規化を行うまでの流れが分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 設計
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person" class="md-nav__link">
+    <span class="md-ellipsis">
+      personテーブルの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 正規化する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      personテーブル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#favorite_foods" class="md-nav__link">
+    <span class="md-ellipsis">
+      favorite_foodsテーブル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      どこまで分割するか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q25-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q25 SQLスキーマ文の作り方が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q25 SQLスキーマ文の作り方が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 正規化が終わったら、実際にテーブルを作成していく
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-table-yourtable-col1-col2" class="md-nav__link">
+    <span class="md-ellipsis">
+      CREATE TABLE &lt;yourtable&gt; (col1, col2,...);
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-table-your_table" class="md-nav__link">
+    <span class="md-ellipsis">
+      DROP TABLE &lt;your_table&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q26 制約について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q26 制約について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      主キー制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check" class="md-nav__link">
+    <span class="md-ellipsis">
+      CHECK制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOT NULL制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIQUE KEY制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      FOREIGN KEY制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    <span class="md-ellipsis">
+      DEFAULT(制約ではない)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-increment" class="md-nav__link">
+    <span class="md-ellipsis">
+      AUTO INCREMENT(制約ではない)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q27-describe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q27 describeコマンドを実行するとテーブル構造が確認できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q27 describeコマンドを実行するとテーブル構造が確認できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describedesc" class="md-nav__link">
+    <span class="md-ellipsis">
+      describe/desc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q28-alter-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q28 テーブルの定義を変更する方法を知っていますか?(alter table)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q28 テーブルの定義を変更する方法を知っていますか?(alter table)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alter-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      alter table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      参照整合性違反について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q29 データを挿入/更新/削除し、該当データを閲覧する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q29 データを挿入/更新/削除し、該当データを閲覧する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert-into-table-col1col2-values-data1-data2" class="md-nav__link">
+    <span class="md-ellipsis">
+      insert into &lt;table&gt; (col1,col2,...) values (data1, data2, ...)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-col1-col2-from-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      select col1, col2, ... from &lt;table&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-table-set-col1-val1-col2-val2-where-coln-valn" class="md-nav__link">
+    <span class="md-ellipsis">
+      update &lt;table&gt; set col1 = "val1", col2 = "val2" ... where coln = valn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-from-table-where-col1-val1" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete from &lt;table&gt; where col1 = val1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q30 データ挿入等の際に陥りやすい誤りとその際に表示されるエラーメッセージについて知識はありますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q30 データ挿入等の際に陥りやすい誤りとその際に表示されるエラーメッセージについて知識はありますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      一意制約を無視する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      外部キー制約を無視する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      ENUM値にない値を入れた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      フォーマット形式に一致しない日付を挿入した場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str_to_date" class="md-nav__link">
+    <span class="md-ellipsis">
+      str_to_date関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      変換用フォーマット文字列一覧
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q31 テーブルに関する詳細な情報を取得するクエリを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q31 テーブルに関する詳細な情報を取得するクエリを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-full-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      show full tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-create-table-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      show create table &lt;table&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-table-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      show table status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information_schematables" class="md-nav__link">
+    <span class="md-ellipsis">
+      information_schema.tables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q32-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q32 \Gオプションを用いると結果を縦に表示できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q32 \Gオプションを用いると結果を縦に表示できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    <span class="md-ellipsis">
+      \G
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q33-pager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q33 pagerコマンドを用いると、出力を見やすく整形(もしくは別ファイルに出力など)できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q33 pagerコマンドを用いると、出力を見やすく整形(もしくは別ファイルに出力など)できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pager-less-sfx" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager less -SFX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-cat-yourfilepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager cat &gt; /your/file/path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-grep-search_keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager grep &lt;search_keyword&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      複数コマンドを指定することも可能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager wc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-tee-a-yourfilepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager tee -a /your/file/path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      デフォルトに戻す
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      起動時に指定する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cat-devnull" class="md-nav__link">
+    <span class="md-ellipsis">
+      cat &gt; /dev/null
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q34 そもそもオプションの指定方法について理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q34 そもそもオプションの指定方法について理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      パスワードは例外
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      呼び出し時にDBも指定可能
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q35-c-kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q35 クエリの取り消しを行う時は\c, クエリの中断を行う時はKILLが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q35 クエリの取り消しを行う時は\c, クエリの中断を行う時はKILLが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      \c
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      実行中のクエリの場合はKILLコマンド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q36-xml-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q36 データをXMLとして取得したい場合、--xmlオプションが指定できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q36 データをXMLとして取得したい場合、--xmlオプションが指定できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      呼び出し時にオプション指定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      コラム1(先頭カンマ vs 末尾カンマ)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コラム1(先頭カンマ vs 末尾カンマ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      気持ち悪い!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      方針
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13-mysqlmariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13 mysql/mariadbユーティリティを使う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q13 mysql/mariadbユーティリティを使う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      以下の様に入力
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14 データベース一覧を表示する方法と、操作したいデータベースを作成/指定する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q14 データベース一覧を表示する方法と、操作したいデータベースを作成/指定する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-databases" class="md-nav__link">
+    <span class="md-ellipsis">
+      show databases;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      create database ;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use" class="md-nav__link">
+    <span class="md-ellipsis">
+      use ;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      drop database ;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15-mariadbmysqlnow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15 MariaDB/MySQLの組み込み関数であるnow関数を用いて、現在の日付と時刻を取得することはできますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q15 MariaDB/MySQLの組み込み関数であるnow関数を用いて、現在の日付と時刻を取得することはできますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#select-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      SELECT now();
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q16-1from" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q16 データベースサーバによっては、クエリを実行するとき、1つ以上のfrom句がないと失敗するが、その対処法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q16 データベースサーバによっては、クエリを実行するとき、1つ以上のfrom句がないと失敗するが、その対処法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oracle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Oracleデータベースが有名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysqlmariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL/MariaDB
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q17-mysqlmariadbunixexitquit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q17 mysql/mariaDBユーティリティを終了して、Unixシェルに制御を戻したいとき、exit;やquit;が使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q17 mysql/mariaDBユーティリティを終了して、Unixシェルに制御を戻したいとき、exit;やquit;が使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      どちらでもいい
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q18-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q18 MariaDBの文字データ型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q18 MariaDBの文字データ型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      固定長または可変長
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charvarchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      char/varchar
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q19-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q19 SQLで扱える文字セットについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q19 SQLで扱える文字セットについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字セットとは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysqlmariadb_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      MySQL/MariaDBでの文字セットの表示
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      デフォルトの文字セット等を確認したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      特定のデータベースのデフォルトの文字セットを確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      列ごとに別の文字セットを選択したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      データベース作成時に文字セットを設定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q20-varchar" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q20 varchar型を超えたサイズのデータを格納したい場合、テキスト型が使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q20 varchar型を超えたサイズのデータを格納したい場合、テキスト型が使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      テキスト型一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      テキスト型の注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用ケース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q21-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q21 MariaDBの整数型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q21 MariaDBの整数型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#12348" class="md-nav__link">
+    <span class="md-ellipsis">
+      整数型(1,2,3,4,8バイト)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boolboolean" class="md-nav__link">
+    <span class="md-ellipsis">
+      bool,boolean
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signed-unsigned" class="md-nav__link">
+    <span class="md-ellipsis">
+      signed, unsigned
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zerofill" class="md-nav__link">
+    <span class="md-ellipsis">
+      zerofill
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#int3" class="md-nav__link">
+    <span class="md-ellipsis">
+      INT(3)について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q22-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q22 Mariadbの小数点型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q22 Mariadbの小数点型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      浮動小数点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      (p,s)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q23-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q23 Mariadbの時間データ型について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q23 Mariadbの時間データ型について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      時間データ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      フォーマットについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      年について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      13月について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      マイクロミリ秒について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#time838" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考(time型の上限が838である原因の考察)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他の使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q24" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q24 テーブルを作成しようと考えてから、正規化を行うまでの流れが分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q24 テーブルを作成しようと考えてから、正規化を行うまでの流れが分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 設計
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person" class="md-nav__link">
+    <span class="md-ellipsis">
+      personテーブルの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 正規化する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      personテーブル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#favorite_foods" class="md-nav__link">
+    <span class="md-ellipsis">
+      favorite_foodsテーブル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      どこまで分割するか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q25-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q25 SQLスキーマ文の作り方が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q25 SQLスキーマ文の作り方が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 正規化が終わったら、実際にテーブルを作成していく
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-table-yourtable-col1-col2" class="md-nav__link">
+    <span class="md-ellipsis">
+      CREATE TABLE &lt;yourtable&gt; (col1, col2,...);
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drop-table-your_table" class="md-nav__link">
+    <span class="md-ellipsis">
+      DROP TABLE &lt;your_table&gt;
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q26" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q26 制約について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q26 制約について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      主キー制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check" class="md-nav__link">
+    <span class="md-ellipsis">
+      CHECK制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOT NULL制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      UNIQUE KEY制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreign-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      FOREIGN KEY制約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default" class="md-nav__link">
+    <span class="md-ellipsis">
+      DEFAULT(制約ではない)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto-increment" class="md-nav__link">
+    <span class="md-ellipsis">
+      AUTO INCREMENT(制約ではない)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q27-describe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q27 describeコマンドを実行するとテーブル構造が確認できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q27 describeコマンドを実行するとテーブル構造が確認できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#describedesc" class="md-nav__link">
+    <span class="md-ellipsis">
+      describe/desc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q28-alter-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q28 テーブルの定義を変更する方法を知っていますか?(alter table)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q28 テーブルの定義を変更する方法を知っていますか?(alter table)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alter-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      alter table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      参照整合性違反について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q29 データを挿入/更新/削除し、該当データを閲覧する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q29 データを挿入/更新/削除し、該当データを閲覧する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert-into-table-col1col2-values-data1-data2" class="md-nav__link">
+    <span class="md-ellipsis">
+      insert into &lt;table&gt; (col1,col2,...) values (data1, data2, ...)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select-col1-col2-from-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      select col1, col2, ... from &lt;table&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-table-set-col1-val1-col2-val2-where-coln-valn" class="md-nav__link">
+    <span class="md-ellipsis">
+      update &lt;table&gt; set col1 = "val1", col2 = "val2" ... where coln = valn
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-from-table-where-col1-val1" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete from &lt;table&gt; where col1 = val1
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q30 データ挿入等の際に陥りやすい誤りとその際に表示されるエラーメッセージについて知識はありますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q30 データ挿入等の際に陥りやすい誤りとその際に表示されるエラーメッセージについて知識はありますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      一意制約を無視する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      外部キー制約を無視する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      ENUM値にない値を入れた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      フォーマット形式に一致しない日付を挿入した場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str_to_date" class="md-nav__link">
+    <span class="md-ellipsis">
+      str_to_date関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      変換用フォーマット文字列一覧
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q31 テーブルに関する詳細な情報を取得するクエリを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q31 テーブルに関する詳細な情報を取得するクエリを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#show-full-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      show full tables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-create-table-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      show create table &lt;table&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#show-table-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      show table status
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information_schematables" class="md-nav__link">
+    <span class="md-ellipsis">
+      information_schema.tables
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q32-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q32 \Gオプションを用いると結果を縦に表示できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q32 \Gオプションを用いると結果を縦に表示できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#g" class="md-nav__link">
+    <span class="md-ellipsis">
+      \G
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q33-pager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q33 pagerコマンドを用いると、出力を見やすく整形(もしくは別ファイルに出力など)できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q33 pagerコマンドを用いると、出力を見やすく整形(もしくは別ファイルに出力など)できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pager-less-sfx" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager less -SFX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-cat-yourfilepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager cat &gt; /your/file/path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-grep-search_keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager grep &lt;search_keyword&gt;
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      複数コマンドを指定することも可能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager wc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pager-tee-a-yourfilepath" class="md-nav__link">
+    <span class="md-ellipsis">
+      pager tee -a /your/file/path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      デフォルトに戻す
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      起動時に指定する場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cat-devnull" class="md-nav__link">
+    <span class="md-ellipsis">
+      cat &gt; /dev/null
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q34" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q34 そもそもオプションの指定方法について理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q34 そもそもオプションの指定方法について理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      パスワードは例外
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      呼び出し時にDBも指定可能
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q35-c-kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q35 クエリの取り消しを行う時は\c, クエリの中断を行う時はKILLが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q35 クエリの取り消しを行う時は\c, クエリの中断を行う時はKILLが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      \c
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      実行中のクエリの場合はKILLコマンド
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q36-xml-xml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q36 データをXMLとして取得したい場合、--xmlオプションが指定できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q36 データをXMLとして取得したい場合、--xmlオプションが指定できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      呼び出し時にオプション指定
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      コラム1(先頭カンマ vs 末尾カンマ)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コラム1(先頭カンマ vs 末尾カンマ)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      気持ち悪い!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="2">クイズ(2:基本)</h1>
+<h2 id="_1">方針</h2>
+<details class="info">
+<summary>Info</summary>
+<ul>
+<li>テーブルの設計方法の理解</li>
+<li>DBに関する基礎知識の理解</li>
+<li>データ型に関する理解</li>
+<li>基本的なSQLスキーマ文/データ文の理解</li>
+<li>テーブルの情報表示や定義変更の理解</li>
+<li>便利な表示方法(pager,desc)や操作方法の理解</li>
+</ul>
+</details>
+<h2 id="q13-mysqlmariadb">Q13 mysql/mariadbユーティリティを使う方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_2">以下の様に入力</h3>
+<pre class="highlight"><code class="language-bash">$ mysql -u &lt;username&gt; -p</code></pre>
+</details>
+<h2 id="q14">Q14 データベース一覧を表示する方法と、操作したいデータベースを作成/指定する方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="show-databases">show databases;</h3>
+<ul>
+<li>データベース一覧を表示</li>
+</ul>
+<h3 id="create-database">create database <yourdb>;</h3>
+<ul>
+<li>Databaseをまだ作成していない場合</li>
+</ul>
+<h3 id="use">use <yourdb>;</h3>
+<ul>
+<li>指定したデータベースを使用する</li>
+</ul>
+<h3 id="drop-database">drop database <yourdb>;</h3>
+<ul>
+<li>指定した名前のデータベースを削除する</li>
+</ul>
+</details>
+<h2 id="q15-mariadbmysqlnow">Q15 MariaDB/MySQLの組み込み関数であるnow関数を用いて、現在の日付と時刻を取得することはできますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="select-now">SELECT now();</h3>
+<pre class="highlight"><code class="language-bash">MariaDB [(none)]&gt; SELECT now();
++---------------------+
+| now()               |
++---------------------+
+| 2024-02-18 23:54:07 |
++---------------------+
+1 row in set (0.003 sec)</code></pre>
+</details>
+<h2 id="q16-1from">Q16 データベースサーバによっては、クエリを実行するとき、1つ以上のfrom句がないと失敗するが、その対処法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="oracle">Oracleデータベースが有名</h3>
+<ul>
+<li>関数を呼び出すだけでいい場合、<code>dual</code>テーブルが使われる</li>
+</ul>
+<h3 id="mysqlmariadb">MySQL/MariaDB</h3>
+<ul>
+<li><code>Oracle</code>データベースとの互換性目的でこのテーブルは存在する。</li>
+<li>つまり、now関数は以下の様にも書ける</li>
+</ul>
+<pre class="highlight"><code class="language-bash">MariaDB [(none)]&gt; SELECT now() FROM dual;
++---------------------+
+| now()               |
++---------------------+
+| 2024-02-18 23:55:54 |
++---------------------+
+1 row in set (0.000 sec)</code></pre>
+</details>
+<h2 id="q17-mysqlmariadbunixexitquit">Q17 mysql/mariaDBユーティリティを終了して、Unixシェルに制御を戻したいとき、exit;やquit;が使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_3">どちらでもいい</h3>
+<ul>
+<li>末尾セミコロンも任意</li>
+</ul>
+<pre class="highlight"><code class="language-bash">MariaDB [(none)]&gt; exit;
+Bye</code></pre>
+<pre class="highlight"><code class="language-bash">MariaDB [(none)]&gt; quit;
+Bye</code></pre>
+</details>
+<h2 id="q18-mariadb">Q18 MariaDBの文字データ型について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_4">固定長または可変長</h3>
+<ul>
+<li>固定長なら末尾はスペースで埋まり、常に同じバイト数消費</li>
+<li>可変長なら必ずしも同じバイト数を指定しない</li>
+</ul>
+<h3 id="charvarchar">char/varchar</h3>
+<ul>
+<li>文字列型の列を定義する場合は、その列の格納できる文字列の最大長を指定する</li>
+</ul>
+<pre class="highlight"><code class="language-sql">char(20) /*固定長: 最大255バイト*/
+varchar(20) /*可変長: 最大65535バイト*/</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>基本的に、<code>char/varchar</code>の扱い方はどのデータベースでも変わらない</li>
+<li>例外として<code>Oracle</code>の場合、可変長の文字を格納するとき<code>varchar2</code>型を使う</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><code>varchar</code>は文字列の長さを格納するために2バイト使うので、実質<code>65532</code>バイトまでしか使えない</li>
+<li>utf8文字は1文字で3バイト使うことに留意する</li>
+<li>末尾のスペースは削除されない</li>
+</ul>
+</div>
+</details>
+<h2 id="q19-sql">Q19 SQLで扱える文字セットについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_5">文字セットとは?</h3>
+<ul>
+<li>日本語のように文字を1バイトで表現できない場合、マルチバイト文字を使うことになる。</li>
+<li>これに対応した文字セットをマルチバイト文字セットという</li>
+</ul>
+<h3 id="mysqlmariadb_1">MySQL/MariaDBでの文字セットの表示</h3>
+<details class="info">
+<summary>Info</summary>
+<pre class="highlight"><code class="language-bash">MariaDB [(none)]&gt; show character set;
++----------+-----------------------------+---------------------+--------+
+| Charset  | Description                 | Default collation   | Maxlen |
++----------+-----------------------------+---------------------+--------+
+| big5     | Big5 Traditional Chinese    | big5_chinese_ci     |      2 |
+| dec8     | DEC West European           | dec8_swedish_ci     |      1 |
+| cp850    | DOS West European           | cp850_general_ci    |      1 |
+| hp8      | HP West European            | hp8_english_ci      |      1 |
+| koi8r    | KOI8-R Relcom Russian       | koi8r_general_ci    |      1 |
+| latin1   | cp1252 West European        | latin1_swedish_ci   |      1 |
+| latin2   | ISO 8859-2 Central European | latin2_general_ci   |      1 |
+| swe7     | 7bit Swedish                | swe7_swedish_ci     |      1 |
+| ascii    | US ASCII                    | ascii_general_ci    |      1 |
+| ujis     | EUC-JP Japanese             | ujis_japanese_ci    |      3 |
+| sjis     | Shift-JIS Japanese          | sjis_japanese_ci    |      2 |
+| hebrew   | ISO 8859-8 Hebrew           | hebrew_general_ci   |      1 |
+| tis620   | TIS620 Thai                 | tis620_thai_ci      |      1 |
+| euckr    | EUC-KR Korean               | euckr_korean_ci     |      2 |
+| koi8u    | KOI8-U Ukrainian            | koi8u_general_ci    |      1 |
+| gb2312   | GB2312 Simplified Chinese   | gb2312_chinese_ci   |      2 |
+| greek    | ISO 8859-7 Greek            | greek_general_ci    |      1 |
+| cp1250   | Windows Central European    | cp1250_general_ci   |      1 |
+| gbk      | GBK Simplified Chinese      | gbk_chinese_ci      |      2 |
+| latin5   | ISO 8859-9 Turkish          | latin5_turkish_ci   |      1 |
+| armscii8 | ARMSCII-8 Armenian          | armscii8_general_ci |      1 |
+| utf8mb3  | UTF-8 Unicode               | utf8mb3_general_ci  |      3 |
+| ucs2     | UCS-2 Unicode               | ucs2_general_ci     |      2 |
+| cp866    | DOS Russian                 | cp866_general_ci    |      1 |
+| keybcs2  | DOS Kamenicky Czech-Slovak  | keybcs2_general_ci  |      1 |
+| macce    | Mac Central European        | macce_general_ci    |      1 |
+| macroman | Mac West European           | macroman_general_ci |      1 |
+| cp852    | DOS Central European        | cp852_general_ci    |      1 |
+| latin7   | ISO 8859-13 Baltic          | latin7_general_ci   |      1 |
+| utf8mb4  | UTF-8 Unicode               | utf8mb4_general_ci  |      4 |
+| cp1251   | Windows Cyrillic            | cp1251_general_ci   |      1 |
+| utf16    | UTF-16 Unicode              | utf16_general_ci    |      4 |
+| utf16le  | UTF-16LE Unicode            | utf16le_general_ci  |      4 |
+ows Japanese   | cp932_japanese_ci   |      2 |
+| eucjpms  | UJIS for Windows Japanese   | eucjpms_japanese_ci |      3 |
++----------+-----------------------------+---------------------+--------+
+40 rows in set (0.012 sec)</code></pre>
+</details>
+<h3 id="_6">説明</h3>
+<ul>
+<li><code>Maxlen</code>が2以上の場合、マルチバイト文字セット</li>
+<li>現在のデフォルト文字セットは<code>utf8mb4</code></li>
+</ul>
+<h3 id="_7">デフォルトの文字セット等を確認したい場合</h3>
+<p><pre class="highlight"><code class="language-sql">show variables like 'char%';
+
+/*
++--------------------------+----------------------------+    
+| Variable_name            | Value                      |    
++--------------------------+----------------------------+    
+| character_set_client     | utf8mb3                    |    
+| character_set_connection | utf8mb3                    |    
+| character_set_database   | utf8mb4                    |    
+| character_set_filesystem | binary                     |    
+| character_set_results    | utf8mb3                    |    
+| character_set_server     | utf8mb4                    |    
+| character_set_system     | utf8mb3                    |    
+| character_sets_dir       | /usr/share/mysql/charsets/ |    
++--------------------------+----------------------------+ 
+    1 row in set (0.010 sec)
+*/</code></pre><br />
+- 説明</p>
+<pre class="highlight"><code>character_set_client
+  クライアントとの通信に使用される文字セット
+character_set_connection
+  クライアントとサーバー間の接続に使用される文字セット
+character_set_database
+  データベースのデフォルトの文字セット
+character_set_filesystem
+  ファイルシステムで使用される文字セット
+character_set_results
+  クエリの結果セットの文字セット
+character_set_server
+  サーバーのデフォルトの文字セット
+character_set_system
+  システムの文字セット
+character_sets_dif
+  MySQLで使用可能な文字セットの場所
+
+※変更したい場合
+・MariaDBの設定ファイルを変更する</code></pre>
+<h3 id="_8">特定のデータベースのデフォルトの文字セットを確認</h3>
+<pre class="highlight"><code class="language-sql">select schema_name, default_character_set_name
+from information_schema.schemata
+where schema_name="sakila";
+
+/*
++-------------+----------------------------+
+| schema_name | default_character_set_name |
++-------------+----------------------------+
+| sakila      | utf8mb4                    |
++-------------+----------------------------+
+1 row in set (0.007 sec)
+*/</code></pre>
+<h3 id="_9">列ごとに別の文字セットを選択したい場合</h3>
+<pre class="highlight"><code class="language-sql">varchar(20) character set latin1 /*latin1の文字セットを使う*/</code></pre>
+<h3 id="_10">データベース作成時に文字セットを設定する</h3>
+<pre class="highlight"><code class="language-sql">create database hoge character set latin1 /*hogeはdb名*/</code></pre>
+</details>
+<h2 id="q20-varchar">Q20 varchar型を超えたサイズのデータを格納したい場合、テキスト型が使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_11">テキスト型一覧</h3>
+<table>
+<thead>
+<tr>
+<th>テキスト型</th>
+<th>最大バイト数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tinytext</td>
+<td>255</td>
+</tr>
+<tr>
+<td>text</td>
+<td>65,535</td>
+</tr>
+<tr>
+<td>mediumtext</td>
+<td>16,777,215</td>
+</tr>
+<tr>
+<td>longtext</td>
+<td>4,294,967,295</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">テキスト型の注意点</h3>
+<ul>
+<li>テキスト型に格納したデータが、型の最大サイズを超える場合はデータが切り詰められる</li>
+<li>末尾のスペースは削除されない</li>
+<li>ソートやグループ化に使う場合、最初の1024バイトだけが使われる。(varcharとの差異)ただこれは変更可能</li>
+</ul>
+<h3 id="_13">使用ケース</h3>
+<ul>
+<li>ドキュメント等で、<code>mediumtext</code>や<code>longtext</code>を使う</li>
+<li>詳細なログを扱う上で、上記の型を使う</li>
+<li><code>textarea</code>に入力されたユーザの要望を格納する際に、上記の型を使う</li>
+<li>ブログ記事における、コメント本文を格納するために上記の型を使う</li>
+<li>ウェブサイトのコンテンツを管理するために上記の型を使う</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>テキスト型に関しては、SQLごとに異なる</li>
+<li>たとえば<code>SQL Server</code>は<code>text</code>型しか存在しない</li>
+<li><code>DB2</code>と<code>Oracle</code>では<code>clob</code>が用いられる</li>
+<li>補足として<code>SQL Server</code>は<code>varchar(max)</code>と出来、こうすることで、<code>2GB</code>まで格納可能らしい</li>
+</ul>
+</div>
+</details>
+<h2 id="q21-mariadb">Q21 MariaDBの整数型について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="12348">整数型(1,2,3,4,8バイト)</h3>
+<table>
+<thead>
+<tr>
+<th>整数型</th>
+<th>signedの範囲</th>
+<th>unsignedの範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tinyint</td>
+<td>-128 ~ 127</td>
+<td>0 ~ 255</td>
+</tr>
+<tr>
+<td>smallint</td>
+<td>-32768 ~ 32767</td>
+<td>0 ~ 65535</td>
+</tr>
+<tr>
+<td>mediumint</td>
+<td>-2^23 ~ 2^23 - 1</td>
+<td>0 ~ 2^24 - 1</td>
+</tr>
+<tr>
+<td>int</td>
+<td>-2^31 ~ 2^31 -1</td>
+<td>0 ~ 2^32  - 1</td>
+</tr>
+<tr>
+<td>bigint</td>
+<td>-2^63 ~ 2^63 - 1</td>
+<td>0 ~ 2^64 - 1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="boolboolean">bool,boolean</h3>
+<ul>
+<li><code>tinyint(1)</code>の同義語</li>
+<li>値0は<code>false</code>。ゼロ以外の値は<code>true</code>とみなされる</li>
+</ul>
+<h3 id="signed-unsigned">signed, unsigned</h3>
+<ul>
+<li><code>unsigned</code>を付けると、0以上しか格納されなくなる</li>
+</ul>
+<h3 id="zerofill">zerofill</h3>
+<ul>
+<li><code>zerofill</code>を付けると、0パディングが行われる</li>
+</ul>
+<h3 id="int3">INT(3)について</h3>
+<ul>
+<li><code>()</code>は表示幅を意味している</li>
+<li>INT型の上限まで値を格納できるが、実際には3桁分しか表示されないということ</li>
+<li>そのため<code>tinyint(1)</code>の同義語である<code>bool</code>に0,1以外の値を格納することもできる。ただtrue/falseの判定は前述のとおり、行われる</li>
+</ul>
+<h3 id="_14">例</h3>
+<pre class="highlight"><code class="language-sql">create table ints (a bool, b tinyint zerofill, c int(3) zerofill, d int zerofill , e int unsigned);
+insert into ints values (false, 81, 120, 120, 21);
+select * from ints;
+
+/*
+c,dを見比べると、桁でパディングが行われている
++------+------+------+------------+------+
+| a    | b    | c    | d          | e    |
++------+------+------+------------+------+
+|   0 |   081 |  120 | 0000000120 |   21 |
++------+------+------+------------+------+
+1 row in set (0.001 sec)
+*/
+
+desc ints; --boolがtinyint(1)に変換されていることが確認できる
+/*
++-------+---------------------------+------+-----+---------+-------+
+| Field | Type                      | Null | Key | Default | Extra |
++-------+---------------------------+------+-----+---------+-------+
+| a     | tinyint(1)                | YES  |     | NULL    |       |
+| b     | tinyint(4)                | YES  |     | NULL    |       |
+| c     | int(3) unsigned zerofill  | YES  |     | NULL    |       |
+| d     | int(10) unsigned zerofill | YES  |     | NULL    |       |
+| e     | int(10) unsigned          | YES  |     | NULL    |       |
++-------+---------------------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+*/
+
+</code></pre>
+</details>
+<h2 id="q22-mariadb">Q22 Mariadbの小数点型について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_15">浮動小数点</h3>
+<table>
+<thead>
+<tr>
+<th>型</th>
+<th>数値の範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float(p,s)</td>
+<td><code>–3.402823466E+38 〜 –1.175494351E-38</code><br><code>1.175494351E-38 〜 3.402823466E+38</code></td>
+</tr>
+<tr>
+<td>double(p,s)</td>
+<td><code>–1.7976931348623157E+308 〜 –2.2250738585072014E-308</code><br> <code>2.2250738585072014E-308 〜 1.7976931348623157E+308</code></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="ps">(p,s)</h3>
+<ul>
+<li><code>p</code>:精度(小数点の左右の桁数の合計)</li>
+<li><code>s</code>:位取り(小数点以下の桁数)</li>
+<li>必ずしも<code>(p,s)</code>を指定する必要はなく、この精度を超えると丸めが起きる</li>
+</ul>
+<h3 id="_16">使用例</h3>
+<pre class="highlight"><code class="language-sql">create table floats
+(a float, b float(4,2), c double unsigned);
+
+insert into floats
+values 
+(-3.1415, -3.1415, 1.618033988),
+(3.1415, 3.1415, 1.618033988),
+(27.44, -12.44, 1.618033988);
+
+select * from floats;
+/*
+bが丸められていることが確認できる。
+3.14になったのは、小数点以下の桁数を2にしたから
++---------+-------+-------------+
+| a       | b     | c           |
++---------+-------+-------------+
+| -3.1415 | -3.14 | 1.618033988 |
+|  3.1415 |  3.14 | 1.618033988 |
+|   27.44 |-12.44 | 1.618033988 |
++---------+-------+-------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q23-mariadb">Q23 Mariadbの時間データ型について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_17">時間データ型</h3>
+<table>
+<thead>
+<tr>
+<th>型</th>
+<th>フォーマット</th>
+<th>有効値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>date</td>
+<td>YYYY-MM-DD</td>
+<td>1000-01-01 ~ 9999-12-31</td>
+</tr>
+<tr>
+<td>datetime</td>
+<td>YYYY-MM-DD HH:MI:SS</td>
+<td>1000-01-01 00:00:00.000000 ~ 9999-12-31 23:59:59.999999</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>YYYY-MM-DD HH:MI:SS</td>
+<td>1970-01-01 00:00:00.000000 ~ 2106-02-07 06:28:15.999999</td>
+</tr>
+<tr>
+<td>year</td>
+<td>YYYY</td>
+<td>2155</td>
+</tr>
+<tr>
+<td>time</td>
+<td>HHH:MI:SS</td>
+<td>-838:59:59:000000 ~ 838:59:59:000000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_18">フォーマットについて</h3>
+<table>
+<thead>
+<tr>
+<th>構成要素</th>
+<th>定義</th>
+<th>範囲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YYYY</td>
+<td>年</td>
+<td>1000 ~ 9999</td>
+</tr>
+<tr>
+<td>MM</td>
+<td>月</td>
+<td>01 ~ 12</td>
+</tr>
+<tr>
+<td>DD</td>
+<td>日</td>
+<td>01 ~ 31</td>
+</tr>
+<tr>
+<td>HH</td>
+<td>時</td>
+<td>00 ~ 23</td>
+</tr>
+<tr>
+<td>HHH</td>
+<td>経過時間</td>
+<td>-838 ~ 838</td>
+</tr>
+<tr>
+<td>MI</td>
+<td>分</td>
+<td>00 ~ 59</td>
+</tr>
+<tr>
+<td>SS</td>
+<td>秒</td>
+<td>00 ~ 59</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="_19">年について</h3>
+<ul>
+<li>日付の範囲はデータベースサーバーによって異なる</li>
+<li><code>BC</code>に対応しているものもある(<code>Oracleやpostgre</code>)</li>
+<li>歴史的な日付を格納する際は注意する(というより今のところ、歴史的な年表をDBに作成するなどの意図では<code>postgre</code>を使った方がいいかもしれない)</li>
+</ul>
+<h3 id="13">13月について</h3>
+<ul>
+<li>たとえば、エチオピア暦は、13月が存在する。しかも13月は5日か6日しか存在しない</li>
+<li>2017年1月の<code>Oracle database 12c</code>の仕様書には、これをサポートしたという記述がある </li>
+</ul>
+</div>
+<h3 id="_20">マイクロミリ秒について</h3>
+<ul>
+<li><code>datetime</code>, <code>time</code>, <code>timestamp</code>はマイクロ秒の精度を持つ</li>
+<li><code>datetime(2)</code>等とすることで、精度を制限できる</li>
+</ul>
+<h3 id="_21">注意点</h3>
+<ul>
+<li><code>timestamp</code>型の上限は、年々増えている。おそらく気にする必要はない</li>
+<li>それよりもタイムゾーンに影響を受ける方が問題</li>
+<li><code>year</code>も上限に達する前に増えるか、それともそのころにはSQL自体がなくなっているだろう</li>
+</ul>
+<h3 id="time838">参考(time型の上限が838である原因の考察)</h3>
+<ul>
+<li><a href="https://stackoverflow.com/questions/39259910/why-is-mysqls-maximum-time-limit-8385959">stackoverflow:why-is-mysqls-maximum-time-limit-8385959</a></li>
+</ul>
+<h3 id="_22">使用例</h3>
+<pre class="highlight"><code class="language-sql">create table times
+(a date, b datetime, c year, d time(2));
+
+insert into times
+values
+('2024-02-19', 
+'2024-02-19 10:55:34.000000', 
+'2024', 
+'-21:12:00.98')
+
+select * from times;
+/*
+//小数点以下が0なら表示は省略される。
+//ただし別行の値が0でないならそれに合わせられる模様
++------------+---------------------+------+--------------+
+| a          | b                   | c    | d            |   
++------------+---------------------+------+--------------+   
+| 2024-02-19 | 2024-02-19 10:55:34 | 2024 | -21:12:00.98 |   
++------------+---------------------+------+--------------+   
+1 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_23">その他の使いどころ</h3>
+<ul>
+<li>誕生日の管理なら<code>date</code></li>
+<li>注文管理なら<code>datetime</code></li>
+<li>カラムの変更を追跡するなら<code>timestamp</code>。行が追加/変更された時に日時が自動的に挿入されるため</li>
+<li>年のデータだけが必要なら<code>yeaer</code></li>
+<li>ジョブの完了に必要な時間の長さを保持したいなら<code>time</code>。不要な日付の状態は要らないので</li>
+</ul>
+</details>
+<h2 id="q24">Q24 テーブルを作成しようと考えてから、正規化を行うまでの流れが分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>以下はあくまで一例で、ベストプラクティスではない</li>
+</ul>
+</div>
+<h3 id="1">1. 設計</h3>
+<ul>
+<li>どのような情報が含まれていると効果的か考え、列挙する</li>
+<li>列挙したら、列の名前とデータ型を決める</li>
+</ul>
+<h3 id="person"><code>person</code>テーブルの例</h3>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>型</th>
+<th>有効値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>varchar(40)</td>
+<td></td>
+</tr>
+<tr>
+<td>eye_color</td>
+<td>char(2)</td>
+<td>BL,BR,GR</td>
+</tr>
+<tr>
+<td>birth_date</td>
+<td>date</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>varchar(100)</td>
+<td></td>
+</tr>
+<tr>
+<td>favorite_foods</td>
+<td>varchar(200)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2_1">2. 正規化する</h3>
+<p>重複する列や複合列が、設計に含まれないようにしたい</p>
+<ul>
+<li><code>name</code>は姓名から成る複合オブジェクトなので分割</li>
+<li>一意性を保つ列がないので追加する</li>
+<li><code>address</code>も郵便番号、国、都道府県、市町村、番地に分割可能</li>
+<li><code>favorite_foods</code>にはいくつかの食べ物が含まれるので、別テーブルに記載して、外部キーを用いて結合する</li>
+</ul>
+<h3 id="person_1">personテーブル</h3>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>型</th>
+<th>有効値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>person_id</td>
+<td>smallint(unsigned)</td>
+<td></td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>varchar(20)</td>
+<td></td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>varchar(20)</td>
+<td></td>
+</tr>
+<tr>
+<td>eye_color</td>
+<td>char(2)</td>
+<td>BL,BR,GR</td>
+</tr>
+<tr>
+<td>birth_date</td>
+<td>date</td>
+<td></td>
+</tr>
+<tr>
+<td>street</td>
+<td>varchar(30)</td>
+<td></td>
+</tr>
+<tr>
+<td>city</td>
+<td>varchar(20)</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>varchar(20)</td>
+<td></td>
+</tr>
+<tr>
+<td>country</td>
+<td>varchar(20)</td>
+<td></td>
+</tr>
+<tr>
+<td>postal_code</td>
+<td>varchar(20)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="favorite_foods">favorite_foodsテーブル</h3>
+<ul>
+<li><code>person_id</code>が3つの<code>food</code>を好きなら、3行書く</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>person_id</td>
+<td>smallint(unsigned)</td>
+</tr>
+<tr>
+<td>food</td>
+<td>varchar(20)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_24">どこまで分割するか</h3>
+<ul>
+<li>たとえば<code>address</code>を細分化したのは正しかったのか</li>
+<li>この是非はデータの取り扱い方によって異なる</li>
+<li>分割すれば部分的な更新が容易になる</li>
+<li>が、その一方、データを取り扱う際の複雑さが増し、検索やクエリのパフォーマンスに影響が出る</li>
+<li>たとえば、ユーザに<code>street</code>,<code>city</code>,<code>country</code>,<code>postal_code</code>を独立に入力させ、プロフィールを更新できるようにするなら、おそらく列は分割した方がいい</li>
+</ul>
+</details>
+<h2 id="q25-sql">Q25 SQLスキーマ文の作り方が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="3">3. 正規化が終わったら、実際にテーブルを作成していく</h3>
+<h3 id="create-table-yourtable-col1-col2"><code>CREATE TABLE &lt;yourtable&gt; (col1, col2,...);</code></h3>
+<ul>
+<li>以下はテーブル作成の例</li>
+</ul>
+<pre class="highlight"><code class="language-sql">CREATE TABLE person
+(
+  person_id smallint unsigned,
+  fname varchar(20),
+  lname varchar(20),
+  eye_color char(2) CHECK(eye_color IN ('BR', 'BL', 'GR')),
+  birth_date date,
+  street varchar(30),
+  city varchar(20),
+  state varchar(20),
+  country varchar(20),
+  postal_code varchar(20),
+  CONSTRAINT pk_person PRIMARY KEY (person_id)
+);
+
+CREATE TABLE favorite_foods
+(
+  person_id smallint unsigned,
+  food varchar(20),
+  -- 複合主キー
+  CONSTRAINT pk_favorite_food PRIMARY KEY (person_id, food),
+  -- `person`テーブルの`person_id`列に、挿入しようとしている`person_id`列の値が存在しない場合、操作は失敗する
+  CONSTRAINT fk_fav_food_person_id FOREIGN KEY (person_id)
+  REFERENCES person (person_id)
+);</code></pre>
+<h3 id="_25">説明</h3>
+<ul>
+<li><code>CREATE TABLE</code>:テーブルを作成する際に用いるクエリ</li>
+<li><code>CONSTRAINT</code>: 制約。</li>
+<li><code>PRIMARY KEY</code>: 主キー制約</li>
+<li><code>CHECK</code>:検査制約</li>
+<li><code>FOREIGN KEY (column) REFERENCES outer_table (outer_column)</code>: 外部キー制約</li>
+</ul>
+<h3 id="drop-table-your_table">DROP TABLE <code>&lt;your_table&gt;</code></h3>
+<ul>
+<li>指定したテーブルを削除する。（削除したい場合）</li>
+</ul>
+</details>
+<h2 id="q26">Q26 制約について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_26">主キー制約</h3>
+<ul>
+<li>一意性を保証する</li>
+<li>重複とNULLを禁止する</li>
+<li>1つのテーブルに1つまで</li>
+</ul>
+<h3 id="check">CHECK制約</h3>
+<ul>
+<li>条件を指定し、条件を満たさないデータを禁止する</li>
+<li>後天的に付け加えることは<code>MariaDB</code>ではサポートされていない</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>Q25のCHECK制約は以下の様に書き直せる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">eye_color ENUM('BR', 'BR', 'GR'),</code></pre>
+</div>
+<h3 id="not-null">NOT NULL制約</h3>
+<ul>
+<li>NULL値を禁止する</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><code>null</code>は適用外や不明、空という意味で使われる</li>
+</ul>
+</div>
+<h3 id="unique-key">UNIQUE KEY制約</h3>
+<ul>
+<li>重複したデータを禁止する</li>
+<li>複数列に設定可能</li>
+<li>NULLはOK</li>
+</ul>
+<h3 id="foreign-key">FOREIGN KEY制約</h3>
+<ul>
+<li>他のテーブルの列を参照し、その列にないデータを禁止する</li>
+</ul>
+<h3 id="default">DEFAULT(制約ではない)</h3>
+<ul>
+<li>デフォルト値を設定</li>
+</ul>
+<h3 id="auto-increment">AUTO INCREMENT(制約ではない)</h3>
+<ul>
+<li>自動インクリメント機能を追加。</li>
+<li>挿入しないまたはNULLを挿入するとSQLサーバ側が、自動で利用可能な値を挿入する。</li>
+<li>マルチユーザ環境でも、うまく動作する</li>
+</ul>
+</details>
+<h2 id="q27-describe">Q27 describeコマンドを実行するとテーブル構造が確認できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="describedesc">describe/desc</h3>
+<pre class="highlight"><code class="language-sql">desc favorite_foods;
+/*
++-----------+----------------------+------+-----+---------+-------+
+| Field     | Type                 | Null | Key | Default | Extra |
++-----------+----------------------+------+-----+---------+-------+
+| person_id | smallint(5) unsigned | NO   | PRI | NULL    |       |
+| food      | varchar(20)          | NO   | PRI | NULL    |       |
++-----------+----------------------+------+-----+---------+-------+
+2 rows in set (0.001 sec)]
+*/</code></pre>
+</details>
+<h2 id="q28-alter-table">Q28 テーブルの定義を変更する方法を知っていますか?(alter table)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="alter-table">alter table</h3>
+<ul>
+<li>特定のテーブルの特定の列の型を変更する</li>
+</ul>
+<pre class="highlight"><code class="language-sql">ALTER TABLE &lt;table_name&gt;
+MODIFY COLUMN &lt;column_name&gt; &lt;new_data_type&gt;;</code></pre>
+<h3 id="_27">使用例</h3>
+<ul>
+<li>自動インクリメントを有効にする</li>
+</ul>
+<pre class="highlight"><code class="language-sql">ALTER TABLE person
+MODIFY person_id SMALLINT UNSIGNED AUTO_INCREMENT;
+
+desc person;
+/*
++-------------+----------------------+------+-----+---------+----------------+
+| Field       | Type                 | Null | Key | Default | Extra          |
++-------------+----------------------+------+-----+---------+----------------+
+| person_id   | smallint(5) unsigned | NO   | PRI | NULL    | auto_increment |
+| fname       | varchar(20)          | YES  |     | NULL    |                |
+| lname       | varchar(20)          | YES  |     | NULL    |                |
+| eye_color   | char(2)              | YES  |     | NULL    |                |
+| birth_date  | date                 | YES  |     | NULL    |                |
+| street      | varchar(30)          | YES  |     | NULL    |                |
+| city        | varchar(20)          | YES  |     | NULL    |                |
+| state       | varchar(20)          | YES  |     | NULL    |                |
+| country     | varchar(20)          | YES  |     | NULL    |                |
+| postal_code | varchar(20)          | YES  |     | NULL    |                |
++-------------+----------------------+------+-----+---------+----------------+
+10 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_28">参照整合性違反について</h3>
+<ul>
+<li>たとえば以下はエラーとなる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">ALTER TABLE favorite_foods
+MODIFY person_id SMALLINT unsigned AUTO_INCREMENT;</code></pre>
+<ul>
+<li>これは、他のテーブルで外部キーとして参照されている主キーの変更が、参照整合性に違反するため</li>
+</ul>
+</details>
+<h2 id="q29">Q29 データを挿入/更新/削除し、該当データを閲覧する方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="insert-into-table-col1col2-values-data1-data2"><code>insert into &lt;table&gt; (col1,col2,...) values (data1, data2, ...)</code></h3>
+<ul>
+<li>データを挿入するときに使う</li>
+<li>列の個数と値の個数は一致する必要がある</li>
+<li><code>table</code>の後の<code>()</code>がない場合、テーブルのカラム数と<code>Value</code>句で指定する値の数は同じでなければならない</li>
+<li>ただし、<code>null</code>が許容されている場合、足りない場合は<code>null</code>が挿入される。多い場合はエラーとなる</li>
+<li>フォーマットを満たす限り、文字列は自動的に日付に変換される</li>
+</ul>
+<pre class="highlight"><code class="language-sql">INSERT INTO person
+(person_id, fname, lname, eye_color, birth_date)
+VALUES
+(null, "William", "Turner", "BR", "1999-01-01");
+
+INSERT INTO person
+(person_id, fname, lname, eye_color, birth_date,
+street, city, state, country, postal_code)
+VALUES
+(null, "Susan", "Smith", "BL", "1998-11-13",
+"4th St.", "Arima", "Kanagawa", "JP", "216");
+
+-- 複数を同時に挿入することも可能
+INSERT INTO favorite_foods (person_id, food) 
+VALUES
+(1, "pizza"),
+(1, "cookies"),
+(1, "gummy");</code></pre>
+<h3 id="select-col1-col2-from-table"><code>select col1, col2, ... from &lt;table&gt;</code></h3>
+<ul>
+<li><code>table</code>内の指定したカラムのデータを閲覧する</li>
+<li><code>where</code>句で条件を指定可能</li>
+<li><code>order by &lt;column&gt;</code>句でカラム順にソート</li>
+<li>その他については後程述べる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">SELECT person_id, fname, lname, birth_date
+FROM person
+WHERE person_id = 1;
+
+/*
++-----------+---------+--------+------------+
+| person_id | fname   | lname  | birth_date |
++-----------+---------+--------+------------+
+|         1 | William | Turner | 1999-01-01 |
++-----------+---------+--------+------------+
+1 row in set (0.002 sec)
+*/
+
+SELECT food
+FROM favorite_foods
+WHERE person_id = 1
+ORDER BY food;
+
+/*
++---------+
+| food    |
++---------+
+| cookies |
+| gummy   |
+| pizza   |
++---------+
+3 rows in set (0.003 sec)
+*/</code></pre>
+<h3 id="update-table-set-col1-val1-col2-val2-where-coln-valn"><code>update &lt;table&gt; set col1 = "val1", col2 = "val2" ... where coln = valn</code></h3>
+<ul>
+<li>後からデータを更新可能</li>
+<li><code>where</code>句を指定しないとすべての行が変更されるので注意</li>
+</ul>
+<pre class="highlight"><code class="language-sql">UPDATE person
+SET 
+street = '6th Honmati St',
+city = "Nagamori",
+state = "Gifu",
+country = "JP",
+postal_code = "080" --末尾カンマは要らないので注意
+WHERE person_id = 1;
+
+/*
+Query OK, 1 row affected (0.008 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+*/</code></pre>
+<h3 id="delete-from-table-where-col1-val1"><code>delete from &lt;table&gt; where col1 = val1</code></h3>
+<ul>
+<li><code>where</code>句の条件に一致した行を削除する</li>
+</ul>
+<pre class="highlight"><code class="language-sql">DELETE FROM person
+WHERE person_id = 2;
+
+/*
+Query OK, 1 row affected (0.008 sec)
+*/</code></pre>
+</details>
+<h2 id="q30">Q30 データ挿入等の際に陥りやすい誤りとその際に表示されるエラーメッセージについて知識はありますか？</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_29">一意制約を無視する</h3>
+<pre class="highlight"><code class="language-sql">insert into person
+(person_id)
+values
+(1);
+
+/*
+ERROR 1062 (23000): Duplicate entry '1' for key 'PRIMARY'
+*/</code></pre>
+<h3 id="_30">外部キー制約を無視する</h3>
+<ul>
+<li>親である<code>person</code>テーブルの<code>person_id</code>に存在しない値を挿入しようとしたため</li>
+</ul>
+<pre class="highlight"><code class="language-sql">insert into favorite_foods (person_id, food)
+values (999, "milk");
+
+/*
+ERROR 1452 (23000): 
+Cannot add or update a child row: 
+a foreign key constraint fails 
+(`mydb`.`favorite_foods`, 
+CONSTRAINT `fk_fav_food_person_id` 
+FOREIGN KEY (`person_id`) 
+REFERENCES `person` (`person_id`))
+*/</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li><code>Engine</code>が<code>InnoDB</code>でない場合、外部キー制約は適用されない</li>
+</ul>
+</div>
+<h3 id="enum">ENUM値にない値を入れた場合</h3>
+<pre class="highlight"><code class="language-sql">update person set eye_color = "ZZ" where person_id = 1;
+/*
+ERROR 1265 (01000): Data truncated for column 'eye_color' at row 1
+*/</code></pre>
+<h3 id="_31">フォーマット形式に一致しない日付を挿入した場合</h3>
+<pre class="highlight"><code class="language-sql">update person
+set birth_date = "NOV-21-1971"
+where person_id = 1;
+
+/*
+ERROR 1292 (22007): Incorrect date value: 'NOV-21-1971' for column `mydb`.`person`.`birth_date` at row 1   
+*/ </code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="str_to_date">str_to_date関数</h3>
+<ul>
+<li>上記のものを使うと、フォーマット文字列を指定できる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">update person
+set birth_date = str_to_date("NOV-18-2011", "%b-%d-%Y")
+WHERE person_id = 1;
+
+/*
+Query OK, 1 row affected (0.009 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+*/</code></pre>
+<h3 id="_32">変換用フォーマット文字列一覧</h3>
+<table>
+<thead>
+<tr>
+<th>略語</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%a</td>
+<td>簡略曜日名(Sun)</td>
+</tr>
+<tr>
+<td>%b</td>
+<td>簡略月名(Jan)</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>月を表す数字</td>
+</tr>
+<tr>
+<td>%d</td>
+<td>日を表す数字</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>マイクロ秒</td>
+</tr>
+<tr>
+<td>%H</td>
+<td>24時間の時</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>12時間の時</td>
+</tr>
+<tr>
+<td>%i</td>
+<td>分</td>
+</tr>
+<tr>
+<td>%j</td>
+<td>通年日(001~366)</td>
+</tr>
+<tr>
+<td>%M</td>
+<td>月名(January)</td>
+</tr>
+<tr>
+<td>%m</td>
+<td>月を表す数字</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>AM or PM</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>秒</td>
+</tr>
+<tr>
+<td>%W</td>
+<td>曜日名(Sunday)</td>
+</tr>
+<tr>
+<td>%w</td>
+<td>曜日を表す数字</td>
+</tr>
+<tr>
+<td>%Y</td>
+<td>4桁年</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<h2 id="q31">Q31 テーブルに関する詳細な情報を取得するクエリを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="show-full-tables">show full tables</h3>
+<ul>
+<li><code>BASE TABLE</code>か<code>VIEW</code>、<code>SYSTEM VIEW</code>を返す</li>
+<li><code>BASE TABLE</code>:通常のテーブル</li>
+<li><code>VIEW</code>:1つ以上のテーブルからデータを取得するための仮想テーブル</li>
+<li><code>SYSTEM VIEW</code>: データベースのメタデータなどを提供する特殊なビュー</li>
+</ul>
+<pre class="highlight"><code class="language-sql">show full tables;
+
+/*
++----------------+------------+
+| Tables_in_mydb | Table_type |
++----------------+------------+
+| favorite_foods | BASE TABLE |
+| floats         | BASE TABLE |
+| ints           | BASE TABLE |
+| person         | BASE TABLE |
+| times          | BASE TABLE |
++----------------+------------+
+5 rows in set (0.003 sec)
+*/
+</code></pre>
+<h3 id="show-create-table-table"><code>show create table &lt;table&gt;</code></h3>
+<ul>
+<li>指定したテーブルと、同じテーブル構造を作成するための<code>CREATE TABLE</code>文を表示する</li>
+<li>現在のテーブルの構造も表示できる</li>
+<li><code>desc</code>等ではCHECK例外などは表示されないのでより詳細であるといえる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">show create table person;
+
+/*
++--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table  | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                                                                                                          |
++--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| person | CREATE TABLE `person` (
+  `person_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(20) DEFAULT NULL,
+  `lname` varchar(20) DEFAULT NULL,
+  `eye_color` enum('BR','BL','GR') DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `street` varchar(30) DEFAULT NULL,
+  `city` varchar(20) DEFAULT NULL,
+  `state` varchar(20) DEFAULT NULL,
+  `country` varchar(20) DEFAULT NULL,
+  `postal_code` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`person_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci |
++--------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+<h3 id="show-table-status">show table status</h3>
+<ul>
+<li>テーブルに現在格納されているデータ数や最終更新時間などの詳細情報を取得する</li>
+</ul>
+<pre class="highlight"><code class="language-sql">show table status
+
+/*
++----------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------+------------------+-----------+
+| Name           | Engine | Version | Row_format | Rows | Avg_row_length | Data_length | Max_data_length | Index_length | Data_free | Auto_increment | Create_time         | Update_time         | Check_time | Collation          | Checksum | Create_options | Comment | Max_index_length | Temporary |
++----------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------+------------------+-----------+
+| favorite_foods | InnoDB |      10 | Dynamic    |    3 |           5461 |       16384 |               0 |            0 |         0 |           NULL | 2024-02-19 06:39:09 | 2024-02-19 07:06:56 | NULL       | utf8mb4_general_ci |     NULL |                |         |                0 | N         |
+| floats         | InnoDB |      10 | Dynamic    |    4 |           4096 |       16384 |               0 |            0 |         0 |           NULL | 2024-02-19 04:21:38 | 2024-02-19 04:31:20 | NULL       | utf8mb4_general_ci |     NULL |                |         |                0 | N         |
+| ints           | InnoDB |      10 | Dynamic    |    2 |           8192 |       16384 |               0 |            0 |         0 |           NULL | 2024-02-19 04:13:47 | NULL                | NULL       | utf8mb4_general_ci |     NULL |                |         |                0 | N         |
+| person         | InnoDB |      10 | Dynamic    |    1 |          16384 |       16384 |               0 |            0 |         0 |              3 | 2024-02-19 07:45:22 | NULL                | NULL       | utf8mb4_general_ci |     NULL |                |         |                0 | N         |
+| times          | InnoDB |      10 | Dynamic    |    2 |           8192 |       16384 |               0 |            0 |         0 |           NULL | 2024-02-19 04:59:09 | 2024-02-19 04:59:21 | NULL       | utf8mb4_general_ci |     NULL |                |         |                0 | N         |
++----------------+--------+---------+------------+------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------+------------------+-----------+
+
+*/
+
+-- 対象のテーブルを絞り込みたい場合
+show table status where name = "favorite_foods"\G
+/*
+*************************** 1. row ***************************
+            Name: favorite_foods
+          Engine: InnoDB
+        Version: 10
+      Row_format: Dynamic
+            Rows: 3
+  Avg_row_length: 5461
+    Data_length: 16384
+Max_data_length: 0
+    Index_length: 0
+      Data_free: 0
+  Auto_increment: NULL
+    Create_time: 2024-02-19 06:39:09
+    Update_time: 2024-02-19 07:06:56
+      Check_time: NULL
+      Collation: utf8mb4_general_ci
+        Checksum: NULL
+  Create_options:
+        Comment:
+Max_index_length: 0
+      Temporary: N
+1 row in set (0.001 sec)
+*/</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>ストレージエンジンとして<code>InnoDB</code>を使用している場合、最終更新日やデータの数は正確でない可能性がある</li>
+<li>最終更新日は、テーブルのメタデータの更新時間である可能性がある</li>
+<li>データの数については、信頼性は高いが推定値を出力する</li>
+</ul>
+</div>
+<h3 id="information_schematables">information_schema.tables</h3>
+<ul>
+<li>一般的に<code>show table status</code>より詳細</li>
+</ul>
+<pre class="highlight"><code class="language-sql">select * from information_schema.tables 
+where table_schema="mydb" and table_name="favorite_foods";
+/*
++---------------+--------------+----------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------------+------------------+-----------+
+| TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME     | TABLE_TYPE | ENGINE | VERSION | ROW_FORMAT | TABLE_ROWS | AVG_ROW_LENGTH | DATA_LENGTH | MAX_DATA_LENGTH | INDEX_LENGTH | DATA_FREE | AUTO_INCREMENT | CREATE_TIME         | UPDATE_TIME         | CHECK_TIME | TABLE_COLLATION    | CHECKSUM | CREATE_OPTIONS | TABLE_COMMENT | MAX_INDEX_LENGTH | TEMPORARY |
++---------------+--------------+----------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------------+------------------+-----------+
+| def           | mydb         | favorite_foods | BASE TABLE | InnoDB |      10 | Dynamic    |          3 |           5461 |       16384 |               0 |            0 |         0 |           NULL | 2024-02-19 06:39:09 | 2024-02-19 07:06:56 | NULL       | utf8mb4_general_ci |     NULL |                
+|               |                0 | N         |
++---------------+--------------+----------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+--------------------+----------+----------------+---------------+------------------+-----------+
+1 row in set (0.004 sec)
+*/</code></pre>
+</details>
+<h2 id="q32-g">Q32 \Gオプションを用いると結果を縦に表示できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="g">\G</h3>
+<ul>
+<li>横に長い時、見やすくなる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">select * from information_schema.tables 
+where table_schema="mydb" 
+and table_name="favorite_foods"\G;
+/*
+*************************** 1. row ***************************
+      TABLE_CATALOG: def
+        TABLE_SCHEMA: mydb
+          TABLE_NAME: favorite_foods
+          TABLE_TYPE: BASE TABLE
+              ENGINE: InnoDB
+            VERSION: 10
+          ROW_FORMAT: Dynamic
+          TABLE_ROWS: 3
+      AVG_ROW_LENGTH: 5461
+        DATA_LENGTH: 16384
+    MAX_DATA_LENGTH: 0
+        INDEX_LENGTH: 0
+          DATA_FREE: 0
+      AUTO_INCREMENT: NULL
+        CREATE_TIME: 2024-02-19 06:39:09
+        UPDATE_TIME: 2024-02-19 07:06:56
+          CHECK_TIME: NULL
+    TABLE_COLLATION: utf8mb4_general_ci
+            CHECKSUM: NULL
+      CREATE_OPTIONS:
+      TABLE_COMMENT:
+    MAX_INDEX_LENGTH: 0
+          TEMPORARY: N
+    1 row in set (0.002 sec)
+*/</code></pre>
+</details>
+<h2 id="q33-pager">Q33 pagerコマンドを用いると、出力を見やすく整形(もしくは別ファイルに出力など)できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="pager-less-sfx">pager less -SFX</h3>
+<ul>
+<li><code>pager</code>コマンドは長い結果をページ単位で表示する</li>
+<li>(あたかも、結果がパイプでlessコマンドに渡されたかのようになる)</li>
+<li>水平スクロールが有効になる</li>
+<li><code>-S</code>:画面幅より長い行を折り返さない</li>
+<li><code>-n</code>:行番号を表示しない</li>
+<li><code>-i</code>:検索時に大文字小文字を区別しない</li>
+<li><code>-F</code>:1画面でファイル全体が表示できる場合はlessを自動終了</li>
+<li><code>X</code>:端末に<code>termcap</code>初期化文字、非初期化文字を送らない（これを指定しないと、<code>less</code>コマンドの表示、終了時に画面がクリアされる）</li>
+<li>終了したい場合は、<code>q</code>を押す</li>
+</ul>
+<pre class="highlight"><code class="language-sql">pager less -SFX
+-- PAGER set to 'less -SFX'
+
+show table status where name ="favorite_foods";
+/*
++----------------+--------+---------+------------+------+---&gt;
+| Name           | Engine | Version | Row_format | Rows | Av&gt;
++----------------+--------+---------+------------+------+---&gt;
+| favorite_foods | InnoDB |      10 | Dynamic    |    3 |   &gt;
++----------------+--------+---------+------------+------+---&gt;
+(END)
+*/</code></pre>
+<h3 id="pager-cat-yourfilepath">pager cat &gt; /your/file/path</h3>
+<ul>
+<li>標準出力が、別ファイルにリダイレクトされる</li>
+</ul>
+<pre class="highlight"><code class="language-sql">pager cat &gt; /mnt/c/file_test/result.txt
+-- PAGER set to 'cat &gt; /mnt/c/file_test/result.txt'
+
+show table status where name ="favorite_foods";
+-- 1 row in set (0.001 sec)
+-- 出力は表示されずに指定したファイルにリダイレクトされる
+--
+</code></pre>
+<h3 id="pager-grep-search_keyword">pager grep <code>&lt;search_keyword&gt;</code></h3>
+<ul>
+<li>一致した行のみを表示する</li>
+</ul>
+<pre class="highlight"><code class="language-sql">pager grep "INNODB_FT";
+-- PAGER set to 'grep "INNODB_FT"'
+
+show tables from information_schema;
+
+-- フィルタリングしているだけなので、行数は変わらない
+/*
+| INNODB_FT_CONFIG                      |
+| INNODB_FT_DELETED                     |
+| INNODB_FT_INDEX_TABLE                 |
+| INNODB_FT_INDEX_CACHE                 |
+| INNODB_FT_BEING_DELETED               |
+| INNODB_FT_DEFAULT_STOPWORD            |
+79 rows in set (0.001 sec)
+*/
+</code></pre>
+<h3 id="_33">複数コマンドを指定することも可能</h3>
+<pre class="highlight"><code class="language-sql">pager grep "INNODB_FT" | less -SFX
+-- PAGER set to 'grep "INNODB_" | less -SFX'
+
+show tables from information_schema;
+
+/*
+| INNODB_FT_CONFIG                      |
+| INNODB_FT_DELETED                     |
+| INNODB_FT_INDEX_TABLE                 |
+| INNODB_FT_INDEX_CACHE                 |
+| INNODB_FT_BEING_DELETED               |
+| INNODB_FT_DEFAULT_STOPWORD            |
+79 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="pager-wc">pager wc</h3>
+<ul>
+<li>行数,単語数,バイト数</li>
+</ul>
+<pre class="highlight"><code class="language-sql">pager wc
+-- PAGER set to 'wc'
+
+show tables from information_schema;
+/*
+ 83     243    3486
+ 79 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="pager-tee-a-yourfilepath">pager tee -a /your/file/path</h3>
+<ul>
+<li><code>tee</code>コマンドを使って標準出力とファイル出力を同時に行う</li>
+<li><code>a</code>オプションは追記</li>
+</ul>
+<pre class="highlight"><code class="language-sql">pager tee -a output.txt | less -SFX
+-- PAGER set to 'tee -a output.txt | less -SFX'
+
+show tables from information_schema;
+
+-- 標準出力も行われている
+/*
++---------------------------------------+
+| Tables_in_information_schema          |
++---------------------------------------+
+| ALL_PLUGINS                           |
+| APPLICABLE_ROLES                      |
+| CHARACTER_SETS                        | 
+| ...                                   | 
+*/</code></pre>
+<h3 id="_34">デフォルトに戻す</h3>
+<pre class="highlight"><code class="language-sql">nopager;
+-- PAGER set to stdout
+-- 標準出力の戻している</code></pre>
+<h3 id="_35">起動時に指定する場合</h3>
+<pre class="highlight"><code class="language-bash">$ mysql --pager="less -SFX"</code></pre>
+<h3 id="cat-devnull">cat &gt; /dev/null</h3>
+<ul>
+<li>行数と実行時間だけを知りたい場合</li>
+</ul>
+<pre class="highlight"><code class="language-sql">-- 結果はブラックホールに投げる
+pager cat &gt; /dev/null
+-- PAGER set to 'cat &gt; /dev/null'
+
+show tables from information_schema;
+-- 79 rows in set (0.001 sec)</code></pre>
+</details>
+<h2 id="q34">Q34 そもそもオプションの指定方法について理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_36">通常</h3>
+<pre class="highlight"><code class="language-bash">$ mysql -u root #(ショートオプション 空白文字 値)
+$ mysql -uroot #(ショートオプション 値)
+$ mysql --user root #(ロングオプション 空白 値)
+$ mysql --user=root #(ロングオプション イコール 値)</code></pre>
+<h3 id="_37">パスワードは例外</h3>
+<pre class="highlight"><code class="language-bash"># ショートオプション 値
+# ロングオプション イコール 値
+# の形式しか取れない
+# もちろんクォートはなくてもよい
+$ mysql -u root -p"hoge"
+$ mysql -u root --password="hoge"</code></pre>
+<h3 id="db">呼び出し時にDBも指定可能</h3>
+<pre class="highlight"><code class="language-bash">$ mysql -u root -p"hoge" &lt;your_db&gt; 
+# MariaDB [your_db]&gt; </code></pre>
+</details>
+<h2 id="q35-c-kill">Q35 クエリの取り消しを行う時は\c, クエリの中断を行う時はKILLが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="c">\c</h3>
+<ul>
+<li>クエリを実行せずに、新しいクエリの入力を開始する</li>
+</ul>
+<pre class="highlight"><code class="language-sql">MariaDB [(none)]&gt; SELECT * FROM typo --間違えた!
+    -&gt; \c
+MariaDB [(none)]&gt;</code></pre>
+<h3 id="kill">実行中のクエリの場合はKILLコマンド</h3>
+<ul>
+<li>重いクエリを意図せず実行してしまったときにも役立つ</li>
+</ul>
+<pre class="highlight"><code class="language-sql">show processlist\G; --実行中クエリを確認可能
+
+/*
+*************************** 1. row ***************************
+      Id: 49
+    User: &lt;YourUserName&gt;
+    Host: localhost
+      db: NULL
+Command: Query
+    Time: 0
+  State: starting
+    Info: show processlist
+Progress: 0.000
+1 row in set (0.000 sec)
+*/
+
+KILL 49;</code></pre>
+</details>
+<h2 id="q36-xml-xml">Q36 データをXMLとして取得したい場合、--xmlオプションが指定できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_38">呼び出し時にオプション指定</h3>
+<pre class="highlight"><code class="language-bash">$ mysql -u &lt;user_name&gt; -p"&lt;your_pass&gt;" --xml &lt;your_db&gt;
+# MariaDB [your_db]&gt; </code></pre>
+<pre class="highlight"><code class="language-sql">select * from favorite_foods;
+
+/*
+&lt;?xml version="1.0"?&gt;
+
+&lt;resultset statement="select * from favorite_foods;" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;1&lt;/field&gt;
+        &lt;field name="food"&gt;cookies&lt;/field&gt;
+  &lt;/row&gt;
+
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;1&lt;/field&gt;
+        &lt;field name="food"&gt;gummy&lt;/field&gt;
+  &lt;/row&gt;
+
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;1&lt;/field&gt;
+        &lt;field name="food"&gt;pizza&lt;/field&gt;
+  &lt;/row&gt;
+&lt;/resultset&gt;
+3 rows in set (0.003 sec)
+*/</code></pre>
+</details>
+<h2 id="1-vs">コラム1(先頭カンマ vs 末尾カンマ)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_39">気持ち悪い!</h3>
+<pre class="highlight"><code class="language-text">・先頭カンマは気持ち悪い。当初はそう感じた
+
+・実は今もそう感じている
+
+・しかし、下記の例から見ても、先頭カンマの方が
+  ミスが少なくなることは事実だろう（この事実は
+  統計的にも示されている）
+
+・先頭カンマは、カラムの削除/追加、カンマの見落としを
+  避けるという点で優れている
+
+・気持ち悪いと感じるのは、それだけカンマに注目できている
+  事を意味するのかもしれない。
+
+・実際、末尾カンマを書いていたころは、gitのdiffが2行に
+  なることにイライラしていたが、それがなくなった
+
+・ただし、カラム -&gt; , より、スペース-&gt;カンマ-&gt;カラムの
+  方が時間がかかり面倒な気がする。（特に練習している時は
+
+・結果として、見落としが（比較的）許されない開発環境では
+  先頭カンマを用い、SQLの勉強中や、あまり注意力を必要と
+  しない場合は、簡単のため末尾カンマを使った方がいい
+  という結論に達した
+
+・手続き型言語のように、最後の項の末尾にカンマを
+  置ければいいのにと感じている
+
+・このチュートリアルでは末尾カンマを用いることにした
+・（理由は、前述のとおり）
+・決して自分の（愚かな）美的センスのためではない()</code></pre>
+<pre class="highlight"><code class="language-sql">
+select
+  f.film_id
+  , f.title
+  , f.description
+  -- , f.release_year
+  -- , f.language_id
+  -- , f.original_language_id
+  , f.rental_duration
+  , f.rental_rate
+  , f.length
+  -- , f.replacement_cost
+  -- , f.ration
+  -- , f.special_features
+  , f.last_update
+  , a.first_name
+  , a.last_name
+from film f
+inner join film_actor fa
+  on f.film_id = fa.film_id
+inner join actor a
+  on fa.actor_id = a.actor_id
+;</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
+      
+        <script src="../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

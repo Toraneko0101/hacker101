@@ -1,0 +1,8527 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="20_hard3_error.html">
+      
+      
+        <link rel="next" href="22_hard5_generator.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(上級4:非同期) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/prism.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(上級4:非同期)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="21_hard4_asynchronous.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q70" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q70 非同期のコードがブラウザによって、いつ読み込まれるか分からないときの対処法が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q70 非同期のコードがブラウザによって、いつ読み込まれるか分からないときの対処法が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクリプトをロードする関数を考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errorになる原因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      対処したコード
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q71" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q71. 複数のスクリプトを順々に読み込みたい場合の方法が分かりますか?(コールバック地獄を知っている場合は飛ばす)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q71. 複数のスクリプトを順々に読み込みたい場合の方法が分かりますか?(コールバック地獄を知っている場合は飛ばす)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      自然な解決策
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q72" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q72. スクリプト読み込みが失敗した場合の対応策が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q72. スクリプト読み込みが失敗した場合の対応策が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      .onerror
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q73-q71" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q73 多数のスクリプトを順々に読み込んで行く時、Q71のようにネストした呼び出しを行うと、地獄を見る理由が分かりますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q73 多数のスクリプトを順々に読み込んで行く時、Q71のようにネストした呼び出しを行うと、地獄を見る理由が分かりますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      複数のスクリプトを入れ子で読み込んだ例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      対策?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      本来の対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q74-promiseresolvereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q74 Promiseの生成方法と、resolve/rejectが呼ばれるまでの流れを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q74 Promiseの生成方法と、resolve/rejectが呼ばれるまでの流れを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promiseコンストラクタの構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executor" class="md-nav__link">
+    <span class="md-ellipsis">
+      executorの中身
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolve-reject" class="md-nav__link">
+    <span class="md-ellipsis">
+      resolve, rejectの呼び出し方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      要約すると
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q75-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q75. promiseオブジェクトが持っている内部プロパティについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q75. promiseオブジェクトが持っている内部プロパティについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statepromisestate" class="md-nav__link">
+    <span class="md-ellipsis">
+      state([[PromiseState]])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultpromiseresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      result([[PromiseResult]])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決または拒否された状態について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q76-resolverejectpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q76. 上記までの説明をもとに、resolve/rejectした結果を、promiseオブジェクトに返すことができますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q76. 上記までの説明をもとに、resolve/rejectした結果を、promiseオブジェクトに返すことができますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(resolve)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(reject)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejecterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      rejectの引数はErrorオブジェクト以外でもいい?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q77-executorresolvereject222" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q77 executor内でresolveやrejectが2つとも、または同種が2回以上登場した場合、2個目以降はすべて無視されることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q77 executor内でresolveやrejectが2つとも、または同種が2回以上登場した場合、2個目以降はすべて無視されることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promiseの状態は変わらないが、
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q78-resolvereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q78 resolve/rejectが即時実行可能であることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q78 resolve/rejectが即時実行可能であることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通は非同期処理を行った後に呼び出すが
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      即座に呼び出す場合とは?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q79-executorthen-catch-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q79 executorから返したオブジェクトの内部プロパティにアクセスするために、.then, .catch, finallyが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q79 executorから返したオブジェクトの内部プロパティにアクセスするために、.then, .catch, finallyが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#then" class="md-nav__link">
+    <span class="md-ellipsis">
+      .then
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolve_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      resolveされた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rejectされた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      正常終了だけに関心がある場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーにだけ関心がある場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      catch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      finally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q71promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q71をpromiseを使って実装した場合の例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q80-settledpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q80 settledであるpromiseにもハンドラがセットできることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q80 settledであるpromiseにもハンドラがセットできることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settled" class="md-nav__link">
+    <span class="md-ellipsis">
+      既にsettledの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q81-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q81 順次実行されるタスクを、Promiseを用い、コールバック地獄に陥らずに処理することができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q81 順次実行されるタスクを、Promiseを用い、コールバック地獄に陥らずに処理することができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      よくある失敗例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      成功例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q82-thenpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q82. thenメソッド内で値を返しているにもかかわらず、返り値がPromiseになる理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q82. thenメソッド内で値を返しているにもかかわらず、返り値がPromiseになる理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-result-2promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      return result * 2;がPromiseを返す理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-err" class="md-nav__link">
+    <span class="md-ellipsis">
+      return errの場合は?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q82-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q82. Promiseを用いて非同期アクションのチェーンを組み立てることができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q82. Promiseを用いて非同期アクションのチェーンを組み立てることができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thensettled" class="md-nav__link">
+    <span class="md-ellipsis">
+      .thenはsettledになるまで待機するので
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q73" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q73のコールバック地獄を書き直す
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q83-thenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q83. thenableオブジェクトについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q83. thenableオブジェクトについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      そもそも
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      thenable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      存在理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他利点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q84-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q84. リモートサーバから情報をロードするために、fetchメソッドが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q84. リモートサーバから情報をロードするために、fetchメソッドが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      fetchの構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q85-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q85 非同期のアクションを行う際、常にPromiseを返した方がいい理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q85 非同期のアクションを行う際、常にPromiseを返した方がいい理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      答え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q86-thenf1-f2thenf1catchf2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q86 then(f1, f2)とthen(f1).catch(f2)が異なることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q86 then(f1, f2)とthen(f1).catch(f2)が異なることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thenf1-f2" class="md-nav__link">
+    <span class="md-ellipsis">
+      then(f1, f2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thenf1catchf2" class="md-nav__link">
+    <span class="md-ellipsis">
+      then(f1).catch(f2)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q87-promisereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q87 promiseがrejectされた時の挙動について理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q87 promiseがrejectされた時の挙動について理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promisereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      promiseがrejectされると
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      直後に書く必要はない
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q88-executorpromisetrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q88. executorとpromiseハンドラが暗黙のtry...catchを持っていることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q88. executorとpromiseハンドラが暗黙のtry...catchを持っていることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーが起きた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executortrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      executorにおける暗黙のtry...catch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promisetrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      promiseにおける暗黙のtry...catch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q89-promisethenconsolelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q89. promise.then(console.log)が成功する理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q89. promise.then(console.log)が成功する理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      多分これは理解できると思う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      ???????????
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      理解その1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      たとえば
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.logというのは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      最初の話に戻ると
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      alertの場合は?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      上手くいくわけ補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      もう1つコールバック関数の例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q90-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q90 catchの中でエラーを投げたとき、制御が次の最も近いエラーハンドルに移ることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q90 catchの中でエラーを投げたとき、制御が次の最も近いエラーハンドルに移ることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり再スロー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q91-reject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q91. 未処理のrejectを追跡する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q91. 未処理のrejectを追跡する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      書き忘れた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      追跡する方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定する意味
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q92-throwcatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q92. 非同期コールバックの中でthrowを用いてエラーを投げると、catchで補足できないことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q92. 非同期コールバックの中でthrowを用いてエラーを投げると、catchで補足できないことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      これは正常に動く
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      これは動かない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単な説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      メモ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q93-promisepromiseall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q93 並列に複数のpromiseを実行し、すべてが完了するまで待ちたい場合に、Promise.allを使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q93 並列に複数のpromiseを実行し、すべてが完了するまで待ちたい場合に、Promise.allを使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise-promisealliterable" class="md-nav__link">
+    <span class="md-ellipsis">
+      promise = Promise.all(iterable)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q94-promiseallpromiserejectpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q94. Promise.allにおいて、いずれかのpromiseがrejectされた場合、他のpromiseの結果は無視されることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q94. Promise.allにおいて、いずれかのpromiseがrejectされた場合、他のpromiseの結果は無視されることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q95-promisealliterablepromisepromiseresolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q95. Promise.all(iterable)の中で非promiseの項目を使った場合、Promise.resolveでラップされることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q95. Promise.all(iterable)の中で非promiseの項目を使った場合、Promise.resolveでラップされることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q96-promiserejectpromisepromiseallsettled" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q96. いずれかのpromiseがrejectされてもすべてのpromiseが解決するまで待ちたい場合、Promise.allSettledが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q96. いずれかのpromiseがrejectされてもすべてのpromiseが解決するまで待ちたい場合、Promise.allSettledが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promiseall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.allとの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q97-promiserace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q97 最初に返される結果のみが必要な場合、Promise.raceが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q97 最初に返される結果のみが必要な場合、Promise.raceが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q98-fulfilledpromisepromiseany" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q98 最初のfulfilledされたpromiseを取得したい場合、Promise.anyが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q98 最初のfulfilledされたpromiseを取得したい場合、Promise.anyが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promiserace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.raceとの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      全部rejectだったら?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1fulfilled" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(1つ以上fulfilled)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(全部rejected)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q99-promiseresolverejectpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q99. Promise.resolve/rejectを用いてPromiseを返すことができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q99. Promise.resolve/rejectを用いてPromiseを返すことができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promiseresolvevalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.resolve(value)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      例文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promiserejecterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.reject(error)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q100-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q100. コールバックを受け付ける関数を、Promiseを返す関数へ、変換することはできますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q100. コールバックを受け付ける関数を、Promiseを返す関数へ、変換することはできますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promisification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promisification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      元の関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      書き換えたversion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q101-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q101. 複数の関数をpromise化したい場合、ヘルパー関数を使ってそれを実行することができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q101. 複数の関数をpromise化したい場合、ヘルパー関数を使ってそれを実行することができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      コールバックの形式が珍しい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q102-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q102. Promiseがコールバックの完全な置き換えにはならないことを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q102. Promiseがコールバックの完全な置き換えにはならないことを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      コールバック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promisification_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promisificationによる書き換え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストリーム処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      イベント駆動の処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      非同期処理の進捗
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      上記の具体例について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q103" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q103. 非同期コードが、同期コードよりも常に後に実行される理由を理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q103. 非同期コードが、同期コードよりも常に後に実行される理由を理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_67" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単な理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microtasksキューから見る理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり、promise doneを先に表示したいなら
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q104-rejectjsunhandledrejection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q104. 未処理のrejectがあった場合、JSはunhandledrejectionイベントを発火しますが、その検知の仕組みを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q104. 未処理のrejectがあった場合、JSはunhandledrejectionイベントを発火しますが、その検知の仕組みを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_68" class="md-nav__link">
+    <span class="md-ellipsis">
+      概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_69" class="md-nav__link">
+    <span class="md-ellipsis">
+      イベントが発火する原因が分かりますか?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_70" class="md-nav__link">
+    <span class="md-ellipsis">
+      答え
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q105-asyncpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q105. 関数の前にasyncキーワードを付けると、関数がpromiseを返すようになることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q105. 関数の前にasyncキーワードを付けると、関数がpromiseを返すようになることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_71" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_72" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q106-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q106 async関数の中でのみ動作するawaitキーワードの意味を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q106 async関数の中でのみ動作するawaitキーワードの意味を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#await" class="md-nav__link">
+    <span class="md-ellipsis">
+      await
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q107-promisethenasyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q107 Promiseとthen等で書いたコードをasync/awaitを用いて書き直すことができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q107 Promiseとthen等で書いたコードをasync/awaitを用いて書き直すことができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      CORSリクエストについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_73" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(方針)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise-then" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(Promise &amp;' then)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(async/await)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q108-awaitthenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q108 awaitもthenableを許容することを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q108 awaitもthenableを許容することを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_74" class="md-nav__link">
+    <span class="md-ellipsis">
+      概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_75" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q109-async" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q109 クラスメソッドもasyncになれることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q109 クラスメソッドもasyncになれることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_76" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q110-asyncawaittrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q110 async/awaitでエラー処理を行う場合、try...catchが使えることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q110 async/awaitでエラー処理を行う場合、try...catchが使えることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#awaitpromisereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      awaitはpromiseの結果がrejectなら例外を投げる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーはtry...catchでキャッチできる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-neterr_name_not_resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET net::ERR_NAME_NOT_RESOLVEDについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      catchを追加し忘れた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thencatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      .thenや.catchを使う機会はあるのか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q111-asyncawaitpromiseallpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q111. async/awaitとPromise.allを併用して、複数のPromiseを待てることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q111. async/awaitとPromise.allを併用して、複数のPromiseを待てることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_77" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q112-asyncasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q112. 非asyncの関数内からasync呼び出しを行うようなコードを記述できますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q112. 非asyncの関数内からasync呼び出しを行うようなコードを記述できますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asyncpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      async呼び出しをPromiseとして扱う
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q70" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q70 非同期のコードがブラウザによって、いつ読み込まれるか分からないときの対処法が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q70 非同期のコードがブラウザによって、いつ読み込まれるか分からないときの対処法が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクリプトをロードする関数を考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errorになる原因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      対処したコード
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q71" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q71. 複数のスクリプトを順々に読み込みたい場合の方法が分かりますか?(コールバック地獄を知っている場合は飛ばす)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q71. 複数のスクリプトを順々に読み込みたい場合の方法が分かりますか?(コールバック地獄を知っている場合は飛ばす)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      自然な解決策
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q72" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q72. スクリプト読み込みが失敗した場合の対応策が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q72. スクリプト読み込みが失敗した場合の対応策が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      .onerror
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q73-q71" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q73 多数のスクリプトを順々に読み込んで行く時、Q71のようにネストした呼び出しを行うと、地獄を見る理由が分かりますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q73 多数のスクリプトを順々に読み込んで行く時、Q71のようにネストした呼び出しを行うと、地獄を見る理由が分かりますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      複数のスクリプトを入れ子で読み込んだ例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      対策?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      本来の対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q74-promiseresolvereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q74 Promiseの生成方法と、resolve/rejectが呼ばれるまでの流れを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q74 Promiseの生成方法と、resolve/rejectが呼ばれるまでの流れを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promiseコンストラクタの構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executor" class="md-nav__link">
+    <span class="md-ellipsis">
+      executorの中身
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolve-reject" class="md-nav__link">
+    <span class="md-ellipsis">
+      resolve, rejectの呼び出し方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      要約すると
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q75-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q75. promiseオブジェクトが持っている内部プロパティについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q75. promiseオブジェクトが持っている内部プロパティについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#statepromisestate" class="md-nav__link">
+    <span class="md-ellipsis">
+      state([[PromiseState]])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resultpromiseresult" class="md-nav__link">
+    <span class="md-ellipsis">
+      result([[PromiseResult]])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決または拒否された状態について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q76-resolverejectpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q76. 上記までの説明をもとに、resolve/rejectした結果を、promiseオブジェクトに返すことができますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q76. 上記までの説明をもとに、resolve/rejectした結果を、promiseオブジェクトに返すことができますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#resolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(resolve)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(reject)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejecterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      rejectの引数はErrorオブジェクト以外でもいい?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q77-executorresolvereject222" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q77 executor内でresolveやrejectが2つとも、または同種が2回以上登場した場合、2個目以降はすべて無視されることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q77 executor内でresolveやrejectが2つとも、または同種が2回以上登場した場合、2個目以降はすべて無視されることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promiseの状態は変わらないが、
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q78-resolvereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q78 resolve/rejectが即時実行可能であることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q78 resolve/rejectが即時実行可能であることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通は非同期処理を行った後に呼び出すが
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      即座に呼び出す場合とは?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q79-executorthen-catch-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q79 executorから返したオブジェクトの内部プロパティにアクセスするために、.then, .catch, finallyが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q79 executorから返したオブジェクトの内部プロパティにアクセスするために、.then, .catch, finallyが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#then" class="md-nav__link">
+    <span class="md-ellipsis">
+      .then
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolve_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      resolveされた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rejectされた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      正常終了だけに関心がある場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーにだけ関心がある場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      catch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      finally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q71promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q71をpromiseを使って実装した場合の例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q80-settledpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q80 settledであるpromiseにもハンドラがセットできることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q80 settledであるpromiseにもハンドラがセットできることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#settled" class="md-nav__link">
+    <span class="md-ellipsis">
+      既にsettledの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q81-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q81 順次実行されるタスクを、Promiseを用い、コールバック地獄に陥らずに処理することができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q81 順次実行されるタスクを、Promiseを用い、コールバック地獄に陥らずに処理することができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      よくある失敗例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      成功例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q82-thenpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q82. thenメソッド内で値を返しているにもかかわらず、返り値がPromiseになる理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q82. thenメソッド内で値を返しているにもかかわらず、返り値がPromiseになる理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#return-result-2promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      return result * 2;がPromiseを返す理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-err" class="md-nav__link">
+    <span class="md-ellipsis">
+      return errの場合は?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q82-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q82. Promiseを用いて非同期アクションのチェーンを組み立てることができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q82. Promiseを用いて非同期アクションのチェーンを組み立てることができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thensettled" class="md-nav__link">
+    <span class="md-ellipsis">
+      .thenはsettledになるまで待機するので
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#q73" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q73のコールバック地獄を書き直す
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q83-thenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q83. thenableオブジェクトについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q83. thenableオブジェクトについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      そもそも
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      thenable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      存在理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他利点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q84-fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q84. リモートサーバから情報をロードするために、fetchメソッドが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q84. リモートサーバから情報をロードするために、fetchメソッドが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      fetchの構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q85-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q85 非同期のアクションを行う際、常にPromiseを返した方がいい理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q85 非同期のアクションを行う際、常にPromiseを返した方がいい理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      答え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q86-thenf1-f2thenf1catchf2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q86 then(f1, f2)とthen(f1).catch(f2)が異なることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q86 then(f1, f2)とthen(f1).catch(f2)が異なることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thenf1-f2" class="md-nav__link">
+    <span class="md-ellipsis">
+      then(f1, f2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thenf1catchf2" class="md-nav__link">
+    <span class="md-ellipsis">
+      then(f1).catch(f2)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q87-promisereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q87 promiseがrejectされた時の挙動について理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q87 promiseがrejectされた時の挙動について理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promisereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      promiseがrejectされると
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      直後に書く必要はない
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q88-executorpromisetrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q88. executorとpromiseハンドラが暗黙のtry...catchを持っていることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q88. executorとpromiseハンドラが暗黙のtry...catchを持っていることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーが起きた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executortrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      executorにおける暗黙のtry...catch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promisetrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      promiseにおける暗黙のtry...catch
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q89-promisethenconsolelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q89. promise.then(console.log)が成功する理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q89. promise.then(console.log)が成功する理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      多分これは理解できると思う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      ???????????
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      理解その1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      たとえば
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consolelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      console.logというのは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      最初の話に戻ると
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alert" class="md-nav__link">
+    <span class="md-ellipsis">
+      alertの場合は?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      上手くいくわけ補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      もう1つコールバック関数の例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q90-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q90 catchの中でエラーを投げたとき、制御が次の最も近いエラーハンドルに移ることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q90 catchの中でエラーを投げたとき、制御が次の最も近いエラーハンドルに移ることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり再スロー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q91-reject" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q91. 未処理のrejectを追跡する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q91. 未処理のrejectを追跡する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      書き忘れた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      追跡する方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      設定する意味
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q92-throwcatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q92. 非同期コールバックの中でthrowを用いてエラーを投げると、catchで補足できないことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q92. 非同期コールバックの中でthrowを用いてエラーを投げると、catchで補足できないことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      これは正常に動く
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      これは動かない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単な説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      メモ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q93-promisepromiseall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q93 並列に複数のpromiseを実行し、すべてが完了するまで待ちたい場合に、Promise.allを使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q93 並列に複数のpromiseを実行し、すべてが完了するまで待ちたい場合に、Promise.allを使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise-promisealliterable" class="md-nav__link">
+    <span class="md-ellipsis">
+      promise = Promise.all(iterable)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q94-promiseallpromiserejectpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q94. Promise.allにおいて、いずれかのpromiseがrejectされた場合、他のpromiseの結果は無視されることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q94. Promise.allにおいて、いずれかのpromiseがrejectされた場合、他のpromiseの結果は無視されることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q95-promisealliterablepromisepromiseresolve" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q95. Promise.all(iterable)の中で非promiseの項目を使った場合、Promise.resolveでラップされることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q95. Promise.all(iterable)の中で非promiseの項目を使った場合、Promise.resolveでラップされることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q96-promiserejectpromisepromiseallsettled" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q96. いずれかのpromiseがrejectされてもすべてのpromiseが解決するまで待ちたい場合、Promise.allSettledが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q96. いずれかのpromiseがrejectされてもすべてのpromiseが解決するまで待ちたい場合、Promise.allSettledが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promiseall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.allとの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q97-promiserace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q97 最初に返される結果のみが必要な場合、Promise.raceが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q97 最初に返される結果のみが必要な場合、Promise.raceが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q98-fulfilledpromisepromiseany" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q98 最初のfulfilledされたpromiseを取得したい場合、Promise.anyが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q98 最初のfulfilledされたpromiseを取得したい場合、Promise.anyが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promiserace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.raceとの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      全部rejectだったら?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1fulfilled" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(1つ以上fulfilled)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rejected" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(全部rejected)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q99-promiseresolverejectpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q99. Promise.resolve/rejectを用いてPromiseを返すことができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q99. Promise.resolve/rejectを用いてPromiseを返すことができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promiseresolvevalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.resolve(value)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      例文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promiserejecterror" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise.reject(error)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q100-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q100. コールバックを受け付ける関数を、Promiseを返す関数へ、変換することはできますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q100. コールバックを受け付ける関数を、Promiseを返す関数へ、変換することはできますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promisification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promisification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      元の関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      書き換えたversion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q101-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q101. 複数の関数をpromise化したい場合、ヘルパー関数を使ってそれを実行することができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q101. 複数の関数をpromise化したい場合、ヘルパー関数を使ってそれを実行することができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      コールバックの形式が珍しい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q102-promise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q102. Promiseがコールバックの完全な置き換えにはならないことを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q102. Promiseがコールバックの完全な置き換えにはならないことを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promise_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      コールバック
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promisification_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promisificationによる書き換え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストリーム処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      イベント駆動の処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      非同期処理の進捗
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      上記の具体例について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q103" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q103. 非同期コードが、同期コードよりも常に後に実行される理由を理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q103. 非同期コードが、同期コードよりも常に後に実行される理由を理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_67" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単な理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#microtasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Microtasksキューから見る理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり、promise doneを先に表示したいなら
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q104-rejectjsunhandledrejection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q104. 未処理のrejectがあった場合、JSはunhandledrejectionイベントを発火しますが、その検知の仕組みを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q104. 未処理のrejectがあった場合、JSはunhandledrejectionイベントを発火しますが、その検知の仕組みを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_68" class="md-nav__link">
+    <span class="md-ellipsis">
+      概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_69" class="md-nav__link">
+    <span class="md-ellipsis">
+      イベントが発火する原因が分かりますか?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_70" class="md-nav__link">
+    <span class="md-ellipsis">
+      答え
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q105-asyncpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q105. 関数の前にasyncキーワードを付けると、関数がpromiseを返すようになることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q105. 関数の前にasyncキーワードを付けると、関数がpromiseを返すようになることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_71" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_72" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまり
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q106-asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q106 async関数の中でのみ動作するawaitキーワードの意味を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q106 async関数の中でのみ動作するawaitキーワードの意味を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#await" class="md-nav__link">
+    <span class="md-ellipsis">
+      await
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q107-promisethenasyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q107 Promiseとthen等で書いたコードをasync/awaitを用いて書き直すことができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q107 Promiseとthen等で書いたコードをasync/awaitを用いて書き直すことができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      CORSリクエストについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_73" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(方針)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promise-then" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(Promise &amp;' then)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#asyncawait" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(async/await)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q108-awaitthenable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q108 awaitもthenableを許容することを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q108 awaitもthenableを許容することを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_74" class="md-nav__link">
+    <span class="md-ellipsis">
+      概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_75" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q109-async" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q109 クラスメソッドもasyncになれることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q109 クラスメソッドもasyncになれることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_76" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q110-asyncawaittrycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q110 async/awaitでエラー処理を行う場合、try...catchが使えることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q110 async/awaitでエラー処理を行う場合、try...catchが使えることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#awaitpromisereject" class="md-nav__link">
+    <span class="md-ellipsis">
+      awaitはpromiseの結果がrejectなら例外を投げる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーはtry...catchでキャッチできる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-neterr_name_not_resolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET net::ERR_NAME_NOT_RESOLVEDについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catch_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      catchを追加し忘れた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thencatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      .thenや.catchを使う機会はあるのか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q111-asyncawaitpromiseallpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q111. async/awaitとPromise.allを併用して、複数のPromiseを待てることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q111. async/awaitとPromise.allを併用して、複数のPromiseを待てることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_77" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q112-asyncasync" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q112. 非asyncの関数内からasync呼び出しを行うようなコードを記述できますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q112. 非asyncの関数内からasync呼び出しを行うようなコードを記述できますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#asyncpromise" class="md-nav__link">
+    <span class="md-ellipsis">
+      async呼び出しをPromiseとして扱う
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="4">クイズ(上級4:非同期)</h1>
+<h2 id="q70">Q70 非同期のコードがブラウザによって、いつ読み込まれるか分からないときの対処法が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="1">注意点1</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>ブラウザ関連のメソッドを使っているので、わからない場合は、<code>クイズ(DOM1)</code>を読んでおくこと</li>
+</ul>
+</div>
+<h3 id="_1">スクリプトをロードする関数を考える</h3>
+<pre class="highlight"><code class="language-js">function loadScript(src){
+  //1.&lt;script&gt;タグを作る
+  let script = document.createElement("script");
+  //2.指定されたsrcのスクリプトを読み込む
+  script.src = src;
+  //&lt;head&gt;の子要素として&lt;script&gt;を追加
+  document.head.append(script);
+}
+
+//このスクリプトが function myFunc(){}を持つとする
+loadScript("/test/script.js")
+
+myFunc(); //Error</code></pre>
+<h3 id="error">Errorになる原因</h3>
+<ul>
+<li>まだスクリプトが読み込まれていないため</li>
+<li>スクリプトがいつ読み込まれるのか知りたい</li>
+</ul>
+<h3 id="_2">対処したコード</h3>
+<ul>
+<li>関数が完了した後に、引数に渡した<code>callback</code>の処理を実行する</li>
+</ul>
+<pre class="highlight"><code class="language-js">function loadScript(src, callback){
+  let script = document.createElement("script");
+  script.src = src;
+
+  //完全に読み込まれたら実行。
+  script.onload = () =&gt; callback(script);
+  document.head.append(script);
+}
+
+//lodashライブラリをloadしたら
+//そのグローバル関数を利用する
+loadScript(
+  'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js',
+  (script) =&gt;{
+    console.log(`${script.src} is loaded.`);
+    console.log(_); //f loadsh(value){...}
+  }
+)
+</code></pre>
+</details>
+<h2 id="q71">Q71. 複数のスクリプトを順々に読み込みたい場合の方法が分かりますか?(コールバック地獄を知っている場合は飛ばす)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_3">自然な解決策</h3>
+<ul>
+<li><code>callback</code>の中に2つ目の<code>loadScript</code>呼び出しを書く</li>
+<li>そうすれば、1つ目の読み込みが済んだ後に呼び出すことができる</li>
+</ul>
+<h3 id="_4">コード例</h3>
+<pre class="highlight"><code class="language-js">//loadScriptの定義はQ70に記載
+
+loadScript("./test/script1.js", (script)=&gt;{
+  console.log(`${script.src} is loaded`);
+
+  loadScript("./test/script2.js", (script)=&gt;{
+    console.log("the second script is loaded");
+  })
+})</code></pre>
+</details>
+<h2 id="q72">Q72. スクリプト読み込みが失敗した場合の対応策が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="onerror">.onerror</h3>
+<ul>
+<li>読み込みエラーを追跡</li>
+</ul>
+<h3 id="_5">コード例</h3>
+<ul>
+<li><code>callback</code>の最初の引数はエラーが発生した用とする</li>
+<li>成功時は、エラーオブジェクトは<code>null</code></li>
+<li>失敗時は、エラーオブジェクトを作成する</li>
+<li>分岐処理を書けるので、単一の関数で処理可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">function loadScript(src, callback){
+  let script = document.createElement("script");
+  script.src = src;
+
+  //ロードが成功した場合
+  script.onload = () =&gt; callback(null, script);
+  //エラーが発生した場合(scriptはundefined)
+  script.onerror = () =&gt; callback(
+    new Error(`Script load error for ${src}`)
+  )
+
+  document.head.append(script);
+}
+
+loadScript("./test/script.js", (error, script)=&gt;{
+  if(error){
+    //error処理
+    console.log("something error");
+  }else{
+    //成功時の処理
+    console.log("script loaded.")
+  }
+})</code></pre>
+</details>
+<h2 id="q73-q71">Q73 多数のスクリプトを順々に読み込んで行く時、Q71のようにネストした呼び出しを行うと、地獄を見る理由が分かりますか？</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_6">複数のスクリプトを入れ子で読み込んだ例</h3>
+<pre class="highlight"><code class="language-js">loadScript("test1.js", (error, script)=&gt;{
+  if(error){
+    handleError(error);
+  }else{
+    //何かしらの処理
+    loadScript("test2.js", (error, script)=&gt;{
+      if(error){
+        handleError(error);
+      }else{
+        //何かしらの処理
+        loadScript("test3.js", (error, script)=&gt;{
+          if(error){
+            //何かしらの処理
+            handleError(error);
+          }else{
+            //さらに続く
+          }
+        })
+      }
+    })
+  }
+})</code></pre>
+<h3 id="_7">問題点</h3>
+<ul>
+<li>コードが深くなっていく</li>
+<li>5つも重なれば制御は不可能に近くなる</li>
+<li>上記のような例を <strong>コールバック地獄</strong> という</li>
+</ul>
+<h3 id="_8">対策?</h3>
+<pre class="highlight"><code class="language-js">loadScript("test1.js", step1);
+
+function step1(error, script){
+  if(error){
+    handleError(error);
+  }else{
+    //何かしらの処理
+    loadScript("test2.js", step2);
+  }
+}
+
+function step2(error, script){
+  if(error){
+    handleError(error);
+  }else{
+    //何かしらの処理
+    loadScript("test3.js", step3);
+  }
+}
+
+//...以下繰り返し</code></pre>
+<h3 id="_9">問題点</h3>
+<ul>
+<li>コードがバラバラになる</li>
+<li>IDEでジャンプする羽目になる</li>
+<li>視点の行き来が発生し、意図が分かりにくい</li>
+</ul>
+<h3 id="_10">本来の対策</h3>
+<ul>
+<li><code>Promise</code>を使う(後述)</li>
+</ul>
+</details>
+<h2 id="q74-promiseresolvereject">Q74 Promiseの生成方法と、resolve/rejectが呼ばれるまでの流れを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promise">Promiseコンストラクタの構文</h3>
+<ul>
+<li><code>executor</code>: <code>new Promise</code>が作成されると自動的に実行される関数</li>
+</ul>
+<pre class="highlight"><code class="language-js">new Promise(executor)</code></pre>
+<h3 id="executor">executorの中身</h3>
+<ul>
+<li><code>resolve</code>: 関数。解決した時に呼び出す</li>
+<li><code>reject</code>: 関数。失敗したときに呼び出す</li>
+</ul>
+<pre class="highlight"><code class="language-js">function((resolve, reject){
+  //...
+})</code></pre>
+<h3 id="resolve-reject">resolve, rejectの呼び出し方法</h3>
+<ul>
+<li><code>value</code>:結果</li>
+<li><code>error</code>:エラーオブジェクト</li>
+</ul>
+<pre class="highlight"><code class="language-js">resolve(value);
+reject(error);</code></pre>
+<h3 id="_11">要約すると</h3>
+<ol>
+<li><code>new Promise</code>が行われると、<code>execute</code>内の処理が実行される</li>
+<li><code>resolve</code>が呼ばれると、ジョブ完了の合図</li>
+<li><code>reject</code>が呼ばれると、失敗の合図</li>
+</ol>
+</details>
+<h2 id="q75-promise">Q75. promiseオブジェクトが持っている内部プロパティについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="statepromisestate">state([[PromiseState]])</h3>
+<ul>
+<li><code>pending</code>: 初期状態。保留中を意味する</li>
+<li><code>fulfilled</code>: <code>resolve</code>が呼ばれた後。完了を意味する</li>
+<li><code>rejected</code>: <code>reject</code>が呼ばれた後。拒否を意味する</li>
+</ul>
+<h3 id="resultpromiseresult">result([[PromiseResult]])</h3>
+<ul>
+<li><code>undefined</code>: 初期値</li>
+<li><code>value</code>: <code>resolve(value)</code>が呼ばれた場合</li>
+<li><code>error</code>: <code>reject(error)</code>が呼ばれた場合</li>
+</ul>
+<h3 id="_12">つまり?</h3>
+<ul>
+<li><code>executor</code>によって、<code>promise</code>は以下の状態になる</li>
+</ul>
+<pre class="highlight"><code>まだ処理中の場合
+  state: pending
+  result: undefined
+
+成功した場合
+  state: fulfilled
+  result: value
+
+失敗した場合
+  state: rejected
+  result: error</code></pre>
+<h3 id="_13">解決または拒否された状態について</h3>
+<ul>
+<li><code>settled</code>(定まった状態)と呼ばれる</li>
+<li><code>settled</code>は<code>fulfilled or rejected</code>のことを指す</li>
+</ul>
+</details>
+<h2 id="q76-resolverejectpromise">Q76. 上記までの説明をもとに、resolve/rejectした結果を、promiseオブジェクトに返すことができますか？</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="resolve">使用例(resolve)</h3>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  //valueがdone!なので、これが[[PromiseResult]]となる
+  setTimeout(()=&gt; resolve("done!"), 1000);
+})
+
+//1秒後に見たpromise
+
+/*
+Promise {&lt;fulfilled&gt;: 'done!'}
+[[Prototype]]: Promise
+[[PromiseState]]: "fulfilled"
+[[PromiseResult]]: "done!"
+*/
+
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>内部プロパティに直接アクセスすることはできない</li>
+<li>代替として<code>.then/catch</code>メソッドを利用する(後述)</li>
+</ul>
+</div>
+<h3 id="reject">使用例(reject)</h3>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  //errorが、new Error("failure")なので、これが[[PromiseResult]]となる
+  setTimeout(()=&gt;reject(new Error("failure")), 1000);
+})
+
+//1秒後に見たpromise
+
+/*
+Promise {&lt;rejected&gt;: Error: failure
+    at &lt;anonymous&gt;:2:29}
+[[Prototype]]: Promise
+[[PromiseState]]: "rejected"
+[[PromiseResult]]: Error: failure at &lt;anonymous&gt;:2:29
+  message: "failure"
+  stack: "Error: failure\n    at &lt;anonymous&gt;:2:29"    
+*/</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="rejecterror">rejectの引数はErrorオブジェクト以外でもいい?</h3>
+<ul>
+<li><code>Error</code>オブジェクトを利用した方がいい </li>
+</ul>
+</div>
+</details>
+<h2 id="q77-executorresolvereject222">Q77 executor内でresolveやrejectが2つとも、または同種が2回以上登場した場合、2個目以降はすべて無視されることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_14">コード例</h3>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  resolve("done");
+
+  reject(new Error("some error"));
+  setTimeout(()=&gt; resolve("second done"));
+})
+
+console.log(promise);
+//Promise {&lt;fulfilled&gt;: 'done'}</code></pre>
+<h3 id="promise_1">Promiseの状態は変わらないが、</h3>
+<ul>
+<li>処理が実行されないわけではない</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  resolve("done");
+  console.log("neko");
+})
+
+//neko</code></pre>
+</details>
+<h2 id="q78-resolvereject">Q78 resolve/rejectが即時実行可能であることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_15">普通は非同期処理を行った後に呼び出すが</h3>
+<ul>
+<li>すぐに呼び出すことも可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  resolve(true);
+})</code></pre>
+<h3 id="_16">即座に呼び出す場合とは?</h3>
+<ul>
+<li>ジョブを開始したが、既にすべての処理が完了していた場合</li>
+<li>または、キャッシュが存在していた場合など</li>
+</ul>
+</details>
+<h2 id="q79-executorthen-catch-finally">Q79 executorから返したオブジェクトの内部プロパティにアクセスするために、.then, .catch, finallyが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="then">.then</h3>
+<ul>
+<li>第1引数:<code>promise</code>が<code>resolve</code>された時に実行。引数はvalue</li>
+<li>第2引数:<code>promise</code>が<code>reject</code>された時に実行。引数はerror</li>
+<li>いずれにせよ、引数には<code>[[PromiseResult]]</code>の値を用いる</li>
+</ul>
+<pre class="highlight"><code class="language-js">promise.then(
+  function(result){/*成功した結果を扱う*/},
+  function(error){/*エラーを扱う*/};
+)</code></pre>
+<h3 id="resolve_1">resolveされた場合</h3>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  setTimeout(()=&gt; resolve("done!"), 100);
+})
+
+promise.then(
+  result =&gt; console.log(result), //doneを表示
+  error =&gt; console.log(error) //実行されない
+)</code></pre>
+<h3 id="reject_1">rejectされた場合</h3>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  setTimeout(()=&gt; reject(new Error("failure")), 100);
+});
+
+promise.then(
+  result =&gt; console.log(result),
+  error =&gt; console.log(error) //エラーを表示
+)
+
+/*
+Error: failure
+    at &lt;anonymous&gt;:2:30
+*/</code></pre>
+<h3 id="_17">正常終了だけに関心がある場合</h3>
+<ul>
+<li>第1引数だけ書く</li>
+</ul>
+<pre class="highlight"><code class="language-js">promise.then(
+  result =&gt; console.log(result);
+)</code></pre>
+<h3 id="_18">エラーにだけ関心がある場合</h3>
+<ul>
+<li>第1引数は<code>null</code>にする</li>
+</ul>
+<pre class="highlight"><code class="language-js">promise.then(
+  null,
+  error =&gt; console.log(error);
+)</code></pre>
+<h3 id="catch">catch</h3>
+<ul>
+<li><code>.then(null, function)</code>を書き直せる</li>
+<li><code>.catch(function)</code>という形で</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  setTimeout(()=&gt; reject(new Error("failure")), 100);
+})
+
+promise.catch(
+  error =&gt; console.log(error)
+)
+
+/*
+Error: failure
+at &lt;anonymous&gt;:2:30
+*/</code></pre>
+<h3 id="finally">finally</h3>
+<ul>
+<li><code>Promise</code>が解決/拒否になったとき、必ず実行される</li>
+<li>クリーンアップなどを実行するために使用する</li>
+</ul>
+<pre class="highlight"><code class="language-js">new Promise((resolve, reject)=&gt;{
+  /*resolve or reject*/
+  resolve(123);
+})
+.finally(()=&gt;{/*クリーンアップ処理*/})
+.then(
+  result =&gt; console.log(result),
+  err =&gt; console.log(err)
+)</code></pre>
+<h3 id="q71promise">Q71をpromiseを使って実装した場合の例</h3>
+<ul>
+<li><code>loadScript</code>を呼び出すときに<code>callback</code>を書く必要がなく、<code>then</code>等で後から処理できるので、柔軟性に富む</li>
+</ul>
+<pre class="highlight"><code class="language-js">//callbackは要らなくなる
+const loadScript = src =&gt;{
+  return new Promise((resolve, reject)=&gt;{
+    let script = document.createElement("script");
+    script.src = src;
+
+    script.onload = () =&gt; resolve(script);
+    script.onerror = () =&gt; reject(new Error("Script load error: " + src));
+
+    document.head.append(script);
+  });
+}
+
+let promise = loadScript("https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js")
+
+promise.then(
+  script =&gt; console.log(`${script.src} is loaded!`),
+  error =&gt; console.log(`Error: ${error.message}`)
+)
+
+promise.then(script =&gt; console.log("Another handler..."));</code></pre>
+</details>
+<h2 id="q80-settledpromise">Q80 settledであるpromiseにもハンドラがセットできることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_19">通常の場合</h3>
+<ul>
+<li><code>promise</code>が<code>pending</code>であれば<code>.then/catch/finally</code>は結果を待つ</li>
+</ul>
+<h3 id="settled">既にsettledの場合</h3>
+<ul>
+<li>直ちに実行される</li>
+</ul>
+<h3 id="_20">コード例</h3>
+<pre class="highlight"><code class="language-js">let promise = new Promise(resolve =&gt; resolve("done"));
+
+promise.then(
+  result =&gt; console.log(result) //done
+)</code></pre>
+</details>
+<h2 id="q81-promise">Q81 順次実行されるタスクを、Promiseを用い、コールバック地獄に陥らずに処理することができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_21">よくある失敗例</h3>
+<ul>
+<li>以下では、単一の<code>Promise</code>に複数の<code>.then</code>を追加している</li>
+<li><code>.then</code>は<code>Promise</code>を返すが、元の<code>Promise</code>を変更するわけではない</li>
+<li>従って、それぞれが独立で処理を行うだけに終わる</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  setTimeout(()=&gt; resolve(1), 1000);
+})
+
+//[[PromiseResult]]の値は変わらない
+promise.then(result=&gt;{
+  alert(result); //1
+  return result * 2; //2
+})
+
+promise.then(result=&gt;{
+  alert(result); //1
+  return result * 2; //2
+})
+
+promise.then(result=&gt;{
+  alert(result); //1
+  return result * 2; //2
+})    </code></pre>
+<h3 id="_22">成功例</h3>
+<ul>
+<li><code>promise.then</code>の呼び出しは<code>promise</code>を返す</li>
+<li>値を返す場合、返り値が<code>value</code>となる</li>
+<li>これを生かして、返り値に対して、また<code>then</code>を呼び出す</li>
+<li>これを<code>promise</code>チェーンと呼ぶ</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt;{
+  setTimeout(()=&gt; resolve(1), 1000);
+})
+
+promise
+.then(result=&gt;{
+  alert(result); //1
+  return result * 2;
+})
+.then(result=&gt;{
+  alert(result); //2
+  return result * 2;
+})
+.then(result=&gt;{
+  alert(result); //4
+  return result * 2;
+})</code></pre>
+</details>
+<h2 id="q82-thenpromise">Q82. thenメソッド内で値を返しているにもかかわらず、返り値がPromiseになる理由が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="return-result-2promise">return result * 2;がPromiseを返す理由</h3>
+<ul>
+<li><code>then</code>メソッドの引数に渡されたコールバック関数が値を返すと、その値は自動的に<code>Promise.resolve</code>にラップされる</li>
+<li>なお、<code>Promise</code>オブジェクトそのものを<code>return</code>した場合は、その<code>Promise</code>がそのまま返される</li>
+</ul>
+<pre class="highlight"><code class="language-js">Promise.resolve(result * 2);
+//Promise {&lt;fulfilled&gt;: 4}</code></pre>
+<h3 id="return-err">return errの場合は?</h3>
+<pre class="highlight"><code class="language-js">Promise.reject(err);
+/*
+Promise {&lt;rejected&gt;: Error: message
+  at &lt;anonymous&gt;:1:16}
+*/</code></pre>
+</details>
+<h2 id="q82-promise">Q82. Promiseを用いて非同期アクションのチェーンを組み立てることができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="thensettled">.thenはsettledになるまで待機するので</h3>
+<ul>
+<li>前の<code>then</code>メソッドが<code>settled</code>になり次第、次の<code>then</code>に<code>Promise</code>が渡される</li>
+</ul>
+<pre class="highlight"><code class="language-js">new Promise((resolve, reject)=&gt;{
+  setTimeout(()=&gt; resolve(1), 1000);
+})
+.then(result=&gt;{
+  alert(result); //1
+
+  return new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(result * 2), 1000)
+  });
+})
+.then(result =&gt;{
+  alert(result); //2
+  return new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(result * 2), 1000);
+  })
+})
+.then(result =&gt; alert(result)); //4</code></pre>
+<h3 id="q73">Q73のコールバック地獄を書き直す</h3>
+<pre class="highlight"><code class="language-js">const loadScript = src =&gt;{
+  return new Promise((resolve, reject)=&gt;{
+    let script = document.createElement("script");
+    script.src = src;
+
+    //正常終了ならvalue = script
+    script.onload = () =&gt; resolve(script);
+    script.onerror = () =&gt; reject(new Error("Script load error: " + src));
+
+    document.head.append(script);
+  });
+}
+
+loadScript("test1.js")
+  .then(script =&gt; loadScript("test2.js"))
+  .then(script =&gt; loadScript("test3.js"))
+  .then(script =&gt; loadScript("test4.js"))
+  .then(script =&gt;{
+    //既に正常にloadしているので関数を正しく使える
+    one();
+    two();
+    three();
+    four();
+  })</code></pre>
+</details>
+<h2 id="q83-thenable">Q83. thenableオブジェクトについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_23">そもそも</h3>
+<ul>
+<li>JSにおいて<code>then</code>という名前のメソッドは特別な意味を持つ</li>
+</ul>
+<h3 id="thenable">thenable</h3>
+<ul>
+<li>メソッド<code>.then()</code>を持つオブジェクトやインスタンス</li>
+<li><code>promise</code>と同等に扱われる</li>
+</ul>
+<h3 id="_24">存在理由</h3>
+<ul>
+<li><code>promise</code>互換なオブジェクトを実装するため</li>
+<li>サードパーティが主に用いる</li>
+</ul>
+<h3 id="_25">その他利点</h3>
+<ul>
+<li><code>Promise</code>から<code>then</code>等を継承することなく、カスタムしたオブジェクトやインスタンスを<code>promise</code>チェーンに組み込める</li>
+</ul>
+<h3 id="_26">例</h3>
+<pre class="highlight"><code class="language-js">class Thenable{
+  constructor(num){
+    this.num = num;
+  }
+
+  //Promiseに対してthen
+  then(resolve, reject){
+    alert(resolve);// function() { native code }
+    setTimeout(()=&gt; resolve(this.num * 2), 1000);
+  }
+}
+
+new Promise(resolve =&gt; resolve(1))
+  .then(result =&gt;{
+    //1. thenというメソッドが呼び出し可能か調べる
+    //2. 呼び出し可能ならresolve, rejectを引数とし、いずれかが呼び出されるまで待つ
+    //3. ThenableはPromiseでラップされ、Promiseオブジェクトとして返される
+    return new Thenable(result);//num = 1
+  })
+  .then(alert); //2</code></pre>
+</details>
+<h2 id="q84-fetch">Q84. リモートサーバから情報をロードするために、fetchメソッドが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="fetch">fetchの構文</h3>
+<ul>
+<li><code>url</code>: ネットワークリクエストを行うURL</li>
+<li>返り値は<code>promise</code></li>
+<li>正常に取得できた場合<code>[[PromiseResult]]</code>として<code>Response</code>を受け取る</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = fetch(url);</code></pre>
+<h3 id="_27">使用例</h3>
+<pre class="highlight"><code class="language-js">//promiseを返す
+fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+//リモートサーバが応答したらこのthenを実行
+//まだ完全なテキストはダウンロードされていない
+.then(response =&gt; {
+  //response.text()はレスポンスのダウンロードが完了したら新たなpromiseを返す
+  return response.text();
+})
+//ダウンロード完了後、リモートファイルの中身を閲覧
+.then(text =&gt; alert(text));
+
+//fetchの中身について
+console.log(fetch("https://pokeapi.co/api/v2/pokemon/ditto"))
+/*
+  Promise {&lt;fulfilled&gt;: Response}
+  [[Prototype]]: Promise
+  [[PromiseState]]: "fulfilled"
+  [[PromiseResult]]: Response
+  body: ReadableStream
+  bodyUsed: false
+  headers: Headers {}
+  ok: true
+  redirected: false
+  status: 200
+  statusText: ""
+  type: "cors"
+  url: "https://pokeapi.co/api/v2/pokemon/ditto"
+  [[Prototype]]: Response
+*/</code></pre>
+<h3 id="2">使用例2</h3>
+<ul>
+<li><code>fetch</code>してきたデータを見やすい<code>JSON</code>のフォーマットで見る</li>
+</ul>
+<pre class="highlight"><code class="language-js">//response.json(); ResponseオブジェクトからJSON形式のデータを取得し、該当データをJSオブジェクトに変換
+fetch("https://pokeapi.co/api/v2/pokemon/ditto")
+.then(response =&gt; response.json())
+.then(data =&gt; {
+    const prettyJSON = JSON.stringify(data, null, 2);
+    console.log(prettyJSON);
+})
+.catch(error =&gt; console.error("Fetch error: ", error));</code></pre>
+</details>
+<h2 id="q85-promise">Q85 非同期のアクションを行う際、常にPromiseを返した方がいい理由が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_28">答え</h3>
+<ul>
+<li>将来必要になったときに、簡単に<code>Promise</code>チェーンを追加できるようにするため</li>
+</ul>
+<h3 id="_29">例</h3>
+<pre class="highlight"><code class="language-js">const loadJson = url =&gt;{
+  return fetch(url)
+    .then(response =&gt; response.json());
+}
+
+const loadGithubUser = name =&gt;{
+  return loadJson(`https://api.github.com/users/${name}`);
+}
+
+const showAvatar = githubUser =&gt;{
+  return new Promise((resolve, reject)=&gt;{
+    let img = document.createElement("img");
+    img.src = githubUser.avatar_url;
+    img.className = "promise-avatar-example";
+    document.body.append(img);
+
+    setTimeout(()=&gt;{
+      img.remove();
+      //resolveを呼び出しているので、
+      //次のチェーンを作成した時、簡単にgithubUserのデータを転送可能
+      resolve(githubUser);
+    }, 3000)
+  })
+}
+
+loadJson("./user.json")
+  .then(user =&gt; loadGithubUser(user.name))
+  .then(githubUser =&gt; showAvatar(githubUser))
+  .then(githubUser =&gt; console.log(`showing ${githubUser.name}`))</code></pre>
+</details>
+<h2 id="q86-thenf1-f2thenf1catchf2">Q86 then(f1, f2)とthen(f1).catch(f2)が異なることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="thenf1-f2">then(f1, f2)</h3>
+<pre class="highlight"><code class="language-js">//f1で出たエラーはf2には渡されない
+promise
+  .then(f1, f2)</code></pre>
+<h3 id="thenf1catchf2">then(f1).catch(f2)</h3>
+<pre class="highlight"><code class="language-js">//f1で出たエラーはcatchで処理される
+promise
+  .then(f1)
+  .catch(f2)</code></pre>
+</details>
+<h2 id="q87-promisereject">Q87 promiseがrejectされた時の挙動について理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promisereject">promiseがrejectされると</h3>
+<ul>
+<li>制御は最も近い<code>reject</code>ハンドラに移る</li>
+</ul>
+<h3 id="_30">直後に書く必要はない</h3>
+<ul>
+<li>末尾に<code>.catch</code>を1つ書いた場合、すべてのエラーをキャッチする</li>
+<li>エラーが出ない場合、この<code>.catch</code>は無視される</li>
+</ul>
+<pre class="highlight"><code class="language-js">fetch("test.json") //rejectされたと仮定する
+  .then(response =&gt; response.json())
+  .then(json =&gt; console.log(JSON.stringify(json, null, 2)))
+  .catch(err =&gt; console.log(err)); //制御はここに移動</code></pre>
+</details>
+<h2 id="q88-executorpromisetrycatch">Q88. executorとpromiseハンドラが暗黙のtry...catchを持っていることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_31">エラーが起きた場合</h3>
+<ul>
+<li>キャッチして<code>reject</code>として扱う</li>
+<li>スクリプトが死ぬわけではない</li>
+</ul>
+<h3 id="executortrycatch">executorにおける暗黙のtry...catch</h3>
+<ul>
+<li>1つ目のコードと2つ目のコードは同じ</li>
+</ul>
+<pre class="highlight"><code class="language-js">//1つ目
+new Promise((resolve, reject)=&gt;{
+  throw new Error("Whoops");
+}).catch(alert);</code></pre>
+<pre class="highlight"><code class="language-js">//2つ目
+new Promise((resolve, reject)=&gt;{
+  reject(new Error("Whoops"));
+}).catch(alert);</code></pre>
+<pre class="highlight"><code class="language-js">//これでもコードは止まらない
+new Promise((resolve, reject)=&gt;{
+  hoge();
+}).catch(alert); //ReferenceError: test is not defined</code></pre>
+<h3 id="promisetrycatch">promiseにおける暗黙のtry...catch</h3>
+<pre class="highlight"><code class="language-js">//やはりスクリプトは死なない
+new Promise((resolve, reject)=&gt;{
+  resolve("ok");
+}).then(result =&gt;{
+  throw new Error("Hogeeee!");
+}).catch(alert); //Error: Hogeeee!</code></pre>
+</details>
+<h2 id="q89-promisethenconsolelog">Q89. promise.then(console.log)が成功する理由が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_32">多分これは理解できると思う</h3>
+<pre class="highlight"><code class="language-js">new Promise((resolve, reject)=&gt;{
+  resolve("ok");
+}).then(result =&gt; console.log("ok"));</code></pre>
+<h3 id="_33">???????????</h3>
+<pre class="highlight"><code class="language-js">new Promise((resolve, reject)=&gt;{
+  resolve("ok");
+}).then(console.log); //ok</code></pre>
+<h3 id="1_1">理解その1</h3>
+<ul>
+<li><code>promise.then(fn)</code>における、<code>fn</code>は引数に関数を指定することを意味する。</li>
+<li>つまり、関数を指定できればなんでもいい</li>
+<li>上の例は、無名関数</li>
+<li><code>console.log</code>も関数</li>
+</ul>
+<pre class="highlight"><code class="language-js">typeof console.log //function</code></pre>
+<h3 id="_34">たとえば</h3>
+<ul>
+<li>コールバック関数(引数として渡される関数)を考える</li>
+<li><strong><code>forEach</code>はコールバック関数に対して、要素の値、インデックス、配列そのものを引数として渡す</strong></li>
+<li>このコールバック関数は自作してもいいし、組み込みのものを利用してもいい</li>
+<li>いつもは自作していたため</li>
+</ul>
+<pre class="highlight"><code class="language-js">[1,2,3].forEach((item, index, arr)=&gt;{
+  console.log(item);
+})</code></pre>
+<ul>
+<li>としていたわけだ</li>
+<li>もちろん、自作する際は第2引数や第3引数を書かなくてもいい</li>
+<li>そうした場合、渡すはずだった引数は使われない</li>
+<li>これは以下からも明確だと思う</li>
+</ul>
+<pre class="highlight"><code class="language-js">[1,2,3].forEach((...arr)=&gt;{
+  console.log(arr);
+  //[1,0,Array(3)]
+  //[2,1,Array(3)]
+  //[3,2,Array(3)]
+})</code></pre>
+<ul>
+<li>ここで組み込みのものを利用してみる</li>
+</ul>
+<pre class="highlight"><code class="language-js">[1,2,3].forEach(console.log);
+//1,0,[1,2,3]
+//2,1,[1,2,3]
+//3,2,[1,2,3]</code></pre>
+<h3 id="consolelog">console.logというのは</h3>
+<ul>
+<li>可変引数</li>
+<li>つまり、全ての引数を受け取る(上の例でいう<code>...arr</code>と同じイメージ。実際には配列には格納しないが)</li>
+</ul>
+<h3 id="_35">最初の話に戻ると</h3>
+<ul>
+<li><strong>promiseは1つの引数をfn(コールバック関数)に渡す</strong></li>
+<li>これを<code>console.log</code>で受け取っているだけに過ぎない</li>
+<li><code>(a) =&gt; console.log(a)</code>とした場合は、受け取るはずの引数から1つを利用して、それを出力している</li>
+<li>単に<code>console.log</code>として場合は、すべての引数を受け取る。ただし今回は引数が1つなので同じ挙動となる</li>
+</ul>
+<h3 id="alert">alertの場合は?</h3>
+<ul>
+<li>promiseは1つの引数をfn(コールバック関数)に渡す</li>
+<li>これを<code>alert</code>で受け取る</li>
+</ul>
+<h3 id="_36">上手くいくわけ補足</h3>
+<ul>
+<li>console.logは<code>this</code>に強く依存していない</li>
+</ul>
+<h3 id="1_2">もう1つコールバック関数の例</h3>
+<ul>
+<li>関数に対して引数がちゃんと渡されていることを確認できる</li>
+<li>
+<p>ただし、このように渡すと、<code>this</code>を使うために<code>bind</code>する羽目になるので使用はほどほどに</p>
+</li>
+<li>
+<p>arguments</p>
+</li>
+</ul>
+<pre class="highlight"><code class="language-js">function test(){
+  console.log(arguments);
+}
+
+[1,2,3].map(test);
+//Arguments(3) [1, 0, Array(3), callee: ƒ, Symbol(Symbol.iterator): ƒ]
+//Arguments(3) [2, 1, Array(3), callee: ƒ, Symbol(Symbol.iterator): ƒ]
+//Arguments(3) [3, 2, Array(3), callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+//なにもreturnしていないので
+//[undefined, undefined, undefined]</code></pre>
+<ul>
+<li>args</li>
+</ul>
+<pre class="highlight"><code class="language-js">function test(...args){
+  console.log(args);
+}
+
+[1,2,3].map(test);
+
+// [1, 0, Array(3)]
+// [2, 1, Array(3)]
+// [3, 2, Array(3)]</code></pre>
+<ul>
+<li>おまけ</li>
+</ul>
+<pre class="highlight"><code class="language-js">//つまり、thisを使わないなら、十分に使える
+
+function test(item, index){
+  return [item, index];
+}
+
+[1,2,3].map(test);
+
+//[[1,0],[2,1],[3,2]]</code></pre>
+</details>
+<h2 id="q90-catch">Q90 catchの中でエラーを投げたとき、制御が次の最も近いエラーハンドルに移ることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_37">つまり再スロー</h3>
+<pre class="highlight"><code class="language-js">new Promise((resolve, reject)=&gt;{
+  throw new Error("Whoops");
+})
+.catch((error)=&gt;{
+  if(error instanceof SyntaxError){
+    //error処理
+  }
+  else{
+    throw error; //次の.catchに飛ぶ
+  }
+})
+.then((result) =&gt; {
+  console.log(result); //実行されない
+})
+.catch(error =&gt;{
+  console.log(error);
+  /*
+  Error: Whoops
+      at &lt;anonymous&gt;:2:13
+      at new Promise (&lt;anonymous&gt;)
+      at &lt;anonymous&gt;:1:5
+  */
+})</code></pre>
+</details>
+<h2 id="q91-reject">Q91. 未処理のrejectを追跡する方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_38">通常の場合</h3>
+<ul>
+<li>末尾に<code>catch</code>または<code>then</code>の第二引数で処理するので、<code>reject</code>は正常に処理される</li>
+</ul>
+<h3 id="_39">書き忘れた場合</h3>
+<ul>
+<li><code>try...catch</code>の外でエラーが発生した場合と同じ</li>
+</ul>
+<h3 id="_40">追跡する方法</h3>
+<ul>
+<li>ただしJSエンジンは未処理の<code>reject</code>を追跡する</li>
+<li>ブラウザの場合、<code>unhandledrejection</code>でキャッチ可能</li>
+</ul>
+<h3 id="_41">設定する意味</h3>
+<ul>
+<li>スクリプトが死ぬときに、情報を残すことができる</li>
+</ul>
+<pre class="highlight"><code class="language-js">window.addEventListener("unhandledrejection", (event)=&gt;{
+    console.log(event.promise); //Errorを生成したpromise
+    console.log(event.reason);//未処理のエラーオブジェクト
+});
+
+new Promise((resolve, reject)=&gt;{
+    throw new Error("Whoops");
+});
+
+/*
+Promise {&lt;rejected&gt;: Error: Whoops
+    at &lt;anonymous&gt;:2:11
+    at new Promise (&lt;anonymous&gt;)
+    at &lt;anonymous&gt;:1:1}
+
+Error: Whoops
+    at &lt;anonymous&gt;:2:11
+    at new Promise (&lt;anonymous&gt;)
+    at &lt;anonymous&gt;:1:1
+
+//この後に、実際にUncaught Errorでスクリプトは止まる
+*/</code></pre>
+</details>
+<h2 id="q92-throwcatch">Q92. 非同期コールバックの中でthrowを用いてエラーを投げると、catchで補足できないことを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_42">これは正常に動く</h3>
+<pre class="highlight"><code class="language-js">new Promise(function(resolve, reject) {
+  setTimeout(() =&gt; {
+    reject(Error("Whoops!"));
+  }, 1000);
+}).catch(alert);
+や
+new Promise(function(resolve, reject) {
+    throw new Error("Whoops");
+}).catch(alert);</code></pre>
+<h3 id="_43">これは動かない</h3>
+<pre class="highlight"><code class="language-js">new Promise(function(resolve, reject){
+  setTimeout(() =&gt; {
+    throw new Error("Whoops");
+  }, 1000);
+}).catch(alert);</code></pre>
+<h3 id="_44">簡単な説明</h3>
+<ul>
+<li><code>executor</code>と<code>promise</code>は確かに暗黙の<code>try...catch</code>を持っている</li>
+<li>しかし<code>try...catch</code>は同期的な処理にしか対応していない</li>
+<li>従って、明示的に<code>reject</code>でエラーを囲む必要がある</li>
+</ul>
+<h3 id="_45">理由</h3>
+<ul>
+<li><code>setTimeout</code>は指定時間経過後に、イベントループにコールバックを追加する</li>
+<li>そして、現在のスタックが空になると実行される</li>
+<li>つまり、<code>setTimeout</code>が実行されるとき、既に<code>Promise</code>を作成したスタックは実行を終了しており、存在しない</li>
+<li>そのため<code>setTimeout</code>から単にエラーを投げても<code>Promise</code>は処理できず、<code>throw</code>は<code>reject</code>として返されない</li>
+<li>つまるところ、最初から<code>Promise.reject</code>として返せばいい。<code>Promise.reject</code>は常に新しい<code>Promise</code>で<code>error</code>をラップする</li>
+</ul>
+<h3 id="_46">まとめ</h3>
+<ul>
+<li><code>Promise</code>のコールバック内にいるときは、いつでも<code>throw</code>を使用できる</li>
+<li>ただ、他の非同期コールバック内(たとえば<code>setTimeout</code>)にいる場合は、<code>reject</code>を使用する必要がある</li>
+</ul>
+<h3 id="_47">メモ</h3>
+<ul>
+<li>非同期でないときは<code>throw</code>を使い、</li>
+<li>非同期の時は<code>reject</code>を使うと</li>
+<li>コードの可読性が上がる</li>
+</ul>
+</details>
+<h2 id="q93-promisepromiseall">Q93 並列に複数のpromiseを実行し、すべてが完了するまで待ちたい場合に、Promise.allを使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promise-promisealliterable">promise = Promise.all(iterable)</h3>
+<ul>
+<li><code>iterable</code>:通常は<code>promise</code>の配列を取る</li>
+<li><code>promise</code>:新しいpromiseの<code>iterable</code></li>
+<li>全てが完了すると、promiseの<code>iterable</code>が返る</li>
+</ul>
+<h3 id="_48">注意点</h3>
+<ul>
+<li>格納される順番は、元のpromiseの順番と同じ</li>
+<li>解決/拒否される時間は関係ない</li>
+</ul>
+<h3 id="1_3">使用例1</h3>
+<pre class="highlight"><code class="language-js">let promise = Promise.all([
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; resolve(1), 3000)
+  ),
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; resolve(2), 2000)
+  ),
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; resolve(3), 1000)
+  )
+])
+
+/*2秒後*/
+//Promise {&lt;pending&gt;}
+//[[Prototype]]: Promise
+//[[PromiseState]]: "pending"
+//[[PromiseResult]]: undefined
+
+/*3秒後*/
+//Promise {&lt;fulfilled&gt;: Array(3)}
+//1,2,3</code></pre>
+<h3 id="2_1">使用例2</h3>
+<ul>
+<li>処理データの配列をPromiseの配列に<code>map</code></li>
+<li>それを<code>Promise.all</code>でラップする</li>
+</ul>
+<pre class="highlight"><code class="language-js">let urls = [
+  "https://api.github.com/users/Toraneko0101",
+  "https://api.github.com/users/NekoInu-Nezumiko",
+]
+
+//urlをpromiseのfetchへマップ
+let requests = url.map(url =&gt; fetch(url));
+
+//全てのジョブ(fetch)が解決されるまで待つ
+Promise.all(requests)
+  .then(responses =&gt; responses.forEach(response =&gt;{
+    console.log(`${response.url}: ${response.status}`)
+    //https://api.github.com/users/Toraneko0101: 200
+    //https://api.github.com/users/NekoInu-Nezumiko: 200
+  } 
+  ))</code></pre>
+</details>
+<h2 id="q94-promiseallpromiserejectpromise">Q94. Promise.allにおいて、いずれかのpromiseがrejectされた場合、他のpromiseの結果は無視されることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_49">概要</h3>
+<ul>
+<li>いずれかの<code>promise</code>が<code>reject</code>されると、<code>Promise.all</code>の結果は即座に<code>rejected</code>になる</li>
+</ul>
+<h3 id="_50">例</h3>
+<pre class="highlight"><code class="language-js">let promise = Promise.all([
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; reject(10), 3000)
+  ),
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; reject(20), 2000)
+  ),
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; resolve(30), 1000)
+  )
+])
+
+//1つのrejectが返された時点で、他の結果は無視される
+//Promise {&lt;rejected&gt;: 20}</code></pre>
+</details>
+<h2 id="q95-promisealliterablepromisepromiseresolve">Q95. Promise.all(iterable)の中で非promiseの項目を使った場合、Promise.resolveでラップされることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_51">例</h3>
+<pre class="highlight"><code class="language-js">Promise.all([
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(1), 1000);
+  }),
+  2, //Promise.resolve(2)と扱われる
+  3, //Promise.resolve(3)と扱われる
+])
+
+//setTimeout(()=&gt;2,1000),の場合、timerIdが返されるので
+//非同期の場合は、きちんとPromiseを使う
+
+//setTimeout(()=&gt; Promise.resolve(2), 1000)もダメ
+//以下を考えてみるとわかる
+//Promise.resolve(setTimeout(()=&gt;Promise.resolve(2),1000)); //timerId
+//この場合(Promiseでなく他の非同期関数を指定した場合)も、Promise.resolveで囲まれる。</code></pre>
+</details>
+<h2 id="q96-promiserejectpromisepromiseallsettled">Q96. いずれかのpromiseがrejectされてもすべてのpromiseが解決するまで待ちたい場合、Promise.allSettledが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promiseall">Promise.allとの違い</h3>
+<ul>
+<li>1つ以上の<code>promise</code>が<code>reject</code>されても最後まで待つ</li>
+<li>結果の<code>promise</code>配列は、渡した配列と同じ大きさ</li>
+</ul>
+<h3 id="_52">使用例</h3>
+<ul>
+<li>結果は、<code>[[PromiseResult]]</code>の各要素に、<code>iterable</code>なオブジェクトとして格納され以下のプロパティを持つ</li>
+<li><code>status</code>: <code>fulfilled/rejected</code></li>
+<li><code>fulfilled</code>の場合: <code>value</code></li>
+<li><code>rejected</code>の場合: <code>error</code></li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = Promise.allSettled([
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; reject(new Error("hoge")), 1000)
+  ),
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; resolve(2), 2000)
+  ),
+  new Promise((resolve, reject)=&gt;
+    setTimeout(()=&gt; reject(new SyntaxError("fuga")), 3000)
+  ),
+])
+.then(results=&gt;{
+  results.forEach((result, num)=&gt;{
+    if(result.status === "fulfilled"){
+      console.log(
+        `${result.status}:${result.value}`
+      );
+    }else{
+      console.log(
+        `${result.status}:${result.reason.name}`
+      );
+    }
+  })
+})
+
+//rejected:Error
+//fulfilled:2
+//rejected:SyntaxError
+
+/*thenメソッドの前までのpromise*/
+//0: {status: 'rejected', reason: Error: hoge at &lt;anonymous&gt;:3:32}
+//1: {status: 'fulfilled', value: 2}
+//2: {status: 'rejected', reason: SyntaxError: fuga at &lt;anonymous&gt;:9:32}</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>promise配列(返り値)のstateは<code>rejected</code>にならない</li>
+<li>全て<code>reject</code>されて返したとしても</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><code>iterable</code>であって、本物の配列ではないので、<code>map</code>等を使いたい場合は、<code>Array.from</code>等を利用する事</li>
+</ul>
+</div>
+<h3 id="_53">補足</h3>
+<ul>
+<li><code>Promise.allSettled</code>は比較的新しい機能</li>
+<li>実装されていないときは、以下の様に<code>Polyfill</code>を行っていた</li>
+</ul>
+<pre class="highlight"><code class="language-js">if(!Promise.allSettled){
+  const rejectHandler = reason =&gt; 
+    ({status : "rejected", reason});
+
+  const resolveHandler = value =&gt;
+    ({status: "fulfilled", value});
+
+  Promise.allSettled = (promises) =&gt;{
+    //Promiseでないことを鑑みて、Promise.resolve
+    //thenでfulfillとrejectを処理してオブジェクトで返す
+    const convertedPromises = promises.map(p=&gt;
+      Promise.resolve(p)
+      .then(resolveHandler, rejectHandler));
+
+    return Promise.all(convertedPromises);
+
+  }
+}</code></pre>
+</details>
+<h2 id="q97-promiserace">Q97 最初に返される結果のみが必要な場合、Promise.raceが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_54">使用例</h3>
+<ul>
+<li>2番目以降の結果(エラーも)は無視される</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = Promise.race([
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(1), 1000)
+  }),
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; reject(new Error("a")), 2000)
+  }),
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(3), 3000)
+  }),
+])
+
+//Promise {&lt;fulfilled&gt;: 1}
+
+promise.then(alert); //1
+</code></pre>
+</details>
+<h2 id="q98-fulfilledpromisepromiseany">Q98 最初のfulfilledされたpromiseを取得したい場合、Promise.anyが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promiserace">Promise.raceとの違い</h3>
+<ul>
+<li><code>reject</code>は無視される</li>
+</ul>
+<h3 id="reject_2">全部<code>reject</code>だったら?</h3>
+<ul>
+<li><code>AggregateError</code>で<code>reject</code>される</li>
+<li>これは<code>errors</code>プロパティにすべての<code>promise</code>エラーを格納する特別なオブジェクトである</li>
+</ul>
+<h3 id="1fulfilled">使用例(1つ以上fulfilled)</h3>
+<pre class="highlight"><code class="language-js">let promise = Promise.any([
+  new Promise((resolve, reject)=&gt;{
+    //1番早いがrejectなので無視
+    setTimeout(()=&gt; reject(new Error("hoge")), 1000)
+  }),
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(1), 2000)
+  }),
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve(2), 4000)
+  }),
+])
+
+//Promise {&lt;fulfilled&gt;: 1}
+
+promise.then(alert); //1</code></pre>
+<h3 id="rejected">使用例(全部rejected)</h3>
+<pre class="highlight"><code class="language-js">let promise = Promise.any([
+  new Promise((resolve, reject)=&gt; {
+    setTimeout(()=&gt; reject(new Error("Hoge")), 1000)
+  }),
+
+  new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; reject(new Error("fuga")), 2000)
+  }),
+])
+
+promise.catch(error=&gt;{
+  console.log(error.constructor.name);
+  //AggregateError
+  console.log(error.errors[0]);
+  //Error: Hoge
+  //  at &lt;anonymous&gt;:3:32
+  console.log(error.errors[1]);
+  //Error: fuga
+  //  at &lt;anonymous&gt;:7:32
+})
+
+/*promise*/
+//Promise {&lt;rejected&gt;: AggregateError: All promises were rejected}
+//[[Prototype]]: Promise
+//[[PromiseState]]: "rejected"
+//[[PromiseResult]]: AggregateError: All promises were rejected
+  //errors: Array(2)
+  //0: Error: Hoge at &lt;anonymous&gt;:3:32
+  //1: Error: fuga at &lt;anonymous&gt;:7:32
+  //length: 2
+</code></pre>
+</details>
+<h2 id="q99-promiseresolverejectpromise">Q99. Promise.resolve/rejectを用いてPromiseを返すことができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promiseresolvevalue">Promise.resolve(value)</h3>
+<ul>
+<li>以下と同じ意味を持つ</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise(resolve =&gt; resolve(value));</code></pre>
+<h3 id="_55">例文</h3>
+<ul>
+<li><code>cache</code>がある場合、<code>cache</code>から即座にコンテンツを返す</li>
+<li>ない場合は、<code>fetch</code>して<code>cache</code>にコンテンツを格納する</li>
+</ul>
+<pre class="highlight"><code class="language-js">let cache = new Map();
+
+const loadCached = url =&gt;{
+  if(cache.has(url)){
+    return Promise.resolve(cache.get(url));
+  }
+
+  return fetch(url)
+    .then(response =&gt; response.text())
+    .then(text =&gt;{
+      cache.set(url, text);
+      return text;
+    })
+}</code></pre>
+<h3 id="promiserejecterror">Promise.reject(error)</h3>
+<ul>
+<li>以下と同じ</li>
+</ul>
+<pre class="highlight"><code class="language-js">let promise = new Promise((resolve, reject)=&gt; reject(error))</code></pre>
+</details>
+<h2 id="q100-promise">Q100. コールバックを受け付ける関数を、Promiseを返す関数へ、変換することはできますか？</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promisification">Promisification</h3>
+<ul>
+<li>コールバックを受け付ける関数からPromiseを返す関数へ変換を行うこと</li>
+</ul>
+<h3 id="_56">元の関数</h3>
+<pre class="highlight"><code class="language-js">const loadScript = (src, callback)=&gt;{
+  let script = document.createElement("script");
+  script.src = src;
+
+  script.onload = () =&gt; callback(null, script);
+  script.onerror = () =&gt; callback(new Error(`Script load error for ${src}`));
+
+  document.head.append(script);
+}
+
+loadScript("test.js", (err, script)=&gt;{
+  if(err){
+    //errの処理
+  }
+  else{
+    //正常処理
+  }
+})</code></pre>
+<h3 id="version">書き換えたversion</h3>
+<ul>
+<li>コールバックの代わりにエラーを返す</li>
+<li>Promiseの中で元の関数を呼び出しており、その中でreject/resolveが呼び出されるので、関数が返すPromiseは正常に解決されている</li>
+</ul>
+<pre class="highlight"><code class="language-js">const loadScript = (src, callback)=&gt;{
+  let script = document.createElement("script");
+  script.src = src;
+
+  script.onload = () =&gt; callback(null, script);
+  script.onerror = () =&gt; callback(new Error(`Script load error for ${src}`));
+
+  document.head.append(script);
+}
+
+//Promiseの中で元関数を呼び、resolve/rejectを返す
+//promiseはreturnで返る
+const loadScriptPromise = src =&gt;{
+  return new Promise((resolve, reject)=&gt;{
+    loadScript(src, (err, script)=&gt;{
+      if(err) reject(err);
+      else resolve(script);
+    })
+  })
+}
+
+//test.jsにはsumという関数があるとする
+loadScriptPromise("test.js")
+.then(value =&gt; console.log(sum(7,8)), alert)</code></pre>
+</details>
+<h2 id="q101-promise">Q101. 複数の関数をpromise化したい場合、ヘルパー関数を使ってそれを実行することができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_57">使用例</h3>
+<ul>
+<li><code>f</code>の引数が<code>callback(err, res)</code>で固定されている場合</li>
+</ul>
+<pre class="highlight"><code class="language-js">/*loadScript*/
+const loadScript = (src, callback)=&gt;{
+  let script = document.createElement("script");
+  script.src = src;
+
+  script.onload = () =&gt; callback(null, script);
+  script.onerror = () =&gt; callback(new Error(`Script load error for ${src}`));
+
+  document.head.append(script);
+}
+
+/*ラッパー関数*/
+function promisify(f){
+  return function(...args){
+
+    return new Promise((resolve, reject)=&gt;{
+      function callback(err, result){
+        if(err) return reject(err);
+        else resolve(result);
+      }
+      args.push(callback); //引数末尾にPromiseを返却する用のコールバックを追加
+      //Promiseの中で元の関数を呼び出しており、その中でreject/resolveが呼び出されるので、関数が返すPromiseは正常に解決されている
+      f.call(this, ...args); 
+    })
+
+  }
+}
+
+
+let loadScriptPromise = promisify(loadScript);
+loadScriptPromise("test.js")
+.then(value =&gt; console.log(sum(7,8)), alert)</code></pre>
+<h3 id="_58">使用例</h3>
+<ul>
+<li><code>f</code>の引数が可変の場合</li>
+<li><code>res</code>が1つなら上と同じように動作</li>
+<li>2つ以上なら、コールバックの結果を配列で返し、<code>resolve</code></li>
+</ul>
+<pre class="highlight"><code class="language-js">//loadScriptは省略
+function promisify(f, manyArgs = false){
+  return function(...args){
+    return new Promise((resolve, reject)=&gt;{
+      function callback(err, ...results){
+        if(err) return reject(err);
+        else resolve(manyArgs ? results: results[0])
+      }
+
+      //引数の末尾にcallback
+      args.push(callback);
+      f.call(this, ...args);
+    })
+  }
+}
+
+//適当な関数を指定
+f = promisify(loadScript, true);
+f("test.js")
+.then(value =&gt; console.log(sum(3,5)), alert)</code></pre>
+<h3 id="_59">コールバックの形式が珍しい場合</h3>
+<ul>
+<li>ヘルパーを使わず、手動で<code>Promise</code>化する</li>
+</ul>
+<h3 id="_60">補足</h3>
+<ul>
+<li><code>Node.js</code>なら、<code>util.promisify</code>などを使うと、コールバック関数を伴う非同期関数を<code>Promise</code>を返すように出来る</li>
+</ul>
+</details>
+<h2 id="q102-promise">Q102. Promiseがコールバックの完全な置き換えにはならないことを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="promise_2">Promise</h3>
+<ul>
+<li>1つの結果のみを持つ</li>
+<li>単純な非同期処理に対して有用</li>
+</ul>
+<h3 id="_61">コールバック</h3>
+<ul>
+<li>何度も呼ぶことができる</li>
+<li>コールバックに渡される関数が複数回呼び出されるような非同期処理に対して有用</li>
+</ul>
+<h3 id="promisification_1">Promisificationによる書き換え</h3>
+<ul>
+<li>コールバックを1度だけ呼ぶ関数が対象</li>
+<li>それ以降の呼び出しは無視される</li>
+<li>以降の見出しでは、コールバックが有用なケースについて触れる</li>
+</ul>
+<h3 id="_62">ストリーム処理</h3>
+<ul>
+<li>データが逐次的に到着する場合</li>
+<li>データの断片が利用可能になるたびにコールバックを呼び出す</li>
+</ul>
+<h3 id="_63">イベント駆動の処理</h3>
+<ul>
+<li>特定のイベントが発生した際に、コールバックを呼び出す</li>
+</ul>
+<h3 id="_64">非同期処理の進捗</h3>
+<ul>
+<li>進捗があるたびに、コールバックを呼び出す</li>
+</ul>
+<h3 id="_65">上記の具体例について</h3>
+<ul>
+<li>後記</li>
+</ul>
+</details>
+<h2 id="q103">Q103. 非同期コードが、同期コードよりも常に後に実行される理由を理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_66">例</h3>
+<pre class="highlight"><code class="language-js">let promise = Promise.resolve();
+promise.then(()=&gt; alert("promise done!"));
+alert("code finished"); //此方が先に表示される</code></pre>
+<h3 id="_67">簡単な理由</h3>
+<ul>
+<li><code>.then</code>, <code>.catch</code>, <code>.finally</code>は常に非同期</li>
+<li>非同期処理はキューに入れられ、メインスレッドが空になったときにキューから出され、実行される</li>
+</ul>
+<h3 id="microtasks">Microtasksキューから見る理由</h3>
+<ul>
+<li>マイクロタスクとは、コールスタックが空になった後（グローバルスコープの関数が完全に実行された後）にのみ実行される短い関数を指す</li>
+<li><code>API</code>や<code>Promise</code>の<code>then()</code>等の引数に渡すコールバック関数がマイクロタスクとして扱われる</li>
+<li>キューである以上、入れたものから処理されるので、順番を考えるなら先にキューに入れればいい</li>
+<li>なお、<code>Promise</code>の場合、<code>fulfill/reject</code>されたタイミングで、キューに入れられる。</li>
+</ul>
+<h3 id="promise-done">つまり、promise doneを先に表示したいなら</h3>
+<pre class="highlight"><code class="language-js">Promise.resolve()
+  .then(()=&gt; alert("promise done!"))
+  .then(()=&gt; alert("code finished!"))</code></pre>
+</details>
+<h2 id="q104-rejectjsunhandledrejection">Q104. 未処理のrejectがあった場合、JSはunhandledrejectionイベントを発火しますが、その検知の仕組みを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_68">概要</h3>
+<ul>
+<li><code>unhandledrejection</code>は、<code>microtask</code>キューの最後(空になるタイミング)で<code>reject</code>がハンドルされていない場合に発生する</li>
+</ul>
+<h3 id="_69">イベントが発火する原因が分かりますか?</h3>
+<pre class="highlight"><code class="language-js">let promise = Promise.reject(new Error("Promise fail"));
+
+setTimeout(()=&gt; promise.catch(err =&gt; alert("caught")), 1000);
+
+window.addEventListener("unhandledrejection", event =&gt; alert(event.reason));
+//Error: Promise fail</code></pre>
+<h3 id="_70">答え</h3>
+<ul>
+<li><code>setTimeout</code>で1秒後に<code>reject</code>を<code>catch</code>しているが、既にこの時には<code>microtask</code>キューは空になっている</li>
+<li>そのため先に、<code>unhandledrejection</code>イベントが発火する</li>
+</ul>
+</details>
+<h2 id="q105-asyncpromise">Q105. 関数の前にasyncキーワードを付けると、関数がpromiseを返すようになることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_71">構文</h3>
+<ul>
+<li>コード内に<code>return &lt;非promise&gt;</code>がある場合、JSは自動的に<code>resolve</code>された<code>promise</code>にラップする</li>
+</ul>
+<pre class="highlight"><code class="language-js">async function f(){
+  return 1;
+}
+
+let promise = f();
+console.log(promise); //Promise {&lt;fulfilled&gt;: 1}
+promise.then(alert); //1</code></pre>
+<h3 id="_72">つまり</h3>
+<ul>
+<li><code>async</code>は関数が<code>promise</code>を返すことを保証する</li>
+</ul>
+</details>
+<h2 id="q106-asyncawait">Q106 async関数の中でのみ動作するawaitキーワードの意味を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="await">await</h3>
+<ul>
+<li><code>promise</code>が確定するまで待機する。 <strong><code>fulfilled</code>ならその<code>value</code>が返り値</strong> となる。<code>reject</code>なら拒否された値で例外を発生させる。</li>
+<li>待機している間、JSエンジンは他のスクリプト等を処理する</li>
+<li><code>promise.then</code>と同義だが、分かりやすい</li>
+</ul>
+<pre class="highlight"><code class="language-js">async function f(){
+  let promise = new Promise((resolve, reject)=&gt;{
+    setTimeout(()=&gt; resolve("done!"), 1000);
+  });
+
+  let result = await promise; //1秒待機
+  alert(result);
+}
+
+f();</code></pre>
+</details>
+<h2 id="q107-promisethenasyncawait">Q107 Promiseとthen等で書いたコードをasync/awaitを用いて書き直すことができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="cors">CORSリクエストについて</h3>
+<ul>
+<li>
+<p>以下のようなエラーが出ているかもしれない<br />
+<pre class="highlight"><code>Access to fetch at 'file:///C:/file_test/test/test.json' from origin 'null' has been blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, isolated-app, chrome-extension, chrome, https, chrome-untrusted.</code></pre></p>
+</li>
+<li>
+<p>原因<br />
+<pre class="highlight"><code>URLスキームがHTTPSでないため
+fill:///から始まっているのでpolicyに引っかかっている</code></pre></p>
+</li>
+<li>
+<p>対処法<br />
+<pre class="highlight"><code>HTTPSのURLを使用する
+具体的にはlocalserverを立てる</code></pre></p>
+</li>
+<li>
+<p>Nodeをインストールしていると仮定<br />
+<pre class="highlight"><code>$ npm install -g http-server
+$ http-server
+・http://localhost:8080にアクセス
+・フォルダ/ファイルが表示されるので、何かしらのファイル(html等)を選ぶ
+・開発者ツールにいつものようにコードを打ち込む</code></pre></p>
+</li>
+</ul>
+<h3 id="_73">例(方針)</h3>
+<h3 id="promise-then">例(Promise &amp;' then)</h3>
+<pre class="highlight"><code class="language-js">fetch("test.json")
+  .then(response =&gt; response.json())
+  .then(user =&gt; fetch(`https://api.github.com/users/${user.name}`))
+  .then(response =&gt; response.json())
+  .then(githubUser =&gt; new Promise((resolve, reject)=&gt;{
+    let img = document.createElement("img");
+    img.src = githubUser.avatar_url;
+    img.className = "promise-avatar-example";
+    document.body.append(img);
+
+    setTimeout(()=&gt;{
+      img.remove();
+      resolve(githubUser);
+    }, 3000);
+  }))
+  .then(githubUser =&gt; alert(`Finished showing ${githubUser.name}`));</code></pre>
+<h3 id="asyncawait">例(async/await)</h3>
+<ul>
+<li>個々の非同期処理の結果を直接変数に割り当てることができ、その後の処理で利用できるため可読性が高まる</li>
+<li>実際には非同期処理だが、同期的の様に書けるのもメリット</li>
+</ul>
+<pre class="highlight"><code class="language-js">async function showAvatar(){
+  //JSONを読み込む
+  let response = await fetch("test.json");
+  let user = await response.json();
+
+  //githubユーザを読み込む
+  let githubResponse = await fetch(`https://api.github.com/users/${user.name}`);
+  let githubUser = await githubResponse.json();
+
+  //アバターの表示
+  let img = document.createElement("img");
+  img.src = githubUser.avatar_url;
+  img.className = "promise-avatar-example";
+  document.body.append(img);
+
+  //3秒待機.引数が指定されていないので返るpromiseはvalueがundefined
+  await new Promise((resolve, reject)=&gt;{
+    setTimeout(resolve, 3000)
+  });
+
+  img.remove();
+  return githubUser; //promiseを返す
+}
+
+showAvatar();</code></pre>
+</details>
+<h2 id="q108-awaitthenable">Q108 awaitもthenableを許容することを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_74">概要</h3>
+<ul>
+<li><code>await</code>キーワードがついた式の値は、通常<code>promise</code>の値になる</li>
+<li>ただ、<code>promise</code>互換であってもよい</li>
+</ul>
+<h3 id="_75">例</h3>
+<pre class="highlight"><code class="language-js">class Thenable{
+  constructor(num){
+    this.num = num;
+  }
+  then(resolve, reject){
+    //alert(resolve);
+    setTimeout(()=&gt; resolve(this.num * 2), 1000);
+  }
+}
+
+async function f(){
+  let result = await new Thenable(1);
+  console.log(result);
+}
+
+f();</code></pre>
+</details>
+<h2 id="q109-async">Q109 クラスメソッドもasyncになれることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_76">使用例</h3>
+<pre class="highlight"><code class="language-js">class User{
+  constructor(name){
+    this.name = name;
+  }
+  async print(){
+    //awaitの戻り値であるvalueは非プロミス値になる
+    //return &lt;非プロミス値&gt;なので、またresolveでラップされる
+    return await Promise.resolve(this.name);
+  }
+}
+
+new User("Taro")
+  .print()
+  .then(alert); //Taro</code></pre>
+</details>
+<h2 id="q110-asyncawaittrycatch">Q110 async/awaitでエラー処理を行う場合、try...catchが使えることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="awaitpromisereject">awaitはpromiseの結果がrejectなら例外を投げる</h3>
+<ul>
+<li>つまり</li>
+</ul>
+<pre class="highlight"><code class="language-js">async function f(){
+  await Promise.reject(new Error("hoge"));
+}</code></pre>
+<ul>
+<li>は、以下と一緒</li>
+</ul>
+<pre class="highlight"><code class="language-js">async function f(){
+  throw new Error("hoge");
+}</code></pre>
+<h3 id="trycatch">エラーは<code>try...catch</code>でキャッチできる</h3>
+<pre class="highlight"><code class="language-js">async function f(){
+  try{
+    let response = await fetch("http://not-found.com");
+    let user = await response.json();
+  }
+  catch(err){
+    //fetchとresponse.json、両方のエラーをcatch
+    alert(err);
+  }
+}
+
+f() //TypeError: Failed to fetch</code></pre>
+<h3 id="get-neterr_name_not_resolved">GET net::ERR_NAME_NOT_RESOLVEDについて</h3>
+<p>-　これはネットワークエラー<br />
+- <code>try...catch</code>はJSの例外をキャッチするためのものなので、ネットワークエラーはキャッチしない</p>
+<h3 id="catch_1">catchを追加し忘れた場合</h3>
+<ul>
+<li><code>unhandledrejection</code>イベントが発火する</li>
+</ul>
+<h3 id="thencatch">.thenや.catchを使う機会はあるのか</h3>
+<ul>
+<li>コードのトップレベルにいる場合は、<code>await</code>を使えないので(モジュール除く)、<code>.then</code>や<code>.catch</code>を使う</li>
+</ul>
+</details>
+<h2 id="q111-asyncawaitpromiseallpromise">Q111. async/awaitとPromise.allを併用して、複数のPromiseを待てることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_77">使用例</h3>
+<pre class="highlight"><code class="language-js">//valueとして返るので、resultsはpromiseではない
+let results = await Promise.all([
+  fetch("https://api.github.com/users/Toraneko0101"),
+  fetch("https://api.github.com/users/Nekoinu-Nezumiko"),
+])
+
+results.forEach(result=&gt;{
+  console.log(result.url);
+})
+
+//https://api.github.com/users/Toraneko0101
+//https://api.github.com/users/Nekoinu-Nezumiko
+
+</code></pre>
+</details>
+<h2 id="q112-asyncasync">Q112. 非asyncの関数内からasync呼び出しを行うようなコードを記述できますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="asyncpromise">async呼び出しをPromiseとして扱う</h3>
+<pre class="highlight"><code class="language-js">async function wait(){
+  //1秒待機
+  await new Promise(resolve =&gt; setTimeout(resolve, 1000));
+
+  return 10;
+}
+
+function f(){
+  //awaitは使えないので、thenを使う
+  //10がPromise.resolveでラップされて帰ってくるので
+  wait().then(value =&gt; value**2).then(alert); //100
+}
+
+f();</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/custom.js"></script>
+      
+        <script src="../../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

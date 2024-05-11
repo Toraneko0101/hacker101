@@ -1,0 +1,4429 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="02_mapping.html">
+      
+      
+        <link rel="next" href="../../react_tutorial/000_hazimeni.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(3:群) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/prism.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(3:群)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="03_group.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q29 席替えと写像の関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q29 席替えと写像の関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      席替えについて考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      席替えと写像
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      全単射である意味
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ここで、席替えという写像全体の集合について考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      合成写像と席替え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-circ-a-neq-a-circ-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      \({r \circ a \neq a \circ r ?}\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二項演算の演算表について考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q30 群の定義について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q30 群の定義について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定義(群)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      位数について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例1(写像全体の集合)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      群である理由を確かめる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例2(掛け算)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3r" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例3(実数全体の集合Rと、乗算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4r" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例4(正の実数全体の集合R+と、乗算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5z" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例5(整数全体の集合Zと、乗算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6z" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例6(整数全体の集合Zと、加算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例7(整数の0のみからなる集合と、加算)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例8(整数の1のみからなる集合と、乗算)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例9(空集合を台集合に持つ群)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q31 群の定義について理解できましたか?(補足)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q31 群の定義について理解できましたか?(補足)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      別表記について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      群の公理 --&gt; 群という関係性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    <span class="md-ellipsis">
+      二項演算と、集合X上の二項演算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g1" class="md-nav__link">
+    <span class="md-ellipsis">
+      G1について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g2" class="md-nav__link">
+    <span class="md-ellipsis">
+      G2について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g3" class="md-nav__link">
+    <span class="md-ellipsis">
+      G3について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      単位元と逆元の表記について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      -1乗という表記について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      積という表現について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q32 群の利点が分かりますか?(コラム)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q32 群の利点が分かりますか?(コラム)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      群の利点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q33 部分群の定義について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q33 部分群の定義について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      a
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q29" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q29 席替えと写像の関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q29 席替えと写像の関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      席替えについて考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      席替えと写像
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      全単射である意味
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ここで、席替えという写像全体の集合について考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      合成写像と席替え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#r-circ-a-neq-a-circ-r" class="md-nav__link">
+    <span class="md-ellipsis">
+      \({r \circ a \neq a \circ r ?}\)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二項演算の演算表について考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q30" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q30 群の定義について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q30 群の定義について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      定義(群)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      位数について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例1(写像全体の集合)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      群である理由を確かめる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例2(掛け算)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3r" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例3(実数全体の集合Rと、乗算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4r" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例4(正の実数全体の集合R+と、乗算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5z" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例5(整数全体の集合Zと、乗算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6z" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例6(整数全体の集合Zと、加算の組)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#70" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例7(整数の0のみからなる集合と、加算)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#81" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例8(整数の1のみからなる集合と、乗算)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体例9(空集合を台集合に持つ群)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q31" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q31 群の定義について理解できましたか?(補足)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q31 群の定義について理解できましたか?(補足)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      別表記について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-" class="md-nav__link">
+    <span class="md-ellipsis">
+      群の公理 --&gt; 群という関係性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#x" class="md-nav__link">
+    <span class="md-ellipsis">
+      二項演算と、集合X上の二項演算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g1" class="md-nav__link">
+    <span class="md-ellipsis">
+      G1について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g2" class="md-nav__link">
+    <span class="md-ellipsis">
+      G2について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#g3" class="md-nav__link">
+    <span class="md-ellipsis">
+      G3について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      単位元と逆元の表記について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      -1乗という表記について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      積という表現について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q32" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q32 群の利点が分かりますか?(コラム)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q32 群の利点が分かりますか?(コラム)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      群の利点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q33" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q33 部分群の定義について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q33 部分群の定義について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      a
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="3">クイズ(3:群)</h1>
+<h2 id="q29">Q29 席替えと写像の関係性について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_1">席替えについて考える</h3>
+<pre class="highlight"><code class="language-text">1,2,3という座席番号がついた3つの座席があるとする
+席替えを行い、以下のような席になったとする
+座席1 --&gt; 座席2
+座席2 --&gt; 座席1
+座席3 --&gt; 座席3
+これ(席替えという写像)を以下の様に表記する
+
+※具体例を出すのは、現実世界の対象を数学的に考察できる
+  ようにするためらしい</code></pre>
+<div class="arithmatex">\[
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 1 &amp; 3 
+  \end{pmatrix}
+\]</div>
+<pre class="highlight"><code class="language-text">もう1つ例を出す
+
+座席1 --&gt; 座席2
+座席2 --&gt; 座席3
+座席3 --&gt; 座席1</code></pre>
+<div class="arithmatex">\[
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 3 &amp; 1 
+  \end{pmatrix}
+\]</div>
+<h3 id="_2">席替えと写像</h3>
+<pre class="highlight"><code class="language-text">・座席番号全体の集合をX = {1,2,3}とすると、
+  席替えは、集合Xから集合Xへの全単射
+
+・定義域の元に終域の元が1つずつ対応しているし、
+　ダブることも、もれもないからね</code></pre>
+<div class="arithmatex">\[
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 1 &amp; 3 \\ 
+  \end{pmatrix} = f
+\]</div>
+<div class="arithmatex">\[
+  \begin{align}
+    &amp; f: X \rightarrow X \\
+    &amp; f: 1 \mapsto 2 \\
+    &amp; f: 2 \mapsto 1 \\
+    &amp; f: 3 \mapsto 3
+  \end{align}
+\]</div>
+<h3 id="_3">全単射である意味</h3>
+<pre class="highlight"><code class="language-text">全射
+  ・席替えを行った後、空いている座席が存在しない
+
+単射
+  ・同じ席に座る人間は存在しない
+
+恒等写像
+  ・席が変わらない
+
+fの逆写像
+  ・席替えfが行われる前に戻す</code></pre>
+<h3 id="_4">例</h3>
+<div class="arithmatex">\[
+\begin{align}
+&amp; a = \begin{pmatrix}
+  1 &amp; 2 &amp; 3 \\
+  2 &amp; 1 &amp; 3 \\ 
+\end{pmatrix} の逆写像は、
+a^{-1} = \begin{pmatrix}
+  2 &amp; 1 &amp; 3 \\
+  1 &amp; 2 &amp; 3 \\ 
+\end{pmatrix} であり、 \\
+\\
+&amp; 1行目と2行目を逆にしたものに相当する \\
+\end{align}
+\]</div>
+<pre class="highlight"><code class="language-text">・ここで、写像と逆写像は相当関係にある
+
+・なぜなら、定義域X = {1,2,3}の任意の元nに対して、
+  a(n) = a^-1(n)だからである
+
+  a(1) = 2 = a^{-1}(1)
+  a(2) = 1 = a^{-1}(2)
+  a(3) = 3 = a^{-1}(3)
+
+  ⇒ところでそもそも定義域と終域が異なると、
+  　二つの写像の対応関係が直接比較できない
+
+  つまり、以下の様に表現できる</code></pre>
+<div class="arithmatex">\[
+  \begin{pmatrix}
+  1 &amp; 2 &amp; 3 \\
+  2 &amp; 1 &amp; 3 \\ 
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+  2 &amp; 1 &amp; 3 \\
+  1 &amp; 2 &amp; 3 \\ 
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+  1 &amp; 2 &amp; 3 \\
+  2 &amp; 1 &amp; 3 \\ 
+  \end{pmatrix} ^{-1}
+\]</div>
+<div class="arithmatex">\[
+  \begin{align}
+    a = a^{-1}
+  \end{align}
+\]</div>
+<h3 id="2">例2</h3>
+<pre class="highlight"><code class="language-text">・以下の場合、写像とその逆写像は相当関係にない</code></pre>
+<div class="arithmatex">\[
+ r = 
+ \begin{pmatrix}
+  1 &amp; 2 &amp; 3 \\
+  2 &amp; 3 &amp; 1
+ \end{pmatrix}
+\]</div>
+<h3 id="_5">ここで、席替えという写像全体の集合について考える</h3>
+<pre class="highlight"><code class="language-text">・席替えにより、座席番号全体の集合Xの元をXへ対応させる
+  ことは紛れもない写像
+
+・この対応関係（写像）を集合の要素として以下の様に表す</code></pre>
+<div class="arithmatex">\[
+  \begin{align} 
+  席替え全体の集合S_3 =
+  \left\{
+   \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    1 &amp; 2 &amp; 3 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 1 &amp; 3 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    1 &amp; 3 &amp; 2 
+  \end{pmatrix} , \\
+   \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    3 &amp; 2 &amp; 1 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 3 &amp; 1 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    3 &amp; 1 &amp; 2 
+  \end{pmatrix}
+  \right\}
+  \end{align}
+\]</div>
+<div class="arithmatex">\[
+  \begin{align}
+    &amp; 便宜上、以下の様に名前を付ける \\
+    &amp; e = 
+    \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    1 &amp; 2 &amp; 3 
+    \end{pmatrix} 全員が同じ座席のまま動かない \\
+    &amp; a = 
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      2 &amp; 1 &amp; 3 
+    \end{pmatrix} 座席1,2の2人が座席交換 \\
+    &amp; b = 
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      1 &amp; 3 &amp; 2 
+    \end{pmatrix} 座席2,3の2人が座席交換 \\
+    &amp; c = 
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      3 &amp; 2 &amp; 1 
+    \end{pmatrix} 座席1,3の2人が座席交換 \\
+    &amp; r = 
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      2 &amp; 3 &amp; 1 
+    \end{pmatrix} 全員がぐるっと座席交換 \\
+    &amp; s = 
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      3 &amp; 1 &amp; 2 
+    \end{pmatrix} rの逆回り \\
+  \end{align}
+\]</div>
+<h3 id="_6">合成写像と席替え</h3>
+<pre class="highlight"><code class="language-text">・2回の席替えを続けて行うと、結果、1回の席替えになる
+・これは2個の写像を合成した合成写像を求めていることと同義
+
+例)
+  席替えa の次に 席替えrを行う
+  これは、r 〇 a　に相当し、以下の様に表現できる</code></pre>
+<div class="arithmatex">\[
+  r \circ a = 
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 3 &amp; 1
+  \end{pmatrix} \circ
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 1 &amp; 3
+  \end{pmatrix}
+\]</div>
+<pre class="highlight"><code class="language-text">・合成写像が何に相当するか考える
+
+※矢印の上に、写像が載っている下の表記は
+  写像による、左の像が右であることを示している</code></pre>
+<div class="arithmatex">\[
+  \begin{align}
+    &amp; 1 \stackrel{a}{\longmapsto} 2 \stackrel{r}{\longmapsto} 3 \\
+    &amp; 2 \stackrel{a}{\longmapsto} 1 \stackrel{r}{\longmapsto} 2 \\
+    &amp; 3 \stackrel{a}{\longmapsto} 3 \stackrel{r}{\longmapsto} 1 \\
+    \\
+    &amp; つまり\\
+    &amp; 1 \stackrel{r \circ a}{\longmapsto} 3 \\
+    &amp; 2 \stackrel{r \circ a}{\longmapsto} 2 \\
+    &amp; 3 \stackrel{r \circ a}{\longmapsto} 1 \\
+    \\
+    &amp; r \circ a = 
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      3 &amp; 2 &amp; 1 \\
+    \end{pmatrix} = c
+  \end{align}
+\]</div>
+<h3 id="r-circ-a-neq-a-circ-r"><span class="arithmatex">\({r \circ a \neq a \circ r ?}\)</span></h3>
+<pre class="highlight"><code class="language-text">・実際に確かめて考える</code></pre>
+<div class="arithmatex">\[
+\begin{align}
+  &amp; a \circ r = 
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 1 &amp; 3
+  \end{pmatrix} 
+  \circ
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 3 &amp; 1
+  \end{pmatrix}
+  = 
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    1 &amp; 3 &amp; 2
+  \end{pmatrix}  
+  = b \\
+  \\
+  &amp; よって、 r \circ a \neq a \circ r
+\end{align}
+\]</div>
+<h3 id="_7">二項演算の演算表について考える</h3>
+<pre class="highlight"><code class="language-text">・席替え全体の集合S_3には6個の元がある。
+　そのため、二回の席替えを続けて行うと、
+  合成写像の種類は36個になる
+
+  これ(二回の席替え--&gt;一回の席替え)を、席替えの演算とみなし、
+  定義域をS_3×S_3(席替えの組み合わせの直積)
+  値域をS_3(結果)とすると、
+  席替えの演算は、直積S_3×S_3からS_3への写像なので
+  S_3上の二項演算ということができる</code></pre>
+<div class="arithmatex">\[
+ \begin{align}
+  \circ : S_3 \times S_3 \rightarrow S_3
+ \end{align}
+\]</div>
+<pre class="highlight"><code class="language-text">・二項演算を表で表すと以下の様になる
+  例として、r〇a = c</code></pre>
+<div class="arithmatex">\[
+\begin{array}{c:cccccc}
+  \circ &amp; e &amp; a &amp; b &amp; c &amp; r &amp; s \\ 
+  \hline
+  e &amp; e &amp; a &amp; b &amp; c &amp; r &amp; s \\
+  a &amp; a &amp; e &amp; r &amp; s &amp; b &amp; c \\
+  b &amp; b &amp; s &amp; e &amp; r &amp; c &amp; a \\
+  c &amp; c &amp; r &amp; s &amp; e &amp; a &amp; b \\
+  r &amp; r &amp; c &amp; a &amp; b &amp; s &amp; e \\
+  s &amp; s &amp; b &amp; c &amp; a &amp; e &amp; r 
+\end{array}
+\]</div>
+<h3 id="_8">まとめ</h3>
+<pre class="highlight"><code class="language-text">・二つの席替えから、1回の席替えを作成
+・誰も動かない席替え
+・逆の席替え
+
+以上の3点について述べてきた。
+これらを抽象化することで、群が定義される</code></pre>
+</details>
+<h2 id="q30">Q30 群の定義について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_9">定義(群)</h3>
+<pre class="highlight"><code class="language-text">集合Gと、G上の二項演算*が、G1, G2, G3をすべて満たすとき、
+組(G, *)を群という。
+
+群(G, *)におけるGを台集合、*を群演算という
+
+G1
+  Gの任意の元x,y,zに対して、
+  x*(y*z) = (x*y)*zが成り立つ。
+  これを結合律という
+  ※この*は、二項演算を意味しており、掛け算限定ではない
+
+G2
+  Gに元eが存在し、Gの任意の元xに対して
+  x*e = x かつ、e*x = xが成り立つ。
+  このeを、*に関する単位元という
+
+G3
+  Gの任意の元xに対して、Gの元yが存在し、
+  x*y = e かつ y*x = eが成り立つ。
+  このyをxの逆元という</code></pre>
+<h3 id="_10">注意点</h3>
+<pre class="highlight"><code class="language-text">・群は、集合とその集合上の二項演算の組に対して定義される
+
+・つまり、集合だけを持ってきて、集合＝群ということはない
+
+・集合Gと二項演算*の組(G,*)は、G1,G2,G3をすべて満たせば
+　群とみなすことができる。
+  (つまり、G1,G2,G3を満たせばどんなものであっても群)
+
+・G1, G2, G3を群の公理という
+
+・つまり、結合律が成り立ち、全ての元に逆元が存在し、
+　単位元が存在すれば、(G, *)は群になるのか?</code></pre>
+<h3 id="_11">位数について</h3>
+<pre class="highlight"><code class="language-text">・群(G,*)の台集合Gに属している元のことを、
+  群Gの元という。
+
+・群Gの元の個数|G|を、群Gの位数という
+
+・位数が有限の群は有限群で、それ以外の群は無限群になる</code></pre>
+<h3 id="1">具体例1(写像全体の集合)</h3>
+<div class="arithmatex">\[
+  \begin{align} 
+  S_3 =
+  \left\{
+   \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    1 &amp; 2 &amp; 3 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 1 &amp; 3 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    1 &amp; 3 &amp; 2 
+  \end{pmatrix} , \\
+   \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    3 &amp; 2 &amp; 1 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    2 &amp; 3 &amp; 1 
+  \end{pmatrix} ,
+  \begin{pmatrix}
+    1 &amp; 2 &amp; 3 \\
+    3 &amp; 1 &amp; 2 
+  \end{pmatrix}
+  \right\}
+  \end{align}
+\]</div>
+<pre class="highlight"><code class="language-text">・席替えについて考える
+
+・3つの座席全体の集合を、X={1,2,3}とすると、
+  席替えは、XからXへの全単射になる
+
+・ここで、写像の合成を表す二項演算は、
+  〇: S3 × S3 --&gt; S3であった
+
+・この時、(S3, 〇)は群となる。
+  |S3| = 6であるため、群の位数は、6になる</code></pre>
+<h3 id="_12">群である理由を確かめる</h3>
+<pre class="highlight"><code class="language-text">(S3, 〇)が群である理由
+  ・群の公理、G1, G2, G3を満たすから
+
+(S3, 〇)がG1を満たすといえる理由
+  ・写像の合成は、結合律を満たす
+
+  ※XからYへの写像、f:X --&gt; Yと
+    YからZへの写像、g:Y --&gt; Zと、
+    ZからWへの写像、h:Z --&gt; Wがあるとき、
+    (合成が定義できるような始域、終域を備えていればいい)
+
+    Xの任意の要素 x∊Xに対して、
+    ((h〇g)〇f)(x) = (h〇(g〇f))(x)であると言えればよい
+
+    ここで、写像の合成の定義
+    (g〇f)(x) := g(f(x))より、
+
+    ((h〇g)〇f)(a) = (h〇g)(f(a))
+                   = h(g(f(a))) ...(1)
+
+    (h〇(g〇f))(a) = h((g〇f)(a))
+                   = h(g(f(a))) ...(2)
+
+    1,2より、
+    ((h〇g)〇f)(a) = (h〇(g〇f))(a)が言えるため、
+    写像の合成は結合律を満たす
+
+(S3, 〇)がG2を満たす理由
+  ※恒等写像を使った合成写像が元の写像と同じになることを
+    示すやり方で行く
+
+  前提として、S3の元には、恒等写像が存在している
+
+  以下の様に定義する
+  id ∊ S3 , f ∊ S3
+  x ∊ X
+  この時、idは恒等写像であり、fはS3の任意の元
+  xは、座席全体の集合Xの任意の元
+
+  ここで、二つの合成写像
+  g = (f 〇 id)(x)
+  h = (id 〇 f)(x)について考える
+
+  g(x) = h(x) = f(x)ならば、
+  f〇id = id〇f = fであり、
+  idは〇に関して単位元であるといえる
+
+  g(x) = (f〇id)(x) = f(id(x))
+  恒等写像の定義より、id(x) = x
+  よって、f(id(x)) = f(x)
+
+  h(x) = (id〇f)(x) = id(f(x))
+  恒等写像の定義より、id(f(x)) = f(x)
+
+  従って、g(x)= h(x) = f(x)であるため
+  idは〇に関して単位元
+  単位元が存在するためG2を満たす
+
+
+
+  id(x)〇f = f〇id(x) = f
+  よって、恒等写像は写像の合成〇に関して
+  単位元の性質を満たす。
+
+(S3, 〇)がG3を満たす理由
+  G2で恒等写像が単位元の性質を満たすとしたため、
+  S3の任意の元が写像であるとき、X〇Y = Y〇X = 恒等写像
+  となれば、YはXについての逆元であるといえる</code></pre>
+<div class="arithmatex">\[
+  \begin{align}
+    &amp; \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      1 &amp; 2 &amp; 3
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      2 &amp; 1 &amp; 3
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      1 &amp; 3 &amp; 2
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      3 &amp; 2 &amp; 1
+    \end{pmatrix} \\
+    &amp; 上記については自分自身が逆元になる \\
+    \\
+    &amp; \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      2 &amp; 3 &amp; 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 &amp; 2 &amp; 3 \\
+      3 &amp; 1 &amp; 2
+    \end{pmatrix} については互いが互いの逆元となる \\
+    &amp; よって、S_3の任意の元に逆元が存在するため、G3を満たすといえる
+  \end{align}
+\]</div>
+<h3 id="2_1">具体例2(掛け算)</h3>
+<pre class="highlight"><code class="language-text">・二つの整数1,-1からなる集合、S={1,-1}と、
+　乗算×の組(S,×)は群といえるだろうか?
+
+  参考のため、以下である
+   1 *  1 =  1
+   1 * -1 = -1
+  -1 *  1 = -1
+  -1 * -1 =  1
+
+G1
+  整数の乗算では結合律が成り立つため、
+  Sの任意の元x,y,zに対して、
+  x*(y*z) = (x*y)*zが成り立つ。
+
+G2
+  Sの任意の元xに対して、
+  x * 1 = x, 1*x = xであるため、
+  単位元として1が存在するといえる
+
+G3
+  単位元 = 1である
+  ここで、1*1 = 単位元, -1*-1= 単位元となるため、
+  Sの任意の元xに対して、xの逆元が存在している
+
+よって、G1,G2,G3の性質を満たすため
+(S,×)は群である</code></pre>
+<h3 id="3r">具体例3(実数全体の集合Rと、乗算の組)</h3>
+<pre class="highlight"><code class="language-text">x∊Rの時、x*1 = 1*x = xであるため、
+1は、×に関する単位元である
+
+ここで、0の逆元について考える
+0はRの元であるが、
+0*y = y*0 = 1を満たす、yは存在しない
+よって、G3が満たされないため、(R,×)は群ではない</code></pre>
+<h3 id="4r">具体例4(正の実数全体の集合R+と、乗算の組)</h3>
+<pre class="highlight"><code class="language-text">・実数の乗算なので、結合律が成り立つ
+・x∊R+の時、1は二項演算×に関する単位元になる
+・x∊R+の時、xの逆元は、1/xとなる
+
+よって、G1,G2,G3を満たすため、(R+,×)は群</code></pre>
+<h3 id="5z">具体例5(整数全体の集合Zと、乗算の組)</h3>
+<pre class="highlight"><code class="language-text">・x × 1 = 1 × x = xより単位元は存在する。
+・1, -1以外の整数に逆元が存在しないので、
+  (Z, ×)は群ではない
+
+・Z+の場合も、1/xが1未満になるので逆元が存在せず、
+　群にならない</code></pre>
+<h3 id="6z">具体例6(整数全体の集合Zと、加算の組)</h3>
+<pre class="highlight"><code class="language-text">・x,y,z∊Zの時、
+  (x+y) + z = x + (y+z)なので、結合律が成り立つ
+
+・x+0 = 0+x = xより、二項演算+に関する単位元は0
+
+・逆元は、正負の符号を逆転させたものになり、
+  任意の元に対して存在する
+
+  よってG1,G2,G3の性質を見たすので、(Z, +)は群</code></pre>
+<h3 id="70">具体例7(整数の0のみからなる集合と、加算)</h3>
+<pre class="highlight"><code class="language-text">・x,y,z∊{0}の時、
+  (0+0)+0 = 0 + (0+0)なので、結合律が成り立つ
+  ※始域{0}×{0}、終域{0}なので、{0}上の二項演算
+
+・0+0 = 0+0 = 0より、二項演算+に関する単位元は0
+
+・0に対する逆元は0自身。よって、({0}, +)は群</code></pre>
+<h3 id="81">具体例8(整数の1のみからなる集合と、乗算)</h3>
+<pre class="highlight"><code class="language-text">・x,y,z∊{1}の時、(ただしx,y,zは任意の元)
+  (1×1)×1 = 1 × (1×1)なので、結合律が成り立つ
+
+・1×1 = 1×1 = 1より、二項演算×に関する単位元は1
+
+・1に対する逆元は1自身。よって、({1}, ×)は群
+
+・ここで、({0}, +)と、({1}, ×)の関係性について考える
+　台集合は異なるが、群演算も異なるが
+  単位元からなる群という点で同じに思える。
+  この同じという感覚が、準同型に生きてくる</code></pre>
+<h3 id="9">具体例9(空集合を台集合に持つ群)</h3>
+<pre class="highlight"><code class="language-text">・元を持たないので、単位元が存在しない。
+　よって、G2が満たされず、
+　空集合を台集合に持つ場合、群ではない</code></pre>
+</details>
+<h2 id="q31">Q31 群の定義について理解できましたか?(補足)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_13">別表記について</h3>
+<pre class="highlight"><code class="language-text">・群演算が明確の場合、台集合の名前だけで群を表記する
+  事もある。
+
+・つまり、群(G,*)の代わりに、群Gとするなど
+・これは掛け算の省略表記と同じ
+・明確にしたい場合や強調したい場合は省略しない</code></pre>
+<h3 id="-">群の公理 --&gt; 群という関係性</h3>
+<pre class="highlight"><code class="language-text">・群の公理を満たせば、群であるという関係性を理解する
+
+・つまり、群演算ではなぜ結合律が成り立つのかという疑問は
+  結合律が成り立たなければ、群ではないからという事になる
+
+・集合の元が数である必要はない。上記は汎用的に言える</code></pre>
+<h3 id="x">二項演算と、集合X上の二項演算</h3>
+<pre class="highlight"><code class="language-text">二項演算
+  ・二つの数から新たな数を決定する規則
+
+集合X上の二項演算
+  ・写像f: X×X --&gt; Xであるとき、f=集合X上の二項演算
+  ・群の場合は、集合X上の二項演算が、G1~G3を満たすとき
+    なので、此方。この時集合Xを、二項演算fの台集合という
+
+  ※たとえば、Xの元x,yに対し、二項演算μによる像を
+    μ(x,y)とするとき、簡単のためxyと略記する事がある</code></pre>
+<h3 id="g1">G1について</h3>
+<pre class="highlight"><code class="language-text">(G,*)が群であるためには、二項演算*が結合律を
+満たす必要がある  
+
+結合律とは、Gの任意の元x,y,zに対して、
+x*(y*z) = (x*y)*zが成り立つ性質をいう。
+
+これはいいかえると、x*y*zを計算するとき、
+どこを先に計算しても結果が等しくなるという主張である
+
+つまり、括弧を付けずに表記しても結果が曖昧にならない事を
+言っている。結合律は、結合法則や結合則と呼ばれたりする
+
+※上記では、集合Gの直積G×GからGへの写像を2回やっている</code></pre>
+<h3 id="g2">G2について</h3>
+<pre class="highlight"><code class="language-text">(G,*)が群であるためには、Gに単位元が存在する必要がある
+
+単位元というのは、x*e =x,  e*x = xが成り立つ、
+eのことを指す
+
+x,yをGの任意の元としたとき、一般に、群では
+x * y = y * x のような交換法則が成り立たないため、
+x * e = xだけでなく、両方述べている
+
+単位元は、加算による0や、乗算による1を抽象化した概念
+であることを思い出すと、集合と二項演算を定めなければ
+単位元という言葉が意味をなさないことがよくわかる。
+
+つまり、0は単位元ですか？と問われても、
+集合と、二項演算が定まっていなければ答えようがない
+実際、集合が{0,1}で、二項演算が乗算の場合、
+0は単位元ではない。</code></pre>
+<h3 id="g3">G3について</h3>
+<pre class="highlight"><code class="language-text">・(G,*)が群であるためには、Gの任意の元xに対して、
+　xの逆元が存在しなくてはならない。
+
+・xの逆元とは、
+　x*y = e, y*x = eが成り立つ、y∊Gのこと
+
+・単位元が群に対して定まるものなのに対して、
+　逆元は個々の元に対して定まる
+
+・何もしないは単位元を、元に戻すは逆元を表している</code></pre>
+<h3 id="_14">単位元と逆元の表記について</h3>
+<pre class="highlight"><code class="language-text">・単位元の表記（群に対して1つしか存在しないので
+  以下の様に表記可能。証明は後述）
+
+  ※単位元がeであるとき</code></pre>
+<div class="arithmatex">\[
+  e_G
+\]</div>
+<pre class="highlight"><code class="language-text">・逆元の表記（個々の元に対して一つしか存在しないので
+  以下の様に表記可能。証明は後述）
+
+※任意の元がx∊Xであるとき、</code></pre>
+<div class="arithmatex">\[
+  x^{-1}
+\]</div>
+<h3 id="-1">-1乗という表記について</h3>
+<pre class="highlight"><code class="language-text">・様々な意味で使われるが、逆数が逆元に相当する場合や、
+　逆写像が逆元に相当する場合があり、関連性はある</code></pre>
+<div class="arithmatex">\[
+  \begin{align}
+    &amp; 数の乗算におけるxの逆数 \\
+    &amp; (集合上の二項演算が乗算であるとすると、逆元) \\
+    &amp; x^{-1} = \frac{1}{x} \\
+    &amp; x * x^{-1} = 1 (1は単位元) \\
+    \\
+    &amp; 写像f: X \rightarrow Y に対する逆写像 \\
+    &amp; (写像の全体集合があるとすると、その逆元) \\
+    &amp; f^{-1} : Y \rightarrow X \\
+    &amp; f \circ f^{-1} = f^{-1} \circ f = id(idは恒等写像) \\
+    \\
+    &amp; 群(G, *)におけるxの逆元 \\
+    &amp; x * x^{-1} = x^{-1}*x = e(eは単位元) \\
+  \end{align}
+\]</div>
+<h3 id="_15">積という表現について</h3>
+<pre class="highlight"><code class="language-text">・群演算を行った結果を積と呼ぶことがある
+・略記を考えれば自然</code></pre>
+<div class="arithmatex">\[
+ \begin{align}
+  xx^{-1} = x^{-1}x = 1
+ \end{align}
+\]</div>
+<pre class="highlight"><code class="language-text">・しかし、群(Z, +)の x+yを積と呼ぶのは不自然
+・またこの群のxの逆元をx^{-1}とするのも不自然
+
+・この場合は、-xを逆元とした方がいいだろう
+・これは用語と表記の問題であり、本質が異なるわけではない</code></pre>
+</details>
+<h2 id="q32">Q32 群の利点が分かりますか?(コラム)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_16">群の利点</h3>
+<pre class="highlight"><code class="language-text">・集合Gと、集合上の二項演算の組に対して定義されている為、
+　群は計算とかかわっているように思える
+
+・群は、計算以外の概念に対しても適用できるので、
+　本来計算とは無関係に思える概念を計算できるかもしれない
+
+・概念を集合と、二項演算に落とし込み、
+  群の公理を満たしていることを確かめれば、群論の知見が
+  適用できるという利点がありそう
+
+・分野が異なっていても、群としては同型なら、
+　既存の分野の知見が適用できることもあるようだ
+
+・単位元が群単位で唯一、xの逆元が、xごとに唯一である
+　という性質は役に立ちそうだ</code></pre>
+</details>
+<h2 id="q33">Q33 部分群の定義について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="a">a</h3>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/custom.js"></script>
+      
+        <script src="../../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

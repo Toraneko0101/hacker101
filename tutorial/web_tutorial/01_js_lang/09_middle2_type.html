@@ -1,0 +1,6344 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="08_middle1_obj.html">
+      
+      
+        <link rel="next" href="10_middle3_array.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(中級2:データ型) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/prism.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(中級2:データ型)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="09_middle2_type.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q48-hogetouppercase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q48 "hoge".toUpperCase()が可能である理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q48 "hoge".toUpperCase()が可能である理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      プリミティブの欠点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      オブジェクトの欠点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      プリミティブ値のプロパティ?やメソッド?にアクセスできる理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ラッパーオブジェクトは作らない方がいい
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      こんなことになりたくなければ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullundefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      null/undefinedはメソッドを持たない
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q49-yn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q49. プリミティブな値に対してプロパティを追加することは可能だと思いますか? (y/n)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q49. プリミティブな値に対してプロパティを追加することは可能だと思いますか? (y/n)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      答え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      理由
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q50" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q50. 数値型の区切りとしてアンダーバーが使えることを知っていますか?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q51" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q51. 数値の指数表記について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q51. 数値の指数表記について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q52-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q52. 10進数以外の表記法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q52. 10進数以外の表記法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      16進数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8進数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2進数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q53-tostringbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q53. toString(base)で基数変換できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q53. toString(base)で基数変換できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q54-123456tostring16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q54. 123456.toString(16)が失敗する理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q54. 123456.toString(16)が失敗する理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      原因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q55-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q55. 小数点を整数として丸めるために用いる4種の組み込み関数を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q55. 小数点を整数として丸めるために用いる4種の組み込み関数を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathfloor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.floor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathceil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.ceil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathround" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.round
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathtrunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.trunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q56-ntofixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q56. 小数点n桁に丸めたい場合に用いるtoFixed()について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q56. 小数点n桁に丸めたい場合に用いるtoFixed()について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      他の方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tofixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      toFixed()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tofixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      toFixed()の注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q56" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q56. 小数点や大きな数の計算で、精度が落ちることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q56. 小数点や大きな数の計算で、精度が落ちることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      小数点の例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      大きな数の例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      大きな数を扱えない理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      小数点を正しく扱えない理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決法1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決法2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決法3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q57-isfiniteisnan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q57. isFiniteとisNaNの意味を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q57. isFiniteとisNaNの意味を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isnan" class="md-nav__link">
+    <span class="md-ellipsis">
+      isNaN()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isnan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      isNaN()の存在意義
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isfinite" class="md-nav__link">
+    <span class="md-ellipsis">
+      isFinite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q58-nan0-0objectis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q58. NaNや0と-0を正確に比較できるObject.isについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q58. NaNや0と-0を正確に比較できるObject.isについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q59-parseintparsefloat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q59. parseIntやparseFloatを使うと、厳密でない数値変換ができることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q59. parseIntやparseFloatを使うと、厳密でない数値変換ができることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の数値変換
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parseint" class="md-nav__link">
+    <span class="md-ellipsis">
+      parseInt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsefloat" class="md-nav__link">
+    <span class="md-ellipsis">
+      parseFloat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q60-parseint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q60. parseIntを用いて、基数変換ができることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q60. parseIntを用いて、基数変換ができることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2つ目の引数に基数を指定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q61-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q61. Mathの注意点と、以下の汎用性が高いプロパティ/メソッドについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q61. Mathの注意点と、以下の汎用性が高いプロパティ/メソッドについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロパティ一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      メソッド一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.E
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathln10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.LN10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathln2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.LN2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.PI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathabsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.abs(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathsinradian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.sin(radian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathcosradian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.cos(radian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathtanradian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.tan(radian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathcbrtx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.cbrt(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathclz32x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.clz32(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathexpx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.exp(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathlogx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.log(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathmaxabc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.max(a,b,c,...)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathminabc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.min(a,b,c,...)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathpowxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.pow(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathrandom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.random()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathsign" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.sign()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathsqrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.sqrt()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q62-mathrandom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q62. セキュリティが重要な場面でMath.random()を使ってはいけない理由を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q62. セキュリティが重要な場面でMath.random()を使ってはいけない理由を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathrandom_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.random()は予測可能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      代替案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      数値と文字列が混じった暗号文をJSで提供する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q63-mathrandomminmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q63. Math.random()を使って、min~maxまでの整数値を作成する方法が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q63. Math.random()を使って、min~maxまでの整数値を作成する方法が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      他にも解法はある
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q64" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q64　文字列を複数行で表したいとき、バッククォートが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q64 文字列を複数行で表したいとき、バッククォートが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q65" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q65. 特殊文字について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q65. 特殊文字について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユニコードの例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q66" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q66. 文字へのアクセス方法と、文字列が不変であることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q66. 文字へのアクセス方法と、文字列が不変であることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      アクセス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      不変
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q67" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q67. 大文字小文字変換を行う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q67. 大文字小文字変換を行う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#touppercase" class="md-nav__link">
+    <span class="md-ellipsis">
+      toUpperCase()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tolowercase" class="md-nav__link">
+    <span class="md-ellipsis">
+      toLowerCase()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      冒頭のみ大文字
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q68" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q68. 部分文字列の位置を検索する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q68. 部分文字列の位置を検索する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strindexofsubstr-pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.indexOf(substr [, pos])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strlastindexofsubstr-pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.lastIndexOf(substr [, pos])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifindexof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ifの中でindexOfを使う
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q69" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q69. 特定の部分文字列を含むか調べたい場合に使えるメソッドについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q69. 特定の部分文字列を含むか調べたい場合に使えるメソッドについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strincludessubstr-pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.includes(substr [, pos])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strstartswith" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.startsWith()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strendswith" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.endsWith()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q70-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q70. 部分文字列を取得する3つの方法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q70. 部分文字列を取得する3つの方法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slicestart-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      .slice(start [, end])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substringstart-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      .substring(start [, end])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substrstart-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      .substr(start [, length])
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q71-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q71. lengthプロパティと、サロゲートペア文字に対してこれを用いる際の注意点について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q71. lengthプロパティと、サロゲートペア文字に対してこれを用いる際の注意点について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    <span class="md-ellipsis">
+      length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      サロゲートペア文字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#length_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      lengthはうまく処理できない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode" class="md-nav__link">
+    <span class="md-ellipsis">
+      サロゲートペアとUnicodeの目印
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q72-unicode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q72. 文字列比較がUnicode順で行われることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q72. 文字列比較がUnicode順で行われることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q73-intl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q73. 英語以外の言語で正しい比較をする際に用いられるIntlについて知っていますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q73. 英語以外の言語で正しい比較をする際に用いられるIntlについて知っていますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通に比較した場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字列の内部値
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcodepointatpos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.codePointAt(pos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringfromcodepointcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      String.fromCodePoint(code);
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str1localecomparestr2-locals" class="md-nav__link">
+    <span class="md-ellipsis">
+      str1.localeCompare(str2 [, locals])を用いて正しく比較する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q74" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q74. 分音記号と、比較時の注意点について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q74. 分音記号と、比較時の注意点について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      分音記号
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q48-hogetouppercase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q48 "hoge".toUpperCase()が可能である理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q48 "hoge".toUpperCase()が可能である理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      プリミティブの欠点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      オブジェクトの欠点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      プリミティブ値のプロパティ?やメソッド?にアクセスできる理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      ラッパーオブジェクトは作らない方がいい
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      こんなことになりたくなければ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nullundefined" class="md-nav__link">
+    <span class="md-ellipsis">
+      null/undefinedはメソッドを持たない
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q49-yn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q49. プリミティブな値に対してプロパティを追加することは可能だと思いますか? (y/n)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q49. プリミティブな値に対してプロパティを追加することは可能だと思いますか? (y/n)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      答え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      理由
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q50" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q50. 数値型の区切りとしてアンダーバーが使えることを知っていますか?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q51" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q51. 数値の指数表記について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q51. 数値の指数表記について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q52-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q52. 10進数以外の表記法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q52. 10進数以外の表記法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#16" class="md-nav__link">
+    <span class="md-ellipsis">
+      16進数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8進数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2進数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q53-tostringbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q53. toString(base)で基数変換できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q53. toString(base)で基数変換できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q54-123456tostring16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q54. 123456.toString(16)が失敗する理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q54. 123456.toString(16)が失敗する理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      原因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q55-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q55. 小数点を整数として丸めるために用いる4種の組み込み関数を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q55. 小数点を整数として丸めるために用いる4種の組み込み関数を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathfloor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.floor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathceil" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.ceil
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathround" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.round
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathtrunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.trunc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q56-ntofixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q56. 小数点n桁に丸めたい場合に用いるtoFixed()について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q56. 小数点n桁に丸めたい場合に用いるtoFixed()について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      他の方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tofixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      toFixed()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tofixed_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      toFixed()の注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q56" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q56. 小数点や大きな数の計算で、精度が落ちることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q56. 小数点や大きな数の計算で、精度が落ちることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      小数点の例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      大きな数の例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      大きな数を扱えない理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      小数点を正しく扱えない理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決法1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決法2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決法3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q57-isfiniteisnan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q57. isFiniteとisNaNの意味を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q57. isFiniteとisNaNの意味を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#isnan" class="md-nav__link">
+    <span class="md-ellipsis">
+      isNaN()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isnan_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      isNaN()の存在意義
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isfinite" class="md-nav__link">
+    <span class="md-ellipsis">
+      isFinite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q58-nan0-0objectis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q58. NaNや0と-0を正確に比較できるObject.isについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q58. NaNや0と-0を正確に比較できるObject.isについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q59-parseintparsefloat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q59. parseIntやparseFloatを使うと、厳密でない数値変換ができることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q59. parseIntやparseFloatを使うと、厳密でない数値変換ができることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の数値変換
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parseint" class="md-nav__link">
+    <span class="md-ellipsis">
+      parseInt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parsefloat" class="md-nav__link">
+    <span class="md-ellipsis">
+      parseFloat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q60-parseint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q60. parseIntを用いて、基数変換ができることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q60. parseIntを用いて、基数変換ができることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2つ目の引数に基数を指定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q61-math" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q61. Mathの注意点と、以下の汎用性が高いプロパティ/メソッドについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q61. Mathの注意点と、以下の汎用性が高いプロパティ/メソッドについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロパティ一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      メソッド一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.E
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathln10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.LN10
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathln2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.LN2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathpi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.PI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathabsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.abs(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathsinradian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.sin(radian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathcosradian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.cos(radian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathtanradian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.tan(radian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathcbrtx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.cbrt(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathclz32x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.clz32(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathexpx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.exp(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathlogx" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.log(x)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathmaxabc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.max(a,b,c,...)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathminabc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.min(a,b,c,...)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathpowxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.pow(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathrandom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.random()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathsign" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.sign()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathsqrt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.sqrt()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q62-mathrandom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q62. セキュリティが重要な場面でMath.random()を使ってはいけない理由を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q62. セキュリティが重要な場面でMath.random()を使ってはいけない理由を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mathrandom_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Math.random()は予測可能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      代替案
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      数値と文字列が混じった暗号文をJSで提供する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q63-mathrandomminmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q63. Math.random()を使って、min~maxまでの整数値を作成する方法が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q63. Math.random()を使って、min~maxまでの整数値を作成する方法が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      他にも解法はある
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q64" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q64　文字列を複数行で表したいとき、バッククォートが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q64 文字列を複数行で表したいとき、バッククォートが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q65" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q65. 特殊文字について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q65. 特殊文字について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユニコードの例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q66" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q66. 文字へのアクセス方法と、文字列が不変であることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q66. 文字へのアクセス方法と、文字列が不変であることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      アクセス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      不変
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q67" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q67. 大文字小文字変換を行う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q67. 大文字小文字変換を行う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#touppercase" class="md-nav__link">
+    <span class="md-ellipsis">
+      toUpperCase()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tolowercase" class="md-nav__link">
+    <span class="md-ellipsis">
+      toLowerCase()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      冒頭のみ大文字
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q68" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q68. 部分文字列の位置を検索する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q68. 部分文字列の位置を検索する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strindexofsubstr-pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.indexOf(substr [, pos])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strlastindexofsubstr-pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.lastIndexOf(substr [, pos])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ifindexof" class="md-nav__link">
+    <span class="md-ellipsis">
+      ifの中でindexOfを使う
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q69" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q69. 特定の部分文字列を含むか調べたい場合に使えるメソッドについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q69. 特定の部分文字列を含むか調べたい場合に使えるメソッドについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strincludessubstr-pos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.includes(substr [, pos])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strstartswith" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.startsWith()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strendswith" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.endsWith()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q70-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q70. 部分文字列を取得する3つの方法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q70. 部分文字列を取得する3つの方法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slicestart-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      .slice(start [, end])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substringstart-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      .substring(start [, end])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#substrstart-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      .substr(start [, length])
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q71-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q71. lengthプロパティと、サロゲートペア文字に対してこれを用いる際の注意点について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q71. lengthプロパティと、サロゲートペア文字に対してこれを用いる際の注意点について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#length" class="md-nav__link">
+    <span class="md-ellipsis">
+      length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      サロゲートペア文字
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#length_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      lengthはうまく処理できない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unicode" class="md-nav__link">
+    <span class="md-ellipsis">
+      サロゲートペアとUnicodeの目印
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q72-unicode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q72. 文字列比較がUnicode順で行われることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q72. 文字列比較がUnicode順で行われることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q73-intl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q73. 英語以外の言語で正しい比較をする際に用いられるIntlについて知っていますか？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q73. 英語以外の言語で正しい比較をする際に用いられるIntlについて知っていますか？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      普通に比較した場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      文字列の内部値
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#strcodepointatpos" class="md-nav__link">
+    <span class="md-ellipsis">
+      str.codePointAt(pos)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringfromcodepointcode" class="md-nav__link">
+    <span class="md-ellipsis">
+      String.fromCodePoint(code);
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#str1localecomparestr2-locals" class="md-nav__link">
+    <span class="md-ellipsis">
+      str1.localeCompare(str2 [, locals])を用いて正しく比較する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q74" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q74. 分音記号と、比較時の注意点について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q74. 分音記号と、比較時の注意点について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      分音記号
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      解決策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="2">クイズ(中級2:データ型)</h1>
+<h2 id="q48-hogetouppercase">Q48 "hoge".toUpperCase()が可能である理由が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_1">プリミティブの欠点</h3>
+<ul>
+<li>プロパティやメソッドを持てない</li>
+</ul>
+<h3 id="_2">オブジェクトの欠点</h3>
+<ul>
+<li>重い</li>
+</ul>
+<h3 id="_3">プリミティブ値のプロパティ?やメソッド?にアクセスできる理由</h3>
+<ol>
+<li>プリミティブのプロパティにアクセスすると、文字列の値を持ったオブジェクト(オブジェクトラッパー)が作られる</li>
+<li>ラッパーは、<code>toUpperCase()</code>のような便利なメソッドを持っている</li>
+<li>メソッドを実行し、文字列を返す</li>
+<li>オブジェクトは破棄され、プリミティブだけが残る</li>
+</ol>
+<pre class="highlight"><code class="language-js">//変更が元の値に反映されない理由は、ラッパーに対する変更であるため
+let str = "hoge";
+console.log(str.length); //4
+const Str = str.toUpperCase()
+console.log(str); //HOGE</code></pre>
+<h3 id="_4">ラッパーオブジェクトは作らない方がいい</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="_5">こんなことになりたくなければ</h3>
+<ul>
+<li>コンストラクタを作れば、明示的にプリミティブのためのラッパーを作れるが......</li>
+<li>オブジェクトは常にtrue扱い</li>
+</ul>
+<pre class="highlight"><code class="language-js">let zero = new Number(0);
+if(zero){
+  console.log("why????");
+}</code></pre>
+</div>
+<h3 id="nullundefined">null/undefinedはメソッドを持たない</h3>
+<ul>
+<li>ラッパーオブジェクトはない</li>
+</ul>
+<pre class="highlight"><code class="language-js">conosle.log(null.test); //Cannot read properties of null</code></pre>
+</details>
+<h2 id="q49-yn">Q49. プリミティブな値に対してプロパティを追加することは可能だと思いますか? (y/n)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_6">答え</h3>
+<ul>
+<li><code>No</code></li>
+</ul>
+<h3 id="_7">理由</h3>
+<ul>
+<li>プロパティにアクセスされた時に作成されるラッパーオブジェクトは、プロパティに関する操作が終了すると削除されるため</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "Hello";
+str.test = 4;
+console.log(str.test); //undefined or error</code></pre>
+</details>
+<h2 id="q50">Q50. 数値型の区切りとしてアンダーバーが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<p>###　使用例</p>
+<pre class="highlight"><code class="language-js">let num1 = 100000000;
+let num2 = 100_000_000;
+console.log(num1 === num2); //true</code></pre>
+</details>
+<h2 id="q51">Q51. 数値の指数表記について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_8">使用例</h3>
+<pre class="highlight"><code class="language-js">let billion = 1e9;
+console.log(billion); //1000000000
+
+let ms = 1e-6;
+console.log(ms); //0.000001
+console.log(1.23e-6); //0.00000123</code></pre>
+</details>
+<h2 id="q52-10">Q52. 10進数以外の表記法について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="16">16進数</h3>
+<pre class="highlight"><code class="language-js">console.log(0xff); //255</code></pre>
+<h3 id="8">8進数</h3>
+<pre class="highlight"><code class="language-js">console.log(0o377); //255</code></pre>
+<h3 id="2_1">2進数</h3>
+<pre class="highlight"><code class="language-js">console.log(0b11); //3</code></pre>
+</details>
+<h2 id="q53-tostringbase">Q53. toString(base)で基数変換できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_9">使用例</h3>
+<ul>
+<li><code>base</code>に書いた基数へと変換する</li>
+</ul>
+<pre class="highlight"><code class="language-js">let num = 255
+console.log(num.toString(16)); //ff
+console.log(num.toString(2)); //11111111
+//上限: 36進数 = 数値(10種類) + アルファベット(a~z)
+console.log(num.toString(36)); //73</code></pre>
+</details>
+<h2 id="q54-123456tostring16">Q54. 123456.toString(16)が失敗する理由が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_10">原因</h3>
+<ul>
+<li>1つ目の.が小数部分の区切りとみなされるため</li>
+</ul>
+<h3 id="_11">対策</h3>
+<ul>
+<li>2つのドットを置く(JSは小数部分が空であると判断し、メソッドであると判断する)</li>
+<li><code>()</code>で囲む</li>
+</ul>
+<pre class="highlight"><code class="language-js">123456..toString(16); //1e240
+(123456).toString(16);</code></pre>
+</details>
+<h2 id="q55-4">Q55. 小数点を整数として丸めるために用いる4種の組み込み関数を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="mathfloor">Math.floor</h3>
+<ul>
+<li>切り捨て</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.floor(3.1); //3
+Math.floor(-3.1); //-4</code></pre>
+<h3 id="mathceil">Math.ceil</h3>
+<ul>
+<li>切り上げ</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.ceil(3.1); //4
+Math.ceil(-3.1); //-3</code></pre>
+<h3 id="mathround">Math.round</h3>
+<ul>
+<li>四捨五入</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.ceil(3.4); //3
+Math.ceil(3.8); //4
+Math.ceil(-1.1); //-1</code></pre>
+<h3 id="mathtrunc">Math.trunc</h3>
+<ul>
+<li>小数点以下を削除する</li>
+<li>分かりやすい</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.trunc(3.9); //3
+Math.trunc(-3.9); //-3</code></pre>
+</details>
+<h2 id="q56-ntofixed">Q56. 小数点n桁に丸めたい場合に用いるtoFixed()について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_12">他の方法</h3>
+<ul>
+<li><span class="arithmatex">\({10^n}\)</span> 倍した後、切り捨てを行い、元に戻す</li>
+</ul>
+<pre class="highlight"><code class="language-js">let num = 1.23456;
+console.log(Math.floor(num * 100) / 100);</code></pre>
+<h3 id="tofixed">toFixed()</h3>
+<ul>
+<li>Math.round()と同じように、四捨五入することに注意</li>
+</ul>
+<pre class="highlight"><code class="language-js">let num = 31.29456;
+console.log(num.toFixed(1)); //31.3</code></pre>
+<h3 id="tofixed_1">toFixed()の注意点</h3>
+<ul>
+<li>返り値は<code>string</code></li>
+<li>小数部分が指定桁より短い場合、末尾に0が挿入される</li>
+</ul>
+<pre class="highlight"><code class="language-js">let num = 123.456;
+typeof num.toFixed(2); //string
+num.toFixed(10); //'123.4560000000'</code></pre>
+</details>
+<h2 id="q56">Q56. 小数点や大きな数の計算で、精度が落ちることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_13">小数点の例</h3>
+<pre class="highlight"><code class="language-js">0.1.toFixed(20); //0.10000000000000000555</code></pre>
+<pre class="highlight"><code class="language-js">//無限ループする
+let i = 0;
+while(i != 10){
+  i += 0.2;
+}</code></pre>
+<h3 id="_14">大きな数の例</h3>
+<pre class="highlight"><code class="language-js">console.log(9999999999999999);
+//10000000000000000</code></pre>
+<h3 id="_15">大きな数を扱えない理由</h3>
+<ul>
+<li>JSは内部的には64bitで数値を表現している</li>
+<li>52bitが数値の格納</li>
+<li>11bitが小数点の位置</li>
+<li>1bitが符号のために使われる</li>
+<li>つまり、52bitを超える計算をすると、精度の損失が生じる</li>
+</ul>
+<h3 id="_16">小数点を正しく扱えない理由</h3>
+<ul>
+<li><code>0.1</code>と<code>0.2</code>は2進数で考えると、無限小数</li>
+<li>可能な限り近い数値に丸めてはいるものの、小さな精度損失は生じる</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(0.1 + 0.2 === 0.3); //false </code></pre>
+<ul>
+<li>丸める必要がない場合は、精度損失は起こらない</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(0.25 + 0.25 === 0.5) //true</code></pre>
+<h3 id="1">解決法1</h3>
+<ul>
+<li><code>toFixed()</code>で丸める(数値に変換する必要がある)</li>
+</ul>
+<pre class="highlight"><code class="language-js">let sum = 0.1 + 0.2;
+console.log(+sum.toFixed(2) === 0.3); 
+
+const sum1 = 0.28 + 0.14;
+console.log(+expr2.toFixed(2) === 0.42);</code></pre>
+<h3 id="2_2">解決法2</h3>
+<ul>
+<li>予め整数にしておく(無駄なこともある)</li>
+</ul>
+<pre class="highlight"><code class="language-js">const expr = (0.1 * 10 + 0.2 * 10) / 10;
+console.log(expr === 0.3); //true
+
+const expr1 = (0.28 * 100 + 0.14 * 100) / 100;
+console.log(expr1 === 0.42); //false</code></pre>
+<h3 id="3">解決法3</h3>
+<ul>
+<li>両方使う</li>
+<li><code>0.5</code>はバイナリで表現できるので正確</li>
+</ul>
+<pre class="highlight"><code class="language-js">6.35.toFixed(1); //6.3 ?????????
+6.35.toFixed(20); //6.34999999999999964473'
+
+let num = 6.35;
+num *= 10; //63.5
+console.log(num.toFixed(20) / 10) //6.35</code></pre>
+</details>
+<h2 id="q57-isfiniteisnan">Q57. isFiniteとisNaNの意味を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="isnan">isNaN()</h3>
+<ul>
+<li>引数を数値に変換し、<code>NaN</code>であるかテストする</li>
+</ul>
+<h3 id="isnan_1">isNaN()の存在意義</h3>
+<ul>
+<li><code>NaN</code>は自身を含めて、比較演算子を使ったときに<code>false</code>を返すから</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(NaN === NaN); //false
+console.log(isNaN(NaN)); //true
+console.log(isNaN("neko")); //true
+console.log(isNaN("12")); //false</code></pre>
+<h3 id="isfinite">isFinite</h3>
+<ul>
+<li>引数を数値に変換し、それが<code>NaN/Infinity/-Infinity</code>なら<code>false</code>を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(isFinite("21")); //true
+//有限の数ではないので
+console.log(isFinite("str")); //false
+console.log(isFinite(Infinity)); //false</code></pre>
+<h3 id="_17">注意点</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>空文字は全ての数値関数で0扱い</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.floor(""); //0
+isFinite(""); //true</code></pre>
+</div>
+</details>
+<h2 id="q58-nan0-0objectis">Q58. NaNや<code>0</code>と<code>-0</code>を正確に比較できるObject.isについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_18">使用例</h3>
+<pre class="highlight"><code class="language-js">Object.is(NaN, NaN); //true
+Object.is(0, -0); //false
+Object.is(3,4); // a === bと同じ</code></pre>
+</details>
+<h2 id="q59-parseintparsefloat">Q59. parseIntやparseFloatを使うと、厳密でない数値変換ができることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_19">通常の数値変換</h3>
+<pre class="highlight"><code class="language-js">console.log(+"100neko"); //NaN</code></pre>
+<h3 id="parseint">parseInt</h3>
+<ul>
+<li>先頭から数値を読み込み、エラーが起きた場合、それまでの値を整数値で返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(parseInt("100neko")); //100
+console.log(parseInt("100neko110")); //100</code></pre>
+<h3 id="parsefloat">parseFloat</h3>
+<ul>
+<li>浮動小数を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(parseInt("100.02neko")); //100.02</code></pre>
+<h3 id="_20">注意点</h3>
+<ul>
+<li>1文字目から数値でなかった場合、NaNが返る</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(parseInt("a123")); //NaN</code></pre>
+</details>
+<h2 id="q60-parseint">Q60. parseIntを用いて、基数変換ができることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="2_3">2つ目の引数に基数を指定する</h3>
+<ul>
+<li>10進数に変換される</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log( parseInt("0xff", 16) ); //255</code></pre>
+</details>
+<h2 id="q61-math">Q61. Mathの注意点と、以下の汎用性が高いプロパティ/メソッドについて知っていますか?</h2>
+<details class="tips">
+<summary>Tips</summary>
+<h3 id="_21">プロパティ一覧</h3>
+<ul>
+<li>Math.E</li>
+<li>Math.LN10</li>
+<li>Math.LN2</li>
+<li>Math.PI</li>
+</ul>
+<h3 id="_22">メソッド一覧</h3>
+<ul>
+<li>Math.abs()</li>
+<li>Math.sin()</li>
+<li>Math.cos()</li>
+<li>Math.tan()</li>
+<li>Math.cbrt()</li>
+<li>Math.clz32()</li>
+<li>Math.exp()</li>
+<li>Math.log()</li>
+<li>Math.max()</li>
+<li>Math.min()</li>
+<li>Math.pow()</li>
+<li>Math.random()</li>
+<li>Math.sign()</li>
+<li>Math.sqrt()</li>
+</ul>
+</details>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_23">注意点</h3>
+<ul>
+<li>Numberのみで動作する</li>
+<li>BigIntでは動作しない</li>
+</ul>
+<h3 id="mathe">Math.E</h3>
+<ul>
+<li>自然対数の底(e)を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.E; //2.718281828459045</code></pre>
+<h3 id="mathln10">Math.LN10</h3>
+<ul>
+<li>10の自然対数を返す</li>
+<li>使用例に関しては<code>Math.log()</code>を参照</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.log(100) / Math.LN10; //2</code></pre>
+<h3 id="mathln2">Math.LN2</h3>
+<ul>
+<li>2の自然対数を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.log(8) / Math.LN2; //3</code></pre>
+<h3 id="mathpi">Math.PI</h3>
+<ul>
+<li>円周率を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.PI; //3.141592653589793</code></pre>
+<h3 id="mathabsx">Math.abs(x)</h3>
+<ul>
+<li>絶対値を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.abs(-1.1); //1.1</code></pre>
+<h3 id="mathsinradian">Math.sin(radian)</h3>
+<ul>
+<li>正弦を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">const degree = 30;
+const radian = degree * Math.PI / 180;
+Math.sin(radian); //0.499999999</code></pre>
+<h3 id="mathcosradian">Math.cos(radian)</h3>
+<ul>
+<li>余弦を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">const degree = 60;
+const radian = degree * Math.PI / 180;
+Math.cos(radian); //0.500000001</code></pre>
+<h3 id="mathtanradian">Math.tan(radian)</h3>
+<ul>
+<li>タンジェントを返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">const degree = 45;
+const radian = degree * Math.PI / 180;
+Math.tan(radian); //0.99999999999</code></pre>
+<h3 id="mathcbrtx">Math.cbrt(x)</h3>
+<ul>
+<li>立方根を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.cbrt(8); //2
+Math.cbrt(64); //4</code></pre>
+<h3 id="mathclz32x">Math.clz32(x)</h3>
+<ul>
+<li>32bit整数で表現した時、先頭のゼロのビット数を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.clz32(2); //30
+Math.clz32(3); //30
+Math.clz32(4); //29</code></pre>
+<h3 id="mathexpx">Math.exp(x)</h3>
+<ul>
+<li><span class="arithmatex">\({e^x}\)</span>を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.exp(1); //2.718281828459045</code></pre>
+<h3 id="mathlogx">Math.log(x)</h3>
+<ul>
+<li>数値の自然対数を返す</li>
+<li>以下は <span class="arithmatex">\({log_2 8}\)</span>の場合</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.log(8) / Math.log(2); //3</code></pre>
+<h3 id="mathmaxabc">Math.max(a,b,c,...)</h3>
+<ul>
+<li>最大値を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.max(2,4,5,6,1,-2); //6</code></pre>
+<h3 id="mathminabc">Math.min(a,b,c,...)</h3>
+<ul>
+<li>最小値を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.min(2,4,5,6,1,-2); //-2</code></pre>
+<h3 id="mathpowxy">Math.pow(x,y)</h3>
+<ul>
+<li>基数の指数乗 ${x^y} を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.pow(2,3); //8</code></pre>
+<h3 id="mathrandom">Math.random()</h3>
+<ul>
+<li>0以上1未満の暗号的には安全でない乱数を提供する</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.random(); //0.039060555186804846</code></pre>
+<h3 id="mathsign">Math.sign()</h3>
+<ul>
+<li>xの正負 or 0を判定する</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.sign(123); //1
+Math.sign(0); //0
+Math.sign("-2"); //-1</code></pre>
+<h3 id="mathsqrt">Math.sqrt()</h3>
+<ul>
+<li>平方根を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">Math.sqrt(16); //4</code></pre>
+</details>
+<h2 id="q62-mathrandom">Q62. セキュリティが重要な場面でMath.random()を使ってはいけない理由を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="mathrandom_1">Math.random()は予測可能</h3>
+<ul>
+<li><code>Math.random()</code>の疑似乱数は十分予測可能</li>
+</ul>
+<h3 id="_24">代替案</h3>
+<ul>
+<li><code>crypto.getRandomValues()</code>を使う</li>
+<li>これは暗号的に安全なランダム性を提供する</li>
+<li>整数ベースの配列(例として <code>Uint8Array</code>)を引数とる。すべての要素は乱数で上書きされる。</li>
+<li>引数にとる配列のビット数は、大きい方が精度が高い。ただしコストがかかる</li>
+</ul>
+<pre class="highlight"><code class="language-js">window.crypto.getRandomValues(new Uint32Array(10));
+//Uint32Array(10) 
+//[
+//  3099100682, 
+//  775590145, 
+//  2928724990, 
+//  646447561, 
+//  785295370, 
+//  2757531532, 
+//  3360385709, 
+//  1425235582, 
+//  1740525548, 
+//  343186764, 
+//  buffer: ArrayBuffer(40), 
+//  byteLength: 40, 
+//  byteOffset: 0, 
+//  length: 10, 
+//  Symbol(Symbol.toStringTag): 
+//  'Uint32Array'
+//]</code></pre>
+<h3 id="js">数値と文字列が混じった暗号文をJSで提供する</h3>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>以下を理解する必要はない</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><code>randomValues[i] % charset.length</code>の計算上、<code>charset</code>の最初の要素が、より高い確率で選ばれる</li>
+<li>しかし、配列の長さが十分に長ければ問題にはならない</li>
+</ul>
+</div>
+<pre class="highlight"><code class="language-js">function generateRandomString(length){
+  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const randomValues = new Uint32Array(length);
+  crypto.getRandomValues(randomValues);
+
+  let result = "";
+  for(let i=0; i&lt;length; i++){
+    result += charset[randomValues[i] % charset.length];
+  }
+
+  return result;
+}
+
+//引数内の値を100にすれば、十分にランダム性は高くなる
+const randomString = generateRandomString(10);
+console.log(randomString); //U9y2W0xZgs</code></pre>
+</details>
+<h2 id="q63-mathrandomminmax">Q63. Math.random()を使って、min~maxまでの整数値を作成する方法が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_25">他にも解法はある</h3>
+<ul>
+<li>区間の端を調整することが肝要</li>
+<li>なお、疑似乱数であるため微小な偏りは生じる</li>
+</ul>
+<pre class="highlight"><code class="language-js">randomInteger = (min, max) =&gt;{
+  //区間を1~3とした場合
+  // Math.random() * (max - min + 1)は
+  //0~3の間を取る
+  //min - 0.5を足し、Math.random()した値を返すことで
+  //0.5 ~ 3.5の間を取る
+  //0.5 ~ 1.499999..なら1
+  //1.5 ~ 2.499999..なら2
+  //2.5 ~ 3.5なら3と、幅が等しくなる
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+
+  return Math.round(rand);
+}
+
+for(let i=0; i&lt;10; i++){
+  console.log(randomInteger(1,3));
+  // 2,1,1,2,2,3,2,1,3,2
+}</code></pre>
+</details>
+<h2 id="q64">Q64　文字列を複数行で表したいとき、バッククォートが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_26">使用例</h3>
+<pre class="highlight"><code class="language-js">let multiLine = `Numbers:
+* One
+* Two
+* Three
+`
+console.log(multiLine)
+
+// Numbers:
+// * One
+// * Two
+// * Three</code></pre>
+</details>
+<h2 id="q65">Q65. 特殊文字について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_27">文字一覧</h3>
+<table>
+<thead>
+<tr>
+<th>文字</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\n</td>
+<td>改行</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>Winのテキストファイルなら\r\nで改行</td>
+</tr>
+<tr>
+<td>\</td>
+<td>バックスラッシュ</td>
+</tr>
+<tr>
+<td>\' \"</td>
+<td>クォート</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>タブ</td>
+</tr>
+<tr>
+<td>\b, \f, \v</td>
+<td>バックスペース</td>
+</tr>
+<tr>
+<td>\x7a</td>
+<td>16進数のUnicode文字</td>
+</tr>
+<tr>
+<td>\uxxxx</td>
+<td>4桁の16新コード</td>
+</tr>
+<tr>
+<td>\u{xx...xx}</td>
+<td>4バイトを使うユニコード記号など</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_28">ユニコードの例</h3>
+<pre class="highlight"><code class="language-js">console.log("\u00A9"); //©
+console.log("\u{1f61a}");//😚</code></pre>
+</details>
+<h2 id="q66">Q66. 文字へのアクセス方法と、文字列が不変であることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_29">アクセス</h3>
+<ul>
+<li><code>[]</code>で可能</li>
+<li><code>.charAt(pos)</code>を使うこともできる</li>
+<li>見つからなかった場合の挙動が異なる</li>
+<li>順に取得したい場合、for ... ofを使う</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "Hello";
+console.log(str[0]); //H
+console.log(str.charAt(0)); //H
+
+console.log(str[100]); //undefined
+console.log(str.charAt(100)); //""
+
+for(let char of str){
+  console.log(char); //H,e,l,l,o
+}</code></pre>
+<h3 id="_30">不変</h3>
+<pre class="highlight"><code class="language-js">let str = "Hi";
+str[0] = 'N'
+console.log(str); //Hi
+
+//代入演算子は使える
+str += "Neko";
+console.log(str); //HiNeko</code></pre>
+</details>
+<h2 id="q67">Q67. 大文字小文字変換を行う方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="touppercase">toUpperCase()</h3>
+<ul>
+<li>大文字変換</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "neko";
+console.log(str.toUpperCase()); //NEKO</code></pre>
+<h3 id="tolowercase">toLowerCase()</h3>
+<ul>
+<li>小文字変換</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "Neko";
+console.log(str.toLowerCase()); //neko</code></pre>
+<h3 id="_31">冒頭のみ大文字</h3>
+<ul>
+<li>.slice()については後述</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "neko";
+console.log(str[0].toUpperCase() + str.slice(1));</code></pre>
+</details>
+<h2 id="q68">Q68. 部分文字列の位置を検索する方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="strindexofsubstr-pos">str.indexOf(substr [, pos])</h3>
+<ul>
+<li><code>str</code>の中から、前から順に<code>substr</code>を探す</li>
+<li><code>pos</code>が設定されている場合は、該当するidxから探す</li>
+<li>見つからなかった場合、-1を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "Neko inu Neko";
+console.log(str.indexOf("Neko")); //0
+console.log(str.indexOf("Nezumi")); //-1
+console.log(str.indexOf("Neko", 3)); //9</code></pre>
+<h3 id="strlastindexofsubstr-pos">str.lastIndexOf(substr [, pos])</h3>
+<ul>
+<li>逆の順で探す</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "Neko inu Neko";
+console.log(str.lastIndexOf("Neko")); //9
+console.log(str.lastIndexOf("Nezumi")); //-1
+console.log(str.lastIndexOf("Neko", 8)); //0</code></pre>
+<h3 id="ifindexof">ifの中でindexOfを使う</h3>
+<ul>
+<li>見つからなかった場合-1なので、この時に<code>false</code>としたい</li>
+<li><code>~-1 === -(-1+1) === 0</code>になることを活用する</li>
+</ul>
+<pre class="highlight"><code class="language-js">const str = "Neko inu Neko";
+
+if(~str.indexOf("Neko")){
+  console.log("Found it"); //Found it
+}</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>32bitを超えると、正しくチェックできない    </li>
+<li>後述する、<code>includes()</code>を使うべき</li>
+</ul>
+</div>
+</details>
+<h2 id="q69">Q69. 特定の部分文字列を含むか調べたい場合に使えるメソッドについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="strincludessubstr-pos">str.includes(substr [, pos])</h3>
+<ul>
+<li><code>pos</code>がある場合、この位置から検索を開始する</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "Neko inu Neko";
+console.log(str.includes("inu")); //true
+console.log(str.includes("inu", 10)); //false</code></pre>
+<h3 id="strstartswith">str.startsWith()</h3>
+<ul>
+<li>該当文字で始まるか</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log("Neko".startsWith("Ne")); //true</code></pre>
+<h3 id="strendswith">str.endsWith()</h3>
+<ul>
+<li>該当文字で終わるか</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log("Neko".endsWith("koo")); //false</code></pre>
+</details>
+<h2 id="q70-3">Q70. 部分文字列を取得する3つの方法について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="slicestart-end">.slice(start [, end])</h3>
+<ul>
+<li><code>start~(end-1)</code>までの位置を取得</li>
+<li><code>end</code>がない場合は、終わりまでになる</li>
+<li>負の値を指定すると、末尾からカウントする</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "hogefuga";
+console.log(str.slice(2)); //gefuga
+console.log(str.slice(2,3)); //g
+console.log(str.slice(-4, -1));//fug</code></pre>
+<h3 id="substringstart-end">.substring(start [, end])</h3>
+<ul>
+<li>負の値はサポートされていない(0扱い)</li>
+<li>startがendより大きい場合、startがend扱いになる</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "hogefuga";
+console.log(str.substring(4)); //fuga
+console.log(str.substring(2,4) === str.substring(4,2)) //true</code></pre>
+<h3 id="substrstart-length">.substr(start [, length])</h3>
+<ul>
+<li><code>end</code>の代わりに、<code>length</code>を指定可能</li>
+<li>負の値指定も可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">let str = "hogefuga";
+console.log(str.substr(4, 2)); //fu
+console.log(str.substr(-4, 2)); //fu</code></pre>
+</details>
+<h2 id="q71-length">Q71. lengthプロパティと、サロゲートペア文字に対してこれを用いる際の注意点について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="length">length</h3>
+<ul>
+<li>文字列の長さを表現</li>
+</ul>
+<pre class="highlight"><code class="language-js">const str = "neko";
+console.log(str.length); //4</code></pre>
+<h3 id="_32">サロゲートペア文字</h3>
+<ul>
+<li>2バイトの文字のペア(=4バイト)で表現される文字</li>
+</ul>
+<h3 id="length_1">lengthはうまく処理できない</h3>
+<pre class="highlight"><code class="language-js">const str = "𝒳neko"; 
+console.log(str.length); //6
+console.log("𝒳"[0] + "𝒳"[1]); //𝒳</code></pre>
+<h3 id="unicode">サロゲートペアとUnicodeの目印</h3>
+<ul>
+<li>1つ目の文字が<code>0xd800 ~ 0xdbff</code>内なら</li>
+<li>それはサロゲートペアの最初のパートを意味する</li>
+<li>2つ目の文字は<code>0xdc00 ~ 0xdfff</code>である必要がある</li>
+<li>これはサロゲートペア専用と予約される</li>
+</ul>
+</details>
+<h2 id="q72-unicode">Q72. 文字列比較がUnicode順で行われることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_33">使用例</h3>
+<pre class="highlight"><code class="language-js">console.log("Z" &lt; "a"); //true
+console.log("B" &lt; "abc"); //true
+console.log("1" &lt;  "a"); //true
+console.log("abc" &lt; "abd"); //true</code></pre>
+</details>
+<h2 id="q73-intl">Q73. 英語以外の言語で正しい比較をする際に用いられるIntlについて知っていますか？</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_34">普通に比較した場合</h3>
+<pre class="highlight"><code class="language-js">console.log('Österreich' &gt; 'Zealand' ); //true</code></pre>
+<h3 id="_35">文字列の内部値</h3>
+<ul>
+<li>UTF-16を使ってエンコードされている</li>
+<li>各文字は対応する数値コードを持っていて、実際はそれを用いて大小比較をしている</li>
+</ul>
+<h3 id="strcodepointatpos">str.codePointAt(pos)</h3>
+<ul>
+<li>posの文字コードを返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log("Ö".codePointAt(0)); //214
+console.log("z".codePointAt(0)); //122</code></pre>
+<h3 id="stringfromcodepointcode">String.fromCodePoint(code);</h3>
+<ul>
+<li>数値<code>code</code>で文字を生成する</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(String.fromCodePoint(122)); //z</code></pre>
+<h3 id="str1localecomparestr2-locals">str1.localeCompare(str2 [, locals])を用いて正しく比較する</h3>
+<ul>
+<li><code>str1 &gt; str2</code>なら1を返す</li>
+<li><code>str1 &lt; str2</code>なら-1を返す</li>
+<li>等価なら0を返す</li>
+<li>localsで使用する言語を選択する</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log("ä" &gt; "z"); //true
+console.log("ä".localeCompare("z", "de")); //-1
+</code></pre>
+</details>
+<h2 id="q74">Q74. 分音記号と、比較時の注意点について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_36">分音記号</h3>
+<ul>
+<li>複合記号の組み合わせは多すぎるので、ベースと装飾に分けて表現したりする</li>
+</ul>
+<h3 id="_37">例</h3>
+<pre class="highlight"><code class="language-js">console.log("S\u0307"); //Ṡ
+//複合しているのでlengthはこうなる
+console.log("Ṡ".length;) //2</code></pre>
+<h3 id="_38">問題点</h3>
+<ul>
+<li>見た目が同じでもユニコード構成が異なることがある</li>
+</ul>
+<pre class="highlight"><code class="language-js">//上のドット + 下のドット
+const s1 = 'S\u0307\u0323';
+//下のドット + 上のドット
+const s2 = 'S\u0323\u0307';
+
+console.log(s1 === s2); //false</code></pre>
+<h3 id="_39">解決策</h3>
+<ul>
+<li><code>str.normalize()</code>を用いて、文字を1つの形にする(ユニコード正規化)</li>
+<li>引数が"NFC"の場合、合成</li>
+<li>引数が"NFD"の場合、分解される</li>
+<li>引数無しの場合、"NFC"</li>
+</ul>
+<pre class="highlight"><code class="language-js">const s1 = 'S\u0307\u0323';
+const s2 = 'S\u0323\u0307';
+console.log(s1.normalize() === s2.normalize()); //true
+
+s1.normalize("NFC").length(); //1
+s1.normalize("NFD").length(); //3</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/custom.js"></script>
+      
+        <script src="../../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

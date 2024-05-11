@@ -1,0 +1,6568 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="13_view.html">
+      
+      
+        <link rel="next" href="15_window.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(14:メタ&動的) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/prism.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#14" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(14:メタ&動的)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="14_meta.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q117" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q117 メタデータについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q117 メタデータについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      メタデータ概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      メタデータの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      各DBサーバのメタデータ保存方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q118-information_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q118 information_schemaの簡単な使い方について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q118 information_schemaの簡単な使い方について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブル一覧を取得したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIEWに関する情報を取得したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      カラムの情報を取得したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブルのインデックスに関する情報を取得したい
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブルの制約に関する情報を取得したい
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他のチュートリアルレベルで使用したもの
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q119-information_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q119 information_schemaを用いたスクリプトの生成方法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q119 information_schemaを用いたスクリプトの生成方法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      create table文を生成するクエリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際に試してみる
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q120-information_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q120 information_schemaを用いたデプロイメントの検証について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q120 information_schemaを用いたデプロイメントの検証について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q121-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q121 動的SQLについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q121 動的SQLについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドプロシージャとの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      動的SQL実行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      動的SQLの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      プレスホルダを含む場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数を破棄したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      動的クエリを用いてスクリプトを生成する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q122" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q122 ストアドのメリットデメリットについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q122 ストアドのメリットデメリットについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアド概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      メリット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      デメリット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q123" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q123 ストアドの種類について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q123 ストアドの種類について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの種類について(function)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの種類について(procedure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの種類について(Trigger)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q124-function-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q124 ストアドの基本的な例(function, procedure)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q124 ストアドの基本的な例(function, procedure)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文関連の知識
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      作成したストアドの一覧を見る
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの削除方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの変更
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(Procedure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(Function)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      単数ステートメントの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文の例(declare:ローカル変数)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文の例(CASEステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(IFステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(Loopステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利な構文(REPEATステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(WHILE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(ITERATEステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-deterministicfunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      not deterministicなfunction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q125" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q125 カーソル&amp;ハンドラについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q125 カーソル&ハンドラについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      カーソル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハンドラ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単な例外ハンドラの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単なカーソルの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      declareの順番
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q126" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q126 トリガーについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q126 トリガーについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      作り方と消し方
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      トリガーの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oldnew" class="md-nav__link">
+    <span class="md-ellipsis">
+      oldとnewについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      トリガの例(範囲処理)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      トリガの例(変更履歴のチェック)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q127-get-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q127 get diagnosticsについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q127 get diagnosticsについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      get diagnosticsについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnosticsの例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q128-proceduretransaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q128 ProcedureとTransactionを組み合わせた例について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q128 ProcedureとTransactionを組み合わせた例について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      procedureはトランザクション処理が可能
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q117" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q117 メタデータについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q117 メタデータについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      メタデータ概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      メタデータの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      各DBサーバのメタデータ保存方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q118-information_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q118 information_schemaの簡単な使い方について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q118 information_schemaの簡単な使い方について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブル一覧を取得したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIEWに関する情報を取得したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      カラムの情報を取得したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブルのインデックスに関する情報を取得したい
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      テーブルの制約に関する情報を取得したい
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他のチュートリアルレベルで使用したもの
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q119-information_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q119 information_schemaを用いたスクリプトの生成方法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q119 information_schemaを用いたスクリプトの生成方法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      create table文を生成するクエリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際に試してみる
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q120-information_schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q120 information_schemaを用いたデプロイメントの検証について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q120 information_schemaを用いたデプロイメントの検証について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q121-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q121 動的SQLについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q121 動的SQLについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドプロシージャとの違い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      動的SQL実行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      動的SQLの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      プレスホルダを含む場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      変数を破棄したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      動的クエリを用いてスクリプトを生成する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q122" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q122 ストアドのメリットデメリットについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q122 ストアドのメリットデメリットについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアド概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      メリット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      デメリット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q123" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q123 ストアドの種類について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q123 ストアドの種類について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの種類について(function)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの種類について(procedure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの種類について(Trigger)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q124-function-procedure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q124 ストアドの基本的な例(function, procedure)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q124 ストアドの基本的な例(function, procedure)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文関連の知識
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      作成したストアドの一覧を見る
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの削除方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      ストアドの変更
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#procedure_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(Procedure)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例(Function)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      単数ステートメントの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文の例(declare:ローカル変数)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文の例(CASEステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(IFステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(Loopステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利な構文(REPEATステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#while" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(WHILE)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterate" class="md-nav__link">
+    <span class="md-ellipsis">
+      便利構文(ITERATEステートメント)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#not-deterministicfunction" class="md-nav__link">
+    <span class="md-ellipsis">
+      not deterministicなfunction
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q125" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q125 カーソル&amp;ハンドラについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q125 カーソル&ハンドラについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      カーソル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハンドラ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単な例外ハンドラの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単なカーソルの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declare_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      declareの順番
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q126" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q126 トリガーについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q126 トリガーについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      作り方と消し方
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      トリガーの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oldnew" class="md-nav__link">
+    <span class="md-ellipsis">
+      oldとnewについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      トリガの例(範囲処理)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      トリガの例(変更履歴のチェック)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q127-get-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q127 get diagnosticsについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q127 get diagnosticsについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      get diagnosticsについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagnosticsの例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q128-proceduretransaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q128 ProcedureとTransactionを組み合わせた例について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q128 ProcedureとTransactionを組み合わせた例について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#procedure_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      procedureはトランザクション処理が可能
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="14">クイズ(14:メタ&amp;動的)</h1>
+<h2 id="q117">Q117 メタデータについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_1">メタデータ概要</h3>
+<pre class="highlight"><code class="language-text">・DBサーバは、データの他に、
+  テーブル構造、ビュー、インデックスに関する情報を
+  保存しておく必要がある
+
+⇒テーブルに格納されるデータ以外の情報を
+  metadata(メタデータという)</code></pre>
+<h3 id="_2">メタデータの例</h3>
+<pre class="highlight"><code class="language-text">・テーブル名
+・テーブルのストレージ情報(表領域、初期サイズ)
+・ストレージエンジンの種類
+・列の名前
+・列のデータ型
+・列のデフォルト値
+・not null列制約
+・主キー列
+・主キーの名前
+・主キーのインデックスの名前
+・インデックスの名前
+・インデックスタイプ
+・インデックスが作成されている列
+・インデックスが作成されている列のソート順序
+・インデックスのストレージ情報
+・unique列制約
+・uniqueインデックスの名前
+・外部キーの名前
+・外部キー列
+・外部キーが紐づけるテーブルと列</code></pre>
+<h3 id="db">各DBサーバのメタデータ保存方法</h3>
+<pre class="highlight"><code class="language-text">Orable DB
+  ・user_tables, all_constraintsなどのビュー
+
+SQL Server
+  ・sp_tables等のシステムストアドプロシージャ
+
+MySQL/Mariadb
+  ・information_schemaという特別なDB
+  ※sql serverもinformation_schemaを使うことができる</code></pre>
+</details>
+<h2 id="q118-information_schema">Q118 information_schemaの簡単な使い方について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_3">基本</h3>
+<pre class="highlight"><code class="language-text">・information_schemaは特別な「テーブル」
+
+・テーブルなので、以下のことが可能
+  SELECTで取得できる行を制限　⇒　OK
+  ORDER BYで順序を並び替え　⇒　OK
+  式を適用　⇒ OK
+  関数を適用　⇒ OK
+
+・ただし、ユーザからの書き込みは許可されない
+  読み取りのみが可能
+</code></pre>
+<h3 id="_4">テーブル一覧を取得したい場合</h3>
+<pre class="highlight"><code class="language-sql">-- information_schema.tablesを使う
+
+/*
+-- 主なカラム --
+table_schema : 
+  ・テーブルが属するスキーマ(DB)の名前
+  ・tablesに限らず、information_schema命令では大抵使える
+table_name
+  ・テーブル名
+  ・tablesに限らず、information_schema命令では大抵使える
+table_type
+  ・テーブルならBASE TABLE
+  ・ビューならVIEW
+  ・information_schemaテーブルならSYSTEM VIEW
+  ・※一時テーブルは登場しない
+ENGINE
+  ・ストレージエンジン
+ROW_FORMAT
+  ・行のサイズが可変か否か。VARCHAR等に影響
+TABLE_ROWS
+  ・InnoDBの場合、概算。
+  ・正確な数を取得する場合、count(*)を使う
+*/
+select
+  table_name, table_type
+from
+  information_schema.tables
+where
+  table_schema = "sakila"
+  and
+  table_type = "BASE TABLE"
+order by table_name
+;
+
+/*
++---------------+------------+
+| table_name    | table_type |
++---------------+------------+
+| actor         | BASE TABLE |
+| address       | BASE TABLE |
+| category      | BASE TABLE |
+| city          | BASE TABLE |
+...
+16 rows in set (0.002 sec)
+*/</code></pre>
+<h3 id="view">VIEWに関する情報を取得したい場合</h3>
+<pre class="highlight"><code class="language-sql">/*
+table_schema
+  ・同様
+table_name
+  ・同様
+view_definition:
+  ・VIEWの定義
+  ・(with check option等は書かれない)
+definier
+  ・VIEW定義を作成したアカウント
+SECURITY_TYPE
+  ・DEFINER-&gt; 実行時にはVIEWを定義したユーザの権限を使用
+  ・INVOKER-&gt; 実行時には実行するユーザの権限を使用
+IS_UPDATABLE
+  ・ビューが更新可能か否かか
+CHECK_OPTION
+  ・WITH CHECK OPTIONに設定した属性の種類
+  ・13章では解説しなかったが、LOCALやCASCADEがある
+*/
+select
+  table_name, is_updatable
+from information_schema.views
+where
+  table_schema = "sakila"
+  and
+  table_name regexp "^[ac]"
+order by 1
+;
+
+/*
++--------------------+--------------+
+| table_name         | is_updatable |
++--------------------+--------------+
+| active_customer_vw | YES          |
+| actor_info         | NO           |
+| customer_list      | YES          |
+| customer_vw        | YES          |
+| cust_vw            | YES          |
++--------------------+--------------+
+5 rows in set (0.008 sec)
+*/</code></pre>
+<h3 id="_5">カラムの情報を取得したい場合</h3>
+<pre class="highlight"><code class="language-sql">/*
+-- 主なカラム--
+
+column_name
+  ・カラム名
+optional_position
+  ・テーブル内のカラムの位置
+colum_default
+  ・カラムのデフォルト値
+is_nullable
+  ・nullが格納できるか否か
+data_type
+  ・カラムのデータ型(精度などの情報はない)
+character_maximus_length
+  ・文字列カラムの場合最大長(文字数単位)
+character_octet_length
+  ・文字列カラムの場合、最大長（バイト単位)
+number_precision
+  ・数値の精度(数値カラム)
+numeric_scale
+  ・数値スケール(数値カラム)
+datetime_precision
+  ・小数秒精度(時間カラム)
+character_set_name
+  ・文字セット名(文字カラム)
+collation_name
+  ・照合順序名(文字カラム)
+column_type
+  ・カラムのデータ型(タイプ名以外も含む)
+column_key
+  ・カラムがインデックス付けされているか否か
+  ・空
+      ・インデックス付けされていない
+      ・非一意インデックスのセカンダリカラム
+    PRI
+      ・PRIMARY KEY
+      ・PRIMARY KEYの複数カラム
+    UNI
+      ・UNIQUEインデックス
+      ・複合ユニーク制約の場合、その最初のカラム
+      ⇒後でテーブルを作成して試す
+    MUL
+      ・非一意インデックスの最初のカラム
+      ・特定の値が複数回出現することが許される
+extra
+  ・auto_increment
+  ・on update current_timestamp(): 自動更新
+  ・default_generated: 式のデフォルト値
+   等の情報
+privileged
+  ・カラムに対して持っている権限
+  ・全部持っていればselect,insert,update,references
+column_comment
+  ・カラム定義に含まれるコメント
+
+
+*/
+select
+  column_name, 
+  column_type,
+  column_key
+from information_schema.columns
+where 
+  table_schema = "sakila"
+  and
+  table_name = "city"
+;
+
+/*
++-------------+----------------------+------------+
+| column_name | column_type          | column_key |
++-------------+----------------------+------------+
+| city_id     | smallint(5) unsigned | PRI        |
+| city        | varchar(50)          |            |
+| country_id  | smallint(5) unsigned | MUL        |
+| last_update | timestamp            |            |
++-------------+----------------------+------------+
+4 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_6">テーブルのインデックスに関する情報を取得したい</h3>
+<pre class="highlight"><code class="language-sql">/*
+-- 主なカラム -- 
+column_name
+  ・indexが張られているカラム名
+non_unique
+  ・一意なら0, 非一意インデックスなら1
+index_schema
+  ・インデックスが属するDBの名前
+index_name
+  ・インデックスの名前。主キーの場合、常にprimary
+seq_in_index
+  ・インデックス内のシーケンス番号
+  ・複合インデックスの参照順
+collation 
+  ・インデックス内のカラムのソート方法
+  ・A(昇順), D(降順), NULL(ソート無し)
+cardinality
+  ・一意の値の数の推定値
+  ・推定値なので、正確とは限らない
+  ・カーディナリティが高いほど結合時にindexとして
+    使用されやすい
+sub_part
+  ・カラムが部分的にindex付けされている場合は
+    その文字数。全体がindex付けされているならNULL
+nullable
+  ・NULL値を含めることができればYES。ダメなら空文字
+index_type
+  ・BTREEやFULLTEXT等
+ignored(mariadb)/ is_visible(mysql)
+  ・optimizerがindexを参照できるか否か
+  ⇒indexを削除して再追加するとコストがかかる場合
+    非表示、可視化という手順を踏むことで高速になる
+*/
+select
+  index_name,
+  non_unique,
+  seq_in_index,
+  column_name
+from
+  information_schema.statistics
+where
+  table_schema = "sakila"
+  and
+  table_name = "rental"
+;
+
+/*
++---------------------+------------+--------------+--------------+
+| index_name          | non_unique | seq_in_index | column_name  |
++---------------------+------------+--------------+--------------+
+| PRIMARY             |          0 |            1 | rental_id    |
+| rental_date         |          0 |            1 | rental_date  |
+| rental_date         |          0 |            2 | inventory_id |
+| rental_date         |          0 |            3 | customer_id  |
+| idx_fk_inventory_id |          1 |            1 | inventory_id |
+| idx_fk_customer_id  |          1 |            1 | customer_id  |
+| idx_fk_staff_id     |          1 |            1 | staff_id     |
++---------------------+------------+--------------+--------------+
+7 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_7">テーブルの制約に関する情報を取得したい</h3>
+<pre class="highlight"><code class="language-sql">/*
+constraint_type
+  ・制約のタイプ
+  ・unique/primarykey/foreign key/check
+constraint_name
+  ・制約名
+*/
+select
+  constraint_name name,
+  constraint_type type
+from
+  information_schema.table_constraints
+where
+  table_schema = "sakila"
+  and
+  table_name = "rental"
+;
+
+/*
++---------------------+-------------+
+| name                | type        |
++---------------------+-------------+
+| PRIMARY             | PRIMARY KEY |
+| rental_date         | UNIQUE      |
+| fk_rental_customer  | FOREIGN KEY |
+| fk_rental_inventory | FOREIGN KEY |
+| fk_rental_staff     | FOREIGN KEY |
++---------------------+-------------+
+5 rows in set (0.000 sec)
+*/</code></pre>
+<h3 id="_8">その他のチュートリアルレベルで使用したもの</h3>
+<pre class="highlight"><code class="language-sql">-- .plugins : 特定のプラグインが動いているか
+select
+  plugin_name,
+  plugin_status
+from information_schema.plugins
+where 
+  plugin_name = "Mroonga"
+;
+/*
++-------------+---------------+
+| plugin_name | plugin_status |
++-------------+---------------+
+| Mroonga     | ACTIVE        |
++-------------+---------------+
+1 row in set (0.001 sec)
+*/
+
+-- .engines: 利用可能なストレージエンジン
+select
+  engine,
+  transactions,
+  savepoints
+from
+  information_schema.engines
+;
+
+/*
++--------------------+--------------+------------+
+| engine             | transactions | savepoints |
++--------------------+--------------+------------+
+| CSV                | NO           | NO         |
+| MRG_MyISAM         | NO           | NO         |
+| MEMORY             | NO           | NO         |
+| Aria               | NO           | NO         |
+| MyISAM             | NO           | NO         |
+| SEQUENCE           | YES          | YES        |
+| Mroonga            | NO           | NO         |
+| PERFORMANCE_SCHEMA | NO           | NO         |
+| InnoDB             | YES          | YES        |
++--------------------+--------------+------------+
+9 rows in set (0.000 sec)
+*/
+
+-- .processlist: 実行中のプロセス
+-- ※\Gは;を含むので[;]は要らない
+
+select
+  *
+from
+  information_schema.processlist
+\G
+
+/*
+************* 1. row ******
+            ID: 47
+          USER: hogehoge
+          HOST: localhost
+            DB: sakila
+        COMMAND: Query
+          TIME: 0
+          STATE: Filling schema table
+          INFO: select * from information_s...
+        TIME_MS: 0.468
+          STAGE: 0
+      MAX_STAGE: 0
+      PROGRESS: 0.000
+    MEMORY_USED: 144560
+MAX_MEMORY_USED: 5534192
+  EXAMINED_ROWS: 0
+      QUERY_ID: 1070
+    INFO_BINARY: select * from information_s...
+            TID: 128066
+1 row in set (0.001 sec)
+*/
+
+-- DB一覧
+select
+  schema_name
+from information_schema.schemata
+;
+
+/*
++--------------------+
+| schema_name        |
++--------------------+
+| information_schema |
+| performance_schema |
+| mydb               |
+| sakila             |
+| mysql              |
+| sys                |
++--------------------+
+6 rows in set (0.001 sec)
+*/
+
+-- 他にも user_privilagesでスキーマレベルの権限を見たり
+-- triggersでテーブルトリガーの一覧を見ることもできる
+-- この章の後半では、関数の一覧を見るためのroutinesが活躍する</code></pre>
+</details>
+<h2 id="q119-information_schema">Q119 information_schemaを用いたスクリプトの生成方法について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="create-table">create table文を生成するクエリ</h3>
+<pre class="highlight"><code class="language-text">・本来は手続き型言語を使ってスクリプトを生成する方が
+  何百万倍も楽だけど...
+
+・information_schemaのビューでクエリを実行
+  ⇒スクリプト生成という手段を取ることもできる</code></pre>
+<pre class="highlight"><code class="language-sql">-- categoryテーブルのcreate文を真似てみる
+show create table category;
+
+/*
++----------+------------
+| Table    | Create Table    
++----------+--------
+| category | CREATE TABLE `category` (
+  `category_id` tinyint(3) unsigned 
+    NOT NULL AUTO_INCREMENT,
+  `name` varchar(25) NOT NULL,
+  `last_update` timestamp NOT NULL 
+    DEFAULT current_timestamp() 
+    ON UPDATE current_timestamp(),
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 
+  DEFAULT CHARSET=utf8mb4 
+  COLLATE=utf8mb4_general_ci |
++----------+-----------------------------
+*/
+
+select
+  "CREATE TABLE category (" create_table_statement
+  union all
+select 
+    cols.txt
+from
+  (
+    select
+      -- 基本情報
+      concat(" ", column_name, " ", column_type,
+      -- null関連
+      case
+        when is_nullable = "NO" then " not null"
+        else ""
+      end,
+      -- 補足情報
+      -- (increment等)があるか否か
+      -- デフォルト値として自動更新が含まれているなら
+      -- 最初のcase文に引っかかる
+      case
+        when 
+          extra is not null 
+          and 
+          -- mysql
+          -- extra like "DEFAULT_GENERATED%"
+          extra like "on update current_timestamp()"
+        then
+        -- mysql
+        --  concat (
+        --    " DEFAULT ", 
+        --    column_default, 
+        --    substr(extra, 18)
+        --  )
+          replace(
+            concat (
+              " DEFAULT ",
+              column_default,
+              " ",
+              extra
+            ),
+            "()",
+            ""
+          )
+        when
+          extra is not null
+        then
+          concat(" ", extra)
+        else ""
+        end,
+      ",") txt
+    from information_schema.columns
+    where
+      table_schema = "sakila"
+      and
+      table_name = "category"
+    order by
+      ordinal_position
+  ) cols
+union all
+-- 制約
+select
+  concat (" constraint primary key (")
+from information_schema.table_constraints
+where
+  table_schema = "sakila"
+  and
+  table_name = "category"
+  and constraint_type = "PRIMARY KEY"
+union all
+select
+  cols.txt
+from
+  (
+    -- primaryキーの処理
+    select
+      -- 末尾のカンマはつけないように分岐
+      concat (
+        case
+          when ordinal_position &gt; 1
+          then " ,"
+          else " "
+        end,
+        column_name
+      ) txt
+    from 
+      information_schema.key_column_usage
+    where
+      table_schema = "sakila"
+      and
+      table_name = "category"
+      and
+      constraint_name = "PRIMARY"
+    order by
+      ordinal_position
+  ) cols
+union all
+select ")"
+union all
+select ")"
+;
+
+/*
++----------------------------------------------------------------------------------------+
+| create_table_statement                                                                 |
++----------------------------------------------------------------------------------------+
+| CREATE TABLE category (                                                                |
+|  category_id tinyint(3) unsigned not null auto_increment,                              |
+|  name varchar(25) not null ,                                                           |
+|  last_update timestamp not null DEFAULT current_timestamp on update current_timestamp, |
+|  constraint primary key (                                                              |
+|  category_id                                                                           |
+| )                                                                                      |
+| )                                                                                      |
++----------------------------------------------------------------------------------------+
+8 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_9">補足</h3>
+<pre class="highlight"><code class="language-text">・engine等の情報についても、information_schemaから
+  取ってくることができる
+
+・show create table構文の場合、
+　\Gを付けることで、テーブルの囲いをなくし、
+  コピーすることができる
+
+・ただし上記のように作成したスクリプトの場合、
+  select文の生産物なので囲いをなくすのは面倒くさい
+  (出来ないわけではないが)
+
+・よって大人しく、手続き型言語を使った方がいいと思われる
+  (もしくは後述する動的クエリを使用するか)</code></pre>
+<h3 id="_10">実際に試してみる</h3>
+<pre class="highlight"><code class="language-sql">-- 重複するので名前は変更した
+ CREATE TABLE category2 ( 
+  category_id tinyint(3) 
+    unsigned not null auto_increment,
+   name varchar(25) not null ,   
+    last_update timestamp not null 
+    DEFAULT current_timestamp 
+    on update current_timestamp,
+    constraint primary key ( 
+      category_id
+    )
+ )
+ -- Query OK, 0 rows affected (0.033 sec)
+
+ drop table category2;
+ -- Query OK, 0 rows affected (0.011 sec)</code></pre>
+</details>
+<h2 id="q120-information_schema">Q120 information_schemaを用いたデプロイメントの検証について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_11">思想</h3>
+<pre class="highlight"><code class="language-text">・多くの組織では、DBのメンテナンス時間があり、
+　その間に、既存のDBオブジェクトの管理や
+  新しいスキーマやコードの導入を行う
+
+・メタデータを閲覧し、作成したスキーマオブジェクトの
+  列、インデックス、主キーなどが適切であるか確認する事で
+  デプロイメントの成否をチェックできる</code></pre>
+<h3 id="_12">例</h3>
+<pre class="highlight"><code class="language-sql">/*
+sakila DB内のテーブルごとに相関サブクエリを用いて
+そのカラム数とインデックス数と、主キー制約数を出力
+*/
+select
+  tbl.table_name,
+  (
+    select
+      count(*)
+    from
+      information_schema.columns clm
+    where
+      clm.table_schema = tbl.table_schema
+      and
+      clm.table_name = tbl.table_name
+  ) num_columns,
+
+  (
+    select 
+      count(*)
+    from 
+      information_schema.statistics sta
+    where
+      sta.table_schema = tbl.table_schema
+      and
+      sta.table_name = tbl.table_name
+  ) num_indexes,
+
+  (
+    select 
+      count(*)
+    from
+      information_schema.table_constraints tc
+    where
+      tc.table_schema = tbl.table_schema
+      and
+      tc.table_name = tbl.table_name
+      and
+      tc.constraint_type = "PRIMARY KEY"
+  ) num_primary_keys
+
+from information_schema.tables tbl
+where
+  tbl.table_schema = "sakila"
+  and
+  tbl.table_type = "BASE TABLE"
+order by 1
+;
+
+/*
++---------------+-------------+-------------+------------------+
+| table_name    | num_columns | num_indexes | num_primary_keys |
++---------------+-------------+-------------+------------------+
+| actor         |           4 |           2 |                1 |
+| address       |           8 |           2 |                1 |
+| category      |           3 |           1 |                1 |
+| city          |           4 |           2 |                1 |
+| country       |           3 |           1 |                1 |
+| customer      |           9 |           6 |                1 |
+| film          |          13 |           4 |                1 |
+| film_actor    |           3 |           3 |                1 |
+| film_category |           3 |           3 |                1 |
+| film_text     |           3 |           3 |                1 |
+| inventory     |           4 |           4 |                1 |
+| language      |           3 |           1 |                1 |
+| payment       |           7 |           4 |                1 |
+| rental        |           7 |           7 |                1 |
+| staff         |          11 |           3 |                1 |
+| store         |           4 |           3 |                1 |
++---------------+-------------+-------------+------------------+
+16 rows in set (0.305 sec)
+*/</code></pre>
+</details>
+<h2 id="q121-sql">Q121 動的SQLについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_13">ストアドプロシージャとの違い</h3>
+<pre class="highlight"><code class="language-text">・Oracle DBのPL/SQL(言語)
+　SQL ServerのTransact-SQL(言語)
+　MySQL/MariaDBのstored-procedures/functions(機能)
+  (procedureは戻り値が無いことを意味する)
+  には、手続き型の構文が含まれる
+
+ストアドプロシージャ/ストアドファンクション
+  ・コンパイルされた形式でDBに保存される
+  ・手続き型の構文(条件分岐・ループ)も使用可能</code></pre>
+<h3 id="sql">動的SQL実行</h3>
+<pre class="highlight"><code class="language-text">・SQL文は実行時に動的に構築される
+・ただし「DBには保存されない」
+  ⇒その場限り(このセッション限り)の実行に向いている
+  ⇒ストアドを使うほど大がかりな作業をしたくない場合など
+
+・MySQL/Mariadbの場合、
+  prepare,execute,deallocate等が使える
+
+プリペアドステートメントの利点
+
+  ・同じクエリを何度も実行する際、解析と実行計画を
+  　生成する為のオーバーヘッドが少なくなる
+
+  ・ユーザからの入力をパラメータとして渡せるので、
+    SQLi(sql-injection)を防ぎやすくなる
+
+  ・コードの再利用がなくなるので保守性が増す
+
+  ・パラメータの方が明示的に指定されるので
+    型の不一致によるエラーが少なくなる
+
+  ・動的なクエリを作成するために他のプログラミング言語
+    の力を借りる必要がなくなる
+
+set @&lt;変数名&gt; =
+  ・mysql内で変数として扱える
+  ・setなのでセッション中は保存される
+
+prepare &lt;query_name&gt; from &lt;文字列orユーザ変数&gt;
+  ・SQLステートメントを準備し、名前を割り当てる
+  ・名前を使うことで、ステートメントを参照可能
+  ・?を使用でき、後から値を挿入できる(SQLi対策)
+
+execute &lt;query_name&gt; [using @var_name]
+  ・SQLステートメントを実行する
+  ・プレスホルダに値を入れたい場合はusing句を使える
+    ただし、文字列は指定できない
+    ユーザ変数のみが指定可能
+
+deallocate prepare &lt;query_name&gt;
+  ・SQLステートメントを削除する</code></pre>
+<h3 id="sql_1">動的SQLの例</h3>
+<pre class="highlight"><code class="language-sql">set @qry = "
+  select
+    customer_id,
+    first_name,
+    last_name
+  from
+    customer
+";
+-- Query OK, 0 rows affected (0.001 sec)
+
+prepare dynsql1 from @qry;
+-- Query OK, 0 rows affected (0.000 sec)
+-- Statement prepared
+
+-- 何度でも実行可能
+execute dynsql1;
+
+/*
++-------------+-------------+--------------+
+| customer_id | first_name  | last_name    |
++-------------+-------------+--------------+
+|         375 | AARON       | SELBY        |
+|         367 | ADAM        | GOOCH        |
+...skipping...
+599 rows in set (0.001 sec)
+*/
+
+deallocate prepare dynsql1;
+-- Query OK, 0 rows affected (0.000 sec)
+
+-- 無効にしたので、もう使えない
+execute dynsql1;
+-- Unknown prepared statement handler (dynsql1) 
+-- given to EXECUTE</code></pre>
+<h3 id="_14">プレスホルダを含む場合</h3>
+<pre class="highlight"><code class="language-sql">set @qry = "
+  select
+    customer_id,
+    first_name,
+    last_name
+  from
+    customer
+  where
+    customer_id = ?
+";
+
+prepare dynsql2 from @qry;
+
+set @custid = 9;
+set @custid2 = 10;
+
+-- placeholderに9を指定
+execute dynsql2 using @custid;
+
+/*
++-------------+------------+-----------+
+| customer_id | first_name | last_name |
++-------------+------------+-----------+
+|           9 | MARGARET   | MOORE     |
++-------------+------------+-----------+
+1 row in set (0.001 sec)
+*/
+
+execute dynsql2 using @custid2;
+
+/*
++-------------+------------+-----------+
+| customer_id | first_name | last_name |
++-------------+------------+-----------+
+|          10 | DOROTHY    | TAYLOR    |
++-------------+------------+-----------+
+1 row in set (0.000 sec)
+*/
+
+deallocate prepare dynsql2;</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="_15">変数を破棄したい場合</h3>
+<pre class="highlight"><code class="language-sql">-- たとえば上記の例でいうと
+-- @custidや@qryを破棄したいと考えたくなる
+-- そんな時はNULLをセットする
+
+set @qry = null;
+set @custid = null;
+set @custid2 = null;
+
+-- もともと存在しない変数をselectで表示した場合
+-- 値はNULLなのでこれで問題ない
+
+select
+  @qry,
+  @custid,
+  @custid2,
+  @nekoneko
+;
+
+/*
++------+---------+----------+-----------+
+| @qry | @custid | @custid2 | @nekoneko |
++------+---------+----------+-----------+
+| NULL |    NULL |     NULL | NULL      |
++------+---------+----------+-----------+
+1 row in set (0.000 sec)
+*/</code></pre>
+</div>
+<h3 id="_16">動的クエリを用いてスクリプトを生成する</h3>
+<pre class="highlight"><code class="language-text">以下補足
+
+select ... into &lt;val1, val2&gt;
+  ・単一行を返すクエリの各カラムを各変数に格納する
+    ex)
+    select 1, 2 into @var1, @var2;
+    select @var1, @var2;
+    +-------+-------+
+    | @var1 | @var2 |
+    +-------+-------+
+    |     1 |     2 |
+    +-------+-------+
+
+concat_ws(sep, "str1", "str2)
+  区切り文字をstringの間に適用する
+
+max(文字列カラム)
+  ・照合順序を基準に大きいものが返される
+    (文字列長とは関係がない)
+  ・今回の場合、1つを除きNULLなので、NULL以外の値が返る
+</code></pre>
+<pre class="highlight"><code class="language-sql">-- カラムが9個までしか対応していない
+select
+  concat(
+    "SELECT ",
+    concat_ws(
+      ",",
+      cols.col1,
+      cols.col2,
+      cols.col3,
+      cols.col4,
+      cols.col5,
+      cols.col6,
+      cols.col7,
+      cols.col8,
+      cols.col9
+    ),
+    " FROM customer WHERE customer_id = ?"
+  )
+into @qry
+from
+  (
+    select
+      case when ordinal_position = 1
+            then column_name else null end col1,
+      case when ordinal_position = 2
+            then column_name else null end col2,
+      case when ordinal_position = 3
+            then column_name else null end col3,
+      case when ordinal_position = 4
+            then column_name else null end col4,
+      case when ordinal_position = 5
+            then column_name else null end col5,
+      case when ordinal_position = 6
+            then column_name else null end col6,
+      case when ordinal_position = 7
+            then column_name else null end col7,
+      case when ordinal_position = 8
+            then column_name else null end col8,
+      case when ordinal_position = 9
+            then column_name else null end col9
+    from information_schema.columns
+    where
+      table_schema = "sakila"
+      and
+      table_name = "customer"
+  ) cols
+;
+
+-- 変数に代入した定義を閲覧
+select @qry;
+/*
++-----------------------------------------------------------+
+| @qry                                                      |
++-----------------------------------------------------------+
+| SELECT                                                    |
+| customer_id,store_id,first_name,last_name,email,          |
+| address_id,active,create_date,last_update FROM customer   |
+| WHERE customer_id = ?                                     |
++-----------------------------------------------------------+
+1 row in set (0.000 sec)
+*/
+
+prepare dynsql3 from @qry;
+
+set @custid = 45;
+
+-- 定義とプレスホルダを利用して実行
+execute dynsql3 using @custid \G
+
+/*
+*********** 1. row *********
+customer_id: 45
+  store_id: 1
+first_name: JANET
+  last_name: PHILLIPS
+      email: JANET.PHILLIPS@sakilacustomer.org
+address_id: 49
+    active: 1
+create_date: 2006-02-14 22:04:36
+last_update: 2006-02-15 04:57:20
+1 row in set (0.000 sec)
+*/
+
+deallocate prepare dynsql3;</code></pre>
+</details>
+<h2 id="q122">Q122 ストアドのメリットデメリットについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_17">ストアド概要</h3>
+<pre class="highlight"><code class="language-text">・コンパイルされた形式でDBに保存される
+・手続き型の構文(条件分岐・ループ)も使用可能</code></pre>
+<h3 id="_18">使いどころ</h3>
+<pre class="highlight"><code class="language-text">・手続き型の構文の構文を使いたい
+・けれど、パフォーマンスを考えると、
+  他のプログラミング言語を使いたくはない</code></pre>
+<h3 id="_19">メリット</h3>
+<pre class="highlight"><code class="language-text">・複数のテーブルに対する更新や、大量のデータに対する
+  連続更新について考える
+
+・通常のプログラム言語の場合
+  ⇒何度もアプリからDBにアクセスする必要がある
+  ⇒APサーバとDBサーバに物理的な距離がある場合、
+    ネットワークの負荷も加わってしまう
+
+・ストアドの場合
+  ⇒DBMS内で完結する処理なので、ネットワークや
+    DB接続時の負荷はアプリから呼び出す際の1回で済む</code></pre>
+<h3 id="_20">デメリット</h3>
+<pre class="highlight"><code class="language-text">・DBMSによって仕様が大きく異なるので(ANSIに準拠して
+  いない)、システムのDBを移行する場合は、コードを
+  書き直す必要がある
+
+※ただし、複雑な概念はないので、
+  フレームワークやプログラミング言語間の移行に比べて
+  負担は控え目</code></pre>
+</details>
+<h2 id="q123">Q123 ストアドの種類について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="function">ストアドの種類について(function)</h3>
+<pre class="highlight"><code class="language-text">・functionなので引数を受け取り、戻り値を返す
+・SELECT文の中で呼び出せる
+・Transaction処理はできない
+
+組み込み関数を思い出す
+  ・concatやreplace等はMySQL/Mariadbの組み込み関数だが
+  　自作することも可能
+  ・自作関数の中で、更新系のSQLも実行可能
+</code></pre>
+<h3 id="procedure">ストアドの種類について(procedure)</h3>
+<pre class="highlight"><code class="language-text">・procedureなので引数を受けとるが、戻り値はない
+  (ただし引数でOUT, INOUTの引数は受け取れる)
+・CALLを使って呼び出す
+・SELECT文の中で呼び出す事はできない
+・Transaction制御が可能
+
+OUTとINOUT
+  ・OUTパラメータはprocedureから呼び出し元に値を渡す
+  ・INOUTパラメータに対して加えた変更は呼び出し元で
+    閲覧可能。（初期値は呼び出し元で設定する）
+
+  ※stored-procedureが未処理の例外で終了すると、
+    OUTパラメータやINOUTパラメータに対して加えた変更は
+    呼び出し元に渡されなくなる</code></pre>
+<h3 id="trigger">ストアドの種類について(Trigger)</h3>
+<pre class="highlight"><code class="language-text">・特定のテーブルが更新された時に自動的に呼び出される
+・Transaction制御はできない
+・Triggerの中でProcedureを呼び出すことも可能
+
+・意図的に呼び出すことはできず、insert/update/deleteが
+  引き金になる
+・Triggerを定義する際には、以下を選ぶ
+  ・更新対象のテーブル
+  ・更新の種類(insert/update/delete)
+  ・対象になるのは更新前(old)か更新後(new)か
+
+・引数や戻り値を返すことはない</code></pre>
+</details>
+<h2 id="q124-function-procedure">Q124 ストアドの基本的な例(function, procedure)について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_21">注意点</h3>
+<pre class="highlight"><code class="language-text">・基礎的な例だけを紹介する</code></pre>
+<h3 id="_22">構文関連の知識</h3>
+<pre class="highlight"><code class="language-text">delimiter:
+  ・区切り文字を変更する。
+  ・デフォルトは;
+  ・//に変えることで、procedure/function内で使われる
+  　;という区切り文字をmysqlに解釈させずに、
+    サーバに渡すことが可能。
+
+[not] deterministic
+  ・同じ入力パラメータに対して常に同じ結果を返すか否か
+  ・デフォルトはnot deterministic
+  ・非決定的なルーチンを、deterministicとすると
+    optimizerが正しくない実行計画を選択する可能性あり
+
+begin ... end
+  ・delimiterで区切り文字を変更していた場合
+  　このキーワードで複数のステートメントを囲む事ができる
+
+ステートメント
+  ・1つのクエリのこと</code></pre>
+<h3 id="_23">作成したストアドの一覧を見る</h3>
+<pre class="highlight"><code class="language-sql">-- created等の列を表示すると、作成したばかりのものを
+-- 特定できる
+select
+  routine_name name,
+  routine_type type,
+  created
+from
+  information_schema.routines
+order by 3 desc
+limit 3
+;
+
+/*
++-------------------+-----------+---------------------+      
+| name              | type      | created             |      
++-------------------+-----------+---------------------+      
+| getPrice          | FUNCTION  | 2024-04-02 18:24:04 |      
+| film_in_stock     | PROCEDURE | 2024-02-18 03:22:35 |      
+| film_not_in_stock | PROCEDURE | 2024-02-18 03:22:35 |      
++-------------------+-----------+---------------------+      
+3 rows in set (0.002 sec)
+*/</code></pre>
+<h3 id="_24">ストアドの削除方法</h3>
+<pre class="highlight"><code class="language-sql">-- drop {procedure | function} &lt;routine_name&gt;</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="_25">ストアドの変更</h3>
+<pre class="highlight"><code class="language-text">・alter {procedure | function}はストアドの
+  特性を変更するが、パラメータや本体を変更する
+  事はできない。
+
+・本体などを変更したい場合は
+  drop -&gt; createの流れを踏む必要がある</code></pre>
+</div>
+<h3 id="procedure_1">例(Procedure)</h3>
+<pre class="highlight"><code class="language-sql">
+/*
+-- procedureの定義
+
+delimiter //
+create function procedure_name (param type) 
+begin
+  body
+end
+//
+
+delimiter ;
+
+-- 作成したprocedureを呼ぶ
+call procedure_name(param);
+*/
+
+
+-- 返り値がなくとも変数は使えるので
+delimiter //
+create procedure val_double (p1 int)
+begin
+  set @x = 0 + p1 * 2;
+end
+// --区切り文字を変えたので
+
+delimiter ; -- 区切り文字を戻す
+
+call val_double(12);
+
+select @x;
+
+/*
++------+
+| @x   |
++------+
+|   24 |
++------+
+1 row in set (0.000 sec)
+*/</code></pre>
+<h3 id="function_1">例(Function)</h3>
+<pre class="highlight"><code class="language-sql">
+/*
+-- functionの定義
+-- bodyの中でreturnをし、戻り値を返す
+
+delimiter //
+create function fn_name (param type) returns type
+begin
+  body
+end
+//
+
+delimiter ;
+*/
+
+delimiter //
+
+create function absolute(num double) returns double
+deterministic
+begin
+  if num &gt; 0 then
+    return num;
+  else
+    return num * -1;
+  end if;
+end
+//
+
+delimiter ; -- 区切り文字を戻す
+
+-- selectの中で呼び出す
+select 
+  absolute(100),
+  absolute(-100)
+;
+
+/*
++---------------+----------------+
+| absolute(100) | absolute(-100) |
++---------------+----------------+
+|           100 |            100 |
++---------------+----------------+
+1 row in set (0.002 sec)
+*/</code></pre>
+<h3 id="_26">単数ステートメントの場合</h3>
+<pre class="highlight"><code class="language-sql">-- delimiterは必要ない
+-- if not existsは存在していなかったら
+
+create function 
+  if not exists
+  hello(s char(20))
+  returns char(50)
+deterministic
+  return concat("Hello ", s, " !")
+;
+
+select hello("Toraneko");
+
+/*
++-------------------+
+| hello("Toraneko") |
++-------------------+
+| Hello Toraneko !  |
++-------------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+<h3 id="declare">便利構文の例(declare:ローカル変数)</h3>
+<pre class="highlight"><code class="language-sql">-- declare: 変数定義(宣言)
+-- declare &lt;変数名&gt; &lt;型&gt; [default &lt;デフォルト値&gt;]
+-- declareした後は通常の変数のようにset可能
+-- defalut値が無い場合、初期値はnull
+-- 2つ一気に宣言することも可能
+
+/*
+ローカルスコープのスコープはBEGIN, ENDブロック
+ネストしている場合、内側からも参照可能
+テーブルカラムと同じ名前を付けると混同が起きる
+*/
+
+delimiter //
+create procedure sp1 (x int)
+begin
+  declare xname varchar(5) default "bob";
+  declare newname varchar(5);
+  declare xid int;
+
+  -- 以前説明したとおり
+  select xname, x*2 into newname, xid;
+  select newname, xid;
+end
+//
+delimiter ;
+
+call sp1(10);
+
+/*
++---------+------+
+| newname | xid  |
++---------+------+
+| bob     |   20 |
++---------+------+
+1 row in set (0.021 sec)
+*/</code></pre>
+<h3 id="case">便利構文の例(CASEステートメント)</h3>
+<pre class="highlight"><code class="language-sql">/*
+・ストアドの場合、end caseで締める
+
+・thenに対してselectを書くこともできる
+
+・条件に対して空の処理を実行させたい場合、
+  begin ... end;だけを書く
+*/
+delimiter //
+
+create procedure 
+  if not exists p()
+  begin
+    declare v int default 2;
+
+    case v
+      when 2 then select v;
+      when 3 then select 0;
+      else
+        begin
+        end;
+    end case;
+  end;
+//
+delimiter ;
+
+-- 空の処理が実行される
+call p();
+-- Query OK, 0 rows affected (0.001 sec)
+
+drop procedure p;</code></pre>
+<h3 id="if">便利構文(IFステートメント)</h3>
+<pre class="highlight"><code class="language-sql">-- 基本的な条件分岐を実装
+-- if, elseif, else , end ifはプログラマならお馴染み
+-- もちろん入れ子にすることも可能
+
+delimiter //
+create function SimpleCompare(n int, m int)
+  returns varchar(20)
+
+  begin
+    declare ope varchar(20);
+
+    if n &gt; m then
+      set ope = "&gt;";
+    elseif n = m then
+      set ope = "=";
+    else
+      set ope = "&lt;";
+    end if;
+
+    set ope = concat(n, " ", ope, " ", m);
+    return ope;
+  end //
+
+delimiter ;
+
+select 
+  SimpleCompare(11, 20) compare1,
+  SimpleCompare(13, 13) compare2,
+  SimpleCompare(-11,-123) compare3;
+
+/*
++----------+----------+------------+
+| compare1 | compare2 | compare3   |
++----------+----------+------------+
+| 11 &lt; 20  | 13 = 13  | -11 &gt; -123 |
++----------+----------+------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+<h3 id="loop">便利構文(Loopステートメント)</h3>
+<pre class="highlight"><code class="language-text">ラベル
+  ・begin ... endブロックや
+  　後述するloop, repeat, whileステートメントには
+    ラベルを付けることができる
+  ・end_labelはオプションで、作成する場合、
+    begin_labelと同じ値にする。begin_labelは必須
+
+ラベルの例
+  label1 : BEGIN
+  END label1
+
+LEAVEステートメント
+  ・特定のラベルを持つフロー制御構造分を終了させる
+  ・もっとも外側のブロック内でLEAVEステートメントを
+    使うと、プログラムが終了する</code></pre>
+<pre class="highlight"><code class="language-sql">-- loop ... end loopで単純なループ構文を実装
+-- LEAVEステートメントに達すると処理が終了
+-- つまり、LEAVEがないと無限ループする
+-- LOOP内で早期RETURNすることもできる
+-- 早期RETURNはBEGIN END内のどの位置でも可能
+
+delimiter //
+create procedure doiterate (p1 int)
+begin
+  label1: LOOP
+    set p1 = p1 + 1;
+    if p1 &lt; 10 then
+      iterate label1; /*iterateについては後述*/
+    end if;
+
+    leave label1;
+  end loop label1;
+
+  set @x = p1;
+end
+//
+
+delimiter ;
+
+call doiterate(3);
+
+select @x;
+
+/*
++------+
+| @x   |
++------+
+|   10 |
++------+
+1 row in set (0.000 sec)
+*/
+</code></pre>
+<pre class="highlight"><code class="language-sql">delimiter //
+
+create procedure nest(p1 int, p2 int)
+begin
+  set @x = 0;
+  label1: loop
+    set @y = 0;
+    label2: loop
+      if @y &gt; p2 then
+        leave label2;
+      else
+        select @x, @y;
+        set @y = @y + 1;
+      end if;
+    end loop;
+
+    set @x = @x + 1;
+    if @x &gt; p1 then
+      leave label1;
+    else
+      begin
+      end;
+    end if;
+  end loop;
+end
+//
+
+delimiter ;
+
+call nest(1, 2);
+
+/*
++------+------+
+| @x   | @y   |
++------+------+
+|    0 |    0 |
++------+------+
+1 row in set (0.000 sec)
+
++------+------+
+| @x   | @y   |
++------+------+
+|    0 |    1 |
++------+------+
+1 row in set (0.002 sec)
+
++------+------+
+| @x   | @y   |
++------+------+
+|    0 |    2 |
++------+------+
+1 row in set (0.004 sec)
+
++------+------+
+| @x   | @y   |
++------+------+
+|    1 |    0 |
++------+------+
+1 row in set (0.006 sec)
+
++------+------+
+| @x   | @y   |
++------+------+
+|    1 |    1 |
++------+------+
+1 row in set (0.008 sec)
+
++------+------+
+| @x   | @y   |
++------+------+
+|    1 |    2 |
++------+------+
+1 row in set (0.009 sec)
+*/</code></pre>
+<h3 id="repeat">便利な構文(REPEATステートメント)</h3>
+<pre class="highlight"><code class="language-sql">/*
+repeat
+  statement_list
+until search_condition
+end repeat
+
+search_conditionがtrueになるまで繰り返す
+*/
+
+delimiter //
+
+create procedure dorepeat(p1 int)
+begin
+  declare cnt int default 0;
+  set @x = 0;
+  repeat
+    set cnt = cnt + 1;
+    set @x = @x + cnt;
+    until
+      cnt &gt;= p1
+  end repeat;
+end
+//
+
+delimiter ;
+
+call dorepeat(10);
+
+select @x;
+
+/*
++------+
+| @x   |
++------+
+|   55 |
++------+
+1 row in set (0.000 sec)
+*/
+
+drop procedure dorepeat;</code></pre>
+<h3 id="while">便利構文(WHILE)</h3>
+<pre class="highlight"><code class="language-sql">/*
+条件がtrueの間、繰り返す
+
+while &lt;条件&gt; do
+  statement_list
+end while
+
+*/
+delimiter //
+create procedure dowhile()
+begin
+  declare v1 int default 0;
+
+  while v1 &lt; 3 do
+    select v1;
+    set v1 = v1 + 1;
+  end while;
+end
+//
+
+delimiter ;
+
+call dowhile();
+
+drop procedure dowhile;
+
+/*
++------+ 
+| v1   |
++------+
+|    0 |
++------+
+1 row in set (0.001 sec)
+
++------+
+| v1   |
++------+
+|    1 |
++------+
+1 row in set (0.005 sec)
+
++------+
+| v1   |
++------+
+|    2 |
++------+
+1 row in set (0.007 sec)
+
+Query OK, 0 rows affected (0.010 sec)
+*/</code></pre>
+<h3 id="iterate">便利構文(ITERATEステートメント)</h3>
+<pre class="highlight"><code class="language-sql">-- LOOP, REPEAT, WHILEの中で
+-- ITERATE labelとすることでループを再び開始できる
+-- 下ではその特性を生かし入れ子を用いないループを書いた
+
+delimiter //
+create procedure doiterate()
+begin
+  declare inner_cnt int default 0;
+  declare outer_cnt int default 0;
+
+  while inner_cnt &lt; 2 do
+    select inner_cnt, outer_cnt;
+    set inner_cnt = inner_cnt + 1;
+
+    if inner_cnt &lt;&gt; 2 then
+      begin
+      end;
+    elseif outer_cnt = 0 then
+      set inner_cnt = 0;
+      set outer_cnt = outer_cnt + 1;
+    else
+      begin
+      end;
+    end if;
+  end while;
+
+end //
+delimiter ;
+
+call doiterate();
+
+/*
++-----------+-----------+
+| inner_cnt | outer_cnt |
++-----------+-----------+
+|         0 |         0 |
++-----------+-----------+
+1 row in set (0.001 sec)
+
++-----------+-----------+
+| inner_cnt | outer_cnt |
++-----------+-----------+
+|         1 |         0 |
++-----------+-----------+
+1 row in set (0.003 sec)
+
++-----------+-----------+
+| inner_cnt | outer_cnt |
++-----------+-----------+
+|         0 |         1 |
++-----------+-----------+
+1 row in set (0.005 sec)
+
++-----------+-----------+
+| inner_cnt | outer_cnt |
++-----------+-----------+
+|         1 |         1 |
++-----------+-----------+
+1 row in set (0.007 sec)
+
+Query OK, 0 rows affected (0.009 sec)
+*/</code></pre>
+<h3 id="not-deterministicfunction">not deterministicなfunction</h3>
+<pre class="highlight"><code class="language-sql">-- 実行した日付で返り値が異なる場合
+-- 引数が同じでも返り値が異なる場合があるので、
+-- notdeterministicを使う
+
+create temporary table tax (
+  id int primary key auto_increment,
+  value double precision,
+  start_date date
+);
+
+insert into tax (value, start_date)
+values
+(0.05, "1997-04-01"),
+(0.08, "2014-04-01"),
+(0.1, "2019-04-01"),
+(0.2, "2030-01-01")
+;
+
+delimiter //
+create function 
+  if not exists 
+  getPrice(price int, now_date date) returns int
+not deterministic
+begin
+  declare tax double default 0.1;
+
+  select value into tax
+  from tax
+  where
+    start_date &lt;= now_date
+  order by
+    start_date  desc
+  limit 1
+  ;
+
+  return truncate(price + (price * tax), 0);
+end
+//
+
+delimiter ;
+
+-- 2024年の消費税
+select
+  getPrice(100, current_date) as tax
+;
+
+/*
++------+
+| tax  |
++------+
+|  110 |
++------+
+1 row in set (0.000 sec)
+*/
+
+-- 2034年の消費税(予想)
+select 
+  getPrice(
+    100, 
+    date_add(current_date, interval 10 year)
+  ) tax
+;
+
+/*
++------+
+| tax  |
++------+
+|  120 |
++------+
+1 row in set (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q125">Q125 カーソル&amp;ハンドラについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_27">カーソル</h3>
+<pre class="highlight"><code class="language-text">・declare &lt;cursor_name&gt; cursor for select ...で定義
+・openで宣言したカーソルの処理を開始
+・closeでカーソルを閉じる
+・fetch &lt;cursor_name&gt; into var_listで1行ずつデータ取得
+  して、変数に格納
+・最終行までfetchした後で、fetchするとnot foundという
+  ハンドラ(SQL STATE: 02000)が得られるので、
+  これを利用しループを抜ける
+
+⇒行をスキップすることはできない
+⇒読み取り専用でカーソル自体を更新することはできない</code></pre>
+<h3 id="_28">ハンドラ</h3>
+<pre class="highlight"><code class="language-text">・ストアドプログラムには、プログラム内で特定の条件が
+  発生した時に呼び出されるハンドラを含めることが可能
+
+declare handler_type
+  handler for &lt;条件:condition_value&gt; statement
+
+・handler_typeには、continue, exitを指定可能
+  continueならハンドラ実行後、元の場所に戻る
+  exitならプログラムを終了する
+
+・condition_valueにはハンドラをキャッチする条件を指定
+  特定のSQLSTATE(5文字の文字列リテラル)をキャッチしたり
+  SQLWARNING(01で始まるSQLSTATE)をキャッチしたり
+  NOT FOUND(02で始まるSQLSTATE)をキャッチしたり
+  SQLEXCEPTION(01,02以外で始まるSQLSTATE)をキャッチ
+  mysql_error_code: 特定のエラーコードをキャッチしたり
+
+⇒カンマ区切りで複数指定も可能
+
+  declare &lt;condition_name&gt;
+    condition for &lt;条件:conditon_value&gt;
+  であらかじめ条件を定義しておいて、condition_name
+  をhandler forの後に書くこともできる
+
+  statement
+    複数の場合、begin, endで囲う
+</code></pre>
+<h3 id="_29">簡単な例外ハンドラの例</h3>
+<pre class="highlight"><code class="language-sql">-- ERROR 1146(42S02)は
+-- DB上に該当するテーブルが見つからない時に出力される
+-- これをハンドリングする
+
+delimiter //
+create procedure notExistTable()
+begin
+  declare done int default 0;
+  declare exit
+    handler for SQLSTATE "42S02"
+    select "Table doesn't exist" Error
+    ;
+  -- ハンドラが発火する
+  select * from hoge; 
+end;
+//
+
+delimiter ;
+
+call notExistTable();
+
+/*
++---------------------+
+| Error               |
++---------------------+
+| Table doesn't exist |
++---------------------+
+1 row in set (0.012 sec)
+
+Query OK, 0 rows affected (0.023 sec)
+*/</code></pre>
+<h3 id="_30">簡単なカーソルの例</h3>
+<pre class="highlight"><code class="language-sql">create temporary table t1 (
+  name char(16),
+  num int
+);
+
+create temporary table t2 (
+  num int
+);
+
+create temporary table t3 (
+  name char(16),
+  num int
+);
+
+insert into t1
+values
+("val1", 3),
+("val2", 7),
+("val3", 33)
+;
+
+insert into t2
+values
+(10), (6)
+;
+
+
+-- delimiterで変える場合、
+-- ;は区切り文字ではなくなっているので
+-- ;の後で --というタイプのコメントを書くとエラーが出る可能性がある
+-- これは--が行末までコメントアウトするため
+-- 別行に書いた方が安全(もしくは/**/)
+delimiter //
+create procedure curdemo()
+begin
+  declare done int default false;
+  declare a char(16);
+  declare b, c int;
+
+  /*
+    fetchするときは、selectステートメントのカラム数が
+    fetchステートメントで指定された変数の数に一致
+    している必要がある(またここにintoを含めてはダメ)
+  */
+  declare cur1 cursor for 
+    select name, num from t1;
+  declare cur2 cursor for
+    select num from t2;
+
+  /*
+    t1 or t2の最終行まで達したらnot found
+    not foundの場合、t3に格納はせず、loopを抜ける
+    handler for sqlstate "02000"でもいける
+  */
+  declare continue
+  handler for not found
+  set done = true;
+
+  open cur1;
+  open cur2;
+
+  /*
+    cur1.name -&gt; a, cur1.num --&gt; b
+    cur2.num -&gt; c
+  */
+  read_loop: LOOP
+    fetch cur1 into a, b;
+    fetch cur2 into c;
+    if done then
+      leave read_loop;
+    end if;
+
+    /*小さい方を格納*/
+    if b &lt; c then
+      insert into t3 values (a,b);
+    else
+      insert into t3 values (a,c);
+    end if;
+  end loop;
+
+  /*
+  repeatを使う場合
+  repeat
+    fetch cur1 into a,b;
+    fetch cur2 into c;
+    if not done then
+      if b &lt; c then
+        insert into t3 values (a,b);
+      else
+        insert into t3 values (a,c);
+      end if;
+    end if;
+  until done 
+  end repeat;
+  */
+
+  close cur1;
+  close cur2;
+end;
+//
+
+delimiter ;
+
+call curdemo();
+
+select * from t3;
+/*
++------+------+
+| name | num  |
++------+------+
+| val1 |    3 |
+| val2 |    6 |
++------+------+
+2 rows in set (0.000 sec)
+*/</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="declare_1">declareの順番</h3>
+<pre class="highlight"><code class="language-text">・変数
+・カーソル
+・ハンドラ
+
+この順で宣言する</code></pre>
+</div>
+</details>
+<h2 id="q126">Q126 トリガーについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_31">作り方と消し方</h3>
+<pre class="highlight"><code class="language-text">create 
+  trigger &lt;trigger_name&gt;
+  &lt;trigger_time&gt;
+  &lt;trigger_event&gt;
+  on &lt;table_name&gt; for each row
+  [&lt;trigger_order&gt;]
+  &lt;trigger_body&gt;
+
+drop trigger &lt;trigger_name&gt;
+⇒テーブルをdropすると一緒に消える
+
+trigger_name: 
+  ・トリガー名を記載
+trigger_time: 
+  ・before or after
+  ・トリガーのタイミングを記載
+trigger_event
+  ・insert/update/delete
+trigger_order
+  ・follows &lt;他のトリガー&gt;　⇒他のトリガーの後で実行
+  ・precedes &lt;他のトリガー&gt; ⇒他のトリガーの前に実行
+trigger_body
+  ・更新前のカラムにアクセスする場合は、old.column_name
+  ・更新後のカラムにアクセスしたいなら、new.column_nam
+  ・トリガからselectステートメントを実行することは
+    出来ないので注意
+for each row
+  ・更新行ごとに1回ずつtrigger_bodyが実行されることを
+    意味する。</code></pre>
+<h3 id="_32">トリガーの例</h3>
+<pre class="highlight"><code class="language-sql">create table account (
+  acct_num int,
+  amount decimal(10, 2)
+);
+
+-- 挿入後のテーブルのamountカラムの値を加算していく
+create 
+  trigger ins_sum
+  before
+  insert
+  on account
+  for each row
+  set @sum = @sum + new.amount
+;
+
+set @sum = 0;
+insert into account
+values
+(1, 14.98),
+(2, 180.10),
+(3, -100.00)
+;
+
+select @sum as "Total amount inserted";
+
+/*
++-----------------------+
+| Total amount inserted |
++-----------------------+
+|                 95.08 |
++-----------------------+
+1 row in set (0.000 sec)
+*/</code></pre>
+<h3 id="oldnew">oldとnewについて</h3>
+<pre class="highlight"><code class="language-text">・insertトリガ内ではnew.column_nameだけを使用可能
+・deleteトリガ内ではold.column_nameだけを使用可能
+・updateトリガ内では両方を使用可能
+
+・oldは読み取り可能。変更は不可
+・newは変更可能。ただしafterトリガの場合、既に行に
+  変更が生じているため、beforeトリガを使う必要がある</code></pre>
+<h3 id="_33">トリガの例(範囲処理)</h3>
+<pre class="highlight"><code class="language-sql">-- new&amp;beforeを用いた挿入値の範囲チェック
+-- 一時テーブルに対してトリガを設定することはできない
+
+create table account (
+  acct_num int,
+  amount decimal(10, 2)
+);
+
+delimiter //
+create trigger update_check
+before update on account
+for each row
+begin
+  if new.amount &lt; 0 then
+    set new.amount = 0;
+  elseif new.amount &gt; 100 then
+    set new.amount = 100;
+  end if;
+end;
+//
+
+delimiter ;
+
+insert into account
+values
+(1, 10),
+(2, 40),
+(3, 80);
+
+update account
+set amount =  -100
+where acct_num = 1;
+
+update account
+set amount = 110
+where acct_num = 2;
+
+update account
+set amount = 40
+where acct_num = 3;
+
+select * from account;
+
+-- 丸め込み処理が為されている
+/*
++----------+--------+
+| acct_num | amount |
++----------+--------+
+|        1 |   0.00 |
+|        2 | 100.00 |
+|        3 |  40.00 |
++----------+--------+
+3 rows in set (0.000 sec)
+*/</code></pre>
+<h3 id="_34">トリガの例(変更履歴のチェック)</h3>
+<pre class="highlight"><code class="language-sql">create table if not exists users (
+  id int primary key auto_increment,
+  user_name varchar(10),
+  email varchar(255)
+);
+
+insert into users
+(user_name, email)
+values
+("AAA", "AAA@gmail.com"),
+("BBB", "BBB@gmail.com"),
+("CCC", "CCC@gmail.com")
+;
+
+create table email_update_log (
+  id int primary key auto_increment,
+  user_id int,
+  before_email varchar(255),
+  after_email varchar(255),
+  updated_at timestamp
+);
+
+delimiter //
+
+drop trigger if exists email_update_trigger //
+
+/*
+  タイミングがafterなのでちゃんと更新が行われてから作動
+  transaction制御してないので確認が必要
+*/
+create trigger email_update_trigger
+after update on users
+for each row
+begin
+  if old.email &lt;&gt; new.email then
+    insert into email_update_log
+    (user_id, before_email, after_email, updated_at)
+    values
+    (new.id, old.email, new.email, current_timestamp);
+  end if;
+end
+//
+delimiter ;
+
+update users
+  set email = "DDD@gmail.com"
+  where user_name = "AAA"
+;
+
+-- 同じ場合はログに載らない
+update users
+  set email = "BBB@gmail.com"
+  where user_name = "BBB"
+;
+
+select * from email_update_log;
+
+/*
++----+---------+---------------+---------------+---------------------+
+| id | user_id | before_email  | after_email   | updated_at          |
++----+---------+---------------+---------------+---------------------+
+|  1 |       1 | AAA@gmail.com | DDD@gmail.com | 2024-04-03 15:31:30 |
++----+---------+---------------+---------------+---------------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q127-get-diagnostics">Q127 get diagnosticsについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="get-diagnostics">get diagnosticsについて</h3>
+<pre class="highlight"><code class="language-text">・直前に実行されたステートメントに関する情報取得を行う
+
+・function,procedure,triggerの中で使用する
+・通常ストアドの中のハンドラで使用される
+
+・構文は以下
+
+get [current | stacked] diagnostics 
+  statement_information_item_list 
+  | 
+  condition condition_number 
+  condition_information_item_list
+
+current
+  現在の診断領域から情報を取得する。デフォルト
+stacked
+  現在のコンテキストが条件ハンドラである場合のみ使用可能
+
+診断領域について
+  statement_information_item_list
+    ・発生した条件の数や影響を受けた行数が含まれる
+  conditon_information_item_list
+    ・エラーコードやメッセージなどの条件情報が含まれる
+
+  ⇒このうちどちらかしかdiagosticsには記述できない
+  ⇒たとえば成功した場合、statementを取得
+  ⇒失敗した場合conditionを取得という方法が考えられる
+  ⇒その場合、ハンドラの中にconditionを書き、
+    statementはハンドラ外で書く</code></pre>
+<h3 id="diagnostics">Diagnosticsの例</h3>
+<pre class="highlight"><code class="language-sql">-- beginの後に;を付けてはいけない
+-- mariadb10.7以降ならrow_numberが使える
+-- updateに成功したタイミングでまた試す
+-- (linuxコマンドに精通してからの方がいい)
+
+delimiter //
+create procedure do_insert(value int)
+begin
+  declare code char(5) default '00000';
+  declare msg text;
+  declare errno int;
+  declare nrows int;
+  declare result text;
+
+  declare continue handler for sqlexception
+  begin
+    get diagnostics condition 1
+    code = returned_sqlstate,
+    msg = message_text,
+    errno = mysql_errno
+    ;
+  end;
+
+  insert into t1(int_col) values (value);
+
+  /*前文でエラーになっていなければifを通る*/
+  if code = "00000" then
+    get diagnostics nrows = row_count;
+    set result = concat(
+      "insert successed row count = ", 
+      nrows
+    );
+
+    select result;
+  else
+    select code, errno, msg; 
+  end if;
+end;
+//
+
+delimiter ;
+
+create table t1(
+  int_col int
+);
+
+call do_insert(4);
+
+/*
++--------------------------------+
+| result                         |
++--------------------------------+
+| insert successed row count = 1 |
++--------------------------------+
+1 row in set (0.009 sec)
+
+Query OK, 1 row affected (0.010 sec)
+*/
+
+drop table t1;
+
+call do_insert(8);
+/*
++-------+-------+---------------------------------+
+| code  | errno | msg                             |
++-------+-------+---------------------------------+
+| 42S02 |  1146 | Table 'sakila.t1' doesn't exist |
++-------+-------+---------------------------------+
+1 row in set (0.001 sec)
+
+Query OK, 0 rows affected (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q128-proceduretransaction">Q128 ProcedureとTransactionを組み合わせた例について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="procedure_2">procedureはトランザクション処理が可能</h3>
+<pre class="highlight"><code class="language-text">・procedureの中でstart transactionを行い、
+  トランザクション処理を開始できる
+
+・rollback, commitを使用することで、
+  複数ステートメントの原子性を担保できる</code></pre>
+<pre class="highlight"><code class="language-sql">create table t1 (
+  value int
+);
+
+/*
+sqlstateは予約語なので、変数名には使わない
+*/
+
+delimiter //
+create procedure t1_insert()
+begin
+  declare code char(5) default "00000";
+  declare errno int;
+  declare msg text;
+
+  declare exit handler for sqlexception, sqlwarning
+  begin
+    get diagnostics condition 1
+    code = returned_sqlstate,
+    errno = mysql_errno,
+    msg = message_text
+    ;
+    select code, errno, msg;
+    rollback;
+  end;
+
+  start transaction;
+
+    insert into t1 values
+    (3);
+
+    /*型が違うのでここでエラーになる*/
+    insert into t1 values
+    ("neko");
+
+    commit;
+    select "Success!" as result;
+  end;
+  //
+
+  delimiter ;
+
+  call t1_insert();
+
+/*
++-------+-------+---------------------------------------------------------------------------+
+| code  | errno | msg                                                                       |
++-------+-------+---------------------------------------------------------------------------+
+| 22007 |  1366 | Incorrect integer value: 'neko' for column `sakila`.`t1`.`value` at row 1 |
++-------+-------+---------------------------------------------------------------------------+
+*/
+
+/*rollbackしたので*/
+select * from t1;
+-- Empty set (0.001 sec)</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
+      
+        <script src="../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

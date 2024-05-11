@@ -1,0 +1,9052 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="16_partition.html">
+      
+      
+        <link rel="next" href="18_design.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(17:BigData) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/prism.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#17bigdata" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(17:BigData)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="17_bigdata.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q151" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q151 ビッグデータという概念について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q151 ビッグデータという概念について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3v" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータ概要(3つのV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜビッグデータが登場してきたのか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータの格納場所
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      オープンデータ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      各分野におけるビッグデータ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigDataを使ったシステムについて具体案を出してみる
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q152" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q152 個人情報とビッグデータの関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q152 個人情報とビッグデータの関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ収集と個人情報
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      個人情報関連
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q153" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q153 匿名加工処理について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q153 匿名加工処理について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      摂動法とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      前提（識別子/準識別子）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q154-k-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q154 K-匿名化について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q154 K-匿名化について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-" class="md-nav__link">
+    <span class="md-ellipsis">
+      K-匿名化(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q155-l-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q155 L-多様性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q155 L-多様性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l-" class="md-nav__link">
+    <span class="md-ellipsis">
+      L-多様性(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q156-t-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q156 T-近接性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q156 T-近接性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#t-" class="md-nav__link">
+    <span class="md-ellipsis">
+      T-近接性(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q157" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q157 差分プライバシについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q157 差分プライバシについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      差分プライバシ(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q158" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q158 準同型暗号方式について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q158 準同型暗号方式について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      準同型暗号方式(暗号法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q159" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q159 秘密分散方式について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q159 秘密分散方式について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      秘密分散方式(暗号化)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q160" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q160 ビッグデータとクラウドの関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q160 ビッグデータとクラウドの関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラウドサービスの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラウドサービスで大規模データを扱う利点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q161-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q161 ビッグデータとIoTの関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q161 ビッグデータとIoTの関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      IoT関連ワード概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      取得したデータを用いてデータ分析するまでの流れ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      上記の用語補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜ受信/処理/蓄積サーバを1つにまとめないのか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      センサ補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      デバイス補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      センサが取得するデータのフォーマット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q162-xmlsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q162 XMLをSQLで扱う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q162 XMLをSQLで扱う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xmlsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      XMLファイルをSQLのテーブルとして扱う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLのテーブルをXMLに変換する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      フィールド名を、カラム名と結び付けたい場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q163-jsonsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q163 JSONをSQLで扱う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q163 JSONをSQLで扱う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      行挿入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      集約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      特定のキーに対応する値を抽出
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wherekey_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      where句に$.key_nameを使う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      mysqlならもっと簡単にできる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONに値を追加する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonkey-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONからkey-valueを削除する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      置換する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      配列にデータ追加
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      検索と配列からのデータ削除
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q164-jsonmessagepack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q164 JSONをmessagePackに変換する方法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q164 JSONをmessagePackに変換する方法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonmessagepack" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONからMessagePackへの変換
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q165" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q165 デバイス、受信サーバ間の通信方式について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q165 デバイス、受信サーバ間の通信方式について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常のデータの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      IoT受信サーバでデバイスと通信する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q166" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q166 処理サーバでのデータ加工方法と、加工を行わない場合もあることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q166 処理サーバでのデータ加工方法と、加工を行わない場合もあることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      前提
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      処理サーバでの処理方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      クレンジング（データ加工）について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etlelt" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETLとELT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q167-dwh-data-mart-data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q167 DWH, Data-mart, Data-Lakeについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q167 DWH, Data-mart, Data-Lakeについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dwhdata-ware-house" class="md-nav__link">
+    <span class="md-ellipsis">
+      DWH(Data Ware House)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data-Lake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      匿名化処理について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-mart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data-Mart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      それぞれの使い道
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q168" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q168 ビッグデータの処理性能を測る指標について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q168 ビッグデータの処理性能を測る指標について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      スループット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      レイテンシ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(用語)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q169-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q169 NoSQL登場前の従来のデータベースについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q169 NoSQL登場前の従来のデータベースについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      行指向DB（さんざんやってきたもの）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      列指向DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPPデータベース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q170-acidbasecap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q170 ACIDとBASE,それからCAPについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q170 ACIDとBASE,それからCAPについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acid" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acid_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACIDの問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base" class="md-nav__link">
+    <span class="md-ellipsis">
+      BASE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAP（可用性と整合性はトレードオフなのか）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cap_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAP定理の問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPデータベース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      APデータベース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q171" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q171 トランザクション分離レベルについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q171 トランザクション分離レベルについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      分離レベルによって起こりうる問題?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      分離レベルについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadbuncommittedcommitted" class="md-nav__link">
+    <span class="md-ellipsis">
+      MariaDBで実際に試してみる(Uncommitted/Committed)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadbrepeatable-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      MariaDBで試してみる(Repeatable Read)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      [補足]予め読み取っていなかった時の挙動
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadbserializable" class="md-nav__link">
+    <span class="md-ellipsis">
+      MariaDBで試してみる(Serializable)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q172-mvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q172 MVCCについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q172 MVCCについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVCC基礎
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      トランザクションID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      最新バージョンを読み取る場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      snapshotを介して必要なバージョンを読み取る場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undo" class="md-nav__link">
+    <span class="md-ellipsis">
+      undoログ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      バージョンチェーンについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readview" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReadViewについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際の流れ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q173-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q173 NoSQLについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q173 NoSQLについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      由来
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDBMSと比較する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoSQL補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      たとえばDynamoDBは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      スケールアップ vs スケールアウト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータにはどちらが向いているか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q174-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q174 NoSQLの種類について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q174 NoSQLの種類について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key-Value型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      カラム指向型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      ドキュメント型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      グラフ型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q175-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q175 NoSQLの構成について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q175 NoSQLの構成について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      マスタ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      P2P型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      オンメモリ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      オンディスク型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャを含んだ分類表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q176-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q176 NoSQLの整合性を実現する技術について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q176 NoSQLの整合性を実現する技術について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      整合性とレイテンシのトレードオフ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      整合性を修復する方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q177-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q177 NoSQLにおける、負荷分散を意識したデータ分割について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q177 NoSQLにおける、負荷分散を意識したデータ分割について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      シャーディング
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistent-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンシステントハッシング(Consistent Hashing)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q178-nosqlrdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q178 NoSQLの書き込み速度が従来のRDBより早い理由を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q178 NoSQLの書き込み速度が従来のRDBより早い理由を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lsm-treelog-structured-merge-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-Tree(Log-structured merge-tree)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+treeへの書き込み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-treeへの書き込み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1番と2番の順番について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+treeの読出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm-tree_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-treeの読出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm-tree_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-treeの使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q179" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q179 分散処理について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q179 分散処理について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散処理フロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      分割処理の利点/欠点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q180-hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q180 Hadoopについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q180 Hadoopについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散処理の実装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoopとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfshadoop-distributed-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS(Hadoop Distributed File System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" class="md-nav__link">
+    <span class="md-ellipsis">
+      YARN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoopの課題
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q181-spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q181 Sparkについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q181 Sparkについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまりどちらを使うべきか?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q182" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q182 データ可視化ツールについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q182 データ可視化ツールについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散処理をしたらそのあとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      アドホック分析ツール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      ダッシュボードツール
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q183-newsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q183 NewSQLについて知っていますか?(概要)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q183 NewSQLについて知っていますか?(概要)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nosql-rdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoSQL, RDBとの比較
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      特徴補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      整合性と可用性のいいとこどり
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    <span class="md-ellipsis">
+      コストについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      NewSQLを使う必要がない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      NewSQLを使う必要がある場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      NewSQLの例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q151" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q151 ビッグデータという概念について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q151 ビッグデータという概念について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3v" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータ概要(3つのV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜビッグデータが登場してきたのか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータの格納場所
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      オープンデータ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      各分野におけるビッグデータ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bigdata" class="md-nav__link">
+    <span class="md-ellipsis">
+      BigDataを使ったシステムについて具体案を出してみる
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q152" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q152 個人情報とビッグデータの関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q152 個人情報とビッグデータの関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ収集と個人情報
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      個人情報関連
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q153" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q153 匿名加工処理について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q153 匿名加工処理について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      摂動法とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      前提（識別子/準識別子）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q154-k-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q154 K-匿名化について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q154 K-匿名化について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k-" class="md-nav__link">
+    <span class="md-ellipsis">
+      K-匿名化(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q155-l-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q155 L-多様性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q155 L-多様性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l-" class="md-nav__link">
+    <span class="md-ellipsis">
+      L-多様性(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q156-t-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q156 T-近接性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q156 T-近接性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#t-" class="md-nav__link">
+    <span class="md-ellipsis">
+      T-近接性(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q157" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q157 差分プライバシについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q157 差分プライバシについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      差分プライバシ(摂動法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q158" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q158 準同型暗号方式について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q158 準同型暗号方式について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      準同型暗号方式(暗号法)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q159" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q159 秘密分散方式について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q159 秘密分散方式について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      秘密分散方式(暗号化)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q160" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q160 ビッグデータとクラウドの関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q160 ビッグデータとクラウドの関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラウドサービスの種類
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラウドサービスで大規模データを扱う利点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q161-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q161 ビッグデータとIoTの関係性について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q161 ビッグデータとIoTの関係性について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      IoT関連ワード概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      取得したデータを用いてデータ分析するまでの流れ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      上記の用語補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜ受信/処理/蓄積サーバを1つにまとめないのか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      センサ補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      デバイス補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      センサが取得するデータのフォーマット
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q162-xmlsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q162 XMLをSQLで扱う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q162 XMLをSQLで扱う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xmlsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      XMLファイルをSQLのテーブルとして扱う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqlxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLのテーブルをXMLに変換する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      フィールド名を、カラム名と結び付けたい場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q163-jsonsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q163 JSONをSQLで扱う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q163 JSONをSQLで扱う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      行挿入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      集約
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      特定のキーに対応する値を抽出
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wherekey_name" class="md-nav__link">
+    <span class="md-ellipsis">
+      where句に$.key_nameを使う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      mysqlならもっと簡単にできる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONに値を追加する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonkey-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONからkey-valueを削除する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      置換する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      配列にデータ追加
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      検索と配列からのデータ削除
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q164-jsonmessagepack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q164 JSONをmessagePackに変換する方法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q164 JSONをmessagePackに変換する方法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonmessagepack" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONからMessagePackへの変換
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q165" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q165 デバイス、受信サーバ間の通信方式について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q165 デバイス、受信サーバ間の通信方式について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常のデータの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iot_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      IoT受信サーバでデバイスと通信する場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q166" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q166 処理サーバでのデータ加工方法と、加工を行わない場合もあることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q166 処理サーバでのデータ加工方法と、加工を行わない場合もあることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      前提
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      処理サーバでの処理方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      クレンジング（データ加工）について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etlelt" class="md-nav__link">
+    <span class="md-ellipsis">
+      ETLとELT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q167-dwh-data-mart-data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q167 DWH, Data-mart, Data-Lakeについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q167 DWH, Data-mart, Data-Lakeについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dwhdata-ware-house" class="md-nav__link">
+    <span class="md-ellipsis">
+      DWH(Data Ware House)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data-Lake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      匿名化処理について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-mart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data-Mart
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      それぞれの使い道
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q168" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q168 ビッグデータの処理性能を測る指標について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q168 ビッグデータの処理性能を測る指標について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      スループット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      レイテンシ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(用語)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q169-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q169 NoSQL登場前の従来のデータベースについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q169 NoSQL登場前の従来のデータベースについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      行指向DB（さんざんやってきたもの）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      列指向DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      MPPデータベース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q170-acidbasecap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q170 ACIDとBASE,それからCAPについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q170 ACIDとBASE,それからCAPについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acid" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acid_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACIDの問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#base" class="md-nav__link">
+    <span class="md-ellipsis">
+      BASE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cap" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAP（可用性と整合性はトレードオフなのか）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cap_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      CAP定理の問題点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPデータベース
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      APデータベース
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q171" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q171 トランザクション分離レベルについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q171 トランザクション分離レベルについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      分離レベルによって起こりうる問題?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      分離レベルについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadbuncommittedcommitted" class="md-nav__link">
+    <span class="md-ellipsis">
+      MariaDBで実際に試してみる(Uncommitted/Committed)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadbrepeatable-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      MariaDBで試してみる(Repeatable Read)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      [補足]予め読み取っていなかった時の挙動
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mariadbserializable" class="md-nav__link">
+    <span class="md-ellipsis">
+      MariaDBで試してみる(Serializable)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q172-mvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q172 MVCCについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q172 MVCCについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mvcc" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVCC基礎
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      トランザクションID
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      最新バージョンを読み取る場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snapshot" class="md-nav__link">
+    <span class="md-ellipsis">
+      snapshotを介して必要なバージョンを読み取る場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#undo" class="md-nav__link">
+    <span class="md-ellipsis">
+      undoログ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      バージョンチェーンについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readview" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReadViewについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際の流れ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q173-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q173 NoSQLについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q173 NoSQLについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      由来
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rdbms" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDBMSと比較する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoSQL補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      たとえばDynamoDBは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      スケールアップ vs スケールアウト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      ビッグデータにはどちらが向いているか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q174-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q174 NoSQLの種類について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q174 NoSQLの種類について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key-Value型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      カラム指向型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      ドキュメント型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      グラフ型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q175-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q175 NoSQLの構成について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q175 NoSQLの構成について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      マスタ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#p2p" class="md-nav__link">
+    <span class="md-ellipsis">
+      P2P型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      オンメモリ型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      オンディスク型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      アーキテクチャを含んだ分類表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q176-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q176 NoSQLの整合性を実現する技術について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q176 NoSQLの整合性を実現する技術について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      整合性とレイテンシのトレードオフ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      整合性を修復する方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q177-nosql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q177 NoSQLにおける、負荷分散を意識したデータ分割について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q177 NoSQLにおける、負荷分散を意識したデータ分割について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      シャーディング
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consistent-hashing" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンシステントハッシング(Consistent Hashing)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q178-nosqlrdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q178 NoSQLの書き込み速度が従来のRDBより早い理由を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q178 NoSQLの書き込み速度が従来のRDBより早い理由を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lsm-treelog-structured-merge-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-Tree(Log-structured merge-tree)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+treeへの書き込み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm-tree" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-treeへの書き込み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1番と2番の順番について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#btree_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      B+treeの読出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm-tree_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-treeの読出し
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsm-tree_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      LSM-treeの使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q179" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q179 分散処理について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q179 分散処理について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散処理フロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      分割処理の利点/欠点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q180-hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q180 Hadoopについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q180 Hadoopについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散処理の実装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoopとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdfshadoop-distributed-file-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDFS(Hadoop Distributed File System)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yarn" class="md-nav__link">
+    <span class="md-ellipsis">
+      YARN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hadoopの課題
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q181-spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q181 Sparkについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q181 Sparkについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spark" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spark概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      つまりどちらを使うべきか?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q182" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q182 データ可視化ツールについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q182 データ可視化ツールについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      分散処理をしたらそのあとは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      アドホック分析ツール
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      ダッシュボードツール
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q183-newsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q183 NewSQLについて知っていますか?(概要)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q183 NewSQLについて知っていますか?(概要)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nosql-rdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      NoSQL, RDBとの比較
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      特徴補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_65" class="md-nav__link">
+    <span class="md-ellipsis">
+      整合性と可用性のいいとこどり
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_66" class="md-nav__link">
+    <span class="md-ellipsis">
+      コストについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      NewSQLを使う必要がない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      NewSQLを使う必要がある場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#newsql_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      NewSQLの例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="17bigdata">クイズ(17:BigData)</h1>
+<h2 id="q151">Q151 ビッグデータという概念について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="3v">ビッグデータ概要(3つのV)</h3>
+<pre class="highlight"><code class="language-text">Volume(データの量)
+  ・数十億や数兆単位のデータがあるか
+
+Velocity(データの速度)
+  ・データがどのくらい素早く届くか
+  ・速いというのは、データが更新される頻度
+  （常に変化し続けるデータで、現在に即した結果を導く）
+
+Variety(データの多様性)
+  ・データが常に構造化されているとは限らず、
+    非構造化データとして提供される
+
+これを踏まえてビッグデータとは
+  ・従来のシステムでは処理できないほど巨大なデータ
+  ・従来の構造に収まらない複雑なデータ
+  ・常に変化し続けるデータ
+
+
+最近はあと2つのVもある
+  Veracity(正確性)
+  Value（価値）⇒データを組み合わせて新たな価値を生み出す
+</code></pre>
+<h3 id="_1">ビッグデータの種類</h3>
+<pre class="highlight"><code class="language-text">構造化データ
+  ・従来のRDBに格納できるデータ
+
+準構造化データ
+  ・ログやJSONなどの完全な構造定義を持たないデータ
+
+非構造化データ
+  ・文書、音声、動画、画像など、データ部に構造定義を
+    まったくもたないデータ</code></pre>
+<h3 id="_2">なぜビッグデータが登場してきたのか</h3>
+<pre class="highlight"><code class="language-text">[技術の発展]
+  ・分散処理技術(Hadoop)やクラウドサービスの充実
+  ・NoSQL-DB, 機械学習などの発展
+
+[データの増加]
+  ・IoT家電の登場や、SNS、Webシステムなどにより
+    生成されるデータが以前より増えた
+
+[低価格化]
+  ・データを取得し、送信するセンサーなどの低価格化
+  ・クラウドなどもここに含まれる</code></pre>
+<h3 id="_3">ビッグデータの格納場所</h3>
+<pre class="highlight"><code class="language-text">[自社]
+  ・自社の基幹システム
+  ・Web,SNSサービスなどの操作ログ等
+
+[社外]
+  ・スマホ/家電の使用量などのデータ
+  ・企業間で共有されるデータ
+
+[一般]
+  ・政府や自治体などで公開されたデータ
+  ・データ提供事業者から入手したデータ</code></pre>
+<h3 id="_4">オープンデータ</h3>
+<pre class="highlight"><code class="language-text">[特徴]
+・誰でも入手可能で、利用/再配布も可能なデータ
+・コンピュータから利用可能
+・特許/著作権周りの問題もない
+
+⇒上記の条件に当てはまるならオープンデータ
+
+[公開している機関]
+・政府、地方自治体、研究機関、大学、民間企業
+
+[オープンデータの例]
+・国勢調査データ
+・気象データ
+
+[使用例]
+・気象データと、自社の販売データの相関関係を考える
+・多変量解析周りの、統計的な知識が必要。
+・因子分析等の知識がないと結果を違える
+
+[結果を違える例]
+・1950年頃の過去データを用い、採用活動に用いる
+⇒人種間や性別間の偏見が残ってしまう
+</code></pre>
+<h3 id="_5">各分野におけるビッグデータ</h3>
+<pre class="highlight"><code class="language-text">マーケティング
+  ・Webのログ(準構造データ)やカメラ(非構造データ)
+    から顧客の行動を分析
+
+製品開発
+  ・センサ（準構造データ）や顧客の声（非構造データ）
+    をもとに、開発の方針を決定
+
+コンプライアンス
+  ・正しい文章と、誤った文章(非構造データ)を元に
+    学習させ、コサイン類似度などで、不適切な文言をはじく
+
+セキュリティ
+  ・サイバー攻撃のパターンをログ(準構造データ)
+  　などから検知して、予防する
+
+メンテナンス
+  ・センサデータの故障予測を行う
+
+社会インフラ
+  ・過去のデータをもとに、災害の予測を立てる</code></pre>
+<h3 id="bigdata">BigDataを使ったシステムについて具体案を出してみる</h3>
+<details class="info">
+<summary>Info</summary>
+<pre class="highlight"><code class="language-text">
+・実際に病院で診断を下された患者(考えすぎも含む)が、
+  Web上でどのような検索ワードを用いて
+  自身の病状を検索していたのか
+  (もちろん、個人を識別できるような情報は削除する)
+
+-----------------------
+
+・現在のWebにおいて、医療関係の情報は
+  人を不安にさせるものが多い
+・たとえば、鼻水が出ると調べれば、
+  脳みそがジュースになっているという検索結果が出るし、
+  元気がないと調べれば、筋ジスだと返ってくる
+
+(ちなみに私は、スギ花粉による花粉症に
+  毎年春先苦しめられているが、
+  以前「AI診断」と検索して出てきたサービスに
+  自身の症状を入力したところ、
+  「今すぐ病院に行くべきで、難病にかかっている
+  可能性がある」と言われた。控え目に言って糞だ)
+
+・この結果、患者と医師はどうなるか
+
+・患者の場合、不安に駆られる。
+  年がら年中身体のことを考えることで、
+  病院に行く回数は増えるだろうが、
+  これは健康とは言えないだろう。精神的に病んでいる
+
+・また、現場の医師は明らかに不利益を被る
+　ネットで調べ、不安になった人間が病院を訪れ
+  自身は重い病気なんだと主張するからだ
+
+・そして、この手の患者は
+  医師に大丈夫ですと言われても安心しない。
+  仮に一時心の平穏を取り戻せたとしても、
+  数日後には別の箇所が心配になり、また調べ、
+  そして不安になり、医師に相談することになる。
+  この繰り返しだ。これが死ぬまで続く。
+
+・つまるところ、ネットにあふれる健康情報は
+　百害あって一利ない。
+
+・そして、一利ないということを患者に分からせるためには
+  実際のデータを持ってくるのが一番である
+
+・「鼻水　水っぽい　一日中」と調べた患者のうち、
+  何%が、脳みそがジュースになっている病気だったのか。
+  そして、何%が、花粉症だったのか。
+
+・小さなしこりがあると調べた患者のうち、
+  何％が悪性腫瘍で、何%が脂肪種だったのか。
+
+・是非、問診表の中で、
+  ここに来るまでにネットで病気に関するワードを
+  打ち込んだか記載させ、
+  実際の病状と照らし合わせてほしい。
+  患者の心の平穏にも、現場の医師のためにもなるはずだ。
+
+※これは出所のはっきりしている情報
+（たとえば医師が書いているサイト）にも言える話である
+
+  大体、責任問題になるのだから、医師が絶対に大丈夫
+  というわけがない。「一度診断を受けるべき」
+  気軽な気持ちで、こう締めくくるわけだ。
+  で、心気症に近い患者は、違う部位が気になるたびに
+  「一度診断を受けるべき」と思い、病院を訪れ
+  病院はパンクする。私はこの悪循環をなくしたい
+</code></pre>
+</details>
+</details>
+<h2 id="q152">Q152 個人情報とビッグデータの関係性について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_6">データ収集と個人情報</h3>
+<pre class="highlight"><code class="language-text">・ビッグデータを用いたデータ分析が行いたいなら
+  まずはデータが必要
+
+・データを収集するとして、
+  個人情報保護法等を守る必要がある
+
+・また特定の国に限らず、情報収集をする場合は、
+  該当国・地域の法律も順守する(GDPRとかね)</code></pre>
+<h3 id="_7">個人情報関連</h3>
+<pre class="highlight"><code class="language-text">個人情報
+  ・個人(生存者のみ)の氏名、生年月日、その他の記述により
+    特定の個人を識別できるような情報
+
+個人情報取扱事業者
+  ・個人情報をDB等で所持し、事業に用いている事業者
+  ・取扱件数にかかわらない(2015年から)
+  ・流失の際、報告や改善措置を怠ると刑事罰の対象になる
+
+個人情報取得の際には
+  ・オプトイン
+  　⇒（利用規約などで、予め本人に利用目的を明示して
+        同意のチェックを付けさせる）
+
+  ・オプトアウト
+    ⇒（拒否しない限り、同意とみなす
+        Webサイトのクッキーなどに多い）
+
+  ・情報を第三者に提供する場合については、
+  　通常予め同意を取っておく必要がある(オプトイン)
+
+  ・オプトアウト方式で第三者に情報提供する場合、
+    プライバシーポリシー等に必要事項を記載し、
+    個人情報保護委員会にその旨を申し立てる必要がある
+
+  ・2022年からは開示請求で、第三者にどのように提供された
+  　のか確かめられるようになった
+
+
+要配慮情報について
+  ・人種、信条、病歴などの要配慮情報は
+    オプトアウト方式では第三者に提供できない
+</code></pre>
+</details>
+<h2 id="q153">Q153 匿名加工処理について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_8">摂動法とは</h3>
+<pre class="highlight"><code class="language-text">・データの加工や変換において、
+  元のデータを特定の方法で変更し、
+  元に戻す事が出来ないようにする技術
+
+・プライバシー保護やデータの安全性の観点から行われる
+
+・暗号法と異なり、解読することができないので
+  正しく処理すれば復元することは困難になる
+
+※そもそも摂動とは
+  ・力学の言葉で、乱すこと
+  ・セキュリティでいうと、ランダムノイズ等を書けて
+    元のデータを分からなくするように乱している</code></pre>
+<h3 id="_9">前提（識別子/準識別子）</h3>
+<pre class="highlight"><code class="language-text">識別子
+  ・個人をはっきり指し示す属性（マイナンバーとか）
+
+準識別子
+  ・年齢、性別、居住地など組み合わせることで
+    個人の特定が可能になる属性
+
+要配慮情報
+  ・センシティブ属性とも呼ぶ
+  ・人に知られたくないことは全部そう
+  ・年収とかも
+
+⇒要配慮情報と個人を結び付けられないよう匿名化を行う</code></pre>
+</details>
+<h2 id="q154-k-">Q154 K-匿名化について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="k-">K-匿名化(摂動法)</h3>
+<pre class="highlight"><code class="language-text">・同じような人が、必ずK人以上いる状態を作ること
+  （準識別子が全く同一の個人が少なくともK人存在）
+
+[抑制]
+  ・特定の属性の値を*で変換
+  ・識別子は必ず変換
+  ・必要であれば準識別子も
+
+[一般化]
+  ・97歳を90代などに変換
+  ・個々の属性値を広い範囲に置換する
+
+1 抑制、一般化を行ったうえで、準識別子の組み合わせを
+  調べる
+
+2 どの組み合わせを用いても、K個以上のレコードが
+  残る場合、K-匿名性を満たすという
+
+[弱点：一般的に]
+  ・ランダム性を含まないため、推測が可能
+
+[弱点:背景知識攻撃]
+  ・攻撃者が何らかの背景知識を持っている場合、
+  （たとえば要配慮情報の中身を大まかに知っている場合）
+  　明らかに当てはまらないものを除くことで、
+  　個人が特定される可能性がある
+
+[弱点：同種攻撃]
+  ・要配慮情報を含めたすべての機密属性が同じ場合、
+    レコードを特定できなくとも、機密情報がばれる</code></pre>
+<pre class="highlight"><code class="language-sql">-- 前処理前
+-- 宗教を要配慮情報とした場合
+
+select 
+  "Nekotaro" name,
+  38 age,
+  1 sex,
+  "Tokyo" region,
+  "Nekozyara-Kyo" belief
+union all
+select 
+  "Torakiti" name,
+  32 age,
+  1 sex,
+  "Tokyo" region,
+  "Nekozyara-kyo" belief
+union all
+select 
+  "LionMaru" name,
+  59 age,
+  1 sex,
+  "Osaka" region,
+  "Tategami-Kyo" belief
+union all
+select 
+  "Kabanosuke" name,
+  52 age,
+  1 sex,
+  "Osaka" region,
+  "Mizuabi-Club" belief
+;
+
+/*
++------------+-----+-----+--------+---------------+
+| name       | age | sex | region | belief        |
++------------+-----+-----+--------+---------------+
+| Nekotaro   |  38 |   1 | Tokyo  | Nekozyara-Kyo |
+| Torakiti   |  32 |   1 | Tokyo  | Nekozyara-kyo |
+| LionMaru   |  59 |   1 | Osaka  | Tategami-Kyo  |
+| Kabanosuke |  52 |   1 | Osaka  | Mizuabi-Club  |
++------------+-----+-----+--------+---------------+
+4 rows in set (0.000 sec)
+*/
+
+-- K-多様性適用後
+select 
+  "*" name,
+  "30s-50s" age,
+  1 sex,
+  "Japan" region,
+  "Nekozyara-Kyo" belief
+union all
+select 
+  "*" name,
+  "30s-50s" age,
+  1 sex,
+  "Japan" region,
+  "Nekozyara-kyo" belief
+union all
+select 
+  "*" name,
+  "30s-50s" age,
+  1 sex,
+  "Japan" region,
+  "Tategami-Kyo" belief
+union all
+select 
+  "*" name,
+  "30s-50s" age,
+  1 sex,
+  "Japan" region,
+  "Mizuabi-Club" belief
+;
+
+/*
+準識別子をage,sex,regionとすると、
+2-匿名性が担保されているが......
+
+30代と判明した場合、同種攻撃で突破されることが分かる
+*/
+
+/*
++------+-----+-----+--------+---------------+
+| name | age | sex | region | belief        |
++------+-----+-----+--------+---------------+
+| *    | 30s |   1 | Tokyo  | Nekozyara-Kyo |
+| *    | 30s |   1 | Tokyo  | Nekozyara-kyo |
+| *    | 50s |   1 | Osaka  | Tategami-Kyo  |
+| *    | 50s |   1 | Osaka  | Mizuabi-Club  |
++------+-----+-----+--------+---------------+
+4 rows in set (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q155-l-">Q155 L-多様性について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="l-">L-多様性(摂動法)</h3>
+<pre class="highlight"><code class="language-text">・漏えいさせたくない属性が、
+  同一グループ内で、
+  少なくとも「L種類以上ある」状態を作ること
+
+※同一グループ：準識別子が全て同じ集まり
+
+⇒L=2以上の場合、同値攻撃も不可
+⇒準識別子を照らし合わせても、個人の情報を特定できなくなる
+
+[Lを増やすには]
+  ・一般化の手法を見直して、少数のグループをなくす
+
+  ・たとえば以下の例の場合、ageとregionの幅を
+    大きくすることで、Lを増加させている
+
+  ・どうしてもLが広げられない場合は、
+    そこだけ*で匿名化する方法もある
+
+・以下の場合、L = 1である
+  +------+-----+-----+--------+---------------+
+  | name | age | sex | region | belief        |
+  +------+-----+-----+--------+---------------+
+  | *    | 30s |   1 | Tokyo  | Nekozyara-Kyo |
+  | *    | 30s |   1 | Tokyo  | Nekozyara-kyo |
+  | *    | 50s |   1 | Osaka  | Tategami-Kyo  |
+  | *    | 50s |   1 | Osaka  | Mizuabi-Club  |
+  +------+-----+-----+--------+---------------+
+  4 rows in set (0.001 sec)
+
+・これはL = 3
++------+---------+-----+--------+---------------+
+| name | age     | sex | region | belief        |
++------+---------+-----+--------+---------------+
+| *    | 30s-50s |   1 | Japan  | Nekozyara-Kyo |
+| *    | 30s-50s |   1 | Japan  | Nekozyara-kyo |
+| *    | 30s-50s |   1 | Japan  | Tategami-Kyo  |
+| *    | 30s-50s |   1 | Japan  | Mizuabi-Club  |
++------+---------+-----+--------+---------------+
+4 rows in set (0.001 sec)  
+</code></pre>
+</details>
+<h2 id="q156-t-">Q156 T-近接性について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="t-">T-近接性(摂動法)</h3>
+<pre class="highlight"><code class="language-text">[概要]
+・任意の準識別子グループ内の要配慮情報の分布と、
+  全体の要配慮情報との分布の差がt以下である
+
+[k-匿名化やL-多様性との違い]
+  ・これら二つは個数の下限を考えていた
+  ・t-近接性は、差の上限を保証する
+
+[t-近接性を満たさない例]
+  ・データセット全体の場合、収入の分布は散らばっている
+  ・特定のグループには、特定範囲の収入情報しか入っていない
+⇒攻撃者は特定の準識別子を持った人の傾向を
+  知ることができてしまう
+
+[t-近接性を満たす例]
+  ・データセット全体の場合、収入の分布は散らばっている
+  ・特定のグループを見ても、収入の分布は変わらない
+  ⇒攻撃者は準識別子を頼りに探しても、
+    全体の分布以上の特徴を知ることができない
+
+[t-近接性のデメリット]
+  ・データ利用者の得られる情報も制限してしまうので
+    データを価値あるものとして扱うことが難しくなる</code></pre>
+</details>
+<h2 id="q157">Q157 差分プライバシについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_10">差分プライバシ(摂動法)</h3>
+<pre class="highlight"><code class="language-text">[概要]
+  ・データ全体ではなく、クエリに対して加工を行う
+
+  ・どれだけ他人と見分けがつかないかを、ε(プライバシー強度)
+    で表現する
+
+[モザイク効果/再構築攻撃への対策]
+    ・モザイク効果は、1つでは安全そうに思えたデータセットが
+      データセットを複数重ね合わせたとき、
+      プライバシーの暴露を引き起こす事象を指す
+
+    ・また、複数のデータを重ね合わせて、
+      個人の情報を特定する攻撃を、再構築攻撃という
+
+    ・ここでk-匿名化などの手法が、単一のデータセットに
+      終始していたことを思い出す。
+
+    ・つまり、k-匿名化などの手法は、一見安全そうに見えても
+      再構築攻撃による潜在的な危険に対応できない
+
+    ・差分プライバシは、統計的な尺度を導入することで、
+      これらの問題点や潜在的な危険に対応する
+
+[差分プライバシの考え方]
+  ・プライバシー保護を施した特定のqueryに対し、
+    どれくらいプライバシーが損なわれるかをε(&gt;=0)で表現する
+
+  ・値が大きいほど、プライバシーが漏洩する
+
+  ・特定のqueryのプライバシー損失がε以下の場合、
+    queryは、ε-差分プライバシー(ε-DP)を満たすという
+
+  ・具体的には、以下2つのデータベースについて考える
+  　D1：Aさんのデータが含まれるデータベース
+    D2: Aさんのデータを他の誰かの物に置き換えたデータベース
+    (一行だけ異なる2つのDBを隣接データベースという)
+    (※なお、置き換えるのではなく、除くこともある)
+
+  ・単純にクエリを適用すると、その差分から
+    Aさんの個人情報が導き出されてしまうため
+  　何らかの確率分布をもとにランダム化関数を適用し
+  　結果クエリを算出する
+
+
+  ・その結果、見分けがつかなければ、D1とD2の結果クエリから
+  　Aさんの情報を入手することができないといえ、
+    ε-DPは小さくなる。逆もまた然り
+
+[何らかの確率分布?]
+  ・Laplace分布が有名
+  ・分散が大きくなれば、それだけ特定しにくくなるため
+    εは小さくなる
+
+[デメリット]
+  ・プライバシーの消費は累積し、続ければ効果がなくなる
+  ・分散が大きくなるということは、精度が下がる事を意味する
+
+[プライバシ以外のメリット]
+  ・データそのものを抑制したり、一般化を行うk-匿名化と比べ
+  　差分プライバシは個々のクエリに誤差を加えただけなので、
+    統計的な傾向は守られる
+
+    ⇒統計的分析に使用できる
+
+</code></pre>
+</details>
+<h2 id="q158">Q158 準同型暗号方式について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_11">準同型暗号方式(暗号法)</h3>
+<pre class="highlight"><code class="language-text">[秘密計算]
+  ・データを暗号化したまま計算できる技術を指す
+  ・機密データを送受信する過程で、
+    復号、暗号化を繰り返す必要がなくなる
+
+[準同型暗号方式]
+  1 公開鍵を利用し、複雑な暗号関数を作る
+  2 暗号化した状態でデータの計算を委託(計算鍵も同封)
+  3 委託先の企業は暗号化した状態で計算(計算鍵を利用)
+  4 暗号化した結果を委託元に戻す
+  5 委託元の企業は、復号用の秘密鍵を持っているため、
+    それを利用してデータの内容が判定できる
+
+[準同型暗号方式のデメリット]
+  ・暗号化したデータが巨大になり、コストがかかる
+  ・鍵が流出すると終わる
+  ・鍵をなくすと、復号できなくなる</code></pre>
+</details>
+<h2 id="q159">Q159 秘密分散方式について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_12">秘密分散方式(暗号化)</h3>
+<pre class="highlight"><code class="language-text">[秘密分散方式]
+  秘匿情報を分割して、保管しておくこと
+
+[(k,n)しきい値法 -&gt; 秘密分散方式の一つ]
+  1 データをn個の断片（シェア）に分割する
+  2 n個のうち、k個以上が集まれば復元可能
+  2 シェアは、複数のサーバに1つずつ分散させる
+  3 委託先は、シャアのうちk個未満の情報を集め
+    処理を行い、結果を出力
+  4 委託元は、分散した結果をすべて集め、k個以上
+    集めることで復元する
+
+[メリット]
+  ・k-1個のサーバまでなら、侵入されても
+  　何の情報も得られないため機密性において軍配があがる
+
+  ・n-k個までなら故障しても、残りのコンピュータから
+    データを復元可能
+
+[分割手法について(一例)]
+  ・k-1次多項式の曲線を特定するには、
+  　k個のデータ点があればいい。
+
+  ・これを利用して、k個のシェアから、k-1次多項式を解き、
+    秘密情報である切片を入手する
+  ⇒シャミアの秘密分散法</code></pre>
+</details>
+<h2 id="q160">Q160 ビッグデータとクラウドの関係性について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_13">クラウドサービスの種類</h3>
+<pre class="highlight"><code class="language-text">SaaS(Software as a Service)
+  ・インターネットを経由して、ソフトウェアパッケージを提供
+    するサービス
+
+PaaS(Platform as a Service)
+  ・インターネットを経由して、アプリの開発・運用環境全体
+    を提供するサービス
+
+IaaS(Infrastructure as a Service)
+  ・昔はHaaS(Hardware as a Service)と呼ばれていたことも
+  ・インターネントを経由して、ハードウェアや回線などの
+    インフラを提供するサービス
+  ・ユーザはハードウェアを物理的に所有せずに済む</code></pre>
+<h3 id="_14">クラウドサービスで大規模データを扱う利点</h3>
+<pre class="highlight"><code class="language-text">コスト面
+  ・先行投資（ハードウェアの準備等）が不要
+
+  ・自動でスケーリングを行い、繁忙期や時間帯に合わせて、
+    処理能力を変更でき、コスト削減できる
+
+-------------
+
+
+安全性
+  ・複数のAZやリージョンに、データを複製しているため
+    耐障害性という面で優れている
+
+-------------
+
+
+運用面
+  ・ビッグデータは基本的にデータが日増しになっていく
+    クラウドなら、容量拡大に伴う作業が不要
+
+-------------
+
+人的資源
+  ・インフラの構築に割いていた時間を、
+    本当に必要な業務に回すことができる
+
+-------------
+
+独自のカスタマイズができない
+  ・企業独自のカスタマイズをさせられずに済むのは
+    転職が多い業界にとってはむしろメリットだろう
+
+  ・下手に必要以上のカスタマイズができてしまうと、
+    却って本来の解決策が見つけにくくなるかもしれない</code></pre>
+<h3 id="_15">欠点</h3>
+<pre class="highlight"><code class="language-text">世界規模の障害が起こった場合
+  ・クラウドサービスで障害が起こると、
+    業務に影響が出る場合がある</code></pre>
+</details>
+<h2 id="q161-iot">Q161 ビッグデータとIoTの関係性について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_16">基本</h3>
+<pre class="highlight"><code class="language-text">「モノ」から取得したデータをビッグデータの一部として処理し、
+統計的分析や、機械学習で用いる</code></pre>
+<h3 id="iot">IoT関連ワード概要</h3>
+<pre class="highlight"><code class="language-text">Iot(Internet of Things)
+  ・モノがインターネットに接続できるようになった状態
+
+  ・20世紀まではインターネットとは関係のなかったもの
+    たとえば家電や、時計、眼鏡、自動車などが
+    ネットワークにつながり、相互に情報交換が
+    可能になった状態を意味する
+
+  ・言葉ができた90年代当初は
+    単にRFID(radio frequency identification)のことを
+    指していたが、今は上の定義が正しい
+
+-------------
+
+ユビキタス社会という考え方
+  ・そもそもubiquitousがいたるところにという意味
+  ・つまりいつでもどこでもinternetを利用できる社会を指す
+  ・IoTとの違いは人視点であること
+
+--------------
+
+M2Mという言葉について
+  ・Machine to Machine
+  ・機械同士が、人を介在しないで情報をやり取りするシステム
+  ・必ずしもインターネントを介す必要はない
+
+⇒つまり、IoTはユビキタス社会とM2Mを包括する</code></pre>
+<h3 id="_17">取得したデータを用いてデータ分析するまでの流れ</h3>
+<pre class="highlight"><code class="language-text">※用語については下で補完する
+
+1 デバイスに埋め込んだセンサを用いて、データを取得する
+
+2 デバイスから受信サーバへとデータ送信
+
+3 処理サーバがストリーム方式やバッチ処理で
+  データを加工する。(ETLの場合)
+⇒リアルタイムで情報が必要なら、デバイスに送り返す
+
+4 (加工済みの)データを、蓄積サーバで保管
+
+6 必要に応じ、統計的手法や、機械学習を用いて分析を行う
+  ⇒ELTなら前処理として加工を行う</code></pre>
+<h3 id="_18">上記の用語補足</h3>
+<pre class="highlight"><code class="language-text">センサ
+  ・物理的な現象を検知して、電気信号として出力する装置
+
+デバイス
+  ・センサを介して、ネットワークに接続された装置、モノ
+
+受信サーバ
+  ・HTTP/MQTT/WebSocket等の通信方法を用い、
+  　デバイスとのデータの送受信を行う
+
+処理サーバ
+  ・ETLツールなどを用い、クレンジングを行う
+
+クレンジング
+  ・データの整理や加工を行うこと
+
+蓄積サーバ
+  ・ビッグデータを保管するサーバ</code></pre>
+<h3 id="1">なぜ受信/処理/蓄積サーバを1つにまとめないのか</h3>
+<pre class="highlight"><code class="language-text">・各サーバが異なる役割を持つから
+
+受信サーバ
+  ・データ転送速度等を最適化
+
+処理サーバ
+  ・計算負荷に対応するために強力なCPUが必要
+  ・大量のメモリもいる
+
+蓄積サーバ
+  ・大量のデータを保管するために、大容量ストレージが必要
+
+各サーバを分けることで
+  ・それぞれをスケールアップ/スケールアウト可能
+  ・システムを柔軟に組むことができる</code></pre>
+<h3 id="_19">センサ補足</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・一つのデバイスに対して、
+    複数のセンサが埋め込まれる事が多い
+
+
+画像センサ
+  ・画像や動画を作成
+  ・赤外線を検知して、画像処理するものもある
+  ・工場の欠けている部品をチェックしたり
+
+光センサ
+  ・光の強度を測定する
+  ・スマホで言うと、画面の明るさの自動調整機能
+
+温度/湿度センサ
+  ・温度, 湿度を測定する
+  ・エアコンの自動調整等に使う
+
+振動/速度/加速度センサ
+  ・機器の振動, 速度, 加速度の測定
+  ・自動車などには不可欠だろう
+
+地磁気センサ
+  ・地磁気を検出することで方角を計測
+  ・カーナビやGPS端末の電子コンパスとしても使用される
+
+ジャイロセンサ
+  ・デバイスの傾きを検知する
+  ・昔のカービィのゲームであったな
+
+音声マイク
+  ・機器が発する音や、人の声などの音声を収集する
+  ・カメラの録音機能や、工場の異音検知等はこれ
+</code></pre>
+<h3 id="_20">デバイス補足</h3>
+<pre class="highlight"><code class="language-text">デバイスの機能
+  ・センシング
+  ・フィードバック
+
+センシング
+  ・センサーを利用して、デバイス本体や周囲環境を収集し、
+    IoTシステムに通知すること
+
+フィードバック
+  ・システムからの通知を受け、指示や動作を
+    機器に返すこと</code></pre>
+<h3 id="_21">センサが取得するデータのフォーマット</h3>
+<pre class="highlight"><code class="language-text">XML
+  ・人が呼んで分かりやすい形式
+  ・またはデータ量が多い場合に使用
+  ⇒SQLでの使用法については次の節で行う
+
+JSON
+  ・データ量が少ない場合に使用
+  ⇒SQLでの使用法については次の節で扱う
+
+MessagePack
+  ・バイナリデータをそのまま扱いたい場合に使用
+  ・パースする必要がない
+  ・形式自体はJSONに似ている
+  ・シリアライズ、デシリアライズともに非常に高速
+  ・データサイズは小さく、ストリーム処理が可能な特徴を持つ</code></pre>
+</details>
+<h2 id="q162-xmlsql">Q162 XMLをSQLで扱う方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="xmlsql">XMLファイルをSQLのテーブルとして扱う</h3>
+<pre class="highlight"><code class="language-sql">use sakila;
+
+create table person (
+  person_id int not null primary key,
+  fname varchar(40) null,
+  lname varchar(40) null,
+  created timestamp
+);</code></pre>
+<pre class="highlight"><code class="language-xml">&lt;!-- test.xml --&gt;
+&lt;!-- 仮にtableに対応するカラムがない場合は、skipされる--&gt;
+&lt;!-- fieldの指定順序は関係ない --&gt;
+&lt;list&gt;
+  &lt;person person_id="1" fname="Neko" lname="Taro" /&gt;
+  &lt;person person_id="2" fname="Inu" lname="Ziro" /&gt;
+  &lt;person person_id="3"&gt;
+    &lt;fname&gt;Tora&lt;/fname&gt;
+    &lt;lname&gt;Kuroo&lt;/lname&gt;
+  &lt;/person&gt;
+  &lt;person&gt;
+    &lt;field name="person_id"&gt;4&lt;/field&gt;
+    &lt;field name="fname"&gt;Onigawara&lt;/field&gt;
+    &lt;field name="lname"&gt;Momizi&lt;/field&gt;
+  &lt;/person&gt;
+&lt;/list&gt;</code></pre>
+<pre class="highlight"><code class="language-sql">-- resultsetやrow等の目印がないため
+-- どこからがrowなのかを示すため3行目が必要
+
+/*
+local
+  ・MySQLサーバは一時ファイルを格納するディレクトリに
+    ファイルのコピーを作成する
+  ・これがない場合、ファイルはサーバホストからしか読めない
+*/
+load xml local infile "test.xml"
+  into table person
+  rows identified by "&lt;person&gt;"
+;
+
+select * from person;
+
+/*
++-----------+-----------+--------+---------------------+
+| person_id | fname     | lname  | created             |
++-----------+-----------+--------+---------------------+
+|         1 | Neko      | Taro   | 2024-04-13 16:43:31 |
+|         2 | Inu       | Ziro   | 2024-04-13 16:43:31 |
+|         3 | Tora      | Kuroo  | 2024-04-13 16:43:31 |
+|         4 | Onigawara | Momizi | 2024-04-13 16:43:31 |
++-----------+-----------+--------+---------------------+
+4 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="sqlxml">SQLのテーブルをXMLに変換する</h3>
+<pre class="highlight"><code class="language-bash">mysql -unekoinu -pnyanko  \
+--xml -e "select * from sakila.person" \
+&gt; person-dump.xml
+
+cat person-dump.xml</code></pre>
+<pre class="highlight"><code class="language-xml">&lt;!-- person-dump.xml --&gt;
+
+&lt;?xml version="1.0"?&gt;
+
+&lt;resultset statement="select * from sakila.person
+" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;1&lt;/field&gt;
+        &lt;field name="fname"&gt;Neko&lt;/field&gt;
+        &lt;field name="lname"&gt;Taro&lt;/field&gt;
+        &lt;field name="created"&gt;2024-04-13 16:43:31&lt;/field&gt;        
+  &lt;/row&gt;
+
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;2&lt;/field&gt;
+        &lt;field name="fname"&gt;Inu&lt;/field&gt;
+        &lt;field name="lname"&gt;Ziro&lt;/field&gt;
+        &lt;field name="created"&gt;2024-04-13 16:43:31&lt;/field&gt;        
+  &lt;/row&gt;
+
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;3&lt;/field&gt;
+        &lt;field name="fname"&gt;Tora&lt;/field&gt;
+        &lt;field name="lname"&gt;Kuroo&lt;/field&gt;
+        &lt;field name="created"&gt;2024-04-13 16:43:31&lt;/field&gt;        
+  &lt;/row&gt;
+
+  &lt;row&gt;
+        &lt;field name="person_id"&gt;4&lt;/field&gt;
+        &lt;field name="fname"&gt;Onigawara&lt;/field&gt;
+        &lt;field name="lname"&gt;Momizi&lt;/field&gt;
+        &lt;field name="created"&gt;2024-04-13 16:43:31&lt;/field&gt;        
+  &lt;/row&gt;
+&lt;/resultset&gt;</code></pre>
+<pre class="highlight"><code class="language-sql">--　出力結果をさらにtableに
+create table person2 like person;
+
+--resultsetやrowがあるので、row句は短縮できる
+load xml local infile "person-dump.xml"
+into table person2;
+
+/*
++-----------+-----------+--------+---------------------+
+| person_id | fname     | lname  | created             |
++-----------+-----------+--------+---------------------+
+|         1 | Neko      | Taro   | 2024-04-13 16:43:31 |
+|         2 | Inu       | Ziro   | 2024-04-13 16:43:31 |
+|         3 | Tora      | Kuroo  | 2024-04-13 16:43:31 |
+|         4 | Onigawara | Momizi | 2024-04-13 16:43:31 |
++-----------+-----------+--------+---------------------+
+4 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_22">フィールド名を、カラム名と結び付けたい場合</h3>
+<pre class="highlight"><code class="language-sql">-- 同じフィールドを使うのは汎用性が低い
+
+create table individual (
+  individual_id int not null primary key,
+  name1 varchar(40) null,
+  name2 varchar(40) null,
+  made timestamp
+);
+
+-- fieldの値をユーザ変数とし、setを利用して、格納
+load xml local infile "./person-dump.xml"
+  into table individual (
+    @person_id, @fname, @lname, @created
+  )
+  set 
+    individual_id = @person_id,
+    name1 = @fname,
+    name2 = @lname,
+    made = @created
+;
+
+select individual_id, name1, name2  from individual;
+
+/*
++---------------+-----------+--------+
+| individual_id | name1     | name2  |
++---------------+-----------+--------+
+|             1 | Neko      | Taro   |
+|             2 | Inu       | Ziro   |
+|             3 | Tora      | Kuroo  |
+|             4 | Onigawara | Momizi |
++---------------+-----------+--------+
+4 rows in set (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q163-jsonsql">Q163 JSONをSQLで扱う方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_23">行挿入</h3>
+<pre class="highlight"><code class="language-sql">/*型はJSON*/
+create table json_sample(
+  id int, 
+  item json
+);
+
+/*json_objectの形か、下記の様に挿入*/
+insert into json_sample values
+(1, '{"fruit" : ["apple", "peach"]}'),
+(2, '{"drink" : ["tea", "samovar", "Matcha"]}')
+;
+
+insert into json_sample values
+(
+  3, (
+    JSON_OBJECT(
+      'num', '[1,2,3,4]', 
+      'double_num', '[2,4,6,8]'
+    )
+  )
+);
+
+select * from json_sample;
+/*
++------+-------------------------------------------------+
+| id   | item                                            |
++------+-------------------------------------------------+   
+|    1 | {"fruit" : ["apple", "peach"]}                  |   
+|    2 | {"drink" : ["tea", "samovar", "Matcha"]}        |   
+|    3 | {"num": "[1,2,3,4]", "double_num": "[2,4,6,8]"} |   
++------+-------------------------------------------------+   
+3 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_24">集約</h3>
+<pre class="highlight"><code class="language-sql">select group_concat(item) from json_sample;
+/*
++-------------------------------------------------------------------------------------------------------------------------+
+| group_concat(item)                                                                                                      |
++-------------------------------------------------------------------------------------------------------------------------+
+| {"fruit" : ["apple", "peach"]},{"drink" : ["tea", "samovar", "Matcha"]},{"num": "[1,2,3,4]", "double_num": "[2,4,6,8]"} |
++-------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.007 sec)
+*/
+
+-- 配列で変えさせる
+select
+  json_arrayagg(item)
+from
+  json_sample
+;
+
+/*
++---------------------------------------------------------------------------------------------------------------------------+
+| json_arrayagg(item)                                                                                                       |
++---------------------------------------------------------------------------------------------------------------------------+
+| [{"fruit" : ["apple", "peach"]},{"drink" : ["tea", "samovar", "Matcha"]},{"num": "[1,2,3,4]", "double_num": "[2,4,6,8]"}] |
++---------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+<h3 id="_25">特定のキーに対応する値を抽出</h3>
+<pre class="highlight"><code class="language-sql">-- json_extract(column_name, "$.key_name")
+select
+  json_extract(item, "$.fruit") from json_sample;
+
+/*
++-------------------------------+
+| json_extract(item, "$.fruit") |
++-------------------------------+
+| ["apple", "peach"]            |
+| NULL                          |
+| NULL                          |
++-------------------------------+
+3 rows in set (0.001 sec)
+*/
+
+select 
+  json_extract(item, "$.fruit", "$.drink", "$.num")
+  as list
+from 
+  json_sample
+;
+
+/*
++--------------------------------+
+| list                           |
++--------------------------------+
+| [["apple", "peach"]]           |
+| [["tea", "samovar", "Matcha"]] |
+| ["[1,2,3,4]"]                  |
++--------------------------------+
+3 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="wherekey_name">where句に$.key_nameを使う</h3>
+<pre class="highlight"><code class="language-sql">-- 配列の場合、$[0]などでindexを指定できる
+select
+  json_extract(json_extract(item, "$.fruit"), "$[0]")
+  as first_fruit
+from 
+  json_sample
+;
+
+/*
++-------------+
+| first_fruit |
++-------------+
+| "apple"     |
+| NULL        |
+| NULL        |
++-------------+
+3 rows in set (0.001 sec)
+*/
+
+-- 上記をwhereに利用
+select
+  *
+from
+  json_sample
+where
+  json_extract(item, "$.fruit[0]") = "apple"
+;
+
+/*
++------+--------------------------------+
+| id   | item                           |
++------+--------------------------------+
+|    1 | {"fruit" : ["apple", "peach"]} |
++------+--------------------------------+
+1 row in set (0.001 sec)
+*/</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="mysql">mysqlならもっと簡単にできる</h3>
+<pre class="highlight"><code class="language-sql">/*
+ -&gt;をJSON_EXTRACT
+ -&gt;&gt;をJSON_UNQUOTE(JSON_EXTRACT())として使える
+*/
+select *
+from json_sample
+where 
+  item-&gt;"$.fruit[0]" = "apple"
+;</code></pre>
+</div>
+<h3 id="json">JSONに値を追加する</h3>
+<pre class="highlight"><code class="language-sql">-- 普通に追加する
+update json_sample
+set 
+  item = json_insert(item, "$.action", "sleep")
+where
+  id = 2
+;
+
+-- 配列について
+select JSON_ARRAY("neko", "inu");
+
+/*
++---------------------------+
+| JSON_ARRAY("neko", "inu") |
++---------------------------+
+| ["neko", "inu"]           |
++---------------------------+
+1 row in set (0.000 sec)
+*/
+
+-- 配列を追加する
+update json_sample
+set 
+  item = json_insert(
+          item, 
+          "$.animal",
+          json_array("neko", "inu"))
+where
+  id = 1
+;
+
+select * from json_sample;
+
+/*
++------+------------------------------------------------------------+
+| id   | item                                                       |
++------+------------------------------------------------------------+
+|    1 | {"fruit": ["apple", "peach"], "animal": ["neko", "inu"]}   |
+|    2 | {"drink": ["tea", "samovar", "Matcha"], "action": "sleep"} |
+|    3 | {"num": "[1,2,3,4]", "double_num": "[2,4,6,8]"}            |
++------+------------------------------------------------------------+
+3 rows in set (0.000 sec)
+*/</code></pre>
+<h3 id="jsonkey-value">JSONからkey-valueを削除する</h3>
+<pre class="highlight"><code class="language-sql">select
+  json_remove('{"A" : 1, "B": [2,3]}', "$.B")
+
+/*
++---------------------------------------------+
+| json_remove('{"A" : 1, "B": [2,3]}', "$.B") |
++---------------------------------------------+
+| {"A": 1}                                    |
++---------------------------------------------+
+1 row in set (0.001 sec)
+*/
+
+update json_sample
+set
+  item = json_remove(item, "$.double_num")
+where
+  id = 3
+;
+-- Query OK, 1 row affected (0.003 sec)
+-- Rows matched: 1  Changed: 1  Warnings: 0
+
+select * from json_sample;
+/*
++------+------------------------------------------------------------+
+| id   | item                                                       |
++------+------------------------------------------------------------+
+|    1 | {"fruit": ["apple", "peach"], "animal": ["neko", "inu"]}   |
+|    2 | {"drink": ["tea", "samovar", "Matcha"], "action": "sleep"} |
+|    3 | {"num": "[1,2,3,4]"}                                       |
++------+------------------------------------------------------------+
+3 rows in set (0.001 sec)
+*/</code></pre>
+<h3 id="_26">置換する</h3>
+<pre class="highlight"><code class="language-sql">/*
+json_insertは挿入のみ
+json_replaceは更新のみ
+json_setならどっちもOKという特徴がある
+*/
+update json_sample
+set
+  item = json_replace(item, "$.action", "walk")
+where
+  id = 2
+;
+
+select * from json_sample;
+/*
++------+-----------------------------------------------------------+
+| id   | item                                                      |
++------+-----------------------------------------------------------+
+|    1 | {"fruit": ["apple", "peach"], "animal": ["neko", "inu"]}  |
+|    2 | {"drink": ["tea", "samovar", "Matcha"], "action": "walk"} |
+|    3 | {"num": "[1,2,3,4]"}                                      |
++------+-----------------------------------------------------------+
+3 rows in set (0.000 sec)
+*/</code></pre>
+<h3 id="_27">配列にデータ追加</h3>
+<pre class="highlight"><code class="language-sql">update json_sample
+  set item = 
+    json_array_append(item, "$.drink", "water")
+where
+  id = 2
+;
+/*
++------+--------------------------------------------------------------------+
+| id   | item                                                               |
++------+--------------------------------------------------------------------+
+|    1 | {"fruit": ["apple", "peach"], "animal": ["neko", "inu"]}           |
+|    2 | {"drink": ["tea", "samovar", "Matcha", "water"], "action": "walk"} |
+|    3 | {"num": "[1,2,3,4]"}                                               |
++------+--------------------------------------------------------------------+
+3 rows in set (0.000 sec)
+*/</code></pre>
+<h3 id="_28">検索と配列からのデータ削除</h3>
+<pre class="highlight"><code class="language-sql">--　検索
+select json_search(item, "one", "apple") 
+from json_sample;
+
+/*
++-----------------------------------+
+| json_search(item, "one", "apple") |
++-----------------------------------+
+| "$.fruit[0]"                      |
+| NULL                              |
+| NULL                              |
++-----------------------------------+
+3 rows in set (0.000 sec)
+*/
+
+-- json_unquote -&gt; quoteを取り除く
+-- whereを指定しないと他の行がnullになるので注意
+
+set @value = "apple";
+
+update json_sample
+set item = 
+  json_remove(
+    item,
+    json_unquote(json_search(item, "one", @value))
+  )
+where id = 1
+;
+
+select * from json_sample;
+/*
++------+--------------------------------------------------------------------+
+| id   | item                                                               |
++------+--------------------------------------------------------------------+
+|    1 | {"fruit": ["peach"], "animal": ["neko", "inu"]}                    |
+|    2 | {"drink": ["tea", "samovar", "Matcha", "water"], "action": "walk"} |
+|    3 | {"num": "[1,2,3,4]"}                                               |
++------+--------------------------------------------------------------------+
+3 rows in set (0.001 sec)
+*/</code></pre>
+</details>
+<h2 id="q164-jsonmessagepack">Q164 JSONをmessagePackに変換する方法について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="jsonmessagepack">JSONからMessagePackへの変換</h3>
+<pre class="highlight"><code class="language-json">{
+  "a": null,
+  "b": 10,
+  "c" : [20],
+  "d" : "30"
+}</code></pre>
+<pre class="highlight"><code class="language-py"># pip install msgpack-python
+import json
+import msgpack
+
+json_file_path = "./json_file.json"
+msg_file_path = "./output.msg"
+
+#----書き込み処理-------
+with open(json_file_path, "r") as json_file:
+  data = json.load(json_file)
+
+packed_data = msgpack.packb(data)
+
+with open(msg_file_path, "wb") as msg_file:
+  msg_file.write(packed_data)
+
+#----読み込んで使う-----
+for msg in msgpack.Unpacker(open(msg_file_path, "rb")):
+  print(msg)
+
+# {b'a': None, b'b': 10, b'c': [20], b'd': b'30'}</code></pre>
+<pre class="highlight"><code class="language-bash"># 変換後の中身を見てみる
+# od -hやoptionなしのhexdumpだと、2byteずつ読み込み
+# 順序を逆転させるため、1byteずつ読み込ませる
+# hexdump -C等でももちろんいい
+
+cat output.msg | xxd
+# 00000000: 84a1 61c0 a162 0aa1 6391 14a1 64a2 3330
+
+#----容量が削減できていることも確認可能------
+
+ls -l | \
+awk '{print $5, "byte : ", $9 }'
+
+# 66 byte :  json_file.json
+# 16 byte :  output.msg</code></pre>
+</details>
+<h2 id="q165">Q165 デバイス、受信サーバ間の通信方式について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_29">通常のデータの場合</h3>
+<pre class="highlight"><code class="language-text">・社内DBにあるデータや、パブリックデータ
+  ⇒既に集まっている
+
+・WebサイトログやSNSデータ
+  ⇒Webサイトログなら、ログを
+    SNSデータなら、提供しているAPIを
+    許可されているなら、スクレイピングを使う</code></pre>
+<h3 id="iot_1">IoT受信サーバでデバイスと通信する場合</h3>
+<pre class="highlight"><code class="language-text">・通信の方法は以下の様になる
+
+HTTPプロトコル
+  ・通常のWebシステムと同様に、HTTPプロトコルを利用した
+  　Web APIを用いてデバイスからアクセス
+  ・たとえば、GET/POST
+
+WebSocket
+  ・音声や動画のリアルタイム通信を行う
+  ・HTTPプロトコルと比べ、接続を継続したままに
+    しておけるという利点がある
+
+MQTT
+  ・第三の媒体を介して、キュー方式を利用する
+  ・1つのパブリッシャーから多数のサブスクライバーへの
+    通信が可能
+  ・サービス品質を選ぶことができる
+  ・受信サーバ側がダウンしていても、
+    情報はキューに残り続けるので、データの損失が防げる</code></pre>
+</details>
+<h2 id="q166">Q166 処理サーバでのデータ加工方法と、加工を行わない場合もあることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_30">前提</h3>
+<pre class="highlight"><code class="language-text">・蓄積サーバにデータを格納する前に、
+  処理サーバでデータの加工が行われることがある</code></pre>
+<h3 id="_31">処理サーバでの処理方法</h3>
+<pre class="highlight"><code class="language-text">ストリーム処理
+  ・処理サーバに到着したデータを逐次処理する方法
+  ・リアルタイムで処理し、デバイス制御に使いたい時に使用
+
+バッチ処理
+  ・処理とデバイス制御にタイムラグがあっても
+    問題ないのならこちらを使用
+
+Spark Streaming
+  ・ストリーム処理を行うためのSparkのライブラリ
+  ・時系列的に連続したデータ列をRDDで分割し、
+    分割データに対して、小さなバッチ処理を行う
+
+RDD
+  ・resilident distributed datasetの略
+  ・分散環境でのデータの分割、並行処理、耐障害性を提供
+  ・インメモリ処理が可能なので高速
+</code></pre>
+<h3 id="_32">クレンジング（データ加工）について</h3>
+<pre class="highlight"><code class="language-text">行うこと
+  ・型の統一
+  ・不適合な書式や表記ゆれを修正
+  ・入力ミスや明らかな誤作動、データの無記入などの排除
+  ・匿名化処理(摂動法と暗号法に分かれる)</code></pre>
+<h3 id="etlelt">ETLとELT</h3>
+<pre class="highlight"><code class="language-text">ETL
+  ・Extract Transform Load
+  ・抽出してから加工し、蓄積先に書き込む
+
+⇒上記の例はこっち
+
+ELT
+  ・Extract Load Transform
+  ・抽出したら書き込み、利用時に加工する
+
+⇒処理サーバで加工は行われない</code></pre>
+</details>
+<h2 id="q167-dwh-data-mart-data-lake">Q167 DWH, Data-mart, Data-Lakeについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="dwhdata-ware-house">DWH(Data Ware House)</h3>
+<pre class="highlight"><code class="language-text">・基幹システムなどから必要なデータを収取し、
+  時系列上に蓄積したもの（様々なトピックが格納される）
+
+・長期保存用のRDBであり、データは主に蓄積される
+  通常のDBの様に頻繁に削除されない
+
+・通常のDBと比べ、高いデータ分析性能を持つ</code></pre>
+<h3 id="data-lake">Data-Lake</h3>
+<pre class="highlight"><code class="language-text">・データの巨大なプール
+・DWHと比べ、非構造化データも格納可能という特徴を持つ
+・保存する際には加工は行われず、
+　取り出す際に、ELTが行われる</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="_33">匿名化処理について</h3>
+<pre class="highlight"><code class="language-text">・格納前に加工はしないといっても個人情報は別
+
+・構造などは変えないままマスキングを行い、
+  匿名化処理を行ったうえでデータレイクに放り込む
+  可能性もある。（特に識別子については）
+
+・https://www.linkedin.com/advice/3/how-can-you-mask-data-lake-skills-data-management-xec6f</code></pre>
+</div>
+<h3 id="data-mart">Data-Mart</h3>
+<pre class="highlight"><code class="language-text">・特定の目的に合わせて集計したデータを保管するDB
+
+・DWHから必要なものだけを抽出したDB/Tableや、
+  Data-Lakeなどからデータ加工を行って抽出したもの
+  もこれに当たる</code></pre>
+<h3 id="_34">それぞれの使い道</h3>
+<pre class="highlight"><code class="language-text">[DWHを用いる場合]
+  複数の基幹システム(構造データ&amp;準構造データ)
+  ⇒ データ加工
+  ⇒ DWH
+  ⇒ データ加工
+  ⇒ Data-Mart
+
+[Data-Lakeを用いる場合]
+  センサやログデータ、JSONやXML, 業務データ,画像,映像
+  ⇒Data-Lake
+  ⇒データ加工
+  ⇒Data-Mart</code></pre>
+</details>
+<h2 id="q168">Q168 ビッグデータの処理性能を測る指標について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_35">スループット</h3>
+<pre class="highlight"><code class="language-text">・一定時間で処理できるデータの総量
+・DWHやData-lake等でデータの量が多い処理を行う時に重視</code></pre>
+<h3 id="_36">レイテンシ</h3>
+<pre class="highlight"><code class="language-text">・データ処理が終わるまでの待機時間
+・アドホック分析、データマートや、BIツールなどで重視
+・レスポンスが遅いと、ユーザはイライラを募らせるので</code></pre>
+<h3 id="_37">補足(用語)</h3>
+<pre class="highlight"><code class="language-text">トレードオフ
+  ・多くのリクエストやタスクの同時処理を行うと、
+    個々のリクエストやタスクの処理時間が長くなる
+  ・個々のリクエストを最適化しようとすれば、
+    同時に処理できる件数は少なくなる
+
+アドホック分析
+  ・必要に応じてリアルタイムで行う分析手法
+
+BIツール
+  ・Business Intelligence
+  ・経営で得たデータなどから分析などを行えるツール</code></pre>
+</details>
+<h2 id="q169-nosql">Q169 NoSQL登場前の従来のデータベースについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="db">行指向DB（さんざんやってきたもの）</h3>
+<pre class="highlight"><code class="language-text">・行単位でデータを抽出
+・ディスクI/Oの軽減は難しい
+・トランザクション制御が可能</code></pre>
+<h3 id="db_1">列指向DB</h3>
+<pre class="highlight"><code class="language-text">・テーブルのデータを列単位にまとめて保存する
+・必要な項目（列）だけを読み込めるので、ディスクI/Oの
+  軽減が可能
+・RDBの枠を出ることはない(事前のスキーマ定義は必要)
+
+[デメリット]
+  ・データベースが列ごとに圧縮されているので、
+    更新/削除時に、圧縮、展開動作が頻発する
+    よって、これらを含んだトランザクション制御は苦手</code></pre>
+<h3 id="mpp">MPPデータベース</h3>
+<pre class="highlight"><code class="language-text">・Massively Parallel Processing
+・1つのクエリを小さなタスクに分解することで、
+  複数のCPUコアを並列稼働して、時間を短縮する手法
+
+・つまり、スケールアウトが可能
+
+・一般的には大規模な構造化データに対して使用する
+⇒じゃあ、非構造化データは?</code></pre>
+</details>
+<h2 id="q170-acidbasecap">Q170 ACIDとBASE,それからCAPについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="acid">ACID</h3>
+<pre class="highlight"><code class="language-text">・従来よりあるトランザクションの考え方
+
+A(原子性：Atomicity)
+  ・トランザクションに含まれるタスクが
+    すべて実行されるか、すべて実行されないか。
+    そのいずれかになると保証する性質
+
+  ・トランザクションを最小単位に見立て、これ以上
+    分割できないとしている
+
+C(整合性:Consistency)
+  ・トランザクション中は予め与えられた整合性を
+    常に満たし続ける
+  ・整合性条件に違反したトランザクションは
+    実行が中断される
+
+  ・Check属性やunsignedに違反するような
+    送金が却下されるのもこの影響
+
+I(独立性:Isolation)
+  ・トランザクション中に行われる操作は
+    他の操作や他のトランザクションから隠蔽される
+
+D(永続性:Durability)
+  ・Commitを行ったらその操作は永続的であり失われない
+  ・Commitを行った瞬間、つまり永続Storageに反映される  
+    前に電源が落ちた場合も復旧できるようにしておく</code></pre>
+<h3 id="acid_1">ACIDの問題点</h3>
+<pre class="highlight"><code class="language-text">性能の劣化
+  ・ACIDを厳密に実装しようとすると、
+    広範囲なロックや大量のデータの複製等が必要になる
+  ⇒これは性能面の劣化を意味する
+
+独立性の難しさ
+  ・複数のトランザクションを並列実行する際に、
+    完全な独立性を実現させるのはコストが高い
+  ・そのため現実的にはトランザクション分離レベルを
+    設定することになる(後述)</code></pre>
+<h3 id="base">BASE</h3>
+<pre class="highlight"><code class="language-text">・Basically Available Soft-state Eventual consistency
+
+
+採用される箇所
+  ・分散されたシステムで可用性や処理速度を重視したい場合
+
+Basically Available
+  ・障害や分散による遅延が発生しても
+    システムは基本的に利用可能
+
+Soft State
+  ・一時的な状態の不整合を許容する
+
+Eventually Consistent
+  ・最終的には整合性が取れている状態になる
+    (時間の経過とともにデータの整合性が回復する)</code></pre>
+<h3 id="cap">CAP（可用性と整合性はトレードオフなのか）</h3>
+<pre class="highlight"><code class="language-text">CAP定理
+  ・分散されたシステムでは、以下のうち2つまでしか
+    同時に保証できない
+    Consistency（一貫性）
+    Availability（可用性）
+    Partition tolerance（ネットワークの分断耐性）
+
+  ・分断体制は分散システムにおいて基本的に必須なので
+    AとCのうち、どちらかをあきらめることになる
+
+  ・一貫性
+    ・どのノードに接続しても、すべてが同じデータを返す
+
+  ・可用性
+    ・1つ以上のノードがダウンしていても、
+      別のクライアントが代わりに有効な応答を返す
+
+  ・Partition tolerance
+    ・分散システム内の2つのノード間の通信が
+      一時的に遅延したり、分断されても
+      システムが動作し続けること</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="cap_1">CAP定理の問題点</h3>
+<pre class="highlight"><code class="language-text">・単純すぎる
+・多くのシステムはCPとAPに完全に分類する事はできない
+
+・可用性、一貫性、分割体制については段階的な
+  レベルが存在し、2つまで保証すべきというより
+  トレードオフというのが正しいような気もする
+
+・つまり、現実的に考えると、
+  ネットワークが分断されないときは
+  一貫性も可用性も大体満たされている
+
+・分断された時、一貫性と可用性の優先度合いを
+  幾つかの段階的なレベルで考えなければならない
+
+※そもそもネットワークの障害が起きない自信があるなら
+　Pは考えなくてもいいわけで、ACが満たされるだろう</code></pre>
+</div>
+<h3 id="cp">CPデータベース</h3>
+<pre class="highlight"><code class="language-text">・可用性を犠牲にして、一貫性と分断耐性を提供
+
+・任意の2つのノード間でネットワーク分断が起きると、
+  システムはこれが解決されるまで、一貫性のないノードを
+  使用不可にする（つまり可用性はダメ）
+
+・ACIDの考え方を用いる場合、こちらに近くなる</code></pre>
+<h3 id="ap">APデータベース</h3>
+<pre class="highlight"><code class="language-text">・一貫性を犠牲にして、可用性と分断体制を提供
+
+・ネットワーク分断が起きても、どのノードも利用可能だが
+  分断が起きている箇所は、他のノードより古いversionの
+  データを返す可能性がある
+
+・分断が解決されれば、システムはノードを再同期して、
+  全ての不整合を修復する
+
+・BASEの考え方を用いる場合、こちらに近くなる</code></pre>
+</details>
+<h2 id="q171">Q171 トランザクション分離レベルについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_38">分離レベルによって起こりうる問題?</h3>
+<pre class="highlight"><code class="language-text">※2つのトランザクションが並列で行われているとする
+※またそれぞれの操作は被らないものとする
+
+Dirty Read
+  ・トランザクションAでデータ取得
+  ・トランザクションBでデータ変更
+  ・トランザクションAでデータ取得　⇒変わっている
+  ・トランザクションBをrollback
+
+Fuzzy Read
+  ・トランザクションAでデータ取得
+  ・トランザクションBでデータUpdate &amp; Commit
+  ・トランザクションAでデータ取得　⇒内容が変わっている
+
+Phantom Read
+  ・トランザクションAでデータ取得
+  ・トランザクションBでデータ(Insert / Delete) &amp; Commit
+  ・トランザクションAでデータ取得　⇒　行数が変わっている
+</code></pre>
+<h3 id="_39">分離レベルについて</h3>
+<pre class="highlight"><code class="language-text">Read Uncommitted
+  ・Dirty Read/Fuzzy Read/Phantom Readが発生する
+  ・通常はロックを待機するような状態で、待機せず実行する
+  ・結果、Commitされていないデータまで読み取るので
+  　並行処理によって正確性が損なわれる可能性が高い
+
+Read Committed
+  ・Fuzzy Read/Phantom Readが発生する
+  ・Commitされたデータを常に読み取るので、
+    別のトランザクション内でCommitされた内容を
+    読み取ってしまう
+  ・PostgreSQL, SQL Server, Oracleのデフォルト
+
+Repeatable Read
+  ・一度でもトランザクションが読み取っていれば、
+    次回の読み取りではその時のShapShotが提供される
+  ・よって、Fuzzy Readは起こらない
+  ・しかし、Phantom Readは起こる
+  ・MySQLのデフォルト
+
+Serializable
+  ・読み取るすべての行に共有ロックをかける
+  ・つまり、同一トランザクション中に
+    他のトランザクションの影響を受けることはない
+   ⇒待機時間が増えるので実用的ではない</code></pre>
+<h3 id="mariadbuncommittedcommitted">MariaDBで実際に試してみる(Uncommitted/Committed)</h3>
+<pre class="highlight"><code class="language-sql">create table player_data (
+  id int primary key auto_increment,
+  coin int
+);
+
+insert into player_data values
+(1, 100),
+(2, 100)
+;
+
+-- クライアントA, Bで接続
+-- Aで分離レベルをread uncommittedに変更
+set session transaction isolation level 
+read uncommitted;
+
+-- Bで分離レベルをread committedに変更
+set session transaction isolation level
+read committed;
+
+-- Bで全体のデータを閲覧
+select * from player_data;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  100 |
+|  2 |  100 |
++----+------+
+2 rows in set (0.001 sec)
+*/
+
+-- 2つのトランザクションをスタート
+start transaction;
+
+-- Bでid = 1のデータを更新
+update player_data
+set coin = 200
+where id = 1
+;
+
+-- Aでデータを閲覧(Dirty Read)
+select * from player_data;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  200 |
+|  2 |  100 |
++----+------+
+2 rows in set (0.001 sec)
+*/
+
+-- Aでデータを更新
+update player_data
+set coin = 300
+where id = 2
+;
+
+-- Bでデータを閲覧(変わっていない)
+select * from player_data;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  200 |
+|  2 |  100 |
++----+------+
+2 rows in set (0.007 sec)
+*/
+
+-- Aでcommit
+commit;
+
+-- Bでデータを閲覧(Fuzzy Read)
+select * from player_data;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  200 |
+|  2 |  300 |
++----+------+
+2 rows in set (0.001 sec)
+*/
+
+</code></pre>
+<h3 id="mariadbrepeatable-read">MariaDBで試してみる(Repeatable Read)</h3>
+<pre class="highlight"><code class="language-sql">-- デフォルトなので変更は必要ない
+
+-- 2つのtransaction A,Bをスタート
+
+-- Bでデータを読み込んでおく
+select * from player_data
+where id = 2;
+/*
++----+------+
+| id | coin |
++----+------+
+|  2 |  300 |
++----+------+
+1 row in set (0.008 sec)
+*/
+
+-- Aでデータ更新 &amp;&amp; commit
+update player_data
+set coin = 400
+where id = 2
+;
+
+commit;
+
+-- Bでデータ閲覧(変わっていない)
+select * from player_data
+where id = 2;
+
+/*
++----+------+
+| id | coin |
++----+------+
+|  2 |  300 |
++----+------+
+1 row in set (0.001 sec)
+*/
+
+-- Bでcommitした後で見ると更新されている
+commit;
+select * from player_data;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  200 |
+|  2 |  400 |
++----+------+
+2 rows in set (0.000 sec)
+*/
+
+-- Phantom Readに関して
+create table player_data2 like player_data;
+
+-- 2つのトランザクションA,Bを開始
+start transaction;
+
+-- Bで閲覧しておく
+select * from player_data2;
+-- Empty set (0.000 sec)
+
+-- Aで挿入 &amp;&amp; commit
+insert into player_data2 values
+(1, 100)
+;
+commit;
+
+-- Bで閲覧 PhantomReadも起こっていない
+-- これはInnoDB特有の挙動でMVCCという技術に由来している
+select * from player_data2;
+-- Empty set (0.000 sec)</code></pre>
+<h3 id="_40">[補足]予め読み取っていなかった時の挙動</h3>
+<pre class="highlight"><code class="language-sql">-- 予め読み取っていない場合の挙動
+-- 読み取っていない(=一度も該当行がスキャンされていない)
+
+--　現在の中身
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  100 |
++----+------+
+1 row in set (0.001 sec)
+*/
+
+-- 2つのトランザクションをスタート
+start transaction;
+
+-- Aで変更し、commit
+update player_data2
+set coin = 200
+where id = 1;
+commit;
+
+-- Bで閲覧(予め読んでいなかったので更新されている)
+select * from player_data2;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  200 |
++----+------+
+1 row in set (0.001 sec)
+*/</code></pre>
+<h3 id="mariadbserializable">MariaDBで試してみる(Serializable)</h3>
+<pre class="highlight"><code class="language-sql">-- トランザクション2つをスタートさせる
+begin;
+
+-- トランザクションAの分離レベルをserializableに
+set session transaction isolation level
+serializable;
+
+-- Aで検索しておく
+select * from player_data2;
+/*
++----+------+
+| id | coin |
++----+------+
+|  1 |  200 |
++----+------+
+1 row in set (0.000 sec)
+*/
+
+-- Bで追加しようとする
+insert into player_data2 values
+(2, 400);
+
+-- 止まった
+-- Aが読み取ったすべての行に共有ロックをかけているため
+-- ERROR 1317 (70100): Query execution was interrupted
+
+-- Aのトランザクションを終了
+commit;
+
+--　再度追加(終了したので可能になる)
+insert into player_data2 values
+(2, 400);</code></pre>
+</details>
+<h2 id="q172-mvcc">Q172 MVCCについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="mvcc">MVCC基礎</h3>
+<pre class="highlight"><code class="language-text">・Multi-Version Concurrency Control
+
+・InnoDBは、各行に、非表示の3つの列を追加する
+
+  DB_ROW_ID
+    ・unique or primary keyがない場合に追加される
+
+  DB_TRX_ID
+    ・行を挿入/更新した最後のtransaction識別子が入る
+
+  DB_ROLL_PTR
+    ・undoログを辿るためのポインタ
+    ・行が更新された場合、undoログレコードに
+      更新前の内容を再構築するための情報が書かれる
+
+・InnoDBは、insert/update/deleteをundoログに記録する
+  ただし、deleteは内部的にはupdateとして記録される
+  これはInnoDBが行を物理的に削除するのではなく、
+  削除フラグを更新しているためである
+
+・論理的な削除フラグを用いることで、
+  行の前のバージョンをundoログを用いて取得可能になる
+  ※行が削除されている場合では不可能</code></pre>
+<h3 id="id">トランザクションID</h3>
+<pre class="highlight"><code class="language-text">・新しいトランザクションが開始された時に取得される
+・start transactionやbeginが実行されるとき</code></pre>
+<h3 id="_41">最新バージョンを読み取る場合</h3>
+<pre class="highlight"><code class="language-text">・select * ... lock in share mode(共有ロック)
+・select * ... for update (排他ロック)
+・insert/update/delete操作
+
+⇒後述のReadViewは生成されない</code></pre>
+<h3 id="snapshot">snapshotを介して必要なバージョンを読み取る場合</h3>
+<pre class="highlight"><code class="language-text">・ロックのないselect
+⇒後述のReadViewを生成</code></pre>
+<h3 id="undo">undoログ</h3>
+<pre class="highlight"><code class="language-text">挿入取り消しログ
+  ・insertで生成
+  ・rollback時に使用される
+  ・commitされたら破棄
+
+更新取り消しログ
+  ・update/deleteで生成
+  ・rollback時に使用
+  ・snapshotの読み取りにも使用
+  ・commit後、logレコードがDBで使用されているsnapshotに
+    含まれていない場合は、破棄される
+</code></pre>
+<h3 id="_42">バージョンチェーンについて</h3>
+<pre class="highlight"><code class="language-text">複数のトランザクションが同一レコードに対して
+同時に動作する場合を考える
+
+1 たとえば、トランザクションID1によって
+  name = test2と更新されていたデータがあるとする
+
+2 ここで、トランザクションID2がname = test1と更新する。
+  すると、現在のデータは
+  name = test1, db_trx_id = 2となる
+  また、db_roll_pointerは以前のデータを指し示す
+
+3  name = test2, db_trx_id = 1のデータはundoログに移動
+   2つのバージョン間はdb_roll_pointerで参照可能
+
+4 トランザクションID3でname = testと更新する
+  現在のデータはname = test, db_trx_id = 3
+
+5 name = test1, db_trx_id = 2のデータはundoログに移動
+
+| version   | name  | db_trx_id | db_roll_pointer |
+| --------- | ----- | --------- | --------------- |
+| latest    | test  | 3         | undo log2を示す |
+| undo log2 | test1 | 2         | undo log1を示す |
+| undo log1 | test2 | 1         | 0x0001          |</code></pre>
+<h3 id="readview">ReadViewについて</h3>
+<pre class="highlight"><code class="language-text">・TransactionがSnapshotを介して読み取りを行う時に
+  生成される(つまりロックを行わないselect)
+
+・該当行が、現在のトランザクションで表示されるか否かを
+  チェックするために使用
+
+ReadViewは以下のものを保存する
+
+  trx_ids:
+    アクティブなトランザクションID
+    自分自身と、既にcommitしたものは含まない
+
+  low_limit_id
+    ・割り当てられる次のトランザクションID
+    ・トランザクションIDはincrementなので
+
+  up_limit_id
+    ・trx_idsの最小トランザクションID
+
+  creator_trx_id
+    ・ReadViewを生成したトランザクションID
+    ・自身で変更したデータならアクセスしたいので必要
+
+[ルール]
+  アクセスversion = Creator_trx_idなら
+    ・該当行は現在のトランザクションで変更されているので
+      そのverにアクセスして終了
+
+  アクセスversion &lt; up_limit_idなら
+    ・このversionを生成したトランザクションは
+      ReadViewを生成する前にcommitされている
+    ・よって、現行のトランザクションからアクセス可能
+
+  アクセスversion &gt; low_limit_id
+    ・このversionを生成したトランザクションは
+      ReadViewを生成後に、開かれている
+    ・よってアクセス不可能
+
+  up_limit_id &lt; アクセスver &lt; low_limit_id
+    ・アクセスversionを生成したトランザクションIDが
+    　trx_idsにあるか確認
+    ・ある場合、未commitなのでアクセス不可能
+    ・ない場合は、commit済みなので、アクセス可能
+</code></pre>
+<h3 id="_43">実際の流れ</h3>
+<pre class="highlight"><code class="language-text">1 トランザクション開始。trx_idを取得
+
+2 Select文が実行されるとReadViewを取得
+
+3 データが見つかったら、ReadViewのトランザクションIDと
+  比較を行う
+
+4 アクセス不可ならundo logを使って、バージョンを遡る
+
+5 アクセス可なら該当行の情報を表示する
+
+⇒上記の様にしてPhantom Readを防いでいる</code></pre>
+</details>
+<h2 id="q173-nosql">Q173 NoSQLについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_44">由来</h3>
+<pre class="highlight"><code class="language-text">・Not only SQL
+・RDBMS以外のDBの総称を意味する</code></pre>
+<h3 id="rdbms">RDBMSと比較する</h3>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>RDBMS</th>
+<th>NoSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>適したデータ</td>
+<td>構造化データ</td>
+<td>非構造化データ</td>
+</tr>
+<tr>
+<td>スキーマ定義</td>
+<td>事前定義必要</td>
+<td>事前定義不要</td>
+</tr>
+<tr>
+<td>スキーマ変更</td>
+<td>変更しにくい</td>
+<td>変更しやすい</td>
+</tr>
+<tr>
+<td>整合性</td>
+<td>ACID</td>
+<td>BASE/ACID</td>
+</tr>
+<tr>
+<td>データ操作命令</td>
+<td>S/I/U/D</td>
+<td>Put, Get</td>
+</tr>
+<tr>
+<td>拡張方式</td>
+<td>スケールアップ</td>
+<td>スケールアウト</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nosql">NoSQL補足</h3>
+<pre class="highlight"><code class="language-text">・構造定義が不要なので、非構造化データが向いている
+
+・トランザクション制御には不向き（不可能ではない）
+
+・他データとの関係がないためJOINがない
+
+・複雑な結合等が行われないため、
+  スケールアウトが比較的容易。反面、整合性は弱い</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="dynamodb">たとえばDynamoDBは</h3>
+<pre class="highlight"><code class="language-text">・NoSQLだがACID特性と、トランザクションを有する
+・必ずしもRDBMSならACID, NoSQLならBASEというわけで
+  はないことに注意。上記の表はあくまでも傾向</code></pre>
+</div>
+<h3 id="vs">スケールアップ vs スケールアウト</h3>
+<pre class="highlight"><code class="language-text">スケールアップ
+  ・ハードウェアの性能を向上させ、
+    特定の1台のサーバ性能を増強する
+
+  ・厳密な整合性を維持しながら複数サーバを用いるのは
+    難しいため（そもそも手動シャーディングが難しいと
+    いう側面もある）RDBMSの場合、大体こちらが採用される
+
+スケールアウト
+  ・サーバの台数を増やし、全体での処理能力を向上させる
+
+  ・高性能なサーバを用いる必要がないので、低コスト
+
+  ・サーバが1台停止しても、全システムが停止する
+    わけではないので可用性が高くなる
+
+  ・JOINや複雑なクエリを採用しないNoSQLは複数サーバへの
+  　分割、複製が可能であり、この手法が用いられる</code></pre>
+<h3 id="_45">ビッグデータにはどちらが向いているか</h3>
+<pre class="highlight"><code class="language-text">NoSQL
+  ・スケールアップには限界がある
+  ・音声/映像/画像データなどはRDBMSでは扱えない</code></pre>
+</details>
+<h2 id="q174-nosql">Q174 NoSQLの種類について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="key-value">Key-Value型</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・keyとvalueの組でデータを格納する
+  ・keyはvalueの識別子
+  ・key/valueいずれにも複雑なオブジェクトを指定できる
+
+非構造化データについて
+  ・binaryデータであれば、blob型の画像や音声も格納可能
+
+スケールアウト
+  ・サーバ毎に保存するデータのキーの範囲を設定
+  ・なお、障害に備え、1つのキーは複数のサーバで
+    冗長的に管理されることが一般的
+
+採用例
+  ・DynamoDB
+</code></pre>
+<h3 id="_46">カラム指向型</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・key-value型の強化版
+  ・keyが複数のカラムを持つことが可能
+  ・I/Oを考え列単位でデータの保存や読み込みも可能
+  ・一部の列のデータが欠けていても問題ない
+  ・行列の数は拡張可能
+
+採用例
+  ・Cassandra</code></pre>
+<h3 id="_47">ドキュメント型</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・JSONやXML等のデータ形式のドキュメントを格納する
+  ・各ドキュメントには識別IDが振られる
+  ・スキーマは必要ない
+
+採用例
+  ・MongoDB</code></pre>
+<h3 id="_48">グラフ型</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・グラフによって、データ同士の関係を表現する
+  ・スケールアウトはシャーディングなしには厳しい
+
+ノード
+  ・データオブジェクトを格納するグラフの頂点
+
+エッジ
+  ・ノード間の関係性を示したもの
+
+プロパティ
+  ・ノードとエッジの具体的な属性を示したもの
+
+使用ケース
+  ・SNSのフォロー、フォロワー関係
+  ・不正検出
+
+採用例
+  ・Neo4j</code></pre>
+</details>
+<h2 id="q175-nosql">Q175 NoSQLの構成について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_49">マスタ型</h3>
+<pre class="highlight"><code class="language-text">・メタ情報はマスタノードで管理する
+・つまり、マスターノードが単一障害点(SPOF)になる
+
+⇒整合性重視</code></pre>
+<h3 id="p2p">P2P型</h3>
+<pre class="highlight"><code class="language-text">・クラスタを構成するノードはすべて等価
+・単一障害点はない
+・ネットワーク分断やノードの障害が発生した場合、
+  データの一貫性が保たれなくなる可能性あり
+
+⇒可用性重視
+⇒ただし、レプリケートによって整合性方面の
+  弱点は軽減可能
+
+⇒たとえばInfiniteGraphはp2p型であるにもかかわらず
+  ACID特性を保証している</code></pre>
+<h3 id="_50">オンメモリ型</h3>
+<pre class="highlight"><code class="language-text">・メモリ上で動作するのでデータは揮発する
+・メモリ上なので、高速処理が可能
+
+⇒永続性については他のDBと組み合わせる</code></pre>
+<h3 id="_51">オンディスク型</h3>
+<pre class="highlight"><code class="language-text">・複数のサーバにデータベースを分割して保有不可</code></pre>
+<h3 id="_52">アーキテクチャを含んだ分類表</h3>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>マスタ</th>
+<th>P2P</th>
+<th>オンメモリ</th>
+<th>オンディスク</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key-value</td>
+<td>Hibari</td>
+<td>Dynamo</td>
+<td>Redis</td>
+<td>Tyrant</td>
+</tr>
+<tr>
+<td>column</td>
+<td>Hbase</td>
+<td>Cassandra</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>graph</td>
+<td>Neo4j</td>
+<td>InfiniteGraph</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>document</td>
+<td>MongoDB</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="q176-nosql">Q176 NoSQLの整合性を実現する技術について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_53">整合性とレイテンシのトレードオフ</h3>
+<pre class="highlight"><code class="language-text">・書き込んだノード数をW, 
+  読み出したノード数をR, 
+  全体のノード数をNとする
+
+・この時、W + R &gt; Nであれば、
+  読み出し時に、書き込まれたノードに必ず到達できるため
+  整合性を保証できる
+
+・ただし、書き込み数と読み出し数を増やすほど
+  レイテンシが大きくなる</code></pre>
+<h3 id="version">Version管理</h3>
+<pre class="highlight"><code class="language-text">DynamoDBを例に出して考える
+  ・P2Pなので、あるノードで起こった処理を
+    システム全体にマルチキャストする必要がある
+  ・最新のイベントを特定する方法はあるだろうか？
+
+TimeStamp
+  ・データの更新時間を記録する
+  ・新しいTimeStampを持つものを重要視する
+
+TimeStampの問題点
+  ・分散システムのクロックはノード間で異なるので、
+    NTPなどでは前後関係を保証できない
+  ・物理的な絶対時間はある程度の誤差が出る
+  ⇒最新かどうか保証できない
+
+Vector Clocks
+  ・ノード数をnとしたとき、n次元のvectorを持たせる
+  ・各ノードの成分は、ノードが現在知っている
+    各ノードで起こったイベントの数となる
+
+更新ルール
+  ・自ノードでイベントが発生したら、
+    成分のうち、自分を示す箇所をincrement
+
+  ・自ノードから、変更したという旨を他のプロセスへ
+    送信する場合は、自身のn次元ベクトルを添付する
+    添付した後は、自分を示す箇所をincrement
+
+  ・受信した時は、自身を示す箇所をincrement
+    そのあとで、添付されていたn次元ベクトルと比較して、
+    大きい方を残す
+
+例)
+
+  A[0,0,0]
+  B[0,0,0]
+  C[0,0,0]
+
+  プロセスA,Bでイベント発生
+  A[1,0,0]
+  B[0,1,0]
+  C[0,0,0]
+
+  プロセスA -&gt; Bにメッセージ送信
+  (送信, 受信でincrementしてから比較している)
+  A[2,0,0]
+  B[2,2,0]
+  C[0,0,0]
+
+  プロセスC -&gt; Bにメッセージ送信
+  A[2,0,0]
+  B[2,3,1]
+  C[0,0,1]
+
+  プロセスA, Cでイベント発生
+  A[3,0,0]
+  B[2,3,1]
+  C[0,0,2]
+
+  プロセスB-&gt; Aにメッセージ送信
+  A[4,4,1]
+  B[2,4,1]
+  C[0,0,2]   
+
+  プロセスA,Bでイベント発生
+  A[5,4,1]
+  B[2,5,1]
+  C[0,0,2]
+
+  ここで順序を比較する
+  ∀i v1[i] &lt;= v2[i]
+  ∃i v1[i] &lt; v2[i]
+  なら、v1はv2より前に起こったといえる
+
+  たとえば、A[4,4,1]とC[0,0,2]の場合、
+  どちらが前かは断言できない
+
+  A[4,4,1]と、B[2,3,1]なら
+  A[4,4,1]の方が新しいと断言できる
+
+Vector Clocksの問題点
+  ・ノード数が増えると、次元が増える
+  ・大きなベクトルを送受信するとコストがかかる
+  ・大きくなりすぎると、古いversionが切り捨てられる
+    事があり、整合性に問題が出る
+  ・同時更新のタイミングで障害が発生すると、
+    競合が起こり、マージされる可能性がある
+  ・マージされるとinsertは失われないが、
+    deleteされた箇所が再び表示される可能性がある
+  ・なお、CRDTという方法もあるが、労力がかかるようだ
+  ・LWW(last-write-wins: 最後に書き込んだもの勝ち)
+  　の場合、競合時にランダムで書き込みが失われるので
+    実用的とは言えない</code></pre>
+<h3 id="_54">整合性を修復する方法</h3>
+<pre class="highlight"><code class="language-text">・最新の値を見極める方法は上記で触れた
+・見極めた後、どのように修正を行うのだろうか
+
+Read Repair
+  1 どれか一つのレプリカを選ぶ
+  2 他のレプリカと比較する
+  3 不整合があれば、4に進む
+  4 正しい値/最新の値で、不整合な値を上書き
+    (非同期の場合は、他の更新と一緒にバッチ処理される
+    ので遅延する。※その分、効率が高まる)
+  5 後続の読み取りで、不整合が解決されていることを確認
+
+Hinted Handoff
+  1 書き込みが発生した時、レプリカが停止しているとする
+  2 別の正常なレプリカがヒントを保存しておく
+  3 全てのレプリカが停止しているならヒントは
+    ローカル等に保存しておく
+  4 レプリカが復旧すると、ヒントを用いてデータを書き込む
+
+Markle Tree
+  ・整合性があるか/ないかは高度に判定可能
+  1 データをハッシュ化する
+  2 ハッシュ化したデータを連結する
+  3 これを繰り返し、Rootを導く
+  4 どれだけ小さな変更でも、Rootが変わるので
+    整合性があるか・ないか気づくことが可能
+
+  ※Rootの作成過程で、特定のノードが使われたかを
+    判定できるので、整合性のない部分も特定可能
+
+  ※2^10のデータがあったとしても、10個のhashで
+    Rootまでたどり着けるので、検証が早い
+
+  ⇒ノード間でHashを比較し、
+    不整合が検出されたら修正する
+</code></pre>
+</details>
+<h2 id="q177-nosql">Q177 NoSQLにおける、負荷分散を意識したデータ分割について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_55">基本</h3>
+<pre class="highlight"><code class="language-text">・データをうまく分割しないと、
+  サーバを増やしても、負荷が集中する恐れがある
+
+  ⇒以下では、負荷分散とデータ分割について考える</code></pre>
+<h3 id="_56">シャーディング</h3>
+<pre class="highlight"><code class="language-text">・RDBMSのそれと比べ、特にkey-valueでは容易に実現可能
+  もちろん、グラフ型、ドキュメント型等でも使われる
+
+・データの偏りをなくすほど、負荷分散は正常に 
+  行われる
+
+・再分割/再配置を自動的に行うNoSQLもある</code></pre>
+<h3 id="consistent-hashing">コンシステントハッシング(Consistent Hashing)</h3>
+<pre class="highlight"><code class="language-text">1 分散型システムを構成するノードを、輪を作るように配置
+2 ハッシュ関数で、keyのハッシュ値を求める
+3 ハッシュ値をもとに、データを保存するノードを選択
+4 ノードの位置を偏らせることで、高いスペックを持つ
+  サーバに多くデータを割り当てることもできる
+
+⇒ハッシュ関数を使うことで、1つのサーバに偏らなくなる
+⇒これもkey-valueストアに対して効果的</code></pre>
+</details>
+<h2 id="q178-nosqlrdb">Q178 NoSQLの書き込み速度が従来のRDBより早い理由を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="lsm-treelog-structured-merge-tree">LSM-Tree(Log-structured merge-tree)</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・NoSQLのkey-valueストアの基礎となっている
+  ・B+treeと比べて読み取りは遅いが、書き込みは速い
+  ・primary keyを見るのも速い
+  ・B+treeベースのストレージエンジンより設計は簡素
+
+⇒ランダムアクセスと、ディスクへのアクセスを減らすことで
+  応答時間を減らしつつ、ログを使うことでデータの安全性も
+  高めている。
+
+[LSM-Tree用語]
+  C0-tree
+    ・メモリ上のインデックス
+    ・データの書き込みが行われる
+    ・メモリ上なので書き込みは速い
+    ・書き込み内容はkeyでsortされている
+
+  C1-tree
+    ・ディスク上のインデックス
+    ・C0-treeがある程度埋まると作成される
+    ・C1-treeが作成されると、C0-treeは空になる
+    ・中身は、C0-treeの内容をディスクに書き出したもの
+    ・この内部構造はB+tree等
+
+    ⇒C1-treeは定期的にマージして数を減らしておく
+
+  ログファイル
+    ・ディスク上に存在
+    ・C0-treeへの書き込み操作を記録する
+    ・書き込みは逐次処理なので遅くない
+    ・これを用いて、C0-tree上のデータの消失を防ぐ
+      (C0-treeは揮発性なので)</code></pre>
+<h3 id="btree">B+treeへの書き込み</h3>
+<pre class="highlight"><code class="language-text">・深さを調節するため回転動作が必要(Indexの章参照)</code></pre>
+<h3 id="lsm-tree">LSM-treeへの書き込み</h3>
+<pre class="highlight"><code class="language-text">1 ログファイルに書き込みが行われる
+  （末尾への追記なので、O(1)で済む）
+
+2 メモリ上のC0-treeに対して書き込まれる
+
+3 C0-treeの容量がしきい値を超えると、
+  まとめてC1-treeに変換され、
+  ディスク上に書き出される
+
+4 C0-treeの中身と、ログファイルを削除する
+
+5 頃合いを見て、C1-treeはマージしておく</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="12">1番と2番の順番について</h3>
+<pre class="highlight"><code class="language-text">先行書き込みログ
+  1 変更内容をログとして永続ストレージに書き出す
+  2 実際に変更する
+
+  ⇒このような手順を踏むことで、
+    クラッシュしてもログを用いてDBをリカバリできる
+
+  ⇒変更されたデータファイルそのものを
+    ディスクに書き込むより、コスト面でも軽い</code></pre>
+</div>
+<h3 id="btree_1">B+treeの読出し</h3>
+<pre class="highlight"><code class="language-text">・リーフノードがポインタを介して繋がっているので早い</code></pre>
+<h3 id="lsm-tree_1">LSM-treeの読出し</h3>
+<pre class="highlight"><code class="language-text">・C0-treeとすべてのC1-treeから目的のデータを読み出す
+⇒速度は、存在するC1-treeの数に左右される
+⇒C0-treeのデータ量は小さいので、遅延の影響は少ない</code></pre>
+<h3 id="lsm-tree_2">LSM-treeの使いどころ</h3>
+<pre class="highlight"><code class="language-text">・書き込み負荷が高いアプリケーション</code></pre>
+</details>
+<h2 id="q179">Q179 分散処理について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_57">分散処理フロー</h3>
+<pre class="highlight"><code class="language-text">1 データを分割
+2 分割データを複数サーバで並行処理
+3 処理結果を統合して、処理結果を生成する</code></pre>
+<h3 id="_58">分割処理の利点/欠点</h3>
+<pre class="highlight"><code class="language-text">利点
+  ・CPUでの処理時間減
+  ・ディスクI/O減
+    ⇒全体の処理時間減
+
+  ・スケールアウトで拡張可能なので低コスト
+
+  ・可用性が高い
+
+欠点
+  ・データが複数サーバにまたがるので、
+    厳密な整合性が必要な場合は難しい
+
+  ・少量のデータ処理の場合、
+    却ってオーバーヘッドで遅くなる
+
+  ・性能はネットワークの帯域幅や稼働率に影響される</code></pre>
+</details>
+<h2 id="q180-hadoop">Q180 Hadoopについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_59">分散処理の実装</h3>
+<pre class="highlight"><code class="language-text">・分散処理は複雑なタスクで、できれば自前で実装したくない
+・スケーラビリティ、耐障害性、データ分割、
+  分散システムの設計、年単位の仕事になるだろう
+・フレームワークがあるといいのだが......</code></pre>
+<h3 id="hadoop">Hadoopとは</h3>
+<pre class="highlight"><code class="language-text">・複数のソフトウェアからなる分散処理フレームワーク
+・バッチ処理向け
+・データはディスクに保存して必要な時に引き出す</code></pre>
+<h3 id="hdfshadoop-distributed-file-system">HDFS(Hadoop Distributed File System)</h3>
+<pre class="highlight"><code class="language-text">・Hadoopの分散ファイルシステム
+・大規模なデータセットを複数のノードに分散させる
+・つまり、高い冗長性を持つ
+
+マスタ型と聞いたけど......
+  ・データを管理するDataNode群と、
+    DataNode群を管理するNameNodeで構成される
+
+  ・NameNodeはBackUpNodeを用意して、
+    単一障害点になることを防いでいる（冗長性）
+
+  ・DataNode群でデータを保持している
+    耐障害性目的で、データは複製され、
+    Nodeをまたいで保存されている
+
+HDFSへの書き込み
+  1 Dataは任意のサイズのブロックに分解される
+  2 NameNodeがどのDataNodeに格納するか指示する
+
+HDFSへの読出し
+  1 NameNodeが目的のdataが保存されているDataNodeを示す
+  2 示したらブロックを読み出す
+
+ノードの追加/削除時
+  ・データの配置に偏りが生じないように、再配置を行う</code></pre>
+<h3 id="mapreduce">MapReduce</h3>
+<pre class="highlight"><code class="language-text">概要
+  ・大量のdataを分割し、複数のサーバで並列処理する方法。
+
+Map処理
+  ・データを小さく分割し、key-valueのペアに変換する
+  ・フィルタリングやソートも行う
+
+Reduce処理
+  ・keyごとにデータを集約し、加工する
+
+流れ
+  1 データが小さな単位に分割される
+  2 map処理でkey-valueのペアに変換される
+  3 nodeに障害が発生したら他のノードが請け負う
+  4 Map処理の結果はノードのローカルディスクに書き込む
+  5 shuffle&amp;sort処理で、mapperの出力をreducerに転送
+  6 reduceタスクを行い、map処理の結果を破棄する
+  6 reduceタスクの出力は、HDFSに保存される
+
+補足(障害情報の追跡)
+  ・JobTrackerがMapをTaskTrackerに割り振る
+  ・TaskTrackerはシステムの現状を定期的に報告
+  ・定期報告するので、ノードに障害が起きたか分かる
+
+例)
+INPUT:  XBBCBAXAC
+SPLIT:  XBB | CBA | XAC
+MAP:    X:1, B:1, B:1 | C:1, B:1, A:1 | X:1, A:1, C:1
+COMBINE:A:1, A:1 | B:1, B:1, B:1 | C:1, C:1 | X:1, X:1
+REDUCE: A:2, B:3, C:2, X:2</code></pre>
+<h3 id="yarn">YARN</h3>
+<pre class="highlight"><code class="language-text">・CPUやメモリなどの計算リソースを管理するもの
+・リソースマネージャ
+・パッケージマネージャではない
+
+⇒分散アプリケーションが実行された時は、
+  全体のバランスを考えて、コンテナを割り当てる</code></pre>
+<h3 id="hive">Hive</h3>
+<pre class="highlight"><code class="language-text">・MapReduce上で動作するクエリ処理技術
+
+・HiveQL(SQLのようなDSL言語)を、
+　内部でMapReduceに変換してくれる
+
+・バッチ処理を行うので応答速度はあまりよろしくない
+
+・大量のデータを処理する際には、適している</code></pre>
+<h3 id="hadoop_1">Hadoopの課題</h3>
+<pre class="highlight"><code class="language-text">・バッチ処理に適しているので、
+  リアルタイムでのクエリの実行には向いていない</code></pre>
+</details>
+<h2 id="q181-spark">Q181 Sparkについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="spark">Spark概要</h3>
+<pre class="highlight"><code class="language-text">・分散データ処理と高速なインメモリ処理を提供する
+・可能な限り、データはメモリに保管する
+
+メリット
+  ・インメモリで動作するので、繰り返しアクセスが高速
+
+デメリット
+  ・多くのメモリが必要
+  ・メモリにデータが収まらない場合、性能が低下する
+  ・他のサービスと併用するとメモリが使われるので
+    より少ないデータしか保存できなくなる
+  ・1回で終わるジョブに対してはMapReduceも現役</code></pre>
+<h3 id="_60">つまりどちらを使うべきか?</h3>
+<pre class="highlight"><code class="language-text">メモリにデータが収まる範囲で繰り返し処理を行いたい
+  ⇒Spark
+
+大量のデータを処理したい（または様々なtypeのデータ処理）
+  ⇒Hadoop
+
+他のサービスと並行して処理したい
+  ⇒Hadoop
+
+処理は1回で十分。繰り返し実施しない
+  ⇒Hadoop
+
+リアルタイムで処理を行いたい(たとえばストリーム処理)
+  ⇒Spark
+
+バッチ処理で十分
+  ⇒Hadoop
+
+耐障害性を意識したい
+  ⇒Hadoop(Sparkは障害でデータが失われるともう一度処理)
+
+安全性が何より大事だ
+  ⇒Hadoop
+
+複数のプログラミング言語に対応していると嬉しい
+  ⇒Spark
+
+単体で完結させたい
+  ⇒Hadoop(Sparkの場合、データの保存にはHDFSが必要)
+
+機械学習も行えると嬉しい
+  ⇒Spark</code></pre>
+</details>
+<h2 id="q182">Q182 データ可視化ツールについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_61">分散処理をしたらそのあとは</h3>
+<pre class="highlight"><code class="language-text">・処理結果を分かりやすく可視化したい</code></pre>
+<h3 id="_62">アドホック分析ツール</h3>
+<pre class="highlight"><code class="language-text">・試行錯誤を繰り返しながら、
+  繰り返しデータを見ていくときに使用する
+
+Jupyter Lab
+  ・Python, Ruby, Rなどのソースを書き留めながら実行可能
+  ・ijava等の力を借りれば一応java等も可能
+  ・numpy/pandas/matplotlib/seabornなどよく使った
+  ・pymysqlみたいなやつで、sqlも使えたはず
+
+Apache Zeppelin
+  ・言語ごとにカーネルを分けなくていい</code></pre>
+<h3 id="_63">ダッシュボードツール</h3>
+<pre class="highlight"><code class="language-text">・定期的にクエリを実行し、
+  ダッシュボードを作成するために使用する
+
+Redash
+  ・Dashboardで一画面にデータを集約できる
+  ・OSS
+  ・Googleスプレッドシートとも接続可能
+
+Metabase
+  ・SQLを書かずに利用可能
+  ・OSS</code></pre>
+</details>
+<h2 id="q183-newsql">Q183 NewSQLについて知っていますか?(概要)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="nosql-rdb">NoSQL, RDBとの比較</h3>
+<pre class="highlight"><code class="language-text">・再三注意するが、以下の表はあくまでも傾向</code></pre>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>RDB</th>
+<th>NoSQL</th>
+<th>NewSQL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整合性</td>
+<td>〇</td>
+<td>△</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>可用性</td>
+<td>△</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>分断耐性</td>
+<td>✖</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>〇</td>
+<td>✖</td>
+<td>△</td>
+</tr>
+<tr>
+<td>API</td>
+<td>✖</td>
+<td>〇</td>
+<td>✖</td>
+</tr>
+<tr>
+<td>コスト</td>
+<td>〇</td>
+<td>△</td>
+<td>✖</td>
+</tr>
+<tr>
+<td>拡張性(Read)</td>
+<td>△</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>拡張性(Write)</td>
+<td>✖</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>トランザクション</td>
+<td>〇</td>
+<td>✖</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>JOIN</td>
+<td>〇</td>
+<td>✖</td>
+<td>〇</td>
+</tr>
+<tr>
+<td>読み取り速度</td>
+<td>〇</td>
+<td>△</td>
+<td>△</td>
+</tr>
+<tr>
+<td>書き込み速度</td>
+<td>△</td>
+<td>〇</td>
+<td>〇</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_64">特徴補足</h3>
+<pre class="highlight"><code class="language-text">SQLについて
+  ・基本的な構文は使えるが、
+    ストアドプロシージャ、Trigger, 外部キー制約等は微妙
+    auto_incrementの挙動も少し異なる
+
+読み取り&amp;書き込み
+  ・LSM-Treeを採用しているため</code></pre>
+<h3 id="_65">整合性と可用性のいいとこどり</h3>
+<pre class="highlight"><code class="language-text">RDBのパフォーマンス向上
+  ・書き込み用の1つのプライマリ
+  ・読み取り用の複数のレプリカ
+  ・シャーディングでデータを複数のサーバに分割
+  ⇒書き込み時にボトルネックがあった
+
+NewSQLのパフォーマンス向上
+  ・書き込み時のプライマリを分散
+  ・読み取り用の複数のレプリカ
+  ・シャーディングでデータを複数のサーバに分割
+
+  ⇒ プラスして、LSM-Treeを用いているため
+     書き込みに特化している
+
+  ⇒自動でリバランスを行うので、負荷が偏ることも少ない
+
+  ⇒各ノードが書き込み/読み取りを実施する
+    このアルゴリズムはRaftと呼ばれる</code></pre>
+<h3 id="_66">コストについて</h3>
+<pre class="highlight"><code class="language-text">・可用性、スケール、整合性を保つために
+  他の方式よりサーバを多く必要とする</code></pre>
+<h3 id="newsql">NewSQLを使う必要がない場合</h3>
+<pre class="highlight"><code class="language-text">・読み取りタスクがほとんど　⇒ RDB
+・同時アクセス数が少ない　  ⇒ RDB</code></pre>
+<h3 id="newsql_1">NewSQLを使う必要がある場合</h3>
+<pre class="highlight"><code class="language-text">・複雑なクエリ + 多数の同時アクセス　⇒ NewSQL
+・書き込みタスクが多い              ⇒ NewSQL
+・スケールアウト型のRDBが欲しい      ⇒ NewSQL</code></pre>
+<h3 id="newsql_2">NewSQLの例</h3>
+<pre class="highlight"><code class="language-text">TiDB(MySQL準拠)
+CockroachDB(PostgreSQL準拠)</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
+      
+        <script src="../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

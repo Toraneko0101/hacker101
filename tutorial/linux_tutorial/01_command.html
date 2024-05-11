@@ -1,0 +1,5558 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="00_intro.html">
+      
+      
+        <link rel="next" href="02_tool.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(1:コマンド) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/prism.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(1:コマンド)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01_command.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1 基本的なファイル操作のコマンドについて理解していますか?(前半)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1 基本的なファイル操作のコマンドについて理解していますか?(前半)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      方針
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファイル関連の用語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      コマンドの書式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkdir(ディレクトリ作成)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      cd(階層移動)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#touch-timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      touch(ファイル作成, timestamp更新)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      ls(ディレクトリの内容表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi" class="md-nav__link">
+    <span class="md-ellipsis">
+      vi(ファイルを操作する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      cat(ファイルの内容出力)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      pwd(現在のディレクトリを確認)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      cp(ファイルをコピーする)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      rm(ファイルを削除する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      mv(ファイルの移動)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      find(ファイル検索)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      echo(テキスト表示)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2 標準ストリームとリダイレクトについて理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2 標準ストリームとリダイレクトについて理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      標準ストリーム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      リダイレクトについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      デフォルトの入出力先
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      リダイレクト先変更、早見表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3 基本的なファイル操作等のコマンドについて理解していますか?(後半)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3 基本的なファイル操作等のコマンドについて理解していますか?(後半)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lessmoreheadtail" class="md-nav__link">
+    <span class="md-ellipsis">
+      less/more/head/tail(ファイル内容の表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep(パターンマッチ検索)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which" class="md-nav__link">
+    <span class="md-ellipsis">
+      which(コマンドの場所を絶対パスを入手する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      history(コマンド履歴)とコマンド入力の注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      locale(現在のロケールと使用可能なロケール情報表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#man" class="md-nav__link">
+    <span class="md-ellipsis">
+      man(コマンドのマニュアルが読める)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#man_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      manを日本語化する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      英語に戻したいとき
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4 コマンド入力時の便利なショートカットを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4 コマンド入力時の便利なショートカットを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      入力関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      実行関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctrl-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ctrl + Dでログアウトしたくない時
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      VScodeで使う場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ls-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      権限確認(ls -l)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-rw-r-r-1-user-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      -rw-r--r-- 1 user user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファイルの種類(1文字目)とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rwx" class="md-nav__link">
+    <span class="md-ellipsis">
+      rwx?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハードリンクとシンボリックリンク
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハードリンクとシンボリックリンクの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファイル削除とiノード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chmod" class="md-nav__link">
+    <span class="md-ellipsis">
+      権限設定(chmod)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6 ユーザ/グループを操作するコマンドについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6 ユーザ/グループを操作するコマンドについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who" class="md-nav__link">
+    <span class="md-ellipsis">
+      who(ログインしているユーザを表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whoami" class="md-nav__link">
+    <span class="md-ellipsis">
+      whoami(現在のセッションのユーザ名を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudoのパスワードは何を入力するの?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudoroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudoを使えば誰でもroot権限で実行できるってこと?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adduseruseradd" class="md-nav__link">
+    <span class="md-ellipsis">
+      adduser/useradd(新規ユーザを作成する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iduserid" class="md-nav__link">
+    <span class="md-ellipsis">
+      id(userid等の表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      /etc/passwd (ユーザの一覧を確認する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      passwd(パスワードの変更)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#su" class="md-nav__link">
+    <span class="md-ellipsis">
+      su(別のユーザとしてログイン)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      exit(ログアウト)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupadd" class="md-nav__link">
+    <span class="md-ellipsis">
+      groupadd(新規グループを追加)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      /etc/group(グループの一覧を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpasswd-passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      gpasswd (グループのメンバを整理+passwd)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupdel" class="md-nav__link">
+    <span class="md-ellipsis">
+      groupdel(グループの削除)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdeluser" class="md-nav__link">
+    <span class="md-ellipsis">
+      userdel(userの削除)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      groups(所属しているグループ一覧を見る)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(wsl2からのログイン)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visudosudoers" class="md-nav__link">
+    <span class="md-ellipsis">
+      visudoでsudoersファイルを編集する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q65" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6.5 チュートリアルで使ったコマンドリスト(未分類)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6.5 チュートリアルで使ったコマンドリスト(未分類)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      wc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips1 ログイン時に奇妙な表示が出る場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips1 ログイン時に奇妙な表示が出る場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-bash-usrsharemodulesinitsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      -bash: /usr/share/modules/init/sh:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep-binary-file-matches" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep: (標準入力): binary file matches
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1 基本的なファイル操作のコマンドについて理解していますか?(前半)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1 基本的なファイル操作のコマンドについて理解していますか?(前半)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      方針
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファイル関連の用語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      コマンドの書式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdir" class="md-nav__link">
+    <span class="md-ellipsis">
+      mkdir(ディレクトリ作成)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      cd(階層移動)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#touch-timestamp" class="md-nav__link">
+    <span class="md-ellipsis">
+      touch(ファイル作成, timestamp更新)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ls" class="md-nav__link">
+    <span class="md-ellipsis">
+      ls(ディレクトリの内容表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vi" class="md-nav__link">
+    <span class="md-ellipsis">
+      vi(ファイルを操作する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cat" class="md-nav__link">
+    <span class="md-ellipsis">
+      cat(ファイルの内容出力)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      pwd(現在のディレクトリを確認)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cp" class="md-nav__link">
+    <span class="md-ellipsis">
+      cp(ファイルをコピーする)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rm" class="md-nav__link">
+    <span class="md-ellipsis">
+      rm(ファイルを削除する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mv" class="md-nav__link">
+    <span class="md-ellipsis">
+      mv(ファイルの移動)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find" class="md-nav__link">
+    <span class="md-ellipsis">
+      find(ファイル検索)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#echo" class="md-nav__link">
+    <span class="md-ellipsis">
+      echo(テキスト表示)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2 標準ストリームとリダイレクトについて理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2 標準ストリームとリダイレクトについて理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      標準ストリーム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      リダイレクトについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      デフォルトの入出力先
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      リダイレクト先変更、早見表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3 基本的なファイル操作等のコマンドについて理解していますか?(後半)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3 基本的なファイル操作等のコマンドについて理解していますか?(後半)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lessmoreheadtail" class="md-nav__link">
+    <span class="md-ellipsis">
+      less/more/head/tail(ファイル内容の表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep(パターンマッチ検索)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#which" class="md-nav__link">
+    <span class="md-ellipsis">
+      which(コマンドの場所を絶対パスを入手する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#history" class="md-nav__link">
+    <span class="md-ellipsis">
+      history(コマンド履歴)とコマンド入力の注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locale" class="md-nav__link">
+    <span class="md-ellipsis">
+      locale(現在のロケールと使用可能なロケール情報表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#man" class="md-nav__link">
+    <span class="md-ellipsis">
+      man(コマンドのマニュアルが読める)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#man_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      manを日本語化する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      英語に戻したいとき
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4 コマンド入力時の便利なショートカットを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4 コマンド入力時の便利なショートカットを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      入力関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      実行関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctrl-d" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ctrl + Dでログアウトしたくない時
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      VScodeで使う場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ls-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      権限確認(ls -l)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-rw-r-r-1-user-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      -rw-r--r-- 1 user user
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファイルの種類(1文字目)とは
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rwx" class="md-nav__link">
+    <span class="md-ellipsis">
+      rwx?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハードリンクとシンボリックリンク
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ハードリンクとシンボリックリンクの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファイル削除とiノード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chmod" class="md-nav__link">
+    <span class="md-ellipsis">
+      権限設定(chmod)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6 ユーザ/グループを操作するコマンドについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6 ユーザ/グループを操作するコマンドについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who" class="md-nav__link">
+    <span class="md-ellipsis">
+      who(ログインしているユーザを表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#whoami" class="md-nav__link">
+    <span class="md-ellipsis">
+      whoami(現在のセッションのユーザ名を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudo_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudoのパスワードは何を入力するの?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sudoroot" class="md-nav__link">
+    <span class="md-ellipsis">
+      sudoを使えば誰でもroot権限で実行できるってこと?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adduseruseradd" class="md-nav__link">
+    <span class="md-ellipsis">
+      adduser/useradd(新規ユーザを作成する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iduserid" class="md-nav__link">
+    <span class="md-ellipsis">
+      id(userid等の表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcpasswd" class="md-nav__link">
+    <span class="md-ellipsis">
+      /etc/passwd (ユーザの一覧を確認する)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      passwd(パスワードの変更)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#su" class="md-nav__link">
+    <span class="md-ellipsis">
+      su(別のユーザとしてログイン)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      exit(ログアウト)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupadd" class="md-nav__link">
+    <span class="md-ellipsis">
+      groupadd(新規グループを追加)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      /etc/group(グループの一覧を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpasswd-passwd" class="md-nav__link">
+    <span class="md-ellipsis">
+      gpasswd (グループのメンバを整理+passwd)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groupdel" class="md-nav__link">
+    <span class="md-ellipsis">
+      groupdel(グループの削除)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#userdeluser" class="md-nav__link">
+    <span class="md-ellipsis">
+      userdel(userの削除)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      groups(所属しているグループ一覧を見る)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wsl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(wsl2からのログイン)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visudosudoers" class="md-nav__link">
+    <span class="md-ellipsis">
+      visudoでsudoersファイルを編集する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q65" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6.5 チュートリアルで使ったコマンドリスト(未分類)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6.5 チュートリアルで使ったコマンドリスト(未分類)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wc" class="md-nav__link">
+    <span class="md-ellipsis">
+      wc
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips1 ログイン時に奇妙な表示が出る場合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tips1 ログイン時に奇妙な表示が出る場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-bash-usrsharemodulesinitsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      -bash: /usr/share/modules/init/sh:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grep-binary-file-matches" class="md-nav__link">
+    <span class="md-ellipsis">
+      grep: (標準入力): binary file matches
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="1">クイズ(1:コマンド)</h1>
+<h2 id="q1">Q1 基本的なファイル操作のコマンドについて理解していますか?(前半)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_1">方針</h3>
+<pre class="highlight"><code class="language-text">・便利なオプションなどは紹介しない
+・1日1回は使うものを紹介
+・その他の便利なコマンドについては用途別に後程触れる</code></pre>
+<h3 id="_2">ファイル関連の用語</h3>
+<table>
+<thead>
+<tr>
+<th>用語</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ルートディレクトリ</td>
+<td>最上位のディレクトリ</td>
+</tr>
+<tr>
+<td>カレントディレクトリ</td>
+<td>現在アクセス中のディレクトリ</td>
+</tr>
+<tr>
+<td>ホームディレクトリ</td>
+<td>ログイン時のカレントディレクトリ</td>
+</tr>
+<tr>
+<td>絶対パス</td>
+<td>ルートディレクトリからのパス</td>
+</tr>
+<tr>
+<td>相対パス</td>
+<td>カレントディレクトリからのパス</td>
+</tr>
+<tr>
+<td>./</td>
+<td>カレントディレクトリを表す</td>
+</tr>
+<tr>
+<td>../</td>
+<td>1階層上のディレクトリを表す</td>
+</tr>
+<tr>
+<td>~</td>
+<td>ホームディレクトリを表す</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">コマンドの書式</h3>
+<pre class="highlight"><code class="language-text">$ cmd (option) (args)</code></pre>
+<h3 id="mkdir">mkdir(ディレクトリ作成)</h3>
+<pre class="highlight"><code class="language-bash">$ mkdir cmd_test
+
+# -pでディレクトリを再帰的に作成可能
+
+$ mkdir -p cmd_test2/neko.txt</code></pre>
+<h3 id="cd">cd(階層移動)</h3>
+<pre class="highlight"><code class="language-bash">$ cd cmd_test
+
+# 1つ親に移動
+$ cd ..
+
+# homeディレクトリに異動
+$ cd ~
+
+# rootに移動
+$ cd /
+
+# cdを用いて移動する前に戻る
+$ cd -</code></pre>
+<h3 id="touch-timestamp">touch(ファイル作成, timestamp更新)</h3>
+<pre class="highlight"><code class="language-bash"># 該当のファイルがない場合は、新規作成
+$ touch neko.txt
+
+# ある場合は、ファイルの最終更新日を変更
+$ ls -l
+-rw-r--r-- 1 user user 0  4月 27 16:59 neko.txt
+
+$ touch neko.txt
+$ ls -l
+-rw-r--r-- 1 user user 0  4月 27 17:00 neko.txt</code></pre>
+<h3 id="ls">ls(ディレクトリの内容表示)</h3>
+<pre class="highlight"><code class="language-bash">$ ls
+neko.txt
+
+#lは詳細情報。aは隠しファイル(先頭.も表示)
+$ ls -la
+drwxr-xr-x  2 user user 4096  4月 27 16:59 .
+drwxr-x--- 25 user user 4096  4月 27 16:56 ..
+-rw-r--r--  1 user user    0  4月 27 17:00 neko.txt</code></pre>
+<h3 id="vi">vi(ファイルを操作する)</h3>
+<pre class="highlight"><code class="language-bash"># 殆どの場合、vimを使うような気もするが
+# vimについては後程解説する
+
+$ vi neko.txt
+
+# iキーを押して、挿入モードに
+# 適当に入力
+# escキーを押して通常モードに
+# :を押してから、以下のコマンドでファイル操作可能
+
+# :w 保存
+# :q 終了
+# :wq 保存してから終了
+# :w! 強制保存
+# :q! 強制終了
+# :wq! 保存してから強制終了
+
+# nekodesu
+# ~
+# ~
+# ~
+# :wq</code></pre>
+<h3 id="cat">cat(ファイルの内容出力)</h3>
+<pre class="highlight"><code class="language-bash">$ cat neko.txt
+nekodesu</code></pre>
+<h3 id="pwd">pwd(現在のディレクトリを確認)</h3>
+<pre class="highlight"><code class="language-bash">$ pwd
+/home/user/cmd_test
+
+$ cd ..
+$ cd -
+$ pwd
+/home/user/cmd_test</code></pre>
+<h3 id="cp">cp(ファイルをコピーする)</h3>
+<pre class="highlight"><code class="language-bash">$ cp neko.txt neko2.txt
+
+$ ls
+neko.txt  neko2.txt</code></pre>
+<h3 id="rm">rm(ファイルを削除する)</h3>
+<pre class="highlight"><code class="language-bash">$ rm neko2.txt
+$ ls
+neko.txt
+
+# ディレクトリを削除する場合は、rオプションが必要
+# rmdirの場合、ディレクトリ内にファイルがあるとerrorになるため
+# 此方を使う場合が多い
+$ mkdir hoge
+$ touch hoge/test.txt
+$ rm -r hoge</code></pre>
+<h3 id="mv">mv(ファイルの移動)</h3>
+<pre class="highlight"><code class="language-bash">$ mv ./neko.txt ../cmd_test2/neko.txt
+
+$ cd ../cmd_test2
+
+$ ls
+neko.txt</code></pre>
+<h3 id="find">find(ファイル検索)</h3>
+<pre class="highlight"><code class="language-bash"># find &lt;検索パス&gt; -name &lt;file名&gt;
+# -name: ファイル名がパターンと一致するファイル
+# -iname: 大文字小文字を区別しない
+# -path: 引数にスラッシュを含む場合は、こっちで
+
+$ pwd
+/home/user/cmd_test2
+
+$ find ./ -name neko*
+./neko.txt
+
+$ find ./ -path ./neko*
+./neko.txt</code></pre>
+<h3 id="echo">echo(テキスト表示)</h3>
+<pre class="highlight"><code class="language-bash"># -n 末尾の改行を抑制
+# -e エスケープシーケンスを解釈
+
+$ echo "neko\ninu\n"
+neko\ninu\n
+
+$ echo -en "neko\ninu\n"
+neko
+inu</code></pre>
+</details>
+<h2 id="q2">Q2 標準ストリームとリダイレクトについて理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_4">基本</h3>
+<pre class="highlight"><code class="language-text">・コマンドは左から順番に評価される</code></pre>
+<h3 id="_5">標準ストリーム</h3>
+<table>
+<thead>
+<tr>
+<th>入出力名</th>
+<th>番号</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>標準入力</td>
+<td>0</td>
+<td>データ入力元</td>
+</tr>
+<tr>
+<td>標準出力</td>
+<td>1</td>
+<td>データ出力先</td>
+</tr>
+<tr>
+<td>標準エラー出力</td>
+<td>2</td>
+<td>エラー出力先</td>
+</tr>
+<tr>
+<td>自分で開いたファイル</td>
+<td>3以降</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">リダイレクトについて</h3>
+<pre class="highlight"><code class="language-text">・ &lt;, &gt;, &gt;&gt;等
+・コマンドの入力元/出力先を変更する
+
+---------------
+
+変更するということはデフォルトの入力元/出力先があるの?
+  ・/proc/self/fd/&lt;digit&gt;等を見るといいかもしれない
+
+---------------
+
+ファイルディスクリプタ(FD)
+  ・カーネルが、操作対象のファイルを
+    識別する際に必要となる
+
+  ・descriptorと言っていることから分かる通り識別子
+  ・標準入力ならFD0, 出力ならFD1, エラー出力ならFD2
+  ・自分で開いたファイルには3以降の数字が割り当てられる
+
+  ・カーネルに処理を依頼するとき、
+    例えば、1&gt; hoge.txtとすると、カーネルは標準出力先が
+    hoge.txtに変更されることを理解する。
+
+  ※　1&gt; hoge.txt の場合
+      標準出力　を hoge.txtにリダイレクト</code></pre>
+<h3 id="_7">デフォルトの入出力先</h3>
+<table>
+<thead>
+<tr>
+<th>ファイル</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/self/fd/<digit></td>
+<td>FD~につながるファイル</td>
+</tr>
+<tr>
+<td>/dev/stdin</td>
+<td>標準入力(FD0)</td>
+</tr>
+<tr>
+<td>/dev/stdout</td>
+<td>標準出力(FD1)</td>
+</tr>
+<tr>
+<td>/dev/stderr</td>
+<td>標準エラー出力(FD2)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">リダイレクト先変更、早見表</h3>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&gt;</td>
+<td>標準出力先。1&gt; でも可。上書きモード</td>
+</tr>
+<tr>
+<td>2&gt;</td>
+<td>標準エラー出力先</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>標準出力。追記モードで開く</td>
+</tr>
+<tr>
+<td>2&gt;&gt;</td>
+<td>標準エラー出力の追記</td>
+</tr>
+<tr>
+<td>|</td>
+<td>前のコマンドの標準出力を次の標準入力に</td>
+</tr>
+<tr>
+<td>&gt;&amp;</td>
+<td>FDの出力先を、他のFDにリダイレクト</td>
+</tr>
+<tr>
+<td>2&gt;&amp;1</td>
+<td>標準エラー出力を、標準出力と同じに</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>標準入力先。0&lt;と同義</td>
+</tr>
+<tr>
+<td>tee</td>
+<td>ファイルと標準出力へ同時出力</td>
+</tr>
+<tr>
+<td>/dev/null</td>
+<td>ファイル。書き込まれたデータを捨てる</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_9">例</h3>
+<pre class="highlight"><code class="language-bash"># &gt;
+$ echo "hello" &gt; hello.txt
+$ cat hello.txt
+hello
+
+# &gt;&gt;
+$ echo "neko" &gt; hello.txt
+$ echo "inu" &gt;&gt; hello.txt
+$ cat hello.txt
+neko
+inu
+
+# 2&gt;
+$ ls --- 2&gt; error.txt
+$ cat error.txt
+ls: unrecognized option '---'
+詳しくは 'ls --help' を実行して下さい。
+
+# &lt;
+$ cat &lt; neko.txt
+nekodesu
+
+# 2&gt;&amp;1 
+
+# 1 FD1の参照が output.txtになる
+# 2 FD2の参照先がFD1の複製(output.txt)になる
+$ ls ---  &gt; output.txt 2&gt;&amp;1  
+$  cat output.txt
+ls: unrecognized option '---'
+詳しくは 'ls --help' を実行して下さい。
+
+# 1 FD2の参照先がFD1の複製(/dev/self/fd/1)になる
+# 2 FD1の参照先がoutput.txtになる
+$ ls --- 2&gt;&amp;1 &gt; output.txt
+ls: unrecognized option '---'
+詳しくは 'ls --help' を実行して下さい。
+
+# 出力/Error出力を、出力したくない場合
+# FD1の参照先が/dev/nullになる
+# FD2の参照先がFD1(/dev/null)になる
+$ ls --- &gt; /dev/null 2&gt;&amp;1
+
+# | (パイプ) ※wcは改行数,単語数,文字数を表示する
+$ cat output.txt | wc
+2 8 83
+
+# /dev/null (空で上書きする)
+$ cat /dev/null &gt; output.txt | wc
+0 0 0
+
+# tee
+$ echo "neko" | tee hello.txt
+neko
+$ cat hello.txt
+neko
+</code></pre>
+<h3 id="_10">まとめ</h3>
+<pre class="highlight"><code class="language-text">デフォルトの場合
+  ・標準出力はFD1(/proc/self/fd/1)に
+  ・標準エラー出力はFD2(/proc/self/fd/2)に出力される
+  ・リダイレクトを行うことで、出力先を変更可能
+
+  ※wsl2を用いている場合、
+    /proc/self/fd/*は、シンボリックリンクを介して、
+    /dev/pts/&lt;digit&gt;等の仮想ターミナルに接続されている
+
+  ⇒したがって、デフォルトの場合、
+    出力/エラー出力は仮想ターミナルに表示される</code></pre>
+</details>
+<h2 id="q3">Q3 基本的なファイル操作等のコマンドについて理解していますか?(後半)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="lessmoreheadtail">less/more/head/tail(ファイル内容の表示)</h3>
+<pre class="highlight"><code class="language-bash"># less :qで表示終了, vimに近い操作
+# more: 末尾まで行くと自動的にプロンプトに戻る
+# たぶん、lessしか使わないと思う
+
+# head, tailそれぞれ、先頭、末尾から指定行表示
+
+# 適当な行数のファイルを用意しておく
+
+# 使い方
+$ cat alphabet.txt | head -3
+$ cat alphabet.txt | tail -3
+$ cat alphabet.txt | more
+$ cat alphabet.txt | less</code></pre>
+<h3 id="grep">grep(パターンマッチ検索)</h3>
+<pre class="highlight"><code class="language-bash"># grep &lt;正規表現&gt; &lt;file名&gt;
+# file内の特定の文字列がある行を抽出する
+
+# -oならonly matchingでマッチした部分だけ
+# -Eなら拡張正規表現, -PでPerl正規表現
+# ディレクトリ内のサブファイルまで検索範囲に含めたい場合
+# -r, シンボリックリンクの先まで含めたいときは-R
+
+$ grep [abc] alphabet.txt
+a
+b
+c
+
+# 複数ファイル検索
+$ grep ^b.*$ alphabet.txt animal.txt
+alphabet.txt:b
+animal.txt:bear
+
+# ディレクトリ配下のファイル検索
+# -hで、ファイル名は消せる(-Hで表示する)
+$ grep ^b.*$ -r cmd_test
+cmd_test2/animal.txt:bear
+cmd_test2/alphabet.txt:b
+
+# 拡張正規表現
+$ grep -E c{2}o{2} animal.txt
+Raccoon
+
+# \bは単語の境界 \wは単語のみ
+$ echo "Neko inu nezumi" | grep -oE "\b\w*mi\b"
+nezumi
+
+# Perl正規表現(meta文字, 先読み, 最長一致などが使える)
+$ echo "foobar" | grep -oP "foo(?=bar)"
+foo</code></pre>
+<h3 id="which">which(コマンドの場所を絶対パスを入手する)</h3>
+<pre class="highlight"><code class="language-bash">$ which ls
+/usr/bin/ls</code></pre>
+<h3 id="history">history(コマンド履歴)とコマンド入力の注意点</h3>
+<pre class="highlight"><code class="language-bash">$ history
+# ...
+2044 which ls
+2045 history
+
+# !+数字で、コマンドの再実行が可能
+$ !2045
+
+# たとえば、mysql -u&lt;user&gt; -p&lt;passwd&gt;という
+# コマンドを入力したとする
+# この場合、passwordの入力履歴が残ってしまう
+
+# 消すこともできるけど...
+# -dで特定の行番号を削除。-cなら全体clear
+$ history -d 2047
+
+# たとえばmysqlなら以下の様にすることでpassを残さずに済む
+$ mysql -uuser -p # passwordはEnter password:で入力</code></pre>
+<h3 id="locale">locale(現在のロケールと使用可能なロケール情報表示)</h3>
+<pre class="highlight"><code class="language-bash">$ locale
+# LANG=ja_JP.UTF-8
+# LANGUAGE=
+# LC_CTYPE="ja_JP.UTF-8"
+
+# 指定可能なlocaleの一覧表示
+$ locale -a | grep ja
+ja_JP.utf8
+
+# 言語名の表示
+$ locale language
+Japanese
+
+# 地域名の表示
+$ locale territory
+Japan</code></pre>
+<h3 id="man">man(コマンドのマニュアルが読める)</h3>
+<pre class="highlight"><code class="language-bash">$ man ls</code></pre>
+<h3 id="man_1">manを日本語化する</h3>
+<pre class="highlight"><code class="language-bash"># 1 manコマンドの日本語化packageをinstall
+# sudo, aptについては後述
+
+$ sudo apt update
+$ sudo apt install manpages-ja
+$ sudo apt install manpages-ja-dev
+
+$ locale
+# 2 LANG=ja_JP.utf8でなければ下に進む
+
+$ locale -a
+# 3 ja_JP.utf8がなければ次のコマンドを実行
+
+# 4 日本語localeをinstall
+$ sudo apt install language-pack-ja
+
+# 5 日本語localeに設定する
+$ sudo update-locale LANG=ja_JP.utf8
+
+# 6 再起動して、manが日本語になっているか確認</code></pre>
+<h3 id="_11">英語に戻したいとき</h3>
+<pre class="highlight"><code class="language-bash">$ sudo update-locale LANG=en_US.utf8</code></pre>
+</details>
+<h2 id="q4">Q4 コマンド入力時の便利なショートカットを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_12">入力関連</h3>
+<table>
+<thead>
+<tr>
+<th>ショートカット</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tab</td>
+<td>入力補完</td>
+</tr>
+<tr>
+<td>Ctrl+A</td>
+<td>行の先頭に移動</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>行の末尾に異動</td>
+</tr>
+<tr>
+<td>Ctrl+B</td>
+<td>1文字戻る</td>
+</tr>
+<tr>
+<td>Ctrl+F</td>
+<td>1文字進む</td>
+</tr>
+<tr>
+<td>Ctrl+H</td>
+<td>カーソルの左側を1文字削除</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>カーソルの右側を1文字削除</td>
+</tr>
+<tr>
+<td>Ctrl+W</td>
+<td>カーソルより前の単語を削除</td>
+</tr>
+<tr>
+<td>Ctrl+U</td>
+<td>文頭からカーソルを削除</td>
+</tr>
+<tr>
+<td>Ctrl+K</td>
+<td>カーソルから行末まで削除</td>
+</tr>
+<tr>
+<td>Ctrl+Y</td>
+<td>直前に削除した文字列を貼り付け</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">実行関連</h3>
+<table>
+<thead>
+<tr>
+<th>ショートカット</th>
+<th>詳細</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl+C</td>
+<td>実行中のコマンドを強制終了</td>
+</tr>
+<tr>
+<td>Ctrl+Z</td>
+<td>実行中のコマンドを一時停止</td>
+</tr>
+<tr>
+<td>Ctrl+L</td>
+<td>画面をクリアする</td>
+</tr>
+<tr>
+<td>Ctrl+P</td>
+<td>コマンドの1つ前の履歴</td>
+</tr>
+<tr>
+<td>Ctrl+N</td>
+<td>コマンドの1つ後の履歴</td>
+</tr>
+<tr>
+<td>Ctrl+R</td>
+<td>コマンド履歴を検索</td>
+</tr>
+<tr>
+<td>Ctrl+D</td>
+<td>入力中でない場合はログアウト</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">使用例</h3>
+<pre class="highlight"><code class="language-bash">$ ls al
+# Tab(入力補完)
+$ ls alphabet.txt
+# Ctrl + W(単語削除)
+$ ls
+# Ctrl + U(カーソルから文頭まで削除)
+$
+# Ctrl + Y(削除した部分を復活)
+$ ls
+
+# Ctrl + R(コマンド検索)
+(reverse-i-search)`': ls
+alphabet.txt  animal.txt</code></pre>
+<h3 id="ctrl-d">Ctrl + Dでログアウトしたくない時</h3>
+<pre class="highlight"><code class="language-bash">
+# 文字を消去しているときに、勢い余ってログアウトする(泣)
+
+
+# .bashrcを開く
+# 下記の設定を行うと、3回までならログアウトされなくなる
+ignoreeof=3
+
+#Ctrl + D
+# シェルから脱出するには "logout" を使用してください。
+# シェルから脱出するには "logout" を使用してください。
+# シェルから脱出するには "logout" を使用してください。
+# ログアウト</code></pre>
+<h3 id="vscode">VScodeで使う場合</h3>
+<pre class="highlight"><code class="language-text">1. Ctrl + Shift + Pでコマンドパレットを開く
+2. Preferences: Open Keyboard Shortcutsを選択
+3. 右上のキーボードショートカットを開く(JSON)をクリック
+4. 以下を[]内に追記し、terminalにfoucsしているときはVSCodeの
+   ショートカットが効かないようにしておく
+
+⇒ おそらくDefaultでは、Ctrl + PEFKQS等が競合しているので
+   この設定が必要だろうと思われる(ないとイライラする)</code></pre>
+<pre class="highlight"><code class="language-json">{
+    "key": "ctrl+p",
+    "command": "",
+    "when": "terminalFocus"
+},
+{
+    "key": "ctrl+e",
+    "command": "",
+    "when": "terminalFocus"
+},
+{
+    "key": "ctrl+f",
+    "command": "",
+    "when": "terminalFocus"
+},
+{
+    "key": "ctrl+k",
+    "command": "",
+    "when": "terminalFocus"
+},
+{
+    "key": "ctrl+q",
+    "command": "",
+    "when": "terminalFocus"
+},
+{
+    "key": "ctrl+s",
+    "command": "",
+    "when": "terminalFocus"
+},</code></pre>
+</details>
+<h2 id="q5">Q5 権限を確認変更するコマンドを知っていますか?(ハードリンクについても解説する)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="ls-l">権限確認(ls -l)</h3>
+<pre class="highlight"><code class="language-bash"># test用のファイルを作成
+
+echo "echo success" &gt; test.sh
+
+# 権限確認
+$ ls -l test.sh
+-rw-r--r-- 1 user user 13  4月 28 10:57 test.sh  
+
+# (補足)--time-styleで時刻のformatは変えられる
+# -gで所有者。-Gで所有グループは表示しない風にできる
+
+$ ls -gG --time-style="+%Y/%m/%d %H:%M:%S" test.sh
+-rw-r--r-- 1 13 2024/04/28 10:57:05 test.sh</code></pre>
+<h3 id="-rw-r-r-1-user-user">-rw-r--r-- 1 user user</h3>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1文字目</td>
+<td>ファイルの種類を意味する</td>
+</tr>
+<tr>
+<td>2~4文字目</td>
+<td>所有者の権限</td>
+</tr>
+<tr>
+<td>5~7文字目</td>
+<td>所有グループの権限</td>
+</tr>
+<tr>
+<td>8~10文字目</td>
+<td>その他ユーザの権限</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ハードリンクの数</td>
+</tr>
+<tr>
+<td>後ろ2つ</td>
+<td>所有user &amp; 所有グループ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1_1">ファイルの種類(1文字目)とは</h3>
+<table>
+<thead>
+<tr>
+<th>symbol</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>普通のファイル</td>
+</tr>
+<tr>
+<td>d</td>
+<td>ディレクトリ</td>
+</tr>
+<tr>
+<td>l</td>
+<td>シンボリックリンク<br>windowsでいうショートカット<br>このファイルへの読み書きは参照先ファイルに反映</td>
+</tr>
+<tr>
+<td>c</td>
+<td>キャラクタデバイス<br>マウスやキーボード等への読み書きに使用<br>対応するデバイスとは1バイト単位でデータをやり取りする</td>
+</tr>
+<tr>
+<td>b</td>
+<td>ブロックデバイス<br>SSD等への読み書きに使用<br>対応するデバイスとはブロック単位でデータをやり取りする</td>
+</tr>
+<tr>
+<td>p</td>
+<td>名前付きパイプ<br>このファイルへ書き込まれたデータは、<br>同じOSの別プロセスから読み出せる</td>
+</tr>
+<tr>
+<td>s</td>
+<td>ソケット<br>このファイルへ書き込まれたデータは、<br>別OSのプロセスから読み書き可能</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rwx">rwx?</h3>
+<pre class="highlight"><code class="language-text">r: 読み取り権限
+w: 書き込み権限
+x: 実行権限</code></pre>
+<h3 id="_15">ハードリンクとシンボリックリンク</h3>
+<pre class="highlight"><code class="language-text">iノード
+  ・fileやdirectoryに関するメタデータを管理する領域
+    permissionやgroup属性, size, 更新日時を管理する領域
+  ・領域のsizeはパーティションのサイズによって変動する
+
+iノード番号
+  ・ls -iで確認可能
+
+ハードリンク
+  ・リンク元と同じiノード番号を共有するファイル
+  ・ファイルの実体を参照している
+  ・（ファイルの実体をファイル名で操作できるのは
+    ハードリンクのおかげ）
+  ・リンク先のファイルが移動しても、
+    ハードリンク先に影響はない
+  ・同じファイルシステム内でのみ作成可能
+  ・lnで作成可能
+
+  ※touch,vim等で初めてファイルを作成するとき、
+    1つ目のハードリンクが自動的に作成される
+
+シンボリックリンク
+  ・実際のデータを含まない
+  ・リンク先の絶対パスや相対パスを保持する
+  ・リンク先のファイルが移動/削除されると、
+    リンクは無効になる
+  ・ファイルシステムをまたいだリンク作成が可能
+  ・ln -sで作成可能</code></pre>
+<h3 id="_16">ハードリンクとシンボリックリンクの例</h3>
+<pre class="highlight"><code class="language-bash">$ echo "This is test." &gt; test
+
+# ハードリンク
+$ ln test test.hard
+
+# シンボリックリンク
+$ ln -s test test.sym
+
+# 情報確認
+$ ls -gG
+-rw-r--r-- 2 14  4月 28 12:50 test.hard
+-rw-r--r-- 1 13  4月 28 10:57 test.sh
+lrwxrwxrwx 1  4  4月 28 12:50 test.sym -&gt; test
+
+# iノードの確認
+$ ls -i test*
+4757 test  
+4757 test.hard  
+1579 test.sh  
+3701 test.sym 
+
+# 元ファイルを削除する
+# ファイルの実体を1つ以上のハードリンクが参照しているため
+# iノードは削除されずに残っており、引き続きアクセス可能
+$ rm test
+$ cat test.hard
+This is test.
+
+# シンボリックリンクは、ファイルへの参照先を格納している
+# ため、参照元がなくなった以上、アクセス不可
+$ cat test.sym
+cat: test.sym: そのようなファイルやディレクトリはありません</code></pre>
+<h3 id="i">ファイル削除とiノード</h3>
+<pre class="highlight"><code class="language-text">・Linuxにおけるファイル削除は、iノードを参照している
+  リンクが1つ少なくなることを意味する
+
+・ファイル削除≠iノードのデータ領域削除ではない
+
+・リンクのカウントが0になったとき、iノード領域と
+  ファイルの実体は初めて削除の対象となる</code></pre>
+<h3 id="chmod">権限設定(chmod)</h3>
+<pre class="highlight"><code class="language-text">u user
+g group
+o other
+a all
+
+= 指定した権限にする
++ 指定した権限を付与する
+- 指定した権限を除去する
+
+r 読み取り
+w 書き込み
+x 実行
+
+2進数で制御可能
+765 -&gt; rwxrw-r-x
+432 -&gt; r---wx-w-
+100 -&gt; --x------</code></pre>
+<pre class="highlight"><code class="language-bash">$ ls -l test.sh
+-rw-r--r-- 1 user user 13  4月 28 10:57 test.sh  
+
+$ chmod 774 test.sh
+
+# これで所有者,所有グループである場合test.shを実行可能
+$ ./test.sh
+success
+
+$ ls -l test.sh
+-rwxr--r-- 1 user user 13  4月 28 10:57 test.sh
+
+#実行権限を剥奪
+$ chmod ug-x test.sh
+
+$ ls -l test.sh
+-rw-r--r-- 1 user user 13  4月 28 10:57 test.sh
+
+# イコールでの指定方法(指定されなかった権限は消える)
+$ chmod o=wx test.sh
+
+$ ls -l test.sh
+-rw-r---wx 1 user user 13  4月 28 10:57 test.sh  </code></pre>
+</details>
+<h2 id="q6">Q6 ユーザ/グループを操作するコマンドについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_17">一覧</h3>
+<table>
+<thead>
+<tr>
+<th>コマンド等</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>whoami</td>
+<td>ログイン中のユーザを表示</td>
+</tr>
+<tr>
+<td>id</td>
+<td>ユーザID, グループID等の表示</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>ファイルの所有者変更</td>
+</tr>
+<tr>
+<td>sudo</td>
+<td>一時的に他user,他グループの権限付与</td>
+</tr>
+<tr>
+<td>su</td>
+<td>別ユーザとしてログイン</td>
+</tr>
+<tr>
+<td>adduser</td>
+<td>新規ユーザを対話的に作成</td>
+</tr>
+<tr>
+<td>useradd</td>
+<td>ユーザを非対話的に作成</td>
+</tr>
+<tr>
+<td>/etc/passwd</td>
+<td>ユーザ一覧の確認</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>パスワードの変更</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>ログアウト</td>
+</tr>
+<tr>
+<td>groupadd</td>
+<td>新規グループを作成</td>
+</tr>
+<tr>
+<td>/etc/group</td>
+<td>グループ一覧の確認</td>
+</tr>
+<tr>
+<td>gpasswd</td>
+<td>グループメンバを整理(groupのpassも)</td>
+</tr>
+<tr>
+<td>userdel</td>
+<td>ユーザの削除</td>
+</tr>
+<tr>
+<td>groupdel</td>
+<td>グループの削除</td>
+</tr>
+<tr>
+<td>groups</td>
+<td>ユーザが所属しているグループ表示</td>
+</tr>
+</tbody>
+</table>
+<h3 id="who">who(ログインしているユーザを表示)</h3>
+<pre class="highlight"><code class="language-bash">$ who
+user pts/1        2024-04-25 10:44
+user pts/2       2024-04-25 10:44</code></pre>
+<h3 id="whoami">whoami(現在のセッションのユーザ名を表示)</h3>
+<pre class="highlight"><code class="language-bash">$ whoami
+user</code></pre>
+<pre class="highlight"><code class="language-bash">$ who
+
+### chown(ファイルの所有者を変更)
+
+```bash
+# chown &lt;user&gt;:&lt;group&gt; &lt;file_name&gt;
+$ sudo chown root:root test.sh
+$ ls -l test.sh
+-rw-r---wx 1 root root 13  4月 28 10:57 test.sh</code></pre>
+<h3 id="sudo">sudo</h3>
+<pre class="highlight"><code class="language-text">・コマンド実行の単位で
+  現在のユーザに他のユーザ、他のグループの権限を与える
+
+・一般ユーザにroot権限を一時的に付与するという目的で
+  使われることが多い</code></pre>
+<pre class="highlight"><code class="language-bash"># -uや-gがない場合、rootユーザとして実行する
+$ sudo cat /etc/shadow
+
+# 実行するuser名を指定
+$ sudo -u root cat /etc/shadow
+
+# 実行するgroup名を指定
+$ sudo -g nezumi cat /etc/shadow
+cat: /etc/shadow: 許可がありません</code></pre>
+<h3 id="sudo_1">sudoのパスワードは何を入力するの?</h3>
+<pre class="highlight"><code class="language-texst">・実行しているユーザのパスワード
+・root/他ユーザのパスワードではない
+
+⇒一定期間内であれば2回目以降のパスワード入力は省略可能
+⇒ sudo -kとすると、認証情報を破棄できる</code></pre>
+<h3 id="sudoroot">sudoを使えば誰でもroot権限で実行できるってこと?</h3>
+<pre class="highlight"><code class="language-text">・current_userが、sudoコマンドを使ったとき、
+  どの権限で何を実行できるのか
+
+・これは、/etc/sudoersというファイルに書かれている
+
+・/etc/sudoersはたとえrootでも、Editor越しに編集できず
+  編集する際はvisudoを用いる必要がある
+
+・sudoコマンドを使った履歴は、CentOSなら/var/log/secure
+  Debian系なら、/var/log/auth.logに残される
+⇒記録される！</code></pre>
+<pre class="highlight"><code class="language-bash">$ sudo less /etc/sudoers
+
+# user/group ホスト名=(User名:Group名)　できること
+
+# %を付けると、グループに関する指示となる
+# 下記の場合、root, sudoグループに属しているuser
+# は、任意のユーザ名/グループ名で任意のコマンドを実行可能
+
+# adminグループに属している場合、他のユーザとしてコマンド
+# 実行はできるが、他のグループとしては実行できない
+
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges        
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo   ALL=(ALL:ALL) ALL</code></pre>
+<h3 id="adduseruseradd">adduser/useradd(新規ユーザを作成する)</h3>
+<pre class="highlight"><code class="language-bash">#こっちなら作成される(対話的にuserを作成する)
+$ sudo adduser nezumi
+
+#homeが作成されない
+$ sudo useradd nezumi
+</code></pre>
+<h3 id="iduserid">id(userid等の表示)</h3>
+<pre class="highlight"><code class="language-bash">$ id nezumi
+uid=1001(nezumi) gid=1002(nezumi) groups=1002(nezumi)</code></pre>
+<h3 id="etcpasswd">/etc/passwd (ユーザの一覧を確認する)</h3>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>user名</td>
+</tr>
+<tr>
+<td>2</td>
+<td>passwd(security上の理由でX)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>UserID</td>
+</tr>
+<tr>
+<td>4</td>
+<td>GroupID</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Comment</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Homeディレクトリ</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ログインシェル</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-bash">$ cat /etc/passwd | grep nezumi
+nezumi:x:1001:1002:,,,:/home/nezumi:/bin/bash</code></pre>
+<h3 id="passwd">passwd(パスワードの変更)</h3>
+<pre class="highlight"><code class="language-bash"># sudo passwd &lt;user_name&gt;
+$ sudo passwd nezumi</code></pre>
+<h3 id="su">su(別のユーザとしてログイン)</h3>
+<pre class="highlight"><code class="language-bash">#ディレクトリは変わらない
+$ su nezumi
+
+#別ユーザのHomeディレクトリに移動、環境変数も変更
+$ su - nezumi
+</code></pre>
+<h3 id="exit">exit(ログアウト)</h3>
+<pre class="highlight"><code class="language-bash"># suコマンドを実行する前のユーザに戻る
+$ exit</code></pre>
+<h3 id="groupadd">groupadd(新規グループを追加)</h3>
+<pre class="highlight"><code class="language-bash">sudo groupadd animal</code></pre>
+<h3 id="etcgroup">/etc/group(グループの一覧を表示)</h3>
+<pre class="highlight"><code class="language-bash">$ cat /etc/group | grep animal
+animal:x:1003:</code></pre>
+<h3 id="gpasswd-passwd">gpasswd (グループのメンバを整理+passwd)</h3>
+<pre class="highlight"><code class="language-bash"># gpasswd  &lt;user_name&gt; &lt;group_name&gt;
+# -a : 追加
+# -d : 削除
+
+$ sudo gpasswd -a nezumi animal
+ユーザ nezumi をグループ animal に追加
+
+$ cat /etc/group | grep animal
+animal:x:1003:nezumi
+
+$ sudo gpasswd -d nezumi animal
+ユーザ nezumi をグループ animal から削除
+
+$ cat /etc/group | grep animal
+animal:x:1003:
+
+# グループにパスワード設定
+$ gpasswd animal
+
+# グループからパスワード削除
+$ gpasswd -r animal</code></pre>
+<h3 id="groupdel">groupdel(グループの削除)</h3>
+<pre class="highlight"><code class="language-bash">$ sudo groupdel animal
+$ cat /etc/group | grep animal
+# ヒットなし</code></pre>
+<h3 id="userdeluser">userdel(userの削除)</h3>
+<pre class="highlight"><code class="language-bash">$ sudo userdel nezumi
+$ cat /etc/passwd | grep nezumi
+# ヒットなし</code></pre>
+<h3 id="groups">groups(所属しているグループ一覧を見る)</h3>
+<pre class="highlight"><code class="language-bash">$ groups 
+nezumi</code></pre>
+<h3 id="wsl2">補足(wsl2からのログイン)</h3>
+<pre class="highlight"><code class="language-text">・windows terminal等から、wslを介してubuntuを起動した
+　場合、defaultのユーザはsudoグループに所属している
+
+・そのため、sudo su -を用いる事で、
+  rootのpasswd等を再設定可能</code></pre>
+<h3 id="visudosudoers">visudoでsudoersファイルを編集する</h3>
+<pre class="highlight"><code class="language-bash"># User:nezumiがaddUserコマンドを使えるように編集する
+# コマンドの場所はwhich等で入手可能
+
+$ sudo visudo
+
+# nezumi ALL=(ALL) /usr/sbin/adduser
+
+$ sudo adduser neko
+# 正常に処理可能
+
+$ sudo userdel neko
+# 残念ですが、ユーザー nezumi は
+# '/usr/sbin/userdel neko' を root として 
+# ******* 上で実行することは許可されていません。
+
+# visudoが実行できる元のuserに戻る
+$ sudo visudo
+# 以前の設定を取り消しておく</code></pre>
+</details>
+<h2 id="q65">Q6.5 チュートリアルで使ったコマンドリスト(未分類)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="wc">wc</h3>
+</details>
+<h2 id="tips1">Tips1 ログイン時に奇妙な表示が出る場合</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="-bash-usrsharemodulesinitsh">-bash: /usr/share/modules/init/sh:</h3>
+<pre class="highlight"><code class="language-text">・ubuntu16で必要だったファイルが残っている可能性がある
+
+・/etc/profile.d/modules.shが残っている場合
+⇒ rmする</code></pre>
+<h3 id="grep-binary-file-matches">grep: (標準入力): binary file matches</h3>
+<pre class="highlight"><code class="language-text">・.bashrcの中の、
+export DISPLAY=$(route.exe print | grep 0.0.0.0 | head -1 | awk '{print $4}'):0.0
+
+⇒これをコメントアウトする
+  ・DISPLAY環境変数は X Window SystemがXサーバと
+  　通信する為に利用される
+  ・GUIを実行していないならひとまず要らない</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
+      
+        <script src="../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

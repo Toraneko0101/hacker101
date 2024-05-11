@@ -1,0 +1,7584 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="01_command.html">
+      
+      
+        <link rel="next" href="../math_tutorial/00_intro.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(2:ツール) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/prism.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(2:ツール)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="02_tool.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q7-apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7 パッケージ管理ツール(apt等)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q7 パッケージ管理ツール(apt等)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linuxディストリビューション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ管理システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ(Package)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    <span class="md-ellipsis">
+      ライブラリ(Library)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      モジュール(Module)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      リポジトリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ管理システム一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpkg-vs-apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      dpkg vs apt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      aptリポジトリの場所
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-restricted-universe-multiverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(main, restricted, universe, multiverse)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deb-vs-deb-src" class="md-nav__link">
+    <span class="md-ellipsis">
+      deb vs deb-src
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aptinstall" class="md-nav__link">
+    <span class="md-ellipsis">
+      aptを用いたinstall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      よく使用するaptのサブコマンド一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      サブコマンドの補足説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apt_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      aptリポジトリを追加する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8 プロセスとジョブについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q8 プロセスとジョブについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロセス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      ps(実行中のプロセスを表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      STATの意味合い(プロセスの状態)について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      スレッドとプロセス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ジョブ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgfgstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      bg/fgコマンドとSTAT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      最初からバックグラウンドで実行したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      バックグラウンドで実行するジョブとは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIGNAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#killctrl-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      KILLとCTRL + C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pstree" class="md-nav__link">
+    <span class="md-ellipsis">
+      pstree(プロセスの親子関係を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      top(実行中プロセスの情報を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロセスの処理順について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロセス名でkillする
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q9-nohupscreentmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9. ログアウト後もプロセスを継続したい場合(nohup,screen,tmux)が使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q9. ログアウト後もプロセスを継続したい場合(nohup,screen,tmux)が使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nohup" class="md-nav__link">
+    <span class="md-ellipsis">
+      nohup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      よく使うscreen関連のコマンド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      tmux概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      よく使われるtmuxのキー操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      session関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window" class="md-nav__link">
+    <span class="md-ellipsis">
+      window関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pane" class="md-nav__link">
+    <span class="md-ellipsis">
+      pane関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      copy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q10-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10 cron(ジョブ管理ツール)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q10 cron(ジョブ管理ツール)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      cron概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+      crontab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      cronの記述方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowdeny" class="md-nav__link">
+    <span class="md-ellipsis">
+      allowとdeny
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      crontab -eは危険?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      cronとログ出力
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anacron" class="md-nav__link">
+    <span class="md-ellipsis">
+      anacron
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(run-parts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      (補足)cron関連の他ファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anacron_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      anacron例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-atq-atrm1" class="md-nav__link">
+    <span class="md-ellipsis">
+      at, atq, atrm(1回のみの実行)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q11-wsl2virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q11 wsl2ではできないことがあることを知っていますか?(VirtualBoxの初期設定についても話す)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q11 wsl2ではできないことがあることを知っていますか?(VirtualBoxの初期設定についても話す)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsl2whouserslastlastlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      wsl2の場合(who,users,last,lastlog)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      VirtualBoxの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualboxinstall" class="md-nav__link">
+    <span class="md-ellipsis">
+      (補足)VirtualBOXのinstall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtualboxの注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q12-journald" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q12 journald(ログ管理ツール)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q12 journald(ログ管理ツール)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      logger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      サービスとデーモン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      syslog(昔のログ管理システム)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsyslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsyslog(一応現役のログ管理ツール)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsyslog_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsyslogの設定ファイルについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facilitydefault" class="md-nav__link">
+    <span class="md-ellipsis">
+      facility(defaultの設定)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      priority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journaldsystemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      journald(systemd環境で用いられるログツール)概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journald" class="md-nav__link">
+    <span class="md-ellipsis">
+      journaldはどのログを管理しているか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ログの消滅と保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journal" class="md-nav__link">
+    <span class="md-ellipsis">
+      journalを使う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journalbackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      journalの削除(必要に応じてbackupを取ること)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13-logrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13 logrotate(ログ世代管理ツール)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q13 logrotate(ログ世代管理ツール)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cronlogrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      cronとlogrotate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotateconflogrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotate.confと主要なlogrotateの記法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotated" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotate.dの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journald-vs-logrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      journald vs logrotate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotateを試してみる
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14-linuxdirectory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14 Linuxの標準的なDirectory構成について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q14 Linuxの標準的なDirectory構成について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#man-hier" class="md-nav__link">
+    <span class="md-ellipsis">
+      man hier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fhsfilesystem-hierarchy-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      FHS(FileSystem Hierarchy Standard)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsblk" class="md-nav__link">
+    <span class="md-ellipsis">
+      lsblk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      fdiskで現在のパーティションの状態をチェックする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      各ディレクトリについて
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15 Linuxの起動プロセスの流れについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q15 Linuxの起動プロセスの流れについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pcbiosuefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      自分のPCがBIOSかUEFIか確かめる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#biosuefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIOSとUEFI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      UEFIの起動方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bios" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIOSの起動プロセス(相違点だけ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q16-gpt-esp-vmlinuz-initramfsq15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsについて理解できましたか?(Q15補足)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsについて理解できましたか?(Q15補足)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guid-partition-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUID Partition Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efi-system-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      EFI system partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efibootmgr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブートエントリとefibootmgr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブートローダ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      セキュアブート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmlinuz" class="md-nav__link">
+    <span class="md-ellipsis">
+      vmlinuz
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      シンボリックリンクとバージョン管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernelkernel-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(kernelとkernel-modules)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initramfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      initramfs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q17-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q17 systemdについて知っていますか?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../web_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q7-apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7 パッケージ管理ツール(apt等)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q7 パッケージ管理ツール(apt等)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linuxディストリビューション
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ管理システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#package" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ(Package)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    <span class="md-ellipsis">
+      ライブラリ(Library)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    <span class="md-ellipsis">
+      モジュール(Module)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      リポジトリ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      パッケージ管理システム一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpkg-vs-apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      dpkg vs apt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apt" class="md-nav__link">
+    <span class="md-ellipsis">
+      aptリポジトリの場所
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-restricted-universe-multiverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(main, restricted, universe, multiverse)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deb-vs-deb-src" class="md-nav__link">
+    <span class="md-ellipsis">
+      deb vs deb-src
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aptinstall" class="md-nav__link">
+    <span class="md-ellipsis">
+      aptを用いたinstall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apt_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      よく使用するaptのサブコマンド一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      サブコマンドの補足説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apt_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      aptリポジトリを追加する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8 プロセスとジョブについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q8 プロセスとジョブについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロセス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ps" class="md-nav__link">
+    <span class="md-ellipsis">
+      ps(実行中のプロセスを表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stat" class="md-nav__link">
+    <span class="md-ellipsis">
+      STATの意味合い(プロセスの状態)について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      スレッドとプロセス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      ジョブ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bgfgstat" class="md-nav__link">
+    <span class="md-ellipsis">
+      bg/fgコマンドとSTAT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      最初からバックグラウンドで実行したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      バックグラウンドで実行するジョブとは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      SIGNAL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#killctrl-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      KILLとCTRL + C
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pstree" class="md-nav__link">
+    <span class="md-ellipsis">
+      pstree(プロセスの親子関係を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#top" class="md-nav__link">
+    <span class="md-ellipsis">
+      top(実行中プロセスの情報を表示)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロセスの処理順について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kill" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロセス名でkillする
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q9-nohupscreentmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9. ログアウト後もプロセスを継続したい場合(nohup,screen,tmux)が使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q9. ログアウト後もプロセスを継続したい場合(nohup,screen,tmux)が使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nohup" class="md-nav__link">
+    <span class="md-ellipsis">
+      nohup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      screen
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#screen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      よく使うscreen関連のコマンド
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      tmux概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tmux_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      よく使われるtmuxのキー操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session" class="md-nav__link">
+    <span class="md-ellipsis">
+      session関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window" class="md-nav__link">
+    <span class="md-ellipsis">
+      window関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pane" class="md-nav__link">
+    <span class="md-ellipsis">
+      pane関連
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy" class="md-nav__link">
+    <span class="md-ellipsis">
+      copy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      その他
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q10-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10 cron(ジョブ管理ツール)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q10 cron(ジョブ管理ツール)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      cron概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+      crontab
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      cronの記述方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#allowdeny" class="md-nav__link">
+    <span class="md-ellipsis">
+      allowとdeny
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crontab-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      crontab -eは危険?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      cronとログ出力
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anacron" class="md-nav__link">
+    <span class="md-ellipsis">
+      anacron
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-parts" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(run-parts)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      (補足)cron関連の他ファイル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anacron_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      anacron例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#at-atq-atrm1" class="md-nav__link">
+    <span class="md-ellipsis">
+      at, atq, atrm(1回のみの実行)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q11-wsl2virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q11 wsl2ではできないことがあることを知っていますか?(VirtualBoxの初期設定についても話す)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q11 wsl2ではできないことがあることを知っていますか?(VirtualBoxの初期設定についても話す)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsl2whouserslastlastlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      wsl2の場合(who,users,last,lastlog)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      VirtualBoxの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualboxinstall" class="md-nav__link">
+    <span class="md-ellipsis">
+      (補足)VirtualBOXのinstall
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtualbox_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtualboxの注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q12-journald" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q12 journald(ログ管理ツール)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q12 journald(ログ管理ツール)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logger" class="md-nav__link">
+    <span class="md-ellipsis">
+      logger
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      サービスとデーモン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#syslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      syslog(昔のログ管理システム)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsyslog" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsyslog(一応現役のログ管理ツール)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rsyslog_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      rsyslogの設定ファイルについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#facilitydefault" class="md-nav__link">
+    <span class="md-ellipsis">
+      facility(defaultの設定)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      priority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journaldsystemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      journald(systemd環境で用いられるログツール)概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journald" class="md-nav__link">
+    <span class="md-ellipsis">
+      journaldはどのログを管理しているか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      ログの消滅と保存
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journal" class="md-nav__link">
+    <span class="md-ellipsis">
+      journalを使う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journalbackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      journalの削除(必要に応じてbackupを取ること)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13-logrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13 logrotate(ログ世代管理ツール)について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q13 logrotate(ログ世代管理ツール)について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cronlogrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      cronとlogrotate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotateconflogrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotate.confと主要なlogrotateの記法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotated" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotate.dの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journald-vs-logrotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      journald vs logrotate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logrotate_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      logrotateを試してみる
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14-linuxdirectory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14 Linuxの標準的なDirectory構成について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q14 Linuxの標準的なDirectory構成について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#man-hier" class="md-nav__link">
+    <span class="md-ellipsis">
+      man hier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fhsfilesystem-hierarchy-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      FHS(FileSystem Hierarchy Standard)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      Partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lsblk" class="md-nav__link">
+    <span class="md-ellipsis">
+      lsblk
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      fdiskで現在のパーティションの状態をチェックする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      各ディレクトリについて
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15 Linuxの起動プロセスの流れについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q15 Linuxの起動プロセスの流れについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pcbiosuefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      自分のPCがBIOSかUEFIか確かめる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#biosuefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIOSとUEFI
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uefi" class="md-nav__link">
+    <span class="md-ellipsis">
+      UEFIの起動方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bios" class="md-nav__link">
+    <span class="md-ellipsis">
+      BIOSの起動プロセス(相違点だけ)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q16-gpt-esp-vmlinuz-initramfsq15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsについて理解できましたか?(Q15補足)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsについて理解できましたか?(Q15補足)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guid-partition-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      GUID Partition Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efi-system-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      EFI system partition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efibootmgr" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブートエントリとefibootmgr
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブートローダ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      セキュアブート
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmlinuz" class="md-nav__link">
+    <span class="md-ellipsis">
+      vmlinuz
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      シンボリックリンクとバージョン管理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kernelkernel-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(kernelとkernel-modules)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initramfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      initramfs
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q17-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q17 systemdについて知っていますか?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="2">クイズ(2:ツール)</h1>
+<h2 id="q7-apt">Q7 パッケージ管理ツール(apt等)について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="linux">Linuxディストリビューション</h3>
+<pre class="highlight"><code class="language-text">・Linux(カーネル)と、その他のソフトウェア群を
+  1つにまとめて、簡単にinstallできるようにしたもの
+
+・その他のソフトウェア群には、たとえばvim等のエディタや
+  python等のスクリプト言語。GUI関連などが含まれる
+
+・distributionの名の通り、様々な配布形態が存在する
+
+・幾つかの系統に分かれており、
+  RedHat系や、Debian系、Arch系などが有名
+
+・たとえばyumは、red hat系のパッケージ管理システム
+・たとえばaptは、debian系のパッケージ管理システムである</code></pre>
+<h3 id="_1">パッケージ管理システム</h3>
+<pre class="highlight"><code class="language-text">・パッケージのinstall/uninstall/update
+　を行うためのツール
+
+・ディストリビューションの系統が異なると、
+  パッケージ管理システムも異なることが多い
+
+・パッケージについてはリポジトリから探してくる
+
+・パッケージ同士の依存関係も解決してくれる</code></pre>
+<h3 id="package">パッケージ(Package)</h3>
+<pre class="highlight"><code class="language-text">・ソフトウェアに関するファイル一式をまとめたもの
+
+・実行ファイルや設定ファイル、ドキュメント
+  プログラムを動かすためのライブラリやソースが含まれる
+
+・パッケージはバイナリ形式(既にコンパイル済み)の場合や、
+  ソース形式(install後にコンパイルする)であるケースがある</code></pre>
+<h3 id="library">ライブラリ(Library)</h3>
+<pre class="highlight"><code class="language-text">・再利用可能なコードの集まり
+・コードは特定の機能を提供するために開発されている
+・一般的に、モジュールより粒度が大きい</code></pre>
+<h3 id="module">モジュール(Module)</h3>
+<pre class="highlight"><code class="language-text">・複数の関数、クラス、定数等を１つのファイルにまとめた物</code></pre>
+<h3 id="_2">リポジトリ</h3>
+<pre class="highlight"><code class="language-text">・パッケージの保管場所(配布サイト)
+⇒aptリポジトリの項も参照</code></pre>
+<h3 id="_3">パッケージ管理システム一覧</h3>
+<table>
+<thead>
+<tr>
+<th>パッケージ管理システム</th>
+<th>ディストリビューション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rpm</td>
+<td>rhel</td>
+</tr>
+<tr>
+<td>yum</td>
+<td>rhel</td>
+</tr>
+<tr>
+<td>dpkg</td>
+<td>ubuntu/debian</td>
+</tr>
+<tr>
+<td>apt</td>
+<td>ubuntu/debian</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dpkg-vs-apt">dpkg vs apt</h3>
+<pre class="highlight"><code class="language-text">dpkg
+  ・依存関係が存在するとき、install/uninstallを中断
+  ・ローカルにあるパッケージしかinstallできない
+    (事前にDLしておく必要がある)
+
+apt
+  ・自動で依存関係を解決する
+  ⇒依存関係のあるpackageをrepositoryから自動install
+  ⇒依存関係のあるpackageを自動uninstall
+
+  ・dpkgを使って、packageをinstallした場合、
+    依存関係が壊れている場合がある
+    sudo apt install -fで修復可能
+
+  ・リモートリポジトリにあるパッケージもinstall可能
+
+  ・apt-getとapt-cacheを包括するコマンドである
+
+  ・内部的にはdpkgを使用して、installしている
+
+apt-get
+  ・パッケージのintall/uninstallを行う
+
+apt-cache
+  ・パッケージの情報を参照、検索するコマンド
+
+使い分け
+  ・基本的にCLIではaptを用いる
+
+  ・bashやDockerfile等のスクリプトを介して使用する
+    場合は、apt-getやapt-cacheを用いる</code></pre>
+<h3 id="apt">aptリポジトリの場所</h3>
+<pre class="highlight"><code class="language-text">・package管理システムではデフォルトで幾つかのリポジトリ
+  が設定されている
+
+・目的のパッケージが標準のリポジトリにない場合
+  サードパーティのリポジトリを追加する
+
+・aptコマンドが利用するリポジトリの情報は、以下の通り</code></pre>
+<pre class="highlight"><code class="language-bash"># /etc/apt/sources.listには標準のaptリポジトリが記載
+
+# deb         : debパッケージを取得する
+# http://...  : 取得先のURL
+# jammy       : バージョン名
+# main        : 後述
+$ cat /etc/apt/sources.list | grep ^[^#] | less -SFX
+deb http://archive.ubuntu.com/ubuntu/ jammy main restricted  
+deb http://archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+deb http://archive.ubuntu.com/ubuntu/ jammy universe
+deb http://archive.ubuntu.com/ubuntu/ jammy-updates universe 
+deb http://archive.ubuntu.com/ubuntu/ jammy multiverse       
+deb http://archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+deb http://archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted
+deb http://security.ubuntu.com/ubuntu/ jammy-security universe
+deb http://security.ubuntu.com/ubuntu/ jammy-security multiverse
+
+# /etc/apt/sources.list.d ディレクトリ配下には
+# サードパーティのリポジトリ情報が記載
+# mariadbやgroongaをinstallした時の情報が残っている
+
+$ ls /etc/apt/sources.list.d 
+archive_uri-http_sfo1_mirrors_digitalocean_com_mariadb_repo_10_6_ubuntu-jammy.list
+groonga-ubuntu-ppa-jammy.list
+ubuntu-toolchain-r-ubuntu-test-jammy.list</code></pre>
+<h3 id="main-restricted-universe-multiverse">補足(main, restricted, universe, multiverse)</h3>
+<pre class="highlight"><code class="language-text">※Ubuntu特有
+
+main
+  ・再配布フリー
+  ・Ubuntuチームが完全にサポートしているリポジトリ
+
+Resticted
+  ・制限付きのライセンス
+  ・公式にサポートされる
+
+Universe
+  ・すべてフリー、OSS
+  ・公式にはサポートされない
+
+Multiverse
+  ・フリーでないソフトウェアが含まれる</code></pre>
+<h3 id="deb-vs-deb-src">deb vs deb-src</h3>
+<pre class="highlight"><code class="language-text">deb : バイナリパッケージ
+deb-src: ソースパッケージ
+
+※通常は、バイナリパッケージだけで十分
+※ソースパッケージを有効化するとDLするメタデータの情報
+  等が増加する。defaultでコメントアウトされているので安心</code></pre>
+<h3 id="aptinstall">aptを用いたinstall</h3>
+<pre class="highlight"><code class="language-bash">sudo apt update
+sudo apt install &lt;package_name&gt;</code></pre>
+<pre class="highlight"><code class="language-text">sudo apt update
+  1 /etc/apt/sources.listを参考に
+    それぞれのaptリポジトリが保有している
+    パッケージのリストを取得する
+
+  2 保有しているパッケージは/var/lib/apt/lists
+    に格納される
+
+  ※リポジトリが保有するパッケージのリスト
+    (=パッケージインデックス)は日々更新されているので
+    install前にはこのコマンドを実行する
+
+  ※パッケージリストに載っていないパッケージは
+    downloadできない
+
+sudo apt install &lt;package_name&gt;
+  1 aptリポジトリから、packageをdownload/installする
+
+  2 install時のpackageは、/var/cache/apt/archivesに
+    cacheされる
+
+  3 cacheはsudo apt cleanで消すことが可能</code></pre>
+<h3 id="apt_1">よく使用するaptのサブコマンド一覧</h3>
+<pre class="highlight"><code class="language-text">サブコマンド
+  ・git,awsのように、第1引数にさらにコマンドのような
+ 　 文字列が続くものを指す
+
+  例) aws codecommit,  git commit
+
+Unix哲学
+  ・各プログラムが1つのことをうまくやる
+
+  ⇒サブコマンドはこれに反しているように感じるが、
+    そもそもコマンドは1つ以上のことを行う
+
+  ⇒gitはバージョン管理という1つのことをこなしている
+    だから問題はない</code></pre>
+<table>
+<thead>
+<tr>
+<th>サブコマンドを含む</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apt update</td>
+<td>パッケージインデックスの更新</td>
+</tr>
+<tr>
+<td>apt upgrade</td>
+<td>パッケージの更新</td>
+</tr>
+<tr>
+<td>apt full-upgrade</td>
+<td>保留されているパッケージの更新</td>
+</tr>
+<tr>
+<td>apt autoremove</td>
+<td>不要になったパッケージの削除</td>
+</tr>
+<tr>
+<td>apt install</td>
+<td>パッケージのinstall</td>
+</tr>
+<tr>
+<td>apt remove</td>
+<td>パッケージの削除</td>
+</tr>
+<tr>
+<td>apt purge</td>
+<td>パッケージの完全削除</td>
+</tr>
+<tr>
+<td>apt show</td>
+<td>パッケージの詳細情報表示</td>
+</tr>
+<tr>
+<td>apt list</td>
+<td>パッケージ検索(完全一致)</td>
+</tr>
+<tr>
+<td>apt search</td>
+<td>パッケージ検索(部分一致)</td>
+</tr>
+<tr>
+<td>apt clean</td>
+<td>cacheディレクトリのお掃除</td>
+</tr>
+<tr>
+<td>apt autoclean</td>
+<td>未installのcache削除</td>
+</tr>
+<tr>
+<td>apt depends</td>
+<td>依存関係を表示</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">サブコマンドの補足説明</h3>
+<pre class="highlight"><code class="language-text">apt upgrade
+  ・現在システムにinstallされている全てのパッケージに対し
+    aptリポジトリ内のパッケージリストを参照し、
+    利用可能な最新versionをinstallする
+
+  ・既存のパッケージが削除されることはない
+
+apt full-upgrade
+  ・システム全体をupgradeするために、
+    必要な場合は、現在install済みのpackageを削除可能
+
+apt remove
+  ・installした実行ファイルやライブラリを削除
+  ・設定ファイルは削除しない
+  ・再びinstallした時は、前の設定が引き継がれる
+
+apt purge
+  ・installした実行ファイルやライブラリを削除
+  ・設定ファイルも削除
+
+apt list --installed
+  ・install済みのパッケージ一覧を表示している
+
+apt list --upgradable
+  ・upgrade可能なpackage一覧を表示</code></pre>
+<pre class="highlight"><code class="language-bash"># install一覧を表示した例
+$ sudo apt list --installed | grep vim
+
+vim-common/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 all [インストール済み、自動]
+vim-runtime/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 all [インストール済み、自動]
+vim-tiny/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 amd64 [インストール済み、自動]
+vim/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.16 amd64 [インストール済み、自動]
+
+
+# 依存関係を表示した例
+$ sudo apt depends vim    
+
+vim
+  依存: vim-common (= 2:8.2.3995-1ubuntu2.16)
+  依存: vim-runtime (= 2:8.2.3995-1ubuntu2.16)
+  依存: libacl1 (&gt;= 2.2.23)
+  依存: libc6 (&gt;= 2.34)
+  依存: libgpm2 (&gt;= 1.20.7)
+  依存: libpython3.10 (&gt;= 3.10.0)
+  依存: libselinux1 (&gt;= 3.1~)
+  依存: libsodium23 (&gt;= 1.0.14)
+  依存: libtinfo6 (&gt;= 6)
+  提案: &lt;ctags&gt;
+    exuberant-ctags
+    universal-ctags
+  提案: vim-doc
+  提案: vim-scripts
+
+# パッケージの説明を表示した例
+$ sudo apt show vim 2&gt; /dev/null | head -2
+
+Package: vim
+Version: 2:8.2.3995-1ubuntu2.16</code></pre>
+<h3 id="apt_2">aptリポジトリを追加する</h3>
+<pre class="highlight"><code class="language-text">・サードパーティ製のリポジトリを追加する方法</code></pre>
+<pre class="highlight"><code class="language-bash"># add-apt-repository
+$ sudo add-apt-repository ppa:jonathonf/vim
+
+# 更新
+$ sudo apt update
+$ sudo apt upgrade
+
+$ sudo apt show vim 2&gt; /dev/null | head -2
+Package: vim
+Version: 2:9.0.0749-0york0~22.04
+
+# /etc/apt/sources.list.d配下を見ると
+# 以下のものが増えている
+# jonathonf-ubuntu-vim-jammy.list</code></pre>
+</details>
+<h2 id="q8">Q8 プロセスとジョブについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_5">プロセス</h3>
+<pre class="highlight"><code class="language-text">・メモリ上で実行状態にあるプログラム
+
+・コマンドを実行する際、以下の手順を踏む
+  1 実行ファイルがメモリに格納される
+  2 メモリ上でCPUがプログラムを実行
+
+  ⇒この時、メモリ上で実行状態にあるプログラム = プロセス
+
+・プロセスは既に存在しているプロセスから作成される
+  例) lsコマンドの実行
+      shell(親プロセス) -&gt; ls(子プロセス)
+
+・プロセスはプロセスIDという、システム全体で
+  一意のIDを持つ。これはプロセス終了まで変化しない
+
+  ⇒解放されるとそのIDは、別の新しいプロセスで
+    再利用できるようになる
+
+・プロセスには、実行ユーザが設定されており、
+  他人のプロセスを操作することはできない</code></pre>
+<h3 id="ps">ps(実行中のプロセスを表示)</h3>
+<pre class="highlight"><code class="language-bash">
+# PID: プロセスID
+# TTY: 実行端末
+# TIME: 実行時間
+# CMD: コマンド
+
+$ ps
+  PID TTY          TIME CMD
+  541 pts/0    00:00:00 bash
+84873 pts/0    00:00:00 ps
+
+# ハイフンありなしで違う意味を持つので注意
+# u: ユーザ指向のformatで表示
+# -u: 指定ユーザのプロセスを全表示
+# a: tty(端末)を持つすべてのプロセス表示
+# x: tty(端末)を持たない全てのプロセス表示
+# -&gt; ax : 全てのプロセス表示
+
+# VSZ: 仮想メモリ領域のサイズ
+# RSS: 物理メモリ領域のサイズ
+# STAT: プロセスの状態
+# START: 開始時刻
+# TIME: 総実行時間
+$ ps u -u nezumi | less -SFX
+  USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+  nezumi      2565  0.0  0.0  16920  5548 ?        Ss   17:13   0:00 /lib/systemd/systemd --user
+  nezumi      2566  0.0  0.0 168936  1424 ?        S    17:13   0:00 (sd-pam)
+  nezumi      2571  0.0  0.0  12312  4112 pts/3    S    17:13   0:00 bash
+  nezumi      3338  0.0  0.0  12540  5096 pts/3    S    17:16   0:00 -bash
+  nezumi     88278  0.0  0.0   9420  1056 pts/3    S+   23:04   0:00 sleep 20</code></pre>
+<h3 id="stat">STATの意味合い(プロセスの状態)について</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>実行中/実行可能。実行キューにある</td>
+</tr>
+<tr>
+<td>S</td>
+<td>割り込み可能。通常待ち状態</td>
+</tr>
+<tr>
+<td>D</td>
+<td>割り込み不可。通常I/O待ち</td>
+</tr>
+<tr>
+<td>Z</td>
+<td>ゾンビプロセス</td>
+</tr>
+<tr>
+<td>T</td>
+<td>停止中</td>
+</tr>
+<tr>
+<td>+</td>
+<td>フォアグラウンドで実行中</td>
+</tr>
+<tr>
+<td>s</td>
+<td>セッションリーダー</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>優先度が高い</td>
+</tr>
+<tr>
+<td>N</td>
+<td>優先度が低い</td>
+</tr>
+<tr>
+<td>l</td>
+<td>マルチスレッドのプロセス</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-text">s(セッションリーダ)
+  ・制御端末とやり取りするプロセス
+  ・端末と切断される時、Session内の全プロセスが停止する
+
+※プロセスには主に4つIDが関連付けられている
+  PID(プロセスID)
+    ・プロセスを識別する
+
+  PPID(親プロセスID)
+    ・プロセスを開始したプロセスのPID
+
+  PGID(プロセスグループID)
+    ・プロセスグループリーダのPID
+    ・PID=PGIDなら、当該プロセスがリーダ
+
+  SID(セッションID)
+    ・セッションリーダのPID
+    ・PID=SIDなら、当該プロセスがリーダ
+
+何のために存在するの?
+  ・Session/プロセスグループは、関連する多数のプロセスを
+    1単位として扱えるようにしている。
+  ・Session -&gt; 複数のプロセスグループ -&gt; プロセス
+  ・通常、Shellがセッションリーダとなり、Shellによって
+    実行される全てのパイプラインがプロセスグループになる
+
+  ・セッションリーダであるShellが終了されると、
+    その子であるプロセスグループを簡単にKillできる！</code></pre>
+<h3 id="_6">スレッドとプロセス</h3>
+<pre class="highlight"><code class="language-text">マルチプロセス
+  ・1つのPCで複数のプロセスを並行して進める
+
+マルチスレッド
+  ・プロセスを複数に分割し、プロセス内で
+  　並行処理をできるようにしたもの
+
+  ・CPUコアが複数ある場合、それぞれのスレッドを
+    割り当てることで、CPUコアを効率的に使用可能
+
+プロセスの特徴
+  ・各プロセスはメモリ空間やファイルハンドラなどの
+    リソースを共有しない
+
+  ・プロセス間で情報を共有したい場合は、プロセス間通信
+  　を行う必要があるので、オーバーヘッドが生じる
+
+スレッドの特徴
+  ・同一プロセスから生成されたスレッドは、メモリ空間等の
+    リソースを共有する
+
+  ・グローバル変数に変更を加えると、同一プロセス内の
+    他スレッドは変更された値を参照できる
+
+  ・同一プロセス内のスレッドが、同じタイミングで
+  　同じリソースにアクセスすると競合が生じる
+
+  ・プロセスが終了されると、プロセスに含まれる
+    全てのスレッドも終了する</code></pre>
+<h3 id="_7">ジョブ</h3>
+<pre class="highlight"><code class="language-text">・シェルから見た処理単位
+・コマンドラインの1行が、1つのジョブに相当
+
+・ジョブはシェルの中で一意のIDを持つ
+  つまり、複数ターミナルを立ち上げている場合、
+  ジョブ番号は重複しているように見える</code></pre>
+<pre class="highlight"><code class="language-bash"># ジョブとプロセスの例(下記に利用価値はなくあくまで例示)
+# ※jobsはjob一覧を表示する
+
+# プロセスがコマンド単位であることが分かる
+$ ps u -u user | less -SFX
+user    3771  0.0  0.0  13720  1656 pts/0    R+   09:03   0:00 ps u -u user
+user    3772  0.0  0.0   9804  2636 pts/0    S+   09:03   0:00 less -SFX
+
+# CTRL + Z
+[1]+  停止 ps u -u user | less -SFX  
+
+# jobs(ジョブ一覧を表示)
+# 複数コマンドで1つのジョブになっていることが確認できる
+jobs
+[1]+  停止 ps u -u user | less -SFX </code></pre>
+<h3 id="bgfgstat">bg/fgコマンドとSTAT</h3>
+<pre class="highlight"><code class="language-bash"># フォアグラウンド(シェルの画面内)で実行中のジョブを
+# 一時停止し、
+# バックグラウンド(シェルの画面外)で再開してみる
+
+$ sleep 100
+
+# Ctrl + Z : ジョブを一時停止
+# ジョブは自動的にバックグラウンドに移動する
+# この時、左端に表示されているのがジョブ番号となる
+[1]+  停止                  sleep 100
+
+# STATを見ると、Tになっている。
+$ ps u
+USER     PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+user   96986  0.0  0.0   9420  1016 pts/0    T    07:26   0:00 sleep 100
+
+# bg &lt;digit&gt;で該当するジョブ番号を
+# バックグラウンドで実行する
+# バックグラウンドで実行されているためS+ではなく、S
+$ bg 1
+[1]+ sleep 100 &amp;
+
+$ ps u
+user   96986  0.0  0.0   9420  1016 pts/0    S    07:26   0:00 sleep 100
+
+# fg &lt;digit&gt;で該当するジョブ番号を
+# フォアグラウントに戻す
+$ fg 1
+sleep 100</code></pre>
+<h3 id="_8">最初からバックグラウンドで実行したい場合</h3>
+<pre class="highlight"><code class="language-bash"># アンパサンドを付けて実行
+$ sleep 100 &amp;
+[1] 73751
+
+# bgで実行されていることが確認できる
+$ ps -o pid,command
+    PID STAT COMMAND
+  19714 Ss   -bash
+  73844 S    sleep 100
+  74092 R+   ps -o pid,stat,command</code></pre>
+<h3 id="_9">バックグラウンドで実行するジョブとは?</h3>
+<pre class="highlight"><code class="language-text">バックグラウンドで実行するジョブ
+  ・時間のかかるジョブ
+  ・PCの起動中、常に実行する必要があるジョブ
+  ・複数のジョブを同時に実行したい場合
+
+フォアグラウンドで実行した場合
+  ・ジョブの実行中は、シェルが停止する
+  ⇒つまり、コマンド実行中は、他の処理を実行できない</code></pre>
+<h3 id="signal">SIGNAL</h3>
+<pre class="highlight"><code class="language-text">・割り込みによって、プロセスに特定のふるまいをするよう
+  通知することができる仕組み
+
+・たとえば、CTRL + Cを押すことで、SIGINTというシグナルが
+  fgで実行中のジョブ内のプロセスに対して送信される
+⇒通知を受け取ったプロセスは、たとえ処理の途中で合っても
+  処理を終了して、消滅する</code></pre>
+<table>
+<thead>
+<tr>
+<th>動作</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TERM</td>
+<td>プロセス終了</td>
+</tr>
+<tr>
+<td>CORE</td>
+<td>プロセス終了とコアダンプ出力</td>
+</tr>
+<tr>
+<td>STOP</td>
+<td>プロセス一時停止</td>
+</tr>
+<tr>
+<td>IGN</td>
+<td>このシグナルを無視</td>
+</tr>
+<tr>
+<td>CONT</td>
+<td>停止中の場合、プロセス再開</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>SIGNAL名</th>
+<th>動作</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIGHUP</td>
+<td>TERM</td>
+<td>端末の切断によるプロセス終了</td>
+</tr>
+<tr>
+<td>SIGINT</td>
+<td>TERM</td>
+<td>keyboardからの割り込み</td>
+</tr>
+<tr>
+<td>SIGILL</td>
+<td>CORE</td>
+<td>不正な命令</td>
+</tr>
+<tr>
+<td>SIGTSTP</td>
+<td>STOP</td>
+<td>端末から入力された一時停止</td>
+</tr>
+<tr>
+<td>SIGSTOP</td>
+<td>STOP</td>
+<td>プロセスの一時停止</td>
+</tr>
+<tr>
+<td>SIGCONT</td>
+<td>CONT</td>
+<td>一時停止からの再開</td>
+</tr>
+<tr>
+<td>SIGTERM</td>
+<td>TERM</td>
+<td>終了シグナル</td>
+</tr>
+<tr>
+<td>SIGKILL</td>
+<td>TERM</td>
+<td>KILLシグナル</td>
+</tr>
+</tbody>
+</table>
+<h3 id="killctrl-c">KILLとCTRL + C</h3>
+<pre class="highlight"><code class="language-text">KILL
+  ・KILL &lt;signal-id&gt;として使用
+  ・デフォルトの場合、SIGNAL名は、TERM(15)
+  ・SIGTERMはプログラムに対して終了指示を行う
+  ・プログラムが異常状態で、終了指示が効かない場合は、
+    KILL(9):強制終了を使う場合がある
+
+  例)
+    KILL -15 &lt;process_id&gt; 終了させる
+    KILL -9 &lt;process_id&gt;  強制終了させる
+    KILL -TERM, KILL -KILLという形で名前で指定してもよい
+
+CTRL+C
+  ・fgで実行しているジョブにSIGINTシグナルを送る
+  ⇒ジョブは終了する
+
+CTRL+Z
+  ・fgで実行しているジョブにSIGTSTPシグナルを送る
+  ⇒ジョブは一時停止する
+
+fg,bg
+  ・SIGCONTを送り、一時停止されたジョブを再開する
+  ⇒ジョブは再開される
+
+補足(KILLALL)
+  ・killと異なり、プロセス名を指定することで、
+  　複数のプロセスを一度に終了可能
+  ・プロセス名は完全一致する必要がある
+
+  $ sleep 100 &amp;
+  $ sleep 200 &amp;
+  $ ps | grep sleep
+  148637 pts/0    00:00:00 sleep
+  148650 pts/0    00:00:00 sleep
+
+  $ killall sleep
+  [1]-  Terminated              sleep 100
+  [2]+  Terminated              sleep 200
+
+補足(終了と強制終了)
+  ・SIGTERMのような終了では、終了前に使用していたリソース
+    の解放やロックしていたファイルの解放を行う
+    ⇒クリーンアップ
+
+  ・SIGKILLのような強制終了では、クリーンアップはない
+</code></pre>
+<h3 id="pstree">pstree(プロセスの親子関係を表示)</h3>
+<pre class="highlight"><code class="language-bash">#本当にプロセスが親から作成されるのか確認してみる
+
+# &lt;user_name&gt;: 指定したユーザのプロセスを表示する
+
+# ※pstreeとlessが、bashから作成されている
+$ pstree user | less -SFX
+bash---su---bash-+-less
+                 `-pstree
+bash
+
+systemd---(sd-pam)
+
+# 全体表示(-pを付けるとPIDが見れる)
+# systemd : システムの初期化プロセス
+# agetty: システムのコンソールにログインする為のプロセス
+# cron: 定期的に実行されるタスクを管理する
+# dbus-daemon: プロセス間通信を可能にするサービス
+# SessionLeader: 端末に対する制御等を行う
+# Relay(1214): プロセス間の通信を中継している
+# bash: システムと対話する用のシェル
+# su: 別ユーザに切り替えて使用しているので表示されている
+# bash: 切り替えた後のシェル
+# less: 実際に実行しているコマンド
+
+$ pstree | less -SFX
+
+systemd-+-2*[agetty]
+       |-chronyd(269)---chronyd(273)
+       |-cron(158)
+       |-dbus-daemon(160)
+       |-init-systemd(Ub(2)-+-SessionLeader(1208)---Relay(1214)(1209)---bash(1214)---su(1525)---bash(1549)-+-less(15225)
+       |                    |                                                                              `-pstree(15224)
+       |                    |-init(6)---{init}(7)
+       |                    |-login(550)---bash(616)
+       |                    `-{init-systemd(Ub}(8)
+...skipping...</code></pre>
+<h3 id="top">top(実行中プロセスの情報を表示)</h3>
+<pre class="highlight"><code class="language-text">
+CPU使用率の高いプロセスが表示され、一定間隔で更新される
+
+top: 起動してからの時間や、ログインユーザの数など
+%TASKs: プロセスの数。ほとんど、Sleep状態になっている
+%CPU: CPUの状態。今回の場合、ほぼidle状態のようだ
+MiB Mem: メモリ領域
+MiB Swap:スワップ領域
+
+1行目だけ見たい場合は、uptimeコマンドが使える
+
+$ uptime
+12:17:54 up 2 days,  9:06,  1 user,  load average: 0.20, 0.05, 0.01
+</code></pre>
+<pre class="highlight"><code class="language-bash">$ top
+top - 12:11:34 up 2 days,  9:00,  1 user,  load average: 0.02, 0.04, 0.00
+Tasks:  40 total,   1 running,  39 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.2 us,  0.2 sy,  0.0 ni, 99.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   7788.1 total,   6771.2 free,    668.6 used,    348.3 buff/cache
+MiB Swap:   2048.0 total,   2028.4 free,     19.6 used.   6889.5 avail Mem
+
+USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                              
+root      20   0  166160  13464   8348 S   1.3   0.2   1:49.05 systemd
+root      20   0   43260  37000  10244 S   0.7   0.5   0:52.07 python3
+user      20   0   13992   3912   3360 R   0.3   0.0   0:00.06 top                             
+root      20   0    2280   1260   1188 S   0.0   0.0   0:00.03 init-systemd(Ub</code></pre>
+<h3 id="_10">プロセスの処理順について</h3>
+<pre class="highlight"><code class="language-text">・psコマンドにおけるSTATがSのプロセスが複数あるとき、
+  どの順番で実行されるのか、考える
+
+・CPUは、たとえ1つのコアしかなかったとしても、
+  複数のプロセスを高速で切り替えることで疑似的な
+  並列処理を実現している
+
+・複数のコアがある場合、真の並列処理が実現できる
+
+First Come First Serve
+  ・先着順でプロセスを実行
+  ・平均待ち時間が長くなる
+
+Shortest First Serve
+  ・ジョブの処理時間が短い順に実行
+  ・平均待ち時間を最小に抑えられる
+
+Prority Based Scheduling
+  ・優先度が高い順に実行
+  ・nice(大きいほど優先度が低い)などが影響する
+
+Round Robin
+  ・CPUを割り当てる固定時間を設定する
+  ・切り替えることでプロセスを1つのコアで同時実行</code></pre>
+<h3 id="kill">プロセス名でkillする</h3>
+<pre class="highlight"><code class="language-bash">$ sleep 100 &amp;
+[1] 146187
+
+# pgrep -lならプロセス名を表示可能
+$ pgrep sleep
+146187
+# 以下の様にしてもいいけれど
+$ kill 146187
+
+# -eで終了させたプロセスIDを表示可能
+# killと同じように別シグナルを送ることもできる
+
+# ※正規表現でkillするので、意図しないプロセスのkillに注意
+# 例としてssleepというコマンドが存在するなら
+# 下記の指定でkillされる。事前にpgrepで見てからの方が安全
+$ pkill sleep
+[1]+  Terminated              sleep 100</code></pre>
+</details>
+<h2 id="q9-nohupscreentmux">Q9. ログアウト後もプロセスを継続したい場合(nohup,screen,tmux)が使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="nohup">nohup</h3>
+<pre class="highlight"><code class="language-text">nohup
+  ・SIGHUPを無視する
+
+nohup + &amp;
+  ・バックグラウンドで処理を実行
+  ・端末の切断やログアウト時にもプロセスは中断されない
+  ・PCがシャットダウンされるまで継続される
+
+・切断中の出力は、カレントのnohup.outに保管される
+・別ファイルで保存したい場合は、リダイレクトを使う
+
+使用場面
+  ・sshの接続はいつの間にか切れていることがある
+  ・そんな時、jobが途中で終了されていると悲しい
+  ・nohup等を使えば、ログアウト後もjobを継続できる</code></pre>
+<pre class="highlight"><code class="language-bash"># nohup: ログアウトしても中断されていない
+$ nohup sleep 100 &amp;
+$ exit
+# 再ログイン
+$  ps aux | grep sleep 
+user     83838  0.0  0.0   9420  1016 ?        S    14:39   0:00 sleep 100</code></pre>
+<h3 id="screen">screen</h3>
+<pre class="highlight"><code class="language-text">・1つのターミナルで複数のスクリーンを開き、
+  切り替えることが可能になる
+
+・実行画面をsessionとして残しておき、
+  再ログイン後に、再度実行画面に戻ることができる
+
+⇒ssh接続が切れても、プロセスは実行され続けるので
+  再接続してから、結果を見ることができる</code></pre>
+<h3 id="screen_1">よく使うscreen関連のコマンド</h3>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>screen -S <name></td>
+<td>新しいsessionを名前付きで作成</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + d</td>
+<td>sessionを一時的に離れる</td>
+</tr>
+<tr>
+<td>screen -r <id></td>
+<td>sessionに入る</td>
+</tr>
+<tr>
+<td>screen -ls</td>
+<td>sessionの一覧表示</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + S</td>
+<td>画面の水平分割</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + c</td>
+<td>新しいウィンドウ作成</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + tab</td>
+<td>画面移動</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + |</td>
+<td>画面の垂直分割</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + X</td>
+<td>分割したスクリーンの消去</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + x</td>
+<td>画面をロックする</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + [</td>
+<td>コピーモード(Spaceで開始/終了)</td>
+</tr>
+<tr>
+<td>(Ctrl+a) + ]</td>
+<td>ペースト</td>
+</tr>
+<tr>
+<td>echo $TERM</td>
+<td>今sessionの中にいるかチェック</td>
+</tr>
+<tr>
+<td>echo $STY</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>screen -X quit</td>
+<td>現在のsessionを削除</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-bash">$ echo $TERM
+# sessionの中にいるなら、session.*となる
+screen.xterm-256color
+
+$ echo $STY
+# sessionの中にいるなら、表示される
+91511.hogehoge
+
+# 現在のsession以外を削除したい場合
+$ screen -S &lt;session_name&gt; -X quit</code></pre>
+<h3 id="tmux">tmux概要</h3>
+<pre class="highlight"><code class="language-text">・Terminal Multiplexerの略
+
+terminal
+  -&gt; 複数のsession
+    -&gt; 複数のwindow
+      -&gt; 複数のpane
+
+session
+  ・tmuxを起動すると生成される
+  ・sessionごとに状態を維持可能
+
+window
+  ・sessionがもつ複数のwindow
+  ・screenの水平/垂直画面分割と同じ
+
+pane
+  ・windowがもつ複数の区画</code></pre>
+<h3 id="tmux_1">よく使われるtmuxのキー操作</h3>
+<pre class="highlight"><code class="language-text">・window操作の場合、
+  最初にprefix-keyである、CTRL + bを入力する事が多い</code></pre>
+<h3 id="session">session関連</h3>
+<pre class="highlight"><code class="language-bash"># session起動
+$ tmux
+
+# 名前付きsessionの起動
+$ tmux new -s &lt;session_name&gt;
+
+# sessionの終了
+$ exit
+
+# sessionの一時的な中断
+# (Ctrl + b) + d
+
+# 中断していたsessionに戻る
+$ tmux a -t &lt;session_name&gt;
+
+# session一覧を表示
+# (Ctrl + b) + s : tmux上で
+$ tmux list-sessions
+
+# 指定したsessionをsession外から終了させる
+$ tmux kill-session -t &lt;session_name&gt;
+
+#</code></pre>
+<h3 id="window">window関連</h3>
+<table>
+<thead>
+<tr>
+<th>Window関連キー</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?</td>
+<td>各キーの説明表示</td>
+</tr>
+<tr>
+<td>ctrl+z</td>
+<td>tmuxを一時中断</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>tmuxに復帰</td>
+</tr>
+<tr>
+<td>c</td>
+<td>新規window作成</td>
+</tr>
+<tr>
+<td>w</td>
+<td>window選択</td>
+</tr>
+<tr>
+<td>数字</td>
+<td>指定したwindowに移動</td>
+</tr>
+<tr>
+<td>p,n</td>
+<td>前/次のwindowに移動</td>
+</tr>
+<tr>
+<td>l</td>
+<td>以前のwindowに移動</td>
+</tr>
+<tr>
+<td>'</td>
+<td>window番号を指定して移動</td>
+</tr>
+<tr>
+<td>,</td>
+<td>window名の変更</td>
+</tr>
+<tr>
+<td>.</td>
+<td>window番号の変更</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>現在のwindow破棄</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>window削除</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pane">pane関連</h3>
+<table>
+<thead>
+<tr>
+<th>pane関連キー</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"</td>
+<td>pane垂直分割</td>
+</tr>
+<tr>
+<td>%</td>
+<td>pane水平分割</td>
+</tr>
+<tr>
+<td>o</td>
+<td>次のpaneに移動</td>
+</tr>
+<tr>
+<td><arrow></td>
+<td>pane間のfocusを移動</td>
+</tr>
+<tr>
+<td>;</td>
+<td>以前のpaneに移動</td>
+</tr>
+<tr>
+<td>x</td>
+<td>pane破棄(確認あり)</td>
+</tr>
+<tr>
+<td>exit</td>
+<td>pane破棄(確認なし)</td>
+</tr>
+<tr>
+<td>z</td>
+<td>pane最大化/復帰</td>
+</tr>
+<tr>
+<td>q</td>
+<td>pane番号の表示</td>
+</tr>
+<tr>
+<td>t</td>
+<td>時計を表示</td>
+</tr>
+<tr>
+<td>space</td>
+<td>レイアウト変更</td>
+</tr>
+<tr>
+<td>{</td>
+<td>paneの順序を前方向に入れ替え</td>
+</tr>
+<tr>
+<td>}</td>
+<td>paneの順序を後方向に入れ替え</td>
+</tr>
+<tr>
+<td>!</td>
+<td>paneのwindow化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="copy">copy</h3>
+<pre class="highlight"><code class="language-text">~/.tmux.confに
+set-window-option -g mode-keys viとして
+vimライクに操作することが一般的</code></pre>
+<table>
+<thead>
+<tr>
+<th>コピー関連キー</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[</td>
+<td>copyモードの開始</td>
+</tr>
+<tr>
+<td>space</td>
+<td>copy選択開始</td>
+</tr>
+<tr>
+<td>enter</td>
+<td>copy選択終了</td>
+</tr>
+<tr>
+<td>esc</td>
+<td>選択内容削除</td>
+</tr>
+<tr>
+<td>h,j,k,l</td>
+<td>カーソル移動</td>
+</tr>
+<tr>
+<td>]</td>
+<td>paste</td>
+</tr>
+<tr>
+<td>v</td>
+<td>矩形モード</td>
+</tr>
+<tr>
+<td>q</td>
+<td>copyモード終了</td>
+</tr>
+<tr>
+<td>Ctrl+u</td>
+<td>scrollUp</td>
+</tr>
+<tr>
+<td>Ctrl+d</td>
+<td>scrollDown</td>
+</tr>
+<tr>
+<td>Ctrl+b</td>
+<td>pageUp</td>
+</tr>
+<tr>
+<td>Ctrl+f</td>
+<td>pagedown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_11">その他</h3>
+<table>
+<thead>
+<tr>
+<th>キー</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:</td>
+<td>コマンド入力</td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="q10-cron">Q10 cron(ジョブ管理ツール)について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="cron">cron概要</h3>
+<pre class="highlight"><code class="language-text">・ジョブ管理ツール
+・ジョブを予約して、指定日時/間隔にジョブを実行させる
+・主に反復的なタスクを予約するのに使う</code></pre>
+<h3 id="crontab">crontab</h3>
+<pre class="highlight"><code class="language-text">・実行したいコマンド/スクリプトを
+  /var/spool/cron/crontabs/&lt;user_name&gt;配下に
+  登録することで定期的な実行が可能となる
+
+・最初にcrontab -eとすると、上記フォルダに、
+　ファイルが自動で作成される
+
+・crondというデーモンは、上記フォルダを参照して、
+  定期的にコマンドを実行する
+</code></pre>
+<h3 id="cron_1">cronの記述方法</h3>
+<pre class="highlight"><code class="language-bash">$ crontab -e
+
+# 編集の仕方を聞かれるので、vim.basicを選ぶといい
+# vim-tinuはvimの簡易版
+
+# たとえば以下の様に記載する(*時2分にtouch)
+# 分,時,日,月,曜日,コマンド
+# 毎分/時/...に実行したい場合は*とする
+2 * * * * touch /tmp/test.txt</code></pre>
+<h3 id="allowdeny">allowとdeny</h3>
+<pre class="highlight"><code class="language-text">・crontabはdefaultでroot/一般ユーザの両方が使える
+
+・ユーザのcrontabの使用を制限したい場合、
+  User名を、/etc/cron.allow, /etc/cron.denyに記述する
+
+・cron.allowにユーザが登録されていると、
+  ホワイトリストとして扱われる
+  ⇒登録されていないユーザは使えない</code></pre>
+<pre class="highlight"><code class="language-bash">$ cat /etc/cron.allow
+
+# 以下の様に記載
+root
+user
+
+# allowリストに載っていないユーザでcrontabを行う
+$ su nezumi
+$ crontab -e
+You (nezumi) are not allowed to use this program (crontab)   
+See crontab(1) for more information</code></pre>
+<h3 id="crontab-e">crontab -eは危険?</h3>
+<pre class="highlight"><code class="language-text">・crontab -rでcronの設定ファイルは削除される
+・rとeは隣り合わせなので誤タップが起きる
+
+⇒頻繁に編集するものではないので、
+  復元できないという悲劇がおきたり......</code></pre>
+<pre class="highlight"><code class="language-bash"># 解決法1(手動バックアップ)
+$ crontab -l &gt; crontab_backup_$(whoami)_$(date -I)
+
+# cronの設定を削除
+$ crontab -r
+
+# バックアップから復元
+$ sudo cp ./crontab_backup_user_2024-04-29 /var/spool/cron/crontabs/user
+
+# 解決法2 aliasに記載する
+# alias = コマンドの置き換え, 常に指定するoptionを選択
+
+# ~/.bashrcを開く
+# -iは削除時に常に確認する
+alias crontab='crontab -i'
+
+# 助かったってわけ
+$ crontab -r
+crontab: really delete user's crontab? (y/n) n</code></pre>
+<h3 id="cron_2">cronとログ出力</h3>
+<pre class="highlight"><code class="language-text">・Ubuntu22では、/var/log/cron.logへの
+  cron実行履歴書き出しが無効化されている
+
+・理由としては、機密保護とパフォーマンスの問題が
+  上げられる</code></pre>
+<pre class="highlight"><code class="language-bash"># 履歴を記録したい場合
+$ sudo vim /etc/rsyslog.d/50-default.conf
+
+# 以下の行をコメントアウト
+# cron.* /var/log/cron.log
+
+# 再起動させて反映
+$ sudo systemctl restart rsyslog
+
+# cronジョブが行われた後で確認
+
+$ cat /var/log/cron.log
+Apr 29 22:53:01 YOUR_TERMINAL cron[158]: (user) RELOAD (crontabs/user)
+Apr 29 22:54:01 YOUR_TERMINAL CRON[193135]: (user) CMD (touch /tmp/test.txt)
+
+# logを保存する必要がなければdefaultに戻しておく
+</code></pre>
+<h3 id="anacron">anacron</h3>
+<pre class="highlight"><code class="language-text">・定期的にジョブを実行するdaemon
+
+・日付、月、曜日、週を指定する
+  (※時間指定はできない。1日1回のみ実行される)
+  (実際にはanacronが1時間ごとに
+  /var/spool/anacron/cron.*を見て
+  最終実行日時が今日の日付と異なっていれば実行する
+  )
+
+★指定した日時にPCの電源が落ちていると、
+  起動後にジョブを実行するという特徴あり
+  ( -&gt; cronの場合は実行しない)
+
+・設定ファイルは/etc/anacrontab
+  rootユーザのみが設定可能
+
+・ランダムにジョブの実行タイミングをずらすので
+  負荷分散が可能</code></pre>
+<h3 id="run-parts">補足(run-parts)</h3>
+<pre class="highlight"><code class="language-bash"># 指定directory内の実行ファイルを一括で実行する
+$ ls -gG
+-rwxr--r-- 1 25  4月 29 23:25 test
+
+$ file test
+-test: Bourne-Again shell script, ASCII text executable
+
+# --reportは実行されたファイル名を表示
+$ run-parts --report ./
+.//test:
+success
+
+# 注意点
+# run-partsは.を含むファイルを実行できない
+# #!/bin/bashや#!/bin/shがないと以下のような
+# エラーを吐いて停止する
+run-parts: failed to exec .//test: Exec format error  </code></pre>
+<h3 id="cron_3">(補足)cron関連の他ファイル</h3>
+<pre class="highlight"><code class="language-text">/etc/crontab
+  ・システム全体に適用したいジョブを記載
+  ・すべてroot権限で実行される
+
+  ・defaultでも記載があるが、anacronがある場合は、
+    そちらの設定が優先される(日単位以上の場合は)
+  ⇒ない場合は、run-partsとcronを用いて
+    /etc/cron.*内のファイルが一定間隔で実行されるように
+    なっている。(たとえばhourlyなら1時間毎)
+
+/etc/cron.hourly, daily, weekly, monthly
+  ・directory配下のfileは1時間/日/週/月毎に実行
+
+/etc/cron.d
+  ・システム全体のcronとして任意のタイミングで実行したい
+    そんな時に、スクリプトを置く
+  ・anacronのファイルもここに置かれる</code></pre>
+<h3 id="anacron_1">anacron例</h3>
+<pre class="highlight"><code class="language-bash"># installされているか確認。
+# されていないならsudo install anacron
+$ apt list 2&gt; /dev/null | grep anacron
+anacron/jammy,now 2.3-31ubuntu2 amd64 [インストール済み] 
+
+# 1 = ジョブの実行頻度。@monthly等の指定も可能
+# 5 = jobの開始までの遅延時間
+# cron.daily: タイムスタンプを記録するファイル
+$ cat /etc/anacrontab | grep daily
+1 5 cron.daily  run-parts --report /etc/cron.daily
+
+# /etc/cron.d/anacronを見ると以下の様にある
+# defaultでは7~23時の30分 + 遅延を加えた時間に
+# /var/spool/anacron/cron.*のtimestampを見るようだ
+30 7-23 * * *   root    [ -x /etc/init.d/anacron ] ...
+</code></pre>
+<h3 id="at-atq-atrm1">at, atq, atrm(1回のみの実行)</h3>
+<pre class="highlight"><code class="language-text">・1回きりの実行ならatがよい
+
+・atは特定の日時を指定する
+・atqはatで予約している登録を表示
+・atrm &lt;job_id&gt;でatで登録された処理を削除可能</code></pre>
+<pre class="highlight"><code class="language-bash"># install等
+$ apt list | grep ^at/
+at/jammy 3.2.5-1ubuntu1 amd64
+
+$ sudo apt install at
+
+# 日時を入力すると、コマンドの入力を促される
+# Ctrl + Dで終了できる
+$ at 0:22 2024-04-30
+warning: commands will be executed using /bin/sh
+at Tue Apr 30 00:22:00 2024
+at&gt; echo "neko" &gt; hoge.txt
+at&gt; &lt;EOT&gt;
+job 1 at Tue Apr 30 00:22:00 2024
+
+# 指定時刻以降に
+$ cat hoge.txt
+neko
+
+# 時間のみの指定も可能(次に22:02になったときに実行)
+$ at 22:02
+
+# 現在時刻を基準とした指定
+$ at now +1minute
+
+# 実行予定のジョブ一覧(at -lも可)
+# userならuserが予約したジョブのみ
+# rootなら全員のジョブが表示される
+$ atq
+2       Tue Apr 30 00:24:00 2024 a toraneko
+
+# ジョブ削除
+$ atrm 2
+
+# 表示されなくなった
+$ atq</code></pre>
+</details>
+<h2 id="q11-wsl2virtualbox">Q11 wsl2ではできないことがあることを知っていますか?(VirtualBoxの初期設定についても話す)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="wsl2whouserslastlastlog">wsl2の場合(who,users,last,lastlog)</h3>
+<pre class="highlight"><code class="language-text">※以下のユーザアクセスログ関連のコマンドは、
+　(2024年現在)wsl2では機能しない
+　https://github.com/microsoft/WSL/issues/573
+
+who
+  ・ログイン中のユーザを表示する
+  ・wコマンドでもユーザの情報を表示可能
+  ・/var/run/utempを参照する
+
+users
+  ・ログイン中のユーザを一覧表示
+
+last
+  ・ユーザのログイン履歴を一覧表示
+  ・/var/log/wtmpを参照する
+
+lastlog
+  ・ユーザが最後にログインした情報を一覧表示
+  ・/var/log/lastlogを参照</code></pre>
+<pre class="highlight"><code class="language-bash"># suによるログインではなく、
+# アカウントによるログインで区分けしているのだろうか?
+
+$ su - nezumi
+# lastlog
+$ lastlog | grep nezumi   
+nezumi **一度もログインしていません**
+
+# who(PSから起動した時間になる)
+$ who
+user pts/1        2024-04-30 07:10
+
+# users
+$ users
+user
+
+# last
+$ last | grep nezumi
+# 出力無し</code></pre>
+<h3 id="virtualbox">VirtualBoxの場合</h3>
+<pre class="highlight"><code class="language-bash"># nezumiとしてログイン(GUIで)
+# suによるログインの場合、whoはうまく表示されなかった
+$ who
+nezumi seat0  2024-04-30 13:11 (login screen)
+nezumi tty  2024-04-30 13:11 (tty2)
+
+$ users
+nezumi nezumi
+
+
+$ last
+nezumi tty2  tty2         Tue Apr 30 13:11 still logged in
+nezumi seat0 login screen Tue Apr 30 13:11 still logged in
+
+$ lastlog
+# 機能しなかった(/var/log/lastlogが空)
+# 以下のような形で代用できそう
+$ last | grep $(whoami) | head -1
+</code></pre>
+<h3 id="virtualboxinstall">(補足)VirtualBOXのinstall</h3>
+<pre class="highlight"><code class="language-text">1 https://www.virtualbox.org/wiki/Download_Old_Builds
+  から使いたいversionを選ぶ
+  (最新versionでもいいけれど)
+
+2 https://www.ubuntulinux.jp/home
+  からubuntuの.isoファイルをdownload
+  (※たぶん、ミラーサーバからdownloadすることになるよ！)
+  (勿論違うdistributionでもいい)
+
+3 .exeを起動して、VirtualBoxをinstall
+
+4 .isoファイルをあてて、
+  memory容量や、core数、storage容量を決める
+  (windowsで使う分も残しておくように)
+
+5 手動インストールを選択
+  (keyboardレイアウトを変更したい場合は特に)
+
+6 起動
+
+7 Ubuntuをinstall
+  (住んでいる地域やkeyboardレイアウトを選択)
+
+8 仮想ディスクは削除しておく</code></pre>
+<h3 id="virtualbox_1">Virtualboxの注意点</h3>
+<pre class="highlight"><code class="language-text">自動installを選んだ場合
+  ・keyboard配列が異なる場合がある
+  ・たとえば_が入力できないとか
+
+HOSTキーとかいうやつ
+  ・Windowsでは右CTRL
+  ・ファイル⇒環境設定⇒入力⇒仮想マシン
+    ホストキーの組み合わせ⇒ショートカットから変更可能
+
+Terminalの起動
+  ・CTRL + ALT + T</code></pre>
+</details>
+<h2 id="q12-journald">Q12 journald(ログ管理ツール)について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="logger">logger</h3>
+<pre class="highlight"><code class="language-text">・任意のログを生成する。
+・以下で検証したいときに使える</code></pre>
+<pre class="highlight"><code class="language-bash">$ logger "neko"</code></pre>
+<h3 id="_12">サービスとデーモン</h3>
+<pre class="highlight"><code class="language-text">常駐プログラム
+  ・常にメモリ上で展開されているプログラム
+  ⇒つまり、常に動いている(もしくは動けるようにしている)
+
+サービス
+  ・Windows系の常駐プログラム
+  ・(起動が遅い時に、サービスを確認したりする)
+
+Daemon(デーモン)
+  ・Unix系OSの常駐プログラム
+  ・一般的に、PID1が親で、ttyが?であることが多い
+  ・末尾にdがついていることが多い
+  ・由来は守護神。昔神々は雑事を守護神に任せ、サボった。
+  　我々も雑事は常駐プログラムに任せ、サボることにしよう</code></pre>
+<h3 id="syslog">syslog(昔のログ管理システム)</h3>
+<pre class="highlight"><code class="language-text">syslogの歴史
+  1 もともとMailサーバ用のログアプリとして開発された
+  2 これを便利だと感じた開発者たちが他のアプリでも
+  　syslogを使ってログ情報を出力するようになったため、
+    UNIX界隈の事実上の標準となった
+
+そもそもログ(log)とは?
+  ・行動、状態、結果を記録する物
+  ・「いつ、だれが、どこで、何をした」⇒行動
+  ・「いつ、何が、どのような状態だった」⇒状態
+  ・「何かをした結果、どうなった」⇒結果
+
+  ・障害発生時や開発時、データ分析時などは
+    ログが大きな手掛かりとなる
+
+syslogの機能1(ログ書き込み)
+  1 Applicationがログ情報をファイルに保存しておきたい
+  　場合、syslogへログ情報を受け渡す
+  2 syslogは、各アプリ用のログファイルへ書き込む
+
+  ※syslogがない時用に、個々のアプリは
+    直接ファイルに出力することもできる
+
+syslogの機能(ログ収集)
+  1 複数のサーバのログ情報がある
+  2 Applicationはsyslogへログ情報を渡す
+  3 syslogはログ情報をログサーバへ転送する
+  4 ログサーバ内のsyslogが各アプリ用のlog-fileへ書き込む
+
+syslogとsyslogd
+  ・syslogは上記の機能を体系づけたプロトコル
+  ・syslogdはプロトコルをもとに実装されたデーモン
+  ・実際に常駐しているのはsyslogd</code></pre>
+<h3 id="rsyslog">rsyslog(一応現役のログ管理ツール)</h3>
+<pre class="highlight"><code class="language-text">syslogの問題点
+  ・UDP(user datagram protocol)で情報伝達を行っていた
+    ため、ログ情報の紛失が生じていた
+
+rsyslog
+  ・rocket-fast system for log processing
+  (信頼性のrだと主張している記事もあるが、公式はこっち)
+  (https://www.rsyslog.com/)
+
+  ・TCP(Transmission Control Protocol)で接続を確立する
+    ため、ログ情報の紛失が起こりにくい
+  ・(※UDPによる接続もできるけど)
+
+  ・SSL/TLSを使用したログ情報の暗号化が可能</code></pre>
+<h3 id="rsyslog_1">rsyslogの設定ファイルについて</h3>
+<pre class="highlight"><code class="language-text">・/etc/rsyslog.conf
+  ・設定ファイルについては 
+    $IncludeConfig /etc/rsyslog.d/*.conf
+    という記述が末尾に見られる
+
+  ・設定ファイルの読み込み順番は数字を参考にしている
+    たとえば20-*.confと、50-*.confなら、20が先。
+    facilityとpriorityが同じ場合上書きされる
+
+・/etc/rsyslog.d/*
+
+  記法：
+    [facility].[priority] &lt;output&gt;
+
+  意味：
+    [ログの種類].[ログのレベル] &lt;出力先&gt;
+
+  例： 
+    mail.* -/var/log/mail.log
+
+  補足：
+    ・ディレクトリの前の-は、同期をとらないことを意味する
+    ・大量のログの場合、付けるとパフォがよくなる
+    ・ただし、書き込み直後にシステムがクラッシュすると、
+      情報が失われる可能性がある
+    ・重要なメッセージの場合は、付けない。errorログも
+    ・たいていの場合、/var/log配下に出力する
+
+ *.emerg :omusrmsg:*
+  ・emergレベルのメッセージは、全ユーザの
+    コンソール画面に通知する
+
+  ・omusrmsg:root,nezumiとすれば、ログイン中のルートと
+    nezumiというユーザのコンソール画面のみに通知される
+
+  ・omusrmsg
+    (=output module for sending user messages
+    https://github.com/rsyslog/rsyslog/blob/master/tools/omusrmsg.c)
+</code></pre>
+<h3 id="facilitydefault">facility(defaultの設定)</h3>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>有効</th>
+<th>非同期</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kern</td>
+<td>〇</td>
+<td>〇</td>
+<td>カーネル関連</td>
+</tr>
+<tr>
+<td>auth</td>
+<td>〇</td>
+<td>✖</td>
+<td>認証関連</td>
+</tr>
+<tr>
+<td>authpriv</td>
+<td>〇</td>
+<td>✖</td>
+<td>認証関連(private)</td>
+</tr>
+<tr>
+<td>cron</td>
+<td>✖</td>
+<td>✖</td>
+<td>cron関連</td>
+</tr>
+<tr>
+<td>mail</td>
+<td>〇</td>
+<td>〇</td>
+<td>errorは非同期</td>
+</tr>
+<tr>
+<td>news</td>
+<td>-</td>
+<td>-</td>
+<td>news関連</td>
+</tr>
+<tr>
+<td>uucp</td>
+<td>-</td>
+<td>-</td>
+<td>uucp関連</td>
+</tr>
+<tr>
+<td>daemon</td>
+<td>✖</td>
+<td>〇</td>
+<td>daemon関連</td>
+</tr>
+<tr>
+<td>user</td>
+<td>✖</td>
+<td>〇</td>
+<td>user関連</td>
+</tr>
+<tr>
+<td>lpr</td>
+<td>✖</td>
+<td>〇</td>
+<td>プリンタ関連</td>
+</tr>
+<tr>
+<td>syslog</td>
+<td>-</td>
+<td>-</td>
+<td>syslog関連</td>
+</tr>
+<tr>
+<td>local</td>
+<td>-</td>
+<td>-</td>
+<td>自由設定</td>
+</tr>
+</tbody>
+</table>
+<h3 id="priority">priority</h3>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>emerg</td>
+<td>緊急</td>
+</tr>
+<tr>
+<td>alert</td>
+<td>即時対応必須</td>
+</tr>
+<tr>
+<td>crit</td>
+<td>重要</td>
+</tr>
+<tr>
+<td>err</td>
+<td>一般的なエラー</td>
+</tr>
+<tr>
+<td>warning</td>
+<td>一般的な警告</td>
+</tr>
+<tr>
+<td>notice</td>
+<td>一般的な通知</td>
+</tr>
+<tr>
+<td>info</td>
+<td>一般的な情報</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>デバッグ情報</td>
+</tr>
+<tr>
+<td>none</td>
+<td>出力しない</td>
+</tr>
+</tbody>
+</table>
+<h3 id="journaldsystemd">journald(systemd環境で用いられるログツール)概要</h3>
+<pre class="highlight"><code class="language-text">systemd概要
+  ・Linuxシステムを起動、運用するための中心的なツール
+  ・様々なサービスやプロセスを管理する
+  ・自前のログシステムであるjournalを搭載している
+  ⇒syslogd, rsyslogdの起動は必要なくなる
+
+rsyslogはお役御免になったのか?
+  1 journaldがシステム上のログを受け取る
+  2 必要に応じてrsyslogへ転送する(defaultは転送しない)</code></pre>
+<h3 id="journald">journaldはどのログを管理しているか</h3>
+<pre class="highlight"><code class="language-text">kernelからのmessage
+  1 リングバッファに保存される
+  2 journaldが、/dev/kmsg, /proc/kmsgという
+    仮想ファイルを経由して読み取り
+
+Userからのmessage
+  0 (例として、logger "hello"とする)
+  1 /var/log/syslogに送られる(Ubuntuの場合)
+  2 journaldが/var/log/syslogを読み取る
+
+⇒　結果として、全てのログをjournaldで把握可能</code></pre>
+<h3 id="_13">ログの消滅と保存</h3>
+<pre class="highlight"><code class="language-text">/etc/systemd/journald.conf
+  ・journaldの設定ファイル
+  ・Storageはログの保存方法を意味する
+
+  ・persistentなら/var/log/journalに保存
+  ・volatileなら/run/log/journalに保存。揮発性
+  ・autoなら/var/log/journalの存在による
+    なければ/run/log/journalに保存。揮発性
+
+/var/log/journal
+  ・Ubuntu18,20,22ならinstall時に含まれる
+  ・つまりdefaultの場合、journaldログは永続保存！
+  (=&gt; わざわざrsyslogに転送する必要はなさそうだ)
+
+SystemMaxUse, RuntimeMaxUse
+  ・logが大きくなりすぎないように上限を記載するといい
+  ・デフォルトはファイルシステムの10%</code></pre>
+<pre class="highlight"><code class="language-bash"># ForwardToSyslog(rsyslogに送るか)
+# MaxLevelSyslog(どのレベルの情報を送るか)
+# がoffになっている。そのためrsyslogへは転送されていない
+
+$ cat /etc/systemd/journald.conf |  \
+  grep -E ForwardToSyslog\|MaxLevelSyslog
+
+#ForwardToSyslog=yes
+#MaxLevelSyslog=debug</code></pre>
+<h3 id="journal">journalを使う</h3>
+<pre class="highlight"><code class="language-bash"># 全てのログを読む
+$ journalctl
+
+# 起動番号でフィルタ(-b)
+# 現在の起動が0で、-1が前回, -2が...
+$ journalctl --list-boots
+
+# 前回起動時のログを見る
+$ journalctl -b -1
+
+# 時間をもとにしたフィルタ
+# (今日の0~10時までのログ)
+$ journalctl --since "today" --until "10:00"
+
+# 直近のメッセージを表示(更新があると追加)
+$ journalctl -f
+
+# 現在以降のメッセージを表示
+$ journalctl --since "now" -f
+# 別ttyで
+$ logger "neko"
+# 表示された
+5月 01 10:39:41 PC toraneko[199971]: neko
+
+# その他にも以下のoptionがある
+# -r: 逆順
+# -k; カーネルに関するmessageのみを表示
+# -u: 指定ユニット(サービス)に対するメッセージ表示
+# -n &lt;digit&gt;: 新しい方からdigit件取得
+# -e:初期のカーソル位置が最新行
+# -x:詳細情報(-bとは併用できない)
+# -b &lt;-digit&gt;: digit回前の起動時のログ取得
+# _UID: 指定したユーザIDのログを出力
+# -o verbose: ログの全情報を出力する
+
+$ journalctl --since "2024-05-01 10:00:00" \
+  --until "2024-05-01 11:00:00" \
+  -u cron
+
+$ journalctl --since "2024-01-01" \
+  --until "2024-01-01 23:59:59" \
+  -rn 100 -u systemd-timesyncd
+
+# UID=1001の全行動を、最も詳しいレベルで出力する
+$ journalctl _UID=1001 -o verbose</code></pre>
+<h3 id="journalbackup">journalの削除(必要に応じてbackupを取ること)</h3>
+<pre class="highlight"><code class="language-text">・rmを使って、/var/log/journal/*を削除するのは
+  一般的ではない</code></pre>
+<pre class="highlight"><code class="language-bash"># 100MB以下になるまでjournalファイルを削除する
+$ sudo journalctl --vacuum-size=100M
+
+# 1週間前より前のjournalファイルを削除する
+$ sudo journalctl --vacuum-time=1weeks
+
+# journalファイルの容量が確認できる
+$ journalctl --disk-usage
+Archived and active journals take up 72.0M in the file system.</code></pre>
+</details>
+<h2 id="q13-logrotate">Q13 logrotate(ログ世代管理ツール)について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="logrotate">logrotate</h3>
+<pre class="highlight"><code class="language-text">・ログが増え続けるとディスクが圧迫されるため、
+  一定量や一定期間でログを削除/上書きすることが一般的
+
+・全体設定は/etc/logrotate.confに記載され
+・個々の設定は/etc/logrotate.d/配下の*.confに記載される
+  logrotate.d/*に設定がある場合は、個々の設定を優先</code></pre>
+<h3 id="cronlogrotate">cronとlogrotate</h3>
+<pre class="highlight"><code class="language-text">・logrotateはdaemonではなく、cronによって実行される
+・そのため動作していることを確認すべき</code></pre>
+<pre class="highlight"><code class="language-bash">$ sudo systemctl status cron | grep active
+Active: active (running) since Tue 2024-04-30 07:10:05 JST; 1 day 4h ago</code></pre>
+<h3 id="logrotateconflogrotate">logrotate.confと主要なlogrotateの記法</h3>
+<pre class="highlight"><code class="language-text">daily/weekly/monthly/yearly
+  ・ローテーション周期(rotate)
+  ・デフォルトはweekly
+
+rotate N
+  ・管理する世代
+  ・デフォルトはrotate 4
+  ・指定しないとrotate 0になり、古いログが全削除される
+  ・※0にしても、現在のログファイルは消えない
+      rotate 1なら、*.logと、*.log.1が残る
+
+compress/nocompress/delaycompress
+  ・圧縮するか否か
+  ・デフォルトはnocompress
+  ・1世代目は圧縮されない
+  ・圧縮する場合は、compressで(gzipファイルを作成)
+
+ifempty/notifempty
+  ・空ファイルでもrotateするか
+  ・デフォルトはnotifempty(しない)
+  ・する場合は、ifemptyに
+  ・notifemptyの場合、古いデータが残り続けることがある
+
+missingok
+  ・ログファイルが存在しなくてもエラーを出さず処理続行
+
+create/nocreate
+  ・rotate時に、logファイルを古いlogファイルにmv
+  ・同名の空ファイルを作る
+  ・permissionを設定しない場合、元fileの属性を引き継ぐ
+  ・(つまり、*.log -&gt; *.log.1となり、新しい*.logを作成)
+  ・nocreateなら行わない
+
+maxage N
+  ・N日より前のログを削除
+
+size/maxsize/minsize N
+  ・基本的にNバイトを超えたらrotate
+  ・size : rotate期間を無視
+  ・maxsize : rotate期間中でもrotate
+  ・minsize : rotate期間中ならrotateしない
+  ・k,M,Gで単位を指定可能
+
+oldfir [dir]/mail [add]
+  ・古いログを転送
+  ・olddirなら古いログを指定dirに転送
+  ・mailなら古いログを指定mail-addressに転送
+
+dateext
+  ・古いログファイルを更新する際、suffixを日付にする
+
+~ endscript
+  ・endscript -&gt; scriptを終了
+  ・prerotate -&gt; rotate前にscriptを実行する
+  ・postrotate -&gt; rotate後にscriptを実行する
+  ・preremove -&gt; 削除前に実行
+  ・sharedscripts -&gt; 同じlogファイルに関するscriptは
+                     rotate前/後に一度だけ実行される
+
+copytruncate
+  ・createの場合、logファイルをrenameしてから
+    同名の空ファイルを作る
+  ⇒daemonでfileを開いていた場合、
+    *.log.1ファイルが開いており、
+    *.logファイルが閉じている状態になることがある。
+
+  copytruncateの場合
+    1 *.logをcopyしたものを、*.log.1とする
+    2 *.logの中身を削除する
+    ⇒*.log.1を閉じて、*.logを開き直す必要はなくなる
+
+
+</code></pre>
+<h3 id="logrotated">logrotate.dの例</h3>
+<pre class="highlight"><code class="language-bash"># /etc/logrotate.d/apt
+
+# 12カ月保持されるようだ
+# 空でもエラーを出さないようにしている。
+/var/log/apt/term.log {
+  rotate 12
+  monthly
+  compress
+  missingok
+  notifempty
+}
+
+/var/log/apt/history.log {
+  rotate 12
+  monthly
+  compress
+  missingok
+  notifempty
+}
+
+# 実際に上記のファイルを見てみる
+$ ls /var/log/apt/* | grep history
+/var/log/apt/history.log
+/var/log/apt/history.log.1.gz
+/var/log/apt/history.log.2.gz
+/var/log/apt/history.log.3.gz
+/var/log/apt/history.log.4.gz
+/var/log/apt/history.log.5.gz
+/var/log/apt/history.log.6.gz
+
+# 1か月以内にinstallしていたatコマンドについてみる
+# ※journalctlでもわかるだろうけど
+
+$ cat /var/log/apt/history.log | \
+  grep "apt install at" -A 3 -B 1
+
+Start-Date: 2024-04-30  00:19:28
+Commandline: apt install at
+Requested-By: user (1000)
+Install: at:amd64 (3.2.5-1ubuntu1)
+End-Date: 2024-04-30  00:19:29</code></pre>
+<h3 id="journald-vs-logrotate">journald vs logrotate</h3>
+<pre class="highlight"><code class="language-text">journald
+  ・binary形式でログを保存
+  ・journaldが収集したログをjournalctlを使用して見る
+  ・journalctlには強力なフィルタリング機能がある
+
+logrotate
+  ・/var/log/*配下にログを保存するのはそれぞれのアプリ
+  ・logrotateはappやdaemon単位で、ログを世代管理する
+  ・そのため、テキスト形式</code></pre>
+<h3 id="logrotate_1">logrotateを試してみる</h3>
+<pre class="highlight"><code class="language-text">・次のrotateまで待つことは面倒なので、-fを使う
+・-fは強制的にrotateする(logファイルは事前に閉じること)</code></pre>
+<pre class="highlight"><code class="language-bash"># rotate用のtestファイルを作成
+$ mkdir /tmp/rotate
+$ touch /tmp/rotate/test.log
+$ sudo chmod 755 /tmp/rotate
+
+# 設定ファイルを作成
+$ sudo vim /etc/logrotate.d/test.conf
+
+/tmp/rotate/test.log {
+    daily
+    maxsize 1M
+    create 660 root root
+    rotate 2
+}
+
+# -f で rotate
+$ sudo logrotate -f /etc/logrotate.d/test.conf
+
+$ ls /tmp/rotate
+test.log  test.log.1
+
+# 2回目のrotate
+$ sudo logrotate -f /etc/logrotate.d/test.conf
+$ ls /tmp/rotate
+test.log  test.log.1  test.log.2
+
+# 3回目のrotate (2世代までになっていることが確認できた)
+$ sudo logrotate -f /etc/logrotate.d/test.conf
+test.log  test.log.1  test.log.2</code></pre>
+</details>
+<h2 id="q14-linuxdirectory">Q14 Linuxの標準的なDirectory構成について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="man-hier">man hier</h3>
+<pre class="highlight"><code class="language-text">・ファイルシステム階層を説明してくれる、マニュアル
+
+ファイルシステム
+  ・ディスク等のストレージ(外部記憶装置)に保存されている
+    データをファイルとして管理するシステムのこと</code></pre>
+<h3 id="fhsfilesystem-hierarchy-standard">FHS(FileSystem Hierarchy Standard)</h3>
+<pre class="highlight"><code class="language-text">・Linuxファイルシステムの標準仕様を指す
+
+・Linuxのファイルシステムの構成がdistribution独自のもの
+  にならないのは、FHSという仕様に基づいて構築されるから
+
+・第三者のソフトウェアが上手く動作するのも、
+  FHSのおかげといえる
+
+・木構造</code></pre>
+<h3 id="partition">Partition</h3>
+<pre class="highlight"><code class="language-text">/dev/sda
+  ・Linuxでは、storageをデバイスファイルとして管理する
+
+/dev/sda1 , /dev/sda2, ...
+  ・実際にOSからストレージを利用する際は、
+    partition(パーティション)という論理的な区画に分割
+    して使用している
+
+mount
+  ・partitionの中にファイルシステムを作って、
+    そのファイルシステムをマウント(利用可能な状態に)する
+
+  ・OS等のソフトウェアは、ファイルシステムを通じて
+    ストレージのデータを利用している</code></pre>
+<h3 id="lsblk">lsblk</h3>
+<pre class="highlight"><code class="language-text">・ディスクが何本ささっているのか
+・パーティションがどのように分割されているのか
+・マウント先のファイルは何なのか
+
+⇒こんな事を調べるときにlsblkを使う</code></pre>
+<pre class="highlight"><code class="language-bash"># Virtualbox(Ubuntu)のsda
+# snap用のfileであるloopは鬱陶しいので除外する
+
+$ lsblk | grep -v "\s/snap/"
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+sda      8:0    0    25G  0 disk 
+├─sda1   8:1    0     1M  0 part 
+├─sda2   8:2    0   513M  0 part /boot/efi
+└─sda3   8:3    0  24.5G  0 part /snap
+                                /var/snap/firefox/common/host-hunspell
+                                /
+sr0     11:0    1  1024M  0 rom  </code></pre>
+<h3 id="fdisk">fdiskで現在のパーティションの状態をチェックする</h3>
+<pre class="highlight"><code class="language-bash"># VirtualBoxの例(EFIシステムを利用している = UEFI)
+# UEFIとBIOSについては後述
+
+$ sudo fdisk -l /dev/sda
+ディスク /dev/sda: 25 GiB, 26843545600 バイト, 52428800 セクタ
+Disk model: VBOX HARDDISK   
+単位: セクタ (1 * 512 = 512 バイト)
+セクタサイズ (論理 / 物理): 512 バイト / 512 バイト
+I/O サイズ (最小 / 推奨): 512 バイト / 512 バイト
+ディスクラベルのタイプ: gpt
+ディスク識別子: HOGEHOGE-HOGE-HOGE-HOGE-HOGEHOGEHOGE
+
+デバイス   開始位置 最後から   セクタ サイズ タイプ
+/dev/sda1      2048     4095     2048     1M BIOS 起動
+/dev/sda2      4096  1054719  1050624   513M EFI システム
+/dev/sda3   1054720 52426751 51372032  24.5G Linux ファイルシステム
+</code></pre>
+<h3 id="_14">各ディレクトリについて</h3>
+<table>
+<thead>
+<tr>
+<th>ディレクトリ</th>
+<th>端的に言うと</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>頂点</td>
+</tr>
+<tr>
+<td>/bin</td>
+<td>非常時の利用コマンド</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>システム管理,boot時に必要なファイル</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>boot時に必要なファイル</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>デバイスファイル</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>ホームディレクトリ</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>ルートのホームディレクトリ</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>共有ライブラリ</td>
+</tr>
+<tr>
+<td>/media</td>
+<td>取り外し可能メディア</td>
+</tr>
+<tr>
+<td>/mnt</td>
+<td>一時的にmountしたファイルシステム</td>
+</tr>
+<tr>
+<td>/opt</td>
+<td>アドオン</td>
+</tr>
+<tr>
+<td>/run</td>
+<td>実行中のシステムデータ</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>一時ファイル</td>
+</tr>
+<tr>
+<td>/proc</td>
+<td>実行中のプロセスなど</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>読み取り可能の共通プログラム</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>サイズ可変のファイル</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-text">/
+  ・Root
+  ・木構造の頂点に位置する
+  ・ルートディレクトリを含むファイルシステムを
+    ルートファイルシステムと呼ぶ
+
+/bin
+  ・シングルユーザモードでも利用できるコマンドを置く
+  ・つまり、基本的かつ非常時に利用するコマンドを配置
+  ・サブディレクトリ不可
+
+/sbin
+  ・システム管理やブートローダに関する必須コマンドの
+    バイナリ（実行ファイル）が配置されている
+  ・サブディレクトリ不可
+
+/boot
+  ・systemの起動に必要なファイル
+  ・vmlinuz(Linuxカーネル)
+
+/dev
+  ・デバイスファイルが格納されている
+  ・デバイスの入出力はこのファイルを介して行われる
+  ・ls -lで、ブロックデバイスかキャラクタデバイスか
+    判別可能(先頭がb or c)
+  ・たとえば、ターミナルは1文字ずつデータ転送を行い、
+    ストレージはブロック単位でデータ転送を行うという事が
+    以下から分かる
+
+$ cat &lt;(ls -l /dev/console) &lt;(ls -l /dev/sda)
+crw--w---- 1 root tty 5, 1  5月  2 09:01 /dev/console
+brw-rw---- 1 root disk 8, 0  5月  2 09:01 /dev/sda
+
+/etc
+  ・システム全体の設定ファイル(.confや.dとかね)を保存
+
+  ・実行可能なバイナリファイルはおかれない。
+    サブディレクトリにファイルを格納するのが一般的
+
+/home
+  ・各ユーザのホームディレクトリが置かれる
+  ・個々のユーザが自由にファイルを保存可能
+  ・ユーザごとのアプリ設定は、隠しファイルに保存される
+    (たとえば.bashrcとか)
+
+/lib
+  ・システムの起動時に必要な共有ライブラリを保存
+  ・ルートファイルシステムでコマンドを実行するのに
+    必要な共有ライブラリも保存
+  ・各種コマンド実行時に読み込まれる
+
+/media
+  ・CD/DVDディスクやUSBドライブなどの
+    取り外し可能なメディアのマウントポイントが置かれる
+
+/mnt
+  ・一時的にファイルシステムをマウントするポイントになる
+  ・wslを使う場合は、windowsのCドライブが/mnt配下に
+  　マウントされており、相互アクセスが可能
+
+/opt
+  ・特定のアプリやパッケージのアドオン等を置く
+  ・パッケージ管理システムでは管理されない
+
+/root
+  ・rootユーザのホームディレクトリ
+
+/run
+  ・実行中のシステムのデータなどを保存する
+  ・揮発性でshutdown時に消える
+
+/tmp
+  ・一時データや一時データの置き場所
+  ・一般ユーザは基本的にアクセス可能で
+    勝手にファイルを作成できるので、
+    test -e /tmp/&lt;hoge&gt;のような指定を行うべきではない
+
+/proc
+  ・実行中のプロセスや、カーネルの情報が格納される
+  ・実際にはファイルシステム上ではなく、
+    メモリ上に作成される疑似ファイルで、
+    CPU,デバイス,メモリなどのシステム情報が格納される
+
+/usr
+  ・読み取り専用の共通プログラムが配置される
+  ・一般ユーザの実行コマンドは/usr/bin
+  ・システム管理用のコマンドは、/usr/sbin
+  ・ライブラリについては、/usr/lib (pythonとか)
+  ・ローカルで管理するファイルは、/usr/local
+    自作スクリプトは、/usr/local/binに置く
+  ・マニュアル(man)等の特定のOSの全ての環境で共通の
+    変更する恐れのないファイルは/usr/share
+
+/var
+  ・systemが起動している最中に書き込みを行うファイル
+  ・サイズが可変するファイルを保存する
+  ・ログについては、/var/log
+  ・キャッシュについては、/var/cache
+  ・ライブラリについては、/var/lib
+  ・ローカルで管理するファイルについては、/var/local
+  ・一時的にデータを保管する領域については、/var/spool</code></pre>
+<pre class="highlight"><code class="language-text">シングルユーザモード
+  ・rootのみがログインして操作できるモードで、
+    メンテナンスや障害時、管理上重要な操作を行う際に
+    利用される。（ネットワークを介したアクセスは不可）
+
+共有ライブラリ
+  ・複数のプログラム間で共有されて使われている
+  　プログラム実行時に読み込まれるライブラリのこと
+
+  ・lib.*.so.*というファイル名をしている
+
+  ・lddコマンドで各コマンドやプログラムが
+    どの共有ライブラリを読み込むのか調べることが可能
+    (※信頼できない実行ファイルに対して
+    　 lddコマンドを使ってはダメ
+    　 依存関係を調べる最中に、
+       ファイルが実行される可能性あり)
+
+  $ ldd /usr/bin/ls
+    linux-vdso.so.1 (0x00007fffb74e4000)
+    libselinux.so.1 =&gt; /lib/x86_64-linux-gnu/libselinux.so.1 (0x00007fe7e5f57000)
+    libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fe7e5d2e000)
+    libpcre2-8.so.0 =&gt; /lib/x86_64-linux-gnu/libpcre2-8.so.0 (0x00007fe7e5c97000)
+    /lib64/ld-linux-x86-64.so.2 (0x00007fe7e5fb4000)
+
+  # 代替手段
+  $ odjdump -p /usr/bin/ls | grep NEEDED
+    NEEDED               libselinux.so.1
+    NEEDED               libc.so.6</code></pre>
+</details>
+<h2 id="q15-linux">Q15 Linuxの起動プロセスの流れについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="pcbiosuefi">自分のPCがBIOSかUEFIか確かめる</h3>
+<pre class="highlight"><code class="language-text">・そもそもVirtualBoxの場合
+  設定⇒システム⇒EFIを有効化に✓がついているか
+  確認すればいいだけの話だが......
+
+・✓：UEFI
+・✖：BIOS
+
+※windowsの場合、msinfo32コマンドが使えるね</code></pre>
+<pre class="highlight"><code class="language-bash"># BIOSの場合
+$ ls /sys/firmware/efi
+ls: '/sys/firmware/efi'にアクセスできません
+    そのようなファイルやディレクトリはありません
+
+$ efibootmgr
+EFI variables are not supported on this system.</code></pre>
+<pre class="highlight"><code class="language-bash"># UEFIの場合
+$ ls /sys/firmware/efi
+config_table  fw_platform_size  
+mok-variables  runtime-map
+efivars       fw_vendor         
+runtime        systab
+
+$ efibootmgr
+BootCurrent: 0002
+Timeout: 0 seconds
+BootOrder: 0004,0000,0001,0002,0003
+Boot0000* UiApp
+Boot0001* UEFI VBOX CD-ROM VB2-01700376 
+Boot0002* UEFI VBOX HARDDISK VB971aaef7-e7aa9ac9 
+Boot0003  EFI Internal Shell
+Boot0004* ubuntu
+</code></pre>
+<h3 id="biosuefi">BIOSとUEFI</h3>
+<pre class="highlight"><code class="language-text">BIOS
+  ・Basic Input/Output System
+
+UEFI
+  ・Unified Extensible Firmware Interface
+
+共通点
+  ・ハードウェア（マザーボード）の
+  　ROMに組み込まれている、ファームウェア
+
+相違点
+  ・起動方法(MBR/GPT)
+  ・大容量ハードに対応しているか(2TB / 8ZiB)
+  ・セキュリティの追加（遠隔診断や起動前の検査）
+  ・インターフェースの向上(起動画面のGUI化)
+  ・ネットワーク機能の追加
+  ・起動スピードの向上
+  ・セキュアブート(ない/ ある)
+
+ファームウェア
+  ・ハードウェアを制御するためのソフトウェア
+
+マザーボード
+  ・もっとも主要な電子回路基板</code></pre>
+<h3 id="uefi">UEFIの起動方法</h3>
+<pre class="highlight"><code class="language-text">1  PCの電源を入れる
+
+--- UEFI ----
+
+2  マザーボード上のUEFIファームウェアが起動
+
+3  UEFIのコード自体に問題がないかチェック
+
+4  ハードウェアを検出、検証(POST: power-on self-test)
+   ※起動に必要なハードウェアを検出できない場合
+     致命的なエラーとして処理し、エラーメッセージを表示
+
+5  起動に必要なハードウェアを初期化
+   システムに接続して、使用可能な状態にする
+
+6  ファームウェアはGUID Partition Tableをスキャンして、
+   EFIシステムパーティション(ESP)を見つける
+
+7  NVRAM内のブートエントリに設定された優先順位に従い、
+   ESP内のブートローダを発見、起動
+
+8 ESP内のブートローダをメモリにロード
+
+9 ブートローダ(GRUB2)が、カーネル(vmlinuz)と
+  initramfsをメモリにロードする
+
+--- Kernel ---
+
+10 カーネルが起動される
+
+11 カーネルが初期化処理を行う
+
+12 カーネルによりinitramfsが仮のルートとしてmountされる
+   (本物のルートファイルシステムをマウントするために
+   必要なドライバやスクリプトにアクセスできるように)
+
+13 initramfsのinitからsystemdを起動する
+
+14 ディスク内のルートファイルシステムをマウント
+
+15 本物のルートファイルシステムに切り替え
+
+--- init ---
+
+16 /sbin/init(PID:1)を実行し、起動シーケンスを開始
+
+17 default.targetに記述されている依存関係を満たすように
+   Unitを立ち上げる(daemon等も起動)
+
+18 ログインプロンプト等からログイン</code></pre>
+<h3 id="bios">BIOSの起動プロセス(相違点だけ)</h3>
+<pre class="highlight"><code class="language-text">1 PCの電源を入れる
+2 BIOSを起動
+3 POSTでハードウェアの検証、初期化
+4 ブートドライブを探す
+5 先頭に格納されているMBR(Master Boot Record)を見つける
+6 MBR内のブートローダを起動
+7 ブートローダがkernelとinitramfsをロードしてからは同じ
+
+※MBRは、サイズが小さいため、ブートローダ全てを含まない
+　実際には、以下のような手順を踏む
+  1 1次ブートローダが、2次ブートローダをメモリにロード  
+    (2次ブートローダはOSを起動するプログラムを含む)
+  2 2次ブートローダが、OSの初期化プログラムをロード
+  3 実行
+  4 制御をkernelへ移行</code></pre>
+<h3 id="_15">まとめ</h3>
+<pre class="highlight"><code class="language-text">電源ON -&gt;
+UEFI起動 -&gt; 
+POST -&gt; 
+GPT -&gt; 
+ESP -&gt; 
+boot entry -&gt; 
+boot loader-&gt; 
+kernel -&gt; 
+initramfs -&gt; 
+(initramfs内の)systemd -&gt; 
+ファイルシステム切り替え -&gt; 
+/sbin/init-&gt; 
+unit起動　-&gt; 
+ログイン可能状態に</code></pre>
+</details>
+<h2 id="q16-gpt-esp-vmlinuz-initramfsq15">Q16 GPT, ESP, ブートエントリ/ローダ, vmlinuz, initramfsについて理解できましたか?(Q15補足)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="guid-partition-table">GUID Partition Table</h3>
+<pre class="highlight"><code class="language-text">・Master Boot Recordの代替として作られたもの
+
+・外部記憶装置のパーティションを管理するために使う
+
+・従来のMBRが2TiBまでの領域しか管理できないのに対し、
+  8ZiBまでの領域を管理可能
+
+・保護用MBR -&gt; GPTヘッダ-&gt;パーティション情報
+　の順で配置されており、
+  最初のセクションはMBRとの互換性のために存在
+  次のセクションでPartition Tableの位置情報を格納する
+  (⇒そのため、その領域のブートローダを使える)
+
+・次に、パーティションのうち、どこをブート対象にするか
+　という話なのだが、UEFIではディスク上の特定の領域(ESP)
+  の中身をブート対象にすると予め決めている
+
+・たとえば以下の場合、ディスク/dev/sdaのESPは2なので
+  /dev/sda2がブート対象となる
+
+・ここで、ブート対象の中には、複数のブートローダが存在
+  する可能性がある。そこでエントリを見て、ブート対象を
+  特定する必要があるわけだ
+
+$ sudo parted /dev/sda print
+モデル: ATA VBOX HARDDISK (scsi)
+ディスク /dev/sda: 26.8GB
+セクタサイズ (論理/物理): 512B/512B
+パーティションテーブル: gpt
+ディスクフラグ: 
+
+番号  開始    終了    サイズ  ファイルシステム  名前                  フラグ
+1    1049kB  2097kB  1049kB                                          bios_grub
+2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
+3    540MB   26.8GB  26.3GB  ext4</code></pre>
+<h3 id="efi-system-partition">EFI system partition</h3>
+<pre class="highlight"><code class="language-text">・EFI(=Extensible Firmware Interface)
+
+・partedコマンドでわかる通り、FAT形式のパーティション
+・ブートローダを含んでいる
+
+・partedコマンドでは、boot, espフラグが相当する
+$ sudo parted /dev/sda print | grep fat32
+2    2097kB  540MB   538MB   fat32             EFI System Partition  boot, esp
+
+・gdiskコマンドではEF00コードが、EFIパーティション
+$ sudo gdisk -l /dev/sda | grep EF00
+2  4096 1054719  513.0 MiB  EF00  EFI System Partition
+
+
+FAT32
+  ・FATはファイルの位置情報を記録する領域
+  ・Windowsでいうと95以降でサポートされているFAT</code></pre>
+<h3 id="efibootmgr">ブートエントリとefibootmgr</h3>
+<pre class="highlight"><code class="language-text">・前項のとおり、ブートエントリはブートローダの
+  読み込み順を指定する
+
+・NVRAMは、不揮発性のランダムメモリ
+　つまり、この読み込み順は保存されている
+
+・ブートエントリの確認や、変更はefibootmgrを通して行う</code></pre>
+<pre class="highlight"><code class="language-bash"># Bootローダの順番は、0001-&gt;0002-&gt;0003となる
+$ efibootmgr -o 0001,0002,0003
+
+# Bootエントリを追加する
+$ efibootmgr -c \
+  -L "&lt;displayname&gt;" \
+  -d "&lt;your_disk&gt;" \
+  -l "&lt;your_boot_loader&gt;"</code></pre>
+<h3 id="_16">ブートローダ</h3>
+<pre class="highlight"><code class="language-text">ブートローダ
+  ・カーネルをメモリにロードするためのプログラム
+
+LILO(Linux Loader)
+  ・古くからLinuxで使われてきたブートローダ
+  ・ファイルシステムを認識しない
+  ・カーネルの位置はストレージの物理的な位置情報で判断
+
+GRUB Legacy(GRand Unified BootLoader)
+  ・カーネルの位置はファイルパスで判断可能
+  ・BIOSの場合、こちらを用いる
+  ・MBRの容量上、2つのステージに分かれており、
+    Stage1はStage2をロードするために存在する。
+
+GRUB2
+  ・Stageは分けない
+  ・動的に読み込まれる複数のモジュールで構成
+  ・例えばブートエントリを見る限り、自分の環境では、
+  　ubuntuのブートローダとして、下記が呼び出されている
+    /boot/efi/EFI/ubuntu/shimx64.efi
+
+  ・shimx64.efiはセキュアブートをサポートするための物で
+    Linuxカーネルやinitramfsをロードするために使われる</code></pre>
+<h3 id="_17">セキュアブート</h3>
+<pre class="highlight"><code class="language-text">・検証されたブートローダやカーネル、EFIアプリのみを
+  起動するようにする仕組み
+
+・事前に署名されていない、カスタマイズされたOSを起動する
+  際は、セキュアブートをOFFにする必要がある
+
+・VirtualBoxなら、設定から適用可能
+  (v7.0.0でバグがあるので注意)
+
+・以下の様にし、5バイト目が1ならSecureBoot有効
+$ cat /sys/firmware/efi/efivars/SecureBoot* | od</code></pre>
+<h3 id="vmlinuz">vmlinuz</h3>
+<pre class="highlight"><code class="language-text">・Linux(カーネル)は、/bootに、
+　vmlinuzというファイル名で保存される</code></pre>
+<pre class="highlight"><code class="language-bash">ls -gG /boot/vmlinuz* --time-style="+"
+lrwxrwxrwx 1       24  /boot/vmlinuz -&gt; vmlinuz-6.5.0-28-generic
+-rw------- 1 14284040  /boot/vmlinuz-6.5.0-28-generic
+-rw-r--r-- 1 14271880  /boot/vmlinuz-6.5.0-9-generic
+lrwxrwxrwx 1       23  /boot/vmlinuz.old -&gt; vmlinuz-6.5.0-9-generic</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<h3 id="_18">シンボリックリンクとバージョン管理</h3>
+<pre class="highlight"><code class="language-text">・たとえば、vmlinuzのversionを、6.5.0-9に戻したく
+  なった場合のことを考える
+
+・特定のversionをそのまま呼び出していた場合、
+  呼び出し先を変更する必要がある
+
+・上記の例の場合、シンボリックリンクを介して
+  呼び出しているので、リンク先を変えるだけでいい
+  (ln -fs: sだけだとファイルが存在するとなるため)
+  (参照先がdの場合は、-nオプションも必要)
+  (-vも付けると、リンク先を表示してくれるのでよい)</code></pre>
+</div>
+<pre class="highlight"><code class="language-bash"># kernelのvを見る
+$ uname -r
+6.5.0-28-generic
+
+# fileの種類を見る
+$ sudo file /boot/vmlinuz-6.5.0-28-generic 
+/boot/vmlinuz-6.5.0-28-generic: 
+  Linux kernel x86 boot executable bzImage, 
+  version 6.5.0-28-generic (buildd@lcy02-amd64-001) 
+  #29-Ubuntu SMP PREEMPT_DYNAMIC Thu Mar 28 23:46:48 
+  UTC 2024, RO-rootFS, swap_dev 0XD, Normal VGA
+
+# bzImage形式：つまり圧縮されていることが分かる</code></pre>
+<h3 id="kernelkernel-modules">補足(kernelとkernel-modules)</h3>
+<pre class="highlight"><code class="language-text">・圧縮されているにしても、vmlinuzの大きさは14M
+・これは、ハードウェアにアクセスし操作するためのドライバ
+  を、カーネルモジュールとして切り出しているからである
+
+カーネルモジュールの利点
+  ・カーネルのサイズを小さくできる
+  ・使う時だけロード、不要になったらアンロードできる
+  ・ハードウェア構成が変わってもカーネルの再構築が
+    必要ないため、停止時間が生じない</code></pre>
+<pre class="highlight"><code class="language-bash"># 現在読み込まれているカーネルモジュール一覧を表示
+$ lsmod
+
+# 該当のversionのカーネルモジュールのバイナリが存在する
+$ /lib/modules/$(uname -r)/kernel
+
+# モジュール構成ファイル
+$ /lib/modules/$(uname -r)/modules.*
+
+# モジュールの依存関係を確認する
+$ modprobe -D isofs
+insmod /lib/modules/6.5.0-28-generic/kernel/fs/isofs/isofs.ko.zst 
+
+# モジュールの格納場所を確認する
+# ※tr -sは連続文字をまとめるためのコマンド
+$ modinfo isofs | grep filename | tr -s "[:space:]"
+filename: /lib/modules/6.5.0-28-generic/kernel/fs/isofs/isofs.ko.zst</code></pre>
+<h3 id="initramfs">initramfs</h3>
+<pre class="highlight"><code class="language-text">前提
+  1 カーネルがブートローダに起動される
+  2 ルートファイルシステムをmountしたい
+
+  2における問題点
+    ・ルートファイルシステムをマウントするためには、
+      ディスクのドライバをカーネルに組み込む必要がある
+
+    ・カーネルの肥大化は本意ではない
+
+  解決策
+    ・カーネルでは小さなルートファイルシステム用の
+    　ドライバやスクリプトだけを用意
+
+    ・実際のルートのマウントに必要なドライバなどは
+    　小さなルートファイルシステムの中に含んでおく
+
+    ・そのドライバを使い、本物のルートファイルシステムを
+    　マウントし置き換える
+
+initramfs(RAM上の初期ファイルシステム)
+  ・ミニルートと呼ばれる
+  ・メモリ上に展開可能な、極小のルートファイルシステム
+  ・cpio形式でアーカイブされたうえで、gzipで圧縮済み
+  ・実際のルートファイルシステムにアクセスするために
+    必要なモジュールを提供する
+
+※initramfsは本物のルートがマウントされ、
+  PID=1のプロセスが起動し始めると、RAMから削除される
+
+※カーネルモジュールの中でも、起動に必要な一部分が
+  initramfsの中に含まれていると考えてよさそうだ</code></pre>
+</details>
+<h2 id="q17-systemd">Q17 systemdについて知っていますか?</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
+      
+        <script src="../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

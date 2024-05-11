@@ -1,0 +1,89 @@
+/* --8<-- [start:test] */
+.md-typeset h1 {
+    /*font-size: 24pt;*/
+    font-family: Roboto Slab, ff-tisa-web-pro, Georgia, serif, Arial, sans-serif;
+    font-weight: bold;
+    border-bottom: solid 2px #f18b21;
+    padding-bottom: 5px;
+}
+
+
+.md-typeset h2 {
+    font-weight: bold;
+    font-family: Roboto Slab, ff-tisa-web-pro, Georgia, serif, Arial, sans-serif;
+    border-bottom: 1px dotted #888;
+}
+
+/* --8<-- [end:test] */
+
+.md-typeset h3:before {
+    font-family: "FontAwesome";
+    content: "\f0a9";
+    margin-right: 5px;
+}
+
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+    font-weight: normal;
+    font-family: Roboto Slab, ff-tisa-web-pro, Georgia, serif, Arial, sans-serif;
+    border-bottom: 1px dotted #888;
+}
+
+
+.md-typeset .highlighttable {
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 0px;
+    border-radius: 0;
+}
+
+/* .md-typeset span.c1,
+.md-typeset span.cm {
+    color: gray;
+} */
+
+
+/* .md-typeset span.kn,
+.md-typeset span.kr {
+    color: #859900;
+}
+
+.md-typeset span.k,
+.md-typeset span.kd {
+    color: #268bd2;
+} */
+
+
+
+/* linenumがずれるので修正 */
+/* .linenodiv {
+    margin-top: 0px;
+} */
+
+/*defaultとslateのthemeを変更*/
+:root {
+    --default-color: #000;
+    --slate-color: #fff;
+}
+
+[data-md-color-scheme=default] {
+    --md-default-fg-color--light: #222 !important;
+}
+
+[data-md-color-scheme=slate] {
+    --md-default-fg-color--light: #fefefe !important;
+    --md-typeset-a-color: #fc0 !important;
+}
+
+
+details.info,
+details.success,
+details.failure,
+details.warning,
+details.tips {
+    /* max-width: 1000px;
+    margin-inline: auto; */
+    font-size: 16px;
+}

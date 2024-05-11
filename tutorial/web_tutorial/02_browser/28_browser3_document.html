@@ -1,0 +1,8772 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="27_browser2_base.html">
+      
+      
+        <link rel="next" href="29_browser4_event.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(3:DOMノード) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/prism.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3dom" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(3:DOMノード)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_16" id="__nav_1_5_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Web tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="28_browser3_document.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q27-domdocument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q27. DOMの各要素に対して移動したいとき、documentオブジェクトが起点となることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q27. DOMの各要素に対して移動したいとき、documentオブジェクトが起点となることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bodydiv" class="md-nav__link">
+    <span class="md-ellipsis">
+      &lt;body&gt;内に&lt;div&gt;があったとすると
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentdocumentelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.documentElement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documenthead" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.head
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentbody" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.body
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeparentnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.parentNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodechildnodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.childNodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodefirstchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.firstChild
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodelastchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.lastChild
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprevioussibling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.previousSibling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodenextsibling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.nextSibling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      読み込まれたか確認する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q28-elementnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q28 Elementから継承した機能と、Nodeから継承した機能を使って、要素を移動する際の違いが分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q28 Elementから継承した機能と、Nodeから継承した機能を使って、要素を移動する際の違いが分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#element" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementから継承している場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodeから継承している場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#element_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      違いの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElementについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelement_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElementの使い道
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q29-childnodeschildrenarray-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q29 childNodesやchildrenで取得したArray-likeがライブであり、読み取り専用であることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q29 childNodesやchildrenで取得したArray-likeがライブであり、読み取り専用であることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      読み取り専用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ライブ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-fromarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array-fromをArrayに変更する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q30-tabledom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q30 &lt;table&gt;というDOM要素が固有の追加プロパティを多く持っていることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q30 <table>というDOM要素が固有の追加プロパティを多く持っていることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      以下のテーブルについて考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablerow" class="md-nav__link">
+    <span class="md-ellipsis">
+      table.row
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablecaptiontheadtfoot" class="md-nav__link">
+    <span class="md-ellipsis">
+      table.caption/tHead/tFoot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabletbodies" class="md-nav__link">
+    <span class="md-ellipsis">
+      table.tBodies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theadtfoottbodyrows" class="md-nav__link">
+    <span class="md-ellipsis">
+      thead/tfoot/tbody.rows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trcells" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr.cells
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trsectionrowindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr.sectionRowIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trrowindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr.rowIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdthcellindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      td/th.cellIndex
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q31-getelementqueryselector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q31 getElement*やquerySelector*を用いてページ内の任意の要素を取得できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q31 getElement*やquerySelector*を用いてページ内の任意の要素を取得できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentgetelementbyidid" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.getElementById("ID名")
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowid" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.idを使った場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      idが重複していた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemqueryselectorallcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.querySelectorAll(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-of-or-for-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(for ... of or for ... in)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      疑似クラスも使えるが、プライバシー上の制限がある
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemqueryselectorcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.querySelector(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getelementsby" class="md-nav__link">
+    <span class="md-ellipsis">
+      getElementsBy*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      代用の方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q32-getelementsqueryselector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q32 getElements*とquerySelector*の違いについて、ライブ(動的)か否かがあげられることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q32 getElements*とquerySelector*の違いについて、ライブ(動的)か否かがあげられることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      比較表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getelements" class="md-nav__link">
+    <span class="md-ellipsis">
+      getElements*は動的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queryselector" class="md-nav__link">
+    <span class="md-ellipsis">
+      querySelector*は静的
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q33-elemmatchescsselemclosestcsscss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q33 elem.matches(css)やelem.closest(css)を使って、要素やその親とCSSセレクタが一致するか確かめられることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q33 elem.matches(css)やelem.closest(css)を使って、要素やその親とCSSセレクタが一致するか確かめられることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elemmatchescss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.matches(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemclosestcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.closest(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemacontainselemb" class="md-nav__link">
+    <span class="md-ellipsis">
+      elemA.contains(elemb)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q34-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q34 DOMノードが継承している組み込みクラスについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q34 DOMノードが継承している組み込みクラスについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承図一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventtarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      EventTarget
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#element_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Element
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTMLElement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlinputbodyanchorelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML(Input/Body/Anchor)Element
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textcomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text/Comment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmldocument" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTMLDocument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML要素のクラスについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承関係を確認する例([[Prototype]])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタを確認する方法その2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承関係を確認する方法その2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q35-consoledirconsolelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q35 console.dirとconsole.logの違いを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q35 console.dirとconsole.logの違いを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSオブジェクトに対して
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOM要素に対して
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q36-htmlinputelementdomwhatwg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q36. HTMLInputElementなどのDOM要素のクラスの情報はwhatwgで閲覧できますが、その仕様の見方が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q36. HTMLInputElementなどのDOM要素のクラスの情報はwhatwgで閲覧できますが、その仕様の見方が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q37-domelemnodetype" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q37 DOMノードのタイプを数値として取得したいとき、elem.nodeTypeが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q37 DOMノードのタイプを数値として取得したいとき、elem.nodeTypeが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instanceof" class="md-nav__link">
+    <span class="md-ellipsis">
+      instanceofとの違い
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q38-nodenametagnamedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q38 nodeNameやtagNameプロパティを使うとDOMノードのタグ名を見ることができるが、前者と後者の違いが分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q38 nodeNameやtagNameプロパティを使うとDOMノードのタグ名を見ることができるが、前者と後者の違いが分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tagname" class="md-nav__link">
+    <span class="md-ellipsis">
+      tagName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodename" class="md-nav__link">
+    <span class="md-ellipsis">
+      nodeName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTMLのタグ名について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q39-innerhtmlouterhtmldatanodevaluetextcontent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q39 要素に対して書き込みを行いたい場合、innerHTML,outerHTML,data/nodeValue,textContentが使われますがその違いを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q39 要素に対して書き込みを行いたい場合、innerHTML,outerHTML,data/nodeValue,textContentが使われますがその違いを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#innerhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      innerHTML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      +=は追加ではなく、置き換え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outerhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      outerHTML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outerhtml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      outerHTMLに書き込んだ時の注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodevaluedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      nodeValue/data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textcontent" class="md-nav__link">
+    <span class="md-ellipsis">
+      textContent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q40-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q40 Element要素の基本的なプロパティについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q40 Element要素の基本的なプロパティについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      詳細を知りたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特定のクラスについて知りたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      著名なプロパティについて
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q41-html11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q41 HTMLの属性とプロパティが必ずしも1対1で対応していないということを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q41 HTMLの属性とプロパティが必ずしも1対1で対応していないということを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      独自のプロパティについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタに追加することも可能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      改めてDOMオブジェクトのプロパティについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML属性について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      非標準の属性にアクセスしたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      上記メソッドで属性名にアクセスするときの注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性とプロパティの値が異なる場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      変更が同期されない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOMオブジェクトのプロパティは文字列とは限らない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      どちらを使えばいいのか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q42-htmldata-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q42 HTML属性に非標準のものを用いたときの注意点と、data-*を用いる利点について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q42 HTML属性に非標準のものを用いたときの注意点と、data-*を用いる利点について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      非標準の属性の使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-" class="md-nav__link">
+    <span class="md-ellipsis">
+      data-*
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q43" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q43 新しい要素を作成し、挿入する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q43 新しい要素を作成し、挿入する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentcreateelementtag" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.createElement(tag)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentcreatetextnodetext" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.createTextNode(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeappendinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.append(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprependinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.prepend(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodebeforeinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.before(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeafterinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.after(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodereplacewithinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.replaceWith(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eleminsertadjacenthtmlwhere-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.insertAdjacentHTML(where, html)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      兄弟メソッドもある
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q44-removeclonenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q44 ノードを削除するときに、removeを、複製したいときにcloneNodeが使えることを知っていますか?(またノードを入れ替えたいときに挿入メソッドで十分な事も)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q44 ノードを削除するときに、removeを、複製したいときにcloneNodeが使えることを知っていますか?(またノードを入れ替えたいときに挿入メソッドで十分な事も)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#noderemove" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.remove()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      すべて削除
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodeを入れ替えたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemclonenodetrue" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.cloneNode(true)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemclonenodefalse" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.cloneNode(false)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q45-documentfragmentdom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q45 DocumentFragmentというノードのリストを返す際のラッパー用のDOMノードが存在することを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q45 DocumentFragmentというノードのリストを返す際のラッパー用のDOMノードが存在することを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      挿入操作を繰り返したくないときに使う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際はこちらで十分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q46-appendchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q46 古典的な挿入/削除メソッド(たとえば、appendChild)を目にしたことはありますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q46 古典的な挿入/削除メソッド(たとえば、appendChild)を目にしたことはありますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      学ぶ意味
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelemappendchildnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.appendChild(node)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parenteleminsertbeforenode-nextsibling" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.insertBefore(node, nextSibling)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelemreplacechildnode-oldchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.replaceChild(node, oldChild)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelemremovechildnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.removeChild(node)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      役立つかもしれない点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentwritehtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.write(html)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      writeの利点?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q47-classnameclasslist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q47 classNameやclassListを使って、クラスの追加/削除を行う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q47 classNameやclassListを使って、クラスの追加/削除を行う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classname" class="md-nav__link">
+    <span class="md-ellipsis">
+      className
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      classList
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q48-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q48 styleを使って要素のスタイルを設定する方法とその注意点を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q48 styleを使って要素のスタイルを設定する方法とその注意点を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemstyleremovepropertystyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.style.removeProperty("style")
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemstylecsstext" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.style.cssText
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q49-stylestylegetcomputedstyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q49 styleプロパティがstyle属性の値のみを操作可能ということと、計算後の値をgetComputedStyleで参照できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q49 styleプロパティがstyle属性の値のみを操作可能ということと、計算後の値をgetComputedStyleで参照できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      間違えやすい例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomputedstyleelement-pseudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComputedStyle(element [,pseudo])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      算出スタイル値と解決スタイル値について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomputedstyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComputedStyleの注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q49" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q49 要素サイズを取得/変更する際に見かけるプロパティについて知識がありますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q49 要素サイズを取得/変更する際に見かけるプロパティについて知識がありますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロールバーを考慮する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      padding-bottomとオーバーフロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsetparent-offsetlefttop" class="md-nav__link">
+    <span class="md-ellipsis">
+      offsetParent, offsetLeft/Top
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsetwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      offsetWidth/height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素が隠されているかをチェックする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clienttopleft" class="md-nav__link">
+    <span class="md-ellipsis">
+      clientTop/Left
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      clientWidth/Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      scrollWidth/Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrolltopleft" class="md-nav__link">
+    <span class="md-ellipsis">
+      scrollTop/Left
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q50-getcomputedstyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q50 要素のサイズや位置に関する情報を取得したい場合、ジオメトリプロパティがgetComputedStyleより有用な理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q50 要素のサイズや位置に関する情報を取得したい場合、ジオメトリプロパティがgetComputedStyleより有用な理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      autoを返す可能性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロールバーを考慮するか否か
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠点ではないが
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q51" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q51 ブラウザウィンドウの幅/高さを取得する方法とその注意点を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q51 ブラウザウィンドウの幅/高さを取得する方法とその注意点を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentdocumentelementclientheightwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.documentElement.clientHeight/Width
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowinnerwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.innerWidth/Heightは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctype" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOCTYPEの必要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document" class="md-nav__link">
+    <span class="md-ellipsis">
+      documentのスクロールアウトした部分を含めた幅/高さ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollheightwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      ページ全体だとscrollHeight/Widthがいいのでは?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q52-windowpagexoffsetpageyoffsetscrollto-scrollby-scrollintoview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q52 ページのスクロール状態について、window.pageXOffset/pageYOffset,scrollTo, scrollBy, scrollIntoViewというプロパティが役立つことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q52 ページのスクロール状態について、window.pageXOffset/pageYOffset,scrollTo, scrollBy, scrollIntoViewというプロパティが役立つことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scrolltopscrollleft" class="md-nav__link">
+    <span class="md-ellipsis">
+      どれだけスクロールしたかなら、scrollTopやscrollLeftを使いたいところだが
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowpagexoffsetpageyoffset" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.pageXOffset/pageYOffset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowscrollbyxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.scrollBy(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowscrolltoxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.scrollTo(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemscrollintoviewtop" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.scrollIntoView(top)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロール不可にしたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロールバーが消えることを理解する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q53-getboundingclientrectelementfrompoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q53 要素のウィンドウ座標について操作を行う対場合、getBoundingClientRect/elementFromPointが役に立つことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q53 要素のウィンドウ座標について操作を行う対場合、getBoundingClientRect/elementFromPointが役に立つことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elemgetboundingclientrect" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.getBoundingClientRect()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      ウィンドウ座標とは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentelementfrompointxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.elementFromPoint(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q54-positionfixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q54 position:fixedを用いて、スクロールを無視するような位置に要素を配置することができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q54 position:fixedを用いて、スクロールを無視するような位置に要素を配置することができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#positionfixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      position:fixedはウィンドウ座標に依存する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q55-topleftpositionabsolute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q55 top/leftとposition:absoluteを用いて、スクロール時に位置が変動するようなコンテンツをページ内に追加できますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q55 top/leftとposition:absoluteを用いて、スクロール時に位置が変動するようなコンテンツをページ内に追加できますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素のドキュメント座標を取得するコード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positionabsolute" class="md-nav__link">
+    <span class="md-ellipsis">
+      position:absoluteで固定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q27-domdocument" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q27. DOMの各要素に対して移動したいとき、documentオブジェクトが起点となることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q27. DOMの各要素に対して移動したいとき、documentオブジェクトが起点となることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bodydiv" class="md-nav__link">
+    <span class="md-ellipsis">
+      &lt;body&gt;内に&lt;div&gt;があったとすると
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentdocumentelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.documentElement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documenthead" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.head
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentbody" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.body
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeparentnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.parentNode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodechildnodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.childNodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodefirstchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.firstChild
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodelastchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.lastChild
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprevioussibling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.previousSibling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodenextsibling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.nextSibling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      読み込まれたか確認する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q28-elementnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q28 Elementから継承した機能と、Nodeから継承した機能を使って、要素を移動する際の違いが分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q28 Elementから継承した機能と、Nodeから継承した機能を使って、要素を移動する際の違いが分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#element" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementから継承している場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodeから継承している場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#element_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      違いの例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElementについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelement_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElementの使い道
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q29-childnodeschildrenarray-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q29 childNodesやchildrenで取得したArray-likeがライブであり、読み取り専用であることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q29 childNodesやchildrenで取得したArray-likeがライブであり、読み取り専用であることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      読み取り専用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      ライブ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-fromarray" class="md-nav__link">
+    <span class="md-ellipsis">
+      Array-fromをArrayに変更する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q30-tabledom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q30 &lt;table&gt;というDOM要素が固有の追加プロパティを多く持っていることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q30 <table>というDOM要素が固有の追加プロパティを多く持っていることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      以下のテーブルについて考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablerow" class="md-nav__link">
+    <span class="md-ellipsis">
+      table.row
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tablecaptiontheadtfoot" class="md-nav__link">
+    <span class="md-ellipsis">
+      table.caption/tHead/tFoot
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tabletbodies" class="md-nav__link">
+    <span class="md-ellipsis">
+      table.tBodies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#theadtfoottbodyrows" class="md-nav__link">
+    <span class="md-ellipsis">
+      thead/tfoot/tbody.rows
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trcells" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr.cells
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trsectionrowindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr.sectionRowIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trrowindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      tr.rowIndex
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tdthcellindex" class="md-nav__link">
+    <span class="md-ellipsis">
+      td/th.cellIndex
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q31-getelementqueryselector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q31 getElement*やquerySelector*を用いてページ内の任意の要素を取得できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q31 getElement*やquerySelector*を用いてページ内の任意の要素を取得できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentgetelementbyidid" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.getElementById("ID名")
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowid" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.idを使った場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#id" class="md-nav__link">
+    <span class="md-ellipsis">
+      idが重複していた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemqueryselectorallcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.querySelectorAll(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-of-or-for-in" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足(for ... of or for ... in)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      疑似クラスも使えるが、プライバシー上の制限がある
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemqueryselectorcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.querySelector(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getelementsby" class="md-nav__link">
+    <span class="md-ellipsis">
+      getElementsBy*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      代用の方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q32-getelementsqueryselector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q32 getElements*とquerySelector*の違いについて、ライブ(動的)か否かがあげられることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q32 getElements*とquerySelector*の違いについて、ライブ(動的)か否かがあげられることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      比較表
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getelements" class="md-nav__link">
+    <span class="md-ellipsis">
+      getElements*は動的
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queryselector" class="md-nav__link">
+    <span class="md-ellipsis">
+      querySelector*は静的
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q33-elemmatchescsselemclosestcsscss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q33 elem.matches(css)やelem.closest(css)を使って、要素やその親とCSSセレクタが一致するか確かめられることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q33 elem.matches(css)やelem.closest(css)を使って、要素やその親とCSSセレクタが一致するか確かめられることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elemmatchescss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.matches(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemclosestcss" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.closest(css)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemacontainselemb" class="md-nav__link">
+    <span class="md-ellipsis">
+      elemA.contains(elemb)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q34-dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q34 DOMノードが継承している組み込みクラスについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q34 DOMノードが継承している組み込みクラスについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承図一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eventtarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      EventTarget
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#element_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Element
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTMLElement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmlinputbodyanchorelement" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML(Input/Body/Anchor)Element
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textcomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text/Comment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#htmldocument" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTMLDocument
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML要素のクラスについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototype" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承関係を確認する例([[Prototype]])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタを確認する方法その2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承関係を確認する方法その2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q35-consoledirconsolelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q35 console.dirとconsole.logの違いを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q35 console.dirとconsole.logの違いを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#js" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSオブジェクトに対して
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOM要素に対して
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q36-htmlinputelementdomwhatwg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q36. HTMLInputElementなどのDOM要素のクラスの情報はwhatwgで閲覧できますが、その仕様の見方が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q36. HTMLInputElementなどのDOM要素のクラスの情報はwhatwgで閲覧できますが、その仕様の見方が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q37-domelemnodetype" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q37 DOMノードのタイプを数値として取得したいとき、elem.nodeTypeが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q37 DOMノードのタイプを数値として取得したいとき、elem.nodeTypeが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instanceof" class="md-nav__link">
+    <span class="md-ellipsis">
+      instanceofとの違い
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q38-nodenametagnamedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q38 nodeNameやtagNameプロパティを使うとDOMノードのタグ名を見ることができるが、前者と後者の違いが分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q38 nodeNameやtagNameプロパティを使うとDOMノードのタグ名を見ることができるが、前者と後者の違いが分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tagname" class="md-nav__link">
+    <span class="md-ellipsis">
+      tagName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodename" class="md-nav__link">
+    <span class="md-ellipsis">
+      nodeName
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTMLのタグ名について
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q39-innerhtmlouterhtmldatanodevaluetextcontent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q39 要素に対して書き込みを行いたい場合、innerHTML,outerHTML,data/nodeValue,textContentが使われますがその違いを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q39 要素に対して書き込みを行いたい場合、innerHTML,outerHTML,data/nodeValue,textContentが使われますがその違いを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#innerhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      innerHTML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      +=は追加ではなく、置き換え
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outerhtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      outerHTML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outerhtml_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      outerHTMLに書き込んだ時の注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodevaluedata" class="md-nav__link">
+    <span class="md-ellipsis">
+      nodeValue/data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textcontent" class="md-nav__link">
+    <span class="md-ellipsis">
+      textContent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q40-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q40 Element要素の基本的なプロパティについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q40 Element要素の基本的なプロパティについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      詳細を知りたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特定のクラスについて知りたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      著名なプロパティについて
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q41-html11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q41 HTMLの属性とプロパティが必ずしも1対1で対応していないということを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q41 HTMLの属性とプロパティが必ずしも1対1で対応していないということを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      通常の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      独自のプロパティについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタに追加することも可能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      改めてDOMオブジェクトのプロパティについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTML属性について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      非標準の属性にアクセスしたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      上記メソッドで属性名にアクセスするときの注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      属性とプロパティの値が異なる場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      変更が同期されない場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dom_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOMオブジェクトのプロパティは文字列とは限らない
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      どちらを使えばいいのか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q42-htmldata-" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q42 HTML属性に非標準のものを用いたときの注意点と、data-*を用いる利点について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q42 HTML属性に非標準のものを用いたときの注意点と、data-*を用いる利点について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      非標準の属性の使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-" class="md-nav__link">
+    <span class="md-ellipsis">
+      data-*
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q43" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q43 新しい要素を作成し、挿入する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q43 新しい要素を作成し、挿入する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentcreateelementtag" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.createElement(tag)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentcreatetextnodetext" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.createTextNode(text)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeappendinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.append(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeprependinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.prepend(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodebeforeinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.before(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodeafterinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.after(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nodereplacewithinsertnode-or-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.replaceWith(insertNode or strings)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eleminsertadjacenthtmlwhere-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.insertAdjacentHTML(where, html)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      兄弟メソッドもある
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q44-removeclonenode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q44 ノードを削除するときに、removeを、複製したいときにcloneNodeが使えることを知っていますか?(またノードを入れ替えたいときに挿入メソッドで十分な事も)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q44 ノードを削除するときに、removeを、複製したいときにcloneNodeが使えることを知っていますか?(またノードを入れ替えたいときに挿入メソッドで十分な事も)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#noderemove" class="md-nav__link">
+    <span class="md-ellipsis">
+      node.remove()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      すべて削除
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#node_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodeを入れ替えたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemclonenodetrue" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.cloneNode(true)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemclonenodefalse" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.cloneNode(false)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q45-documentfragmentdom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q45 DocumentFragmentというノードのリストを返す際のラッパー用のDOMノードが存在することを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q45 DocumentFragmentというノードのリストを返す際のラッパー用のDOMノードが存在することを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      挿入操作を繰り返したくないときに使う
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際はこちらで十分
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q46-appendchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q46 古典的な挿入/削除メソッド(たとえば、appendChild)を目にしたことはありますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q46 古典的な挿入/削除メソッド(たとえば、appendChild)を目にしたことはありますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      学ぶ意味
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelemappendchildnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.appendChild(node)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parenteleminsertbeforenode-nextsibling" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.insertBefore(node, nextSibling)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelemreplacechildnode-oldchild" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.replaceChild(node, oldChild)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parentelemremovechildnode" class="md-nav__link">
+    <span class="md-ellipsis">
+      parentElem.removeChild(node)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      役立つかもしれない点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentwritehtml" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.write(html)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      writeの利点?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q47-classnameclasslist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q47 classNameやclassListを使って、クラスの追加/削除を行う方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q47 classNameやclassListを使って、クラスの追加/削除を行う方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classname" class="md-nav__link">
+    <span class="md-ellipsis">
+      className
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      classList
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q48-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q48 styleを使って要素のスタイルを設定する方法とその注意点を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q48 styleを使って要素のスタイルを設定する方法とその注意点を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemstyleremovepropertystyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.style.removeProperty("style")
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemstylecsstext" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.style.cssText
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q49-stylestylegetcomputedstyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q49 styleプロパティがstyle属性の値のみを操作可能ということと、計算後の値をgetComputedStyleで参照できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q49 styleプロパティがstyle属性の値のみを操作可能ということと、計算後の値をgetComputedStyleで参照できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      間違えやすい例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomputedstyleelement-pseudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComputedStyle(element [,pseudo])
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      算出スタイル値と解決スタイル値について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomputedstyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComputedStyleの注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q49" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q49 要素サイズを取得/変更する際に見かけるプロパティについて知識がありますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q49 要素サイズを取得/変更する際に見かけるプロパティについて知識がありますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な注意点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロールバーを考慮する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#padding-bottom" class="md-nav__link">
+    <span class="md-ellipsis">
+      padding-bottomとオーバーフロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsetparent-offsetlefttop" class="md-nav__link">
+    <span class="md-ellipsis">
+      offsetParent, offsetLeft/Top
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offsetwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      offsetWidth/height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素が隠されているかをチェックする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clienttopleft" class="md-nav__link">
+    <span class="md-ellipsis">
+      clientTop/Left
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clientwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      clientWidth/Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      scrollWidth/Height
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrolltopleft" class="md-nav__link">
+    <span class="md-ellipsis">
+      scrollTop/Left
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q50-getcomputedstyle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q50 要素のサイズや位置に関する情報を取得したい場合、ジオメトリプロパティがgetComputedStyleより有用な理由が分かりますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q50 要素のサイズや位置に関する情報を取得したい場合、ジオメトリプロパティがgetComputedStyleより有用な理由が分かりますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      autoを返す可能性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロールバーを考慮するか否か
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      欠点ではないが
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q51" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q51 ブラウザウィンドウの幅/高さを取得する方法とその注意点を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q51 ブラウザウィンドウの幅/高さを取得する方法とその注意点を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentdocumentelementclientheightwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.documentElement.clientHeight/Width
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowinnerwidthheight" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.innerWidth/Heightは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctype" class="md-nav__link">
+    <span class="md-ellipsis">
+      DOCTYPEの必要性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#document" class="md-nav__link">
+    <span class="md-ellipsis">
+      documentのスクロールアウトした部分を含めた幅/高さ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scrollheightwidth" class="md-nav__link">
+    <span class="md-ellipsis">
+      ページ全体だとscrollHeight/Widthがいいのでは?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q52-windowpagexoffsetpageyoffsetscrollto-scrollby-scrollintoview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q52 ページのスクロール状態について、window.pageXOffset/pageYOffset,scrollTo, scrollBy, scrollIntoViewというプロパティが役立つことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q52 ページのスクロール状態について、window.pageXOffset/pageYOffset,scrollTo, scrollBy, scrollIntoViewというプロパティが役立つことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scrolltopscrollleft" class="md-nav__link">
+    <span class="md-ellipsis">
+      どれだけスクロールしたかなら、scrollTopやscrollLeftを使いたいところだが
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowpagexoffsetpageyoffset" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.pageXOffset/pageYOffset
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowscrollbyxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.scrollBy(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windowscrolltoxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.scrollTo(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elemscrollintoviewtop" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.scrollIntoView(top)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロール不可にしたい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      スクロールバーが消えることを理解する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q53-getboundingclientrectelementfrompoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q53 要素のウィンドウ座標について操作を行う対場合、getBoundingClientRect/elementFromPointが役に立つことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q53 要素のウィンドウ座標について操作を行う対場合、getBoundingClientRect/elementFromPointが役に立つことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elemgetboundingclientrect" class="md-nav__link">
+    <span class="md-ellipsis">
+      elem.getBoundingClientRect()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      ウィンドウ座標とは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentelementfrompointxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      document.elementFromPoint(x,y)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q54-positionfixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q54 position:fixedを用いて、スクロールを無視するような位置に要素を配置することができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q54 position:fixedを用いて、スクロールを無視するような位置に要素を配置することができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#positionfixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      position:fixedはウィンドウ座標に依存する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q55-topleftpositionabsolute" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q55 top/leftとposition:absoluteを用いて、スクロール時に位置が変動するようなコンテンツをページ内に追加できますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q55 top/leftとposition:absoluteを用いて、スクロール時に位置が変動するようなコンテンツをページ内に追加できますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素のドキュメント座標を取得するコード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#positionabsolute" class="md-nav__link">
+    <span class="md-ellipsis">
+      position:absoluteで固定する
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="3dom">クイズ(3:DOMノード)</h1>
+<h2 id="q27-domdocument">Q27. DOMの各要素に対して移動したいとき、documentオブジェクトが起点となることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="bodydiv"><code>&lt;body&gt;</code>内に<code>&lt;div&gt;</code>があったとすると</h3>
+<ul>
+<li>以下の様にノードを移動可能</li>
+</ul>
+<pre class="mermaid"><code>graph TD;
+
+A["document"]
+B["document.documentElement"]
+C["document.body"]
+D["DIV"]
+E["?"]
+F["?"]
+G["?"]
+H["?"]
+
+
+A --&gt; B
+B --&gt; C
+C --&gt; |childNodes| D
+D --&gt; |parentNode| C
+D --&gt; |lastChild| E
+D --&gt; |firstChild| F
+D --&gt; |nextSibling| G
+D --&gt; |nextSibling| H
+</code></pre>
+<h3 id="documentdocumentelement">document.documentElement</h3>
+<ul>
+<li><code>&lt;html&gt;</code>タグの<code>DOM</code>ノード</li>
+</ul>
+<h3 id="documenthead">document.head</h3>
+<ul>
+<li><code>&lt;head&gt;</code>タグ</li>
+</ul>
+<h3 id="documentbody">document.body</h3>
+<ul>
+<li><code>&lt;body&gt;</code>タグ</li>
+</ul>
+<h3 id="nodeparentnode">Node.parentNode</h3>
+<ul>
+<li>親要素</li>
+</ul>
+<h3 id="nodechildnodes">Node.childNodes</h3>
+<ul>
+<li>全ての子要素の<code>Array-like</code></li>
+</ul>
+<h3 id="nodefirstchild">Node.firstChild</h3>
+<ul>
+<li>最初の子要素</li>
+</ul>
+<h3 id="nodelastchild">Node.lastChild</h3>
+<ul>
+<li>最後の子要素</li>
+</ul>
+<h3 id="nodeprevioussibling">Node.previousSibling</h3>
+<ul>
+<li>前の兄弟要素</li>
+</ul>
+<h3 id="nodenextsibling">Node.nextSibling</h3>
+<ul>
+<li>次の兄弟要素</li>
+</ul>
+<h3 id="_1">読み込まれたか確認する</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>たとえば<code>&lt;head&gt;</code>タグ内で<code>document.body</code>とするとそれは<code>null</code>である</li>
+<li>また、<code>&lt;body&gt;</code>の<code>&lt;script&gt;</code>タグ内で、<code>document.body.childNodes</code>を行った場合、<code>&lt;script&gt;</code>以下のタグはまだ読み込まれていないので表示されない</li>
+</ul>
+</div>
+<h3 id="_2">使用例</h3>
+<pre class="highlight"><code class="language-js">console.log(document.body); //&lt;body&gt;&lt;/body&gt;
+console.log(document.head); //&lt;head&gt;&lt;/head&gt;
+console.log(document); //#document
+
+console.log(document.body.parentNode); //&lt;html&gt;&lt;/html&gt;
+console.log(document.childNodes); //NodeList(2) [&lt;!DOCTYPE html&gt;, html]
+
+console.log(document.firstChild); //&lt;!DOCTYPE html&gt;
+console.log(document.lastChild); //&lt;html&gt;&lt;/html&gt;
+
+console.log(document.head.nextSibling); //#text
+console.log(document.body.previousSibling.previousSibling); //&lt;head&gt;&lt;/head&gt;
+
+
+//bodyタグの先頭にdivタグがあり、その先頭にtextがある場合
+console.log(document.body.childNodes[0].firstChild); //#text</code></pre>
+</details>
+<h2 id="q28-elementnode">Q28 Elementから継承した機能と、Nodeから継承した機能を使って、要素を移動する際の違いが分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="element">Elementから継承している場合</h3>
+<ul>
+<li>要素ノードのみが対象</li>
+</ul>
+<h3 id="node">Nodeから継承している場合</h3>
+<ul>
+<li>テキストノードやコメントノードも対象</li>
+</ul>
+<h3 id="element_1">Elementの例</h3>
+<ul>
+<li><code>Element.children</code>: 要素ノードの子を<code>Array-like</code>で取得</li>
+<li><code>firstElementChild, lastElementChild</code></li>
+<li><code>previousElementSibling, nextElementSibling</code></li>
+<li><code>parentElement</code></li>
+</ul>
+<h3 id="_3">違いの例</h3>
+<pre class="highlight"><code class="language-js">console.log(document.body.previousSibling.previousSibling); //&lt;head&gt;&lt;/head&gt;
+
+console.log(document.body.previousElementSibling);//&lt;head&gt;&lt;/head&gt;</code></pre>
+<h3 id="parentelement">parentElementについて</h3>
+<ul>
+<li>親が要素ではないケースが存在する</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(
+  document.documentElement.parentNode
+); //#document
+
+console.log(
+  document.documentElement.parentElement
+); //null</code></pre>
+<h3 id="parentelement_1">parentElementの使い道</h3>
+<ul>
+<li><code>&lt;html&gt;</code>まで移動する</li>
+</ul>
+<pre class="highlight"><code class="language-js">//nullになったらloopを抜ける
+while(elem = elem.parentElement){
+  console.log(elem);
+}</code></pre>
+</details>
+<h2 id="q29-childnodeschildrenarray-like">Q29 childNodesやchildrenで取得したArray-likeがライブであり、読み取り専用であることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_4">読み取り専用</h3>
+<ul>
+<li><code>childNodes[i] = ...</code>などで子ノードを置き換えることはできない</li>
+<li>これは<code>nextSibling</code>などのQ27における他のプロパティも同様</li>
+</ul>
+<h3 id="_5">ライブ</h3>
+<ul>
+<li><code>elem.childNodes</code>への参照が維持されている状態で、<code>DOM</code>にノードを追加/削除すると、自動で反映される</li>
+</ul>
+<pre class="highlight"><code class="language-js">const hoge = document.body.childNodes;
+console.log(hoge); //NodeList [text]
+
+const div = document.createElement("div");
+document.body.appendChild(div);
+console.log(hoge); //NodeList(2) [text, div]</code></pre>
+<h3 id="array-fromarray">Array-fromをArrayに変更する</h3>
+<pre class="highlight"><code class="language-js">Array.from(hoge).map(elm =&gt; console.log(elm));
+// " "
+// &lt;div&gt;&lt;/div&gt;</code></pre>
+</details>
+<h2 id="q30-tabledom">Q30 <code>&lt;table&gt;</code>というDOM要素が固有の追加プロパティを多く持っていることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_6">以下のテーブルについて考える</h3>
+<pre class="highlight"><code class="language-html">&lt;table id="table"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;col1&lt;/th&gt;
+    &lt;th&gt;col2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;elem1-1&lt;/td&gt;
+    &lt;td&gt;elem2-1&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;elem1-2&lt;/td&gt;
+    &lt;td&gt;elem2-2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+<h3 id="tablerow">table.row</h3>
+<ul>
+<li>テーブルの<code>&lt;tr&gt;</code>要素のコレクション</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(table.row); //HTMLCollection(3) [tr, tr, tr]</code></pre>
+<h3 id="tablecaptiontheadtfoot">table.caption/tHead/tFoot</h3>
+<ul>
+<li>それぞれ<code>&lt;caption&gt;</code>、<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>への参照</li>
+</ul>
+<h3 id="tabletbodies">table.tBodies</h3>
+<ul>
+<li><code>&lt;tbody&gt;</code>要素のコレクション</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(table.tBodies); //HTMLCollection [tbody]
+console.log(table.tBodies[0].outerHTML);
+
+/*
+&lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th&gt;col1&lt;/th&gt;
+      &lt;th&gt;col2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;elem1-1&lt;/td&gt;
+      &lt;td&gt;elem2-1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;elem1-2&lt;/td&gt;
+      &lt;td&gt;elem2-2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+*/</code></pre>
+<h3 id="theadtfoottbodyrows">thead/tfoot/tbody.rows</h3>
+<ul>
+<li>以上三種の要素は<code>rows</code>プロパティを提供する</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(table.tBodies[0].rows); //HTMLCollection(3) [tr, tr, tr]</code></pre>
+<h3 id="trcells">tr.cells</h3>
+<ul>
+<li><code>&lt;tr&gt;</code>内の<code>&lt;th&gt;</code>と<code>&lt;td&gt;</code>の集合</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(
+  table.tBodies[0].rows[0].cells
+);
+//HTMLCollection(2) [th, th]</code></pre>
+<h3 id="trsectionrowindex">tr.sectionRowIndex</h3>
+<ul>
+<li><code>&lt;tr&gt;</code>を囲んでいる<code>&lt;thead&gt;/&lt;tbody&gt;</code>に与えられた<code>&lt;tr&gt;</code>の番号</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(
+  table.tBodies[0].rows[1].sectionRowIndex
+);
+
+//1</code></pre>
+<h3 id="trrowindex">tr.rowIndex</h3>
+<ul>
+<li>テーブル内の<code>&lt;tr&gt;</code>の番号</li>
+</ul>
+<h3 id="tdthcellindex">td/th.cellIndex</h3>
+<ul>
+<li><code>&lt;tr&gt;</code>で囲まれている内側でのセルの番号</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(
+  table.tBodies[0].rows[1].cells[0].cellIndex
+);
+//0</code></pre>
+</details>
+<h2 id="q31-getelementqueryselector">Q31 <code>getElement*</code>や<code>querySelector*</code>を用いてページ内の任意の要素を取得できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="documentgetelementbyidid">document.getElementById("ID名")</h3>
+<ul>
+<li><code>document</code>オブジェクトに対して呼び出し可能</li>
+<li><code>text</code>や<code>comment</code>は対象ではない</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="elem"&gt;
+  &lt;div id="elem-content"&gt;Element&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  let elemContent = document.getElementById("elem-content");
+  elemContent.style.background = "red";
+&lt;/script&gt;</code></pre>
+<h3 id="windowid">window.idを使った場合</h3>
+<ul>
+<li>要素にアクセスする場合、<code>window.id名</code>とできる</li>
+<li>上の例のようなハイフンが入った要素の場合、<code>window["elem-content"]</code>のように角括弧でアクセス</li>
+<li><code>document.getElementById</code>の方を用いるべき</li>
+</ul>
+<h3 id="id">idが重複していた場合</h3>
+<ul>
+<li><code>document.getElementById</code>は最初にヒットしたものを返す</li>
+<li><code>id</code>は重複するべきではない</li>
+</ul>
+<h3 id="elemqueryselectorallcss">elem.querySelectorAll(css)</h3>
+<ul>
+<li>引数に指定した<code>CSS</code>セレクタに一致する<code>elem</code>内のすべての要素を返す</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;ul&gt;
+  &lt;li&gt;The&lt;/li&gt;
+  &lt;li&gt;test&lt;/li&gt;
+  &lt;span&gt;neko&lt;/span&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+  &lt;li&gt;has&lt;/li&gt;
+  &lt;li&gt;passed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+//ulの最後の子要素がliタグであれば
+  let elements = document.querySelectorAll("ul &gt; li:last-child");
+
+  for(let elem of elements){
+    console.log(elem.innerHTML);
+    //test, passed
+  }
+&lt;/script&gt;</code></pre>
+<h3 id="for-of-or-for-in">補足(for ... of or for ... in)</h3>
+<ul>
+<li>コレクションは<code>iterable</code>なので<code>for ... of</code>を使う</li>
+<li><code>for ... in</code>だと<code>enumerable : true</code>がすべて引っかかる</li>
+</ul>
+<h3 id="_7">疑似クラスも使えるが、プライバシー上の制限がある</h3>
+<ul>
+<li><code>:visited</code>などの一部の疑似クラスは、ユーザのプライバシーを保護するため<code>JS</code>からアクセスすることはできない</li>
+</ul>
+<pre class="highlight"><code class="language-js">//訪れたaタグを取得しようとしているが......
+document.querySelectorAll("a:visited");
+// NodeList [];</code></pre>
+<h3 id="elemqueryselectorcss">elem.querySelector(css)</h3>
+<ul>
+<li><code>elem.querySelectorAll(css)[0]</code>と同じ</li>
+<li>1つを返す分、処理が速い</li>
+</ul>
+<h3 id="getelementsby">getElementsBy*</h3>
+<ul>
+<li><code>elem.getElementsByTagName(tag)</code>: <code>tag</code>に<code>*</code>を指定すると、任意のタグを意味する。</li>
+<li><code>elem.getElementsByClassName(className)</code></li>
+<li><code>document.getElementsByName(name)</code></li>
+<li><code>querySelector*</code>等で殆どの場合代用が効くのであまり使われない</li>
+</ul>
+<h3 id="_8">代用の方法</h3>
+<pre class="highlight"><code class="language-html">&lt;div id="div" name="hoge" class="div"&gt;
+  &lt;p&gt;
+    &lt;span&gt;&lt;/span&gt;
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  const name = "hoge";
+  //属性を記載
+  const nameElements = document.querySelectorAll(
+    `[name="${name}"]`
+  ); //NodeList [div#div.div]
+
+  const tagElements = document.querySelectorAll(
+    "span"
+  ); //NodeList [span]
+
+  const classElements = document.querySelectorAll(
+    ".div"
+  ); //NodeList [div#div.div]
+
+  const idElements = document.querySelectorAll(
+    "#div"
+  ); //NodeList [div#div.div]
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q32-getelementsqueryselector">Q32 <code>getElements*</code>と<code>querySelector*</code>の違いについて、ライブ(動的)か否かがあげられることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_9">比較表</h3>
+<table>
+<thead>
+<tr>
+<th>メソッド</th>
+<th>検索方法</th>
+<th>要素上で呼べるか</th>
+<th>動的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getElementById</code></td>
+<td><code>id</code></td>
+<td><code>-</code></td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td><code>getElementsByName</code></td>
+<td><code>name</code></td>
+<td><code>-</code></td>
+<td><code>✓</code></td>
+</tr>
+<tr>
+<td><code>getElementsByTagName</code></td>
+<td><code>tag</code></td>
+<td><code>✓</code></td>
+<td><code>✓</code></td>
+</tr>
+<tr>
+<td><code>getElementsByClassName</code></td>
+<td><code>class</code></td>
+<td><code>✓</code></td>
+<td><code>✓</code></td>
+</tr>
+<tr>
+<td><code>querySelector</code></td>
+<td><code>css-selector</code></td>
+<td><code>✓</code></td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td><code>querySelectorAll</code></td>
+<td><code>css-selector</code></td>
+<td><code>✓</code></td>
+<td><code>-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="getelements">getElements*は動的</h3>
+<ul>
+<li><code>DOM</code>にノードを追加すると反映</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div&gt;First div&lt;/div&gt;
+&lt;script&gt;
+  let divs = document.getElementsByTagName("div");
+  console.log(divs.length); //1
+&lt;/script&gt;
+
+&lt;div&gt;Second div&lt;/div&gt;
+
+&lt;script&gt;
+  console.log(divs.length); //2
+&lt;/script&gt;</code></pre>
+<h3 id="queryselector">querySelector*は静的</h3>
+<pre class="highlight"><code class="language-html">&lt;div&gt;First div&lt;/div&gt;
+
+&lt;script&gt;
+  let divs = document.querySelectorAll("div")
+  console.log(divs.length); //1
+&lt;/script&gt;
+
+&lt;div&gt;Second div&lt;/div&gt;
+
+&lt;script&gt;
+  console.log(divs.length); //1
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q33-elemmatchescsselemclosestcsscss">Q33 elem.matches(css)やelem.closest(css)を使って、要素やその親とCSSセレクタが一致するか確かめられることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="elemmatchescss">elem.matches(css)</h3>
+<ul>
+<li><code>elem</code>が与えられた<code>CSS</code>セレクタに一致するかチェック</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div class="hoge1"&gt;&lt;/div&gt;
+&lt;div class="hoge2"&gt;&lt;/div&gt;
+&lt;div class="hoge3"&gt;&lt;/div&gt;
+&lt;div class="neko1"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  for(let elem of document.body.children){
+    if(elem.matches("div[class^='hoge']")){
+      console.log(elem.className);
+      //hoge1,hoge2,hoge3
+    }
+  }
+&lt;/script&gt;</code></pre>
+<h3 id="elemclosestcss">elem.closest(css)</h3>
+<ul>
+<li>自身を含む祖先ノードが、<code>CSS</code>セレクタに一致するかチェック</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div class="hoge"&gt;
+  &lt;ul class="fuga"&gt;
+    &lt;li id="target" class="nuko"&gt;
+    &lt;li class="hoge"&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  let target = document.getElementById("target");
+  console.log(
+    target.closest(".hoge")
+    //&lt;div class="hoge"&gt;&lt;/div&gt;
+  )
+&lt;/script&gt;</code></pre>
+<h3 id="elemacontainselemb">elemA.contains(elemb)</h3>
+<ul>
+<li><code>elemB</code>が<code>elemA</code>の中にある場合</li>
+<li>もしくは<code>elemA === elemB</code>の時、<code>true</code></li>
+</ul>
+<pre class="highlight"><code class="language-js">let ul = document.createElement("ul");
+let li = document.createElement("li");
+ul.append(li);
+
+console.log(ul.contains(li)); //true</code></pre>
+</details>
+<h2 id="q34-dom">Q34 DOMノードが継承している組み込みクラスについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_10">継承図一覧</h3>
+<pre class="mermaid"><code>graph BT;
+
+S[Object]
+A[EventTarget]
+B[Node]
+C[Text]
+D[Element]
+E[Comment]
+F[HTMLElement]
+G[SVGElement]
+H[HTMLInputElement]
+I[HTMLBodyElement]
+J[HTMLAnchorElement]
+K[HTMLDocument]
+L[Document]
+
+H --&gt; F
+I --&gt; F
+J --&gt; F
+F --&gt; D
+G --&gt; D
+E --&gt; B
+D --&gt; B
+C --&gt; B
+B --&gt; A
+A --&gt; S
+K --&gt; L
+L --&gt; B
+</code></pre>
+<h3 id="eventtarget">EventTarget</h3>
+<ul>
+<li>階層のルート。</li>
+<li>抽象クラスであり、このクラスからオブジェクトは生成されない。</li>
+<li>全ての<code>DOM</code>ノードがイベントをサポートしている所以</li>
+</ul>
+<h3 id="node_1">Node</h3>
+<ul>
+<li>抽象クラス</li>
+<li><code>DOM</code>ノードの基底</li>
+</ul>
+<h3 id="element_2">Element</h3>
+<ul>
+<li><code>DOM</code>要素の基底</li>
+<li>要素レベルの機能を提供</li>
+</ul>
+<h3 id="htmlelement">HTMLElement</h3>
+<ul>
+<li><code>HTML</code>要素の基底</li>
+<li>多くの<code>HTML</code>要素がこれを継承する</li>
+</ul>
+<h3 id="htmlinputbodyanchorelement">HTML(Input/Body/Anchor)Element</h3>
+<ul>
+<li>それぞれ<code>&lt;input&gt;</code>、<code>&lt;body&gt;</code>、<code>&lt;a&gt;</code>要素のためのクラス</li>
+</ul>
+<h3 id="textcomment">Text/Comment</h3>
+<ul>
+<li>それぞれテキストノード、コメントノードのためのクラス</li>
+</ul>
+<h3 id="htmldocument">HTMLDocument</h3>
+<ul>
+<li>documentオブジェクトのためのクラス</li>
+</ul>
+<h3 id="html">HTML要素のクラスについて</h3>
+<ul>
+<li>タグは、各々のクラスからインスタンスとして生成される。</li>
+<li><code>&lt;span&gt;</code>など、独自のクラス(<code>HTMLSpanElement</code>)から生成されるが、固有のプロパティやメソッドを提供しないタグもある</li>
+</ul>
+<h3 id="prototype">継承関係を確認する例([[Prototype]])</h3>
+<ul>
+<li><code>&lt;input&gt;</code>タグが使える機能について考える</li>
+</ul>
+<pre class="highlight"><code class="language-js">//inputタグ
+const input = document.createElement("input");
+
+//inputタグはHTMLInputElementクラスから作られる
+console.log(
+  input.constructor.name
+); //'HTMLInputElement'
+
+//HTMLInputElementの機能が使える
+console.log(
+  input.__proto__ === HTMLInputElement.prototype
+); //true
+
+//HTMLElementの機能が使える
+console.log(
+  HTMLInputElement.prototype.__proto__ === HTMLElement.prototype
+); //true
+
+//Elementの機能が使える
+console.log(
+  HTMLElement.prototype.__proto__ === Element.prototype
+); //true
+
+//Nodeの機能が使える
+console.log(
+   Element.prototype.__proto__ === Node.prototype
+);//true
+
+//EventTargetの機能が使える
+console.log(
+  Node.prototype.__proto__ === EventTarget.prototype
+);//true
+
+//Objectの機能が使える
+console.log(
+  EventTarget.prototype.__proto__ === Object.prototype
+); //true
+
+//extendsで継承しておらず、組み込みクラス同士なので以下は成立しないことに注意する
+console.log(
+  Node.__proto__ === EventTarget.__proto__
+); //false
+</code></pre>
+<h3 id="2">コンストラクタを確認する方法その2</h3>
+<pre class="highlight"><code class="language-js">console.log(
+  document.body.toString();
+)//'[object HTMLBodyElement]'</code></pre>
+<h3 id="2_1">継承関係を確認する方法その2</h3>
+<pre class="highlight"><code class="language-js">console.log(
+  document.body instanceof HTMLBodyElement,
+  document.body instanceof EventTarget
+); //true true</code></pre>
+</details>
+<h2 id="q35-consoledirconsolelog">Q35 console.dirとconsole.logの違いを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="js">JSオブジェクトに対して</h3>
+<ul>
+<li>同じ動作をする</li>
+</ul>
+<h3 id="dom">DOM要素に対して</h3>
+<ul>
+<li><code>console.log</code>は要素のDOMツリーを表示</li>
+<li><code>console.dir</code>はDOMオブジェクトとして要素を表示</li>
+</ul>
+<pre class="highlight"><code class="language-js">//console.dirはプロパティを調べるのに役立つ
+console.log(document.body); //&lt;body&gt;...&lt;/body&gt;
+
+console.dir(document.body);
+//body
+//  aLink: ""
+//  accessKey: ""
+//  ariaAtomic: null
+// ...
+// [[Prototype]]: HTMLBodyElement</code></pre>
+</details>
+<h2 id="q36-htmlinputelementdomwhatwg">Q36. HTMLInputElementなどのDOM要素のクラスの情報はwhatwgで閲覧できますが、その仕様の見方が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_11">例</h3>
+<pre class="highlight"><code class="language-idl">[Exposed=Window]
+interface HTMLInputElement : HTMLElement {
+  [HTMLConstructor] constructor();
+
+  [CEReactions] attribute DOMString accept;
+  [CEReactions] attribute DOMString alt;
+  [CEReactions] attribute DOMString autocomplete;
+  [CEReactions] attribute boolean defaultChecked;
+  ...
+  [CEReactions] attribute unsigned long size;
+  [CEReactions] attribute USVString src;
+  ...
+  undefined showPicker();
+};
+
+HTMLInputElement includes PopoverInvokerElement;</code></pre>
+<ul>
+<li>補足説明</li>
+</ul>
+<pre class="highlight"><code>[CEReactions]
+  ・属性が変更された時に、その変更が正しく処理されることを保証
+  ・適切な方法でエラーハンドリングされる
+  ・属性の値が無効であるときや、変更が失敗した時、ブラウザは適切に対処する。
+  ・（たとえば範囲外や条件を満たさない場合など）
+  ・この属性がない場合は、上記の条件は保証されない
+
+attribute
+  フィールドである
+
+DOMString
+  DOMで扱われる文字
+  JSのStringに対応。通常の文字列
+
+USVString
+  サロゲートペア文字を考慮する必要がない
+
+includes
+  ・継承関係にある
+  ・上の文で言うと、`PopoverInvokerElement`はUI要素をトリガするための機能やメソッドを定義している。
+  ・そのため`HTMLInputElement`はそれを用いることができる
+
+[Exposed=Window]
+  ・インターフェースやメンバーが、ウィンドウオブジェクトに公開される
+  ・上の例でいうと`HTMLInputElement`は`JS`からウィンドウオブジェクト経由でアクセス可能
+
+[HTMLConstructor]
+  このコンストラクタが特定のHTML要素のコンストラクタであることを表す。</code></pre>
+</details>
+<h2 id="q37-domelemnodetype">Q37 DOMノードのタイプを数値として取得したいとき、elem.nodeTypeが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_12">使用例</h3>
+<pre class="highlight"><code class="language-html">&lt;script&gt;
+  let elem = document.body;
+  console.log(elem.nodeType); //1
+  console.log(elem.firstChild.nodeType); //3
+  console.log(document.nodeType); //9
+
+  console.log(
+    document.nodeType === Node.DOCUMENT_NODE;
+  ); //true
+&lt;/script&gt;</code></pre>
+<h3 id="_13">説明</h3>
+<pre class="highlight"><code>Element:          (1)
+Attribute:        (2)
+Text:             (3)
+CDATASection:     (4)
+ProcessingInstruction: (7)
+Comment:          (8)
+Document:         (9)
+DocumentType:     (10)
+DecumentFragment: (11)
+
+5~7は非推奨ノードであるため記載しない</code></pre>
+<h3 id="instanceof">instanceofとの違い</h3>
+<ul>
+<li><code>nodeType</code>の方が簡潔</li>
+</ul>
+</details>
+<h2 id="q38-nodenametagnamedom">Q38 nodeNameやtagNameプロパティを使うとDOMノードのタグ名を見ることができるが、前者と後者の違いが分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="tagname">tagName</h3>
+<ul>
+<li><code>Element</code>ノードに対してのみ存在する</li>
+</ul>
+<h3 id="nodename">nodeName</h3>
+<ul>
+<li>任意の<code>Node</code>で定義される</li>
+<li>つまり、<code>text</code>や<code>comment</code>ノード、それからルートの<code>document</code>に対しても役立つ</li>
+</ul>
+<h3 id="_14">使用例</h3>
+<pre class="highlight"><code class="language-html">&lt;script&gt;
+  //textノードに対して
+  console.log(
+    document.body.firstChild.tagName
+  ); //undefined
+
+  console.log(
+    document.body.firstChild.nodeName
+  ); //#text
+
+  //documentに対して
+  console.log(document.tagName); //undefined
+  console.log(document.nodeName); //#document
+
+  console.log(document.body); //BODY
+&lt;/script&gt;</code></pre>
+<h3 id="html_1">HTMLのタグ名について</h3>
+<ul>
+<li><code>console.log(document.body)</code>の結果から分かる通り、HTMLドキュメントを受け取ったとき、タグ名は常に大文字</li>
+<li><code>XML</code>ドキュメントなら、タグ名の大小は区別される</li>
+</ul>
+</details>
+<h2 id="q39-innerhtmlouterhtmldatanodevaluetextcontent">Q39 要素に対して書き込みを行いたい場合、<code>innerHTML</code>,<code>outerHTML</code>,<code>data/nodeValue</code>,<code>textContent</code>が使われますがその違いを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="innerhtml">innerHTML</h3>
+<ul>
+<li>要素内の<code>HTML</code>を文字列として取得</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;body&gt;
+  &lt;p&gt;test&lt;/p&gt;
+  &lt;script&gt;
+    console.log(document.body.innerHTML);
+    document.body.innerHTML = "&lt;div&gt;test&lt;/div&gt;";
+    //&lt;div&gt;test&lt;/div&gt;に変更された
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="_15">注意点</h3>
+<ul>
+<li><code>&lt;div&gt;test</code>のように無効なHTMLを挿入しようとした場合、ブラウザ側が自動で修正する</li>
+<li><code>innerHTML</code>で<code>&lt;script&gt;</code>タグを挿入した場合、HTMLの一部にはなるが実行はされない</li>
+</ul>
+<h3 id="_16">+=は追加ではなく、置き換え</h3>
+<ul>
+<li><code>innerHTML</code>に画像などが含まれる場合、<code>+=</code>を用いてもそれらはすべてリロードされる</li>
+</ul>
+<pre class="highlight"><code class="language-js">document.body.innerHTML += "&lt;p&gt;test2&lt;/p&gt;"
+
+//1 古いコンテンツが削除される
+//2 古いものと新しいものが連結したinnerHTMLが書かれる</code></pre>
+<h3 id="outerhtml">outerHTML</h3>
+<ul>
+<li><code>innerHTML</code>に要素自身を加えたようなもの</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="elem"&gt;
+  Hello &lt;b&gt;World&lt;/b&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  console.log(
+    document.querySelector("#elem").outerHTML
+  )
+
+  /*
+  &lt;div id="elem"&gt;
+    Hello &lt;b&gt;World&lt;/b&gt;
+  &lt;/div&gt;
+  */
+&lt;/script&gt;</code></pre>
+<h3 id="outerhtml_1">outerHTMLに書き込んだ時の注意点</h3>
+<ul>
+<li><code>elem.outerHTML</code>を変更しても<code>elem</code>は変わらない</li>
+<li>変更したい場合は、再度DOMに問い合わせる必要がある</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="elem"&gt;Hello&lt;/div&gt;
+
+&lt;script&gt;
+  let elem = document.querySelector("#elem");
+  elem.outerHTML = "&lt;div id='elem'&gt;A new Elem&lt;/div&gt;";
+
+  console.log(elem.outerHTML);
+  //&lt;div id="elem"&gt;Hello&lt;/div&gt;
+  //ただし開発者ツールで見ると、変更はされている
+
+  elem = document.querySelector("#elem");
+  console.log(elem.outerHTML);
+  //&lt;div id="elem"&gt;A new Elem&lt;/div&gt;
+&lt;/script&gt;</code></pre>
+<h3 id="nodevaluedata">nodeValue/data</h3>
+<ul>
+<li><code>innerHTML</code>と異なり、要素ノード以外に対しても有効</li>
+<li>たとえば<code>#text</code>や<code>#comment</code></li>
+<li><code>nodeValue</code>と<code>data</code>は同一</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;body&gt;&lt;!--Neko--&gt;
+  &lt;script&gt;
+    let text = document.body.firstChild;
+    console.log(text); //&lt;!--Neko--&gt;
+    console.log(text.nodeValue); //Neko
+    text.data = "Inu";
+
+    console.log(text); //&lt;!--Inu--&gt;
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="textcontent">textContent</h3>
+<ul>
+<li>テキストを安全な方法で書き込む(HTMLタグをエスケープする)ことができる</li>
+<li>通常ユーザからの入力を<code>HTML</code>タグとして受け取ると、セキュリティ上の問題が発生するのでこちらを使う</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="elem1"&gt;&lt;/div&gt;
+&lt;div id="elem2"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  let elem1 = document.getElementById("elem1");
+  let elem2 = document.getElementById("elem2");
+
+  elem1.innerHTML = "&lt;b&gt;Hello&lt;/b&gt;";
+  elem2.textContent = "&lt;b&gt;Hello&lt;/b&gt;";
+
+  console.log(
+    elem1.textContent;
+  ); //Hello アクセスした場合は&lt;&gt;&lt;/&gt;は無視される
+
+  /*
+  Hello
+  &lt;b&gt;Hello&lt;/b&gt;
+  */
+&lt;/script&gt;
+
+</code></pre>
+</details>
+<h2 id="q40-element">Q40 Element要素の基本的なプロパティについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_17">詳細を知りたい場合</h3>
+<ul>
+<li><code>whatwg</code>の各クラスを見るのが早い</li>
+</ul>
+<h3 id="_18">特定のクラスについて知りたい場合</h3>
+<ul>
+<li><code>console.dir</code>を使う</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.dir(
+  document.body
+);</code></pre>
+<h3 id="_19">著名なプロパティについて</h3>
+<ul>
+<li><code>id</code>: 文書全体で一意の識別子</li>
+<li><code>class</code>:主にCSSやJSで要素にアクセスするために使う</li>
+<li><code>style</code>:CSSスタイルをインラインで定義</li>
+<li><code>value</code>: <code>&lt;input&gt;</code>,<code>&lt;select&gt;</code>,<code>&lt;textarea&gt;</code>のための値</li>
+<li><code>hidden</code>:要素が見えるか否か</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="elem1"&gt;&lt;/div&gt;
+&lt;script&gt;
+  elem1.hidden = true;
+  //elem1は表示されなくなる
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q41-html11">Q41 HTMLの属性とプロパティが必ずしも1対1で対応していないということを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_20">通常の場合</h3>
+<ul>
+<li>HTMLの属性は、自動的にDOMオブジェクトのプロパティとなる</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;body id="page"&gt; &lt;!--id属性を定義--&gt;
+
+  &lt;script&gt;
+    console.log(document.body.id); //page
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="_21">独自のプロパティについて</h3>
+<ul>
+<li>組み込み以外のプロパティも定義可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">document.body.myData = {
+  name : "Hoge",
+  title : "Nekomoti"
+};
+
+document.body.sayHi = function(){
+  console.log(`Hello, ${this.tagName}`);
+};
+
+document.body.sayHi(); //Hello, BODY</code></pre>
+<h3 id="_22">コンストラクタに追加することも可能</h3>
+<ul>
+<li>インスタンスから参照可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">Element.prototype.sayHi = function(){
+    console.log(`Hello, ${this.tagName}`);
+};
+
+document.documentElement.sayHi(); //Hello, HTML
+document.head.sayHi(); //Hello, HEAD
+document.body.sayHi(); //Hello, BODY</code></pre>
+<h3 id="dom_1">改めてDOMオブジェクトのプロパティについて</h3>
+<ul>
+<li>通常のJSオブジェクトと同じように振る舞う</li>
+</ul>
+<h3 id="html_2">HTML属性について</h3>
+<ul>
+<li>タグが標準の属性を持っている場合、それはDOMプロパティとなる</li>
+<li>非標準の場合、DOMプロパティは生成されない</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;body id="test" hoge="non-starndard"&gt;
+&lt;script&gt;
+  console.log(document.body.id); //test
+  console.log(document.body.hoge); //undefined
+&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="_23">非標準の属性にアクセスしたい場合</h3>
+<ul>
+<li><code>elem.hasAttribute(name)</code>: 存在チェック</li>
+<li><code>elem.getAttribute(name)</code>: 値取得</li>
+<li><code>elem.setAttribute(name,val)</code>: 値設定</li>
+<li><code>elem.removeAttribute(name)</code>: 属性削除</li>
+<li><code>elem.attributes</code>: 全ての属性を読み込む</li>
+</ul>
+<h3 id="_24">上記メソッドで属性名にアクセスするときの注意点</h3>
+<ul>
+<li><code>HTML</code>属性は大文字と小文字を区別しない</li>
+<li>属性に代入したものは文字列になる</li>
+<li>設定した属性については<code>outerHTML</code>で全て確認可能</li>
+<li><code>attributes</code>で全属性をイテレートする時<code>name</code>でプロパティ名。<code>value</code>でプロパティ値が参照可能</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;body id="test" hoge="non-starndard"&gt;
+&lt;script&gt;
+
+  //DOMプロパティからでは取得できない
+  console.log(document.body.hoge); //undefined
+
+  //has
+  console.log(
+    document.body.hasAttribute("hoge")
+  ); //true
+
+  //set
+  document.body.setAttribute("hoge", 123);
+  document.body.setAttribute("fuga", "neko");
+
+  //get
+  console.log(
+    document.body.getAttribute("hoge")
+  ); //"123"
+
+  //attributes
+  for(let attr of document.body.attributes){
+    console.log(
+      attr.name + "=" + attr.value
+      //hoge=123, fuga=neko
+    );
+  }
+
+  console.log(document.body);
+  //&lt;body id="test" hoge="123" fuga="neko"&gt;&lt;/body&gt;
+
+  //remove
+  document.body.removeAttribute("HoGe")
+
+  console.log(
+    document.body.hasAttribute("hoge")
+  ); //false
+&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+<h3 id="_25">属性とプロパティの値が異なる場合</h3>
+<ul>
+<li><code>href</code></li>
+<li><code>style</code></li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;!--属性は基本的にHTML属性を返す。--&gt;
+&lt;!--プロパティの場合、使用しやすい形に変更されている場合がある--&gt;
+&lt;a id="link" href="#"&gt;&lt;/a&gt;
+&lt;script&gt;
+  link.getAttribute("href");
+  // "#"
+
+  console.log(link.href); //相対URLやハッシュを指定しても常に完全なURLを返す
+  //'http://localhost:8080/test/index.html#'
+
+  link.getAttribute("style")
+  //null
+
+  console.log(link.style);
+  //CSSStyleDeclaration {accentColor: '', additiveSymbols: '', alignContent: '', alignItems: '', alignSelf: '', …}
+
+&lt;/script&gt;</code></pre>
+<h3 id="_26">変更が同期されない場合</h3>
+<ul>
+<li><code>value</code>のプロパティを変更しても、属性には反映されない</li>
+<li>逆は更新される</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;input&gt;
+
+&lt;script&gt;
+  let input = document.querySelector("input");
+  input.setAttribute("value", "text");
+  console.log(input.value); //text
+
+  input.value = "neko";
+  console.log(input.getAttribute("value")); //text
+&lt;/script&gt;      </code></pre>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>この特徴は逆に役立つ</li>
+<li>ユーザが<code>value</code>を変更しても、プロパティは変更さえれていないので、元値が見られるという点で</li>
+</ul>
+</div>
+<h3 id="dom_2">DOMオブジェクトのプロパティは文字列とは限らない</h3>
+<pre class="highlight"><code class="language-html">&lt;input id="input" type="checkbox" checked&gt;
+
+&lt;script&gt;
+  console.log(input.getAttribute("checked")); //空文字
+  console.log(input.checked); //true
+&lt;/script&gt;</code></pre>
+<h3 id="_27">どちらを使えばいいのか</h3>
+<ul>
+<li>基本的に<code>DOM</code>オブジェクトのプロパティ</li>
+<li>正確な属性や非標準の属性が必要な場合に、属性を操作する</li>
+</ul>
+</details>
+<h2 id="q42-htmldata-">Q42 HTML属性に非標準のものを用いたときの注意点と、data-*を用いる利点について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_28">非標準の属性の使いどころ</h3>
+<ul>
+<li><code>class</code>の指定の代替</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div class="order"&gt;
+Hello
+&lt;/div&gt;
+
+&lt;style&gt;
+  .order[order-state="canceled"]{
+    color: red;
+  }
+
+  .order[order-state="pending"]{
+    color: yellow;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+  const div = document.querySelector("div");
+  //赤色になる
+  div.setAttribute("order-state", "canceled");
+&lt;/script&gt;</code></pre>
+<h3 id="_29">注意点</h3>
+<ul>
+<li>将来、現在は非標準の属性が標準になる可能性がある</li>
+<li>その場合、予期せぬ影響が生じる</li>
+</ul>
+<h3 id="data-">data-*</h3>
+<ul>
+<li>将来的に追加されることはない</li>
+<li><code>elem</code>が<code>data-about</code>という属性を持つ場合、<code>elem.dataset.about</code>でアクセス可能</li>
+<li><code>data-about-neko</code>のように複数のハイフンを持つ場合、<code>dataset.aboutNeko</code>の様にキャメルケースになる</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div class="order"&gt;
+  Hello
+&lt;/div&gt;
+
+&lt;style&gt;
+  .order[data-order-state="canceled"]{
+    color: red;
+  }
+
+  .order[data-order-state="pending"]{
+    color: yellow;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+  const div = document.querySelector("div");
+  //プロパティから変更することも可能
+  div.setAttribute("data-order-state", "pending");
+
+  setTimeout(()=&gt;{
+    div.dataset.orderState = "canceled"
+  }, 1000);
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q43">Q43 新しい要素を作成し、挿入する方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="documentcreateelementtag">document.createElement(tag)</h3>
+<ul>
+<li>指定されたタグの新しい要素ノードを作成</li>
+</ul>
+<h3 id="documentcreatetextnodetext">document.createTextNode(text)</h3>
+<ul>
+<li>指定されたテキストの新しいテキストノードを作成</li>
+</ul>
+<pre class="highlight"><code class="language-js">let div = document.createElement("div");
+let text = document.createTextNode("Nekoneko");</code></pre>
+<h3 id="nodeappendinsertnode-or-strings">node.append(insertNode or strings)</h3>
+<ul>
+<li><code>node</code>の子要素の末尾にノードまたは文字列を追加</li>
+</ul>
+<h3 id="nodeprependinsertnode-or-strings">node.prepend(insertNode or strings)</h3>
+<ul>
+<li><code>node</code>の子要素の先頭にノードまたは文字列を追加</li>
+</ul>
+<h3 id="nodebeforeinsertnode-or-strings">node.before(insertNode or strings)</h3>
+<ul>
+<li><code>node</code>の前にノードまたは文字列を追加</li>
+</ul>
+<h3 id="nodeafterinsertnode-or-strings">node.after(insertNode or strings)</h3>
+<ul>
+<li><code>node</code>の後にノードまたは文字列を追加</li>
+</ul>
+<h3 id="nodereplacewithinsertnode-or-strings">node.replaceWith(insertNode or strings)</h3>
+<ul>
+<li><code>node</code>をノードまたは文字列で入れ替える</li>
+</ul>
+<h3 id="_30">注意点</h3>
+<ul>
+<li>テキストは安全な方法で挿入されるので、<code>HTML</code>タグを上記のメソッドで挿入することはできない</li>
+<li>1回の呼び出しで複数のノードやテキストのリストを挿入することも可能</li>
+</ul>
+<h3 id="_31">使用例</h3>
+<pre class="highlight"><code class="language-html">&lt;ol id="ol"&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  //htmlタグは認識されない
+  ol.before("&lt;b&gt;before&lt;/b&gt;");
+  ol.after("after");
+
+  let liFirst = document.createElement("li");
+  let liLast = document.createElement("li");
+  let liLast2 = document.createElement("li");
+  liFirst.innerHTML = "prepend";
+  liLast.innerHTML = "append";
+  liLast2.innerHTML = "append2";
+  ol.prepend(liFirst);
+  //複数挿入
+  ol.append(liLast, liLast2);
+
+  let rep = document.createElement("li");
+  rep.innerHTML = "replaceWith"
+  ol.children[1].replaceWith(rep);
+
+  /*
+  &lt;b&gt;before&lt;/b&gt;
+    1. prepend
+    2. replaceWith
+    3. 1
+    4. 2
+    5. append
+    6. append2
+  after
+  */
+&lt;/script&gt;</code></pre>
+<h3 id="eleminsertadjacenthtmlwhere-html">elem.insertAdjacentHTML(where, html)</h3>
+<ul>
+<li><code>beforebegin</code>:<code>where</code>に指定。<code>elem</code>の直前に挿入</li>
+<li><code>afterbegin</code>:<code>where</code>に指定。<code>elem</code>の子要素の先頭</li>
+<li><code>beforeend</code>:<code>where</code>に指定。<code>elem</code>子要素の末尾</li>
+<li><code>afterend</code>:<code>where</code>に指定。<code>elem</code>の直後</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;ul&gt;&lt;/ul&gt;
+&lt;script&gt;
+  const ul = document.querySelector("ul");
+
+  ul.insertAdjacentHTML(
+    "beforebegin", "&lt;p&gt;Hello&lt;/p&gt;"
+  );
+  ul.insertAdjacentHTML(
+    "afterend", "&lt;p&gt;Bye&lt;/p&gt;"
+  );
+
+  ul.insertAdjacentHTML(
+    "afterbegin", "&lt;li&gt;1&lt;/li&gt;" 
+  );
+
+  ul.insertAdjacentHTML(
+    "beforeend", "&lt;li&gt;2&lt;/li&gt;"
+  );
+
+  /*
+  Hello
+    * 1
+    * 2
+  Bye
+  */
+&lt;/script&gt;</code></pre>
+<h3 id="_32">兄弟メソッドもある</h3>
+<ul>
+<li><code>elem.insertAdjacentText(where, text)</code></li>
+<li><code>elem.insertAdjacentElement(where, elem)</code></li>
+<li>これらはHTMLではなく、テキストや要素を挿入する</li>
+<li>しかし、<code>append</code>等を使えばいいので、使用されない</li>
+</ul>
+</details>
+<h2 id="q44-removeclonenode">Q44 ノードを削除するときに、removeを、複製したいときにcloneNodeが使えることを知っていますか?(またノードを入れ替えたいときに挿入メソッドで十分な事も)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="noderemove">node.remove()</h3>
+<ul>
+<li>ノードを削除する</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="div1"&gt;neko&lt;/div&gt;
+&lt;div id="div2"&gt;inu&lt;/div&gt;
+
+&lt;script&gt;
+  setTimeout(()=&gt; div1.remove(), 1000);
+&lt;/script&gt;</code></pre>
+<h3 id="_33">すべて削除</h3>
+<pre class="highlight"><code class="language-js">//indexが変動するのでfor...of等は使わないこと
+function clear(elem){
+  while (elem.firstChild){
+    elem.firstChild.remove();
+  }
+}
+
+//もちろん以下でもいい
+elem.innerHTML = "";</code></pre>
+<h3 id="node_2">Nodeを入れ替えたい場合</h3>
+<ul>
+<li>挿入メソッドで十分。</li>
+<li>存在するノードを挿入した場合、前の場所からは削除される</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="div1"&gt;neko&lt;/div&gt;
+&lt;div id="div2"&gt;inu&lt;/div&gt;
+
+&lt;script&gt;
+  setTimeout(()=&gt; div2.after(div1), 1000);
+&lt;/script&gt;</code></pre>
+<h3 id="elemclonenodetrue">elem.cloneNode(true)</h3>
+<ul>
+<li>子要素ありの深いコピーを行う</li>
+</ul>
+<h3 id="elemclonenodefalse">elem.cloneNode(false)</h3>
+<ul>
+<li>子要素なしの浅いコピーを行う</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="div"&gt;
+  &lt;strong&gt;Hi, &lt;/strong&gt;hoge!
+&lt;/div&gt;
+
+&lt;script&gt;
+  let div2 = div.cloneNode(true);
+  let div3 = div.cloneNode(false);
+
+  div.after(div2);
+  div2.after(div3);
+
+  /*
+    &lt;div id="div"&gt;
+      &lt;strong&gt;Hi, &lt;/strong&gt;hoge!
+    &lt;/div&gt;
+
+    &lt;div id="div"&gt;
+      &lt;strong&gt;Hi, &lt;/strong&gt;hoge!
+    &lt;/div&gt;
+
+    &lt;div id="div"&gt;&lt;/div&gt;
+  */
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q45-documentfragmentdom">Q45 DocumentFragmentというノードのリストを返す際のラッパー用のDOMノードが存在することを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_34">挿入操作を繰り返したくないときに使う</h3>
+<pre class="highlight"><code class="language-html">&lt;ul&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+  let ul = document.querySelector("ul");
+  function getListContent(){
+    let fragment = new DocumentFragment();
+
+    for(let i=1; i&lt;=3; i++){
+      let li = document.createElement("li");
+      li.append(i); //textを挿入
+      fragment.append(li);
+    }
+
+    return fragment;
+  }
+
+  ul.append(getListContent());
+
+  /*
+    * 1
+    * 2
+    * 3
+  */
+&lt;/script&gt;</code></pre>
+<h3 id="_35">実際はこちらで十分</h3>
+<ul>
+<li><code>prepend/append/before/after</code>は複数追加可能なので</li>
+<li>複数追加した場合でも、DOMへの追加は1回で済む</li>
+<li>実際に、<code>1e7</code>回ループしてみたが、速度は同等だった</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;ul&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+  let ul = document.querySelector("ul");
+  function getListContent() {
+    let result = [];
+
+    for (let i = 1; i &lt;= 3; i++) {
+      let li = document.createElement("li");
+      li.append(i); //textを挿入
+      result.push(li);
+    }
+
+    return result;
+  }
+
+  //pushしたものを展開するだけでいい
+  //append等は複数要素を追加可能なので
+  ul.append(...getListContent());
+
+  /*
+    * 1
+    * 2
+    * 3
+  */
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q46-appendchild">Q46 古典的な挿入/削除メソッド(たとえば、appendChild)を目にしたことはありますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_36">学ぶ意味</h3>
+<ul>
+<li>古いスクリプトで見かけるため</li>
+<li>新たに書く必要性は皆無</li>
+</ul>
+<h3 id="parentelemappendchildnode">parentElem.appendChild(node)</h3>
+<ul>
+<li><code>parentElem</code>の末尾に<code>node</code>を追加</li>
+</ul>
+<h3 id="parenteleminsertbeforenode-nextsibling">parentElem.insertBefore(node, nextSibling)</h3>
+<ul>
+<li><code>parentElem</code>の<code>nodeSibling</code>の前に挿入</li>
+</ul>
+<h3 id="parentelemreplacechildnode-oldchild">parentElem.replaceChild(node, oldChild)</h3>
+<ul>
+<li><code>parentElem</code>内の<code>oldChild</code>を<code>node</code>に置き換える</li>
+</ul>
+<h3 id="parentelemremovechildnode">parentElem.removeChild(node)</h3>
+<ul>
+<li><code>parentElem</code>から<code>node</code>を削除</li>
+</ul>
+<h3 id="_37">役立つかもしれない点</h3>
+<ul>
+<li>古いメソッドの方は挿入/削除したノードを返す</li>
+<li>新しいメソッドは返さない</li>
+</ul>
+<h3 id="documentwritehtml">document.write(html)</h3>
+<ul>
+<li>即座に<code>html</code>を書き込む</li>
+<li>これはDOMがない時に作られたもの</li>
+<li>ページがロードされている間にだけ動作して、その後に呼び出した場合、既存のドキュメントがすべて削除されるという特徴がある。</li>
+</ul>
+<h3 id="write">writeの利点?</h3>
+<ul>
+<li>書き込みが早い</li>
+<li>ロードしている最中に、多くのテキストを追加する必要があり、かつ速度の問題を感じているなら候補となる</li>
+<li>ただし、<code>document.write</code>はページのレンダリングをブロックするので、非同期的にロードした方がいいかも</li>
+</ul>
+</details>
+<h2 id="q47-classnameclasslist">Q47 classNameやclassListを使って、クラスの追加/削除を行う方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="classname">className</h3>
+<ul>
+<li>クラスの文字列全体を書き換える</li>
+</ul>
+<h3 id="classlist">classList</h3>
+<ul>
+<li>此方の方が柔軟</li>
+<li><code>elem.classList.add/remove("class")</code>: クラスの追加/削除</li>
+<li><code>elem.classList.toggle("class")</code>:クラスが存在する場合は削除。存在しないなら追加</li>
+<li><code>elem.classList.contains("class")</code>:クラスの存在をチェック</li>
+<li>反復可能</li>
+</ul>
+<h3 id="_38">使用例</h3>
+<pre class="highlight"><code class="language-html">&lt;div&gt;&lt;/div&gt;
+&lt;script&gt;
+  let div = document.querySelector("div");
+
+  div.className = "hoge fuga foo";
+  div.classList.add("bar");
+  div.classList.remove("foo");
+  div.classList.toggle("foo");
+
+  div.classList.contains("foo"); //true
+
+  for(const elem of div.classList){
+    console.log(elem); //hoge, fuga, bar, foo
+  }
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q48-style">Q48 styleを使って要素のスタイルを設定する方法とその注意点を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_39">注意点</h3>
+<ul>
+<li>複数語はキャメルケース</li>
+<li>通常は<code>class</code>を追加して、そのクラスに<code>CSS</code>を割り当てるべき</li>
+<li>クラスで処理しきれない場合に、<code>style</code>で設定する</li>
+<li>プレフィックス付きのプロパティの場合、先頭から大文字になる(例: <code>-moz-border-radius</code>なら<code>MozBorderRadius</code>)</li>
+<li>単位に注意する必要がある(例:<code>margin</code>)</li>
+</ul>
+<h3 id="_40">使用例</h3>
+<pre class="highlight"><code class="language-js">document.body.style.backgroundColor = "red"
+document.body.style.margin = "20px"; //20の場合、動作しない</code></pre>
+<h3 id="elemstyleremovepropertystyle">elem.style.removeProperty("style")</h3>
+<ul>
+<li>特定のスタイルプロパティを削除</li>
+</ul>
+<pre class="highlight"><code class="language-js">document.body.style.background = "red";
+setTimeout(()=&gt;
+  document.body.style.removeProperty("background");
+, 1000)</code></pre>
+<h3 id="elemstylecsstext">elem.style.cssText</h3>
+<ul>
+<li>スタイルを置換</li>
+<li>既存のスタイルを削除してしまうので、新規に要素を作成する際に使用される</li>
+<li>なお、<code>setAttribute</code>で代用可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">//.styleは読み取り専用なので、設定は不可
+//代わりに、.style.cssTextを用いる
+
+let div = document.createElement("div");
+div.innerHTML = "Neko";
+div.style.cssText = `
+  color: red !important;
+  background-color: yellow;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+`
+
+document.body.append(div);
+
+//代用
+div.setAttribute("style", `
+  color: red !important;
+  background-color: blue;
+  height; 50px;
+  width: 50px;
+  text-align: center;
+`)</code></pre>
+</details>
+<h2 id="q49-stylestylegetcomputedstyle">Q49 styleプロパティがstyle属性の値のみを操作可能ということと、計算後の値をgetComputedStyleで参照できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_41">間違えやすい例</h3>
+<ul>
+<li>styleプロパティは、CSSクラスで定義されたスタイルについては関与できない</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;!--CSSクラスの値は参照できない--&gt;
+
+&lt;style&gt; div {color: red; margin: 5px} &lt;/style&gt;
+&lt;div id="div"&gt;Neko&lt;/div&gt;
+
+&lt;script&gt;
+  console.log(div.style.color); //空文字
+&lt;/script&gt;</code></pre>
+<h3 id="getcomputedstyleelement-pseudo">getComputedStyle(element [,pseudo])</h3>
+<ul>
+<li><code>element</code>:要素</li>
+<li><code>pseudo</code>:疑似要素</li>
+<li>CSSクラスや継承されたスタイルが全て計算された後の値を取得する。</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;style&gt; div {color: red; margin: 5px} &lt;/style&gt;
+&lt;div id="div"&gt;Neko&lt;/div&gt;
+
+&lt;script&gt;
+  let computedStyle = getComputedStyle(div);
+  console.log(computedStyle.marginTop); //5px
+  console.log(computedStyle.color); //rgb(255,0,0)
+&lt;/script&gt;</code></pre>
+<h3 id="_42">算出スタイル値と解決スタイル値について</h3>
+<pre class="highlight"><code>算出スタイル値
+  ・すべてのCSSルールとCSS継承が適用された後の値
+  ・`height: 1em`のように相対的な数値が残されている
+
+解決スタイル値
+  ・ブラウザが要素を計算した後の絶対的な値で、`height: 18px`のように単位を固定されている。
+  ・また、解決後の値は、浮動小数点を持つ(例: `width: 15.3px`)
+
+`getComputedStyle`
+  ・プロパティの解決された値を返す。
+  ・サイズ関連のデータなら通常単位は`px`</code></pre>
+<h3 id="getcomputedstyle">getComputedStyleの注意点</h3>
+<ul>
+<li>完全なプロパティ名が必要</li>
+<li>たとえば<code>margin</code>は<code>marginTop/Left/Bottom/Right</code>の4要素をまとめて指定するが、<code>getComputedStyle</code>で用いた場合、その挙動はブラウザに任せられている</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;div id="div"&gt;&lt;/div&gt;
+&lt;style&gt;
+  div {
+    margin: 10px;
+    padding: 10px;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+  let divComputed = getComputedStyle(div);
+
+  console.log(divComputed.margin); //ブラウザ依存
+  console.log(divComputed.marginTop); //10px
+&lt;/script&gt;</code></pre>
+</details>
+<h2 id="q49">Q49 要素サイズを取得/変更する際に見かけるプロパティについて知識がありますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_43">基本要素</h3>
+<pre class="highlight"><code class="language-html">&lt;div id="example"&gt;hoge&lt;/div&gt;
+&lt;style&gt;
+  #example {
+    width: 300px;
+    height: 200px;
+    border: 25px solid;
+    padding: 20px;
+    overflow: auto; /*内容が収まらない場合scroll-bar*/
+  }</code></pre>
+<h3 id="_44">基本的な注意点</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="_45">スクロールバーを考慮する</h3>
+<ul>
+<li>スクロールバーが横に表示され、幅が<code>16px</code>の場合、<code>width</code>は全体で<code>284px</code>になる</li>
+</ul>
+<h3 id="padding-bottom">padding-bottomとオーバーフロー</h3>
+<ul>
+<li>要素に多くのテキストがある場合、ブラウザは表示しきれなかったテキストを<code>padding-bottom</code>に表示する</li>
+<li>そのため<code>padding</code>がないように見えるが、依然として<code>padding</code>は存在している</li>
+</ul>
+</div>
+<h3 id="offsetparent-offsetlefttop">offsetParent, offsetLeft/Top</h3>
+<pre class="highlight"><code>offsetParent
+  以下の要素のうち1つ以上を満たす、最も近い祖先
+  1. positionが、absolute, relative, fixedのいずれか
+  2. &lt;td&gt;, &lt;th&gt;, &lt;table&gt;タグのうちいずれか
+  3. &lt;body&gt;タグ
+
+offsetLeft/Top
+  offsetParentの左上隅からの相対的なx/y座標
+
+offsetParentがnullになる場合
+  1. 要素が表示されていない場合
+  2. &lt;body&gt;または&lt;html&gt;の場合
+  3. position:fixedを持つ要素の場合
+  ※この時、offsetLeft/Topは0になる</code></pre>
+<pre class="highlight"><code class="language-html">&lt;main style="position: relative" id="main"&gt;
+  &lt;article&gt;
+    &lt;div id="example" style="position: absolute; left: 180px; top: 180px"&gt;hoge&lt;/div&gt;
+  &lt;/article&gt;
+  &lt;script&gt;
+    console.log(example.offsetParent.id); //main
+    //articleは上の3つの条件を満たさないので
+    console.log(example.offsetLeft); //180
+    console.log(example.offsetTop); //180
+  &lt;/script&gt;
+&lt;/main&gt;</code></pre>
+<h3 id="offsetwidthheight">offsetWidth/height</h3>
+<pre class="highlight"><code>offsetWidth
+  border/paddingを含む、要素の完全な幅
+offsetHeight
+  border/paddingを含む、要素の完全な高さ
+
+0になる場合
+  ・表示されていない場合
+  ・先祖にdisplay: noneがある場合
+  ・DOMツリーに追加されていない場合
+  ※ジオメトリプロパティは表示要素でない場合計算されない</code></pre>
+<pre class="highlight"><code class="language-html">&lt;style&gt;
+  #div{
+    width: 300px;
+    height: 200px;
+    border: 20px solid red;
+    padding: 30px;
+  }
+&lt;/style&gt;
+&lt;div id="div"&gt;hoge&lt;/div&gt;
+
+&lt;script&gt;
+  //(width + padding * 2 + border * 2)
+  console.log(div.offsetWidth); //400
+  //200 + 20*2 + 30*2
+  console.log(div.offsetHeight); //300
+&lt;/script&gt;</code></pre>
+<h3 id="_46">要素が隠されているかをチェックする</h3>
+<pre class="highlight"><code class="language-js">function isHidden(elem){
+  return !elem.offsetWidth &amp;&amp; !elem.offsetHeight;
+}; //空要素や先祖がdisplay: noneならtrue</code></pre>
+<h3 id="clienttopleft">clientTop/Left</h3>
+<pre class="highlight"><code>clientTop/Left
+  パディングの外側の座標 - ボーダーの外側の座標</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>実際にはボーダーの幅であることが多い</li>
+<li>ただし、ドキュメントが右から左に書かれるとき、スクロールバーの幅を含むため、定義は上記</li>
+</ul>
+</div>
+<h3 id="clientwidthheight">clientWidth/Height</h3>
+<pre class="highlight"><code>clientWidth/Height
+  パディング + コンテンツの幅/高さ</code></pre>
+<pre class="highlight"><code class="language-html">&lt;style&gt;
+  #div{
+    width: 300px;
+    height: 200px;
+    border: 20px solid red;
+    padding: 30px;
+  }
+&lt;/style&gt;
+
+&lt;div id="div"&gt;hoge&lt;/div&gt;
+
+&lt;script&gt;
+  //width + padding * 2 = 360
+  //※スクロールバーが存在する場合
+  //width + padding * 2 = 344
+  console.log(div.clientWidth)
+  //height + padding * 2 = 260
+  console.log(div.clientHeight)
+&lt;/script&gt;   </code></pre>
+<h3 id="scrollwidthheight">scrollWidth/Height</h3>
+<pre class="highlight"><code>clientWidth/Heightとの違い
+  ・スクロールアウトされた部分も含める
+  ・client*は、可視領域のみ    </code></pre>
+<pre class="highlight"><code class="language-html">&lt;style&gt;
+  #div {
+    width: 300px;
+    height: 100px;
+    overflow: auto;
+  }
+&lt;/style&gt;
+
+&lt;div id="div"&gt;&lt;/div&gt;
+&lt;script&gt;
+  div.innerHTML = `。
+  　赤とんぼの休んでいる竹には、朝顔のつるがまきついています。昨年の夏、この別荘の主人が植えていった朝顔の結んだ実が、また生えたんだろう――と赤とんぼは思いました。
+  　今はこの家には誰もいないので、雨戸が淋しくしまっています。
+  　赤とんぼは、ツイと竹の先からからだを離して、高い空に舞い上がりました。
+  `
+
+  console.log(div.clientWidth) //283
+  console.log(div.clientHeight) //100
+  console.log(div.scrollWidth) //283
+  console.log(div.scrollHeight) //234
+
+  //要素を一杯まで広げたいときに有用(px忘れに注意)
+  div.style.height = `${div.scrollHeight}px`;
+
+&lt;/script&gt;</code></pre>
+<h3 id="scrolltopleft">scrollTop/Left</h3>
+<pre class="highlight"><code>scrollTop/Left
+  隠された部分の上/左部分
+  つまり、どれだけスクロールされたか</code></pre>
+<pre class="highlight"><code class="language-html">&lt;style&gt;
+  #div {
+    width: 300px;
+    height: 100px;
+    overflow: auto;
+  }
+&lt;/style&gt;
+
+&lt;div id="div"&gt;&lt;/div&gt;
+&lt;script&gt;
+  div.innerHTML = `。
+  　赤とんぼの休んでいる竹には、朝顔のつるがまきついています。昨年の夏、この別荘の主人が植えていった朝顔の結んだ実が、また生えたんだろう――と赤とんぼは思いました。
+  　今はこの家には誰もいないので、雨戸が淋しくしまっています。
+  　赤とんぼは、ツイと竹の先からからだを離して、高い空に舞い上がりました。
+  `
+  //ちょっとスクロール
+  setTimeout(()=&gt;{
+    console.log(div.scrollTop); //100
+  }, 1000)
+
+&lt;/script&gt;</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><code>scrollTop/Left</code>は書き込み可能</li>
+</ul>
+<pre class="highlight"><code class="language-js">elem.scrollTop += 10; //10px分下にスクロール
+elem.scrollTop = 0; //トップまで戻る
+elem.scrollTop = Infinity; //ブラウザ依存</code></pre>
+</div>
+<h3 id="_47">まとめ</h3>
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>効果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offsetParent</td>
+<td>最も近いposition指定された祖先</td>
+</tr>
+<tr>
+<td>offsetLeft/Top</td>
+<td>offsetParentの左端からの距離</td>
+</tr>
+<tr>
+<td>offsetWidth/Height</td>
+<td>ボーダーを含む要素の幅/高さ</td>
+</tr>
+<tr>
+<td>clientLeft/Top</td>
+<td>通常、左/上のボーダー幅</td>
+</tr>
+<tr>
+<td>clientWidth/Height</td>
+<td>パディングを含むコンテンツ幅/高さ</td>
+</tr>
+<tr>
+<td>scrollLeft/Top</td>
+<td>要素のスクロールアウトされた距離</td>
+</tr>
+<tr>
+<td>scrollWidth/Height</td>
+<td>スクロールアウトされた領域を含む幅/高さ</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h2 id="q50-getcomputedstyle">Q50 要素のサイズや位置に関する情報を取得したい場合、ジオメトリプロパティがgetComputedStyleより有用な理由が分かりますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="auto">autoを返す可能性</h3>
+<ul>
+<li>インライン要素の場合起こりうる</li>
+</ul>
+<pre class="highlight"><code class="language-html">&lt;span id="elem"&gt;Hello!&lt;/span&gt;
+
+&lt;script&gt;
+  console.log(getComputedStyle(elem).width); //auto
+  console.log(elem.offsetWidth); //要素が実際に占める幅
+&lt;/script&gt;</code></pre>
+<h3 id="_48">スクロールバーを考慮するか否か</h3>
+<ul>
+<li>これはブラウザ依存になる</li>
+<li><code>clientWidth/Height</code>なら確実に含まない</li>
+</ul>
+<h3 id="_49">欠点ではないが</h3>
+<ul>
+<li><code>getComputedStyle</code>は<code>padding</code>を含まない</li>
+<li><code>getComputedStyle</code>は数値ではなく、<code>px</code>付を返す</li>
+</ul>
+</details>
+<h2 id="q51">Q51 ブラウザウィンドウの幅/高さを取得する方法とその注意点を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="documentdocumentelementclientheightwidth">document.documentElement.clientHeight/Width</h3>
+<ul>
+<li>スクロールバーやボーダーを含まない<code>&lt;html&gt;</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="windowinnerwidthheight">window.innerWidth/Heightは?</h3>
+<ul>
+<li>スクロールバーを含んでしまう</li>
+</ul>
+<h3 id="doctype">DOCTYPEの必要性</h3>
+<ul>
+<li><code>&lt;!DOCTYPE HTML&gt;</code>がないと、トップレベルのジオメトリプロパティが異なる可能性がある</li>
+<li>そのため常に記載する必要がある</li>
+</ul>
+</div>
+<h3 id="document">documentのスクロールアウトした部分を含めた幅/高さ</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="scrollheightwidth">ページ全体だとscrollHeight/Widthがいいのでは?</h3>
+<ul>
+<li><code>clientHeight/Width</code>より小さくなる可能性あり</li>
+<li>ブラウザ依存やスクロールバーの有無で変わる</li>
+<li>そのため以下の様にする</li>
+</ul>
+</div>
+<pre class="highlight"><code class="language-js">//プロパティのうち最大のものをウィンドウサイズとする
+let scrollHeight = Math.max(
+  document.body.scrollHeight,
+  document.documentElement.scrollHeight,
+  document.body.offsetHeight,
+  document.documentElement.offsetHeight,
+  document.body.clientHeight,
+  document.documentElement.clientHeight
+);
+
+console.log(
+  scrollHeight
+); //553</code></pre>
+</details>
+<h2 id="q52-windowpagexoffsetpageyoffsetscrollto-scrollby-scrollintoview">Q52 ページのスクロール状態について、window.pageXOffset/pageYOffset,scrollTo, scrollBy, scrollIntoViewというプロパティが役立つことを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="scrolltopscrollleft">どれだけスクロールしたかなら、scrollTopやscrollLeftを使いたいところだが</h3>
+<ul>
+<li><code>Chrome/Safari/Opera</code>の場合、<code>document.body.scrollTop/Left</code></li>
+<li>それ以外の場合は、<code>document.documentElement.scrollTop/Left</code>を使う必要がある</li>
+<li>クロスブラウザの非互換性を鑑みて、以下を使う</li>
+</ul>
+<h3 id="windowpagexoffsetpageyoffset">window.pageXOffset/pageYOffset</h3>
+<ul>
+<li>現在のスクロール状態を取得する</li>
+</ul>
+<pre class="highlight"><code class="language-js">console.log(window.pageYOffset); //1900</code></pre>
+<h3 id="windowscrollbyxy">window.scrollBy(x,y)</h3>
+<ul>
+<li>現在の位置を基準として、ページをスクロール</li>
+</ul>
+<pre class="highlight"><code class="language-js">window.scrollBy(0,2000); //Y方向に2000pxだけスクロール</code></pre>
+<h3 id="windowscrolltoxy">window.scrollTo(x,y)</h3>
+<ul>
+<li>ドキュメントの左上隅を基準に、ページをスクロール</li>
+</ul>
+<pre class="highlight"><code class="language-js">window.scrollTo(0,0); //先頭に戻る</code></pre>
+<h3 id="elemscrollintoviewtop">elem.scrollIntoView(top)</h3>
+<ul>
+<li><code>elem</code>:これが見えるようにページをスクロール</li>
+<li><code>top</code>: <code>true</code>なら要素の上端が上部に、<code>false</code>なら要素の下端が下部に</li>
+</ul>
+<pre class="highlight"><code class="language-js">let div = document.createElement("div");
+document.body.append(div);
+div.scrollIntoView(false); //見える位置までスクロール</code></pre>
+<h3 id="_50">スクロール不可にしたい場合</h3>
+<ul>
+<li><code>document.body.style.overflow = 'hidden'</code>:不可</li>
+<li><code>document.body.style.overflow = ''</code>: 再開</li>
+</ul>
+<pre class="highlight"><code class="language-js">document.body.style.overflow = "hidden";
+
+setTimeout(()=&gt;{
+  document.body.style.overflow = ""
+}, 1000);</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="_51">スクロールバーが消えることを理解する</h3>
+<ul>
+<li>スクロールバーの領域の分、<code>padding</code>を増やしてやれば、画面が乱れることはなくなる</li>
+</ul>
+</div>
+</details>
+<h2 id="q53-getboundingclientrectelementfrompoint">Q53 要素のウィンドウ座標について操作を行う対場合、getBoundingClientRect/elementFromPointが役に立つことを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="elemgetboundingclientrect">elem.getBoundingClientRect()</h3>
+<ul>
+<li>要素の<code>top, left, right, bottom</code>を表示する</li>
+<li><code>x,y,width,height</code>という情報も含んでいる</li>
+<li><code>x == left, y == top</code></li>
+<li><code>x + width = right, y + height = bottom</code></li>
+</ul>
+<h3 id="_52">ウィンドウ座標とは?</h3>
+<ul>
+<li>スクロールアウトを考慮せず、ウィンドウの左上隅から計算したもの</li>
+<li>ページをスクロールすると、ウィンドウ座標は変わる。</li>
+<li>よって、<code>elem.getBoundingClientRect()</code>のように特定の要素にアクセスした場合、マイナス等の値も表示される</li>
+</ul>
+<pre class="highlight"><code class="language-js">//適当にスクロールした後で
+document.body.getBoundingClientRect();
+/*
+DOMRect {
+  x: 0, 
+  y: -14710, 
+  width: 272.66668701171875, 
+  height: 536.6666870117188, 
+  top: -14710, 
+  right: 272.66668701171875
+  left: 0
+  bottom: -14173.333312988281
+  }
+*/</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><code>CSS</code>と異なり、<code>right</code>や<code>bottom</code>でも左上隅を基準として座標が計算されることに注意</li>
+</ul>
+</div>
+<h3 id="documentelementfrompointxy">document.elementFromPoint(x,y)</h3>
+<ul>
+<li>指定したウィンドウ座標で最もネストされた要素を返す</li>
+</ul>
+<pre class="highlight"><code class="language-js">// 現在の(20,30)という座標に HTML -&gt; BODY -&gt; SPAN要素があるとする
+
+let elem = document.elementFromPoint(20,30);
+elem.style.background = "red";
+console.log(elem.tagName); //SPAN</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li><code>(x,y)</code>に負の値やウィンドウ幅以上の値が指定された場合、<code>null</code>が返る</li>
+<li>画面外のことまでは考慮してくれない。</li>
+</ul>
+</div>
+</details>
+<h2 id="q54-positionfixed">Q54 position:fixedを用いて、スクロールを無視するような位置に要素を配置することができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="positionfixed"><code>position:fixed</code>はウィンドウ座標に依存する</h3>
+<ul>
+<li>よって、スクロールしても同じ位置に存在し続ける</li>
+</ul>
+<pre class="highlight"><code class="language-js">//getBoundingClientRect + position:fixed
+
+let elem = document.createElement("div");
+elem.style.cssText = "width: 1000px; height: 10000px; background-color: gray";
+document.body.append(elem);
+
+//第一引数の上部にmessageを表示し続ける
+function createMessageUpper(elem, html){
+
+  let message = document.createElement("div");
+  message.style.cssText = "position:fixed; color: red";
+
+  let coords = elem.getBoundingClientRect();
+  message.style.left = coords.left + "px";
+  message.style.top = coords.top + "px";
+
+  message.innerHTML = html;
+  return message;
+}
+
+//スクロールしても同じ位置に表示されることが確認できる
+let message = createMessageUpper(elem, "Hello");
+document.body.append(message);
+setTimeout(()=&gt; message.remove(), 5000);</code></pre>
+</details>
+<h2 id="q55-topleftpositionabsolute">Q55 top/leftとposition:absoluteを用いて、スクロール時に位置が変動するようなコンテンツをページ内に追加できますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_53">要素のドキュメント座標を取得するコード</h3>
+<pre class="highlight"><code class="language-js">function getCoords(elem){
+  let box = elem.getBoundingClientRect();
+
+  //ウィンドウ座標 + スクロール分 = ドキュメント全体の座標
+  return {
+    top : box.top + pageYOffset,
+    left : box.left + pageXOffset,
+  }
+}</code></pre>
+<h3 id="positionabsolute">position:absoluteで固定する</h3>
+<ul>
+<li>ドキュメント座標に依存しているので</li>
+<li>親要素が<code>position:absolute/relative</code>でない場合、ドキュメント全体に対する座標</li>
+<li><code>position</code>に関する指定がない場合、親要素から相対的に位置が決まる</li>
+</ul>
+<pre class="highlight"><code class="language-js">//座標を求める
+const getCoords = elem =&gt;{
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top : box.top + pageYOffset,
+    left : box.left + pageXOffset
+  };
+}
+
+//挿入する要素の位置を指定
+const positionAt = (anchor, position, elem) =&gt;{
+  let anchorCoords = getCoords(anchor);
+
+  switch(position){
+    case "top":
+      elem.style.left = anchorCoords.left + "px";
+      elem.style.top = anchorCoords.top - elem.offsetHeight + "px";
+      break;
+    case "bottom":
+      elem.style.left = anchorCoords.left + "px";
+      elem.style.top = anchorCoords.top + anchor.offsetHeight + "px";
+      break;
+  }
+}
+
+const showNote = (anchor, position, html) =&gt;{
+  let note = document.createElement("div");
+  note.style.cssText = "position: absolute";
+  note.innerHTML = html;
+  document.body.append(note);
+  positionAt(anchor, position, note);
+}
+
+//(基準となる要素,位置,挿入メッセージ)
+showNote($0, "top", "hoge");
+showNote($0, "bottom", "fuga");</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/custom.js"></script>
+      
+        <script src="../../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
