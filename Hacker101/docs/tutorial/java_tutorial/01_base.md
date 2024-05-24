@@ -220,6 +220,8 @@
     ```text
     ・IntelliJなどでやりたいのは、やまやまのやまだが
       今回はVSCodeで頑張っていく
+      (※Eclipse Cheを使えば、ブラウザでVSCodeのような感覚で
+        開発ができる！リモートの少人数開発なら試す価値あり?)
     
     ・MavenやGradleのあたりまでこれば、
       IDEの違いはあまり気にならなくなってくると思うし
@@ -276,3 +278,102 @@
     */
     ```
 
+## Q4 基本的な構文について知っていますか?
+
+??? success
+    ### JShell
+
+    ```text
+    ・Java9で導入されたREPL(Read-Eval-Print-Loop)
+    ・ユーザとインタプリタは、対話的にコードを実行できる
+    ・Pythonなんかにもあるよね
+
+    ・/exitで終了！
+    ```
+
+    ### 四則演算
+
+    ```bash
+    # 加算
+    jshell> 5+2
+    $1 ==> 7
+
+    # 乗算
+    jshell> 5*2
+    $2 ==> 10
+
+    # 減算
+    jshell> 5-2
+    $3 ==> 3
+
+    # 商
+    jshell> 5/2
+    $4 ==> 2
+
+    # 除算(実数の割り算:どちらかがdoubleなら暗黙的に型変換)
+    jshell> 5.0/2
+    $5 ==> 2.5
+
+    # 余り
+    jshell> 5 % 2
+    $6 ==> 1
+    ```
+
+    ### 文字列
+
+    ```bash
+    jshell> "test"
+    $7 ==> "test"
+
+    # 連結
+    jshell> "test" + "er"
+    $8 ==> "tester"
+
+    # 数値との連結(暗黙的に文字列に型変換)
+    jshell> "test" + 123
+    $9 ==> "test123"    
+
+    # 評価順序
+    jshell> "test" + (12 + 3)
+    $10 ==> "test15"
+
+    # 文字列型の数値
+    jshell> "5" + 2
+    $11 ==> "52"
+
+    # escape(特殊文字)
+    # 値を出力する命令はSystem.out.println
+    jshell> System.out.println("\\")
+    \
+
+    # JShellは結果を再利用可能
+    jshell> System.out.println($11)
+    52
+
+    # textブロック(java15まで使えなかったらしい、地獄)
+    jshell> System.out.println($11)
+    52
+
+    jshell> """
+      ...> test
+      ...> foo
+      ...> """
+    $17 ==> "test\nfoo\n"
+
+    jshell> System.out.println($17)
+    test
+    foo
+    ```
+
+    ### 例外
+
+    ```bash
+    jshell> import java.lang.ArithmeticException; 
+      ...>  try{
+      ...>    int a =  3 / 0;
+      ...> }catch(ArithmeticException e){
+      ...>     System.out.println("Error");
+      ...> };
+      
+    Error
+    ```
