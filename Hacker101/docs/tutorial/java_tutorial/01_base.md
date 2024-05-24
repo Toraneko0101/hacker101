@@ -36,8 +36,11 @@
       ソースコードは、主に.classという拡張子を持つ
       JVMで実行可能なバイトコードへと変換される
 
-      ※バイトコードはプラットフォームに依存せず、
+      ※バイトコードはマシン/OSに依存せず、
         JVMが動く環境なら実行可能
+
+      ※つまり、javaのコードを移植するときは、
+        バイトコードと、各マシン/OSに対応するJVMが必要
     
     3 JVMはプログラムを実行する際に、
       必要なクラスファイルをロードする
@@ -60,3 +63,216 @@
     7 最終的にJITコンパイラによって生成された
     　機械語のコードがCPUによって実行される
     ```
+
+    ### JDKについて
+
+    ```text
+    ・Java Development Kit
+
+    ・javacなどのソースコードをバイトコードに変換する
+      コンパイラや、JVM、標準ライブラリの開発に必要な
+      ツールなどが含まれる
+    ```
+
+    ### Java SEについて
+
+    ```text
+    ・Java Standard Edition
+
+    ・Java言語やJVM,標準で含まれるライブラリの仕様を意味する
+
+    ・Java Community Process(JCP)が
+      Javaの仕様策定や関連技術の開発、実装などを行う
+      メンバーは主要なベンダーやオープンソースの団体
+      意見が割れた場合は、投票によって決定される
+    
+    ・ただし、現在ではOpenJDKプロジェクトがJEPをベースとして
+      次期バージョンのJDKの開発を進めて、
+      JCPがその機能を追承認するようになっている
+      (開発スピード向上が主な目的)
+
+    OpenJDKプロジェクト
+      ・JDKのオープンソース版という位置づけだが、
+        現在リリースされているJavaアプリの開発、実行環境は
+        これがベースとなっている
+      ・個人でも参加可能
+    
+    JDKディストリビューション
+      ・OpenJDKプロジェクトの成果物(ソース)をベースにした
+        実行可能なJDKのパッケージの提供を行う
+      ・著名なのはOracleが提供している、Oracle OpenJDK等
+      (コンパイル、リンクを行い実行可能なパッケージを作成
+      しているので、ビルドしてくれているという表現がよさそう)
+    
+    Oracle JDK vs Oracle OpenJDK
+      ・後者は、無償提供される
+      ・前者の場合は、外部向けのアプリの場合無償利用の対象外
+      ・ただし、Oracle JDKは長期サポートされる
+      ・Oracle OpenJDKは基本6カ月のサポート
+        (※次のバージョンが6カ月後に出るので)
+    
+    サポート期間が過ぎるとどうなるのか
+      ・バグや脆弱性が発見されても修正版はリリースされない
+      ・安全に使うためには最新版に上げる必要がある
+      ・LTSの場合は、3年サポートされる
+        (つまり、6バージョンに1つがLTSになる)
+        (この性質上、実際のシステムではLTSが多くつかわれる)
+        (現場でJava11,17の姿を見かけるエンジニアも多そう)
+    
+    JEP
+      ・JDK Enhancement Proposal
+      ・JDKの機能拡張を提案する
+      ・OpenJDKプロジェクトが申請されたJEPを受け取り、
+        中心的なメンバーがレビューした後、
+        取り組む価値のあるideaだとみなされれば開発が始まる
+      ・開発がリリースの期限に間に合わなければ
+        次のバージョンに回される
+    
+    Jakarta EE
+      ・エンタープライズ向けの機能
+
+      ・たとえば、複雑な業務アプリを効率的に構築、deploy、
+        管理するために必要なAPIやサービスについて、標準化する
+
+      ・そういえば、Spring Boot3.0にしたら、javaxから
+        jakartaパッケージに変更が必要だったな。
+        あれは、javaEEの商標権をOracleが所有していたため
+        jakarta.*に移行する必要があったということだったのか
+      (2018年、Oracleは、JavaEEの開発を中止し、JavaEEに
+      関する成果物をEclipse Foundationに引き継がせた。)
+    
+    JavaMEについて
+      ・SEであっても、携帯デバイスで動かせるようになったため
+        使用されなくなっている
+    ```
+
+    ### (補足)提案されたJEPのリスト
+
+    ```text
+    JEPのリスト
+      ・https://openjdk.org/jeps/0
+    
+    特定のバージョンで導入されたJEPのリスト
+      ・https://openjdk.org/projects/jdk/
+    
+    Previewとついているものは、
+    プレビュー版の、Java言語やJVMに関する変更点
+
+    Incubatorとついているものは
+    プレビュー版の、APIやツールに関する変更点
+    ```
+
+## Q2 Javaの情報源について知っていますか?
+
+??? success
+    ### 公式ドキュメントもいいけれど
+
+    ```text
+    ・JDK21のドキュメント
+      https://docs.oracle.com/javase/jp/21/
+      ※末尾の数字を変えればそのVersionになる
+    ```
+
+    ### その他
+
+    ```text
+    ・qiitaのJavaカテゴリ
+      https://qiita.com/tags/java
+    
+    ・zennのJavaカテゴリ
+      https://zenn.dev/topics/java
+
+    ・stackoverflowのJavaカテゴリ
+      https://stackoverflow.com/questions/tagged/java
+    
+    ・redditのsubreddit
+      https://www.reddit.com/r/learnjava/
+      https://www.reddit.com/r/java/
+    ```
+
+## Q3 環境構築について知っていますか?
+
+??? success
+    ### JavaのInstall
+
+    ```text
+    1 OpenJDKの22.0.1のinstall
+      https://jdk.java.net/22/
+      該当のURLから、ビルドされたパッケージをdownload
+    
+    2 解凍して、任意の階層に配置する
+
+    3 Windows + R(Windowsなら)
+      sysdm.cplと入力
+      詳細設定 --> 環境変数 --> システム環境変数の新規を押す
+      変数: JAVA_HOME
+      値: 配置した階層
+
+      例) JAVA_HOME  C:\jdk-22.0.1
+
+    4 Windows + R
+      wtと入力
+      java --versionとして、versionが表示されればOK!
+    ```
+
+    ### IDEについて
+
+    ```text
+    ・IntelliJなどでやりたいのは、やまやまのやまだが
+      今回はVSCodeで頑張っていく
+    
+    ・MavenやGradleのあたりまでこれば、
+      IDEの違いはあまり気にならなくなってくると思うし
+      あまりIDEで重要な部分を覆い隠されると困るので
+
+    <VSCodeでの設定>
+      1 Extension Pack For Javaをinstall(拡張機能)
+      2 settings.jsonを開き、以下の様に入力
+        "java.jdt.ls.java.home": "C:\\jdk-22.0.1"
+        (installしたjdkの場所をvscodeへ知らせている)
+
+      3 Ctrl + Shift + Pでコマンドパレットを選択
+      
+      4 ひとまずNo Build toolsを選択し
+        プロジェクトフォルダの名前と、保存先のフォルダを作成
+      
+      5 メニューバーから実行 -> デバッグの開始
+        (Javaでデバッグする)
+      
+      6 Hello,World!と表示されればOK!
+
+      ※bin配下に、classファイルが作られているはず
+    ```
+
+    ### 補足(単体ファイルの実行)
+
+    ```bash
+    # 以下の様にして、単体のファイルを実行することも可能
+    $ cd src
+
+    # ソースファイルからバイトコードを作成
+    $ javac App.java
+
+    # 実行
+    $ java App
+    ```
+
+    ### 補足(コードの修正)
+
+    ```java
+    // 以下の様にしてみる
+    public class App {
+        public static void main(String[] args) throws Exception {
+            System.out.println("Hello, World!");
+            System.out.println("Hello, Nekoinu!");
+        }
+    }
+
+    // 同じように実行 -> デバッグの開始
+    /**
+     * Hello, World!
+     * Hello, Nekoinu!
+     * (上記は出力結果)
+    */
+    ```
+
