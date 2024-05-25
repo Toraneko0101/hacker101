@@ -1,0 +1,5534 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="19_hard2_class.html">
+      
+      
+        <link rel="next" href="21_hard4_asynchronous.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>クイズ(上級3:Error) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/prism.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3error" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(上級3:Error)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Toraneko0101/hacker101" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Hacker101
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Toraneko0101/hacker101" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Hacker101
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Java tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Javaチュートリアル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java_tutorial/01_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(Q1: 基本文法)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Js tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Js tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_1" id="__nav_1_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="20_hard3_error.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q56-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q56 try...catchでエラーをキャッチして、その情報を出力できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q56 try...catchでエラーをキャッチして、その情報を出力できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕様
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q57-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q57. try...catchが実行時エラー以外をキャッチできないことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q57. try...catchが実行時エラー以外をキャッチできないことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse-time-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      parse-time error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      実行時エラー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q58-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q58. try...catchが非同期的に動作しないことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q58. try...catchが非同期的に動作しないことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q59-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q59. Errorオブジェクトが持っているプロパティについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q59. Errorオブジェクトが持っているプロパティについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errorオブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロパティ一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q60-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q60. エラーの詳細が必要ない場合、catchがそれを省略できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q60. エラーの詳細が必要ない場合、catchがそれを省略できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#es2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      ES2019で追加
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q61-throw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q61. throwを用いて柔軟にエラーを投げることができることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q61. throwを用いて柔軟にエラーを投げることができることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文的には正しいケースを考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Throw演算子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      組み込みのエラーオブジェクトを生成する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      改めて、nameプロパティがなければエラーとする
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q62-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q62. catchするエラーの種類を制限する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q62. catchするエラーの種類を制限する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      その性質上
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      再スロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catchthrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      catch節でthrowを投げた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      再スローの例(一つ外)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      再スローの例(呼び出し元)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q63-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q63. エラーがあっても、なくとも何かしらの処理を実行したい場合、finallyが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q63. エラーがあっても、なくとも何かしらの処理を実行したい場合、finallyが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q64-tryreturncatchthrowfinally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q64. tryでreturn。catchでthrowが行われても、finallyは実行されることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q64. tryでreturn。catchでthrowが行われても、finallyは実行されることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finallyreturnthrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      finallyとreturn/throw
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(return)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(throw)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q65-catchtryfinally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q65. catch句がない、try...finallyも成立することを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q65. catch句がない、try...finallyも成立することを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q66-trycatchcatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q66. try...catchの外側で致命的なエラーが起きたときに対処する、グローバルなcatchというものを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q66. try...catchの外側で致命的なエラーが起きたときに対処する、グローバルなcatchというものを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.jsの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブラウザの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブラウザの場合の構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      結果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      どうしても開発者ツールで試したい場合の回避策(非推奨)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q67-windowonerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q67. window.onerrorの役割と、有料のエラートラッキングサービスについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q67. window.onerrorの役割と、有料のエラートラッキングサービスについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windowonerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.onerror
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラートラッキングサービス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      有料のエラートラッキングサービスの大まかな手順
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentry概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentry_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentry用語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      体験談
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errorpush" class="md-nav__link">
+    <span class="md-ellipsis">
+      errorpush
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q68-errorextends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q68 Errorをextendsで拡張して、独自のエラークラスを作ることができることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q68 Errorをextendsで拡張して、独自のエラークラスを作ることができることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      たとえば
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      任意の引数でthrowできるから問題ないのでは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errorの拡張例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errname-validationerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜerr.name == "ValidationError"にしないのか。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errname" class="md-nav__link">
+    <span class="md-ellipsis">
+      err.name === を使う場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際に拡張してみる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thisname" class="md-nav__link">
+    <span class="md-ellipsis">
+      複数回this.nameを書くのが面倒に感じた場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q69-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q69. 全てのエラータイプをif文でチェックするのにうんざりした場合、例外のラッピングというテクニックが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q69. 全てのエラータイプをif文でチェックするのにうんざりした場合、例外のラッピングというテクニックが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      全てのエラータイプをifでチェックする必要は?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrapping-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      例外のラッピング(wrapping exceptions)の挙動
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      例外のラッピングの狙い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4_2" id="__nav_1_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6_2" id="__nav_1_6_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kindleを買ったものの末路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6_3" id="__nav_1_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Highschool
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Highschool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6_3_1" id="__nav_1_6_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Math1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/highschool/math1/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学I
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/highschool/math1/01_expr_and_calc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:式と計算)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6_4" id="__nav_1_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logical
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Logical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/logical/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    記号論理学について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math_tutorial/logical/01_natural.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:自然言語)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(<>について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_16" id="__nav_1_7_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q56-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q56 try...catchでエラーをキャッチして、その情報を出力できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q56 try...catchでエラーをキャッチして、その情報を出力できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      仕様
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q57-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q57. try...catchが実行時エラー以外をキャッチできないことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q57. try...catchが実行時エラー以外をキャッチできないことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parse-time-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      parse-time error
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      実行時エラー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q58-trycatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q58. try...catchが非同期的に動作しないことを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q58. try...catchが非同期的に動作しないことを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      理由
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      対策
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q59-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q59. Errorオブジェクトが持っているプロパティについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q59. Errorオブジェクトが持っているプロパティについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errorオブジェクト
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      プロパティ一覧
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q60-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q60. エラーの詳細が必要ない場合、catchがそれを省略できることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q60. エラーの詳細が必要ない場合、catchがそれを省略できることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#es2019" class="md-nav__link">
+    <span class="md-ellipsis">
+      ES2019で追加
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q61-throw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q61. throwを用いて柔軟にエラーを投げることができることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q61. throwを用いて柔軟にエラーを投げることができることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文的には正しいケースを考える
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw" class="md-nav__link">
+    <span class="md-ellipsis">
+      Throw演算子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      組み込みのエラーオブジェクトを生成する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name" class="md-nav__link">
+    <span class="md-ellipsis">
+      改めて、nameプロパティがなければエラーとする
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q62-catch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q62. catchするエラーの種類を制限する方法を知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q62. catchするエラーの種類を制限する方法を知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      その性質上
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      再スロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catchthrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      catch節でthrowを投げた場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      再スローの例(一つ外)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      再スローの例(呼び出し元)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q63-finally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q63. エラーがあっても、なくとも何かしらの処理を実行したい場合、finallyが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q63. エラーがあっても、なくとも何かしらの処理を実行したい場合、finallyが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q64-tryreturncatchthrowfinally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q64. tryでreturn。catchでthrowが行われても、finallyは実行されることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q64. tryでreturn。catchでthrowが行われても、finallyは実行されることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finallyreturnthrow" class="md-nav__link">
+    <span class="md-ellipsis">
+      finallyとreturn/throw
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(return)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例(throw)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q65-catchtryfinally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q65. catch句がない、try...finallyも成立することを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q65. catch句がない、try...finallyも成立することを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      使いどころ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q66-trycatchcatch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q66. try...catchの外側で致命的なエラーが起きたときに対処する、グローバルなcatchというものを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q66. try...catchの外側で致命的なエラーが起きたときに対処する、グローバルなcatchというものを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nodejs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node.jsの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブラウザの場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      ブラウザの場合の構文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      説明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      結果
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      どうしても開発者ツールで試したい場合の回避策(非推奨)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q67-windowonerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q67. window.onerrorの役割と、有料のエラートラッキングサービスについて知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q67. window.onerrorの役割と、有料のエラートラッキングサービスについて知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windowonerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      window.onerror
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラートラッキングサービス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      有料のエラートラッキングサービスの大まかな手順
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentry概要
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentry_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentry用語
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      体験談
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errorpush" class="md-nav__link">
+    <span class="md-ellipsis">
+      errorpush
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q68-errorextends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q68 Errorをextendsで拡張して、独自のエラークラスを作ることができることを理解していますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q68 Errorをextendsで拡張して、独自のエラークラスを作ることができることを理解していますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      たとえば
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      任意の引数でthrowできるから問題ないのでは?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#error_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Errorの拡張例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      コード例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errname-validationerror" class="md-nav__link">
+    <span class="md-ellipsis">
+      なぜerr.name == "ValidationError"にしないのか。
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#errname" class="md-nav__link">
+    <span class="md-ellipsis">
+      err.name === を使う場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      実際に拡張してみる
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thisname" class="md-nav__link">
+    <span class="md-ellipsis">
+      複数回this.nameを書くのが面倒に感じた場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q69-if" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q69. 全てのエラータイプをif文でチェックするのにうんざりした場合、例外のラッピングというテクニックが使えることを知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q69. 全てのエラータイプをif文でチェックするのにうんざりした場合、例外のラッピングというテクニックが使えることを知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if" class="md-nav__link">
+    <span class="md-ellipsis">
+      全てのエラータイプをifでチェックする必要は?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wrapping-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      例外のラッピング(wrapping exceptions)の挙動
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      例外のラッピングの狙い
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="3error">クイズ(上級3:Error)</h1>
+<h2 id="q56-trycatch">Q56 try...catchでエラーをキャッチして、その情報を出力できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_1">構文</h3>
+<pre class="highlight"><code class="language-js">try{
+  //...some code
+}catch (err){
+  //error handling
+}</code></pre>
+<h3 id="_2">仕様</h3>
+<ol>
+<li><code>try</code>節のコードが実行</li>
+<li>エラーがなければ(実行が<code>try</code>の最後に達すれば)<code>catch(err)</code>は無視される</li>
+<li>エラーが発生した場合、<code>try</code>の実行は停止し、<code>catch(err)</code>の先頭に移動する</li>
+<li><code>err</code>は発生した事象に関する詳細を持つ、エラーオブジェクトを意味する</li>
+</ol>
+<h3 id="_3">例</h3>
+<pre class="highlight"><code class="language-js">"use strict";
+try{
+  alert("neko!");
+  hogehoge; //strict-modeで未定義変数なのでエラーが出る
+  alert("実行されないはず");
+}catch(err){
+  alert("Error has occured!");
+}
+
+//neko!
+//Error has occured!</code></pre>
+</details>
+<h2 id="q57-trycatch">Q57. try...catchが実行時エラー以外をキャッチできないことを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="parse-time-error">parse-time error</h3>
+<ul>
+<li>コードの読み込み中(解析中)にエラーが出た場合は回復不能</li>
+<li>エンジンがコードを理解できていないため</li>
+</ul>
+<h3 id="_4">実行時エラー</h3>
+<ul>
+<li>有効なコードの中でエラーが起きた場合は、例外と呼ばれる</li>
+</ul>
+</details>
+<h2 id="q58-trycatch">Q58. try...catchが非同期的に動作しないことを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_5">理由</h3>
+<ul>
+<li>関数が実行された時には、エンジンが<code>try...catch</code>構造を抜けているため</li>
+</ul>
+<h3 id="_6">使用例</h3>
+<ul>
+<li><code>0ms</code>でもダメ</li>
+</ul>
+<pre class="highlight"><code class="language-js">try{
+  setTimeout(()=&gt;{
+    noSuchVariable;
+  }, 0);
+}catch (e){
+  console.log("won't work");
+}
+
+//Uncaught ReferenceError: noSuchVariable is not defined</code></pre>
+<h3 id="_7">対策</h3>
+<ul>
+<li>その関数の中に、<code>try...catch</code>を書く</li>
+</ul>
+<pre class="highlight"><code class="language-js">setTimeout(()=&gt;{
+  try{
+    noSuchVariable
+  }catch(e){
+    console.log("won't work");
+  }
+}, 1000);
+
+//won't work</code></pre>
+</details>
+<h2 id="q59-error">Q59. Errorオブジェクトが持っているプロパティについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="error">Errorオブジェクト</h3>
+<ul>
+<li>エラーが発生したときに、生成されるオブジェクト</li>
+<li><code>catch</code>の引数として渡される</li>
+</ul>
+<h3 id="_8">プロパティ一覧</h3>
+<ul>
+<li><code>name</code>: エラー名</li>
+<li><code>message</code>: エラー詳細に関するテキストメッセージ</li>
+<li><code>stack</code>: 現在のコールスタック(非標準)</li>
+</ul>
+<h3 id="_9">例</h3>
+<pre class="highlight"><code class="language-js">"use strict";
+
+try{
+  hoge;
+}catch(err){
+  console.log(err.name);
+  //ReferenceError
+  console.log(err.message);
+  //hoge is not defined
+  console.log(err.stack);
+  //ReferenceError: hoge is not defined
+  // at &lt;anonymous&gt;:2:7
+  // anonymousは、グローバルコンテキスト
+
+  console.log(err);//全体を表示
+  //ReferenceError: hoge is not defined
+  //at &lt;anonymous&gt;:2:7
+}</code></pre>
+</details>
+<h2 id="q60-catch">Q60. エラーの詳細が必要ない場合、catchがそれを省略できることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="es2019">ES2019で追加</h3>
+<pre class="highlight"><code class="language-js">"use strict";
+try{
+  hoge;
+}catch{
+  console.log("hogeeeee");
+}</code></pre>
+</details>
+<h2 id="q61-throw">Q61. throwを用いて柔軟にエラーを投げることができることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_10">構文的には正しいケースを考える</h3>
+<ul>
+<li>たとえば、<code>name</code>プロパティを後程使うので、これが無ければエラーとしたい。</li>
+</ul>
+<pre class="highlight"><code class="language-js">let json = '{"age" : 30}';
+
+try{
+  let user = JSON.parse(json);
+  console.log(user.name); //undefined
+}catch(e){
+  //errorではないので、こちらは実行されない
+  console.log("doesn't execute");
+}</code></pre>
+<h3 id="throw">Throw演算子</h3>
+<ul>
+<li>エラーを生成する</li>
+<li><code>throw &lt;error object&gt;</code></li>
+<li><code>&lt;error object&gt;</code>には、プリミティブや適当なオブジェクトを入れることもできる</li>
+<li>しかし、<code>name</code>と<code>message</code>プロパティを持つオブジェクトを使うのがよい。そうすれば組み込みのエラーとの互換性を保てる</li>
+</ul>
+<h3 id="_11">組み込みのエラーオブジェクトを生成する</h3>
+<ul>
+<li>組み込みのエラーの場合、<code>name</code>はコンストラクタの名前</li>
+<li><code>message</code>は引数</li>
+</ul>
+<pre class="highlight"><code class="language-js">let error = new Error("Something message");
+console.log(error.name); //Error
+console.log(error.message); //Something message
+
+let error = new SyntaxError("構文エラー");
+let error = new ReferenceError("未定義変数エラー");</code></pre>
+<h3 id="name">改めて、nameプロパティがなければエラーとする</h3>
+<pre class="highlight"><code class="language-js">let json = '{"age" : 30}'
+
+try{
+  let user = JSON.parse(json);
+  if(!user.name){
+    throw new SyntaxError("Incomplete date: no name");
+  }
+
+  alert(user.name);
+}catch(e){
+  console.log("JSON error: " + e.message);
+}
+
+//JSON error: Incomplete date: no name</code></pre>
+</details>
+<h2 id="q62-catch">Q62. catchするエラーの種類を制限する方法を知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_12">その性質上</h3>
+<ul>
+<li><code>catch</code>はデフォルトの場合、<code>try</code>空のすべてのエラーを取得する。</li>
+<li>たとえばQ61の場合、<code>JSON</code>関連のエラーでなくとも、<code>JSON error</code>が表示されてしまう。これはよろしくない</li>
+</ul>
+<h3 id="_13">再スロー</h3>
+<ol>
+<li>全てのエラーをキャッチする</li>
+<li><code>instanceof</code>などでエラーの種類をチェックし、条件に一致しない場合は、再度<code>throw err</code>でエラーを投げる<br />
+4.　エラークラス名と比較したい場合、<code>error.name</code>や<code>error.constructor.name</code>が使える。</li>
+</ol>
+<h3 id="catchthrow">catch節で<code>throw</code>を投げた場合</h3>
+<ul>
+<li><code>try...catch</code>を抜けて、外部の<code>try...catch</code>を探しに行く。存在すれば、そこでエラーを<code>catch</code>する</li>
+<li>存在していなければエラーでスクリプトは終了する</li>
+</ul>
+<h3 id="_14">再スローの例(一つ外)</h3>
+<ul>
+<li><code>if</code>文で条件分岐すればいいので、本来こんなことをする必要はない</li>
+</ul>
+<pre class="highlight"><code class="language-js">function readData(){
+  let json = '{"age" : 30}'
+  try{
+    try{
+      hoge();
+    }catch(e){
+      if(e.name != "SyntaxError"){
+        throw e;
+      }
+    }
+  }catch(e){console.log(e)}
+}
+
+readData();
+
+/*
+ReferenceError: hoge is not defined
+at readData (&lt;anonymous&gt;:5:9)
+at &lt;anonymous&gt;:14:7
+*/</code></pre>
+<h3 id="_15">再スローの例(呼び出し元)</h3>
+<ul>
+<li>関数内のエラーが<code>try...catch</code>で補足されない場合、その後の処理は実行されず、エラーは即座に呼び出し元に伝播する</li>
+</ul>
+<pre class="highlight"><code class="language-js">function readData(){
+  let json = '{"age" : 30}'
+
+  try{
+    hoge();
+  }catch(e){
+    if(e.name != "SyntaxError"){
+      throw e;
+    }
+  }
+}
+
+try{
+  readData();
+}catch(e){
+  console.log("Some error: " + e.stack);
+  //Some error: Some error: ReferenceError: hoge is not defined
+  //at readData (&lt;anonymous&gt;:5:9)
+  //at &lt;anonymous&gt;:14:7
+}</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>上記で<code>"Some error: " + e</code>とすると、スタック情報が出力されなくなる</li>
+<li>つまり、<code>e</code>ではなく、<code>e.stack</code>と明示する必要はある</li>
+</ul>
+</div>
+</details>
+<h2 id="q63-finally">Q63. エラーがあっても、なくとも何かしらの処理を実行したい場合、finallyが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_16">使いどころ</h3>
+<ul>
+<li>ファイルを閉じるなど</li>
+</ul>
+<h3 id="_17">構文</h3>
+<pre class="highlight"><code class="language-js">try{
+  //...somecode
+}catch{
+  //...someerror
+}finally{
+  //常に実行
+}</code></pre>
+<h3 id="_18">使用例</h3>
+<pre class="highlight"><code class="language-js">try{
+  alert("try");
+  if(confirm("Test Error?")) BAD_CODE();
+}
+catch{
+  alert("catch");
+}
+finally{
+  //ここで変数を使いたいときは、スコープに注意。
+  alert("finally");
+}
+
+//try
+//Test Error --Yes--&gt; catch
+//finally</code></pre>
+</details>
+<h2 id="q64-tryreturncatchthrowfinally">Q64. tryでreturn。catchでthrowが行われても、finallyは実行されることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="finallyreturnthrow">finallyとreturn/throw</h3>
+<ul>
+<li><code>finally</code>は<code>try...catch</code>からの任意の終了に対応する</li>
+<li><code>return</code>や<code>throw</code>が行われた場合、制御が外部コードに戻る前に実行される</li>
+</ul>
+<h3 id="return">使用例(return)</h3>
+<pre class="highlight"><code class="language-js">function func(){
+
+  try{
+    return 1;
+  }catch{
+
+  }finally{
+    console.log("finally");
+  }
+}
+
+console.log(func());
+//finally
+//1</code></pre>
+<h3 id="throw_1">使用例(throw)</h3>
+<pre class="highlight"><code class="language-js">
+function func(){
+
+  try{
+    hoge();
+  }catch(e){
+    if(e.name != "SyntaxError"){
+      throw e;
+    }
+    console.log(e.message);
+  }finally{
+    console.log("still inside the function");
+  }
+}
+
+try{
+  func()
+}catch(e){
+  console.log(e.message);
+}
+
+//still inside the function
+//ReferenceError: hoge is not defined
+//at func (&lt;anonymous&gt;:4:9)
+//at &lt;anonymous&gt;:16:7</code></pre>
+</details>
+<h2 id="q65-catchtryfinally">Q65. catch句がない、<code>try...finally</code>も成立することを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_19">使いどころ</h3>
+<ul>
+<li>スクリプトが死ぬ(もしくは外部の<code>try...catch</code>に処理が移る)前に処理を行える</li>
+</ul>
+<h3 id="_20">コード例</h3>
+<pre class="highlight"><code class="language-js">function func(){
+  try{
+    hoge();
+  }finally{
+    console.log("still alive");
+  }
+}
+
+func();
+//still alive
+//Uncaught ReferenceError: hoge is not defined
+//at func (&lt;anonymous&gt;:3:9)
+//at &lt;anonymous&gt;:9:5</code></pre>
+</details>
+<h2 id="q66-trycatchcatch">Q66. try...catchの外側で致命的なエラーが起きたときに対処する、グローバルなcatchというものを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="nodejs">Node.jsの場合</h3>
+<ul>
+<li><code>process.on("uncaugutException")</code></li>
+</ul>
+<h3 id="_21">ブラウザの場合</h3>
+<ul>
+<li><code>window.onerror</code>プロパティ</li>
+<li>これは<code>catch</code>されなかった例外がある場合</li>
+<li>またはコンパイル時エラーが発生した場合にトリガされる</li>
+</ul>
+<h3 id="_22">ブラウザの場合の構文</h3>
+<pre class="highlight"><code class="language-js">window.onerror = function(message, url, line, col, error){}</code></pre>
+<h3 id="_23">説明</h3>
+<ul>
+<li><code>message</code>:エラーメッセージ</li>
+<li><code>url</code>:エラーが起きたスクリプトのURL</li>
+<li><code>line, col</code>:エラーが起きた行と列番号</li>
+<li><code>error</code>:エラーオブジェクト</li>
+</ul>
+<h3 id="_24">使用例</h3>
+<pre class="highlight"><code class="language-js">//&lt;script&gt;
+  window.onerror = function(message, url, line, col, error){
+    console.log(`${message}\n At ${line}:${col} of ${url}`);
+    console.log(error);
+  }
+
+  function readData(){
+    hoge();
+  }
+
+  hoge();
+//&lt;script&gt;</code></pre>
+<h3 id="_25">結果</h3>
+<pre class="highlight"><code class="language-powershell">Uncaught ReferenceError: hoge is not defined
+At 18:5 of file:///C:/file_test/test/index.html
+
+ReferenceError: hoge is not defined
+    at index.html:18:5
+
+#通常のエラー
+Uncaught ReferenceError: hoge is not defined
+    at index.html:18:5</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>開発者ツールで出来ない場合は、適当なファイルを用意して試す事</li>
+</ul>
+</div>
+<h3 id="_26">どうしても開発者ツールで試したい場合の回避策(非推奨)</h3>
+<pre class="highlight"><code class="language-js">window.onerror = function(message, url, line, col, error){
+  console.log(`${message}\n At ${line}:${col} of ${url}`);
+  console.log(error);
+  }
+
+setTimeout(()=&gt; {hoge()}, 0);
+
+/*
+Uncaught ReferenceError: hoge is not defined
+At 6:24 of 
+ReferenceError: hoge is not defined
+    at &lt;anonymous&gt;:6:24
+VM7078:6 Uncaught ReferenceError: hoge is not defined
+    at &lt;anonymous&gt;:6:24
+*/</code></pre>
+</details>
+<h2 id="q67-windowonerror">Q67. window.onerrorの役割と、有料のエラートラッキングサービスについて知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="windowonerror">window.onerror</h3>
+<ul>
+<li>開発者にエラーメッセージを送るため</li>
+<li>実行の回復ではない</li>
+</ul>
+<h3 id="_27">エラートラッキングサービス</h3>
+<ul>
+<li>大抵有料</li>
+<li>例としては、<code>Rollbar</code>や<code>Sentry</code></li>
+<li>個人開発でないなら、費用対効果はある</li>
+</ul>
+<h3 id="_28">有料のエラートラッキングサービスの大まかな手順</h3>
+<ol>
+<li>サービスに登録する</li>
+<li>ページに挿入するためのURLやJSスクリプトを得る</li>
+<li>該当スクリプトはカスタムされた<code>window.onerror</code>を持っている</li>
+<li>エラーが起きたときは、そのサービスへネットワークリクエストを送信する</li>
+<li>サービスにログインしてエラーを閲覧</li>
+</ol>
+<h3 id="sentry">Sentry概要</h3>
+<ul>
+<li>エラーの発生を<code>Slack</code>経由等で確認し、その時の状況を分かりやすい形で確認可能</li>
+</ul>
+<h3 id="sentry_1">Sentry用語</h3>
+<ul>
+<li>
+<p><code>Projects</code>: エラーイベントのトラッキング対象となるアプリの単位。複数言語でアプリが構成されている場合、別のプロジェクトとする</p>
+</li>
+<li>
+<p><code>Issues</code>: 同じエラーイベントをグルーピングする</p>
+</li>
+<li><code>Quota</code>:　エラーイベント発生数</li>
+</ul>
+<h3 id="url">参考URL</h3>
+<ul>
+<li><a href="https://zenn.dev/apgun/articles/798661f7eb7c86">Sentryで始めるエラー監視</a></li>
+<li><a href="https://techblog.cartaholdings.co.jp/entry/archives/4091">Sentryで超簡単！楽々エラー監視-Sentry登録からアプリへの導入方法のすべて-</a></li>
+</ul>
+<h3 id="_29">体験談</h3>
+<ul>
+<li>工事中</li>
+<li>React,Next.jsの一問一答記載後に記載</li>
+</ul>
+<h3 id="errorpush">errorpush</h3>
+<ul>
+<li>オープンソースのエラー監視ツール</li>
+<li>機能は最小限</li>
+<li>詳細は試してから記載する事 </li>
+</ul>
+</details>
+<h2 id="q68-errorextends">Q68 Errorをextendsで拡張して、独自のエラークラスを作ることができることを理解していますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_30">たとえば</h3>
+<ul>
+<li><code>DbError</code>: データベース関連のエラー</li>
+<li><code>NotFoundError</code>: 検索操作の場合</li>
+<li><code>HttpError</code>: ネットワーク操作の場合</li>
+<li>このようなエラーは存在していない</li>
+<li>また<code>name</code>,<code>message</code>,<code>stack</code>以外の独自のプロパティを持ちたいときがくるかもしれない</li>
+</ul>
+<h3 id="throw_2">任意の引数で<code>throw</code>できるから問題ないのでは?</h3>
+<ul>
+<li><code>Error</code>から継承しておけば<code>obj instanceof Error</code>が使える</li>
+<li>大きなアプリケーションを開発する場合、階層的にエラーを形成した方が分かりやすい</li>
+<li>例) <code>HttpTimeoutError extends HttpError</code></li>
+</ul>
+<h3 id="error_1">Errorの拡張例</h3>
+<ul>
+<li>構文的には正しいが、フォーマットが誤っている場合、<code>Error</code>を継承した<code>ValidationError</code>を送出するようにする</li>
+</ul>
+<h3 id="_31">コード例</h3>
+<pre class="highlight"><code class="language-js">
+//Errorの疑似コード
+/*
+class Error{
+  constructor(message){
+    this.message = message;
+    this.name = "Error";
+    this.stack = &lt;nested calls&gt;
+  }
+}
+*/
+
+class ValidationError extends Error{
+  constructor(message){
+    super(message);
+    // 親のコンストラクタで設定されているプロパティを上書き
+    this.name = "ValidationError"
+  }
+}
+
+function test(){
+  throw new ValidationError("blunder");
+}
+
+try{
+  test();
+}catch(err){
+  console.log(err.message);//blunder
+  console.log(err.name);//ValidationError
+  console.log(err.stack);
+  //ValidationError: blunder
+  //at test (&lt;anonymous&gt;:9:13)
+  //at &lt;anonymous&gt;:13:7
+}
+
+function readUser(json){
+  let user = JSON.parse(json);
+
+  if(!user.age){
+    throw new ValidationError("No filed: age");
+  }
+  if(!user.name){
+    throw new ValidationError("No field: name");
+  }
+
+  return user;
+}
+
+try{
+  let user = readUser('{"age": 25}');
+}catch(err){
+  //errに応じて処理を分岐する
+  if(err instanceof ValidationError){
+    console.log(`Invalid data: ${err.message}`);
+  }
+  else if(err instanceof SyntaxError){
+    console.log(`JSON Syntax Error ${err.message}`);
+  }
+  else{
+    throw err; //未知のエラーの場合は投げる
+  }
+}
+
+//Invalid data: No field: name</code></pre>
+<h3 id="errname-validationerror">なぜ<code>err.name == "ValidationError"</code>にしないのか。</h3>
+<ul>
+<li>将来、<code>ValidationError</code>を拡張して派生クラスを作るときのことを考える</li>
+<li><code>===</code>なら引っかからないが、<code>instanceof</code>なら<code>ValidationError</code>から派生したクラスをまとめて引っ掛けることができる</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<h3 id="errname">err.name === を使う場合</h3>
+<ul>
+<li>サードパーティのライブラリから来たエラーオブジェクトを持っていて、そのクラスを取得するすべがない</li>
+</ul>
+</div>
+<h3 id="_32">実際に拡張してみる</h3>
+<pre class="highlight"><code class="language-js">class ValidationError extends Error{
+  constructor(message){
+    super(message);
+    this.name = "ValidaitonError";
+  }
+}
+
+//欠落しているプロパティについて、追加の情報を保持する
+class PropertyRequiredError extends ValidationError{
+  constructor(property){
+    super("No property: " + property);
+    this.name = "PropertyRequiredError";
+    this.property = property;
+  }
+}
+
+function readUser(json){
+  let user = JSON.parse(json);
+
+  if(!user.age){
+    throw new PropertyRequiredError("age");
+  }
+
+  if(!user.name){
+    throw new PropertyRequiredError("name");
+  }
+
+  return user;
+}
+
+try{
+  let user = readUser('{"age" : 25}');
+}catch(err){
+  if(err instanceof ValidationError){
+    console.log("Invalid data: " + err.message);
+    console.log(err.name);
+    console.log(err.property);
+  }else if(err instanceof SyntaxError){
+    console.log("JSON Syntax Error: " + err.message);
+  }else{
+    throw err;
+  }
+}
+
+//Invalid data: No property: name
+//PropertyRequiredError
+//name</code></pre>
+<h3 id="thisname">複数回this.nameを書くのが面倒に感じた場合</h3>
+<ul>
+<li>基本エラークラスを作り、それを継承させる</li>
+</ul>
+<pre class="highlight"><code class="language-js">class MyError extends Error{
+  constructor(message){
+    super(message);
+    /*
+    1. thisは常にdotの前のオブジェクトなので、エラークラスから生み出されたインスタンス
+    2. obj.constrcutorは[[prototype]]チェーンより、コンストラクタ。
+    3. コンストラクタ.nameはコンストラクタ名
+    */
+    this.name = this.constructor.name;
+  }
+}
+
+//this.nameについて改めて書く必要がない
+class ValidationError extends MyError{};
+
+class PropertyRequiredError extends ValidationError{
+  constructor(property){
+    super("No property: " + property);
+    this.property = property;
+  }
+}
+
+//本体コード
+function readUser(json){
+  let user = JSON.parse(json);
+  if(!user.name){
+    throw new PropertyRequiredError("name");
+  }
+  if(!user.age){
+    throw new PropertyRequiredError("age");
+  }
+  return user;
+}
+
+try{
+  let user = readUser('{"name" : "Taro"}');
+}catch(err){
+  if(err instanceof ValidationError){
+    console.log("Invalid data: " + err.message);
+    console.log(err.name);
+    console.log(err.property);
+  }
+  else if(err instanceof SyntaxError){
+    console.log("JSON Syntax Error: "+ err.message);
+  }else{
+    throw err;
+  }
+}
+
+//Invalid data: No property: age
+//PropertyRequiredError
+//age</code></pre>
+</details>
+<h2 id="q69-if">Q69. 全てのエラータイプをif文でチェックするのにうんざりした場合、例外のラッピングというテクニックが使えることを知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="if">全てのエラータイプをifでチェックする必要は?</h3>
+<ul>
+<li>多くの場合はない</li>
+<li>たとえば、Q68の場合、「データ読み込み時エラー」が発生したかどうかが知りたいだけ</li>
+<li>必要な場合にのみ、エラーの詳細を取得したい</li>
+</ul>
+<h3 id="wrapping-exceptions">例外のラッピング(wrapping exceptions)の挙動</h3>
+<ol>
+<li>汎用的なデータ読み込みエラーを表現するクラス:<code>ReadError</code>を生成</li>
+<li>データ読み込み時のエラーをキャッチしたら、再スローを行い、まとめて<code>ReadError</code>でキャッチする</li>
+<li><code>source</code>プロパティを持ち、ここで元のエラーを参照する</li>
+<li>必要な場合のみ<code>source</code>プロパティをチェックする</li>
+</ol>
+<h3 id="_33">例外のラッピングの狙い</h3>
+<ul>
+<li>関数が低レベルの例外を処理</li>
+<li>高レベルのエラーを生成</li>
+<li>低レベルの例外は高レベルのエラーのプロパティとなり、必要に応じて取得する</li>
+</ul>
+<h3 id="_34">使用例</h3>
+<pre class="highlight"><code class="language-js">class MyError extends Error{
+  constructor(message){
+    super(message);
+    this.name = this.constructor.name;
+  }
+}
+
+class ReadError extends MyError{
+  constructor(message, source){
+    super(message);
+    this.source = source;
+  }
+}
+
+class ValidationError extends MyError{}
+
+class PropertyRequiredError extends ValidationError{
+  constructor(property){
+    super("No property: " + property);
+    this.property = property;
+  }
+}
+
+function validateUser(user){
+  if(!user.age){
+    throw new PropertyRequiredError("age");
+  }
+  if(!user.name){
+    throw new PropertyRequiredError("name");
+  }
+}
+
+function readUser(json){
+  let user;
+
+  try{
+    user = JSON.parse(json);
+  }catch(err){
+    if(err instanceof SyntaxError){
+      //SyntaxErrorならReadErrorを投げる
+      //causeには元のエラーを格納
+      throw new ReadError("Syntax Error", err);
+    }else{
+      throw err;
+    }
+  }
+
+  try{
+    validateUser(user);
+  }catch(err){
+    if (err instanceof ValidationError){
+      //ValidationErrorならReadErrorを投げる
+      //causeには元のエラーを格納
+      throw new ReadError("Validation Error", err);
+    }else{
+      throw err;
+    }
+  }
+}
+
+try{
+  readUser('{bad json}');
+}catch(e){
+  if(e instanceof ReadError){
+    console.log(e);
+    console.log("Original error: \n" + e.source);
+  }else{
+    throw e;
+  }
+}
+
+/*
+readUser('{bad json}');
+
+ReadError: Syntax Error
+    at readUser (&lt;anonymous&gt;:40:17)
+    at &lt;anonymous&gt;:58:7
+
+Original error: 
+SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+*/
+
+/*
+readUser('{"name": "hoge"}');
+
+ReadError: Validation Error
+    at readUser (&lt;anonymous&gt;:54:17)
+    at &lt;anonymous&gt;:62:7
+
+Original error: 
+PropertyRequiredError: No property: age
+*/</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/custom.js"></script>
+      
+        <script src="../../../javascripts/prism.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
