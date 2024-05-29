@@ -278,7 +278,7 @@
     */
     ```
 
-## Q4 基本的な構文について知っていますか?
+## Q4 基本的な構文について知っていますか?(順次処理)
 
 ??? success
     ### JShell
@@ -365,7 +365,7 @@
     foo
     ```
 
-    ### 例外
+    ### 例外処理
 
     ```bash
     jshell> import java.lang.ArithmeticException; 
@@ -374,6 +374,296 @@
       ...> }catch(ArithmeticException e){
       ...>     System.out.println("Error");
       ...> };
-      
+
     Error
     ```
+
+    ### 組み込み関数
+
+    ```bash
+    # javaではメソッドをシンボルと呼ぶので
+    # メソッドを違えたときは、シンボルを見つけられないと出る
+    jshell> "test".toUpperCase()
+    $27 ==> "TEST"
+
+    # tabを押すと、補完される
+    # toまで入力して、<tab>を押してみる
+    jshell> "test".to
+    toCharArray()   toLowerCase()    toString()
+    toUpperCase()
+    jshell> "test".toCharArray()
+    $28 ==> char[4] { 't', 'e', 's', 't' }
+
+    # pythonのように文字列の繰り返しをしたいならrepeat
+    # ミスったとき、引数の期待値の型を表示してくれるなんて
+    # jshellは優しい
+    jshell> "test".repeat(3)
+    $29 ==> "testtesttest"
+
+    # 置き換え
+    # jsの場合、replaceだと最初の一個だったが、
+    # javaだと、replaceで、jsでいうreplaceAllの挙動
+    # replaceAllは、正規表現用になる
+    # jsでいうreplaceがしたいなら、replaceFirst()がある
+    # 正規表現については//で囲む必要はなく、""でOK
+    jshell> "test".replace("t", "")
+    $30 ==> "es"
+
+    jshell> "test123".replaceAll("[a-z]", "0");
+    $32 ==> "0000123"
+
+    jshell> "test123".replaceFirst("[a-z]", "0");
+    $33 ==> "0est123"
+    ```
+
+    ### シグネチャ
+
+    ```text
+    ・一般的にはsignature = 署名というイメージ
+
+    ・メソッド名、引数の型、数、順序、戻り値の型が
+      分かれば、メソッドが一意に識別できる(=署名になる)
+      ので、プログラミングでは、それがシグネチャと呼ばれる
+    
+    ・オーバーロードは、同名の関数を定義し、
+      それを引数やデータ型等によって使い分ける仕組み
+      呼び出す際のシグネチャによって、対応するものが呼ばれる
+    ```
+
+    ```bash
+    # この状態で<tab>を押すと、signatureが表示される
+    jshell> "test".toUpperCase(
+    シグネチャ:
+    String String.toUpperCase(Locale locale)
+    String String.toUpperCase()
+
+    # つまり、toUpperCaseは、Locale型の引数を取るものと
+    # 引数がないものがあるようだ。 --> オーバーロード
+
+    # 更に<tab>を押すと、documentが表示される
+    jshell> "test".toUpperCase(
+    String String.toUpperCase(Locale locale)
+    Converts all of the characters in this String to upper case  
+    using the rules of the given Locale .Case mapping is based on
+    the Unicode Standard version specified by the Character      
+    class. Since case mappings are not always 1:1 char mappings, 
+    the resulting String and this String may differ in length.   
+
+    <次のページを表示するにはタブを再度押してください>
+
+    # 英語が読めない場合は(これ私のことだ......)
+    # Q2の情報源に従って調べるといい
+    # 最新の場合は、jpとURLに指定してもない場合があるので注意
+
+    # 勘でも行けないことはない
+    # たとえば、文字列の一部を返すメソッドについて知りたい時
+    # どうせ、substrとかなので、subだけ打って、<tab>
+    # 案の定、候補にsubstringが出てきたので、<tab>
+    # String String.substring(int beginIndex)
+    # String String.substring(int beginIndex, int endIndex) 
+    # と書かれていたので、下記のようにする 
+    # 確実性はないので、大人しく公式を見た方がいい気もする
+    jshell> "Test".substring(1,3)
+    $36 ==> "es"
+
+    ```
+
+    ### format
+
+    ```text
+    ・java22、早く来てくれ～！
+
+    ・考え方的には、""で区切って、+演算子で連結するのって
+      面倒だよねっていう話
+    ```
+
+    ```bash
+    # 書式指定子%s等を、formattedに渡した引数の値で置き換え
+    jshell> "test%d".formatted(12+3)
+    $37 ==> "test15"
+
+    # 複数の引数を渡すことも可能
+    jshell> "%s or %s".formatted("dead", "alive")
+    $38 ==> "dead or alive"
+
+    # %dなら整数, %sなら文字列
+    # %,dとすることで、3桁ごとにカンマを入れる
+
+    # %fは実数に使う
+    # 以下では全体の桁数と、小数以下の桁数を指定し
+    # 0パディングを行っている
+    jshell> "test%011.3f".formatted(12345.1234)
+    $43 ==> "test0012345.123"
+
+    # Java23(LTS)が出て、早く上記の書き方が廃れてほしい
+    # 22だと、--enable-previewが必要
+    # STRの場合、static import要らず
+    # プリミティブの場合は、値をそのまま使う
+    # 参照型ならtoString()の結果を使う
+    C:\tutorial>jshell --enable-preview 
+    |  JShellへようこそ -- バージョン22.0.1
+    |  概要については、次を入力してください: /help intro
+
+    jshell> String name = "Hoge";
+    name ==> "Hoge"
+
+    jshell> STR."Hello \{name}!";
+    $2 ==> "Hello Hoge!"
+
+    # FMTの場合、static importがいる
+    # %d等を\{}の前に指定可能
+    # .も1文字であることに注意
+    # pyみたいに{}の中でformatが指定できれば嬉しいんだけど
+    jshell> import static java.util.FormatProcessor.FMT;
+    jshell> var x = 10
+    x ==> 10
+
+    jshell> var y = 20.0
+    y ==> 20.0
+
+    jshell> FMT."%d\{x} / %.2f\{y} = %08.3f\{x/y}"
+    $6 ==> "10 / 20.00 = 0000.500"
+    ```
+
+    ### stacktraceを見る
+
+    ```text
+    ・一番上が、実際に例外が発生した箇所
+    ・一番下が、呼び出し元
+    ・今回の場合、%dにStringを指定していることが原因である
+      事がよくわかる
+    ```
+
+    ```bash
+    jshell> "%d+%d".formatted("abc", 12);
+    |  例外
+        java.util.IllegalFormatConversionException:
+          d != java.lang.String
+    |   at Formatter$FormatSpecifier.failConversion       
+          (Formatter.java:4534)
+    |   at Formatter$FormatSpecifier.printInteger 
+          (Formatter.java:3072)
+    |   at Formatter$FormatSpecifier.print 
+          (Formatter.java:3027)
+    |   at Formatter.format 
+          (Formatter.java:2797)
+    |   at Formatter.format (Formatter.java:2734)
+    |   at String.formatted (String.java:4494)
+    |   at (#8:1)
+    ```
+
+    ### 基本的な型
+
+    ```text
+    var : 型推論
+      ・左側がリテラルとか、
+        コレクションAPIを使用している際には有用
+      ・推論しているので、初期値が必要
+      ・完全にvarを禁止しているprojectには、参画したくない
+        --> 禁止しているのが悪いわけではなく
+            何となくプログラミング以外に要する時間が多そう
+            全てが冗長な現場である可能性が高い(偏見)
+    
+    int
+      ・32bit整数
+      ・64bitを使いたい場合は、longで
+      ・16のshort, 8のbyteも用意されている
+    
+    double
+      ・浮動小数点数
+      ・64bit
+      ・32bitの単精度を使いたい場合は、floatで
+    
+    char
+      ・16bitのUnicode文字
+    
+    boolean
+      ・true/false
+    
+    String
+      ・文字列
+      ・参照型
+      ・JSの場合、文字列リテラルは基本型であったため
+        メソッドを適用するのにラッパークラスが必要だったが
+        Javaにその必要はないようだ
+
+    
+    <補足>
+      ・代入演算子等については、特に不思議な箇所はない
+    ```
+
+    ```bash
+    # 例
+
+    jshell> var x = 12;
+    x ==> 12
+
+    jshell> int y,z;
+    y ==> 0
+    z ==> 0
+
+    jshell> String cat = "tama";
+    cat ==> "tama"
+
+    # 16進数で指定してみた
+    jshell> char ch1 = '\u0061';
+    ch1 ==> 'a'
+    ```
+
+    ### 型変換
+
+    ```bash
+    # 数値 <=> 文字に変換するいつもの奴
+    # 8と0のコード番号の差
+    jshell> '8' - '0'
+    $24 ==> 8
+
+    jshell> ch1 = '0' + 8
+    ch1 ==> '8'
+
+    # 整数 <=> 浮動小数点数
+    # 精度が消失する場合は、truncate
+
+    # 暗黙的に変換されている(doubleの方が大きいので)
+    jshell> int i = 234
+    i ==> 234
+
+    jshell> double d = i
+    d ==> 234.0
+
+    # 精度が失われる可能性がある場合は
+    # 明示的にキャストする
+    jshell> int j = (int)d
+    j ==> 234
+
+    # 文字列 <=>　数値
+
+    jshell> int a = Integer.parseInt("3");
+    a ==> 3
+    # parseIntは.を解釈できず、エラる
+    jshell> double b = Double.parseDouble("3.14");
+    b ==> 3.14
+    # カンマ対応
+    jshell> import java.text.NumberFormat;
+
+    jshell> NumberFormat.getInstance().parse("12,345");
+    $34 ==> 12345
+
+    # Java9以降は、String.valueOf()をする必要はない
+    # 空文字との連結で十分
+    jshell> String s = 123 + "";
+    s ==> "123"
+    ```
+
+    ```text
+    ・型は一見、煩わしく見えるかもしれないが、
+      大きいシステムを作れば作るほど
+      その必要性が分かる
+    
+    ・他人のためではなく、自分が何を指定したかも忘れるし
+    ```
+
+## Q5 標準APIについて知っていますか?
+
+??? success
+    ### 日付関連
