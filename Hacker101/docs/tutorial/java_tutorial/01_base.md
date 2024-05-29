@@ -666,4 +666,216 @@
 ## Q5 標準APIについて知っていますか?
 
 ??? success
+
+    ### Java API
+
+    ```text
+    通常のAPI
+      ・OSやアプリが、他のアプリに対して
+        機能の一部を簡単に利用できるよう提供する接続先
+      ・車輪の再発明を防ぐことができる
+      ・自分で書くより、大抵APIの方が最適化されている
+    
+    Web API
+      ・HTTP/HTTPS等のプロトコルを使って通信
+    
+    Java API
+      ・Javaに標準で含まれるクラスライブラリ
+      ・JDKに含まれている
+      ・単なるメソッド呼び出しで利用される
+      ・(90年代には、Web API等は一般的ではなかったため
+        Javaは単なるライブラリをAPIと呼んでいて今もそう)
+    ```
+
     ### 日付関連
+
+    ```bash
+    jshell> java.time.LocalDate.now()
+    $36 ==> 2024-05-29
+    ```
+
+    ### import
+
+    ```text
+    ・上記のような、完全修飾名を何度も書くのは面倒くさい
+    ・import宣言を行うと、クラス名だけで良くなる
+
+    ・import パッケージ名.クラス名を
+      クラス定義よりも前に書けばOK
+      (※package: クラスを目的に合わせてグループ化した単位)
+      (※標準ライブラリ以外を使いたい場合は、
+       jarファイルの中に保存して、まとめてDLする
+       この際衝突しないようにパッケージ命名規約が設けられる)
+
+    ・*を使ってもいいが、分かりにくくなる
+    ・*は再帰的にはできない
+
+    ・java.langは繰り返し使うとわかりきっているので
+      明示的なimport宣言が不要になっている
+    
+    ・JShellでは、他に幾つかのpackageが予めimportされている
+      が、覚えない方がよさそうだ
+    ```
+
+    ```bash
+    # 現在時刻
+    jshell> import java.time.LocalDateTime;
+    jshell> var now = LocalDateTime.now()
+    now ==> 2024-05-29T22:27:46.006632500;
+
+    # 2週間前
+    jshell> now.minusWeeks(2);
+    $43 ==> 2024-05-15T22:27:46.006632500
+
+    # 日付指定
+    jshell> import java.time.LocalTime;
+    jshell> import java.time.LocalDate;
+    jshell> var hogeDate = LocalDate.of(2024,5,1);
+    hogeDate ==> 2024-05-01
+    jshell> var hogeTime = LocalTime.of(12,0,0,0);
+    hogeTime ==> 12:00
+    jshell> var hogeDateTime = LocalDateTime.of(hogeDate, hogeTime);
+    hogeDateTime ==> 2024-05-01T12:00
+
+    jshell> var hogeDateTime2 = LocalDateTime.of(2024,5,2,23,59,59,0);
+    hogeDateTime2 ==> 2024-05-02T23:59:59
+
+    # format
+    # 基本的に%tから始まる
+    # 詳細については公式参照
+
+    # ダメな指定の仕方
+    jshell> "%tY年%tm月%td日 %tH:%tM:%tS".formatted(
+      LocalDateTime.now(), 
+      LocalDateTime.now(), 
+      LocalDateTime.now(), 
+      LocalDateTime.now(), 
+      LocalDateTime.now(), 
+      LocalDateTime.now()
+      )
+    $52 ==> "2024年05月29日 22:35:24"
+
+    # %の後に、<を付けると、直前の書式と同じ引数の値を使える
+    jshell> "%tY年%<tm月%<td日 %<tH:%<tM:%<tS".formatted(LocalDateTime.now())
+    $53 ==> "2024年05月29日 22:37:11"
+    ```
+
+    !!! info
+        ### もう少しましな整形をする
+
+        ```bash
+        jshell> import java.time.format.DateTimeFormatter;
+        jshell> var formatter = DateTimeFormatter.ofPattern("yyyy年M月d日");
+        formatter ==> Value(YearOfEra,4,19,EXCEEDS_PAD)'年'Value(MonthOfYear)'月'Value(DayOfMonth)'日'
+
+        jshell> formatter.format(LocalDate.of(2024,1,1));
+        $57 ==> "2024年1月1日"
+
+        jshell> formatter.parse("2024年1月2日");
+        $58 ==> {},ISO resolved to 2024-01-02
+        ```
+    
+    ### staticメソッドと、インスタンスを介した呼び出し
+
+    ```text
+    staticメソッド
+      ・クラス名を指定して呼び出すメソッド
+      ・クラスで共通
+    
+    インスタンスメソッド(呼び名あったんだ)
+      ・インスタンスを介した呼び出し
+    
+    LocalDate.now()などは?
+      ・LocalDateがクラス名なので、staticメソッド
+
+    <補足>
+      ・pythonだと、staticメソッドのほかにクラスメソッドが
+        存在したが、あれは冗長だったので此方の方が良さそう
+        pyで言うstaticメソッドはクラスに依存しない処理に
+        使用していた記憶がある
+    ```
+
+    ```bash
+    # formattedはインスタンスメソッド
+    # format(java14までの主流)はstaticメソッド
+
+    jshell> String.format("%s or %s", "dead", "alive");
+    $59 ==> "dead or alive"
+
+    jshell> "%s or %s".formatted("dead", "alive");
+    $60 ==> "dead or alive"
+    ```
+
+    ### 後置補完とスニペットについて
+
+    ```text
+    ・"".formatとするのは基本的に誤りだが、JETBrains系のIDE
+    　には、後置補完が備わっている
+
+    ・例として、
+      s.argとすると、function(s)になったり
+      a.elseとすると、if(!a){}となったりする
+
+    ・別にVSCodeでもカスタムスニペット使えばできると思う
+      Vimでもできるだろう。上手にカスタマイズして！
+    ```
+
+    ### BigDecimal関連(例)
+
+    ```text
+    ・10進数で正確に値を扱いたいときに使う
+    ・2進数で計算しないので、正確
+
+    ・add/subtract/multiply/divide/remainder
+    ・divideAndRemainderがある
+    ```
+
+    ```bash
+    jshell> 579*0.05
+    $61 ==> 28.950000000000003
+
+    jshell> import java.math.BigDecimal;
+    jshell> var b579 = BigDecimal.valueOf(579);
+    b579 ==> 579
+
+    jshell> var b0_05 = BigDecimal.valueOf(0.05);
+    b0_05 ==> 0.05
+
+    jshell> b579.multiply(b0_05);
+    $65 ==> 28.95
+
+    # 商と余りが配列で変える
+    jshell> b579.divideAndRemainder(BigDecimal.valueOf(199))     
+    $66 ==> BigDecimal[2] { 2, 181 }
+
+    # divideで循環小数が答えの場合、例外が発生する
+    jshell> b579.divide(BigDecimal.valueOf(7.0))
+    |  例外java.lang.ArithmeticException: 
+       Non-terminating decimal expansion; 
+       no exact representable decimal result.
+    |        at BigDecimal.divide (BigDecimal.java:1804)
+    |        at (#73:1)
+    
+    # 丸め処理で回避可能
+    # 小数点2桁で四捨五入している
+    # なら、天井関数ならROUND_UPになる。調整して
+    jshell> b579.divide(BigDecimal.valueOf(7.0), 2, BigDecimal.ROUND_HALF_UP);
+    $75 ==> 82.71
+
+    # 更に多くの桁を渡したい場合
+    jshell> BigDecimal.valueOf(3.14159263589793238);
+    $81 ==> 3.1415926358979323 #切れている
+
+    # doubleの制限に引っかからないようにするためStrで渡す
+    # この際、instanceを作成する
+    jshell> new BigDecimal("3.14159263589793238")
+              .multiply(BigDecimal.valueOf(0.2));
+    $80 ==> 0.628318527179586476
+    ```
+
+    ### Object
+
+    ```text
+    ・BigDecimalも、Stringも参照型であれば、
+      Objectが先祖になる
+    ```
