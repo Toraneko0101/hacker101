@@ -866,8 +866,11 @@
     jshell> BigDecimal.valueOf(3.14159263589793238);
     $81 ==> 3.1415926358979323 #切れている
 
-    # doubleの制限に引っかからないようにするためStrで渡す
-    # この際、instanceを作成する
+    # doubleの制限に引っかからないようにしたいなら
+    # instanceを作成する
+    # ただし、コンストラクタの引数として、doubleを渡すと、
+    # 小数点以下の値は、1/2^nに近似されてしまう
+    # そのためstringで渡している
     jshell> new BigDecimal("3.14159263589793238")
               .multiply(BigDecimal.valueOf(0.2));
     $80 ==> 0.628318527179586476
@@ -878,4 +881,468 @@
     ```text
     ・BigDecimalも、Stringも参照型であれば、
       Objectが先祖になる
+    ```
+
+    ### newについて
+
+    ```text
+    ・versionUpとともにJava APIにおいて
+      単純なコンストラクタを用いずに
+      objectを生成する方法が増えている
+
+    ・理由としては
+      可読性, 不変Objectの作成, 柔軟性と保守性
+      入力値のvalidation, Builderパターンの使用などがある
+    
+    ※Builderパターン
+      ・コンストラクタに対して数多くのparamをセットする
+        必要がある際に、使うことが推奨される実装方法
+    ```
+
+    ### (補足)newとJava APIについて
+
+    ```java
+    // 旧式(可変長)
+    List<String> list = new ArrayList<>();
+    list.add("a");
+    list.add("b");
+    list.add("c");
+    // (固定長, 不変だがlistを参照している)
+    List<String> unmodifyList = Collections.unmodifiableList(list);
+
+    //新式(固定長, 不変, 元配列を参照しない)
+    List<String> list2 = List.of("a", "b", "c");
+    //新式(可変長)
+    List<String> list3 = new ArrayList<>(list2);
+    list3.add("d");
+
+    //Stream APIの場合(JShellの場合、改行に注意)
+    List<String> list4 = Stream.of("a", "b", "c")
+      .collect(Collectors.toCollection(ArrayList::new));
+    list4.add("d");
+
+    //安全なObject作成
+    //nullに対して考えたくないとする
+
+    //旧式
+    Optional<String> opt1 = new Optional<>(null);
+
+    //新式
+    Optional<String> opt2 = Optional.empty();
+    ```
+
+    ### (補足) Builderパターン
+
+    ```java
+    //　単純なコンストラクタ
+    public class Person{
+      private String firstName;
+      private String lastName;
+      private int age;
+      private String phone;
+      private String address;
+
+      public Person(
+        String firstName, 
+        String lastName,
+        int age,
+        String phone,
+        String address
+      ){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.phone = phone;
+        this.address = address;
+      }
+    }
+
+    var person1 = new Person(
+      "torano", 
+      "nekozirou", 
+      12, 
+      "000-0000", 
+      "100-0000"
+    );
+
+    // Builder Pattern
+    // --------------------------
+    //やっていることは単純で、staticクラス
+
+    public class Person{
+      // builderで定義しているので不変
+      private final String firstName;
+      private final String lastName;
+      private final int age;
+      private final String phone;
+      private final String address;
+
+      //buildでnewするときに、fieldを対応付ける
+      private Person(PersonBuilder builder){
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.age = builder.age;
+        this.phone = builder.phone;
+        this.address = builder.address;
+      }
+
+      public static class PersonBuilder{
+        //コンストラクタで定義するもの以外は可変
+        private final String firstName;
+        private final String lastName;
+        private int age = 0;
+        private String phone = "";
+        private String address = "";
+
+        public PersonBuilder(
+          String firstName, 
+          String lastName
+        ){
+          this.firstName = firstName;
+          this.lastName = lastName;
+        }
+
+        public PersonBuilder age(int age){
+          this.age = age;
+          return this;
+        }
+
+        public PersonBuilder phone(String phone){
+          this.phone = phone;
+          return this;
+        }
+
+        public PersonBuilder address(String address){
+          this.address = address;
+          return this;
+        }
+
+        public Person build(){
+          return new Person(this);
+        }
+      }
+    }
+
+    //自身を返してメソッドチェーン
+    //最終的に、fieldにすべての値が入った状態でクラス作成
+    //IDEの機能使わなくても
+    //どの値を設定しているか分かりやすいね!
+    var person = new Person.PersonBuilder("torano", "nekozirou")
+      .age(30)
+      .phone("000-0000")
+      .address("100-0000")
+      .build()
+    ;
+    ```
+
+## Q6 GUIプログラミングについて知っていますか?
+
+??? success
+    ### GUIプログラミング
+
+    ```text
+    ・Pythonでいうと、Tkinterとかがあったね
+
+    ・でも、Dart言語 + Flutterが大正義なんじゃないかな?
+    
+    ・React Nativeも有名だよね。
+      (でもこっちはモバイル開発に特化してるから.....)
+    
+    ・ところでPythonの場合、FletというFlutterを使える
+      フレームワークがあった気がする
+    
+    ・まずクロスプラットフォーム対応済みなのかが問題
+    
+    ・Javaの場合、何があるのかを以下で見ていく
+      (実用的なのかは疑問符がつくけど)
+    
+    ・というか、DartはJavaと親和性があるんだし、
+      言語を学ぶことはそれほど難しいことじゃないんだから
+      JavaによるGUI開発は諦めて、Flutterを選んだ方が
+      (これ以上はいけない)
+    ```
+
+    ### Swing
+
+    ```text
+    ・Java1.2で提供されたGUIライブラリ
+    ・Javaに標準で含まれているというメリットあり
+    ```
+
+    ### JavaFX
+
+    ```text
+    ・Swingの後継のGUIライブラリ
+    ・JDKにはもはや含まれていないが、Swingと比べると
+      多少モダンといえなくもない
+    ```
+
+    ### Windowの表示
+
+    ```java
+    import javax.swing.*
+    
+    // JFrameクラスがWindowに当たる
+    // 引数はWindowのタイトルになる
+    var f = new JFrame("test");
+    
+    // Windowの表示状態を変更
+    f.setVisible(true);
+
+    // 大きさを変更
+    f.setSize(600,400);
+
+    // 位置を変更
+    f.setLocation(200, 200);
+
+    // 現在位置を取得(適当に動かしてから)
+    f.getLocation();
+    // $13 ==> java.awt.Point[x=346,y=87]
+    ```
+
+    ### 入力領域の配置
+
+    ```java
+    //画面の表示部品なので、コンポーネント
+    // JTextFiled: 1行テキスト
+    // JTextArea: 複数行テキスト
+    // JButton: ボタン
+    // JPanel: パネル
+    // JLabel ラベル
+
+    var t = new JTextField();
+    
+    // Windowにコンポーネントを配置
+    // 位置指定はNorth, East, South, West, Center
+    f.add("North", t);
+    f.validate(); //画面更新
+
+    // 文字列の設定
+    t.setText("Nyanko");
+
+    // 文字列の取得(適当に入力した後で)
+    t.getText();
+    // $18 ==> "Nekomoti"
+    ```
+
+    ### 入力のコピー
+
+    ```java
+    // もう一つ入力領域を作る
+    // 引数を渡すと、予め入力された状態になる
+    var t2 = new JTextField("second");
+    f.add("South", t2);
+
+    // 大文字でコピー
+    t.setText(t2.getText().toUpperCase());
+    ```
+
+    ### ボタンの配置
+
+    ```java
+    var b1 = new JButton("Upper");
+    f.add("Center", b1);
+    f.validate();
+
+    //処理の設定
+    //ボタンを押したとき、t2の文字がt1にUpperCaseで
+    //Copyされるようにする
+    //Lambda式だねえ
+
+    //ActionEvent(ボタンを押すなど)を行うと
+    //addActionListenerが発火する
+    b1.addActionListener(
+      ae -> t.setText(t2.getText().toUpperCase())
+    );
+    ```
+
+    ### 画像の挿入＆お絵描き
+
+    ```java
+    import javax.swing.*;
+    var f = new JFrame("drawing");
+    f.setVisible(true);
+
+    //JLabelは文字のほかにアイコン画像も表示可能
+    var label = new JLabel("test");
+    f.add(label);
+    //Windowのサイズを、配置された要素に合わせる
+    f.pack();
+
+    //画像を扱うクラス
+    import java.awt.image.BufferedImage;
+    //RGBにそれぞれ8bitの値を持たせている
+    var image = new BufferedImage(600, 400, BufferedImage.TYPE_INT_RGB);
+    //ImageIconで画像をアイコンとして扱う
+    label.setIcon(new ImageIcon(image));
+    f.pack();
+    ```
+
+    ### 補足(参照型のコピー)
+
+    ```java
+    
+    // ボタンをコピーしたいとか、思ったんじゃない?
+
+    /*
+      複製
+      ・参照型はイコールでは同じメモリ番地を指すだけになる
+      ・cloneはもはや推奨されていない(使うのやめようね!)
+
+      ・Javaのcopyが面倒なのは、静的型付けであるためだろう
+      ・型安全性を保つためという理由で、各fieldを明示的に
+        copyする必要があるので、コードが冗長に見える
+      ・jsでいうstructuredCloneやpyのdeepcopyのような
+        標準ライブラリがないのも原因の一つ
+
+      ・自分で定義したクラスならコピーコンストラクタが使える
+      ・copyメソッドを自作することもできる
+
+      ・自動化できないの?
+        --> 手動で各フィールドをコピーするなんて
+            こんな馬鹿らしいこともない
+        --> シリアライズが利用できないだろうか?
+
+    */
+
+    // 補足(コレクションのコピー)
+    public class Hoge{
+      public int num;
+
+      //通常のコンストラクタ
+      public Hoge(int num){
+        this.num = num;
+      }
+
+      //コピーコンストラクタ
+      public Hoge(Hoge other){
+        this.num = other.num;
+      } 
+
+      //copy用のメソッド
+      public Hoge copy(){
+        return new Hoge(this);
+      }
+    }
+
+    List<Hoge> originalList = Arrays.asList(
+      new Hoge(1),
+      new Hoge(2),
+      new Hoge(3)
+    );
+
+    List<Hoge> copyList = originalList.stream()
+      .map(Hoge::copy)
+      .collect(Collectors.toList());
+    
+    copyList.get(0).num = 10;
+    System.out.println(copyList.get(0).num);
+    //10
+    System.out.println(originalList.get(0).num);
+    //1
+
+    //これだと同じものを参照するので無意味
+    // List<Hoge> copyList2 = List.copyOf(originalList);
+
+    // ---------------------------
+
+    /*
+      シリアライズ
+        ・Objectのような構造的なデータを
+          ネットワーク経由でやり取りできるよう
+          バイト配列へ変換すること
+      
+      デシリアライズ
+        ・シリアライズされたバイト配列を
+          元のObjectに戻すこと
+      
+       @SuppressWarnings("unchecked")
+        deepcopy内でのcastの安全性は確保されているので、
+        コンパイラによる型チェック警告を抑制している
+
+       T
+        入力される型は汎用的なので
+        汎用的な処理をするためにジェネリック型を使っている
+      
+      ObjectOutputStream
+        出力先ストリームにデータを書き込む用のクラス
+        writeObject(object)で書き込む
+        引数には出力先のストリームを指定
+
+      ObjectInputStream
+        入力ストリームからデータを読み込む用のクラス
+        readObject()で読み込む
+        引数には入力元のストリームを生成
+      
+      ByteArrayOutputStream
+        バイト配列の出力ストリームを新しく生成
+        下記の場合、ObjectOutputStreamによって書き込まれる
+
+        ※toByteArray()は、バイト配列を新しく作成
+          ただし現在のバッファ内のデータはコピーされる
+
+      ByteArrayInputStream
+        バイト配列の入力ストリームを新しく生成
+    */
+
+    import java.io.*;
+
+    class DeepCopyUtil {
+
+      @SuppressWarnings("unchecked")
+      public static <T> T deepCopy(T object){
+        T copiedObject = null;
+        try{
+
+          var bos = new ByteArrayOutputStream();
+          var oos = new ObjectOutputStream(bos);
+          oos.writeObject(object);
+          oos.flush();
+
+          var bis = new ByteArrayInputStream(bos.toByteArray());
+          var ois = new ObjectInputStream(bis);
+
+          //Object型として返されたものを、ジェネリック型に
+          //元のオブジェクトの型を保持している
+          copiedObject = (T) ois.readObject();
+        
+        } catch(IOException | ClassNotFoundException e){
+          e.printStackTrace();
+        }
+
+        return copiedObject;
+
+      }
+    }
+
+    /*
+      Selializeするには、対象となるクラスが
+      java.io.Serializableインターフェースを実装している
+      必要がある。
+    */
+    class MyClass implements Serializable {
+      private int id;
+      public MyClass(int id){
+        this.id = id;
+      }
+
+      public int getId(){return id;}
+      public void setId(int id){this.id = id;}
+
+      //出力を分かりやすいようにしてるだけ
+      @Override
+      public String toString(){
+        return STR."MyClass{id= \{id} }";
+      }
+
+    }
+
+    MyClass original = new MyClass(1);
+    MyClass copy = DeepCopyUtil.deepCopy(original);
+    original.setId(2);
+
+    System.out.println("Original: " + original);
+    // Original: MyClass{id= 2}
+    System.out.println("Copy: " + copy);
+    // Copy: MyClass{id= 1}
     ```
