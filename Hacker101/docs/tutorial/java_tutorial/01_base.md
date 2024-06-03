@@ -1175,7 +1175,22 @@
     var image = new BufferedImage(600, 400, BufferedImage.TYPE_INT_RGB);
     //ImageIconで画像をアイコンとして扱う
     label.setIcon(new ImageIcon(image));
+    //画像に合わせてwindowのサイズ調整
     f.pack();
+    
+    //描画処理(createGraphicsメソッドで、Graphics
+    //objectを取得する)
+    // ※ jshellでは/vとすることで、型名が見られる
+    var g = image.createGraphics();
+    //直線を引く(startx,starty,endx, endy)
+    g.drawLine(500,0,600,400);
+    //再描画
+    label.repaint();
+    //色指定
+    g.setColor(java.awt.Color.RED);
+    //(x,y,width,height)
+    g.fillRect(300,200,150,100);
+    label.repaint();
     ```
 
     ### 補足(参照型のコピー)
@@ -1183,6 +1198,7 @@
     ```java
     
     // ボタンをコピーしたいとか、思ったんじゃない?
+    // 以下では、javaでobjectをcloneする方法について話す
 
     /*
       複製
@@ -1346,3 +1362,510 @@
     System.out.println("Copy: " + copy);
     // Copy: MyClass{id= 1}
     ```
+
+## Q7 Javaプログラムのひな型について知っていますか?
+
+??? success
+    ### ひな型
+
+    ```java
+    //今回はhogeというpackageに属させることにした
+    package hoge;
+    
+    //個別importしている
+    import javax.swing.JButton;
+    import javax.swing.JFrame;
+    import javax.swing.JTextField;
+
+    //クラス宣言
+    public class SampleForm{
+      //メインメソッド
+      public static void main(String[] args){
+        var frame = new JFrame("test");
+        frame.setSize(600, 400);
+        //Windowが閉じたときにprogramを終了させる処理
+        //JShellの場合は、Windowを閉じると、JShell自体が
+        //Resetされてしまうので入れない
+        frame.setDefaultCloseOperation(
+          JFrame.EXIT_ON_CLOSE
+        );
+        var text1 = new JTextField();
+        frame.add("North", text1);
+
+        var text2 = new JTextField();
+        frame.add("South", text2);
+
+        var button = new JButton("to Upper Case");
+        frame.add(button);
+
+        button.addActionListener(ae ->
+          text2.setText(
+            text1.getText().toUpperCase()
+          )
+        );
+
+        frame.setVisible(true);
+      }
+    }
+    ```
+
+    ### 命名規則
+
+    ```text
+    ・Javaの場合、キャメルケースが大半
+    ・定数はUpperCaseの場合が多い
+    ・プロジェクトに従うというつまらない答えが正解
+    ```
+
+    ### 手動実行
+
+    ```bash
+    # 今、src/にいるとする
+    # なお、git bashで実行している
+    # cmd等で実行する場合は、パスの書き方を変更する事
+
+    # bin/
+    # └── hoge/
+    # src/
+    # └── hoge/
+    #      └── SampleForm.java/
+
+    # -d クラスファイルの出力先を指定
+    $ javac -d ../bin hoge/SampleForm.java
+
+    $ java --enable-preview \
+      -cp C:/java_test/SampleForm/bin hoge.SampleForm
+    ```
+
+    ```text
+    <解説>
+      java: JDKのinstallディレクトリを指定
+            pathを通しているので、javaで済んでいる
+      
+      --enable-preview
+        ・Javaのプレビュー機能を有効にしている
+      
+      -cp C:\java_test\SampleForm\bin
+        ・クラスパスを指定。
+        ・コンパイルされたクラスファイルはbin配下に
+          格納されているので、このディレクトリを指定
+      
+      hoge.SamleForm
+        ・実行するメインクラスを指定
+        ・hogeパッケージにある、SampleFormクラスの
+          mainメソッドを実行している
+    ```
+
+## Q8 選択処理について知っていますか?
+
+??? success
+    ### 比較
+
+    ```java
+    //含む
+    if("test".contains("es")){
+      System.out.println("a");
+    }
+    //a
+
+    //基本型の比較
+    if(!(4 != 4)){
+      System.out.println("a");
+    }
+    //a
+
+    //参照型の比較, <なら負, >なら正が返る
+    if("apple".compareTo("banana") != 0){
+      System.out.println("not equal");
+    }
+    //not equal
+
+    //日付型の比較
+    import java.time.LocalDate;
+    int future_or_past = LocalDate.now().compareTo(LocalDate.of(2024,1,1));
+
+    if(future_or_past >= 1){
+      System.out.println("future");
+    }
+    //future
+
+
+    //参照型の比較
+    String str = "Test";
+    String upperStr = str.toUpperCase();
+    // ==は同一オブジェクトか比較していることになるので注意
+    if(upperStr.equals("TEST")){
+      System.out.println("Yes");
+    }
+    //Yes
+    ```
+
+    ### 論理演算
+
+    ```java
+    if(false || true) System.out.println("Yes");
+    //Yes
+
+    if(true && true) System.out.println("Yes");
+    //Yes
+
+    int a = 10;
+    if(a > 0 && a < 100) System.out.println("Yes");
+    //Yes
+
+    if(!!!false) System.out.println("Yes");
+    //Yes
+
+    //三項演算子
+    System.out.println(a > 10 ? "Yes" : "No");
+    //No
+    ```
+
+    ### if-else
+
+    ```java
+    int b = 10;
+
+    //if-else
+    if(b > 10){
+      System.out.println("b > 10");
+    }else if(b > 5){
+      System.out.println("b > 5, b <= 10");
+    }else{
+      System.out.println("b <= 5");
+    }
+    // b > 5, b <= 10
+    ```
+
+    ### switch
+
+    ```java
+    //switch(break文はもう要らないよ！)
+    switch(b){
+      case 1, 2 -> System.out.println("one or two");
+      case 0, 10 -> System.out.println("zero or ten");
+      default -> System.out.println("other");
+    }
+    //zero or ten
+
+    //式としてのswitch
+    System.out.println(switch(a){
+      case 1, 2 -> "one or two";
+      case 0, 10 -> "zero or ten";
+      default -> "other";
+    })
+    // zero or ten
+
+    //値を返したい場合
+    //yieldを書いた場合は、ブロックは省略できない
+    //ブロックを省略した場合は、yieldも省略可能
+    String result = switch(b){
+      case 1,2 -> {yield "one or two";}
+      case 0,10 -> {yield "zero or ten";}
+      default -> {yield "other";}
+    }
+
+    System.out.println(result);
+    //zero or ten
+
+    //--------Java21以降(switch && pattern match)
+    // 型と変数をswitchにかける
+
+    Object o = "nyanko";
+    var result = switch(o){
+      case Integer i -> "%03d".formatted(i);
+      case String s -> "--%s--".formatted(s);
+      case null -> -1;
+      default -> "default!";
+    }
+    // --nyanko--
+
+
+
+    //(補足)昔のjavaで見かけたswitch(冗長！)
+    switch(b){
+      case 1:
+      case 2:
+        System.out.println("one or two");
+        break;
+      case 0:
+      case 10:
+        System.out.println("zero or ten");
+        break;
+      default:
+        System.out.println("other");
+        break;
+    }
+    ```
+
+## Q9 Listについて知っていますか?
+
+??? success
+    ### List
+
+    ```java
+    //不変リスト
+    var names = List.of("hoge", "fuga", "nyanko");
+    System.out.println(names.get(1)); //fuga
+    System.out.println(names.size()); //3
+
+    //可変リスト
+    var cat = new ArrayList<String>();
+    cat.add("tama");
+    cat.add("buchi");
+    cat.add("tora");
+    cat.set(1, "kuro");
+    System.out.println(cat.get(1)); //kuro
+    
+    ```
+
+    ### ジェネリクス
+
+    ```text
+    ・扱う型を、<>で囲んで指定する書き方
+    ・Listは特定の型を割り当てるので、その型を<>で指定する
+    ・基本型は指定できないことに注意
+    ```
+
+    ### 要素数によって型が異なる?
+
+    ```java
+    System.out.println(
+      List.of(1,2).getClass()
+    );
+    //class java.util.ImmutableCollections$List12
+
+    System.out.println(
+      List.of(1,2,3).getClass()
+    );
+    //class java.util.ImmutableCollections$ListN
+
+    //影響
+    try{
+      List.of(1,2).get(3);
+    }catch(IndexOutOfBoundsException e){
+      System.out.println(e);
+    }
+    //java.lang.IndexOutOfBoundsException: 
+    //Index: 3 Size: 2
+
+    try{
+      List.of(1,2,3).get(4);
+    }catch(ArrayIndexOutOfBoundsException e){
+      System.out.println(e);
+    }
+    //java.lang.ArrayIndexOutOfBoundsException: 
+    //Index 4 out of bounds for length 3
+    ```
+
+    ```text
+    <解説>
+      ・ArrayIndexOutOfBoundsExceptionは
+        IndexOutOfBoundsExceptionのサブクラスであり
+        配列に対して不正なindexを使ってアクセスした時に発生
+      
+      ・つまり、要素数が0 or 3以上の時、
+        内部的には配列が用いられていると言える?
+      
+      ・いずれにせよ、内部の実装とAPIは分離されているので
+        互換性の問題は起きないと考えられる
+    ```
+
+    ### ジェネリクスと、SyntaxError
+
+    ```text
+    ・ジェネリクスを使うメリットとして、
+      型が異なる要素を構文エラーではじけるというものがある
+    
+    ・例外の場合、実行時まで分からないが、
+      コンパイル時に問題を発見できるので時短になる
+    ```
+
+    ```java
+    var name = new ArrayList<String>();
+    name.add("cat");
+    name.add(123);
+    |  エラー:
+    |  不適合な型: intをjava.lang.Stringに変換できません:        
+    |      name.add(123);
+
+    ```
+
+    ### ジェネリクスと型推論
+
+    ```java
+    var names = List.of("neko", "inu", "nezumi");
+    var mutableNames = new ArrayList<>(names);
+    //jshell> /v mutableNames
+    | //ArrayList<String> mutableNames = [neko, inu, nezumi]  
+
+    //割当先の変数の方から推論することも可能
+    List<String> strs = new ArrayList<>();
+    ```
+
+    ```text
+    ・ArrayListが扱う方は、namesの型から推論できるため
+      <>と書けている
+    
+    ・<>のことを、ダイヤモンドオペレータという
+    ```
+
+    ### ジェネリクスとラッパークラス
+
+    ```java
+    //ジェネリクスでは基本型は使えない
+    var nums = List.of(1,2,3);
+    // jshell> /v nums
+    //  List<Integer> nums = [1, 2, 3]
+    ```
+
+    ```text
+    ・基本型の値を、参照型として扱うためのクラスがある
+    
+    ・varを用いると、その型に型推論される
+
+    | 基本型  | ラッパークラス |
+    | ------- | -------------- |
+    | int     | Integer        |
+    | double  | Double         |
+    | boolean | Boolean        |
+    | char    | Character      |
+    ```
+
+## Q10 配列について知っていますか?
+
+??? success
+    ### 配列
+
+    ```text
+    ・Listで扱えない基本型が直接使える
+
+    ・要素数をあらかじめ決定しておく必要がある
+      (競プロなどでは使われたりする)
+
+    ・可変リストのArrayListもArrayとついていることから
+      分かる通り、内部的には配列を用いて値を格納している
+    ```
+
+    ```java
+    //型について
+    var scores = new int[3];
+    //jshell> /v scores
+    //  int[] scores = int[3] { 0, 0, 0 }
+
+    //size()でもlength()でもなく、lengthで要素数を見る
+    //C++みたいに統一してほしいところ
+    System.out.println(scores.length); //3
+
+    //初期化
+    var scores2 = new int[]{0, 2, 4};
+
+    //記法2(既に割り当てた変数に再割り当てする際はnew必須)
+    int[] scores3 = {1, 2, 3};
+    int[] scores3 = new int[]{1, 4, 5};
+
+    //アクセス
+    scores3[2] = 4;
+    System.out.println(scores3[2]); //4
+    ```
+
+    ### 多次元配列
+
+    ```java
+    //添え字を指定するだけ
+
+    var mat = new int[2][3];
+    // mat ==> int[2][] { int[3] { 0, 0, 0 }, int[3] { 0, 0, 0 } }
+
+    var mat2 = new int[][]{{1, 2}, {3, 4}}
+    ```
+
+## Q11 レコードについて知っていますか?
+
+??? success
+    ### 違う型の値をListで扱う
+
+    ```text
+    ・違う種類の値でも、Listでまとめて扱える
+    ```
+
+    ```java
+    //実際には共通した方を扱っている
+    //そのためString型や、Integer型のメソッドは使えない
+    var exam = List.of("math", 80, true);
+    //jshell> /v exam
+|   //List<Serializable&Comparable<? extends Serializable&Comparable<?>&java.lang.constant.Constable>&java.lang.constant.Constable> exam = [math, 80, true]
+
+    //methodを用いるにはcastする必要がある
+    System.out.println(
+      ((String) exam.get(0)).toUpperCase()
+    );
+    //MATH
+    ```
+
+    ### レコード
+
+    ```text
+    ・Java16から導入された
+
+    ・型を用いているため、キャスト無しでメソッドが使える
+
+    ・レコードの要素をコンポーネントという
+
+    ・コンポーネント名()とすることで、コンポーネントの値
+      を取得可能
+    ```
+
+    ```java
+    // java22で--enable-previewを使用 or java23
+    record Exam(String name, String subject, int score){};
+    var e1 = new Exam("nyanko", "math", 80);
+
+    System.out.println(
+      STR."\{e1.name()}: \{e1.subject()} = \{e1.score()}"
+    )
+    // nyanko: math = 80
+
+    ```
+
+## Q12 Mapについて知っていますか?
+
+??? success
+    ### 不変Map
+
+    ```java
+    var pets = Map.of("cat", "tama", "dog", "tarou");
+    System.out.println(pets.get("cat")); //tama
+
+    //見つからない場合、デフォルト値
+    System.out.println(pets.getOrDefault("nezumi", "tyu-"));
+    // tyu-
+
+    //サイズ確認
+    System.out.println(pets.size()); //2
+    ```
+
+    ### 可変Map
+
+    ```java
+    //HashMap(要素の順番については保証しない)
+
+    var animals = new HashMap<String, String>();
+
+    animals.put("dog", "tarou");
+    animals.put("cat", "tama");
+    animals.put("cat", "kuro");
+
+    System.out.println(animals.get("cat")); //kuro
+    ```
+
+    ### 不変のメリット
+
+    ```text
+    ・実際には多くのオブジェクトは変更不要
+
+    ・想定しないデータ変更が起こらないため、
+      エラーの原因を突き止めやすくなる
+    ```
+
+#
