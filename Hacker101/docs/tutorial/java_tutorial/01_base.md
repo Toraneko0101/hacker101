@@ -2055,10 +2055,28 @@
     ### 拡張for
 
     ```java
+    //Java 5から
+
+    var fruits = List.of("apple", "banana", "grape");
+
+    for(var fruit: fruits){
+      System.out.println(fruit);
+    }
+    // apple
+    // banana
+    // grape
+
+    int[] nums = {2,3,5,7};
+    for(int num: nums){
+      System.out.print(num * 10 + " ");
+    }
+    // 20 30 50 70 
     ```
 
 
 ## Q14 デバッガの使い方について知っていますか?
+
+??? success
     ### (補足)デバッガの使い方
 
     ```text
@@ -2091,4 +2109,210 @@
     
     ※現在の行にメソッド呼び出しがない場合は
       ステップインもステップアウトも処理は同じ
+    ```
+
+## Q15 Streamについて知っていますか?
+
+??? success
+    ### Stream
+
+    ```text
+    ・Java8から導入
+
+    ・Streamに対して、以下の処理を適用する
+      値を操作する中間処理
+      値をまとめる終端処理
+    
+    ・メソッドチェーンの形で書くため関数型の記法にそっくり
+
+    ・ラムダ式が多く使われる
+
+    ・元の集合には影響を与えない
+    ```
+
+    ### 変換
+
+    ```text
+    | 変換前         | 変換後 | 実際の記法  |
+    | -------------- | ------ | ----------- |
+    | List           | Stream | .stream()   |
+    | Stream         | List   | .toList()   |
+    | Array          | Stream | Stream.of() |
+    | 複数行の文字列 | Stream | .lines()    |
+    ```
+
+    ### 終端処理
+
+    ```text
+    | 名前      | 意味                             |
+    | --------- | -------------------------------- |
+    | allMatch  | すべて満たすか                   |
+    | anyMatch  | 一つでも満たすか                 |
+    | noneMatch | 一つも満たさないか               |
+    | collect   | Collectorsクラスの終端処理を利用 |
+    | foreach   | 出力処理                         |
+    ```
+
+    ```java
+    import java.util.stream.Collectors;
+
+    var names = List.of("tama", "taro", "nyanko");
+    
+    names.stream()
+      .collect(Collectors.joining("/"));
+    // tama/taro/nyanko
+
+    names.stream()
+      .noneMatch(s -> s.contains("y"));
+    //false
+
+    //List.ofの形を返す
+    var listof = names.stream().toList();
+    //ArrayListの形を返す
+    var arraylist = names.stream().collect(
+      Collectors.toList()
+    );
+    arraylist.set(1, "neko");
+
+    //中間処理がない場合、List自体がforEachを持っているので
+    //Streamを介さずに呼び出せる
+    names.stream().
+      forEach(s -> System.out.println(s));
+    // tama
+    // taro
+    // nyanko
+
+    //メソッド参照
+    names.forEach(System.out::println);
+    // tama
+    // taro
+    // nyanko
+
+    //直接指定もできる
+    Stream.of(1,2,3).toList();
+    ```
+
+    ### 中間処理
+
+    ```text
+    | 名前     | 意味                 |
+    | -------- | -------------------- |
+    | filter   | trueとなる値だけ処理 |
+    | skip     | 要素を飛ばす         |
+    | limit    | 要素を制限する       |
+    | distinct | 重複を排す           |
+    | sorted   | 要素並び替え         |
+    | map      | 関数適用             |
+    | reduce   | 畳み込み処理         |
+
+    ```
+
+    ```java
+    var names = List.of("neko", "nyanko", "nekonuko");
+
+    names.stream()
+      .filter(s -> s.length() > 5)
+      .toList();
+    // [nyanko, nekonuko]
+
+    names.stream().skip(1).toList();
+    //  [nyanko, nekonuko]
+
+    names.stream().limit(2).toList();
+    // [neko, nyanko]
+
+    names.stream().sorted().toList();
+    // [neko, nekonuko, nyanko]
+
+    List.of("neko", "neko", "inu").stream()
+     .distinct()
+     .toList();
+    //[neko, inu]
+
+    List.of("neko", "inu", "nezumi").stream()
+     .map(s -> s.repeat(2))
+     .toList();
+    // [nekoneko, inuinu, nezuminezumi]
+
+    //合計値(Integer::sumでもいいんだけどね)
+    //第1引数=初期値、第2引数=関数が基本形。
+    //戻り値が初期値と入れ替わる
+    List.of(1,2,3,4,5).stream()
+      .reduce(0, (a,b) -> a + b);
+    // 15
+
+    //最小値 Integer::minでもいいけどね
+    List.of(1,2,-2,4,5).stream()
+      .reduce((a,b) -> a < b ? a : b); 
+    // -2
+
+    //連結
+    List.of("neko", "inu", "nezumi").stream()
+    　.reduce("", String::concat);
+    //nekoinunezumi
+    ```
+
+    ### reduceとモノイド
+
+    ```text
+    モノイド
+      ・閉包性、結合律、単位元の存在を持つ
+      
+      閉包性：
+        演算の結果も同じ型になるため、型安全が保障される
+      
+      結合律：
+        順序を変更しても結果が同じであるため並行処理が可能
+      
+      単位元：
+        累積計算の際、単位元を初期値とすることで、
+        最初の要素と単位元の演算から開始可能
+
+        ※
+          1. reduceの並列実行時には、以下の手順を踏む
+          2. Streamが複数部品に分割される
+          3. 各部品の先頭要素が単位元と演算される
+          4. 後続の要素が、その結果と演算される
+          5. 最後に、分割されたStreamを1つにまとめる
+        
+        ※そのため以下の場合、3スレッドで実行すると
+        Stream.of(1, 2, 3)
+          .parallel()
+          .reduce(11, (a, b) -> a + b);
+
+        (11 + 1) + (11 + 2) + (11 + 3) = 39になる 
+
+        ※またStreamが空の場合、単位元が返されるが......
+          各々のStreamを結合する際も、単位元は結果に影響を
+          及ぼさないため、何の問題も起こらない
+
+
+    ```
+
+    ```java
+    //正しく単位元を指定した場合
+
+    Stream.of(1,2,3).parallel().reduce(0, (a,b) -> a + b);
+    // 6
+
+    Stream.of(1,2,3).parallel().reduce(1, (a,b)-> a * b);
+    // 6
+
+
+    //バイナリ演算子のオペランドの型が、推定できないと
+    //型チェックエラーを吐く
+    
+    //ダメな例(genericsがないので、java.lang.Obejct扱い)
+    //Object型のa,bに対して、+演算子適用はできないので
+    List.of().stream().reduce(0, (a,b) -> a + b);
+
+    //いい例
+
+    List.<Integer>of().stream().reduce(0, (a,b) -> a + b);
+    // 0
+    ```
+
+    ### その他の中間操作等
+
+    ```text
     ```
