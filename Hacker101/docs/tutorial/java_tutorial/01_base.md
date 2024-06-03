@@ -1790,11 +1790,11 @@
     ```
 
     ```java
-    //実際には共通した方を扱っている
+    //実際には共通した型を扱っている
     //そのためString型や、Integer型のメソッドは使えない
     var exam = List.of("math", 80, true);
     //jshell> /v exam
-|   //List<Serializable&Comparable<? extends Serializable&Comparable<?>&java.lang.constant.Constable>&java.lang.constant.Constable> exam = [math, 80, true]
+    //List<Serializable&Comparable<? extends Serializable&Comparable<?>&java.lang.constant.Constable>&java.lang.constant.Constable> exam = [math, 80, true]
 
     //methodを用いるにはcastする必要がある
     System.out.println(
@@ -1868,4 +1868,227 @@
       エラーの原因を突き止めやすくなる
     ```
 
-#
+## Q13 反復処理について知っていますか?
+
+??? success
+    ### 通常のfor文
+
+    ```java
+    for(int i = 0; i < 5; i++){
+      System.out.print(i + " ");
+    }
+    //0 1 2 3 4 
+
+    //初期値; 繰り返し条件; 繰り返し時の処理なので
+    //以下の様に無限ループも書ける
+    int j = 0;
+    for(;;){
+      j++;
+      System.out.print(j + " ");
+      if(j >= 3) break;
+    }
+    // 1 2 3 
+    ```
+
+    ### while
+
+    ```java
+    int k = 0;
+    while(true){
+      k++;
+      System.out.print(k + " ");
+      if(k > 3) break;
+    }
+    // 1 2 3 4
+    ```
+
+    ### do-while
+
+    ```java
+    int l = 100;
+    do{
+      System.out.print(l + " ");
+      l++;
+    }while(l < 10);
+
+    //100 
+    //一回は実行されるというのが特徴
+    ```
+
+    ### continue, break
+
+    ```java
+    //continue(次のループへ)
+    //break(ループを中止)
+
+    for(int i=0; i<10; i++){
+      if(i % 3 == 0) continue;
+      if(i % 9 == 0) break;
+      System.out.print(i + " ");
+    }
+    // 1 2 4 5 7 8 
+    ```
+
+    ### 二重ループ
+
+    ```java
+    import static java.util.FormatProcessor.FMT;
+
+    for(int i=1; i<10; i++){
+      for(int j=1; j<10; j++){
+        System.out.print(FMT."%3d\{i*j}");
+      }
+      System.out.println("");
+    }
+
+    /*
+      1  2  3  4  5  6  7  8  9
+      2  4  6  8 10 12 14 16 18
+      3  6  9 12 15 18 21 24 27
+      4  8 12 16 20 24 28 32 36
+      5 10 15 20 25 30 35 40 45
+      6 12 18 24 30 36 42 48 54
+      7 14 21 28 35 42 49 56 63
+      8 16 24 32 40 48 56 64 72
+      9 18 27 36 45 54 63 72 81
+    */
+
+    for(int i = 0; i < 5; i++){
+      for(int j = 0; j <= i; j++){
+        System.out.print(j+1);
+      }
+      System.out.println();
+    }
+
+    /*
+    1
+    12
+    123
+    1234
+    12345
+    */
+    ```
+
+    ### 迷路
+
+    ```java
+    package maze;
+
+    import java.io.IOException;
+
+    /**
+     * レコード、ループ文、入出力の要素を取り入れた迷路
+     * メソッドを用いていないので処理の流れが分かりにくい
+    */
+    public class Maze {
+      public static void main(String[] args) throws IOException {
+        record Position(int x, int y) {};
+        int[][] map = {
+            { 1, 1, 1, 1, 1, 1 },
+            { 1, 0, 1, 0, 0, 1 },
+            { 1, 0, 0, 0, 1, 1 },
+            { 1, 0, 1, 0, 0, 1 },
+            { 1, 1, 1, 1, 1, 1 },
+        };
+
+        var current = new Position(1, 1);
+        var goal = new Position(4, 3);
+
+        /**
+        * 現在地: o
+        * 移動不可マス: *
+        * 移動可能マス: .
+        */
+        for (;;) {
+          for (int y = 0; y < map.length; y++) {
+            for (int x = 0; x < map[y].length; x++) {
+              // 現在の位置から上下2マスまで表示
+              boolean x_conditions = 
+                current.x() - 2 <= x && x <= current.x() + 2;
+              boolean y_conditions = 
+                current.y() - 2 <= y && y <= current.y() + 2;
+              if (!(x_conditions && y_conditions))
+                continue;
+
+              //描画
+              if (x == current.x() && y == current.y()) {
+                System.out.print("o");
+              } else if (map[y][x] == 1) {
+                System.out.print("*");
+              } else if (x == goal.x() && y == goal.y()) {
+                System.out.print("G");
+              } else {
+                System.out.print(".");
+              }
+            }
+            System.out.println();
+          }
+
+          //参照型の要素比較
+          if (current.equals(goal)) {
+            System.out.println("GOAL!!!");
+            break;
+          }
+
+          int ch = System.in.read();
+          var next = switch (ch) {
+            case 'a' ->
+              new Position(current.x() - 1, current.y());
+            case 'w' ->
+              new Position(current.x(), current.y() - 1);
+            case 's' ->
+              new Position(current.x(), current.y() + 1);
+            case 'd' ->
+              new Position(current.x() + 1, current.y());
+            default ->
+              current;
+          };
+
+          // 次の移動地点が移動可能なら
+          if (map[next.y()][next.x()] == 0)
+            current = next;
+        }
+      }
+    }
+    ```
+
+    ### 拡張for
+
+    ```java
+    ```
+
+
+## Q14 デバッガの使い方について知っていますか?
+    ### (補足)デバッガの使い方
+
+    ```text
+    <vscodeの場合>
+      ・F5: 続行
+      ・F10: ステップオーバー
+      ・F11: ステップイン
+      ・Shift+F11: ステップアウト
+      ・Ctrl+Shift+F5: 再起動
+      ・Shift+F5: 停止
+
+    ブレークポイント
+      ・特定の行に印をつけることで利用可能
+      ・デバッガは該当の行の処理を行う前に停止する
+    変数
+      ・現在の変数の値が閲覧可能
+    
+    ウォッチ式
+      ・特定の変数の値を監視し続ける
+
+    ステップオーバー
+      ・呼び出し先には入らず、次の行へ移動
+    
+    ステップイン
+      ・呼び出し先に入り、該当関数の先頭行へ移動
+    
+    ステップアウト
+      ・現在実行中のメソッドの残りの部分を実行し
+        呼び出し元に戻る
+    
+    ※現在の行にメソッド呼び出しがない場合は
+      ステップインもステップアウトも処理は同じ
+    ```
