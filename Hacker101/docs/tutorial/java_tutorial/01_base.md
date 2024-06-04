@@ -2402,7 +2402,9 @@
     ); //2
 
     //最小、最大
-    Optional<Integer> minOpt = List.of(1, 2, 10).stream().min(Integer::compareTo);
+    Optional<Integer> minOpt = List.of(1, 2, 10)
+      .stream()
+      .min(Integer::compareTo);
 
     //Optionalは単一の値をラップするためのコンテナ
     //値が入っていなければthrow, 入っていれば該当値を返す
@@ -2431,7 +2433,158 @@
         ストリーム内の要素の順序を保持しない
     ```
 
+    ### 基本型のStreamクラス
+
+    ```text
+    ・IntStream
+    ・LongStream
+    ・DoubleStream
+    --> 専用のStreamクラス
+    ```
+
+    ```java
+    int[] nums = {2,5,3};
+
+    //Int(mapsToInt等で変換する必要がないので楽)
+    //map,reduce等も使える
+    IntStream.of(nums).sum();
+
+    //範囲指定(rangeClosedの場合、endになる)
+    IntStream.range(0,10)
+      .map(s -> s*10)
+      .toArray();
+    // int[10] { 0, 10, 20, 30, 40, 50, 60, 70, 80, 90 }
+
+    //疑似乱数
+    //ints(個数,最小,最大)
+    new Random().ints(10,0,100).toArray();
+    //int[10] { 87, 34, 88, 46, 61, 14, 79, 31, 80, 2 }
+
+    //iterate(繰り返し)
+    IntStream.iterate(0, i -> i<10, i -> i+1).toArray();
+    // int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }
+
+    //繰り返し条件を省いたもの(limitで制限する)
+    IntStream.iterate(2, i -> i*2).limit(5).toArray();   
+    // int[5] { 2, 4, 8, 16, 32 }
+
+    LongStream.iterate(2, i-> i*i).limit(6).toArray();   
+    // long[6] { 2, 4, 16, 256, 65536, 4294967296 }
+
+    // -> Stream
+    IntStream.range(0,3)
+      .mapToObj(n -> "*".repeat(n))
+      .toList();
+    //  [, *, **]
+
+    // -> IntStream
+    Stream.of("neko", "inu")
+      .mapToInt(s -> s.length())
+      .toArray();
+    // int[2] { 4, 3 }
+    ```
+
 ## Q16 Optionalについて知っていますか?
 
 ??? success
-    ### 
+    ### Optional
+
+    ```text
+    ・値があるかないかを管理する
+    ```
+
+    ```java
+    //Streamの返り値で、optionalになる場合
+    Optional<String> o1 = 
+      List.of("apple", "banana", "cherry")
+        .stream()
+        .findAny();
+    
+    //空である場合
+    Stream.of().findAny();
+    // Optional.empty
+
+    //Optionalの作成
+    var o2 = Optional.of("test");
+
+    //空Optionalの作成
+    Optional.empty();
+
+    //値を取り出す(値があると確信を持てるとき限界)
+    o2.get();
+    //o2.get().getClass(); class java.lang.String
+
+    //値を取り出す(default値有り)
+    Optional.empty().orElse("default"); //default
+
+    //値を持っているか確認。
+    Optional.empty().isPresent(); //false
+    Optional.of("test").isEmpty(); //false
+
+    //値があるときだけ処理を行う
+    Optional.of("test")
+      .ifPresent(
+        s -> System.out.println(s.toUpperCase())
+      );
+    ```
+
+## Q17 メソッドについて知っていますか?
+
+??? success
+    ### 基本的なメソッド
+
+    ```java
+    void greeting(String name){
+      System.out.println(STR."Hello, \{name}");
+    }
+
+    greeting("nyanko");
+    // Hello, nyanko
+
+    int twice(int x){return x * 2;}
+    int twenty = twice(10);
+    ```
+
+    ### staticメソッド
+
+    ```java
+    //static = 変数orメソッドがインスタンスではなく
+    //暮らす事態に属していることを示すキーワード
+
+    public class MethodSample{
+      static int twice(int x){return x*2 ;}
+    }
+
+    MethodSample.twice(10); //20
+    ```
+
+    ### public static void main(String[] args)
+
+    ```text
+    エントリーポイント
+      ・ここから処理が始まる
+      ・Java22までなら、この形でないとエントリーポイント
+        と認識してくれない
+    
+    String[] args
+      ・コマンドラインから呼び出したときのパラメータを
+        String[]に入れて、argsという名前を付けている
+    
+    public
+      ・JVMがmainメソッドを発見できるようにするため
+
+    void
+      ・返り値はない
+      ・mainは開始点として呼ばれるだけなので返り値は不要
+    
+    static
+      ・JVMがJavaアプリの実行を開始するとき、
+        使用可能なクラスのObjectはまだない
+        
+      ・staticでない場合、例えばTestクラスの中に
+        エントリーポイントがあるとして、
+        そのクラス外で、インスタンスを作成する必要に駆られる
+
+      ・staticであるため、instanceを作らずに
+        mainメソッドにアクセス可能
+    ```
