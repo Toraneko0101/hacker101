@@ -2409,6 +2409,11 @@
     int minValue = minOpt.orElseThrow();
     // 1
 
+    //合計(Integer -> intに変換)
+    List.of(1, 2, 10).stream()
+      .mapToInt(Integer::intValue)
+      .sum(); //13
+
     //先頭の要素
     List.of("neko", "inu", "nezumi")
       .stream()
