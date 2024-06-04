@@ -1613,10 +1613,30 @@
     var cat = new ArrayList<String>();
     cat.add("tama");
     cat.add("buchi");
-    cat.add("tora");
+    cat.add(1, "tora");
     cat.set(1, "kuro");
     System.out.println(cat.get(1)); //kuro
     
+    //可変(要素数固定)
+    var list = Arrays.asList("A", "B");
+    list.set(1, "C");
+
+    //初期化(可変リスト)
+    var cat2 = new ArrayList<String>(
+      Arrays.asList("tama", "buchi", "tora")
+    );
+
+    //DBI(アンチパターンに近い)
+    //普通に、List.ofやStream.ofを使ってあげればよくね?
+    //レガシーコードを理解するためには必要そう
+    //無名クラスやインスタンスイニシャライザの学習で使える
+    var cat3 = new ArrayList<String>(){
+      {
+      add("tama");
+      add("buchi");
+      add("tora");
+      }
+    };
     ```
 
     ### ジェネリクス
@@ -2258,7 +2278,7 @@
     モノイド
       ・閉包性、結合律、単位元の存在を持つ
       
-      閉包性：
+      閉包性(集合上の二項演算)：
         演算の結果も同じ型になるため、型安全が保障される
       
       結合律：
@@ -2314,5 +2334,99 @@
 
     ### その他の中間操作等
 
-    ```text
+    ```java
+    //mapToInt: 任意のObjectを受け取り、int値を返す
+    //IntStreamは、toListを持たないため、toArrayを返した
+    List<String> list = List.of("1", "2", "12");
+    list.stream()
+      .mapToInt(Integer::parseInt)
+      .map(s -> s * 10)
+      .toArray();
+    // int[3] { 10, 20, 120 }
+
+    //文字列を数字にして変換
+    Stream.of("neko", "nyanko", "nukonuko")
+      .mapToInt(String::length)
+      .toArray();
+    //int[3] { 4, 6, 8 }
+
+    //1: Nの変換
+    Stream.of("Neko", "Nyanko", "nukonuko")
+      .flatMap(p -> Stream.of(p, p.length()))
+      .toArray()
+    ;
+    // Object[6] { "Neko", 4, "Nyanko", 6, "nukonuko", 8 }
+
+    //カスタムソート
+     Stream.of("Neko", "Inu", "Nyaa--")
+      .sorted((a,b) -> a.length() - b.length())
+      .toList();
+    // [Inu, Neko, Nyaa--]
+
+    //peek(): 副作用を持つ処理を行いながら要素取り出し
+    // forEachでは次にチェーン出来ないため、役立つ
+    List.of("apple", "banana", "cherry")
+      .stream()
+      .peek(System.out::println)
+      .map(String::toUpperCase)
+      .forEach(System.out::println)
+
+    // apple
+    // APPLE
+    // banana
+    // BANANA
+    // cherry
+    // CHERRY
     ```
+
+    ### その他の終端操作等
+
+    ```java
+
+    /*
+     * 引数を指定したtoArray()
+     * 返される配列の型はT[]となる
+     * 一つのStreamに対する処理は1回しかできないので注意
+     * var1のコメントを解除すると、var2でエラーになる
+    */
+    Stream<String> name = Stream.of("neko", "nyanko");
+    //Object[] var1 = name.toArray();
+    String[] var2 = name.toArray(String[]::new);
+
+    //個数
+    System.out.println(
+      List.of("peach", "pine", "apple")
+        .stream()
+        .filter(n -> n.startsWith("p"))
+        .count()
+    ); //2
+
+    //最小、最大
+    Optional<Integer> minOpt = List.of(1, 2, 10).stream().min(Integer::compareTo);
+
+    //Optionalは単一の値をラップするためのコンテナ
+    //値が入っていなければthrow, 入っていれば該当値を返す
+    int minValue = minOpt.orElseThrow();
+    // 1
+
+    //先頭の要素
+    List.of("neko", "inu", "nezumi")
+      .stream()
+      .skip(2)
+      .findFirst()
+      .orElseThrow()
+    ;   //nezumi 
+    //空の場合、Optional.empty()が返る
+    ```
+
+    ```text
+    findAny, forEach vs findFirst, forEachOrdered
+      ・並列処理に違いが出る
+      ・findAny, forEachは逐次的に要素を処理し、
+        ストリーム内の要素の順序を保持しない
+    ```
+
+## Q16 Optionalについて知っていますか?
+
+??? success
+    ### 
