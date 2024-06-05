@@ -2691,3 +2691,36 @@
     ```
 
     ### メソッド参照
+
+    ```text
+    ・static -> クラス名::メソッド名
+    ・normal -> instance::メソッド名
+
+    メリット
+      ・格好いい（主観）
+      ・コードがシンプルになり、読みやすくなる
+      ・ラムダ式内で、不要な変数名を定義する必要がなくなる
+    
+    デメリット
+      ・引数の個数が自明でない
+    ```
+
+    ```java
+    var lists = List.of("neko", "inu", "nezumi");
+    lists.forEach(item -> System.out.println(item));
+    lists.forEach(System.out::println);
+
+    var modifyList = lists.stream()
+      .map(String::toUpperCase)
+      .collect(Collectors.toList());
+    
+    int[] array = List.of("1", "2", "3")
+      .stream()
+      .mapToInt(Integer::parseInt)
+      .toArray();
+    ```
+
+    ### オーバーロード
+
+    ```text
+    ```
