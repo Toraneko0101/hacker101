@@ -1803,10 +1803,10 @@
 ## Q11 レコードについて知っていますか?
 
 ??? success
-    ### 違う型の値をListで扱う
+    ### 違う型の値をListで扱いたい場合
 
     ```text
-    ・違う種類の値でも、Listでまとめて扱える
+    ・違う種類の値でも、Listでまとめて扱え（なくはない）
     ```
 
     ```java
@@ -1834,6 +1834,8 @@
 
     ・コンポーネント名()とすることで、コンポーネントの値
       を取得可能
+    
+    ・本来はimmutableなクラス
     ```
 
     ```java
@@ -1846,6 +1848,67 @@
     )
     // nyanko: math = 80
 
+    ```
+
+    ### レコード(補足)
+
+    ```text
+    ・fieldは、private finalになり、objectはimmutableに
+    ・コンストラクタ、toString, equals, hashCodeは自動実装
+    ・getter --> <field_name>()
+    ・setter --> finalなのでなし
+
+    ※Lombokのようなライブラリを使わなくてもよくなる
+    ```
+
+    ### レコードと通常のJavaクラスの対応(補足)
+
+    ```java
+    //record
+    public record Title(String value){}
+
+    //recode(コンストラクタ + method)
+    public record Title(String value){
+      public Title(String value){
+        this.value = value + "Hogehogeeee";
+      }
+
+      public int length(){
+        return this.value.length();
+      }
+    }
+
+    //normal
+    public final class Title{
+      private final String value;
+
+      public Title(String value){
+        this.value = value;
+      }
+
+      public String value(){
+        return value;
+      }
+
+      @Override
+      public boolean equals(Object other){
+        if(other == this) return true;
+        if(other == null || obj.getClass() != this.getClass()) return false;
+        var that = (Title) other;
+        //格納している値同士で比較
+        return Objects.equals(this.value, that.value);
+      }
+
+      @Override
+      public int hashCode(){
+        return Objects.hash(value);
+      }
+
+      @Override
+      public String toString(){
+        return "Title[" + "value=" + value + "]";
+      }
+    }
     ```
 
 ## Q12 Mapについて知っていますか?
@@ -2588,3 +2651,43 @@
       ・staticであるため、instanceを作らずに
         mainメソッドにアクセス可能
     ```
+
+    ### レコード + メソッド(Q11の補足参照)
+
+    ```java
+    record Student(String name, int math, int english){
+      int average(){
+        return ((this.english() + this.math()) / 2);
+      }
+    }
+    
+    var student = new Student("hoge", 70, 98);
+    student.average(); //84
+    ```
+
+    ### java.util.function
+
+    ```java
+    //ラムダ式のような記法(Stream API以外)
+
+    //Function<T, R>: Tの型を受け取り、Rの型を返す
+    Function<Integer, Integer> twice = n -> n*2;
+    System.out.println(twice.apply(10));
+
+    // Consumer(T): Tの型を受け取り、voidを返す
+    Consumer<String> greet = s -> System.out.println("Hello " + s);
+    greet.accept("Nyanko!");
+    // Hello Nyanko!
+
+    //Predicate<T>: .test()でbooleanを返す
+    //Supplier<T>: .get()で何かを返す。引数無し
+    //UnaryOperator<T>: 引数と返り値の型同一
+
+    //※removeIf, replaceAll, sort, forEach等は
+    //単なるArrayに対しても使える
+
+    List<String> names = Arrays.asList("neko", "nyanko");
+    names.forEach(n -> System.out.println(n));
+    ```
+
+    ### メソッド参照
