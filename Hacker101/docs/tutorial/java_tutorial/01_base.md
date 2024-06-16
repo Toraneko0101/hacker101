@@ -2573,7 +2573,7 @@
     //空Optionalの作成
     Optional.empty();
 
-    //値を取り出す(値があると確信を持てるとき限界)
+    //値を取り出す(値があると確信を持てるとき限定)
     o2.get();
     //o2.get().getClass(); class java.lang.String
 
@@ -2721,6 +2721,420 @@
     ```
 
     ### オーバーロード
+
+    ```text
+    ・引数の組み合わせが異なる、同名のメソッドを複数定義
+    ```
+
+    ```java
+    int multiply(int x, int y){
+      return x * y;
+    }
+
+    int multiply(int x, int y, int z){
+      return x*y*z;
+    }
+
+    multiply(7,8);
+    multiply(7,8,9);
+    ```
+
+## Q18 再帰について知っていますか?
+
+??? success
+    ### 再帰
+
+    ```text
+    ・関数の中で、関数自身を呼び出す事
+    ```
+
+    ### スタック
+
+    ```text
+    ・ローカル変数/メソッドの呼び出し情報が格納される場所
+
+    ・無限に再帰を行うと、スタックの領域に限界が生じ、
+      スタックオーバーフローが起きる
+    ```
+
+    ### Javaにおける再帰
+
+    ```java
+    for(int i=0; i < 5; i++){System.out.println(i);}
+
+    void loop(int i){
+      if(i >= 5) return;
+      System.out.println(i);
+      loop(i + 1);
+    }
+
+    loop(0);
+    ```
+
+## Q19 ファイルアクセスと例外について知っていますか?
+
+??? success
+    ### Filesクラス
+
+    ```text
+    ・ファイルの操作に関するメソッドが存在する
+
+    | method                             | desc           |
+    | ---------------------------------- | -------------- |
+    | String readString(Path)            | 文字列読み込み |
+    | Path writeString(Path, String)     | 文字列書き込み |
+    | long size(Path)                    | size取得       |
+    | FileTime getLastModifiedTime(Path) | 最終更新日時   |
+    | boolean exists(Path)               | 存在確認       |
+    | boolean isDirectory(Path)          | フォルダ確認   |
+    | Stream<Path> list(Path)            | ファイル一覧   |
+    ```
+
+
+    ### ファイル書き込み
+
+    ```java
+    /*
+     * current_dirに文字列を書き込んだファイルを保存
+    */
+    import java.io.IOException;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+
+    public class WriteFile{
+      public static void main(String[] args) throws IOException {
+        var message = """
+          test
+          message
+          """;
+        //Path名を指定
+        var p = Path.of("test.txt");
+        //fileに文字列保存(path, str)
+        Files.writeString(p, message);
+      }
+    }
+    ```
+
+    ### ファイル読み込み
+
+    ```java
+    import java.io.IOException;
+    import java.nio.file.Files;
+    import java.nio.file.Path;
+
+    public class ReadFile{
+      public static void main(String[] args) throws IOException{
+        var p = Path.of("test.txt");
+        String s = Files.readString(p);
+        System.out.println(s);
+      }
+    }
+    ```
+
+    ### 例外
+
+    ```text
+    try/catch/finally
+      ・実行時エラーの処理をする
+    
+    check例外
+      ・catch句 or throws句必須
+      ・ExceptionクラスのRuntimeException以外
+    
+    非check例外
+      ・必須ではない
+      ・Errorクラス, RuntimeExceptionクラス
+    
+    例外の基クラス
+      ・Throwable
+    ```
+
+    ```java
+    import java.nio.file.*;
+    var p = Path.of("test.txt");
+    String s;
+
+    try{
+      s = Files.readString(p);
+    }
+    catch(NoSuchFileException e){
+      System.out.println("ファイルが見つからない");
+    }
+    finally{
+      System.out.println("必ず表示される");
+    }
+    System.out.println(s);
+    ```
+
+    ### throw
+
+    ```text
+    ・敢えて例外を投げるときに使用
+    ```
+
+    ```java
+    void greeting(String name){
+      //Illeagal...は非check例外
+      if (name == null)
+        throw new IllegalArgumentException();
+      System.out.println(STR."Hello \{name} ");
+    }
+
+    greeting("neko");
+    // Hello neko 
+
+    greeting(null);
+    //|  例外java.lang.IllegalArgumentException
+    //|        at greeting (#1:3)
+    //|        at (#3:1)
+    ```
+
+    ### throws
+
+    ```text
+    ・method内で、検査例外のcatch句を書かないなら
+      呼び出し側で処理する必要がある
+    
+    ・その際、どの例外を投げるのかを記述するために使用
+    ```
+
+    ```java
+    //methodから検査例外をthrowする場合
+    public class Main{
+      public static void main(String[] args){
+        Sample s = new Sample();
+        try{
+          s.hello("");
+        }catch(IllegalArgumentException e){
+          System.out.println("blank");
+        }catch(Exception e){
+          System.out.println("please input name");
+        }
+      }
+    }
+
+    public class Sample{
+      public void hello(String name) throws Exception{
+        if ("".equals(name))
+          throw new Exception();
+        
+        if(name == null)
+          throw new IlleagalArgumentException();
+        
+        System.out.println(STR."Hello, \{name}");
+      }
+    }
+    ```
+
+## Q20 Server関連の処理について知っていますか?
+
+??? success
+
+    ### Server
+
+    ```java
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.net.ServerSocket;
+    import java.net.Socket;
+
+    public class SimpleServer{
+      public static void main(String[] args)
+        throws IOException{
+
+        //ServerSocket(port_number):port指定
+        //Socket:ネットワーク通信部分の担当
+        var server = new ServerSocket(1600);
+        System.out.println("Waiting...");
+
+        //クライアント待ち受け
+        Socket soc = server.accept();
+        System.out.println(
+          "connect from " + soc.getInetAddress()
+        );
+
+        //データ入力に使うクラス。
+        InputStream input = soc.getInputStream();
+        System.out.println(input.read()); //data受信
+        input.close();
+
+        //socketを閉じる
+        soc.close();
+      }
+    }
+    ```
+
+    ### client
+
+    ```java
+    import java.io.IOException;
+    import java.io.OutputStream;
+    import java.net.Socket;
+
+    public class SimpleClient{
+      public static void main(String[] args)
+        throws IOException{
+        
+        //localhost::1600に対して接続
+        var soc = new Socket("localhost", 1600);
+        //データ出力(送信)に使うクラス
+        //socketの場合、getOutputStreamメソッドで得る
+        OutputStream output = soc.getOutputStream();
+        output.write(234); //data送信
+        output.close();
+        soc.close();
+
+      }
+    }
+    ```
+
+    ### TCP/UDP
+
+    ```text
+    javaにおけるTCP通信
+      ・Socket.ServerSocket
+    
+    javaにおけるUDP通信
+      ・DatagramSocket
+    ```
+
+    ### try-with-resources
+
+    ```text
+    ・tryブロックを抜ける際に、autoでcloseする
+
+    try(closeが必要なオブジェクトの変数割り当て){処理}
+    ```
+
+    ```java
+    import java.io.IOException;
+    import java.io.InputStream;
+    import java.net.ServerSocket;
+    import java.net.Socket;
+
+    public class SimpleServer {
+      public static void main(String[] args)
+          throws IOException {
+        try (var server = new ServerSocket(1600);) {
+          System.out.println("Waiting...");
+
+          try (
+              Socket soc = server.accept();
+              InputStream input = soc.getInputStream();) {
+            System.out.println(
+                "connect from " + soc.getInetAddress());
+            System.out.println(input.read());
+          }
+        }
+      }
+    }
+
+    //Waiting...
+    //connect from /127.0.0.1
+    //234
+    ```
+
+    ```java
+    import java.io.IOException;
+    import java.io.OutputStream;
+    import java.net.Socket;
+    import java.net.ConnectException;
+
+    public class SimpleClient {
+      public static void main(String[] args)
+          throws IOException {
+        
+        //Serverが起動していない時の例外処理付き
+        try (
+            var soc = new Socket("localhost", 1600);
+            OutputStream is = soc.getOutputStream();) {
+          is.write(0);
+        } catch (ConnectException e) {
+          System.out.println("Server is not booted.");
+        }
+      }
+    }
+    ```
+
+## Q21 HTTP関連の処理について知っていますか?
+
+??? success
+
+    ### HTTP(コラム)
+
+    ```text
+    HTTPプロトコル
+      ・ブラウザ/サーバ間で、Web情報をやり取りするための
+        通信規則(URL入力 --> HTTPリクエスト --> レスポンス)
+      
+      ・HTTPメッセージを、クライアント/サーバ間でやりとり
+
+    HTTPメッセージの構造(HTTP/1.1の場合)
+      1. start line
+      2. header
+      3. blank
+      4. body
+    
+    例(HTTP/1.1の場合)
+      POST /list HTTP/1.1
+      Host: example.com
+      Content-Type: text/plain; charset=utf8
+
+      Hello world!
+
+    HTTP/1.2以降
+      ・送信するデータの形式は、バイナリになった
+      ・1.1までは、テキスト形式
+    ```
+
+    ### HTTPメッセージの構成(現在)
+
+    ```text
+    Header Section
+      Header Field
+      Header Field
+      Header Field
+    Content
+    Trailer Section
+      Trailer Field
+      Trailer Field
+      Trailer Field
+
+    Header Section
+      ・従来はHeaderと呼ばれていたもの
+      ・コンテンツの前に来るものは此処に格納
+    
+    Content
+      ・データが格納される領域。従来はbody or payload
+    
+    Trailer Section
+      ・従来はHeaderと呼ばれていたもの
+      ・コンテンツの後に来るものは此処に格納
+    ```
+
+    ### HTTPフィールドについて
+
+    ```text
+    ・HTTPメッセージのメタデータ(メッセージそのものや
+      コンテンツに関する情報)
+
+    ・コンテンツを送った後にもTrailer Filedを送れる
+
+    ・区切り文字は定義されていないが、key:valueのように
+      区切り文字を使って表した表現をFiled Lineと呼んだり
+      key --> フィールド名
+      val --> フィールド値
+    ```
+
+    ### コンテンツについて
+
+    ```text
+    ・レスポンスで言うと、Webページのデータ
+    ・リクエストで言うと、Uploadするファイルなど
+    ・相手にデータを送信する際は、コンテンツに格納する
+    ```
+
+    ### HTTPリクエストメッセージ
 
     ```text
     ```
