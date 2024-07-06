@@ -272,6 +272,235 @@
       --> 今回の場合は偽
       --> 6の倍数という条件の上で、Q(x)を満たすxが存在するか
           と聞いているので、条件付き存在という言葉で表現可能
+    
+    [3] どんな偶数xについても、2xは4の倍数
+    --> ∀x(2|x⇒4|2x)
+
+    [4] 2xが3の倍数となるような偶数xがある
+    --> ∃x(3|2x ∧ 2|x)
+
+    [5] 略記について
+        S: 4の倍数全体の集合      
+        P(x): xは4の倍数である
+        Q(x): xは偶数であるとすると、
+
+        ∀x(P(x)⇒Q(x)) 
+        --> ∀x(x∊S ⇒Q(x))
+        --> ∀x∊S Q(x)と略記可能
+        --> 集合Sの任意の要素xについて、Q(x)
+    
+    [6] どの整数も、平方すると正である(※x∊整数全体の集合)
+    --> ∀x(x^2⇒x>0)
+
+    [7] 平方が自分自身に等しい整数が存在する
+    --> ∃x(x^2 = x)
+
+    [8] xが偶数ならば、xは4の倍数である
+    --> ∀x(2|x ⇒ 4|x)
+
+    [9] ある偶数は、その平方が4で割り切れない
+    --> ∃x(2|x ∧ ￢4|x^2)
+
+    [10] 2以上の整数は、その平方が9を超える(真偽も答えよ)
+    --> ∀x(x >= 2 ⇒ x^2 > 9) , 偽
+
+    [11] ある2以上の整数は、その平方が9を超えない
+    --> ∃x(x >= 2 ∧ ￢(x^2 > 9)), 真
+
+    [12] 次の論理式が何を表すか答えよ
+         ただし、m,n,kは自然数で、fは自然数上の写像
+
+    [12-1]
+      nは2以上 & ∀m(
+        mは2以上& mはnより小さいなら、∀k(nはk*mでない)
+      )
+
+      <具体例>
+      n=2の時、空虚な真より、真
+      n=3の時、真
+      n=4の時、偽
+      --> 素数なら、真になる。
+      --> nは素数である
+    
+    [12-2]
+      異なる元が、値域内の等しい元に移されることはない
+      --> fは単射である
+
+    ```
+
+    ${
+      \begin{align}
+      \quad \quad \quad
+      & [12-1]\quad n \ge 2 \land \forall m (m \ge 2 \land m < n 
+      \rightarrow \forall k \,n \neq k \times m) \\
+      & [12-2]\quad \forall{m} \forall{n} (m \neq n \rightarrow
+      f(m) \neq f(n))
+      & \end{align}
+    }$
+
+    ### 同一概念
+
+    ```text
+    ・二つの述語が、その真偽からは区別できないことを指す
+    --> ∀x(P(x)⇔Q(x)): PとQは同じ性質、同じ概念
+    ```
+
+    ### 集合演算を論理式で表記する
+
+    ```text
+    ・U: 対象全体の集合
+      S, T: Uの部分集合
+      x: Uに属する元
+    ``` 
+
+    ${
+      \begin{align}
+      \quad \quad \quad
+        & 補集合 \\
+        & x \in S^c \leftrightarrow \neg x \in S \\
+        & 共通部分 \\
+        & x \in S \cap T \leftrightarrow x \in S \land x \in T \\
+        & 和集合 \\
+        & x \in S \cup T \leftrightarrow x \in S \lor x \in T \\
+        & 差集合 \\
+        & x \in S \cap T^c \leftrightarrow
+        x \in S - T \leftrightarrow 
+        x \in S \land x \notin T \\
+        & 直積 \\
+        & (x,y) \in S \times T \leftrightarrow
+        x \in S \land y \in T \\
+        & 冪集合(ドイツ文字で書くのは面倒\to 代用) , XはSの部分集合 \\
+        & X \in \mathbb{P}(S) \leftrightarrow 
+        X \subseteq S  \\
+        & 空集合 \\
+        & S = \emptyset \leftrightarrow 
+        \neg\exists{x}~ x\in S \\
+        & 包括関係 \\
+        & S \subseteq T \leftrightarrow 
+        \forall{x}(x \in S \rightarrow x \in T) \\
+        & 相等関係(集合の相関関係の定義より) \\
+        & S = T \leftrightarrow
+        \forall{x}(x \in S \leftrightarrow x \in T) \\
+      \end{align}
+    }$
+
+    ### 否定に関する表記
+
+    ${
+      \begin{align}
+        \quad\quad\quad
+        & 二重否定 \\
+        & \neg\neg{A} \leftrightarrow A \\
+        & 連言の否定 \\
+        & \neg(A \land B) \leftrightarrow
+          \neg{A} \lor \neg{B} \\
+        & 選言の否定 \\
+        & \neg(A \lor B) \leftrightarrow
+          \neg{A} \land \neg{B} \\
+        & 含意の否定 \\
+        & \neg(A \rightarrow B) \leftrightarrow
+          A \land \neg{B} \\
+        & 同値の否定 \\
+        & \neg(A \leftrightarrow B) \leftrightarrow
+          (A \land \neg{B}) \lor (\neg{A} \land B) \\
+        & 全称量化子の否定 \\
+        & \neg\forall{x}P(x) \leftrightarrow 
+          \exists{x}\neg{P(x)} \\
+        & 存在量化子の否定 \\
+        & \neg\exists{x}P(x) \leftrightarrow
+          \forall{x}\neg{P(x)} \\
+      \end{align}
+    }$
+
+    ### 全称と存在の併用
+
+    ```text
+    [1]
+      ある数は、2以上のどの約数も持たないという述語を
+      論理式で表現せよ
+      --> 特定の変数を固定するとわかりやすい
+      --> ∃x∀y(y >= 2 ⇒ ￢y|x)
+
+    [2]
+      どの数にもそれ以上の偶数がある
+      --> ∀x∃y(x <= y ∧ 2|y)
+    
+    [3]
+      任意の数以上の偶数が存在する
+      --> ∃y∀x(x <= y ∧ 2|y)
+
+    [4] 集合{0,1,2}上の述語Rを
+        R(x,y)⇔(x+1)mod3 = y mod 3と定める
+
+    [4-1]
+      すべての組み合わせについての真偽値表を作れ
+      | y\x | 0   | 1   | 2   |
+      | --- | --- | --- | --- |
+      | 0   | ✖   | ✖   | 〇  |
+      | 1   | 〇  | ✖   | ✖   |
+      | 2   | ✖   | 〇  | ✖   |
+    
+    [4-2]
+      次の命題の真偽を述べよ
+
+      ∀x∀y R(x,y)
+      --> 偽(すべてが〇なら真)
+
+      ∀x∃y R(x,y)
+      --> 真(どの列にも〇があれば真)
+
+      ∃x∀y R(x,y)
+      --> 偽(特定の列がすべて〇なら真)
+
+      ∃x∃y R(x,y)
+      --> 真(どこかに〇があれば真)
+    ```
+
+    ### 練習問題1
+
+    ```text
+    [1] 平方数全体の集合をSとすると,
+        xは平方数であるという述語は、x ∊ Sと表現可能
+        この時、以下の述語を論理式で表記せよ
+    
+    [1-1]
+      121と484はともに平方数である
+      --> 121 ∊ S ∧ 484 ∊ S
+    
+    [1-2]
+      どの平方数もみな非負である
+      --> ∀x(x ∊ S ⇒ ￢ x < 0)
+    
+    [1-3]
+      負の平方数は存在しない
+      --> ￢∃x(x∊S ∧ x < 0)
+    
+    [1-4]
+      異なる平方数が存在する
+      --> ∃x∃y(x∊S ∧ y∊S ∧ x ≠ y)
+    
+    [2] S,Tが全体集合Uの部分集合であるとき、
+        S,Tが互いに素という性質を、論理式で表現せよ
+        ただし、x∊Uに言及する必要はない
+        --> S∩T = ∅
+        --> ￢∃x(x∊S∩T)
+        --> ￢∃x(x∊S ∧ x∊ T)
+
+    [3] 次の命題の否定を、￢Q(x)が現れる形で表記せよ
+
+    [3-1]
+      ∀x(P(x)⇒Q(x))
+      --> ￢∀x(P(x)⇒Q(x))
+      --> ￢∀x(P(x)∧￢Q(x))
+    
+    [3-2]
+      ∃x(P(x)∧Q(x))
+      --> ￢∃x(P(x)∧Q(x))
+      --> ∀x￢(P(x)∧Q(x))
+      --> ∀x(￢P(x)∨￢Q(x))
+      --> ∀x(P(x)⇒￢Q(x))
+    
+    [4] 次の論理式が、論理同値かどうか示せ
     ```
 
 
