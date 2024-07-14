@@ -823,8 +823,148 @@
     ### リダイレクトコンストラクタ
 
     ```dart
+    //コンストラクタ内で別のコンストラクタにアクセス
+    // this() == Car()
+
+    class Car{
+      String brand;
+      int year;
+      Car(this.brand, this.year);
+
+      Car.old(String brand) : this(brand, 1900);
+
+      void info(){
+        print("brand = $brand, year = $year");
+      }
+    }
+
+    void main(){
+        Car.old("Ford").info();
+        //brand = Ford, year = 1900
+    }
     ```
 
+    ### 定数コンストラクタ
+
+    ```dart
+    /*
+      条件
+        すべてのインスタンス変数がfinalである必要がある
+      利点
+        1 同じ値を持つ定数オブジェクトはメモリ内で共有 --> 使用量減少
+        2 普遍性の保証
+        3 コンパイル時に既に定数オブジェクトが作成されるため、ランタイム時の
+          オーバーヘッド減少
+      使用状況
+        色や幾何学的な点等の、変更されないことが予測されるデータクラス
+    */
+
+    class Color{
+      final int red, green, blue;
+
+      //定数コンストラクタ(constをつける)
+      const Color(this.red, this.green, this.blue);
+    }
+
+    void main(){
+      const red = Color(255,0,0);
+      const green = Color(0, 255, 0);
+      const anotherRed = Color(255, 0, 0);
+
+      //同じオブジェクトか調べる
+      print(identical(red, anotherRed)); //true
+      print(identical(red, green)); //false
+
+    }
+    ```
+
+    ### ファクトリーコンストラクタ
+
+    ```dart
+    /*
+    使い道
+      ・cacheを利用して、同じインスタンスを返す
+      ・条件に基づき、異なるクラスのインスタンスを返す
+    
+    利点
+      ・cacheで、パフォーマンスの向上
+      ・既存のインスタンスの再利用可能
+      ・条件に基づき、異なるインスタンスを生成できる
+    */
+
+    //cache編
+
+    class Logger{
+      final String name;
+      static final Map<String, Logger> _cache = {};
+
+      //factory constructor
+      //既存のinstanceがcacheにあればそれを返す
+      //なければ新しいinstanceを作成し、cacheに保存しつつ、それを返す
+      factory Logger(String name){
+        //nullの可能性はないので、!(null非check演算子をつけている)
+        if(_cache.containsKey(name)){
+          return _cache[name]!;
+        }
+        else{
+          final logger = Logger._internal(name);
+          _cache[name] = logger;
+          return logger;
+        }
+      }
+
+      Logger._internal(this.name);
+
+      void log(String message){
+        print("$name: $message");
+      }
+    }
+
+    void main(){
+      //factoryコンストラクタへの呼び出し
+      var logger1 = Logger("UI");
+      var logger2 = Logger("UI");
+      var logger3 = Logger("Network");
+
+      print(identical(logger1, logger2)); //true
+      print(identical(logger1, logger3)); //false
+
+      logger1.log("Button clicked"); //UI: Button clicked
+      logger3.log("Data fetched"); //Network: Data fetched
+    }
+
+    //条件編
+
+    class Shape{
+      
+      //基底クラスのコンストラクタにアクセスするのでそれ用
+      const Shape();
+
+      factory Shape.create(String type){
+        if(type == "circle"){ return Circle();}
+        else if(type == "square"){ return Square();}
+        else{ throw "Unknown shape type: $type";}
+      }
+    }
+
+    //toStringでprint時の出力調整
+    class Circle extends Shape{
+      @override
+      String toString() => "Circle";
+    }
+
+    class Square extends Shape{
+      @override
+      String toString() => "Square";
+    }
+
+    void main(){
+      var shape1 = Shape.create("circle");
+      var shape2 = Shape.create("square");
+      print(shape1); //Circle
+      print(shape2); //Square
+    }
+    ```
 
     ### 所感
 
