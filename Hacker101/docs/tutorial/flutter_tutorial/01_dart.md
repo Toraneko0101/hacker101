@@ -396,6 +396,13 @@
       String name;
       int level;
 
+      /*
+      以下と同様の意味
+      Psi(name, level){
+        this.name = name;
+        this.level = level
+      }
+      */
       Psi(this.name, this.level);
 
       // Method(${}は文字列補間)
@@ -663,12 +670,162 @@
     }
     ```
 
-    ### コンストラクタ関連
+    ### 名前付きコンストラクタ
+
+    ```dart
+
+    //名前付きコンストラクタ(オーバーロードがない代わり)
+    class Mushroom {
+      String name;
+      String habitat;
+      int risk_level = 0;
+      String symptoms = "";
+
+      Mushroom(this.name, this.habitat);
+
+      Mushroom.danger(
+        this.name, 
+        this.habitat, 
+        this.risk_level, 
+        this.symptoms
+      );
+      
+      void info(){
+        print("name: $name, habitat: $habitat");
+        if(symptoms != ""){
+          print("symptoms: $symptoms");
+        }
+      }
+    }
+
+    void main(){
+      var mushrooms = [
+        Mushroom.danger("ツキヨタケ", "ブナ林", 1, "下痢、嘔吐"),
+        Mushroom("なめこ", "枯れ木や切り株"),
+      ];
+
+      mushrooms[0].info();
+      mushrooms[1].info();
+
+      //name: ツキヨタケ, habitat: ブナ林
+      //symptoms: 下痢、嘔吐
+      //name: なめこ, habitat: 枯れ木や切り株
+    }
+
+    ```
+
+    ### コンストラクタの実行順
+
+    ```dart
+
+    /*
+    1. 初期化子リスト
+    2. 基底クラスの引数なしコンストラクタ(または、1により手動呼び出し)
+    3. サブクラスのコンストラクタ
+
+    下記の例で行くと
+    1. 初期化子リスト super(brand, year)で基底クラスのコンストラクタを呼び出し
+    2. 基底クラスのコンストラクタが実行
+    3. サブクラスのコンストラクタが実行
+
+    --> 初期化子リストを使わない場合、デフォルトコンストラクタが暗黙呼び出しされ
+        デフォルトコンストラクタがない場合、コンパイルエラーが発生する
+
+    */
+
+    class Car{
+      String brand;
+      int year;
+
+      Car(this.brand, this.year){
+        print("Car constructor");
+      }
+    }
+
+    class SuperCar extends Car{
+      double topSpeed;
+
+      SuperCar(String brand, int year, this.topSpeed)
+        : super(brand, year){
+          print("SuperCar Constructor");
+        }
+    }
+
+    void main(){
+      var mySuperCar = SuperCar("Ferrari", 2044, 750.9);
+
+      //Car constructor
+      //SuperCar Constructor
+    }
+
+    //-------※(補足: 引数なしのコンストラクタあり)-------
+    class Car{
+      String? brand;
+      int? year;
+
+      Car(){
+        print("Car constructor");
+      }
+    }
+
+    class SuperCar extends Car{
+      double topSpeed;
+
+      SuperCar(this.topSpeed)
+        {
+          print("SuperCar Constructor");
+        }
+    }
+
+    void main(){
+      var mySuperCar = SuperCar(700.0);
+      //Car constructor
+      //SuperCar Constructor
+    }
+    ```
+
+    ### スーパーパラメータ
+
+    ```dart
+    class Car{
+      String brand;
+      int year;
+
+      Car({required this.brand, required this.year}){
+        print("Car constructor: brand = $brand, year = $year");
+      }
+    }
+
+    //初期化子リストを使う必要がないので、コードが簡潔、可読性も上がるはず
+    class SuperCar extends Car{
+      double topSpeed;
+
+      SuperCar({
+        required super.brand, 
+        required super.year, 
+        required this.topSpeed}
+      ){
+        print("SuperCar constructor: topSpeed = $topSpeed");
+        }
+    }
+
+    void main(){
+      var mySuperCar = SuperCar(
+        brand: "Ferrari", 
+        year: 2044, 
+        topSpeed: 709.0,
+      );
+      //Car constructor: brand = Ferrari, year = 2044
+      //SuperCar constructor: topSpeed = 709
+    }
+    ```
+
+    ### リダイレクトコンストラクタ
 
     ```dart
     ```
 
-    
+
     ### 所感
 
     ```text
