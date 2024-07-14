@@ -528,6 +528,139 @@
     ### 抽象クラス
 
     ```dart
+    //インスタンスを作れない
+    abstract class Car{
+      void info();
+    }
+
+    class SuperCar implements Car {
+      String? brand;
+      int? year;
+
+      @override
+      void info(){
+        print("Brand: $brand, Year: $year!");
+      }
+      
+    }
+
+    void main(){
+      var superCar = SuperCar();
+      superCar.brand = "Toyota";
+      superCar.year = 2011;
+
+      superCar.info();
+    }
+    ```
+
+    ### Mixins
+
+    ```dart
+    //複数のクラスから機能を取り込む
+
+    mixin SuperCar {
+      String? brand;
+      int? year;
+
+      void info(){
+        print("Brand: $brand, Year: $year!");
+        print("Super");
+      }
+    }
+
+    class HyperCar {
+      String? brand;
+      int? year;
+
+      void fly(){
+        print("$brand社の車は、$year年に作られ、飛行能力を備えている");
+        print("Hyper");
+      }
+    }
+
+    /*
+      SuperHyperCarは、HyperCarを継承する
+      HyperCarは、SuperCarをmixinする
+      結果、SuperHyperCarは、SuperCarと、HyperCarクラスの機能を使える
+    */
+    class SuperHyperCar extends HyperCar with SuperCar{
+
+    }
+
+    void main(){
+      var superHyperCar = SuperHyperCar();
+      superHyperCar.brand = "Toyota";
+      superHyperCar.year = 2055;
+
+      superHyperCar.info();
+      superHyperCar.fly();
+
+      //Brand: Toyota, Year: 2055!
+      //Super
+      //Toyota社の車は、2055年に作られ、飛行能力を備えている
+      //Hyper
+    }
+    ```
+
+    ### Cascade
+
+    ```dart
+    //直前のオブジェクトに対する処理を、簡略化
+
+    class Color {
+      String name = "";
+      List<int> code = [0, 0, 0];
+
+      Color(this.name, this.code);
+
+      void info(){
+        print("color: $name, code: $code");
+      }
+
+      void inversion(){
+        code = [
+          255 - code[0],  
+          255 - code[1],  
+          255 - code[2],  
+        ];
+      }
+    }
+
+    void main(){
+       Color("red", [255,0,0])
+        ..info()
+        ..inversion()
+        ..name = "Cyan"
+        ..info();
+    
+    //color: red, code: [255, 0, 0]
+    //color: Cyan, code: [0, 255, 255]
+    }
+    ```
+
+    ### static
+
+    ```dart
+    //instance不要。いつもの
+    class Monster{
+      int? atk;
+      static int total_num = 0;
+
+      Monster(this.atk){
+        total_num++;
+      }
+
+      static void info(){
+        print("モンスターは現在$total_num匹存在する");
+      }
+    }
+
+    void main(){
+      var goblin1 = Monster(12);
+      var oak1 = Monster(23);
+      print(Monster.total_num); //2
+      Monster.info(); //モンスターは現在2匹存在する
+    }
     ```
 
     ### コンストラクタ関連
@@ -535,6 +668,7 @@
     ```dart
     ```
 
+    
     ### 所感
 
     ```text
