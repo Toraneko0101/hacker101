@@ -385,7 +385,25 @@
     map1.addAll(map2);
     print(map1); //{name: Nekonuko, place: Tokyo}
 
-    
+    //List, Map相互変換
+
+    List<String> names = ["Nyanko", "Nukonuko", "Inuneko"];
+    Map<int, String> namesMap = names.asMap();
+    print(namesMap); //{0: Nyanko, 1: Nukonuko, 2: Inuneko}
+
+    print(namesMap.keys.toList()); //[0, 1, 2]
+    print(namesMap.values.toList()); //[Nyanko, Nukonuko, Inuneko]
+
+    var keyList = [];
+    var valList = [];
+    namesMap.forEach((key, val){
+      keyList.add(key);
+      valList.add(val);
+    } )
+
+    print(keyList); //[0, 1, 2]
+    print(valList); //[Nyanko, Nukonuko, Inuneko]
+
     ```
 
     ### クラス
@@ -724,9 +742,9 @@
     3. サブクラスのコンストラクタ
 
     下記の例で行くと
-    1. 初期化子リスト super(brand, year)で基底クラスのコンストラクタを呼び出し
-    2. 基底クラスのコンストラクタが実行
-    3. サブクラスのコンストラクタが実行
+    4. 初期化子リスト super(brand, year)で基底クラスのコンストラクタを呼び出し
+    5. 基底クラスのコンストラクタが実行
+    6. サブクラスのコンストラクタが実行
 
     --> 初期化子リストを使わない場合、デフォルトコンストラクタが暗黙呼び出しされ
         デフォルトコンストラクタがない場合、コンパイルエラーが発生する
@@ -1133,7 +1151,90 @@
     ### DateTime
 
     ```dart
+
+    void main(){
+      var now = DateTime.now(); 
+      print(now); //2024-07-16 00:26:41.027
+      print(
+        "${now.year}-${now.month}-${now.day} ${now.hour}:${now.minute}:${now.second}:${now.millisecond}:${now.microsecond}"
+      );
+      //2024-7-16 0:26:41:27:0
+
+      //ISO8601
+      print(now.toIso8601String()); //2024-07-16T00:27:39.985
+    }
     ```
+
+    ### ジェネリクス
+
+    ```dart
+    //データの型を指定し、誤った方のデータが入れられるのを防ぐ
+    //同様の処理を行うクラスやメソッドをまとめられる
+
+    class User<T>{
+      final T id;
+      User(this.id);
+    }
+
+    void main(){
+      //Genericsを使用していることを明記するために、User<>()とする
+      //書かなくても動く
+      final user = User<int>(1);
+      print(user.id); //1
+
+      final user2 = User<String>("first");
+      print(user2.id); //first
+    }
+
+    //継承する場合
+
+    abstract class User<T>{
+      final T id;
+      User(this.id);
+
+      void info();
+    }
+
+    //Superクラスのジェネリクスまで指定すること
+    class SingleUser<T> extends User<T>{
+      SingleUser(super.id);
+
+      void info(){
+        print("info SingleUser");
+        print(id);
+      }
+    }
+
+    class MultiUser<T, K> extends User<T>{
+      final K secondId;
+      MultiUser(super.id, this.secondId);
+
+      void info(){
+        print("info MultiUser");
+        print(id);
+        print(secondId);
+      }
+    }
+
+    void main(){
+      final user1 = SingleUser<String>("Nyanko");
+      user1.info(); 
+      //info SingleUser
+      //Nyanko
+
+      final user2 = MultiUser<String, int>("00001", 1);
+      user2.info(); 
+      //info MultiUser
+      //00001
+      //1
+    }
+
+    //Genericsの型制限
+
+    
+    ```
+
+
 
     ### 所感
 
