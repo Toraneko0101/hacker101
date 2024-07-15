@@ -46,8 +46,19 @@
     String name2;
 
     //final & const
+    //constはコンパイル時に値決定、finalは単なる初期化後の再代入禁止
+    // --> 定数コンストラクタにおけるfinalを思い浮かべるとわかるが
+    // finalは必ずしも実行時に初期化されることを意味しない
     const bar = 100;
     final double hoge = 3.14 * bar; //実行時に値初期化可能
+
+    //constがついていない場合、コンパイル時に値が決定するので、以下はエラー
+    var x = 2;
+    const y = 2*2;
+
+    //以下ならOK
+    const x = 2;
+    const y = x*2;
     ```
 
     ### 型の例など
@@ -168,7 +179,8 @@
       return result;
     }
 
-    //assertはアプリ実行時には消える。確認用
+    //assertは開発中に確認するためのメッセージ
+    //assert(<condition>, <message>)で、第二引数はoption
     assert(say("Bob", "Henry") == "Bob says Henry with a tin can telephone.");
     assert(say("Bob", "Henry", "carrier pigeon") == "Bob says Henry with a carrier pigeon.");
     //------------------------------
@@ -868,6 +880,8 @@
     /*
       条件
         すべてのインスタンス変数がfinalである必要がある
+        --> finalフィールドはコンストラクタが呼び出された際に初期化される
+        --> 今回はコンパイル時
       利点
         1 同じ値を持つ定数オブジェクトはメモリ内で共有 --> 使用量減少
         2 普遍性の保証
@@ -878,6 +892,8 @@
     */
 
     class Color{
+      //finalとついてはいるものの、constコンストラクタで初期化されるため
+      //実行時における代入は発生しない。
       final int red, green, blue;
 
       //定数コンストラクタ(constをつける)
@@ -886,6 +902,9 @@
 
     void main(){
       // ※constをつけないと別のインスタンスになるので注意
+      // constキーワードを変数につけた場合、右辺の値もコンパイル時定数
+      // であることが要求されるので、省略可能になる
+      // つまり、以下はconst red = const Color(255,0,0);と同義
       const red = Color(255,0,0);
       const green = Color(0, 255, 0);
       const anotherRed = Color(255, 0, 0);
@@ -1230,11 +1249,295 @@
     }
 
     //Genericsの型制限
+    //ちなみに、dartは、3 + "Nyanko"という風にしても暗黙型変換しない
+    num add<T extends num>(T a, T b){return a + b;}
+    print(add(3,4));
+    print(add(4, 5.12));
+    print(add(3, "Nyanko")); 
+    //Error: Inferred type argument 'Object' doesn't conform 
+    // to the bound 'num' of the type variable 'T' on 'add'.
 
-    
     ```
 
+    ### range(i,j)の代替
 
+    ```dart
+    //もちろん、サードパーティのものをimportする選択肢もあるよ
+
+    //1 rangeは内部的には、generatorを使っているはずなのでそうする
+    // sync*を使用してgeneratorであることを示し、yieldで値を返す
+    // yield*なら、委譲可能だが今回は使わない
+
+    Iterable<int> range(int start, int end, [int step = 1]) sync* {
+      if(step == 0){
+        throw ArgumentError("Step cannot be zero");
+      }
+
+      if(start < end && step > 0){
+        for(int i = start; i < end; i += step){
+          yield i;
+        }
+      }
+      else if(start > end && step < 0){
+        for(int i = start; i > end; i += step){
+          yield i;
+        }
+      }
+      else {
+        throw ArgumentError("The argument specification is incorrect.");
+      }
+    }
+
+    void main(){
+      var list1 = [];
+      var list2 = [];
+      for(var i in range(1,10)){
+        list1.add(i);
+      }
+
+      for(var i in range(10, 1, -2)){
+        list2.add(i);
+      }
+
+      for(var i in range(1, 10, -1)){
+        print(i);　//Invalid argument(s): The argument specification is incorrect
+      }
+
+      print(list1); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+      print(list2); //[10, 8, 6, 4, 2]
+    }
+
+    //--------個数が決まっているなら: indexを基準とする--------------
+    var range = List.generate(9, (i) => i + 2);
+    print(range); //[2, 3, 4, 5, 6, 7, 8, 9, 10]
+    ```
+
+    ### コレクション内包
+
+    ```dart
+    //Pythonでいうリスト内包表記の代替(2.3以上)
+    //filteringも可能
+
+    void main(){
+      var list = [for (var i = 1; i <= 10; i++) i]; 
+      print(list); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+      //filter
+      var evenlist = [for (var i = 1; i <= 10; i++) if (i % 2 == 0) i];
+      print(evenlist); //[2, 4, 6, 8, 10]
+
+      //nest
+      var list = [
+        for(var i = 1; i<=3; i++)
+        for(var j = 1; j<=3; j++)
+        [i,j]
+      ];
+      print(list);
+      //[[1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]]
+
+      //map
+      var mapTest = {for (var i=1; i<=3; i++) i: "value is $i"};
+      print(mapTest); //{1: value is 1, 2: value is 2, 3: value is 3}
+
+      //set
+      var setTest = {for (var i=1; i<=3; i++) i};
+      print(setTest); //{1, 2, 3}
+    }
+    ```
+
+    ### Dynamic vs Object
+
+    ```text
+    dynamic
+      ・動的型（実行時に型が決まる）で、どのような型の値でも受け入れ可能
+      ・コンパイル時の型チェックが行われないので、型安全性が犠牲になる
+      ・動的型の変数に対して無効な操作を行った場合、ランタイムエラーとなる
+    
+    Object
+      ・すべてのDartオブジェクトの基本型で、
+      　すべての型がObjectを継承する(null以外)
+      ・コンパイル時に型チェックが行われる
+      ・Object型の変数には、Objectに定義されているメソッドのみが適用可能なため
+        特定の型のメソッドやプロパティにアクセスしたい場合キャストが必要
+        --> 冗長
+    
+    dynamicの使い道
+      --> JSONでは構造が動的であることが多いので、
+          柔軟に取り扱えるdynamicが適していることが多い
+      --> Objectだと、複雑な構造や、構造が頻繁に変更される場合に
+          エラーが発生しやすくなる
+    ```
+
+    ### JSON
+
+    ```dart
+    //encode&decode用のlibrary
+    //jsonEncode --> encode
+    //jsonDecode --> decode
+    import "dart:convert";
+
+    void main(){
+      String jsonString = '{"name": "Alice", "age": 30}';
+      Map<String, dynamic> user = jsonDecode(jsonString);
+
+      //dynamicを使用しているので、直接プロパティにアクセス可能
+      //dynamicはnullを含むすべての値を受け入れられるので、?は不要
+      print(user["name"]);
+      print(user["age"]);
+
+      //Objectを利用した場合(nullになる可能性があるので、)
+      Map<String, Object?> user2 = jsonDecode(jsonString);
+
+      //型キャスト(as)を行う手間が発生する
+      print((user2["name"] as String));
+      print((user2["age"] as int));
+    }
+
+    ```
+
+    ### 非同期処理
+
+    ```dart
+    //Future.delayedで、データ取得までに2秒待っている
+    //非同期関数は常にFutureを返す
+    //awaitの結果として得られる値はFutureが解決されると、型に応じて変換される
+
+    import "dart:async";
+
+    Future<String> fetchData() async {
+      await Future.delayed(Duration(seconds: 2));
+      return "Fetched Complete";
+    }
+
+    void main() async {
+      print("Fetching Data...");
+
+      String data = await fetchData();
+      print(data);
+    }
+
+    //複数の非同期操作(並列ではない)
+
+    import "dart:async";
+
+    Future <String> fetchData1() async{
+      await Future.delayed(Duration(seconds: 2));
+      return "Data 1";
+    }
+
+    Future <String> fetchData2() async{
+      await Future.delayed(Duration(seconds: 3));
+      return "Data 2";
+    }
+
+    void main() async{
+      print("Fetching data1...");
+      String data1 = await fetchData1();
+      print("Fetching data2...");
+      String data2 = await fetchData2();
+
+      print(data1);
+      print(data2);
+
+      //同期操作が先に実行される
+      //Fetching data1...
+      //Fetching data2...
+      //Data 1
+      //Data 2
+    }
+
+    //エラーハンドリング
+    import "dart:async";
+    Future<String> fetchData() async{
+      await Future.delayed(Duration(seconds: 2));
+      throw "An error occurred";
+    }
+
+    void main() async{
+      print("Fetching data");
+
+      try{
+        String data = await fetchData();
+        print(data);
+      }catch(e){
+        print("Error $e");
+      }
+    }
+
+    //並列処理(Future.wait)
+    import "dart:async";
+
+    Future<String> fetchData1() async{
+      await Future.delayed(Duration(seconds: 2));
+      return "Nyanko";
+    }
+
+    Future<String> fetchData2() async{
+      await Future.delayed(Duration(seconds: 2));
+      return "Nyanko2";
+    }
+
+    void main() async{
+      print("Fetching data...");
+
+      List<String> results = await Future.wait(
+        [fetchData1(), fetchData2()]
+      );
+
+      for(String result in results){print(result);}
+
+    }
+
+
+    ```
+
+    ### 演算子等
+
+    ```text
+    ?
+      null許容演算子
+    
+    !
+      nullにならないことが確実にわかっている場合に使用
+      実際にnullである場合は、アプリがクラッシュする
+    
+    ??
+      nullであった場合に、デフォルト値を渡す処理で用いる
+
+    ?. ?[]
+      nullをとる可能性のあるオブジェクトに対し、アクセス可能
+
+    as
+      キャスト
+    
+    is, is!
+      変数の型が一致しているかの検証(継承元でもtrue, is dynamicは常にtrue)
+
+    [...hoge]
+      スプレッド演算子
+    ```
+
+    ```dart
+    //mathライブラリのRandomクラスで乱数生成
+    import "dart:math" as math;
+
+    void main(){
+      var random = math.Random();
+      String? name;
+      if(random.nextBool()){
+        name = "Nyanko";
+      }
+
+      var ans = name ?? "Nanashi";
+      print(ans); //Nyanko or Nanashi
+
+    Set<int> set1 = {1,2,3,4,5};
+    List<int> list1 = [...set1];
+    print(list1); //[1, 2, 3, 4, 5]
+    }
+
+
+    ```
 
     ### 所感
 
@@ -1242,4 +1545,38 @@
     ・pythonのような簡潔な記法とその他の言語のいいとこどりをしたかのようだ
     ・型推論や、NULL安全性を備えているのもGood
     ・さすが後発言語
+    ```
+
+## Q2. Flutterの環境構築ができますか?
+
+??? success
+
+    ### 環境構築
+
+    ```text
+    Step0
+      ・[公式の手順](https://docs.flutter.dev/get-started/install)に則って環境構築を進める
+    
+    Step1
+      ・flutter doctorを実行
+      --> WindowsならVisual Studioが必要
+      --> Androidなら、Android toolchainが必要
+      --> 足りない箇所は表示してくれる
+      --> 今回はAndroidで実行してみる(せっかくクロスプラットフォームなので)
+    
+    Step2
+      ・Shift + Ctrl + Pでflutterと打ち込み、新しいプロジェクトを作成
+      ・またコマンドパレットを開き、Flutter:Select Deviceで端末選択
+      ・lib/main.dartでF5(実行>デバッグの開始)を押して、アプリを起動
+      --> 起動には少し時間がかかるが、起動後はホットリロード可能
+
+    ※遅いと感じた場合は、VMアクセラレータをONにする 
+    ```
+
+## Q3. Flutterの基礎について知っていますか?
+
+??? success
+    ### 基本的な用語を理解する
+
+    ```dart
     ```
