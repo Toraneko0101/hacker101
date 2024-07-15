@@ -1110,6 +1110,29 @@
         --> typedefを用いることで可読性が登場する
         --> typedefを使うことで、コードの重複が避けられる
     */
+
+    //sortの例, ジェネリクスを用いて汎用的にしている
+
+    typedef Compare<T> = int Function(T a, T b);
+
+    int sortList<T>(List<T> list, Compare<T> compare){
+      list.sort(compare);
+      return list.length;
+    }
+
+    void main(){
+      var list = [3,1,4,1,5,9];
+      var list2 = ["Nyanko", "Nekoinu", "Nukonuko"];
+      sortList<int>(list, (a,b) => a - b);
+      sortList<String>(list, (a,b) => b.compareTo(a));
+      print(list); //[1, 1, 3, 4, 5, 9]
+      print(list2); //[Nyanko, Nukonuko, Nekoinu]
+    }
+    ```
+
+    ### DateTime
+
+    ```dart
     ```
 
     ### 所感
