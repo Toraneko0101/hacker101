@@ -1569,7 +1569,12 @@
       ・またコマンドパレットを開き、Flutter:Select Deviceで端末選択
       ・lib/main.dartでF5(実行>デバッグの開始)を押して、アプリを起動
       --> 起動には少し時間がかかるが、起動後はホットリロード可能
-
+    
+    cmdの場合
+      ・flutter create <app-name> --> プロジェクト作成
+      ・flutter devices --> 起動しているデバイス一覧の確認
+      ・flutter run --device-id <deviceのidを指定　Chromeならchrome>
+        --> 今回の場合は、emulator-5554だった
     ※遅いと感じた場合は、VMアクセラレータをONにする 
     ```
 
@@ -1578,5 +1583,48 @@
 ??? success
     ### 基本的な用語を理解する
 
+    ```text
+    Flutter
+      ・クロスプラットフォームのアプリを作成するためのツール
+      ・Googleが提供している
+      ・プログラミング言語はDart
+      ・Dartが、1つのソースコード --> 
+        iOS/Android/Webで動作する形式に変換している
+      
+    各種ファイル
+      ・lib: メインのソースコード用ディレクトリ
+      ・web: Webアプリに依存したファイルを配置
+      ・ios: iOSアプリに依存したファイルを配置
+      ・android: Androidアプリに依存したファイルを配置
+      ・pubspec.yaml: 依存ライブラリ定義ファイル
+      ・test: testコード用のディレクトリ
+      
+    Widget
+      ・UserInterfaceを構築するための部品
+      ・Widgetを組み合わせて、目的のUIを表現する
+      ・親Widget-子Widgetのようにツリー構造になっているので、
+        Widget-treeと呼ばれる
+    runApp()
+      Widgetを受け取り、これをルートにする
+    
+
+    ```
+
     ```dart
+    /*
+      Materialデザインに則った、Flutterアプリ開発に必要なファイルを含む
+    */
+    import "package:flutter/material.dart";
+
+    void main(){
+      // void runApp(Widget app)
+      runApp(
+        const Center(
+          child: Text(
+            "Hello, World!",
+            textDirection: TextDirection.ltr,
+          ),
+        ),
+      );
+    }
     ```
