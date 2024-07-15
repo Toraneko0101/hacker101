@@ -744,7 +744,7 @@
 
     class SuperCar extends Car{
       double topSpeed;
-
+      //初期化子リストを複数指定したい場合、カンマで区切る
       SuperCar(String brand, int year, this.topSpeed)
         : super(brand, year){
           print("SuperCar Constructor");
@@ -867,6 +867,7 @@
     }
 
     void main(){
+      // ※constをつけないと別のインスタンスになるので注意
       const red = Color(255,0,0);
       const green = Color(0, 255, 0);
       const anotherRed = Color(255, 0, 0);
@@ -890,6 +891,7 @@
       ・cacheで、パフォーマンスの向上
       ・既存のインスタンスの再利用可能
       ・条件に基づき、異なるインスタンスを生成できる
+      --> 明示的にreturnしない限り、インスタンスは返されない
     */
 
     //cache編
@@ -964,6 +966,150 @@
       print(shape1); //Circle
       print(shape2); //Square
     }
+    ```
+
+    ### シングルトンパターンについて
+
+    ```dart
+    /*
+    特徴
+      ・インスタンスが1つしかないことが保証される
+    
+    作り方
+      1 privateな静的フィールドを用意し、該当クラスのインスタンスを保持させる
+      2 factoryコンストラクタを通じてアクセスさせる
+      --> 新しいインスタンスを作成しない可能性がある場合はこちらを使うので
+    */
+
+    class MySingleton{
+      //String? name;
+
+      static final MySingleton _instance = MySingleton._internal();
+
+      factory MySingleton(){
+        return _instance;
+      }
+
+      MySingleton._internal(){
+        //name = "Nyanko";
+      }
+    }
+
+    void main(){
+      var singleTon1 = MySingleton();
+      var singleTon2 = MySingleton();
+      
+      print(identical(singleTon1 , singleTon2)); //true
+    }
+    ```
+
+    ### 初期化子リストの活用
+
+    ```dart
+    /*
+      インスタンス変数をfinalで宣言した際の代入に使える
+    */
+
+    class Point {
+      final double x, y;
+
+      Point(double inX, double inY)
+        : x = inX,
+          y = inY {
+            print("$x, $y");
+          }
+    }
+
+    //なお、普通はこう書く
+    class Point {
+      final double x,y;
+      Point(this.x, this.y){print("$x, $y");}
+    }
+    ```
+
+    ### Enum
+
+    ```dart
+    //定数をまとめたもの = 列挙型
+
+    /*
+      version 2.17以降、大幅に強化されている
+      field, method, constuructorの追加が可能になった
+      --> constructorについては定数コンストラクタ
+      --> つまり同じ値を持つなら、メモリ内で共有される
+    */
+
+    enum Rarity{
+      unique("緋色武器", "Rare:5"),
+      epic("紫武器", "Rare:4"),
+      legendary("金武器", "Rare:3"),
+      rare("青武器", "Rare:2"),
+      uncommon("緑武器", "Rare:1"),
+      common("白武器", "Rare:0");
+
+      final String commonly_name;
+      final String category;
+
+      const Rarity(this.commonly_name, this.category);
+
+      void describe(){
+        print("$commonly_name, $category");
+      }
+    }
+
+    void main(){
+      var weapon1 = Rarity.unique;
+      var weapon2 = Rarity.common;
+      var weapon3 = Rarity.unique;
+
+      weapon1.describe(); //緋色武器, Rare:5
+      weapon2.describe(); //白武器, Rare:0
+
+      print(weapon1.name); //unique 列挙値の名前を取得可能
+      print(weapon2.index); //1 indexを取得可能
+      print(identical(weapon1, weapon3)); //true
+    }
+    ```
+
+    ### typedefとinline function
+
+    ```dart
+    //------typedef: 型に別の名前を付ける(2.13までは関数型のみの使用)
+
+    typedef IntBinaryOperation = int Function(int a, int b);
+
+    int add(IntBinaryOperation operation, int a, int b){
+      return operation(a,b);
+    }
+
+    void main(){
+      int result = add((a, b) => a + b, 2, 3);
+      print(result);
+    }
+
+    //----------inline func
+
+    int add(int Function(int a, int b) operation, int a, int b){
+      return operation(a,b);
+    }
+
+    void main(){
+      int result = add((a,b)=> a + b, 2, 3);
+      print(result);
+    }
+
+    /*
+      どちらを使うべきか
+
+      シンプルな関数型
+        inline-func
+        --> 別途typedefを定義する手間がないため
+        --> コードを読む際にすぐに肩の詳細を把握できるため
+      
+      複雑な関数型で、再利用が多い
+        --> typedefを用いることで可読性が登場する
+        --> typedefを使うことで、コードの重複が避けられる
+    */
     ```
 
     ### 所感
