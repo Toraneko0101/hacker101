@@ -1604,10 +1604,9 @@
       ・Widgetを組み合わせて、目的のUIを表現する
       ・親Widget-子Widgetのようにツリー構造になっているので、
         Widget-treeと呼ばれる
+
     runApp()
       Widgetを受け取り、これをルートにする
-    
-
     ```
 
     ```dart
@@ -1616,6 +1615,14 @@
     */
     import "package:flutter/material.dart";
 
+    /*
+      Center: 中央寄せ用Widget
+      Text: テキスト用Widget
+      Treeで考えると
+        runApp --> Center --> Text
+
+      TextDirection: テキストの方向を指定
+    */
     void main(){
       // void runApp(Widget app)
       runApp(
@@ -1627,4 +1634,337 @@
         ),
       );
     }
+    ```
+
+    ### 基本的なWidget
+
+    ```dart
+    //Text
+    Text("Hogehoge");
+
+    //Text(Style)
+    Text("Hogehoge", style: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontStyle: FontStyle.italic,
+      fontSize: 30,
+      color: Colors.green,
+      textAlign: TextAlign.right,
+    ))
+
+    //Row, Column
+    //水平、垂直方向に柔軟なレイアウトを設定できる
+
+    //Stack
+    //直線上に配置するのではなく、ウィジェットを重ねて配置可能
+
+    //Container
+    //長方形の資格要素を作成可能
+    ```
+
+    ### 基本的な用語2
+    ```text
+    Text
+      ・テキスト用のレイアウトを設定する
+    
+    Row,Column
+      ・水平、垂直方向に柔軟なレイアウトを設定できる
+
+    Stack
+      ・直線上に配置するのではなく、ウィジェットを重ねて配置可能
+
+    Container
+      ・長方形の視覚要素を作成可能
+      
+    StatelessWidget
+      ・状態が変化しないWidget
+      ・継承元
+
+    Widget build(BuildContext context)
+      ・buildメソッドは、FlutterのWidget-Treeを構築するためのメソッド
+      ・StatelessWidgetやStatefullWidgetに必ず実装される
+      ・buildメソッド内で、Widgetを返すことで、画面に表示される内容
+      　が定義される
+    
+    theme: ThemeData(primarySwatch: Colors.blue)
+      ・ThemeData: Flutterアプリ全体のテーマを定義するためのクラス
+                    色、font, icon等のスタイルが含まれる
+      ・primarySwatch: アプリのプライマリーカラーを定義する
+    
+    mainAxisAlignment: MainAxisAlignment.spaceAround
+      ・Flutterのレイアウトアルゴリズムの一部
+      ・Widgetを主軸(垂直or水平)に沿ってどのように配置するかを指定
+      ・spaceAroundは子Widget間に等間隔のスペースを挿入し
+      　最初と最後の子Widgetの外側にも同じSpaceを入れる
+    
+    child, children
+      ・child: 一つのWidgetを持つことができる
+      ・children: 複数のWidgetを持つことができる
+
+    MaterialApp
+      ・Material-Designの原則に従ったFlutterアプリを構築するための
+        Widget.
+      ・アプリ全体の設定や、テーマ、ナビゲーションなどを管理
+      ・例）
+        title: アプリのタイトル
+        theme: アプリケーションのテーマを設定(ThemeData)
+        home: アプリ起動時に表示されるWidget
+        routes: アプリケーションのルートと対応するWidget
+                navigationを簡単に管理可能
+        initialRoute: アプリ起動時に初期表示されるルート
+        navigatorKey: ナビゲータの状態を管理するためのキー
+        locale: 言語と地域
+        debugShowCheckedModeBanner: DEBUGバナーを表示するか
+    Scaffold
+      ・典型的なMaterial-Designアプリのレイアウトを構築するための
+        Widget
+      ・アプリの主要なUI要素を簡単に配置可能
+      ・例)
+        ・appBar: アプリバーを表示
+        ・body: メインのコンテンツを表示
+        ・floatingActionButton: 英語名の通り
+        ・drawer: 左からスライドするdrawerを表示
+        ・bottomNavigationBar: 画面下部にナビゲーションバーを表示
+        ・backgroundColor: 背景色     
+    ```
+
+    ### 例1
+
+    ```dart
+    import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+    
+    class MyApp extends StatelessWidget {
+
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title: "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Text("Default"),
+                Text("Bold", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text("Italic", style: TextStyle(fontStyle: FontStyle.italic)),
+                Text("fontSize = 36", style: TextStyle(fontSize: 30)),
+                Text("Red", style: TextStyle(color: Colors.red)),
+                Container(
+                  width: double.infinity,
+                  color: Colors.grey,
+                  child: Text("TextAlign.right", textAlign: TextAlign.right),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+    ![textの見た目テスト用の画像](./images/001.png)
+
+    ### 基本的な用語3
+
+    ```text
+    Container
+      ・Size, 背景, 余白, 枠線などを指定可能
+    
+    EdgeInsets.all(10)
+      ・長方形の各辺四方向に10の余白を与える
+      ・marginなら外側に、paddingなら内側に
+    
+    BorderDecoration
+      ・Widgetの修飾を行う
+    
+    BorderRadius.circular(10)
+      ・角を10だけ丸くする
+    ```
+
+    ```dart
+        import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+        title: "Flutter Demo",
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home:  Scaffold(
+          body: Center(
+            child : Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Container(
+                  color: Colors.blue,
+                  child: Text("blue"),
+                ),
+                //textは指定がない場合、左上から始まる
+                Container(
+                  width: 200,
+                  height: 50,
+                  color: Colors.blue,
+                  child: Text("200*50"),
+                ),
+                //内側スペース
+                Container(
+                  padding: EdgeInsets.all(8),
+                  color: Colors.blue,
+                  child: Text("padding"),
+                ),
+                //外側スペース
+                Container(
+                  color: Colors.blue,
+                  child: Container(
+                    margin: EdgeInsets.all(8),
+                    color: Colors.green,
+                    child: Text("margin"),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.blue,
+                      width: 2),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  child: Text("border"),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+      }
+    }
+    ```
+
+    ![containerの見た目調整後の画像](./images/002.png)
+
+
+    ### 基本的な用語その4
+
+    ```text
+    --> crossと名があるように
+        本来縦に並べるColumnで、左右の幅を変えたければCross
+        本来横に並べるRowで、上下の幅を変えたければRow
+       
+    縦に並べたWidgetの左寄せ
+      crossAxisAlignment: CrossAxisAlignment.start;
+      --> 横の場合は、mainAxisAlignmentだったね
+
+    縦に並べたWidgetの右寄せ
+      crossAxisAlignment: CrossAxisAlignment.end;
+    
+    縦方向の中央寄せ
+      mainAxisAlignment: MainAxisAlignment.center;
+    
+    縦方向の下寄せ
+      mainAxisAlignment: MainAxisAlignment.end;
+    
+    縦方向の均等配置
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly;
+    ```
+
+    ```dart
+    import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title : "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: Scaffold(
+            body: Column(
+              children: <Widget>[
+                Container(
+                  width: double.infinity,
+                  height: 60,
+                  color: Colors.grey[200],
+                  child: Row(
+                    //均等配置
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(color: Colors.red, child: Text("first")),
+                      Container(color: Colors.blue, child: Text("second")),
+                      Container(color: Colors.green, child: Text("third")),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: double.infinity,
+                  height: 60,
+                  child : Row(
+                    //中央上寄せ
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(color: Colors.red, child: Text("***")),
+                      Container(color: Colors.blue, child: Text("中央上寄せ")),
+                      Container(color: Colors.green, child: Text("***")),
+                    ],
+                  ),
+                ),
+
+                Container(
+                  width: double.infinity,
+                  height: 60,
+                  child: Row(
+                    //右寄せ
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Container(color: Colors.red, child: Text("***")),
+                      Container(color: Colors.blue, child: Text("右寄せ")),
+                      Container(color: Colors.green, child: Text("***")),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+    ![Column, Rowを使い配置を変更したもの](./images/003.png)
+
+    ### 基本的な用語その5
+
+    ```text
+    TextButton
+      ・影のないボタン
+    
+    OutlinedButton
+      ・枠線のあるボタン
+    
+    ElevatedButton
+      ・影のあるボタン
+    
+    onPressed
+      ・押下された時の処理を記載する
+      --> ボタンから手を離したとき
+    
+    onTab
+      ・押下された時の処理を記載する
+      --> ボタンに触れた瞬間
+    
+    style: ***Button.styleFron()
+      ・各ボタンのテーマ色変更
+    
+    elevation
+      ・影の深さを変える
+    
+    backgroundColor
+      ・ボタンの背景色
+    
+    foregroundColor
+      ・ボタンの文字色
     ```
