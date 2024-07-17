@@ -1851,7 +1851,7 @@
     ```text
     --> crossと名があるように
         本来縦に並べるColumnで、左右の幅を変えたければCross
-        本来横に並べるRowで、上下の幅を変えたければRow
+        本来横に並べるRowで、上下の幅を変えたければCross
        
     縦に並べたWidgetの左寄せ
       crossAxisAlignment: CrossAxisAlignment.start;
@@ -1967,4 +1967,337 @@
     
     foregroundColor
       ・ボタンの文字色
+    
+    EdgeInsert.only()
+      ・長方形の一方向のみ空白を作る
     ```
+
+    ### 例4
+
+    ```dart
+    import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title: "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: Scaffold(
+            body: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 32),
+                  child: Text("TextButton"),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    TextButton(
+                      onPressed: null,
+                      child: Text("disabled"),
+                    ),
+                    TextButton(
+                      onPressed: (){},
+                      child: Text("enabled"),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.red
+                      ),
+                      onPressed: (){},
+                      child: Text("enabled"),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 32),
+                  child: Text("OutlinedButton"),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    OutlinedButton(
+                      onPressed: null,
+                      child: Text("disabled"),
+                    ),
+                    OutlinedButton(
+                      onPressed: (){},
+                      child: Text("enabled"),
+                    ),
+                    OutlinedButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.red
+                      ),
+                      onPressed: (){},
+                      child: Text("enabled"),
+                    ),
+                  ],
+                ),
+
+                Container(
+                  padding: EdgeInsets.only(top: 32),
+                  child: Text("ElevatedButton"),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: null,
+                      child: Text("disabled"),
+                    ),
+                    ElevatedButton(
+                      onPressed: (){},
+                      child: Text("enabled"),
+                    ),
+                    ElevatedButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        elevation: 16,
+                      ),
+                      onPressed: (){},
+                      child: Text("enabled"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+    ![3種のボタンを表示したもの](./images/004.png)
+
+    ### 基本的な用語その6
+
+    ```text
+    IconButton
+      ・アイコンを表示したい場合
+    
+    TextButton.icon
+    OutlinedButton.icon
+    ElecatedButton.icon
+      ・テキストとアイコンを含めたボタンを表示した場合
+
+    FloationActionButton
+      ・Materialデザインを採用した青売りで表示されるボタン
+      ・お手軽に表示可能
+    ```
+
+    ### 例5
+
+    ```dart
+    import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title: "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: Scaffold(
+            body: Column(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.only(top: 32),
+                  child: Text("IconButton"),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    IconButton(
+                      onPressed: (){},
+                      icon: Icon(Icons.thumb_up),
+                    ),
+                    //hoverすると色が変わる
+                    IconButton(
+                      color: Colors.pink,
+                      onPressed: (){},
+                      icon: Icon(Icons.favorite),
+                    ),
+                    IconButton(
+                      iconSize: 64,
+                      onPressed: (){},
+                      icon: Icon(Icons.flight),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 32),
+                  child: Text("アイコン+テキスト"),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    TextButton.icon(
+                      onPressed:(){},
+                      icon: Icon(Icons.thumb_up),
+                      label: Text("Good")
+                    ),
+                    OutlinedButton.icon(
+                      onPressed:(){},
+                      icon: Icon(Icons.favorite, color: Colors.pink),
+                      label: Text("Like")
+                    ),
+                    ElevatedButton.icon(
+                      onPressed:(){},
+                      icon: Icon(Icons.flight),
+                      label: Text("Flight")
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.green,
+              onPressed: (){},
+              child: Icon(Icons.add),
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+    ![アイコンボタンの見た目用画像](./images/005.png)
+
+    ### 基本的な用語その7
+
+    ```text
+    ListView
+      ・スクロールに対応しているリスト
+      ・Columnと異なり見切れない
+    
+    ListView.builder(
+      itemCount: list.length,
+      itemBuilder: (context, index){return list[index];},
+    )
+      ・データからリストを作成する
+    
+    Image.network
+      ・URLから画像を操作する
+
+    ListTile
+      ・Title, SubTitle, Image, Icon等を含めたアイコンを作成可能
+    
+    Card
+      ・影の付いたカードUIを作成可能
+    
+    ListView.separated
+      ・項目間に区切り線(separatorBUilder)を追加可能
+    ```
+
+    ### 例6 
+    
+    ```dart
+    import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget{
+      final List<Map<String, dynamic>> listItems = [
+        {"text":"Item1", "color": Colors.blue[600],},
+        {"text":"Item2", "color": Colors.blue[300],},
+        {"text":"Item3", "color": Colors.blue[100],},
+      ];
+
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title: "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.blue),
+          home: Scaffold(
+            body: Column(
+              children: <Widget>[
+                //スクロールできることを確認可能
+                Container(
+                  height: 125,
+                  padding: EdgeInsets.all(4),
+
+                  //直接指定した場合
+                  child: ListView(
+                    children: <Widget>[
+                      Container(
+                        height: 50,
+                        color: Colors.blue[600],
+                        child: Text("Item 1"),
+                      ),
+                      Container(
+                        height: 50,
+                        color: Colors.blue[300],
+                        child: Text("Item 2"),
+                      ),
+                      Container(
+                        height: 50,
+                        color: Colors.blue[100],
+                        child: Text("Item 3"),
+                      ),
+                    ],
+                  ),
+                ),
+
+                //データをもとに表示
+                Container(
+                  height: 125,
+                  padding: EdgeInsets.all(4),
+                  child: ListView.builder(
+                    itemCount: listItems.length,
+                    itemBuilder: (context, index){
+                      return Container(
+                        height: 50,
+                        color: listItems[index]["color"],
+                        child: Text(listItems[index]["text"]),
+                      );
+                    },
+                  ),
+                ),
+
+                //各アイテムの間にスペースを挟む
+                Container(
+                  height: 125,
+                  padding: EdgeInsets.all(4),
+                  child: ListView.separated(
+                    itemCount: listItems.length,
+                    itemBuilder: (context, index){
+                      return Container(
+                        height: 50,
+                        color: listItems[index]["color"],
+                        child: Text(listItems[index]["text"]),
+                      );
+                    },
+                    separatorBuilder: (context, index){
+                      return Divider();
+                    }
+                  ),
+                ),
+
+                //ListTile
+                Card(
+                  child: ListTile(
+                    leading: FlutterLogo(size: 40.0),
+                    title: Text("Flutter"),
+                    subtitle: Text("これは少し長い文章です。isThreeLineをtrueに設定した場合、見切れることはなくサブタイトルの2行目が許容されます。でも成果物を見ると、falseなのに問題ないように思えます。原因は不明です"),
+                    trailing: Icon(Icons.more_vert),
+                    isThreeLine: false,
+                    tileColor: Colors.green[100],
+                    onTap: (){},
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+    ![ListViewに関しての見え方サンプル。スクロールバーや、区切り線が存在している](./images/006.png)
+
