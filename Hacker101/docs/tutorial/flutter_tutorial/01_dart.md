@@ -2196,7 +2196,7 @@
     ```
 
     ### 例6 
-    
+
     ```dart
     import "package:flutter/material.dart";
 
@@ -2301,3 +2301,112 @@
 
     ![ListViewに関しての見え方サンプル。スクロールバーや、区切り線が存在している](./images/006.png)
 
+    ### 基本的な用語その8
+
+    ```text
+    AppBar
+      ・基本的には画面上部に位置する
+      ・メインの内容を端的に伝えるため or ユーザ操作用に配置する
+
+      actionは、右側のアイコン一覧
+    
+    SingleChildScrollView
+      ・スクロール不要な長さの時はしない
+      ・縦の長いコンテンツを表示したいとき、Columnをラップするように使う
+    ```
+
+    ```dart
+    
+    //以下の写真は、Takashi Miyazaki氏が、撮影した写真です。
+    //写真はunsplashから拝借しました
+
+    import "package:flutter/material.dart";
+
+    void main() => runApp(MyApp());
+
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          title: "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.grey),
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: AppBar(
+              leading: Icon(Icons.menu, color: Colors.white),
+              title: Text(
+                "Camping in the woods",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white)
+              ),
+              centerTitle: true,
+              actions: <Widget>[
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.search, color: Colors.white),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.more_vert, color: Colors.white),
+                ),
+              ],
+              elevation: 0,
+              toolbarHeight: 100,
+              flexibleSpace: Opacity(
+                 opacity: 0.8,
+                child: Image.network(
+                "https://images.unsplash.com/photo-1721175789798-c1c8b6664480?q=80&w=2456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                fit: BoxFit.cover,
+              ),
+              ),
+              
+              backgroundColor: Colors.white.withOpacity(0.5),
+              
+            ),
+            extendBodyBehindAppBar: true,
+            body: MyWidget(),
+          ),
+        );
+      }
+    }
+
+    class MyWidget extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 20),
+              SimpleCard(),
+              SimpleCard(),
+              SimpleCard(),
+              SimpleCard(),
+              SimpleCard(),
+              SimpleCard(),
+            ],
+          ),
+        );
+      }
+    }
+
+    class SimpleCard extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return Center(
+          child: Card(
+            child: Container(
+              alignment: Alignment.center,
+              height: 200,
+              width: 300,
+              child: Text(
+                "Hello, World",
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+    ```
+
+    ![上部のAppBarには森の画像とTitle, Iconが表示されている。画像は透過されているので、コンテンツはAppBarの下に来ても見える](./images/007.png)
