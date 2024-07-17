@@ -1,0 +1,6084 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../aws_tutorial/01_introduction.html">
+      
+      
+        <link rel="next" href="0_intro.html">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+    
+    
+      
+        <title>クイズ(1:Dart言語) - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/prism.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1dart" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              クイズ(1:Dart言語)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Toraneko0101/hacker101" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Hacker101
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Toraneko0101/hacker101" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Hacker101
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Flutter tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Flutter tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    クイズ(1:Dart言語)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="01_dart.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:Dart言語)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1-dart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1. Dart言語の基本文法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1. Dart言語の基本文法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単に試したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hello World
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    <span class="md-ellipsis">
+      var
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      型の例など
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      制御文と繰り返し文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      switch式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      アクセス修飾子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象クラス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mixins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cascade
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      static
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      名前付きコンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタの実行順
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      スーパーパラメータ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      リダイレクトコンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      定数コンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファクトリーコンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      シングルトンパターンについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      初期化子リストの活用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedefinline-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      typedefとinline function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      DateTime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ジェネリクス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rangeij" class="md-nav__link">
+    <span class="md-ellipsis">
+      range(i,j)の代替
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      コレクション内包
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-vs-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic vs Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      非同期処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      演算子等
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      所感
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2-flutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2. Flutterの環境構築ができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2. Flutterの環境構築ができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      環境構築
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-flutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3. Flutterの基礎について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3. Flutterの基礎について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語を理解する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的なWidget
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語その4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語その5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="0_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Java tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Javaチュートリアル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java_tutorial/01_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(Q1: 基本文法)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Js tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Js tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_1" id="__nav_1_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&amp;set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_2" id="__nav_1_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../js_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kindleを買ったものの末路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_3" id="__nav_1_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Highschool
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Highschool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_3_1" id="__nav_1_7_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_7_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Math1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/highschool/math1/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学I
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/highschool/math1/01_expr_and_calc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:式と計算)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_4" id="__nav_1_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logical
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Logical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/logical/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    記号論理学について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/logical/01_natural.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:自然言語)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/logical/02_artificial.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 人工言語)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math_tutorial/logical/03_question.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(Q3:証明問題)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(&lt;&gt;について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8_16" id="__nav_1_8_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_8_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&amp;動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1-dart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1. Dart言語の基本文法について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1. Dart言語の基本文法について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      簡単に試したい場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hello World
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#var" class="md-nav__link">
+    <span class="md-ellipsis">
+      var
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      型の例など
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      制御文と繰り返し文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      switch式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      関数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#record" class="md-nav__link">
+    <span class="md-ellipsis">
+      Record
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list" class="md-nav__link">
+    <span class="md-ellipsis">
+      List
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#import" class="md-nav__link">
+    <span class="md-ellipsis">
+      import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      クラス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      継承
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      アクセス修飾子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      抽象クラス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mixins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mixins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cascade" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cascade
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static" class="md-nav__link">
+    <span class="md-ellipsis">
+      static
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      名前付きコンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンストラクタの実行順
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      スーパーパラメータ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      リダイレクトコンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      定数コンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      ファクトリーコンストラクタ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      シングルトンパターンについて
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      初期化子リストの活用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enum" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enum
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typedefinline-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      typedefとinline function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#datetime" class="md-nav__link">
+    <span class="md-ellipsis">
+      DateTime
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      ジェネリクス
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rangeij" class="md-nav__link">
+    <span class="md-ellipsis">
+      range(i,j)の代替
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      コレクション内包
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-vs-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic vs Object
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      非同期処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      演算子等
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      所感
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2-flutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2. Flutterの環境構築ができますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2. Flutterの環境構築ができますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      環境構築
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-flutter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3. Flutterの基礎について知っていますか?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3. Flutterの基礎について知っていますか?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語を理解する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#widget" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的なWidget
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語その4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本的な用語その5
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="1dart">クイズ(1:Dart言語)</h1>
+<h2 id="q1-dart">Q1. Dart言語の基本文法について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_1">簡単に試したい場合</h3>
+<pre class="highlight"><code class="language-text">&lt;online&gt;
+  https://dartpad.dev/
+
+&lt;local&gt;
+  dart create &lt;project-name&gt;</code></pre>
+<h3 id="hello-world">Hello World</h3>
+<pre class="highlight"><code class="language-dart">void main(){
+  print("Hello, World");
+}</code></pre>
+<h3 id="var">var</h3>
+<pre class="highlight"><code class="language-dart">//ローカル変数にはvarを用いるのが公式の推奨事項らしい
+var name = "Hogehoge";
+var year = 1999;
+var syosuu = 3.14;
+var lists = ["Sun", "Mon", "Tues"];
+var dicts = {
+  "hoge": ["hiyoko"],
+  "url": "//piyopiyo/baby_chicken.jpg"
+};
+
+//Objectが単一の方に制限されていない場合
+Object name = "Hoge";
+
+//明示的な型定義
+String name = "Hoge";
+
+//NULL安全性 -&gt; nullを許可するには、型宣言の末尾に?
+String? name;
+String name2;
+
+//final &amp; const
+//constはコンパイル時に値決定、finalは単なる初期化後の再代入禁止
+// --&gt; 定数コンストラクタにおけるfinalを思い浮かべるとわかるが
+// finalは必ずしも実行時に初期化されることを意味しない
+const bar = 100;
+final double hoge = 3.14 * bar; //実行時に値初期化可能
+
+//constがついていない場合、コンパイル時に値が決定するので、以下はエラー
+var x = 2;
+const y = 2*2;
+
+//以下ならOK
+const x = 2;
+const y = x*2;</code></pre>
+<h3 id="_2">型の例など</h3>
+<pre class="highlight"><code class="language-dart">var name = "Hoge";
+print(name.runtimeType); //String(型を調べる)
+print(name is String); //型が一致しているか調べる</code></pre>
+<h3 id="_3">制御文と繰り返し文</h3>
+<pre class="highlight"><code class="language-dart">if(year &gt;= 2010){
+  print("Generation Alpha");
+}
+else if(year &gt;= 1995){
+  print("Generation Z");
+}
+else{
+  print("Uncategorized");
+}
+
+if(12 is int){
+  print("12はint型です")
+}
+
+//for
+for(final item in lists){
+  print(item);
+}
+
+for(int month = 1; month &lt;= 12; month++){
+  print(month);
+}
+
+//while
+while(year &lt; 2016){
+  year += 1;
+}
+
+//do-while
+int i = 0;
+do{
+  print(i);
+  i += 1;
+}while(i &lt;= 1);
+</code></pre>
+<h3 id="switch">switch式</h3>
+<pre class="highlight"><code class="language-dart">// switch文(旧来)
+
+switch(charCode){
+  case slash || star || plus || minus:
+    token = operator(charCode);
+  case comma || semicolon:
+    token = punctuation(charCode);
+  case &gt;= digit0 &amp;&amp; &lt;= digit9:
+    token = number();
+  default:
+    throw FormatException("Invalid");
+}
+
+// switch式
+// caseキーワードがなく、defaultは_, =&gt;のあとに処理を書く
+token = switch(charCode){
+  slash || star || plus || minus =&gt; operator(charCode),
+  comma || semicolon =&gt; punctuation(charCode),
+  &gt;= digit0 &amp;&amp; &lt;= digit9 =&gt; number(),
+  _ =&gt; throw FormatException("Invalid")
+}</code></pre>
+<h3 id="_4">関数</h3>
+<pre class="highlight"><code class="language-dart">//基本。
+//引数や戻り値の型は指定することが推奨されている
+
+int fibonacci(int n){
+  if(n == 0 || n == 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+var result = fibonacci(10);
+//-------------------------
+
+
+/* 
+  &lt;名前付きパラメータ&gt;
+  {}で囲むと、名前付きパラメータにできる
+  requiredがないと、必須でなくなる
+  defaultでもrequiredでもないなら、null許容である必要がある
+*/
+void greet({required String name, int? level, String value = "default"}) {
+  print("Hello, ${name}.");
+  if (level == null) {
+    print("Something's wrong.");
+  }
+  ;
+}
+
+//mainはエントリーポイントとして機能する
+//戻り値はvoid型で、引数はList&lt;String&gt;型のOptionパラメータ
+void main() {
+  greet(name: "Nyanko");
+  greet(level: 72, name: "Nukonuko");
+}
+//------------------------------
+
+
+/*位置引数で、オプションの引数を作りたい場合*/
+String say(String from, String msg, [String device = "tin can telephone"]){
+  var result = "$from says $msg with a $device.";
+  return result;
+}
+
+//assertは開発中に確認するためのメッセージ
+//assert(&lt;condition&gt;, &lt;message&gt;)で、第二引数はoption
+assert(say("Bob", "Henry") == "Bob says Henry with a tin can telephone.");
+assert(say("Bob", "Henry", "carrier pigeon") == "Bob says Henry with a carrier pigeon.");
+//------------------------------
+
+//コマンドラインアプリ
+void main(List&lt;String&gt; args){
+  print(args);
+  assert(args.length == 2);
+  assert(int.parse(args[0]) == 1);
+  assert(args[1] == "test");
+}
+// -----------------------------
+
+
+//関数を引数にする
+void printElem(int element){print(element);};
+var list = [1,2,3];
+list.forEach(printElem);
+//------------------------------
+
+
+/*
+  無名関数 
+  {}をつけた場合、=&gt;は不要であることに注意
+*/
+const list = ["Apples", "Bananas", "Calamansis"];
+
+var uppercaseList = list.map((item){
+  return item.toUpperCase();
+}).toList();
+
+for(var item in uppercaseList){
+  print("$item: ${item.length}");
+}
+
+var lowercaseList = list.map((item) =&gt; item.toLowerCase()).toList();
+lowercaseList.forEach((item)=&gt; print("$item: ${item.length}"));
+
+//APPLES: 6
+//BANANAS: 7
+//CALAMANSIS: 10
+//apples: 6
+//bananas: 7
+//calamansis: 10
+
+//-------------------------------
+
+/*
+  ClosureとScope
+  関数はスコープ内で定義された変数を記憶する
+*/
+Function makeAdder(int addBy){
+  return (int i) =&gt; addBy + i;
+}
+
+void main(){
+  var add2 = makeAdder(2);
+  var add4 = makeAdder(4);
+
+  print(add2(3)); //5
+  print(add4(3)); //7
+}
+</code></pre>
+<h3 id="record">Record</h3>
+<pre class="highlight"><code class="language-dart">/*
+  Record: 複数の戻り値を返す
+    Recordは、固定サイズで、名前付きフィールドにも位置フィールドにもできる
+    アクセスする場合は、$1から始まることに注意
+*/
+
+(int, String) getMember(int number, String name){
+  return (number, name);
+}
+
+void main(){
+  final gm = getMember(1, "Nyanko");
+  print(gm.$1); //1
+}
+
+// 名前付きフィールドの指定
+// 異なる名前の名前付きフィールドを持つ場合、それは異なる型を意味する
+({int a, int b}) recordAB = (b: 24, a: 12);
+
+// 位置フィールドの指定
+// レコードの型には影響しないので代入可能
+(int c, int d) recordCD = (1,2);
+(int e, int f) recordEF = (3,4);
+recordCD = recordEF;
+
+//レコードは不変なので、Getterのみが存在する。
+print(recordAB.a); //12
+print(recordCD.$1); //3
+</code></pre>
+<h3 id="list">List</h3>
+<pre class="highlight"><code class="language-dart">List&lt;String&gt; list = ["Hoge", "Fuga", "Bar"];
+//末尾挿入
+list.add("Foo");
+//挿入
+list.insert(1, "Nyanko");
+//削除
+list.remove("Bar");
+print(list); //[Hoge, Nyanko, Fuga, Foo]
+//該当要素の位置
+print(list.indexOf("Fuga")); //2
+
+//昇順
+list.sort((a,b) =&gt; a.compareTo(b));
+print(list); //[Foo, Fuga, Hoge, Nyanko]
+
+//二次元Listのsort
+var values = [
+  [1,2],
+  [2,3],
+  [3,1],
+];
+
+values.sort((a,b)=&gt; a[1].compareTo(b[1]));
+print(values); //[[3, 1], [1, 2], [2, 3]]
+
+//抽出(List化していないと以下のような出力に)
+var ages = [20,30,40,50,60];
+var filteredAges = ages.where((age) =&gt; age &gt; 30);
+print(filteredAges); //(40, 50, 60)
+
+//ランダム
+var ages2 = [1,2,3,4,5];
+ages2.shuffle();
+print(ages2); //[2, 4, 1, 3, 5]
+
+//要素を順々に処理
+List&lt;String&gt; list = ["hoge", "fuga", "nyanko"];
+list.forEach((elem) =&gt; print(elem)); //
+
+//すべての要素がTrueなら
+list.every((elem) =&gt; elem.length &gt; 5); //false
+
+//各要素に任意の操作を行い、returnで返す
+List&lt;int&gt; list = [1,2,3,4,5];
+print(list.map((e) =&gt; e * e).toList()); //[1, 4, 9, 16, 25]
+
+//畳み込み(他の言語のreduce = fold)
+List&lt;int&gt; list = [1,2,3,4,5];
+int sum = list.fold(1, (first, second) =&gt; first * second);
+print(sum); //120</code></pre>
+<h3 id="import">import</h3>
+<pre class="highlight"><code class="language-dart">import 'dart:math';
+
+import 'package:test/test.dart';
+
+import 'path/to/my_file.dart';</code></pre>
+<h3 id="map">Map</h3>
+<pre class="highlight"><code class="language-dart">Map&lt;String, String&gt; language = {
+  "Python" : "battery pack",
+  "Java": "I exists only for the JVM",
+  "C++" : "Goot at high-spped processing", 
+};
+
+//値の追加(put, getでも可能)
+language["JS"] = "Can be both the front and backend";
+
+//値の削除
+language.remove("C++");
+
+//順次処理
+language.forEach((key, val){
+  print("$key: $val");
+});
+//Python: battery pack
+//Java: I exists only for the JVM
+//JS: Can be both the front and backend
+
+//keyの存在
+language.containsKey("Java"); //true
+
+//取り出し
+print(language["Python"]);
+//battery pack
+
+// constをつければ値を固定可能
+Map&lt;String, String&gt; info = const {
+  "name" : "Nyanko",
+  "place": "Tokyo",
+};
+
+info["name"] = "Nekonuko";
+// Unsupported operation: Cannot modify unmodifiable map
+
+
+//Map連結
+final map1 = {
+  "name" : "Nekonuko"
+};
+
+final map2 = {
+  "place": "Tokyo"
+};
+
+map1.addAll(map2);
+print(map1); //{name: Nekonuko, place: Tokyo}
+
+//List, Map相互変換
+
+List&lt;String&gt; names = ["Nyanko", "Nukonuko", "Inuneko"];
+Map&lt;int, String&gt; namesMap = names.asMap();
+print(namesMap); //{0: Nyanko, 1: Nukonuko, 2: Inuneko}
+
+print(namesMap.keys.toList()); //[0, 1, 2]
+print(namesMap.values.toList()); //[Nyanko, Nukonuko, Inuneko]
+
+var keyList = [];
+var valList = [];
+namesMap.forEach((key, val){
+  keyList.add(key);
+  valList.add(val);
+} )
+
+print(keyList); //[0, 1, 2]
+print(valList); //[Nyanko, Nukonuko, Inuneko]
+</code></pre>
+<h3 id="_5">クラス</h3>
+<pre class="highlight"><code class="language-dart">
+class Psi{
+  String name;
+  int level;
+
+  /*
+  以下と同様の意味
+  Psi(name, level){
+    this.name = name;
+    this.level = level
+  }
+  */
+  Psi(this.name, this.level);
+
+  // Method(${}は文字列補間)
+  void describe(){
+    print("Psi: ${name}( ${level} )");
+  }
+}
+
+
+
+void main(){
+  var telepathy = Psi(
+      "テレパシー", 
+      5, 
+    );
+
+  telepathy.describe();
+}
+</code></pre>
+<h3 id="_6">継承</h3>
+<pre class="highlight"><code class="language-dart">
+//先頭に_がついていると、privateになる
+// --&gt; ここでいうprivateとは同一ライブラリからのみアクセス可能という意味
+// --&gt; 普通クラスはファイルごとに分けるので問題ないとは思うが
+
+class Car{
+  String brand;
+  int year;
+
+  Car(this.brand, this.year);
+
+  void displayInfo(){
+    print("Brand: $brand, Year: $year!");
+  }
+}
+
+class SuperCar extends Car{
+  double topSpeed;
+
+  //先に基底クラスのコンストラクタにアクセスする
+  SuperCar(String brand, int year, this.topSpeed)
+   : super(brand, year);
+
+  void displaySuperCarInfo(){
+    print("Brand: $brand, Year: $year, Top Speed: $topSpeed");
+  }
+  void boost(){
+    print("Boost activated! Top Speed is now ${topSpeed + 50}");
+  }
+}
+
+void main(){
+  var myCar = Car("Toyota", 2021);
+  myCar.displayInfo();
+
+  var mySuperCar = SuperCar("Ferrari", 2042, 650.0);
+  mySuperCar.displayInfo();
+  mySuperCar.displaySuperCarInfo();
+  mySuperCar.boost();
+
+  //Brand: Toyota, Year: 2021!
+  //Brand: Ferrari, Year: 2042!
+  //Brand: Ferrari, Year: 2042, Top Speed: 650
+  //Boost activated! Top Speed is now 700
+
+}</code></pre>
+<h3 id="_7">アクセス修飾子</h3>
+<pre class="highlight"><code class="language-dart">// _がつくと、private。正確には他ファイルからアクセス不可。
+class Car{
+  String _brand;
+  int _year;
+
+  Car(this._brand, this._year);
+
+  //getter
+  String get brand =&gt; _brand;
+  int get year =&gt; _year;
+
+  //Setter
+  set brand(String brand) =&gt; _brand = brand;
+  set year(int year) =&gt; _year = year;
+
+  void displayInfo(){
+    print("Brand: $brand, Year: $year!");
+    //print($_brand); //The getter '$_brand' isn't defined for the class 'SuperCar'
+  }
+}
+
+class SuperCar extends Car{
+  double topSpeed;
+
+  //先に基底クラスのコンストラクタにアクセスする
+  SuperCar(String brand, int year, this.topSpeed)
+   : super(brand, year);
+
+  void displaySuperCarInfo(){
+    //基底クラスのprivateフィールドにはgetterを通じてアクセス
+    print("Brand: $brand, Year: $year, Top Speed: $topSpeed");
+  }
+  void boost(){
+    print("Boost activated! Top Speed is now ${topSpeed + 50}");
+  }
+}
+
+void main(){
+  var myCar = Car("Toyota", 2021);
+  myCar.displayInfo();
+
+  var mySuperCar = SuperCar("Ferrari", 2042, 650.0);
+  mySuperCar.displayInfo();
+  mySuperCar.displaySuperCarInfo();
+  mySuperCar.boost();
+
+  //Brand: Toyota, Year: 2021!
+  //Brand: Ferrari, Year: 2042!
+  //Brand: Ferrari, Year: 2042, Top Speed: 650
+  //Boost activated! Top Speed is now 700
+
+}</code></pre>
+<h3 id="_8">抽象クラス</h3>
+<pre class="highlight"><code class="language-dart">//インスタンスを作れない
+abstract class Car{
+  void info();
+}
+
+class SuperCar implements Car {
+  String? brand;
+  int? year;
+
+  @override
+  void info(){
+    print("Brand: $brand, Year: $year!");
+  }
+
+}
+
+void main(){
+  var superCar = SuperCar();
+  superCar.brand = "Toyota";
+  superCar.year = 2011;
+
+  superCar.info();
+}</code></pre>
+<h3 id="mixins">Mixins</h3>
+<pre class="highlight"><code class="language-dart">//複数のクラスから機能を取り込む
+
+mixin SuperCar {
+  String? brand;
+  int? year;
+
+  void info(){
+    print("Brand: $brand, Year: $year!");
+    print("Super");
+  }
+}
+
+class HyperCar {
+  String? brand;
+  int? year;
+
+  void fly(){
+    print("$brand社の車は、$year年に作られ、飛行能力を備えている");
+    print("Hyper");
+  }
+}
+
+/*
+  SuperHyperCarは、HyperCarを継承する
+  HyperCarは、SuperCarをmixinする
+  結果、SuperHyperCarは、SuperCarと、HyperCarクラスの機能を使える
+*/
+class SuperHyperCar extends HyperCar with SuperCar{
+
+}
+
+void main(){
+  var superHyperCar = SuperHyperCar();
+  superHyperCar.brand = "Toyota";
+  superHyperCar.year = 2055;
+
+  superHyperCar.info();
+  superHyperCar.fly();
+
+  //Brand: Toyota, Year: 2055!
+  //Super
+  //Toyota社の車は、2055年に作られ、飛行能力を備えている
+  //Hyper
+}</code></pre>
+<h3 id="cascade">Cascade</h3>
+<pre class="highlight"><code class="language-dart">//直前のオブジェクトに対する処理を、簡略化
+
+class Color {
+  String name = "";
+  List&lt;int&gt; code = [0, 0, 0];
+
+  Color(this.name, this.code);
+
+  void info(){
+    print("color: $name, code: $code");
+  }
+
+  void inversion(){
+    code = [
+      255 - code[0],  
+      255 - code[1],  
+      255 - code[2],  
+    ];
+  }
+}
+
+void main(){
+   Color("red", [255,0,0])
+    ..info()
+    ..inversion()
+    ..name = "Cyan"
+    ..info();
+
+//color: red, code: [255, 0, 0]
+//color: Cyan, code: [0, 255, 255]
+}</code></pre>
+<h3 id="static">static</h3>
+<pre class="highlight"><code class="language-dart">//instance不要。いつもの
+class Monster{
+  int? atk;
+  static int total_num = 0;
+
+  Monster(this.atk){
+    total_num++;
+  }
+
+  static void info(){
+    print("モンスターは現在$total_num匹存在する");
+  }
+}
+
+void main(){
+  var goblin1 = Monster(12);
+  var oak1 = Monster(23);
+  print(Monster.total_num); //2
+  Monster.info(); //モンスターは現在2匹存在する
+}</code></pre>
+<h3 id="_9">名前付きコンストラクタ</h3>
+<pre class="highlight"><code class="language-dart">
+//名前付きコンストラクタ(オーバーロードがない代わり)
+class Mushroom {
+  String name;
+  String habitat;
+  int risk_level = 0;
+  String symptoms = "";
+
+  Mushroom(this.name, this.habitat);
+
+  Mushroom.danger(
+    this.name, 
+    this.habitat, 
+    this.risk_level, 
+    this.symptoms
+  );
+
+  void info(){
+    print("name: $name, habitat: $habitat");
+    if(symptoms != ""){
+      print("symptoms: $symptoms");
+    }
+  }
+}
+
+void main(){
+  var mushrooms = [
+    Mushroom.danger("ツキヨタケ", "ブナ林", 1, "下痢、嘔吐"),
+    Mushroom("なめこ", "枯れ木や切り株"),
+  ];
+
+  mushrooms[0].info();
+  mushrooms[1].info();
+
+  //name: ツキヨタケ, habitat: ブナ林
+  //symptoms: 下痢、嘔吐
+  //name: なめこ, habitat: 枯れ木や切り株
+}
+</code></pre>
+<h3 id="_10">コンストラクタの実行順</h3>
+<pre class="highlight"><code class="language-dart">
+/*
+1. 初期化子リスト
+2. 基底クラスの引数なしコンストラクタ(または、1により手動呼び出し)
+3. サブクラスのコンストラクタ
+
+下記の例で行くと
+4. 初期化子リスト super(brand, year)で基底クラスのコンストラクタを呼び出し
+5. 基底クラスのコンストラクタが実行
+6. サブクラスのコンストラクタが実行
+
+--&gt; 初期化子リストを使わない場合、デフォルトコンストラクタが暗黙呼び出しされ
+    デフォルトコンストラクタがない場合、コンパイルエラーが発生する
+
+*/
+
+class Car{
+  String brand;
+  int year;
+
+  Car(this.brand, this.year){
+    print("Car constructor");
+  }
+}
+
+class SuperCar extends Car{
+  double topSpeed;
+  //初期化子リストを複数指定したい場合、カンマで区切る
+  SuperCar(String brand, int year, this.topSpeed)
+    : super(brand, year){
+      print("SuperCar Constructor");
+    }
+}
+
+void main(){
+  var mySuperCar = SuperCar("Ferrari", 2044, 750.9);
+
+  //Car constructor
+  //SuperCar Constructor
+}
+
+//-------※(補足: 引数なしのコンストラクタあり)-------
+class Car{
+  String? brand;
+  int? year;
+
+  Car(){
+    print("Car constructor");
+  }
+}
+
+class SuperCar extends Car{
+  double topSpeed;
+
+  SuperCar(this.topSpeed)
+    {
+      print("SuperCar Constructor");
+    }
+}
+
+void main(){
+  var mySuperCar = SuperCar(700.0);
+  //Car constructor
+  //SuperCar Constructor
+}</code></pre>
+<h3 id="_11">スーパーパラメータ</h3>
+<pre class="highlight"><code class="language-dart">class Car{
+  String brand;
+  int year;
+
+  Car({required this.brand, required this.year}){
+    print("Car constructor: brand = $brand, year = $year");
+  }
+}
+
+//初期化子リストを使う必要がないので、コードが簡潔、可読性も上がるはず
+class SuperCar extends Car{
+  double topSpeed;
+
+  SuperCar({
+    required super.brand, 
+    required super.year, 
+    required this.topSpeed}
+  ){
+    print("SuperCar constructor: topSpeed = $topSpeed");
+    }
+}
+
+void main(){
+  var mySuperCar = SuperCar(
+    brand: "Ferrari", 
+    year: 2044, 
+    topSpeed: 709.0,
+  );
+  //Car constructor: brand = Ferrari, year = 2044
+  //SuperCar constructor: topSpeed = 709
+}</code></pre>
+<h3 id="_12">リダイレクトコンストラクタ</h3>
+<pre class="highlight"><code class="language-dart">//コンストラクタ内で別のコンストラクタにアクセス
+// this() == Car()
+
+class Car{
+  String brand;
+  int year;
+  Car(this.brand, this.year);
+
+  Car.old(String brand) : this(brand, 1900);
+
+  void info(){
+    print("brand = $brand, year = $year");
+  }
+}
+
+void main(){
+    Car.old("Ford").info();
+    //brand = Ford, year = 1900
+}</code></pre>
+<h3 id="_13">定数コンストラクタ</h3>
+<pre class="highlight"><code class="language-dart">/*
+  条件
+    すべてのインスタンス変数がfinalである必要がある
+    --&gt; finalフィールドはコンストラクタが呼び出された際に初期化される
+    --&gt; 今回はコンパイル時
+  利点
+    1 同じ値を持つ定数オブジェクトはメモリ内で共有 --&gt; 使用量減少
+    2 普遍性の保証
+    3 コンパイル時に既に定数オブジェクトが作成されるため、ランタイム時の
+      オーバーヘッド減少
+  使用状況
+    色や幾何学的な点等の、変更されないことが予測されるデータクラス
+*/
+
+class Color{
+  //finalとついてはいるものの、constコンストラクタで初期化されるため
+  //実行時における代入は発生しない。
+  final int red, green, blue;
+
+  //定数コンストラクタ(constをつける)
+  const Color(this.red, this.green, this.blue);
+}
+
+void main(){
+  // ※constをつけないと別のインスタンスになるので注意
+  // constキーワードを変数につけた場合、右辺の値もコンパイル時定数
+  // であることが要求されるので、省略可能になる
+  // つまり、以下はconst red = const Color(255,0,0);と同義
+  const red = Color(255,0,0);
+  const green = Color(0, 255, 0);
+  const anotherRed = Color(255, 0, 0);
+
+  //同じオブジェクトか調べる
+  print(identical(red, anotherRed)); //true
+  print(identical(red, green)); //false
+
+}</code></pre>
+<h3 id="_14">ファクトリーコンストラクタ</h3>
+<pre class="highlight"><code class="language-dart">/*
+使い道
+  ・cacheを利用して、同じインスタンスを返す
+  ・条件に基づき、異なるクラスのインスタンスを返す
+
+利点
+  ・cacheで、パフォーマンスの向上
+  ・既存のインスタンスの再利用可能
+  ・条件に基づき、異なるインスタンスを生成できる
+  --&gt; 明示的にreturnしない限り、インスタンスは返されない
+*/
+
+//cache編
+
+class Logger{
+  final String name;
+  static final Map&lt;String, Logger&gt; _cache = {};
+
+  //factory constructor
+  //既存のinstanceがcacheにあればそれを返す
+  //なければ新しいinstanceを作成し、cacheに保存しつつ、それを返す
+  factory Logger(String name){
+    //nullの可能性はないので、!(null非check演算子をつけている)
+    if(_cache.containsKey(name)){
+      return _cache[name]!;
+    }
+    else{
+      final logger = Logger._internal(name);
+      _cache[name] = logger;
+      return logger;
+    }
+  }
+
+  Logger._internal(this.name);
+
+  void log(String message){
+    print("$name: $message");
+  }
+}
+
+void main(){
+  //factoryコンストラクタへの呼び出し
+  var logger1 = Logger("UI");
+  var logger2 = Logger("UI");
+  var logger3 = Logger("Network");
+
+  print(identical(logger1, logger2)); //true
+  print(identical(logger1, logger3)); //false
+
+  logger1.log("Button clicked"); //UI: Button clicked
+  logger3.log("Data fetched"); //Network: Data fetched
+}
+
+//条件編
+
+class Shape{
+
+  //基底クラスのコンストラクタにアクセスするのでそれ用
+  const Shape();
+
+  factory Shape.create(String type){
+    if(type == "circle"){ return Circle();}
+    else if(type == "square"){ return Square();}
+    else{ throw "Unknown shape type: $type";}
+  }
+}
+
+//toStringでprint時の出力調整
+class Circle extends Shape{
+  @override
+  String toString() =&gt; "Circle";
+}
+
+class Square extends Shape{
+  @override
+  String toString() =&gt; "Square";
+}
+
+void main(){
+  var shape1 = Shape.create("circle");
+  var shape2 = Shape.create("square");
+  print(shape1); //Circle
+  print(shape2); //Square
+}</code></pre>
+<h3 id="_15">シングルトンパターンについて</h3>
+<pre class="highlight"><code class="language-dart">/*
+特徴
+  ・インスタンスが1つしかないことが保証される
+
+作り方
+  1 privateな静的フィールドを用意し、該当クラスのインスタンスを保持させる
+  2 factoryコンストラクタを通じてアクセスさせる
+  --&gt; 新しいインスタンスを作成しない可能性がある場合はこちらを使うので
+*/
+
+class MySingleton{
+  //String? name;
+
+  static final MySingleton _instance = MySingleton._internal();
+
+  factory MySingleton(){
+    return _instance;
+  }
+
+  MySingleton._internal(){
+    //name = "Nyanko";
+  }
+}
+
+void main(){
+  var singleTon1 = MySingleton();
+  var singleTon2 = MySingleton();
+
+  print(identical(singleTon1 , singleTon2)); //true
+}</code></pre>
+<h3 id="_16">初期化子リストの活用</h3>
+<pre class="highlight"><code class="language-dart">/*
+  インスタンス変数をfinalで宣言した際の代入に使える
+*/
+
+class Point {
+  final double x, y;
+
+  Point(double inX, double inY)
+    : x = inX,
+      y = inY {
+        print("$x, $y");
+      }
+}
+
+//なお、普通はこう書く
+class Point {
+  final double x,y;
+  Point(this.x, this.y){print("$x, $y");}
+}</code></pre>
+<h3 id="enum">Enum</h3>
+<pre class="highlight"><code class="language-dart">//定数をまとめたもの = 列挙型
+
+/*
+  version 2.17以降、大幅に強化されている
+  field, method, constuructorの追加が可能になった
+  --&gt; constructorについては定数コンストラクタ
+  --&gt; つまり同じ値を持つなら、メモリ内で共有される
+*/
+
+enum Rarity{
+  unique("緋色武器", "Rare:5"),
+  epic("紫武器", "Rare:4"),
+  legendary("金武器", "Rare:3"),
+  rare("青武器", "Rare:2"),
+  uncommon("緑武器", "Rare:1"),
+  common("白武器", "Rare:0");
+
+  final String commonly_name;
+  final String category;
+
+  const Rarity(this.commonly_name, this.category);
+
+  void describe(){
+    print("$commonly_name, $category");
+  }
+}
+
+void main(){
+  var weapon1 = Rarity.unique;
+  var weapon2 = Rarity.common;
+  var weapon3 = Rarity.unique;
+
+  weapon1.describe(); //緋色武器, Rare:5
+  weapon2.describe(); //白武器, Rare:0
+
+  print(weapon1.name); //unique 列挙値の名前を取得可能
+  print(weapon2.index); //1 indexを取得可能
+  print(identical(weapon1, weapon3)); //true
+}</code></pre>
+<h3 id="typedefinline-function">typedefとinline function</h3>
+<pre class="highlight"><code class="language-dart">//------typedef: 型に別の名前を付ける(2.13までは関数型のみの使用)
+
+typedef IntBinaryOperation = int Function(int a, int b);
+
+int add(IntBinaryOperation operation, int a, int b){
+  return operation(a,b);
+}
+
+void main(){
+  int result = add((a, b) =&gt; a + b, 2, 3);
+  print(result);
+}
+
+//----------inline func
+
+int add(int Function(int a, int b) operation, int a, int b){
+  return operation(a,b);
+}
+
+void main(){
+  int result = add((a,b)=&gt; a + b, 2, 3);
+  print(result);
+}
+
+/*
+  どちらを使うべきか
+
+  シンプルな関数型
+    inline-func
+    --&gt; 別途typedefを定義する手間がないため
+    --&gt; コードを読む際にすぐに肩の詳細を把握できるため
+
+  複雑な関数型で、再利用が多い
+    --&gt; typedefを用いることで可読性が登場する
+    --&gt; typedefを使うことで、コードの重複が避けられる
+*/
+
+//sortの例, ジェネリクスを用いて汎用的にしている
+
+typedef Compare&lt;T&gt; = int Function(T a, T b);
+
+int sortList&lt;T&gt;(List&lt;T&gt; list, Compare&lt;T&gt; compare){
+  list.sort(compare);
+  return list.length;
+}
+
+void main(){
+  var list = [3,1,4,1,5,9];
+  var list2 = ["Nyanko", "Nekoinu", "Nukonuko"];
+  sortList&lt;int&gt;(list, (a,b) =&gt; a - b);
+  sortList&lt;String&gt;(list, (a,b) =&gt; b.compareTo(a));
+  print(list); //[1, 1, 3, 4, 5, 9]
+  print(list2); //[Nyanko, Nukonuko, Nekoinu]
+}</code></pre>
+<h3 id="datetime">DateTime</h3>
+<pre class="highlight"><code class="language-dart">
+void main(){
+  var now = DateTime.now(); 
+  print(now); //2024-07-16 00:26:41.027
+  print(
+    "${now.year}-${now.month}-${now.day} ${now.hour}:${now.minute}:${now.second}:${now.millisecond}:${now.microsecond}"
+  );
+  //2024-7-16 0:26:41:27:0
+
+  //ISO8601
+  print(now.toIso8601String()); //2024-07-16T00:27:39.985
+}</code></pre>
+<h3 id="_17">ジェネリクス</h3>
+<pre class="highlight"><code class="language-dart">//データの型を指定し、誤った方のデータが入れられるのを防ぐ
+//同様の処理を行うクラスやメソッドをまとめられる
+
+class User&lt;T&gt;{
+  final T id;
+  User(this.id);
+}
+
+void main(){
+  //Genericsを使用していることを明記するために、User&lt;&gt;()とする
+  //書かなくても動く
+  final user = User&lt;int&gt;(1);
+  print(user.id); //1
+
+  final user2 = User&lt;String&gt;("first");
+  print(user2.id); //first
+}
+
+//継承する場合
+
+abstract class User&lt;T&gt;{
+  final T id;
+  User(this.id);
+
+  void info();
+}
+
+//Superクラスのジェネリクスまで指定すること
+class SingleUser&lt;T&gt; extends User&lt;T&gt;{
+  SingleUser(super.id);
+
+  void info(){
+    print("info SingleUser");
+    print(id);
+  }
+}
+
+class MultiUser&lt;T, K&gt; extends User&lt;T&gt;{
+  final K secondId;
+  MultiUser(super.id, this.secondId);
+
+  void info(){
+    print("info MultiUser");
+    print(id);
+    print(secondId);
+  }
+}
+
+void main(){
+  final user1 = SingleUser&lt;String&gt;("Nyanko");
+  user1.info(); 
+  //info SingleUser
+  //Nyanko
+
+  final user2 = MultiUser&lt;String, int&gt;("00001", 1);
+  user2.info(); 
+  //info MultiUser
+  //00001
+  //1
+}
+
+//Genericsの型制限
+//ちなみに、dartは、3 + "Nyanko"という風にしても暗黙型変換しない
+num add&lt;T extends num&gt;(T a, T b){return a + b;}
+print(add(3,4));
+print(add(4, 5.12));
+print(add(3, "Nyanko")); 
+//Error: Inferred type argument 'Object' doesn't conform 
+// to the bound 'num' of the type variable 'T' on 'add'.
+</code></pre>
+<h3 id="rangeij">range(i,j)の代替</h3>
+<pre class="highlight"><code class="language-dart">//もちろん、サードパーティのものをimportする選択肢もあるよ
+
+//1 rangeは内部的には、generatorを使っているはずなのでそうする
+// sync*を使用してgeneratorであることを示し、yieldで値を返す
+// yield*なら、委譲可能だが今回は使わない
+
+Iterable&lt;int&gt; range(int start, int end, [int step = 1]) sync* {
+  if(step == 0){
+    throw ArgumentError("Step cannot be zero");
+  }
+
+  if(start &lt; end &amp;&amp; step &gt; 0){
+    for(int i = start; i &lt; end; i += step){
+      yield i;
+    }
+  }
+  else if(start &gt; end &amp;&amp; step &lt; 0){
+    for(int i = start; i &gt; end; i += step){
+      yield i;
+    }
+  }
+  else {
+    throw ArgumentError("The argument specification is incorrect.");
+  }
+}
+
+void main(){
+  var list1 = [];
+  var list2 = [];
+  for(var i in range(1,10)){
+    list1.add(i);
+  }
+
+  for(var i in range(10, 1, -2)){
+    list2.add(i);
+  }
+
+  for(var i in range(1, 10, -1)){
+    print(i);　//Invalid argument(s): The argument specification is incorrect
+  }
+
+  print(list1); //[1, 2, 3, 4, 5, 6, 7, 8, 9]
+  print(list2); //[10, 8, 6, 4, 2]
+}
+
+//--------個数が決まっているなら: indexを基準とする--------------
+var range = List.generate(9, (i) =&gt; i + 2);
+print(range); //[2, 3, 4, 5, 6, 7, 8, 9, 10]</code></pre>
+<h3 id="_18">コレクション内包</h3>
+<pre class="highlight"><code class="language-dart">//Pythonでいうリスト内包表記の代替(2.3以上)
+//filteringも可能
+
+void main(){
+  var list = [for (var i = 1; i &lt;= 10; i++) i]; 
+  print(list); //[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  //filter
+  var evenlist = [for (var i = 1; i &lt;= 10; i++) if (i % 2 == 0) i];
+  print(evenlist); //[2, 4, 6, 8, 10]
+
+  //nest
+  var list = [
+    for(var i = 1; i&lt;=3; i++)
+    for(var j = 1; j&lt;=3; j++)
+    [i,j]
+  ];
+  print(list);
+  //[[1, 1], [1, 2], [1, 3], [2, 1], [2, 2], [2, 3], [3, 1], [3, 2], [3, 3]]
+
+  //map
+  var mapTest = {for (var i=1; i&lt;=3; i++) i: "value is $i"};
+  print(mapTest); //{1: value is 1, 2: value is 2, 3: value is 3}
+
+  //set
+  var setTest = {for (var i=1; i&lt;=3; i++) i};
+  print(setTest); //{1, 2, 3}
+}</code></pre>
+<h3 id="dynamic-vs-object">Dynamic vs Object</h3>
+<pre class="highlight"><code class="language-text">dynamic
+  ・動的型（実行時に型が決まる）で、どのような型の値でも受け入れ可能
+  ・コンパイル時の型チェックが行われないので、型安全性が犠牲になる
+  ・動的型の変数に対して無効な操作を行った場合、ランタイムエラーとなる
+
+Object
+  ・すべてのDartオブジェクトの基本型で、
+  　すべての型がObjectを継承する(null以外)
+  ・コンパイル時に型チェックが行われる
+  ・Object型の変数には、Objectに定義されているメソッドのみが適用可能なため
+    特定の型のメソッドやプロパティにアクセスしたい場合キャストが必要
+    --&gt; 冗長
+
+dynamicの使い道
+  --&gt; JSONでは構造が動的であることが多いので、
+      柔軟に取り扱えるdynamicが適していることが多い
+  --&gt; Objectだと、複雑な構造や、構造が頻繁に変更される場合に
+      エラーが発生しやすくなる</code></pre>
+<h3 id="json">JSON</h3>
+<pre class="highlight"><code class="language-dart">//encode&amp;decode用のlibrary
+//jsonEncode --&gt; encode
+//jsonDecode --&gt; decode
+import "dart:convert";
+
+void main(){
+  String jsonString = '{"name": "Alice", "age": 30}';
+  Map&lt;String, dynamic&gt; user = jsonDecode(jsonString);
+
+  //dynamicを使用しているので、直接プロパティにアクセス可能
+  //dynamicはnullを含むすべての値を受け入れられるので、?は不要
+  print(user["name"]);
+  print(user["age"]);
+
+  //Objectを利用した場合(nullになる可能性があるので、)
+  Map&lt;String, Object?&gt; user2 = jsonDecode(jsonString);
+
+  //型キャスト(as)を行う手間が発生する
+  print((user2["name"] as String));
+  print((user2["age"] as int));
+}
+</code></pre>
+<h3 id="_19">非同期処理</h3>
+<pre class="highlight"><code class="language-dart">//Future.delayedで、データ取得までに2秒待っている
+//非同期関数は常にFutureを返す
+//awaitの結果として得られる値はFutureが解決されると、型に応じて変換される
+
+import "dart:async";
+
+Future&lt;String&gt; fetchData() async {
+  await Future.delayed(Duration(seconds: 2));
+  return "Fetched Complete";
+}
+
+void main() async {
+  print("Fetching Data...");
+
+  String data = await fetchData();
+  print(data);
+}
+
+//複数の非同期操作(並列ではない)
+
+import "dart:async";
+
+Future &lt;String&gt; fetchData1() async{
+  await Future.delayed(Duration(seconds: 2));
+  return "Data 1";
+}
+
+Future &lt;String&gt; fetchData2() async{
+  await Future.delayed(Duration(seconds: 3));
+  return "Data 2";
+}
+
+void main() async{
+  print("Fetching data1...");
+  String data1 = await fetchData1();
+  print("Fetching data2...");
+  String data2 = await fetchData2();
+
+  print(data1);
+  print(data2);
+
+  //同期操作が先に実行される
+  //Fetching data1...
+  //Fetching data2...
+  //Data 1
+  //Data 2
+}
+
+//エラーハンドリング
+import "dart:async";
+Future&lt;String&gt; fetchData() async{
+  await Future.delayed(Duration(seconds: 2));
+  throw "An error occurred";
+}
+
+void main() async{
+  print("Fetching data");
+
+  try{
+    String data = await fetchData();
+    print(data);
+  }catch(e){
+    print("Error $e");
+  }
+}
+
+//並列処理(Future.wait)
+import "dart:async";
+
+Future&lt;String&gt; fetchData1() async{
+  await Future.delayed(Duration(seconds: 2));
+  return "Nyanko";
+}
+
+Future&lt;String&gt; fetchData2() async{
+  await Future.delayed(Duration(seconds: 2));
+  return "Nyanko2";
+}
+
+void main() async{
+  print("Fetching data...");
+
+  List&lt;String&gt; results = await Future.wait(
+    [fetchData1(), fetchData2()]
+  );
+
+  for(String result in results){print(result);}
+
+}
+
+</code></pre>
+<h3 id="_20">演算子等</h3>
+<pre class="highlight"><code class="language-text">?
+  null許容演算子
+
+!
+  nullにならないことが確実にわかっている場合に使用
+  実際にnullである場合は、アプリがクラッシュする
+
+??
+  nullであった場合に、デフォルト値を渡す処理で用いる
+
+?. ?[]
+  nullをとる可能性のあるオブジェクトに対し、アクセス可能
+
+as
+  キャスト
+
+is, is!
+  変数の型が一致しているかの検証(継承元でもtrue, is dynamicは常にtrue)
+
+[...hoge]
+  スプレッド演算子</code></pre>
+<pre class="highlight"><code class="language-dart">//mathライブラリのRandomクラスで乱数生成
+import "dart:math" as math;
+
+void main(){
+  var random = math.Random();
+  String? name;
+  if(random.nextBool()){
+    name = "Nyanko";
+  }
+
+  var ans = name ?? "Nanashi";
+  print(ans); //Nyanko or Nanashi
+
+Set&lt;int&gt; set1 = {1,2,3,4,5};
+List&lt;int&gt; list1 = [...set1];
+print(list1); //[1, 2, 3, 4, 5]
+}
+
+</code></pre>
+<h3 id="_21">所感</h3>
+<pre class="highlight"><code class="language-text">・pythonのような簡潔な記法とその他の言語のいいとこどりをしたかのようだ
+・型推論や、NULL安全性を備えているのもGood
+・さすが後発言語</code></pre>
+</details>
+<h2 id="q2-flutter">Q2. Flutterの環境構築ができますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_22">環境構築</h3>
+<pre class="highlight"><code class="language-text">Step0
+  ・[公式の手順](https://docs.flutter.dev/get-started/install)に則って環境構築を進める
+
+Step1
+  ・flutter doctorを実行
+  --&gt; WindowsならVisual Studioが必要
+  --&gt; Androidなら、Android toolchainが必要
+  --&gt; 足りない箇所は表示してくれる
+  --&gt; 今回はAndroidで実行してみる(せっかくクロスプラットフォームなので)
+
+Step2
+  ・Shift + Ctrl + Pでflutterと打ち込み、新しいプロジェクトを作成
+  ・またコマンドパレットを開き、Flutter:Select Deviceで端末選択
+  ・lib/main.dartでF5(実行&gt;デバッグの開始)を押して、アプリを起動
+  --&gt; 起動には少し時間がかかるが、起動後はホットリロード可能
+
+cmdの場合
+  ・flutter create &lt;app-name&gt; --&gt; プロジェクト作成
+  ・flutter devices --&gt; 起動しているデバイス一覧の確認
+  ・flutter run --device-id &lt;deviceのidを指定　Chromeならchrome&gt;
+    --&gt; 今回の場合は、emulator-5554だった
+※遅いと感じた場合は、VMアクセラレータをONにする </code></pre>
+</details>
+<h2 id="q3-flutter">Q3. Flutterの基礎について知っていますか?</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_23">基本的な用語を理解する</h3>
+<pre class="highlight"><code class="language-text">Flutter
+  ・クロスプラットフォームのアプリを作成するためのツール
+  ・Googleが提供している
+  ・プログラミング言語はDart
+  ・Dartが、1つのソースコード --&gt; 
+    iOS/Android/Webで動作する形式に変換している
+
+各種ファイル
+  ・lib: メインのソースコード用ディレクトリ
+  ・web: Webアプリに依存したファイルを配置
+  ・ios: iOSアプリに依存したファイルを配置
+  ・android: Androidアプリに依存したファイルを配置
+  ・pubspec.yaml: 依存ライブラリ定義ファイル
+  ・test: testコード用のディレクトリ
+
+Widget
+  ・UserInterfaceを構築するための部品
+  ・Widgetを組み合わせて、目的のUIを表現する
+  ・親Widget-子Widgetのようにツリー構造になっているので、
+    Widget-treeと呼ばれる
+
+runApp()
+  Widgetを受け取り、これをルートにする</code></pre>
+<pre class="highlight"><code class="language-dart">/*
+  Materialデザインに則った、Flutterアプリ開発に必要なファイルを含む
+*/
+import "package:flutter/material.dart";
+
+/*
+  Center: 中央寄せ用Widget
+  Text: テキスト用Widget
+  Treeで考えると
+    runApp --&gt; Center --&gt; Text
+
+  TextDirection: テキストの方向を指定
+*/
+void main(){
+  // void runApp(Widget app)
+  runApp(
+    const Center(
+      child: Text(
+        "Hello, World!",
+        textDirection: TextDirection.ltr,
+      ),
+    ),
+  );
+}</code></pre>
+<h3 id="widget">基本的なWidget</h3>
+<pre class="highlight"><code class="language-dart">//Text
+Text("Hogehoge");
+
+//Text(Style)
+Text("Hogehoge", style: TextStyle(
+  fontWeight: FontWeight.bold,
+  fontStyle: FontStyle.italic,
+  fontSize: 30,
+  color: Colors.green,
+  textAlign: TextAlign.right,
+))
+
+//Row, Column
+//水平、垂直方向に柔軟なレイアウトを設定できる
+
+//Stack
+//直線上に配置するのではなく、ウィジェットを重ねて配置可能
+
+//Container
+//長方形の資格要素を作成可能</code></pre>
+<h3 id="2">基本的な用語2</h3>
+<pre class="highlight"><code class="language-text">Text
+  ・テキスト用のレイアウトを設定する
+
+Row,Column
+  ・水平、垂直方向に柔軟なレイアウトを設定できる
+
+Stack
+  ・直線上に配置するのではなく、ウィジェットを重ねて配置可能
+
+Container
+  ・長方形の視覚要素を作成可能
+
+StatelessWidget
+  ・状態が変化しないWidget
+  ・継承元
+
+Widget build(BuildContext context)
+  ・buildメソッドは、FlutterのWidget-Treeを構築するためのメソッド
+  ・StatelessWidgetやStatefullWidgetに必ず実装される
+  ・buildメソッド内で、Widgetを返すことで、画面に表示される内容
+  　が定義される
+
+theme: ThemeData(primarySwatch: Colors.blue)
+  ・ThemeData: Flutterアプリ全体のテーマを定義するためのクラス
+                色、font, icon等のスタイルが含まれる
+  ・primarySwatch: アプリのプライマリーカラーを定義する
+
+mainAxisAlignment: MainAxisAlignment.spaceAround
+  ・Flutterのレイアウトアルゴリズムの一部
+  ・Widgetを主軸(垂直or水平)に沿ってどのように配置するかを指定
+  ・spaceAroundは子Widget間に等間隔のスペースを挿入し
+  　最初と最後の子Widgetの外側にも同じSpaceを入れる
+
+child, children
+  ・child: 一つのWidgetを持つことができる
+  ・children: 複数のWidgetを持つことができる
+
+MaterialApp
+  ・Material-Designの原則に従ったFlutterアプリを構築するための
+    Widget.
+  ・アプリ全体の設定や、テーマ、ナビゲーションなどを管理
+  ・例）
+    title: アプリのタイトル
+    theme: アプリケーションのテーマを設定(ThemeData)
+    home: アプリ起動時に表示されるWidget
+    routes: アプリケーションのルートと対応するWidget
+            navigationを簡単に管理可能
+    initialRoute: アプリ起動時に初期表示されるルート
+    navigatorKey: ナビゲータの状態を管理するためのキー
+    locale: 言語と地域
+    debugShowCheckedModeBanner: DEBUGバナーを表示するか
+Scaffold
+  ・典型的なMaterial-Designアプリのレイアウトを構築するための
+    Widget
+  ・アプリの主要なUI要素を簡単に配置可能
+  ・例)
+    ・appBar: アプリバーを表示
+    ・body: メインのコンテンツを表示
+    ・floatingActionButton: 英語名の通り
+    ・drawer: 左からスライドするdrawerを表示
+    ・bottomNavigationBar: 画面下部にナビゲーションバーを表示
+    ・backgroundColor: 背景色     </code></pre>
+<h3 id="1">例1</h3>
+<pre class="highlight"><code class="language-dart">import "package:flutter/material.dart";
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title: "Flutter Demo",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: &lt;Widget&gt;[
+            Text("Default"),
+            Text("Bold", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text("Italic", style: TextStyle(fontStyle: FontStyle.italic)),
+            Text("fontSize = 36", style: TextStyle(fontSize: 30)),
+            Text("Red", style: TextStyle(color: Colors.red)),
+            Container(
+              width: double.infinity,
+              color: Colors.grey,
+              child: Text("TextAlign.right", textAlign: TextAlign.right),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}</code></pre>
+<p><a class="glightbox" href="images/001.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="textの見た目テスト用の画像" src="images/001.png" /></a></p>
+<h3 id="3">基本的な用語3</h3>
+<pre class="highlight"><code class="language-text">Container
+  ・Size, 背景, 余白, 枠線などを指定可能
+
+EdgeInsets.all(10)
+  ・長方形の各辺四方向に10の余白を与える
+  ・marginなら外側に、paddingなら内側に
+
+BorderDecoration
+  ・Widgetの修飾を行う
+
+BorderRadius.circular(10)
+  ・角を10だけ丸くする</code></pre>
+<pre class="highlight"><code class="language-dart">    import "package:flutter/material.dart";
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+    title: "Flutter Demo",
+    theme: ThemeData(primarySwatch: Colors.blue),
+    home:  Scaffold(
+      body: Center(
+        child : Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: &lt;Widget&gt;[
+            Container(
+              color: Colors.blue,
+              child: Text("blue"),
+            ),
+            //textは指定がない場合、左上から始まる
+            Container(
+              width: 200,
+              height: 50,
+              color: Colors.blue,
+              child: Text("200*50"),
+            ),
+            //内側スペース
+            Container(
+              padding: EdgeInsets.all(8),
+              color: Colors.blue,
+              child: Text("padding"),
+            ),
+            //外側スペース
+            Container(
+              color: Colors.blue,
+              child: Container(
+                margin: EdgeInsets.all(8),
+                color: Colors.green,
+                child: Text("margin"),
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.blue,
+                  width: 2),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              padding: EdgeInsets.all(8),
+              child: Text("border"),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+  }
+}</code></pre>
+<p><a class="glightbox" href="images/002.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="containerの見た目調整後の画像" src="images/002.png" /></a></p>
+<h3 id="4">基本的な用語その4</h3>
+<pre class="highlight"><code class="language-text">--&gt; crossと名があるように
+    本来縦に並べるColumnで、左右の幅を変えたければCross
+    本来横に並べるRowで、上下の幅を変えたければRow
+
+縦に並べたWidgetの左寄せ
+  crossAxisAlignment: CrossAxisAlignment.start;
+  --&gt; 横の場合は、mainAxisAlignmentだったね
+
+縦に並べたWidgetの右寄せ
+  crossAxisAlignment: CrossAxisAlignment.end;
+
+縦方向の中央寄せ
+  mainAxisAlignment: MainAxisAlignment.center;
+
+縦方向の下寄せ
+  mainAxisAlignment: MainAxisAlignment.end;
+
+縦方向の均等配置
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly;</code></pre>
+<pre class="highlight"><code class="language-dart">import "package:flutter/material.dart";
+
+void main() =&gt; runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      title : "Flutter Demo",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Scaffold(
+        body: Column(
+          children: &lt;Widget&gt;[
+            Container(
+              width: double.infinity,
+              height: 60,
+              color: Colors.grey[200],
+              child: Row(
+                //均等配置
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: &lt;Widget&gt;[
+                  Container(color: Colors.red, child: Text("first")),
+                  Container(color: Colors.blue, child: Text("second")),
+                  Container(color: Colors.green, child: Text("third")),
+                ],
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: 60,
+              child : Row(
+                //中央上寄せ
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: &lt;Widget&gt;[
+                  Container(color: Colors.red, child: Text("***")),
+                  Container(color: Colors.blue, child: Text("中央上寄せ")),
+                  Container(color: Colors.green, child: Text("***")),
+                ],
+              ),
+            ),
+
+            Container(
+              width: double.infinity,
+              height: 60,
+              child: Row(
+                //右寄せ
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: &lt;Widget&gt;[
+                  Container(color: Colors.red, child: Text("***")),
+                  Container(color: Colors.blue, child: Text("右寄せ")),
+                  Container(color: Colors.green, child: Text("***")),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}</code></pre>
+<p><a class="glightbox" href="images/003.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Column, Rowを使い配置を変更したもの" src="images/003.png" /></a></p>
+<h3 id="5">基本的な用語その5</h3>
+<pre class="highlight"><code class="language-text">TextButton
+  ・影のないボタン
+
+OutlinedButton
+  ・枠線のあるボタン
+
+ElevatedButton
+  ・影のあるボタン
+
+onPressed
+  ・押下された時の処理を記載する
+  --&gt; ボタンから手を離したとき
+
+onTab
+  ・押下された時の処理を記載する
+  --&gt; ボタンに触れた瞬間
+
+style: ***Button.styleFron()
+  ・各ボタンのテーマ色変更
+
+elevation
+  ・影の深さを変える
+
+backgroundColor
+  ・ボタンの背景色
+
+foregroundColor
+  ・ボタンの文字色</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+        <script src="../../javascripts/custom.js"></script>
+      
+        <script src="../../javascripts/prism.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
