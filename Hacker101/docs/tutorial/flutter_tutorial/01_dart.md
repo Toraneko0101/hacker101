@@ -2313,6 +2313,24 @@
     SingleChildScrollView
       ・スクロール不要な長さの時はしない
       ・縦の長いコンテンツを表示したいとき、Columnをラップするように使う
+
+    Opacity
+      ・透過率を決定(今回の場合これは画像の透過率)
+      ・Colors.white.withOpacity(0.5)でAppBarの透過率を調整している
+    
+    fit: BoxFit.cover
+      ・画像を幅いっぱいに延伸する
+    
+    flexibleSpace
+      ・AppBarのアイコンなどの後ろのレイヤに表示されるもの
+      ・AppBarと同じ高さ
+
+    extendBodyBehindAppBar
+      ・AppBarと同じ位置に、Bodyを描画させることを可能にする
+
+    centerTitle
+      ・タイトルを中央寄せ
+
     ```
 
     ```dart
@@ -2410,3 +2428,242 @@
     ```
 
     ![上部のAppBarには森の画像とTitle, Iconが表示されている。画像は透過されているので、コンテンツはAppBarの下に来ても見える](./images/007.png)
+
+    ### 基本的な用語その9
+
+    ```text
+    StatefulWidget
+      ・Stateをもとに作成されるUI
+      ・createState()でStateをExtendsしたクラスを返す
+      ・buildメソッドは持たず、createState()でStateを生成し、
+        Stateにbuildを行わせる
+    
+    State<StatefulWidgetを継承したクラス名>
+      ・データを基にしたWidgetを作る際に使用
+    
+    setState
+      ・データを更新する際に使用
+    ```
+
+    ```dart
+    import "package:flutter/material.dart";
+
+    void main()=> runApp(MyApp());
+
+    class MyApp extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title: "Flutter Demo",
+          theme: ThemeData(primarySwatch: Colors.blue),
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            body: Center(
+              child: MyWidget(),
+            ),
+          ),
+        );
+      }
+    }
+    
+    class MyWidget extends StatefulWidget{
+      @override
+      _MyWidgetState createState()=> _MyWidgetState();
+    }
+
+    class _MyWidgetState extends State<MyWidget> {
+      int cnt = 0;
+
+      @override
+      Widget build(BuildContext context){
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(cnt.toString()),
+            TextButton(
+              onPressed: (){
+                setState((){
+                  cnt++;
+                });
+              },
+              child: Text("カウントアップ"),
+            ),
+          ],
+        );
+      }
+    }
+    ```
+
+    ![カウントアップを押すと、表示される数字が1ずつ上昇していく画面](./images/008.png)
+
+## Q4 Todoアプリを作成できますか?
+
+??? success
+
+    ### 手順1
+
+    ```text
+    プロジェクトを作成する
+      $ flutter create mytodoapp
+      Shift+Ctrl+P --> flutter devices
+      $ cd mytodoapp
+      $ flutter run
+
+    ```
+
+    ### 手順2
+
+    ```text
+    ・トップ画面を作成する
+    --> MyTodoAppを、アプリ起動時に最初に表示するWidgetにする
+    --> bodyに、TodoListPageを配置する
+    ```
+
+    ```dart
+    import 'package:flutter/material.dart';
+
+    void main(){
+      runApp(MyTodoApp());
+    }
+
+    class MyTodoApp extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return MaterialApp(
+          title: "My Todo App",
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: TodoListPage(),
+        );
+      }
+    }
+
+    class TodoListPage extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return Scaffold(
+          body: Center(child: Text("リスト一覧画面"),)
+        );
+      }
+    }
+    ```
+
+    ### 基本的な用語その9
+
+    ```text
+    Widget
+      ・レイアウトを決定するための各種設定情報を保持する
+      ・fieldはすべてfinal
+      ・自身の対になる、Elementオブジェクトを、Widget.createElementで生成
+        --> StatefulWidgetの場合、StateがElementオブジェクトを生成する
+      ・親Widgetの参照は持たない
+
+      --> UIの外観を記述するための設計図
+    
+    Element
+      ・Widget.createElementによって生成されるインスタンス
+      ・Widgetのライフサイクルと状態を管理する
+      ・親、子の参照を持っており、先祖子孫の走査が可能
+      ・自身の設計図であるWidgetも参照している
+      ・Elementクラスは、抽象クラスであるBuildContextの実装
+      ・Widget.buildの引数として渡される、contextはElementオブジェクト
+      ・RenderObjectをfieldとして保持する
+
+    RenderObject
+      ・実際に描画を行うオブジェクト
+      ・Flutterフレームワークが画面にUIを描画する際に参照する
+      ・タッチやクリックの検出なども担当する
+      ・RenderObjectWidgetを継承したクラスのcreateRenderObjectメソッドで
+        生成される
+
+    Navigator.of
+      ・Elementオブジェクトであるcontextを受け取り、NavigatorState
+        オブジェクトを返却する
+      ・StaefulWidgetのサブクラス
+      ・Navigator.createElement --> StatefulElement型のオブジェクト作成
+      ・Navigator.createState --> NavigatorState型のオブジェクト作成
+    
+    NavigatorState
+      ・画面遷移の状態を管理するクラス
+
+    ---------------
+
+    <実際の流れ: 画面描画>
+    0 MyWidgetクラスが、StatelessWidgetを継承しているとする
+    1 buildメソッドで、Text("Hello")を返す
+    2 FlutterはMyWidgetのインスタンスを作成し、StatelessElementを生成
+    3 StatelessELementがbuildメソッドを呼び出し、Textウィジェットを作成
+    4 Textウィジェットが、RenderParagraphというRenderObjectを生成
+    5 RenderParagraphがテキストのレイアウトと描画を行う
+
+    --> ルートから順々に、Widgetに則って、Elementツリーが構築されていく
+
+    <実際の流れ；画面遷移>
+    1 Navigator.of(context)で現在のコンテキストに関連付けられた
+      NavigatorStateのインスタンスを返す
+    2 pushメソッドを呼び出し、新しい画面(Route)をスタックに追加
+      2-1 MaterialPageRouteで、遷移画面の構築方法を指定
+      2-2 builerパラメータに、遷移先画面のWidgetを返す関数を指定
+    3 Navigatorは新しいRouteがpushされると、
+    　そのRouteの遷移アニメーションを開始
+    4 アニメーション終了後、遷移先画面が描画される
+
+    --> スタックを追加しているので、popしたときは取り去るだけでいい
+    ```
+
+    ### 手順3
+
+    ```text
+    2つ目の画面を作成する
+      --> リスト追加画面用のTodoAddPageを作成
+      --> 一覧画面から追加画面に遷移する処理を追加
+      --> 追加画面から一覧画面に戻る処理を追加
+
+    Navigator.of(context).push()
+    Navigator.of(context).pop()
+      
+    ```
+
+    ```dart
+    class TodoListPage extends StatelessWidget{
+      @override
+      Widget build(BuildContext context){
+        return Scaffold(
+          body: Center(
+            child: Text("リスト一覧画面"),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context){
+                  return TodoAddPage();
+                }),
+              );
+            },
+            child: Icon(Icons.add),
+            )
+        );
+      }
+    }
+
+    class TodoAddPage extends StatelessWidget{
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: Center(
+            child: TextButton(
+              onPressed: (){
+                Navigator.of(context).pop();
+              },
+              child: Text("リスト追加画面(クリックで戻る)"),
+            ),
+          )
+        );
+      }
+    }
+    ```
+
+    ![遷移元画面。プラスアイコンをクリックすると遷移](./images/009.png)
+
+    ![遷移先画面。中央の文字をクリックすると、元の画面に戻る](./images/010.png)
