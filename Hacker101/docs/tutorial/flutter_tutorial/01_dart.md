@@ -2535,6 +2535,7 @@
             primarySwatch: Colors.blue,
           ),
           home: TodoListPage(),
+          debugShowCheckedModeBanner: false, //下の画像は誤ってtrueにしている
         );
       }
     }
@@ -2667,3 +2668,148 @@
     ![遷移元画面。プラスアイコンをクリックすると遷移](./images/009.png)
 
     ![遷移先画面。中央の文字をクリックすると、元の画面に戻る](./images/010.png)
+
+    ### 手順4
+
+    ```text
+    リスト一覧画面を作成する
+      ・AppBarの作成
+      ・ListViewでスクロール可能なリストの作成
+    ```
+
+    ```text
+    ListView vs SingleChildScrollView + Column
+      ・ListView：画面上に描画する分だけをレンダリング
+      --> 全体がheight: 200で、描画可能領域が20なら、
+      　　180はレンダリングされない
+    
+    SingleChildScrollView + Column
+      ・画面外の領域にあるものもレンダリング
+      --> コストは高いが、該当位置までスクロールしたい時などは便利
+    ```
+
+    ```dart
+    //Androidエミュで表示している
+    class TodoListPage extends StatelessWidget{
+
+      List<String> todoList = [
+        "キャラクターを作成する",
+        "シーズンでLv61まで育てる",
+        "真Vブラックスター覚醒武器を手に入れる",
+        "真IVブラックスターメイン武器を手に入れる",
+        "トゥバラ装備をボス防具と交換する",
+        "たゆまぬ依頼でボス防具を真Vにする",
+        "確定強化のアクセ依頼をこなす",
+        "カプラスを10段階つめる",
+        "太古防具と交換する",
+        "真Vアクセを購入するか、市場で購入する",
+        "デヴォレカ堀りを始める",
+      ];
+
+      @override
+      Widget build(BuildContext context){
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text("リスト一覧"),
+          ),
+          body: ListView.builder(
+            itemCount: todoList.length,
+            itemBuilder: (context, index){
+              return Card(
+                child: ListTile(
+                  title: Text(todoList[index]),
+                ),
+              );
+            },
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context){
+                  return TodoAddPage();
+                }),
+              );
+            },
+            child: const Icon(Icons.add),
+            )
+        );
+      }
+    }
+    ```
+
+    ![Androidエミュレータでの画像。リストが表示されている](./images/011.png)
+
+    ### 手順5
+
+    ```text
+    ・リスト追加フォームを作成する
+      --> TodoAddPageに、テキスト入力フィールドを追加する(TextField)
+      --> TextFieldのonChangeイベントで入力したテキストを受け取る
+      --> StatefulWidgetと、Stateを用いて、入力したテキストを扱う
+      --> Navigator.of(context).pop(), .push()の引数にデータを渡し
+          画面を超えてデータをやり取りできるようにする
+      --> リスト一覧画面で、受け取ったデータを表示する
+    ```
+
+    ```text
+    TextField
+      ・ユーザにテキストの入力を許可するために使用される
+    
+    SizedBox
+      ・UIの調整などに使用
+    ```
+
+    ```dart
+    class TodoAddPage extends StatelessWidget{
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("リスト追加"),
+          ),
+          body: Container(
+            padding: EdgeInsets.all(64),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                //入力欄
+                TextField(),
+                const SizedBox(height: 8),
+
+                //追加ボタン
+                Container(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: (){},
+                    child: const Text(
+                      "リスト追加",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                  )
+                  ),
+                ),
+
+                const SizedBox(height: 8),
+
+                //戻るボタン
+                Container(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                    child: Text("キャンセル"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+    ```
+
+    ![入力欄が備わったページ](./images/012.png)
+
