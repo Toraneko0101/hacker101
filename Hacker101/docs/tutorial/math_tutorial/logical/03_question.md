@@ -1588,6 +1588,120 @@
     ※無限集合の場合も同様である
     ```
 
+## Q38 自然演繹について知っていますか?
+
+??? success
+    ### 自然演繹
+
+    ```text
+    ・論理の枠組みの一つ
+    ・人間が普段行う形に近い推論を記号で表現する
+    ・推論の本質部分を推論規則の形に集約
+    ・推論規則を繰り返し使うことで証明を得る
+    ```
+
+    ### 自然演繹の例
 
 
+    ```text
+    [日常の推論]
+      1 母親はみな女性である
+      2 晶さんは女性ではない
+      3 晶さんは子供好きである
+      --> 母親でない子供好きがいる
+
+      1 母親は皆女性なのだから、仮に晶さんが母親だとすると
+        晶さんは女性のはずである
+      2 しかし、晶さんは女性ではないので、仮定は誤りで
+        晶さんは母親ではないとわかる
+      3 さらに、晶さんは子供好きだから、晶さんは母親ではない子供好きである
+      --> よって、母親出ない子供好きが存在する
+    
+    [記号で表す]
+      P(x): xは母親
+      Q(x): xは女性
+      R(x): xは子供好き
+      晶さん: c
+
+      1 ∀x(P(x)⇒Q(x))
+      2 ￢Q(c)
+      3 R(c)
+      --> ∃x(￢P(x)∧R(x))
+    ```
+
+    ### 図式で表したもの
+
+    ![自然演繹の例1](./images/sample1.png)
+
+    ??? info
+
+        ```latex
+        % ソースからTEX2imgを用いてpngに変換している
+        \documentclass{article}
+        \usepackage[a4paper, margin=0pt]{geometry} %余白0
+        \usepackage{bussproofs} %証明木
+        \usepackage{amssymb} %implies
+        \usepackage{amsmath} %implies
+
+        \begin{document}
+
+        \begin{prooftree}
+            \AxiomC{4}
+            \noLine
+            \UnaryInfC{$ P(c) $}
+                \AxiomC{1}
+                \noLine
+                \UnaryInfC{$ \forall{x}(P(x) \implies Q(x)) $}
+                \RightLabel{$ \forall{E} $}
+                \UnaryInfC{$ P(c)\implies Q(c) $}
+                \RightLabel{$ \implies E $}
+            \BinaryInfC{$ Q(c) $}
+            \AxiomC{2}
+            \noLine
+            \UnaryInfC{$ \neg Q(c) $}
+            \RightLabel{$ \implies E $}
+            \BinaryInfC{$ \bot $}
+            \RightLabel{$ \implies{I}\,4 $}
+            \UnaryInfC{$ \neg P(c) $}
+            \AxiomC{3}
+            \noLine
+            \UnaryInfC{$ R(c) $}
+            \RightLabel{$ \land{I} $}
+            \BinaryInfC{$ \neg P(c) \land R(c) $}
+            \RightLabel{$ \exists{I} $}
+            \UnaryInfC{$ \exists{x}(\neg P(c) \land R(x)) $}
+            
+
+            
+        \end{prooftree}
+
+        \end{document}
+        ```
+
+    ### 自然演繹の肝
+
+    ```text
+    ・記号があらわす内容は忘れることができる
+      --> P(x), Q(x), R(x)の意味合いにかかわらず、仮定から
+          最下段の結論が導かれる
+    
+    [例]
+      ∀x(P(x)⇒Q(x)), ￢Q(c), R(c)から∃x(￢P(x)∧R(x))を導く別の例
+
+      対象領域D = 相撲取り
+
+      P(x): xは関取である
+      Q(x): xは一場所に15日間相撲を取る
+      R(x): xは四時以降に土俵に上がる
+
+      --> 関取ではないが、四時以降に土俵に上がる相撲取りが存在する
+    ```
+
+## Q39 含意の連言の推論規則について知っていますか?
+
+??? success
+    ### ⇒と∧の除去規則
+
+    ```text
+    ```
 
