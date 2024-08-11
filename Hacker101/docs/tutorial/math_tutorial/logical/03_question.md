@@ -1824,7 +1824,7 @@
     ### 選言の除去規則
 
     ```text
-    ・場合分けによる証明を表している
+    ・「場合分けによる証明」を表している
     ・A∨Bが成り立つとき、
       Aが成り立つと仮定 --> Cが成り立つ
       Bが成り立つと仮定 --> Cが成り立つ
@@ -1853,7 +1853,217 @@
 
     ### 矛盾の推論規則
 
+    ```text
+    ・証明中で矛盾が導かれれば、結論としては何でも導ける
+    ```
 
+    $$
+      \begin{align}
+      & A \land \neg A \vdash B 
+      \end{align}
+    $$
+
+    ![矛盾](./images/017.png)
+
+    ### 演習問題
+
+    ```text
+    (P⇒⊥)∨Q ⇒ (P⇒Q)を証明せよ
+    ```
+
+    ![演習問題の答え](./images/018.png)
+
+    ```text
+    (P∨Q)∧(P⇒⊥) ⇒ Qを証明せよ
+    ```
     
+    ![演習問題の答え](./images/019.png)
+
+
+## Q41 否定と同値の代用規則について知っていますか?
+
+??? success
+    ### ￢Aと、A⇒⊥
+
+    ```text
+    ￢AとA⇒⊥の読み替えを許せば、
+    否定の推論規則は、含意の推論規則で代用可能
+    ```
+
+    ### 含意の推論規則
+
+    ![含意](./images/020.png)
+
+    ### A⇒⊥を、￢Aに読み替えた場合
+
+    ```text
+    ・Aを仮定して、矛盾が生じれば、￢Aが導ける
+    ・Aとその否定、￢Aから、矛盾が導ける
+      --> 排中律を採用するなら読み替えられるね
+    ```
+
+    ![否定](./images/021.png)
+
+    ### 演習問題
+
+    ```text
+    (P⇒⊥)∨Q ⇒ (P⇒Q)を、￢で表現
+    ```
+
+    ![演習問題の答え](./images/022.png)
+
+    ```text
+    二重否定に関する含意命題 P ⇒ ￢￢Pを自然演繹で証明せよ
+
+    ※￢Pは、P⇒⊥と置き換えられる
+    P ⇒ ￢￢P
+    -->  P ⇒ ￢(P⇒⊥)
+    -->  P ⇒ (P⇒⊥)⇒⊥
+    -->  P ⇒ (￢P⇒⊥)
+
+    つまり、一時的に￢Pを仮定することができる。
+    ￢P⇒⊥は、￢￢Pと置き換えられる。
+    ```
+
+    ![演習問題の答え](./images/023.png)
+
+    ```text
+    P ⇒ ￢(￢P∧Q)を証明せよ
+    --> P ⇒ (￢P∧Q ⇒⊥)
+    ```
+
+    ![演習問題の答え](./images/024.png)
+
+    ### A⇔Bと、(A⇒B)∧(B⇒A)
+
+    ```text
+    連言の推論規則で表現できる
+    ```
+
+    ### 連言の推論規則
+
+    ![連言ver](./images/025.png)
+
+    ### (A⇒B)∧(B⇒A)をA⇔Bに読み換えた場合
+
+    ![同値ver](./images/026.png)
+
+    ### 演習問題
+
+    ```text
+    ド・モルガンの法則￢(P∨Q)⇔￢P∧￢Qを自然演繹で証明せよ
+
+    仮定：￢(P∨Q)の段階では、P,Qの真偽については分かっていない
+    PやQを一時的に仮定した場合、矛盾が生じる 
+    --> ￢P, ￢Qとわかるという流れ
+
+    矛盾導出 = 背理法の考え方に近い。
+    --> ￢Pを証明するために、その否定Pを仮定して矛盾を導く
+    --> 今のところ矛盾が生じておらず、
+    　　「それ」を仮定した瞬間、矛盾が生じるなら「それ」は偽
+
+    <￢(P∨Q)⇒￢P∧￢Qを結論から考える>
+      1 今回の場合、最下段は￢(P∨Q) ⇒ ￢P∧￢Q
+      2 つまり、その一段階上には、￢P∧￢Qが来る
+      3 その一つ上には、￢Pと￢Q、推論規則として、∧Iを使うところまではすぐにわかる
+      4 そうなってくると、仮定から￢Pと￢Qをそれぞれ導く必要が出てくる
+      5 それには￢(P∨Q)だけでは不十分。
+      6 そこで、PやQを仮定し、それを今回は必ず真である￢(P∨Q)とそれぞれ組み合わせ、
+        矛盾が生じれば一時的に仮定したPやQが偽だとわかる
+      7 結果￢Pや￢Qが手に入り、証明木が構築される
+
+    <￢P∧￢Q⇒￢(P∨Q)を結論から考える>
+      1 今回の場合、最下段は￢P∧￢Q⇒￢(P∨Q)
+      2 つまり、その一段階上には、￢(P∨Q)が来る
+      3 ￢(P∨Q)は、P∨Q⇒⊥なので、その1つ上には⊥
+      4 つまり、P∨Qを一時的に仮定し、￢P∧￢Qと組み合わせたうえで、⊥を導く
+      5 P∨Qを仮定した場合、∨Eが使えるので、場合分けする
+      6 Pを仮定した場合、Qを仮定した場合、いずれにしても⊥が導けるという流れにする
+    ```
+
+    ![演習問題の答え](./images/027.png)
+
+    ??? info
+
+        ```latex
+        \documentclass{article}
+        \usepackage[a4paper, margin=0pt]{geometry}
+        \usepackage{bussproofs}
+        \usepackage{amssymb} %implies
+        \usepackage{amsmath} %implies
+
+        % ￢(P∨Q)⇔￢P∧￢Q
+        % (P∨Q⇒⊥) ⇔ ￢P∧￢Q
+
+        \begin{document}
+
+        \begin{prooftree}
+          \AxiomC{2}
+          \noLine
+          \UnaryInfC{$ P $}
+          \RightLabel{$ \lor E_1 $}
+          \UnaryInfC{$ P \lor Q $}
+            \AxiomC{1}
+            \noLine
+            \UnaryInfC{$ \neg(P \lor Q) $}
+          \RightLabel{$ \Rightarrow E $}
+          \BinaryInfC{$ \bot $}
+          \RightLabel{$ \Rightarrow I $ 2}
+          \UnaryInfC{$ \neg P $}
+
+          \AxiomC{3}
+          \noLine
+          \UnaryInfC{$ Q $}
+          \RightLabel{$ \lor E_2 $}
+          \UnaryInfC{$ P \lor Q $}
+            \AxiomC{1}
+            \noLine
+            \UnaryInfC{$ \neg(P \lor Q) $}
+          \RightLabel{$ \Rightarrow E $}
+          \BinaryInfC{$ \bot $}
+          \RightLabel{$ \Rightarrow I $ 3}
+          \UnaryInfC{$ \neg Q $}
+          \RightLabel{$ \land I $}
+          \BinaryInfC{$ \neg P \land \neg Q $}
+          \RightLabel{$ \Rightarrow I $ 1}
+          \UnaryInfC{$ \neg(P \lor Q) \Rightarrow \neg P \land \neg Q $}
+        % ￢P∧￢Q　⇒ ￢(P∨Q)  
+          \AxiomC{4}
+          \noLine
+          \UnaryInfC{$ P \lor Q $}
+            \AxiomC{5}
+            \noLine
+            \UnaryInfC{$ P $}
+              \AxiomC{6}
+              \noLine
+              \UnaryInfC{$ \neg P \land \neg Q $}
+              \RightLabel{$ \land E_1 $}
+              \UnaryInfC{$ \neg P $}
+              \RightLabel{$ \Rightarrow E $}
+              \BinaryInfC{$ \bot $}
+              \AxiomC{7}
+              \noLine
+              \UnaryInfC{$ Q $}
+              \AxiomC{6}
+              \noLine
+              \UnaryInfC{$ \neg P \land \neg Q $}
+              \RightLabel{$ \land E_2 $}
+            \UnaryInfC{$ \neg Q $}
+          \RightLabel{$ \Rightarrow E $}
+          \BinaryInfC{$ \bot $}
+          \RightLabel{$ \lor E $ 5,7}
+          \TrinaryInfC{$ \bot $}
+          \RightLabel{$ \Rightarrow I $ 4}
+          \UnaryInfC{$ \neg (P \lor Q ) $}
+          \RightLabel{$ \Rightarrow I $ 6}
+          \UnaryInfC{$ \neg P \land \neg Q \Rightarrow \neg(P \lor Q) $}
+          \RightLabel{$ \land I $}
+          \BinaryInfC{$ \neg(P \lor Q) \Leftrightarrow \neg P \land \neg Q $}
+          \end{prooftree}
+
+
+
+        \end{document}
+        ```
 
 
