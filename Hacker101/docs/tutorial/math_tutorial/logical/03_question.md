@@ -2906,3 +2906,101 @@
     ```
 
     ![定義に則り機械的な導出を行った図](./images/048.png)
+
+
+    ### 導出を細分化し、木構造で表す
+
+    ![木構造で表した図](./images/049.png)
+    ??? info
+
+        ```latex
+        % tree.styなどは複数の親から単一の子に対して線を引けなさそうだったので
+        % nodeの位置を手動調整しているので、ちょっとめんどい
+        \documentclass[dvipdfmx]{jsarticle}
+        \usepackage[a4paper, margin=0pt]{geometry}
+        \usepackage{tikz}
+
+        \begin{document}
+
+        \begin{tikzpicture}
+            % Define nodes
+            \node (A) at (4,0) {$ \forall x_1(P_1(x_1) \Rightarrow P_2(x_1)),\,1 $};
+            \node (B_1) at (0,-1) {$ P_1(f_1),\,4$};
+            \node (B_2) at (4,-1) {$ P_1(f_1) \Rightarrow P_2(f_1),\,\forall E $};
+            \node (C_1) at (2,-2)  {$ P_2(f_1),\,\Rightarrow E $};
+            \node (C_2) at (6,-2)  {$ P_2(f_1) \Rightarrow \bot,\,2 $};
+            \node (D) at (4,-3)  {$ \bot,\,\Rightarrow E $};
+            \node (E_1) at (0,-4)  {$ P_3(f_1),\,3 $};
+            \node (E_2) at (4,-4)  {$ P_1(f_1) \Rightarrow \bot,\,\Rightarrow I $ 4};
+            \node (F) at (2,-5)  {$ (P_1(f_1)\Rightarrow \bot)\land P3(f_1),\,\land I $};
+            \node (G) at (2,-6)  {$ \exists x_1((P_1(x_1)\Rightarrow \bot) \land P_3(x_1)),\,\exists I $};
+
+            % Draw the lines connecting the parents to the child
+            \draw (A) -- (B_2);
+            \draw (B_1) -- (C_1);
+            \draw (B_2) -- (C_1);
+            \draw (C_1) -- (D);
+            \draw (C_2) -- (D);
+            \draw (D) -- (E_2);
+            \draw (E_1) -- (F);
+            \draw (E_2) -- (F);
+            \draw (F) -- (G);
+        \end{tikzpicture}
+
+        \end{document}
+        ```
+    
+    ### 依存する仮定のみを表現したもの
+
+    ```text
+    ・証明木に比べて、木構造は、各々の部分導出が依存する仮定の集合を
+      分析しやすい
+    
+    ・仮定は、すべて葉の位置に存在する
+
+    ・仮定は、根に向けて蓄積されていき、導出の定義に応じて取り除かれる
+    
+    ※仮定だけからなる導出については、,のあとに仮定の番号を記した
+    ```
+
+    ![依存する仮定の集合](./images/050.png)
+
+    ### 演習問題
+
+    ```text
+    0変数のP1と、1変数のP2を用い
+    関数記号を使わない言語で、以下の論理式の導出を示せ
+
+    (P1⇒∀x1 P2(x1))⇒ ∀x1(P1⇒P2(x1))
+
+    また、各部分導出が依存する仮定の集合を、木構造で表現せよ
+
+    ※P1を一時的に仮定し、P2(x1)を導くことを、すべてのx1に対して行えば
+      結論は示せる
+      --> 全称除去を用いて汎化する場合、それは任意のx1に対しての操作になるので
+          P1を一時的に仮定し、P2(f1)が導かれるなら、それで
+          すべてのx1に対して、条件法導入を行ったことになる。よって証明は完了
+    ```
+
+    ![演習問題の答え](./images/051.png)
+
+    ![木構造](./images/052.png)
+
+    ### 証明可能性について
+
+    ```text
+    ・自然演繹で証明できる論理式は以下のように定義される
+
+    [証明可能性]
+      論理式Aが自然演繹により、「証明可能」であるとは
+      Aが結論であって、それが依存する仮定が１つもない導出を作れることである
+    ```
+
+
+## Q48 意味論について知っていますか?
+
+??? success
+    ### 意味論
+
+    ```text
+    ```
