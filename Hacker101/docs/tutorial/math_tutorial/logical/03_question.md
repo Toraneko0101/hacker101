@@ -1615,7 +1615,7 @@
       2 しかし、晶さんは女性ではないので、仮定は誤りで
         晶さんは母親ではないとわかる
       3 さらに、晶さんは子供好きだから、晶さんは母親ではない子供好きである
-      --> よって、母親出ない子供好きが存在する
+      --> よって、母親でない子供好きが存在する
     
     [記号で表す]
       P(x): xは母親
@@ -2605,5 +2605,304 @@
 
     ### 導出(定義)
 
+    ![導出の定義一覧](./images/047.png)
+
     ```text
+    ・自然演繹における導出も、入れ子の構造をしている
+      --> 小さな導出を導出規則で結び付けることで、大きな導出を定義可能
+
+    <解説>
+
+    ※1 Aが仮定として与えられていれば、他の証明なしにAを結論として導出可能
+      　当然、この結論は、仮定に依存している
+        --> 例として論理式Aが「P」なら、結論としてPを得ることが可能
+        --> 自己導出
+
+    ※2 Aを仮定して、Bを導出した時点では、結論Bは仮定Aに依存している
+        しかし、BからA⇒Bを導くとき、仮定Aはもはや結論A⇒Bに直接関与していない
+        よって、導出Dが仮定Aに依存しているとき、導出全体はAを仮定として進行するが
+
+        最終的にA⇒Bを導出する際、仮定Aは結論自体には影響しない形で取り除かれ
+        (実際に、⇒I 1等と書き、仮定Aが取り除かれた=消費されたことが示される)
+        結果として、A⇒BはDのほかの仮定に依存するだけになる
+    
+    ※3　仮定に依存 ⇒「つまり、仮定はこの時点では消去されない」
+
+    ※8 ￢Aという仮定は矛盾した時点で既に消費されている。
+
+    ※10 tは項なので、変数以外も代入できる
     ```
+
+    ??? info
+
+        ```latex
+        \documentclass{jsarticle}
+        \usepackage[a4paper, margin=0pt]{geometry}
+        \usepackage{bussproofs}
+        \usepackage{amssymb} %implies
+        \usepackage{amsmath} %implies
+        % \raisebox{0\height}{
+        %   \begin{minipage}{1cm}
+        %     \begin{prooftree}
+              
+        %     \end{prooftree}
+        %   \end{minipage}
+        % }
+        \begin{document}
+          \begin{align*}
+            & [0] && 導出\mathcal{D}の結論がAの時、この導出の結論を明示して、
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{A}と\,表す \\
+            & && \\
+            & [1] && 論理式Aは、結論がAの導出である。\\
+            & && この導出が依存する仮定はA自身である
+            (この時の導出の結論は\genfrac{}{}{0pt}{}{A}{A} = \genfrac{}{}{0pt}{}{\mathcal{D}}{A})\\
+            & && \\
+            & [2] && \genfrac{}{}{0pt}{}{\mathcal{D}}{B}\,が導出の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$\mathcal{D}$}
+                  \noLine
+                  \UnaryInfC{$B$}
+                  \RightLabel{$\Rightarrow I$}
+                  \UnaryInfC{$A \Rightarrow B$}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1cm}は導出である。\\
+            & && この導出は、\mathcal{D}のA以外の仮定に依存する \\
+            & && \\
+            & [3] && 
+            \genfrac{}{}{0pt}{}{\mathcal{D}_1}{A}\,と
+            \genfrac{}{}{0pt}{}{\mathcal{D}_2}{A \Rightarrow B}\,
+            が導出の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D}_1$}
+                  \noLine
+                  \UnaryInfC{$ A $}
+                  \AxiomC{$ \mathcal{D}_2$}
+                  \noLine
+                  \UnaryInfC{$ A \Rightarrow B $}
+                  \RightLabel{$ \Rightarrow E $}
+                  \BinaryInfC{$ B $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{2.5cm}は導出である。\\
+            & && この導出は、\mathcal{D}_1と\mathcal{D}_2の両方の仮定に依存する \\
+            & && \\
+            & [4] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}_1}{A}\,と、
+            \genfrac{}{}{0pt}{}{\mathcal{D}_2}{B}\,が導出の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D}_1 $}
+                  \noLine
+                  \UnaryInfC{$ A $}
+                  \AxiomC{$ \mathcal{D}_2 $}
+                  \noLine
+                  \UnaryInfC{$ B $}
+                  \RightLabel{$ \land I $}
+                  \BinaryInfC{$ A \land B $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1.5cm}は導出である。\\
+            & && この導出は、\mathcal{D}_1と\mathcal{D}_2の両方の仮定に依存する \\
+            & && \\
+            & [5] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{A \land B}\,が導出の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ A \land B $}
+                  \RightLabel{$ \land E_1 $}
+                  \UnaryInfC{$ A $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1cm}と
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ A \land B $}
+                  \RightLabel{$ \land E_2 $}
+                  \UnaryInfC{$ B $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1cm}は導出である。\\
+            & && どちらの導出も\mathcal{D}と同じ仮定に依存する。 \\
+            & && \\
+            & [6] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}_1}{A}\,と
+            \genfrac{}{}{0pt}{}{\mathcal{D}_2}{B}\,が導出の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D}_1$}
+                  \noLine
+                  \UnaryInfC{$ A $}
+                  \RightLabel{$ \lor I_1 $}
+                  \UnaryInfC{$ A \lor B $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1cm}と
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D}_2$}
+                  \noLine
+                  \UnaryInfC{$ B $}
+                  \RightLabel{$ \lor I_2 $}
+                  \UnaryInfC{$ A \lor B $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1cm}は導出である。\\
+            & && 各導出は、それぞれ\mathcal{D}_1と、\mathcal{D}_2と同じ仮定に依存する \\
+            & && \\
+            & [7] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{A \lor B}\,と
+            \genfrac{}{}{0pt}{}{\mathcal{D}_1}{C}\,と
+            \genfrac{}{}{0pt}{}{\mathcal{D}_2}{C}\,が導出の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ A \lor B $}
+                    \AxiomC{$ \mathcal{D}_1 $}
+                    \noLine
+                    \UnaryInfC{$ C $}
+                      \AxiomC{$ \mathcal{D}_2 $}
+                      \noLine
+                      \UnaryInfC{$ C $}
+                  \RightLabel{$ \lor E $}
+                  \TrinaryInfC{$ C $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{3cm}は導出である。 \\
+            & && この導出は、\mathcal{D}の仮定と、\mathcal{D}_1のA以外の仮定と、\mathcal{D}_2のB以外の仮定とに依存する。\\
+            & && \\
+            & [8] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{\bot}\,が導出で、Aが論理式の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ \bot $}
+                  \RightLabel{$ \bot_c $}
+                  \UnaryInfC{$ A $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{0cm}は導出である。この導出は、\mathcal{D}のA \Rightarrow \bot ( = \neg A)以外の仮定に依存する。\\
+            & && \\
+            & [9] && 
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{A}\,が導出であり、
+            依存するどの仮定にもx_iが自由出現しないとき、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ A $}
+                  \RightLabel{$ \forall I $}
+                  \UnaryInfC{$ \forall x_i A $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{0.5cm}は導出である。この導出は、\mathcal{D}と同じ仮定に依存する。\\
+            & && \\
+            & [10] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{\forall x_i A}\,が導出でtが項の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ \forall x_i A $}
+                  \RightLabel{$ \forall E $}
+                  \UnaryInfC{$ A[x_i:=t] $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1.2cm}
+            は導出である。この導出は、\mathcal{D}と同じ仮定に依存する。 \\
+            & && \\
+            & [11] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}}{A[x_i = t]}\,が導出で、tが項の時、
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D} $}
+                  \noLine
+                  \UnaryInfC{$ A[x_i := t] $}
+                  \RightLabel{$ \exists I $}
+                  \UnaryInfC{$ \exists x_i A $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{1.2cm}
+            は導出である。この導出は、\mathcal{D}と同じ仮定に依存する。 \\
+            & && \\
+            & [12] &&
+            \genfrac{}{}{0pt}{}{\mathcal{D}_1}{\exists x_i A}\,と
+            \genfrac{}{}{0pt}{}{\mathcal{D}_2}{B}\,が導出で、
+            x_iがBにも\mathcal{D}_2の依存する仮定のうち、\\
+            & && A以外のものにも自由出現しないとき
+            \raisebox{0\height}{
+              \begin{minipage}{1cm}
+                \begin{prooftree}
+                  \AxiomC{$ \mathcal{D}_1 $}
+                  \noLine
+                  \UnaryInfC{$ \exists x_i A$}
+                  \AxiomC{$ \mathcal{D}_2 $}
+                  \noLine
+                  \UnaryInfC{$ B $}
+                  \RightLabel{$ \exists E $}
+                  \BinaryInfC{$ B $}
+                \end{prooftree}
+              \end{minipage}
+            }\hspace{2cm}は導出である。\\
+            & && この導出は、\mathcal{D}_1の
+            依存する仮定と、\mathcal{D}_2の依存する仮定からAを除いたものとの両方に依存する。
+          \end{align*}
+        \end{document}
+        ```
+
+    ### 導出(例)
+
+    ```text
+    1 母親はみな女性である
+    2 晶さんは女性ではない
+    3 晶さんは子供好きである
+    --> 母親でない子供好きがいる
+
+    P1: xは母親である
+    P2: xは女性である
+    P3: xは子供好きである
+    f1: 晶さん
+
+    [1] ∀x1(P1(x1)⇒ P2(x1)): 母親は皆女性である
+    [2] P2(f1)⇒⊥: 晶さんは女性ではない
+    [3] P3(f1): 晶さんは子供好きである
+    --> ∃x1((P1(x1)⇒⊥)∧P3(x1)): 母親ではない子供好きが存在する
+
+    ※P1,P2,P3は1変数述語記号, f1は0変数関数記号(=定数)
+
+    ※
+      定義に則ると、何も考えずに導出できることが肝
+      
+      ・仮定4を除去したのは、導出の定義[2]で⇒Iの際は
+        DのA以外の仮定に依存すると書かれていたため。
+
+      ・⇒Eは両方の仮定に依存するため除去しない
+
+      ・∀EもDと同じ仮定に依存するため除去しない
+
+      ・∃IもDと同じ仮定に依存するため除去しない
+
+      ・∧IもD1,D2と同じ仮定に依存するため除去しない
+    ```
+
+    ![定義に則り機械的な導出を行った図](./images/048.png)
