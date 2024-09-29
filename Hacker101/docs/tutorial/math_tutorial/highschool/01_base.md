@@ -5085,4 +5085,301 @@ https://manabitimes.jp/
       = 1 / sin²Θ
     
     [例]
+      sinΘ = 3/5のとき、cosΘ, tanΘを求めよ
+      ただし、0°≦Θ≦90°
+      弧度法で表すと、0≦Θ≦π/2
+
+      cos²Θ + sin²Θ = 1
+      より、cos²Θ = 1 - (sinΘ)^2
+      cos²Θ = (16/25)
+      cosΘ = ±(4/5)
+      ただし、0≦Θ≦π/2より
+      cosΘ = 4/5
+
+      tanΘ = sinΘ / cosΘ = 3/4
+    ```
+
+    ### 負角の公式と余角の公式
+
+    ```text
+    加法定理の導出中に使うので、加法定理から導く風にはしたくない
+      --> 加法定理から導くならおそらく簡単だが
+      --> cos(-Θ) = cos0cosΘ + sin0sinΘ = cosΘ
+      --> cos(π/2 - Θ) = cosπ/2cosΘ + sinπ/2sinΘ = sinΘ
+
+      --> 基本的な三角関数の定義や対称性を用いて証明可能だと考えられる
+    
+    負角の公式
+      cos(-Θ) = cosΘ
+      sin(-Θ) = -sinΘ
+      tan(-Θ) = -tanΘ
+
+      [証明?]
+        単位円上で、角度Θと-Θについて考える
+        角度Θはx-軸の正の向きをはじめとし、原点を中心に反時計回りにΘ回転した結果を表す
+        角度-Θはx-軸の正の向きをはじめとし、原点を中心に時計回りにΘ回転した結果を表す
+
+        つまり、Θと-Θの場合の座標はx-軸対称になる
+        よって、x座標については変わらないと考えられる。
+        従って、cos(-Θ) = cosΘ
+
+        また、x-軸対称であるため、y座標の符号は逆になる。
+        よって、 sin(-Θ) = -sinΘ
+
+        tan(-Θ) = sin(-Θ) / cos(-Θ) = -tanΘ
+    
+    余角の公式 
+      cos(π/2 - Θ) = sinΘ
+      sin(π/2 - Θ) = cosΘ
+      tan(π/2 - Θ) = sin(π/2 - Θ) / cos(π/2 - Θ) = cosΘ / sinΘ = 1/tanΘ
+
+      [証明]
+        (cos(π/2 - Θ), sin(π/2 - Θ))について、
+        π/4を基準に、単位円周上で
+        (π/2 - Θ) - π/4 = π/4 - Θだけ反時計回りに回転した点と考えられる。
+
+        また、(cosΘ, sinΘ)についても
+        π/4を基準に単位円周上で
+        π/4 - Θだけ時計回りに回転した点と考えられる
+
+        よって、この2つの点はx-軸の正の向きをπ/4だけ反時計回りに回転させた直線
+        ひいては 直線y = xについて対称である
+
+        y = xに対して対称移動を行うと、x座標とy座標が逆転するため、
+        cos(π/2 - Θ) = sinΘ
+        sin(π/2 - Θ) = cosΘ
+
+        よって、tan(π/2 - Θ) = tanΘ
+    ```
+
+    ![加法定理を使わない余角](./images/013.png)
+
+    ### 加法定理
+
+    ```text
+    sin(α ± β) = sinαcosβ ± cosαsinβ
+    cos(α ± β) = cosαcosβ ∓ sinαsinβ
+
+    tan(α ± β) = (tanα ± tanβ) / (1 ∓ tanαtanβ)
+    --> ただし、tanα, tanβ, tanαtanβは定義できるものとする
+
+    [cos(α+β)の証明]
+      単位円に内接し、
+      単位円周上にP(1,0), Q(cos(α+β), sin(α+β))、
+      それから原点O(0,0)をとる、三角形OPQについて考える。
+
+      この三角形を原点中心に-α,　時計回りに回転したとすると、
+      三角関数の定義より、
+      P'(cos(-α), sin(-α)), 
+      Q'(cos(α + β - α), sin(α + β - α)) = Q'(cosβ + sinβ)
+
+      ※負角の公式より
+      P'(cos(-α), sin(-α)) = (cosα, -sinα)となる
+
+      ここで、三角形OPQと、OP'Q'は回転移動しただけなので合同
+      よって、PQ = P'Q'。つまり、PQ² = P'Q'²
+      
+      三平方の定理より
+      PQ² = (1 - (cos(α + β)))² + (sin(α + β))²
+      = {1 - cos(α + β)}² + sin²(α + β)
+
+      P'Q'² = {cos(-α) - cosβ}² + {-sinα - sinβ}²
+
+      よって、
+      {1 - cos(α + β)}² + sin²(α + β) = {cosα - cosβ}² + {-sinα - sinβ}²
+      ⇔ 1 - 2cos(α + β) + cos²(α + β) + sin²(α + β)
+          = cos²α - 2cosαcosβ + cos²β + sin²α + 2sinαsinβ + sin²β
+      ⇔ 2 - 2cos(α + β) = 2 - 2cosαcosβ + 2sinαsinβ
+      ⇔ -2cos(α+β) = -2(cosαcosβ - sinαsinβ)
+      ⇔ cos(α+β) = cosαcosβ - sinαsinβ
+
+    [その他の公式の証明]
+      cos(α+β) = cosαcosβ - sinαsinβ...(i)を用いて証明する
+
+      (i)のβ --> -βに変えると
+
+      cos(α + (-β)) = cosαcos(-β) - sinαsin(-β)
+      cos(-β) = cosβ,  sin(-β) = -sinβより、
+      cos(α - β) = cosαcosβ + sinαsinβ ...(ii)
+
+      (ii)のα --> π/2 - αに変えると
+      cos(π/2 - α - β) = cos(π/2 - α)cosβ + sin(π/2 - α)sinβ
+      ⇔ cos(π/2 - (α + β)) = cos(π/2 - α)cosβ + sin(π/2 - α)sinβ
+     ※余角の公式より
+      ⇔ cos(π/2 - (α + β)) = cos(π/2 - α)cosβ + sin(π/2 - α)sinβ
+      ⇔ sin(α + β) = sinαcosβ + cosαsinβ ...(iii)
+
+      (iii)のβ --> -βに変えると
+      sin(α - β) = sinαcos(-β) + cosαsin(-β)
+      ⇔ sin(α - β) = sinαcosβ -cosαsinβ ...(iv)
+
+      [tan]
+
+      tan(α + β) = sin(α + β) / cos(α + β)
+      = (sinαcosβ + cosαsinβ) / (cosαcosβ - sinαsinβ)
+
+      分母分子ともに cosαcosβで割ると
+      分子は (sinαcosβ + cosαsinβ) / cosαcosβ
+      = sinαcosβ / cosαcosβ + cosαsinβ / cosαcosβ
+      = (sinα / cosα) + (sinβ / cosβ)
+      = tanα + tanβ
+      分母は(cosαcosβ - sinαsinβ) / cosαcosβ
+      = 1 - (sinαsinβ) / cosαcosβ
+      = 1 - (sinα) * (sinβ) / cosα * cosβ
+      = 1 - tanαtanβ
+
+      よって、
+      = (tanα + tanβ) / (1 - tanαtanβ) ...(v)
+
+      (v)のβを-βに変えると、
+      tan(α - β) = sin(α - β) / cos(α - β)
+      = sinαcosβ - cosαsinβ / cosαcosβ + sinαsinβ
+      分母分子ともに、cosαcosβで割ると
+      = tanα - tanβ / 1 + tanαtanβ
+    ```
+
+    ![加法定理](./images/012.png)
+
+    ### 余角、補角、負角の公式
+
+    ```text
+    [加法定理から簡単に導く]
+      sin(π/2 - Θ) = sinπ/2cosΘ - cosπ/2sinΘ = cosΘ
+      cos(π/2 - Θ) = cosπ/2cosΘ + sinπ/2sinΘ = sinΘ
+      tan(π/2 - Θ) = 1/tanΘ
+
+      sin(-Θ) = sin0cosΘ - cos0sinΘ = -sinΘ
+      cos(-Θ) = cos0cosΘ + sin0sinΘ = cosΘ
+      tan(-Θ) = -tanΘ
+
+      [補角の公式]
+      sin(π - Θ)　= sinπcosΘ - cosπsinΘ = sinΘ
+      cos(π - Θ) = cosπcosΘ + sinπsinΘ = -cosΘ
+      tan(π - Θ) = -tanΘ
+
+      [π　+ Θ]
+      sin(π + Θ) = sinπcosΘ + cosπsinΘ = -sinΘ
+      cos(π + Θ) = cosπcosΘ - sinπsinΘ = -cosΘ
+      tan(π + Θ) = tanΘ
+
+      [π/2 + Θ]
+      sin(π/2 + Θ) = sinπ/2cosΘ + cosπ/2sinΘ = cosΘ
+      cos(π/2 + Θ) = cosπ/2cosΘ - sinπ/2sinΘ = -sinΘ
+      tan(π/2 + Θ) = -(1/tanΘ)
+
+      [2π + Θ]
+        --> 周期性を考えればいいけど、一応
+      sin(2π + Θ) = sin2πcosΘ + cos2πsinΘ = sinΘ
+      cos(2π + Θ) = cos2πcosΘ - sin2πsinΘ = cosΘ
+      tan(2π + Θ) = tanΘ
+    ```
+
+    ### 倍角、三倍角、半角
+
+    ```text
+    [倍角の公式]
+    sin2x = 2sinxcosx
+    cos2x = 2cos²x - 1 = 1 - 2sin²x
+    tan2x = (2tanx) / (1 - tan²x)
+
+    [導出]
+      sin(2Θ) = sin(Θ + Θ) = sinΘcosΘ + cosΘsinΘ = 2sinΘcosΘ
+      cos(2Θ) = cos(Θ + Θ) = cosΘcosΘ - sinΘsinΘ 
+      = cos²Θ - sin²Θ 
+      = cos²Θ + sin²Θ - 2sin²Θ
+      = 1 - 2sin²Θ
+      = -cos²Θ - sin²Θ + 2cos²Θ
+      = 2cos²Θ - 1
+
+      tan(2Θ) = tan(Θ + Θ)
+      = (tanΘ + tanΘ) / (1 - tanΘtanΘ)
+      = 2tanΘ / (1 - tan²Θ)
+    
+    [半角の公式]
+      sin²x = (1 - cos2x) / 2
+      cos²x = (1 + cos2x) / 2
+      tan²x = (1 - cos2x) / (1 + cos2x)
+
+    [導出]
+      cos(2Θ) = 2cos²Θ - 1 = 1 - 2sin²Θより
+
+      1 - 2sin²Θ = cos(2Θ)
+      -2sin²Θ = cos(2Θ) - 1
+      sin²Θ = (1 - cos2Θ) / 2
+
+      2cos²Θ - 1 = cos(2Θ)
+      cos²Θ = (cos2Θ + 1) / 2
+
+      tan²Θ = (1 - cos2Θ) / (cos2Θ + 1)
+    
+    [三倍角の公式]
+      sin3x = -4sin³x + 3sinx
+      cos3x = 4cos³x - 3cosx
+
+    [導出]
+      sin(3Θ) = sin(Θ + 2Θ)
+      = sinΘcos2Θ + cosΘsin2Θ
+      = sinΘ(cosΘcosΘ - sinΘsinΘ) + cosΘ(sinΘcosΘ + cosΘsinΘ)
+      = sinΘ(cos²Θ - sin²Θ) + sinΘcos²Θ + cos²ΘsinΘ
+      = sinΘcos²Θ - sin³Θ +sinΘcos²Θ + cos²ΘsinΘ
+      = 3sinΘcos²Θ - sin³Θ
+      cos²Θ = 1 - sin²Θより
+      = 3sinΘ(1 - sin²Θ) - sin³Θ
+      = 3sinΘ - 4sin³Θ
+
+      cos(3Θ) = cos(Θ + 2Θ)
+      = cosΘcos2Θ - sinΘsin2Θ
+      = cosΘ(cosΘcosΘ - sinΘsinΘ) - sinΘ(sinΘcosΘ + cosΘsinΘ)
+      = cos³Θ - sin²ΘcosΘ - 2sin²ΘcosΘ
+      = -3sin²ΘcosΘ + cos³Θ
+      sin²Θ = 1 - cos²Θより
+      = -3(1 - cos²Θ)cosΘ + cos³Θ
+      = -3cosΘ + 4cos³Θ
+
+    [例]
+      sin3Θ = sinΘを満たすΘを0 ≦ Θ < πの範囲で求めよ
+
+      sin3Θ = -4sin³Θ + 3sinΘより
+      sin3Θ = sinΘ
+      ⇔ -4sin³Θ + 3sinΘ = sinΘ 
+      ⇔ -4sin³Θ = -2sinΘ
+      ⇔ -4sin³Θ + 2sinΘ = 0
+      
+      sinΘ = tとおくと
+      -4t³ + 2t = 0
+      4t³ - 2t = 0
+      t³ - (1/2)t = 0
+      t(t² - 1/2) = 0
+      t(t + √(1/2))(t - √(1/2)) = 0
+      t(t + 1/√2)(t - 1/√2) = 0
+      t = 0, ±1/√2
+
+      つまり、sinΘ = 0, ±1/√2
+      問題文の条件(0 ≦ Θ < πの範囲で求めよ)より
+
+      Θ = 0,π/4, 3π/4 
+      
+    [tanの3倍角]
+      tan3Θ = (3tanΘ - 3tan³Θ) / (1 - 3tan²Θ)
+
+    [導出]
+      tan3Θ = tan(Θ + 2Θ)
+      = tanΘ + tan2Θ / 1 - tanΘtan2Θ
+
+      tan2Θ = 2tanΘ / 1 - tan²Θより
+
+      分子は、(tanΘ) + (2tanΘ / 1 - tan²Θ)
+      = {tanΘ*(1 - tan²Θ) + 2tanΘ} / (1 - tan²Θ)
+      = (3tanΘ - tan³Θ) / (1 - tan²Θ)
+
+      分母は、1 - tanΘ * (2tanΘ / 1 - tan²Θ)
+      = 1 - (2tan²Θ) / (1 - tan²Θ)
+      = (1 - tan²Θ - 2tan²Θ) / (1 - tan²Θ)
+      = (1 - 3tan²Θ) / (1 - tan²Θ)
+
+      よって、
+      = (3tanΘ - tan³Θ) / (1 - 3tan²Θ)
+
+
+    [3倍角と因数分解]
     ```
