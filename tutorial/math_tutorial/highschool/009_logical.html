@@ -1,0 +1,8274 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../gun/03_group.html">
+      
+      
+        <link rel="next" href="010.baainokazu.html">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.23">
+    
+    
+      
+        <title>集合、命題、条件、論理、証明 - Hacker101</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+  
+  
+  
+  
+  <style>:root{--md-annotation-icon:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 12a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M6 13h8l-3.5 3.5 1.42 1.42L17.84 12l-5.92-5.92L10.5 7.5 14 11H6v2Z"/></svg>');}</style>
+
+
+    
+    
+      
+        <script src="https://unpkg.com/iframe-worker/shim"></script>
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7Ccoursera+new:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"coursera new"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/prism.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../../.." title="Hacker101" class="md-header__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Hacker101
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              集合、命題、条件、論理、証明
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Toraneko0101/hacker101" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Hacker101
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Hacker101" class="md-nav__button md-logo" aria-label="Hacker101" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Hacker101
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Toraneko0101/hacker101" title="リポジトリへ" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Hacker101
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_list.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    24's積ん読/Webコンテンツリスト
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Aws tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Aws tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../aws_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(AWSCLI概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Flutter tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            Flutter tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flutter_tutorial/01_dart.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:Dart言語)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../flutter_tutorial/0_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_4" id="__nav_1_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Java tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            Java tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Javaチュートリアル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java_tutorial/01_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(Q1: 基本文法)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5" id="__nav_1_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Js tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            Js tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_1" id="__nav_1_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    01 js lang
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            01 js lang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/01_easy1_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級1: JS概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/02_easy2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級2:基本構文)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/03_easy3_if.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級3:条件分岐)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/04_easy4_loop.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級4:ループ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/05_easy5_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級5：関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/06_easy6_quality.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(初級6:コード品質)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/07_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07 other
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/08_middle1_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級1:Object)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/09_middle2_type.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級2:データ型)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/10_middle3_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級3:配列)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/11_middle4_iterator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級4:イテレータ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/12_middle5_mapset.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級5:map&amp;set)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/13_middle6_destructuring.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級6:分割代入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/14_middle7_date.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級7:日付)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/15_middle8_json.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級8:JSON)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/16_middle9_func2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級9:関数発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/17_middle10_property.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級10:プロパティ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/18_hard1_prototype.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級1:prototype)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/19_hard2_class.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級2:クラス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/20_hard3_error.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級3:Error)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/21_hard4_asynchronous.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級4:非同期)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/22_hard5_generator.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級5:generator)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/23_hard6_module.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級6:モジュール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/24_hard7_proxy.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級7:Proxy)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/25_hard8_other.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(上級8:その他)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/32_intermedia.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(中級)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/33_advanced.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(発展)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/35_dom2.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(DOM2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/01_js_lang/36_new.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(新機能)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_5_2" id="__nav_1_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    02 browser
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            02 browser
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/02_browser/26_browser1_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:DOM概要)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/02_browser/27_browser2_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/02_browser/28_browser3_document.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:DOMノード)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../js_tutorial/02_browser/29_browser4_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:イベント)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_6" id="__nav_1_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            Linux tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/01_command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:コマンド)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux_tutorial/02_tool.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:ツール)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7" id="__nav_1_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7">
+            <span class="md-nav__icon md-icon"></span>
+            Math tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_1" id="__nav_1_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gun
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Gun
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gun/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学の学習記録(主に証明等)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gun/00_kindle.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kindleを買ったものの末路
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gun/01_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gun/02_mapping.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 写像)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gun/03_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:群)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2" id="__nav_1_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Highschool
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Highschool
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    集合、命題、条件、論理、証明
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="009_logical.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    集合、命題、条件、論理、証明
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1 集合の表現
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1 集合の表現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素(元)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      空集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      包含関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      相等関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      真部分集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      外延,内包
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2 積集合、和集合、補集合、ド・モルガンの法則
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2 積集合、和集合、補集合、ド・モルガンの法則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      積集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      和集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      全体集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      補集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      補集合の性質
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ベン図
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ド・モルガンの法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3 3つの集合の共通集合、和集合、補集合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3 3つの集合の共通集合、和集合、補集合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      結合法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      分配法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ド・モルガンの法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4 不等式で表現される実数集合の共通部分、和集合、補集合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4 不等式で表現される実数集合の共通部分、和集合、補集合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      数直線を利用する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5 無限集合における包含関係の証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5 無限集合における包含関係の証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      有限集合の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6 無限集合における相当関係の証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6 無限集合における相当関係の証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      相等関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      [2]の見つけ方について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      実は全体集合?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7 命題の真偽と、反例の見つけ方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q7 命題の真偽と、反例の見つけ方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      命題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      仮定と結論(前件と後件)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      例3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8 領域と数直線で命題の真偽を示す方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q8 領域と数直線で命題の真偽を示す方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      命題と集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      領域を示す際の注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9 条件の否定と、全称、存在の￢
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q9 条件の否定と、全称、存在の￢">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      ド・モルガンの法則も集合と対応する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      全称、存在の￢
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10 代表的な同値変形
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q10 代表的な同値変形">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      最初にやるべきだった
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      必要条件と十分条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      必要十分条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      [1]の証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形8
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形9
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形10
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q11 同値変形実用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q11 同値変形実用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q12 必要条件と十分条件の判定
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q12 必要条件と十分条件の判定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      手順
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13 逆、裏、対偶
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q13 逆、裏、対偶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      逆、裏、対偶
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14 対偶を利用した証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q14 対偶を利用した証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      対偶を利用して実数の性質を証明する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15 必要条件と十分条件の演習問題(実数編)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q15 必要条件と十分条件の演習問題(実数編)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      二つの不等式の加法、乗法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q16 必要条件と十分条件の演習問題(絶対値編)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q16 必要条件と十分条件の演習問題(絶対値編)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q17-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q17 必要条件と十分条件の演習問題(3変数等式と図形)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q17 必要条件と十分条件の演習問題(3変数等式と図形)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q18 必要条件と十分条件の問題演習(整数の性質)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q18 必要条件と十分条件の問題演習(整数の性質)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      0を含む自然数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q19 共通要素から集合の要素を決定する
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q19 共通要素から集合の要素を決定する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q20 背理法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q20 背理法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      背理法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      無理数であることの証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      [2]の別解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      素因数分解の一意性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユークリッドの補題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユークリッドの補題の証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      以下に証明を記載
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q21 その他背理法の証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q21 その他背理法の証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      √3が無理数である証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan1" class="md-nav__link">
+    <span class="md-ellipsis">
+      tan1°が無理数であることを示せ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="010.baainokazu.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    場合の数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ1:高校数学(基本語句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02_expr.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数、式変形
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03_equation.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    方程式、不等式、関数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04_complex.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04 complex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05_idx_logarithm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    指数、対数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06_tri_func.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    三角関数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07_plane_figure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    平面図形
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08_vector.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    座標、ベクトル
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_2_11" id="__nav_1_7_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Math1
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_1_7_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            Math1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="math1/001_expr_and_calc.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    旧：クイズ(1:式と計算)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="math1/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数学I
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_3" id="__nav_1_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logical
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logical
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logical/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    記号論理学について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logical/01_natural.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:自然言語)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logical/02_artificial.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2: 人工言語)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logical/03_question.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(Q3:証明問題)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logical/04_after_old.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(Q4:補足&amp;古典論理の先へ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_7_4" id="__nav_1_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tex/01_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ1(よく使うTexの記法)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8" id="__nav_1_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    React tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8">
+            <span class="md-nav__icon md-icon"></span>
+            React tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/000_hazimeni.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(0:初めに)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/001_component.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    00-Component
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/01_fragments.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01-Fragment(&lt;&gt;について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/02_jsx.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02-JSX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/03_pure.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    03-純関数とReact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/04_tree.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    04-コンポーネントとツリー構造
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/05_event.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    05-イベント
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/06_zyoutai.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    06-注意点(状態の保存と階層について)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/07_state_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    07-Stateの基本
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/08_render.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    08-コンポーネントが画面に表示されるまで
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/09_dom.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    09-仮想DOMについて理解する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/10_state_snap.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10-stateが更新されるタイミング
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/11_state_update.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11-stateを1回のイベントで複数回更新
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/12_state_obj.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12-setState(object)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/13_state_array.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13-setState(array)の注意点
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_8_16" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_8_16" id="__nav_1_8_16_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hooks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_8_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_8_16">
+            <span class="md-nav__icon md-icon"></span>
+            Hooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/01_useState.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useState
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/02_useEffect.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useEffect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/03_useContext.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useContext
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/04_useReducer.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useReducer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/05_useCallback.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useCallback + React.memo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/06_useMemo.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useMemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/07_useRef.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useRef
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/08_useId.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useId
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/09_useSyncExternalStore.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useSyncExternalStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/10_useTransition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    useTransiton
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../react_tutorial/hooks/hook.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hook全般
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_9" id="__nav_1_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Sql tutorial
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_9">
+            <span class="md-nav__icon md-icon"></span>
+            Sql tutorial
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/00_intro.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    はじめに
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/01_introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(1:導入)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/02_base.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(2:基本)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/03_phrase.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(3:○○句)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/04_join.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(4:結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/05_set.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(5:集合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/06_dataOpe.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(6:データ操作)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/07_group.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(7:集計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/08_subquery.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(8:サブクエリ)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/09_outerjoin.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(9:外部結合)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/10_case.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(10:条件)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/11_transaction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(11:複数反映)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/12_index.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(12:インデックス)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/13_view.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(13:ビュー)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/14_meta.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(14:メタ&amp;動的)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/15_window.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(15:解析関数)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/16_partition.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    (クイズ16:Partition)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/17_bigdata.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(17:BigData)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql_tutorial/18_design.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クイズ(18:DB設計)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Practice
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Practice
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/00_frontend.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フロントエンド入門概要
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/01_amplify.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Amplify + Reactアプリについて解説
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/02_next.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Next.js(App Router)+Vercelを用いてWebアプリを作成する
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/03_ga.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GoogleAnalyticsの導入について
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/04_chakra.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ChakraUI-tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../practice/05_tailwind.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tailwind入門
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/introduction.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自動生成
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/material.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#q1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q1 集合の表現
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q1 集合の表現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      要素(元)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      空集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      包含関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      相等関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      真部分集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      外延,内包
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q2 積集合、和集合、補集合、ド・モルガンの法則
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q2 積集合、和集合、補集合、ド・モルガンの法則">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      積集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      和集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      全体集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      補集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      補集合の性質
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      ベン図
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      ド・モルガンの法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q3-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q3 3つの集合の共通集合、和集合、補集合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q3 3つの集合の共通集合、和集合、補集合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      結合法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      分配法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      ド・モルガンの法則
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q4 不等式で表現される実数集合の共通部分、和集合、補集合
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q4 不等式で表現される実数集合の共通部分、和集合、補集合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      数直線を利用する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q5 無限集合における包含関係の証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q5 無限集合における包含関係の証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      有限集合の場合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q6 無限集合における相当関係の証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q6 無限集合における相当関係の証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      相等関係
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      [2]の見つけ方について
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      実は全体集合?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q7 命題の真偽と、反例の見つけ方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q7 命題の真偽と、反例の見つけ方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      命題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      仮定と結論(前件と後件)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      例3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q8 領域と数直線で命題の真偽を示す方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q8 領域と数直線で命題の真偽を示す方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      命題と集合
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      領域を示す際の注意点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q9 条件の否定と、全称、存在の￢
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q9 条件の否定と、全称、存在の￢">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      ド・モルガンの法則も集合と対応する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      全称、存在の￢
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      例2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q10 代表的な同値変形
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q10 代表的な同値変形">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      最初にやるべきだった
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      必要条件と十分条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      必要十分条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      [1]の証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形5
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形6
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形7
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形8
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形9
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      同値変形10
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q11" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q11 同値変形実用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q11 同値変形実用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q12" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q12 必要条件と十分条件の判定
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q12 必要条件と十分条件の判定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      手順
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q13" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q13 逆、裏、対偶
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q13 逆、裏、対偶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      逆、裏、対偶
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q14" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q14 対偶を利用した証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q14 対偶を利用した証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      対偶を利用して実数の性質を証明する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      補足
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q15" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q15 必要条件と十分条件の演習問題(実数編)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q15 必要条件と十分条件の演習問題(実数編)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      二つの不等式の加法、乗法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q16" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q16 必要条件と十分条件の演習問題(絶対値編)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q16 必要条件と十分条件の演習問題(絶対値編)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q17-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q17 必要条件と十分条件の演習問題(3変数等式と図形)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q17 必要条件と十分条件の演習問題(3変数等式と図形)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q18" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q18 必要条件と十分条件の問題演習(整数の性質)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q18 必要条件と十分条件の問題演習(整数の性質)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      0を含む自然数
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q19" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q19 共通要素から集合の要素を決定する
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q19 共通要素から集合の要素を決定する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_58" class="md-nav__link">
+    <span class="md-ellipsis">
+      例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q20" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q20 背理法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q20 背理法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
+    <span class="md-ellipsis">
+      背理法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_60" class="md-nav__link">
+    <span class="md-ellipsis">
+      無理数であることの証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      [2]の別解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_61" class="md-nav__link">
+    <span class="md-ellipsis">
+      素因数分解の一意性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_62" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユークリッドの補題
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_63" class="md-nav__link">
+    <span class="md-ellipsis">
+      ユークリッドの補題の証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_64" class="md-nav__link">
+    <span class="md-ellipsis">
+      以下に証明を記載
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q21" class="md-nav__link">
+    <span class="md-ellipsis">
+      Q21 その他背理法の証明
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Q21 その他背理法の証明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      √3が無理数である証明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tan1" class="md-nav__link">
+    <span class="md-ellipsis">
+      tan1°が無理数であることを示せ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">集合、命題、条件、論理、証明</h1>
+<h2 id="q1">Q1 集合の表現</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_2">集合</h3>
+<pre class="highlight"><code class="language-text">・属すか否かが明確に判別できるものの集まり
+・大文字アルファベットで主に記述される
+・太った人という集まりは、属すか否か明確に判別できないので
+  集合になりえないが、80kg以上の人などはOK</code></pre>
+<h3 id="_3">要素(元)</h3>
+<pre class="highlight"><code class="language-text">・集合に属するもの
+・a∊A := aが集合Aに属する
+・a∉A := aが集合Aに属しない
+
+・記号の由来はelement -&gt; ε -&gt; ∊から来ているらしい</code></pre>
+<h3 id="_4">空集合</h3>
+<pre class="highlight"><code class="language-text">・要素を1つも持たない集合
+・∅で表記する。{}, 0に斜線で示すこともできる</code></pre>
+<h3 id="_5">包含関係</h3>
+<pre class="highlight"><code class="language-text">A⊂B := x∊A ⇒ x∊B
+
+・Aの任意の元が、常にBの任意の元であるとき、
+  AはBの部分集合である
+
+・定義に則れば、A自身もAの部分集合であることがわかる
+
+・また、{}は全ての集合の部分集合になる</code></pre>
+<h3 id="_6">相等関係</h3>
+<pre class="highlight"><code class="language-text">A = B := A⊂B ∧ B⊂A
+
+Aの任意の元が、常にBの任意の元であり
+Bの任意の元が、常にAの任意の元であるとき
+二つの集合AとBは等しいという
+
+※数は関係ない
+A = {1,1,1,2}, B{1,2} ⇒ A = B</code></pre>
+<h3 id="_7">真部分集合</h3>
+<pre class="highlight"><code class="language-text">A ⊊　B := A⊂B ∧ A≠B
+
+A = Bが含まない部分集合について、特に言いたい場合、上記のように表記できる</code></pre>
+<h3 id="_8">外延,内包</h3>
+<pre class="highlight"><code class="language-text">外延的表示: 要素を1つずつ書き並べる
+内包的表示: 要素のみ足す条件を示す
+
+A = {1,3,5,7,9} : 外延
+A = {n | nは奇数, 1≦n≦9} : 内包</code></pre>
+<h3 id="_9">例</h3>
+<pre class="highlight"><code class="language-text">次の集合の間に成り立つ関係を、⊂, ⊃, =を用いて示せ
+
+[1]A = {n|nは1桁の素数}, B={2n+1|nは整数, 1≦n≦3}
+
+  A = {2,3,5,7}, B={3,5,7}
+  ∴ A ⊃ B
+
+[2] A={x|x²-5x+6 = 0}, B={n|nは6の正の約数}
+
+  A = {2, 3}, B ={1,2,3,6}
+  ∴ A ⊂ B
+
+[3] A ={3n+1|n = 0,1,2}, B={n|nは3で割ると1余り1桁の自然数}
+
+  A = {1,4,7}, B={1,4,7}
+  ∴  A = B
+
+[4] 集合A = {1,2,3,4}の部分集合を列挙せよ
+
+{}, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}
+{2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {2,3,4},{1,3,4},
+{1,2,3,4}
+
+--&gt; 個数は4C0 + 4C1 + 4C2 + 4C3 + 4C4 = 1 + 4 + 6 + 4 + 1 = 16個</code></pre>
+</details>
+<h2 id="q2">Q2 積集合、和集合、補集合、ド・モルガンの法則</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_10">積集合</h3>
+<pre class="highlight"><code class="language-text">A ∩ B := A,Bの両方に属する要素全体の集合</code></pre>
+<h3 id="_11">和集合</h3>
+<pre class="highlight"><code class="language-text">A ∪ B := A,Bの少なくとも一方に属する要素全体の集合</code></pre>
+<h3 id="_12">全体集合</h3>
+<pre class="highlight"><code class="language-text">・議論領域に属する要素全体の集合
+・Uという記号で表す(Universal set)</code></pre>
+<h3 id="_13">補集合</h3>
+<div class="arithmatex">\[
+  \overline{A}
+\]</div>
+<div class="arithmatex">\[
+  A^{C}
+\]</div>
+<pre class="highlight"><code class="language-text">A^C := 全体集合Uのうち、Aに属さない要素全体の集合。</code></pre>
+<h3 id="_14">補集合の性質</h3>
+<div class="arithmatex">\[
+  \begin{align}
+  &amp; (1) &amp;&amp; \overline{\overline{A}} = A \\
+  &amp; (2) &amp;&amp; A \cap \overline{A} = \emptyset \\
+  &amp; (3) &amp;&amp; A \cup \overline{A} = U \\
+  &amp; (4) &amp;&amp; A \subset B \Leftrightarrow \overline{A} \supset \overline{B}
+  \end{align}
+\]</div>
+<pre class="highlight"><code class="language-text">[1] 補集合の補集合は元の集合となる
+[2] 集合とその補集合の積集合は、空集合
+[3] 集合とその補集合の和集合は、全体集合
+[4] AがBの部分集合 ⇔ Bの補集合がAの補集合の部分集合</code></pre>
+<p><a class="glightbox" href="images/074.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="補集合の性質" src="images/074.png" /></a></p>
+<h3 id="_15">ベン図</h3>
+<pre class="highlight"><code class="language-text">複数の集合の関係や範囲を図式化したもの</code></pre>
+<h3 id="_16">ド・モルガンの法則</h3>
+<pre class="highlight"><code class="language-text">・論理式￢(P∨Q) ⇔ ￢P∧￢Qの形では既に証明済み
+  P: Aという集合に属する
+  Q: Bという集合に属する
+
+・今回はベン図で示す</code></pre>
+<div class="arithmatex">\[
+\begin{align}
+ &amp; \overline{A \cup B} = \overline{A} \cap \overline{B} \\
+ &amp; \overline{A \cap B} = \overline{A} \cup \overline{B} \\
+ \end{align}
+\]</div>
+<p><a class="glightbox" href="images/075.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ドモルガン" src="images/075.png" /></a></p>
+<h3 id="_17">例</h3>
+<pre class="highlight"><code class="language-text">10以下の自然数の集合を全体集合とする
+部分集合A,Bを A = {1,3,4,6,7}, B = {2,3,5,6,9}とする
+
+次の集合を求めよ
+
+[1] A^C = {2,5,8,9,10}
+[2] A∩B = {3,6}
+[3] A∪B = {1,2,3,4,5,6,7,9}
+[4] A^C ∩ B = {2,5,9}
+[5] A∪B^C = {1,3,4,6,7,8,10}
+  B^C = {1,4,7,8,10}より
+
+[6] {A∩B}^C= {1,2,4,5,7,8,9,10}
+[7] {A∪B}^C = {8,10}
+[8] A^C ∪ B^C = {A∩B}^C = {1,2,4,5,7,8,9,10}
+[9] A^C ∩ B^C = {8.10}
+[10] {A^C ∩ B^C}^C = A^C^C ∪ B^C^C = A∪B = {1,2,3,4,5,6,7,9} </code></pre>
+<h3 id="2">例2</h3>
+<pre class="highlight"><code class="language-text">10以下の自然数の集合を全体集合U,
+A∩B = {3,8}, A^C∩B = {7,9}, A^C∩B^C = {1,6,10}する時
+以下の集合を求めよ
+
+[1] A
+  A^C∩B = {7,9}, A^C∩B^C = {1,6,10}より
+  A^C ∩ (B ∪ B^C) = {1,6,7,9,10}
+  ∴ A = {2,3,4,5,8}
+
+[2] B
+A∩B = {3,8}, A^C∩B = {7,9}より
+(A∪A^C)∩B = 全体集合∩B = {3,7,8,9}
+∴ B = {3,7,8,9} 
+
+[3]A∪B
+A^C∩B^C = {A∪B}^C = {1,6,10}
+∴ A∪B = {2,3,4,5,7,8,9}
+
+--&gt; ベン図書いてもいいよ</code></pre>
+</details>
+<h2 id="q3-3">Q3 3つの集合の共通集合、和集合、補集合</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_18">結合法則</h3>
+<pre class="highlight"><code class="language-text">A∩(B∩C) = (A∩B)∩C = A∩B∩C
+A∪(B∪C) = (A∪B)∪C = A∪B∪C
+
+∪、∩単体なら括弧は必要ない</code></pre>
+<p><a class="glightbox" href="images/076.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="結合法則" src="images/076.png" /></a></p>
+<h3 id="_19">分配法則</h3>
+<pre class="highlight"><code class="language-text">A∪(B∩C) = (A∪B)∩(A∪C)
+A∩(B∪C) = (A∩B)∪(A∩C)</code></pre>
+<p><a class="glightbox" href="images/077.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="分配法則" src="images/077.png" /></a></p>
+<h3 id="_20">ド・モルガンの法則</h3>
+<pre class="highlight"><code class="language-text">二集合のド・モルガンの法則から拡張できる(ベン図を書かずとも)
+
+B∪C = Dとすると
+{A∪B∪C}^C = {A∪D}^C = (A^C)∩(D^C) = (A^C)∩(B∪C)^C
+= (A^C)∩(B^C)∩(C^C)
+
+B∩C = Eとすると
+{A∩B∩C}^C = {A∩E}^C = (A^C)∪(E^C) = (A^C)∪(B∩C)^C
+= (A^C)∪(B^C)∪(C^C)</code></pre>
+<div class="arithmatex">\[
+  \begin{align}
+    \overline{A \cap B \cap C} = \overline{A} \cup \overline{B} \cup \overline{C} \\
+    \overline{A \cup B \cup C} = \overline{A} \cap \overline{B} \cap \overline{C}
+  \end{align}
+\]</div>
+<p><a class="glightbox" href="images/078.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="ド・モルガンの法則" src="images/078.png" /></a></p>
+<h3 id="_21">例</h3>
+<pre class="highlight"><code class="language-text">12以下の自然数の集合を全体集合とする
+A = {1,3,5,6,11}, B={6,7,8,11,12}, D={2,3,6,8,10}とするとき以下の集合をこたえよ
+
+[1] (A^C ∪ B)∩ D^C
+= ({2,4,7,8,9,10,12}∪{6,7,8,11,12}) ∩ {1,4,5,7,9,11,12}
+= {2,4,6,7,8,9,10,11,12}∩ {1,4,5,7,9,11,12}
+= {4,7,9,11,12}
+
+[2] (A∪D)∩(B∪D)
+= D∪(A∩B)
+= {2,3,6,8,10}∪{6,11}
+= {2,3,6,8,10,11}
+
+[3] (A∪B^C)∩(D∩B)^C
+= (A∪B^C)∩(D^C∪B^C)
+= B^C∪(A∩D^C)
+= {1,2,3,4,5,9,10}∪ ({1,3,5,6,11}∩{1,4,5,7,9,11,12})
+= {1,2,3,4,5,9,10}∪ {1,5,11}
+= {1,2,3,4,5,9,10,11}</code></pre>
+</details>
+<h2 id="q4">Q4 不等式で表現される実数集合の共通部分、和集合、補集合</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_22">数直線を利用する</h3>
+<pre class="highlight"><code class="language-text">数直線を書くときは、
+等号を含む場合 = 黒丸 + 垂直の立ち上げ
+等号を含まない場合 = 白丸 + 斜めの立ち上げを行う</code></pre>
+<h3 id="_23">例</h3>
+<pre class="highlight"><code class="language-text">実数全体の集合を全体集合Uとする
+部分集合A,Bを A = {x|1&lt;x&lt;5}, B = {x|x≦2, 6≦x}とするとき
+以下の集合を求めよ
+
+[1] A^C = {x| x≦1, 5≦x}</code></pre>
+<p><a class="glightbox" href="images/079.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="数直線で表される集合の共通部" src="images/079.png" /></a></p>
+<pre class="highlight"><code class="language-text">[2] B^C = {x | 2&lt;x&lt;6}
+
+[3] A∩B = {x | 1 &lt; x ≦ 2}
+
+[4] A∪B = {x| x &lt; 5, 6≦x}
+
+[5] A^C ∩ B = {x| x≦1, 5≦x} ∩　{x|x≦2, 6≦x}
+= {x | x≦1, 6≦x}
+
+[6] A∪B^C =  {x|1&lt;x&lt;5} ∪ {x | 2&lt;x&lt;6}
+= {x | 1&lt;x&lt;6}
+
+[7] A^C ∩ B^C = {x| x≦1, 5≦x} ∩ {x | 2&lt; x &lt;6}
+= {x| 5 ≦ x &lt; 6}
+
+[8] A^C ∪ B^C = {A∩B}^C = {x | 1 &lt; x ≦ 2}^C
+= {x | x≦1, 2&lt;x}</code></pre>
+<h3 id="2_1">例2</h3>
+<pre class="highlight"><code class="language-text">実数全体の集合を全体集合Uとする
+部分集合A,BについてA⊂Bとなるようなkの範囲を求めよ
+
+※等号としてみて条件を満たすか考えるのがよい
+
+[1] A={x|2≦x≦5}, B={x|k-3≦x&lt;k+1}
+
+Aの範囲は3,Bの範囲は4
+k - 3 = 2 ⇒ k = 5の時
+B={x|2≦x&lt;6}
+
+k - 3 = 1 ⇒ k = 4の時
+B = {x|1≦x&lt;5} この時、A⊂Bになりえない
+
+よって、両端を考えると、
+1&lt;k-3≦2
+∴ 4&lt;k≦5
+
+
+[2] A={x|2&lt;x&lt;5}, B={x|k-3≦x&lt;k+1}
+
+k-3 = 2 ⇒ k = 5の時
+B = {x|2≦x&lt;6}
+
+k-3 = 1 ⇒ k = 4の時
+B = {x|1≦x&lt;5}
+
+よって、両端を考えると
+1≦k-3≦2
+∴4≦k≦5</code></pre>
+</details>
+<h2 id="q5">Q5 無限集合における包含関係の証明</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_24">有限集合の場合</h3>
+<pre class="highlight"><code class="language-text">要素の書き出しや、ベン図に元を表記することで包含関係を示すことができた
+無限集合の場合、包含関係の定義である
+x∊A ⇒ x∊Bを証明することによって、A⊂Bを示す
+≠については、反例を示すのが早い</code></pre>
+<h3 id="_25">例</h3>
+<pre class="highlight"><code class="language-text">次の集合A,Bについて、A⊂B ∧ A≠Bであることを示せ
+
+[1] A = {4n + 1 | nは整数}, B = {2n + 1|nは整数}
+
+x∊Aとすると、x = 4n + 1(n:整数とおける)
+この時、x = 4n + 1 = 2(2n) + 1
+
+2nは整数であるため2(2n) + 1 ∊ B
+x∊A ⇒ x∊Bであることから、A⊂B
+3∊B　∧ 3∉AなのでA≠B
+
+[2] A = {8n + 3 |nは整数}, B = {4n-1 | nは整数}
+
+x∊Aとすると、x = 8n + 3(n:整数)と置ける
+この時、x = 8n + 3 = 4(2n + 1) - 1
+2n + 1は整数であるため,4(2n + 1) + 1 ∊ B
+x∊A ⇒ x∊Bであることから、A⊂B
+-1∊B ∧ -1∉Aなので A≠B
+
+※整数は乗法,加法,減法について閉じている</code></pre>
+</details>
+<h2 id="q6">Q6 無限集合における相当関係の証明</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_26">相等関係</h3>
+<pre class="highlight"><code class="language-text">A = B ⇔ A⊂B ∧ A⊃B
+双方の⇒について示せばいい</code></pre>
+<h3 id="_27">例</h3>
+<pre class="highlight"><code class="language-text">[1] A = {4n + 3 | nは整数}, B = {4n - 1 | nは整数}
+
+x∊Aとすると、x = 4n + 3 (nは整数)とおける
+x = 4n + 3 = 4(n+1) - 1
+n + 1は整数であるため、4(n+1) - 1 ∊ B
+よって、x∊A ⇒ x∊B ...(i)
+
+x∊Bとすると, x = 4n - 1(nは整数)とおける
+x = 4n - 1 = 4(n - 1) + 3
+n - 1は整数であるため、4(n-1) + 3 ∊ A
+よって、x∊B ⇒ x∊A ...(ii)
+
+(i), (ii)より x∊A ⇔ x∊B
+∴ A = B
+
+[2] A={2x + 5y| x,yは整数}, B={3x-4y|x,yは整数}
+
+a∊Aとすると、
+a = 2x + 5y (x,yは整数)とおける
+この時、2x + 5y = 3〇 - 4△の形(〇,△は整数)に変形したい
+
+よって、係数である2,5それぞれに対し、
+3〇 - 4△ = 2, 3〇' - 4△' = 5となるような整数の組を見つける必要がある
+例えば(2, 1), (3,1)が相当する。よって
+
+2x + 5y = 3(2x + 3y) -4(x + y)
+2x + 3y, x + yは整数であるため、2x + 5y = 3(2x + 3y) -4(x + y) ∊ B
+よって、a∊A ⇒ a∊B ...(i)
+
+a∊Bとすると
+a = 3x - 4y(x,yは整数)とおける
+同様に 3x - 4y = 2〇 + 5△(〇,△は整数)の形で示したいため
+3 = 2*4 + 5*-1
+-4 = 2*3 + 5*-2より
+
+3x - 4y = 2(4x + 3y) + 5(-x -2y)
+4x + 3y, -x-2yは整数であるため
+3x - 4y =  2(4x + 3y) + 5(-x -2y) ∊ A
+よって、a∊B ⇒ a∊A ...(ii)
+
+(i), (ii)より
+a∊A ⇔ a∊B
+∴ A = B</code></pre>
+<h3 id="2_2">[2]の見つけ方について</h3>
+<pre class="highlight"><code class="language-text">2x + 5y = 3〇 -4△ (〇, △: 整数)である〇, △について
+他方の文字が干渉することはないため
+
+2x = 3〇' - 4△' (〇',△'はxの定数倍)
+5y = 3〇'' - 4△'' (〇'', △''はyの定数倍)
+
+2x + 5y = 3{〇' + 〇''} - 4{△' + △''}になる格好
+
+
+「0から他方の文字の係数より1小さい整数までの中に
+式を満たす整数が必ず１つ存在する」という性質が成り立つ
+
+つまり、〇'の係数は3なので、△'は、xを{0,1,2}倍したもののいずれかになる
+実際に、△' = 1x　⇒ 〇' = 2x
+△'' = 1y ⇒　〇'' = 3y
+
+よって、2x + 5y = 3(2x + 3y) -4(x + y)
+</code></pre>
+<h3 id="_28">実は全体集合?</h3>
+<pre class="highlight"><code class="language-text">議論領域が整数であるとき、
+{ax + by | x , yは整数}が全体集合 ⇔ a,bが互いに素
+
+つまり、a,bが互いに素であるとき、
+x,yを動かすことで、全ての格子点を通る直線を表現できる
+
+今回の問題は
+A={2x + 5y| x,yは整数}, B={3x-4y|x,yは整数}
+であったため、(2,5), (3, -4)がいずれも互いに素であることから
+A = B = 全体集合であった。</code></pre>
+</details>
+<h2 id="q7">Q7 命題の真偽と、反例の見つけ方</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_29">命題</h3>
+<pre class="highlight"><code class="language-text">真偽が明確に定まる文章や数式</code></pre>
+<h3 id="_30">条件</h3>
+<pre class="highlight"><code class="language-text">変数によって真偽が変わる文章や数式</code></pre>
+<h3 id="_31">仮定と結論(前件と後件)</h3>
+<pre class="highlight"><code class="language-text">p⇒q
+p: 仮定(前件)
+q: 結論(後件)
+
+条件法なので、pが偽ならば、p⇒qは真</code></pre>
+<h3 id="_32">例</h3>
+<pre class="highlight"><code class="language-text">実数a,b,cについての命題 [ac = bc ⇒ a = b]の真偽をこたえよ
+
+対偶をとると
+a≠b ⇒ ac≠bc
+(a,b,c) = (2,3,0)の時、a≠bだが、ac=bcとなる
+よって、反例が存在するため対偶は偽。対偶が偽であるため、元の命題も偽</code></pre>
+<h3 id="2_3">例2</h3>
+<pre class="highlight"><code class="language-text">以下の偽の命題に対して、反例を述べよ
+
+[1] 自然数nが4の倍数∧6の倍数 ⇒ nは24の倍数
+n = 12 (倍数=整数倍)
+
+[2] 実数aについて、a² &gt; 1 ⇒ a &gt; 1
+a = -2
+
+[3] 実数aについて、√a² = a
+a = -3
+
+[4] 実数a,bについて、a &gt; b ⇒ a² &gt; b²
+(a,b) = (1, -2)
+
+[5] 実数a,bについて、a² = b² ⇒ a = b
+(a,b) = (1, -1)
+
+[6] 整数m,nについて、m + nが偶数 ⇒ mとnは偶数
+(m,n) = (1,1)
+
+[7] 整数m,nについて、m + nが偶数 ⇒ mnも偶数
+(m,n) = (1,1)
+
+[8] x + y, xyがともに有理数 ⇒ x,yはともに有理数
+(x,y) = (√2, -√2)
+
+[9] x + y, xyがともに整数 ⇒ x,yはともに整数
+(x,y) = (√2, -√2)
+
+[10] 2組の辺の長さと１組の角の大きさがそれぞれ等しい２つの三角形は合同
+この場合、三角形は2通り存在する。
+
+△ABCについて、その対辺をa,b,cとしたとき正弦定理を用いて考えると
+辺a, b とのその間にない角Aを与えたとき, ∠B ≠ 90°であれば
+
+a / sinA = b / sinBより, sinBが求まるが、
+Bは鈍角、鋭角に定まらない。Bをいずれかの角に定めれば
+他方の角Cも定まるので、三角形は2通りになる。よって合同とは限らない
+
+
+[11] 四角形において、対角線が直交する ⇒ ひし形
+AB = 1, AC = 1, BD = CD = 3であり、対角線が直交する四角形ABCD
+
+[12] 四角形において、対角線の長さが等しい ⇒ 長方形
+四角形ABCDについて、2つの対角線が2である図形を考える。
+中点で交わらないようにすればこの図形は長方形にならない
+反例は11と同じ
+
+[13] AB = BC = CD = DA ∧ AB//CD ∧ BC // DA ⇒ 四角形ABCDは正方形
+4つの辺が等しいことが条件で、4つの角が等しいことは述べられていないので
+ひし形になる可能性がある。</code></pre>
+<h3 id="3">例3</h3>
+<pre class="highlight"><code class="language-text">以下の偽の命題に対して、反例を述べよ
+ただし、[x]は床函数を意味する
+
+[1]　実数x,yについて、[x] + [y] = [x + y]
+(x,y) = (0.5, 0.5)
+
+[2] 実数x,yについて x &lt; y　⇒ [x] &lt; [y]
+(x,y) = (0.1, 0.2)
+
+[3] 有理数の有理数乗は有理数である
+2^{1/2} = √2
+
+[4] 無理数の有理数乗は、無理数
+{√2}^2 = 2
+
+[5] 有理数の無理数乗は、無理数
+  a^p = M ⇔ log[a]M = pより
+  a^{log[a]M} = Mが成立する。
+  ここで、pが無理数, 真数Mが有理数のケースを示したいので
+
+  p = log[2]3とすると
+  2^{log[2]3} = 3が成り立つ
+  よって、2^{log[2]3}が反例になる
+
+[6] 無理数の無理数乗は、無理数
+※ただ命題が偽というだけなら√2^{√2}の場合分けで行ける
+
+  √2^{log[√2]3}
+  = √2^{log[2^{1/2}]3}
+  = √2^{2log[2]3}
+  = √2^{log[2]9}
+  = 2^{1/2}^{log[2]9}
+  = 2^{log[2]3}
+  = 3
+
+  よって、(√2)^{log[√2]3}
+
+[7] 実数x,yについて、x + y &gt; 2　∧ xy &gt; 1 ⇒ x &gt; 1 ∧ y &gt; 1
+(x,y) = (2, 0.9)
+
+[8]実数x,yについて、|x| &lt; 1　∧ |y| &lt; 1　⇒ x² + y²  &lt; 1
+(x,y) = (0.8, 0.8)
+
+[9] 実数x,yについて、x²+y²≦2 ⇒ |x|≦1 ∧ |y|≦1
+(x,y) = (0,√2)
+
+[10] 実数x,yについて、x²+y²≦1 ⇒ |x| + |y| ≦ 1
+(x,y) = (0.5, 0.6)</code></pre>
+</details>
+<h2 id="q8">Q8 領域と数直線で命題の真偽を示す方法</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_33">命題と集合</h3>
+<pre class="highlight"><code class="language-text">不等式の命題は集合で考えるとよい
+
+条件p,qを満たすもの全体の集合をP,Qとすると
+p⇒qが真 ⇔ P⊂Q
+
+偽である場合は、Qからはみ出た部分が反例となる
+
+※1変数の不等式なら数直線, 2変数なら座標平面が使える</code></pre>
+<h3 id="_34">例</h3>
+<pre class="highlight"><code class="language-text">次の命題の真偽を調べ、偽である場合は反例を述べよ
+
+[1] 実数xに対して、|x|≦1 ⇒ |x-3| &gt; 1
+
+P = {x | |x|≦1}, Q = {x | |x-3| &gt; 1}
+について、P⊂Qが成り立てば真となる
+
+ここで、
+P = {x | |x|≦1} = {x| -1≦x≦1}
+Q = {x | |x-3| &gt; 1} = {x| x-3 &lt; -1, 1 &lt; x-3}
+= {x| x &lt; 2, 4 &lt; x}
+
+P ⊂ Qであることがわかるため、真
+
+[2] 実数xに対して、|x|≦1 ⇒ |x-2| &gt; 1
+P = {x | |x|≦1} = {x| -1≦x≦1}
+Q = {x| |x-2| &gt; 1} = {x| (x-2) &lt; -1, 1 &lt; (x-2) }
+= {x| x &lt; 1, 3 &lt; x}
+
+反例x = 1が存在するため p⇒qは偽
+
+[3] 20以下の自然数nに対して
+nが2の倍数∧nが3の倍数でない ⇒ nが6の倍数でない
+
+p: nが2の倍数である
+q: nが3の倍数である
+r: nが6の倍数である　とすると
+
+命題: p∧￢q ⇒ ￢rと表せる
+
+P∩Q^C ⊂ R^Cであればいい。ただし、
+P = {n| n % 2 == 0}
+Q = {n| n % 3 == 0 }
+R = {n| n % 6 == 0 }
+
+P∩Q^C = {2,4,6,8,10,12,14,16,18,20} ∩ {1,2,4,5,7,8,10,11,13,14,16,17,19,20}
+= {2,4,8,10,14,16,20}
+
+一方R^C = {1,2,3,4,5,7,8,9,10,11,13,14,15,16,17,19,20}である
+つまり、P∩Q^C　⊂ R^C
+∴ 命題は真</code></pre>
+<h3 id="2_4">例2</h3>
+<pre class="highlight"><code class="language-text">次の命題の真偽を調べよ。偽の時は反例を挙げよ
+
+※2変数なので座標平面で考えられる
+
+[1] 実数x,yについて、x+y &gt; 2　∧ xy &gt; 1 ⇒ x &gt; 1 ∧ y &gt; 1
+
+P = {x,y | x + y &gt; 2, xy &gt; 1}
+Q = {x,y | x &gt; 1, y &gt; 1}について座標平面を書くと
+
+P ⊃ Qであることがわかる。反例も領域からわかる
+∴命題は偽。反例(x,y) = (2, 0.6)
+
+[2] 実数x,yについて、|x| &lt; 1 ∧ |y| &lt; 1　⇒ x² + y² &lt; 1
+
+※簡単な図形なら頭の中に図示できる
+
+P = {x,y | |x| &lt; 1 ∧ |y| &lt; 1,x,yは実数}の条件に当てはまる領域は
+点A(1,1), B(1,-1), C(-1,1), D(-1,-1)としたときの
+四角形の内部。辺上は含まない
+
+Q = {x,y | x² + y² &lt; 1,x,yは実数}の条件に当てはまる領域は
+原点中心で、半径が1の円。ただし、円周上は含まない。
+
+この時、P⊃Qであって、P⊂Qではない。よって、命題は偽。また、反例は、
+(x,y) = {0.8, 0.8}
+
+[3] 実数x,yについてx² + y² ≦2 ⇒ |x|≦1 ∧ |y|≦1
+
+P = {x,y | x² + y² ≦2,x,yは実数}の条件に当てはまる領域は
+原点中心、半径√2の円の内部と円周上。
+Q = {x,y | |x|≦1 ∧ |y|≦1,x,yは実数}の条件に当てはまる領域は
+点A(1,1), B(1,-1), C(-1,1), D(-1,-1)としたときの
+四角形の内部とその辺上。
+
+四角形ABCDについて、原点から一番遠い点は、頂点になるが
+その距離は√(1² + 1²) = √2
+よって、P⊂Qであって、P⊂Qではない。ゆえに、命題は偽
+(x,y) = (√2, 0)が反例となる
+
+[4] 実数x,yについて、|x| + |y| ≦ 1 ⇒ |x+y|≦1
+
+P = {x,y| |x| + |y| ≦ 1 ,x,yは実数}の条件に当てはまる領域は
+点(0,1), (1,0), (0,-1), (-1, 0)の4点を持つ正方形となる。
+
+Q = {x,y | |x+y|≦1, x,yは実数}の条件に当てはまる領域は
+= {x,y| -1 ≦ x + y ≦ 1}より
+
+y = -x -1と、
+y = -x + 1が囲む帯の領域となる。
+
+図より、P⊂Qが言えるため、命題は真
+
+[5] 実数x,yについてx² + y² ≦ 1 ⇒ |x| + |y| ≦ 1
+
+P = {x,y | x² + y² ≦ 1, x,yは実数} は原点中心、半径1の円周上あるいは
+その内部の座標の集合を意味する。
+
+Q = {x,y | |x| + |y| ≦ 1, x,yは実数}は[4]で述べたような
+正方形の辺とその内部の座標の集合を意味する。
+
+よって、P⊃Qであって、P⊂Qではない。命題は偽。
+反例は、(x,y) = (0.5, 0.6)
+
+[6] 整数m,nについて、m² + n² ≦ 1 ⇒ |m| + |n| ≦ 1
+
+P = {m,n | m² + n² ≦ 1, m,nは整数}は、原点中心、半径1の円の内部或いは
+円周上における、格子点の集合を意味する。
+よって、P = {(0,0),(-1,0), (1,0), (0,-1), (0,1)}
+Q = {m,n| |m| + |n| ≦ 1, m,nは整数} = {(0,0),(-1,0), (1,0), (0,-1), (0,1)}
+つまり、P = Qであるため、命題は真。</code></pre>
+<p><a class="glightbox" href="images/080.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="領域で命題の真偽を示す方法(ver 座標平面)" src="images/080.png" /></a></p>
+<h3 id="_35">領域を示す際の注意点</h3>
+<pre class="highlight"><code class="language-text">|x| + |y| ≦ 1について
+x = -x, y = -yなので、対称性より、第一象限のみ考えればよい
+y = -x + 1と、x,y軸によって囲われた領域を、他の象限にも映していく</code></pre>
+</details>
+<h2 id="q9">Q9 条件の否定と、全称、存在の￢</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_36">ド・モルガンの法則も集合と対応する</h3>
+<pre class="highlight"><code class="language-text">￢(p ∧ q) ⇔ ￢p ∨ ￢q
+￢(p ∨ q) ⇔ ￢p ∧ ￢q
+
+￢pは、p以外全部となることに注意。</code></pre>
+<h3 id="_37">全称、存在の￢</h3>
+<pre class="highlight"><code class="language-text">￢(∀xP(x)) ⇔ ∃x￢P(x)
+￢(∃xP(x)) ⇔ ∀x￢P(x)
+
+---------------
+￢(全てのxについてpが成り立つ) ⇔ ￢pであるxが存在する
+￢(あるxについてpが成り立つ) ⇔ 全てのxについて、￢p
+
+--------------
+
+任意の,という言葉を全てに置き換えたり
+ある,適当なという言葉を、存在する, 少なくとも1つのという言葉に置き換えるといい</code></pre>
+<h3 id="_38">例</h3>
+<pre class="highlight"><code class="language-text">次の条件の否定を述べよ。ただし、x,y,zは実数, mは整数
+
+[1] 1&lt;x≦3
+∴ x≦1, 3 &lt; x
+
+[2] x = 1 ∨ y ≠ 2
+￢(x = 1 ∨ y ≠ 2)
+∴ x≠1 ∧ y = 2
+
+[3] mは偶数 ∧ mは3の倍数
+￢(mは偶数 ∧ mは3の倍数)
+⇔ ￢(mは偶数)　∨ ￢(mは3の倍数)
+⇔ mは奇数 ∨ mは3の倍数ではない
+⇔ mは6の倍数ではない
+
+[4] x = y = z = 0
+￢(x = 0 ∧ y = 0 ∧ z = 0)
+⇔ ￢(x = 0) ∨ ￢(y = 0) ∨ ￢(z = 0)
+⇔ x ≠ 0 ∨ y ≠ 0 ∨ z ≠ 0
+⇔ x,y,zのうち少なくとも1つは0でない
+
+[5] x,y,zのうち少なくとも1つは有理数
+￢(xは有理数 ∨ yは有理数 ∨ zは有理数)
+⇔ ￢(xは有理数)　∧ ￢(yは有理数) ∨ ￢(zは有理数)
+⇔ xは無理数 ∧ yは無理数 ∧ zは無理数
+⇔ x,y,zは全て無理数</code></pre>
+<h3 id="2_5">例2</h3>
+<pre class="highlight"><code class="language-text">次の命題の否定を述べ、元の命題とその￢の真偽を調べよ
+
+[1] 全ての素数は奇数である
+議論領域が素数
+P(x): 素数xは奇数である
+
+￢(∀xP(x)) = ∃x￢P(x): 奇数でない素数が存在する
+素数2は偶数であるため、否定は真。元の命題は偽。
+
+[2] x² + 1 &lt; 0である実数xが存在する
+議論領域が実数
+P(x): xは、x² + 1 &lt; 0である
+
+￢(∃xP(x)) = ∀x￢P(x): すべてのxについて、x² + 1 ≧ 0
+移項すると、x² ≧ -1 より、否定は真。元の命題は偽。
+
+[3] 任意の実数x,yについて、x² + y² &gt; 0
+議論領域は実数
+P(x,y): (x,y)は、x² + y² &gt; 0を満たす
+
+￢(∀x,y P(x,y)) = ∃x￢P(x,y): ある実数x,yについて、x² + y² ≦ 0
+(x,y) = (0,0)の存在より、否定は真。元の命題は偽。
+
+[4] 適当な自然数a,bについて、a² + b² = 13²
+P(a,b): (a,b)は、a² + b² = 13²を満たす
+
+￢(∃a,b P(a,b)) = ∀a,b ￢P(a,b): すべての自然数a,bについて、a² + b² ≠ 13²
+(a,b) = (12,5)の存在より、否定は偽。元の命題は真。</code></pre>
+</details>
+<h2 id="q10">Q10 代表的な同値変形</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_39">まとめ</h3>
+<pre class="highlight"><code class="language-text">xy = 0 ⇔ x = 0 ∨ y = 0
+x² + y² = 0 ⇔ x = 0 ∧　y = 0
+
+xy &gt; 0 ⇔ (x &gt; 0 ∧ y &gt; 0) ∨ (x &lt; 0 ∧ y &lt; 0)
+xy &lt; 0 ⇔ (x &lt; 0 ∧ y &gt; 0) ∨ (x &gt; 0 ∧ y &lt; 0)
+
+x &gt; 0 ∧ y &gt; 0 ⇔ x + y &gt; 0 ∧ xy &gt; 0
+x &lt; 0 ∧ y &lt; 0 ⇔ x + y &lt; 0 ∧ xy &gt; 0
+
+x ≧ 0 ∧　y≧ 0の時
+x = y ⇔ x² = y²
+x &gt; y ⇔ x² &gt; y²
+
+|x| = x  ⇔ x ≧ 0
+|x| &gt; x  ⇔ x &lt; 0
+
+
+[1] |x| = a ⇔ x = ±a, a ≧ 0
+[2] |x| &lt; a ⇔ -a &lt; x &lt; a
+[3] |x| &gt; a ⇔ x &lt; -a, a &lt; x
+
+[1] |x| &gt; |y| ⇔ x² &gt; y²
+[2] |x| &lt; |y| ⇔ x² &lt; y²
+[3] |x| = |y| ⇔ x = ±y
+
+[1] (x/y) = 0 ⇔ x = 0 ∧ y ≠ 0
+[2] (x/y) &gt; 0 ⇔ xy &gt; 0
+[3] (x/y) &lt; 0 ⇔ xy &lt; 0</code></pre>
+<h3 id="_40">最初にやるべきだった</h3>
+<pre class="highlight"><code class="language-text">同値変形がわからないと、図形で逆を証明する重要性もわからない
+双方向の⇒を示すことで、同値だと確かめたら他の分野でも使ってよし</code></pre>
+<h3 id="_41">必要条件と十分条件</h3>
+<pre class="highlight"><code class="language-text">p ⇒ qが真であるとき、
+
+qはpであるための必要条件.
+pはqであるための十分条件.
+
+----------------
+
+つまり、pはqであるための十分条件といわれたら
+pが前件で、qが後件であると想像し、p⇒qを思い浮かべる
+
+覚え方としては、p⇒qが真であるとき集合で考えるとP⊂Qであり、
+PはQの部分集合であるため
+この時、Pが真であれば、Qが真と言い切るのに十分である場合 ⇔ p ⇒ qと考える
+
+qはpであるための必要条件といわれても
+同様にp ⇒ qを思い浮かべる。言葉の意味よりも単に逆と考えた方がまぎれがなさそうだ</code></pre>
+<h3 id="_42">必要十分条件</h3>
+<pre class="highlight"><code class="language-text">p ⇔ q := pとqは同値である。
+これを、pはqであるための必要十分条件、あるいはqはpであるための必要十分条件
+といったりする</code></pre>
+<h3 id="_43">同値変形</h3>
+<pre class="highlight"><code class="language-text">※これより下のx,yはすべて実数とする
+[1] 
+xy = 0 ⇔ x = 0 ∨ y = 0</code></pre>
+<h3 id="1">[1]の証明</h3>
+<pre class="highlight"><code class="language-text">[i] xy = 0 ⇒ x = 0 ∨ y = 0を示す
+
+P : xy = 0
+Q : x = 0 ∨ y = 0
+について、P⇒Qが成り立つことを背理法で示すには
+￢(P⇒Q)ならば矛盾となることを示せばよい。よって、 
+(￢(P⇒Q) ⇒ ⊥) ⇔ (P∧￢Q　⇒ ⊥)より
+x≠0, y≠0である実数x,yが存在して、その積が0になると仮定する
+
+この時、x≠0であるため、xの逆数1/xが存在する
+xy = 0の両辺に対し、(1/x)をかけると
+(1/x)xy = 0*(1/x)
+よって、y = 0
+これは、y≠0とした仮定と矛盾する。
+同様に、yの逆数1/yを用いると、x = 0が導かれ、これも仮定に矛盾する
+
+従って、0でない実数x,yが存在し、その積が0になるという仮定に誤りがある
+∴ xy = 0　⇒ x = 0 ∨ y = 0
+
+
+[ii] x = 0 ∨ y = 0 ⇒ xy = 0
+x = 0の時、xy = 0,
+y = 0の時、xy = 0,
+x = y = 0の時、xy = 0
+
+[i],[ii]より、
+xy = 0 ⇔ x = 0 ∨ y = 0</code></pre>
+<h3 id="2_6">同値変形2</h3>
+<pre class="highlight"><code class="language-text">[2] 実数x,yについて
+x² + y² = 0 ⇔ x = 0 ∧ y = 0
+
+[i] x² + y² = 0 ⇒ x = 0 ∧ y = 0
+
+P: x² + y² = 0
+Q: x = 0 ∧ y = 0であるとき
+P ⇒ Qが真であることを示したい。
+
+￢(P⇒Q) ⇒ ⊥であれば、背理法よりP⇒Qは真なので
+x² + y² = 0 ∧ x ≠ 0 ∨ y ≠ 0の真偽を考えると
+x ≠ 0 の時、x² &gt; 0より、x² + y² &gt; 0
+y ≠ 0 の時、y² &gt; 0より、x² + y² &gt; 0
+これは、x² + y² = 0とした仮定と矛盾する。
+よって、 ￢(P⇒Q) ⇒ ⊥になるため
+∴ x² + y² = 0 ⇒ x = 0 ∧ y = 0
+
+
+[ii] x = 0 ∧ y = 0 ⇒  x² + y² = 0
+実際に代入することで示せる。
+
+[i],[ii]よりx² + y² = 0 ⇔ x = 0 ∧ y = 0</code></pre>
+<h3 id="_44">補足</h3>
+<pre class="highlight"><code class="language-text">3変数以上の時も同様に示せる
+
+xyz = 0 ⇔ x = 0 ∨ y = 0 ∨ z = 0
+x² + y² + z² = 0 ⇔ x = 0 ∧ y = 0 ∧ z = 0</code></pre>
+<h3 id="3_1">同値変形3</h3>
+<pre class="highlight"><code class="language-text">xy &gt; 0 ⇔ (x &gt; 0 ∧ y &gt; 0) ∨ (x &lt; 0 ∧ y&lt; 0)
+xy &lt; 0 ⇔ (x &gt; 0 ∧ y &lt; 0) ∨ (x &lt; 0 ∧ y &gt; 0)
+
+2数の積 &gt; 0であるとき、その組み合わせは、(正, 正), (負, 負)
+2数の積 &lt; 0であるとき、その組み合わせは、(正, 負), (負, 正)
+
+自明に思われるが導出したい</code></pre>
+<h3 id="4">同値変形4</h3>
+<pre class="highlight"><code class="language-text">x &gt; 0 ∧ y &gt; 0 ⇔ x + y &gt; 0 ∧ xy &gt; 0
+x &lt; 0 ∧ y &lt; 0 ⇔ x + y &lt; 0 ∧ xy &lt; 0
+
+[i] x &gt; 0 ∧ y &gt; 0 ⇒ x + y &gt; 0 ∧ xy &gt; 0
+
+P: x &gt; 0 ∧ y &gt; 0
+Q: x + y &gt; 0 ∧ xy &gt; 0
+
+￢(P⇒Q)⇒⊥つまり、P∧￢Q ⇒ ⊥であれば、P⇒Qが示せる
+よって、これを同値変形して
+(x &gt; 0 ∧ y &gt; 0) ∧ ￢(x + y &gt; 0 ∧ xy &gt; 0)
+⇔ (x &gt; 0 ∧ y &gt; 0) ∧ (￢(x + y &gt; 0) ∨ ￢(xy &gt; 0))
+⇔ (x &gt; 0 ∧ y &gt; 0) ∧ (x + y ≦ 0 ∨ xy ≦ 0)
+
+(x &gt; 0 ∧ y &gt; 0) より、xy &gt; 0 (同値変形3)
+これは、xy≦0とした仮定と矛盾する。よって、￢(P⇒Q)⇒⊥なので
+x &gt; 0 ∧ y &gt; 0 ⇒ x + y &gt; 0 ∧ xy &gt; 0
+
+[ii] x + y &gt; 0 ∧ xy &gt; 0 ⇒ x &gt; 0 ∧ y &gt; 0
+
+(x + y &gt; 0 ∧ xy &gt; 0) ∧ ￢(x &gt; 0 ∧ y &gt; 0)より
+(x + y &gt; 0 ∧ xy &gt; 0) ∧ (x≦0 ∨ y≦0)と仮定する
+
+x≦0, y≦0の時、x + y ≦ 0となるため仮定に矛盾
+x≦0, y&gt;0の時、xy ≦ 0となるため仮定に矛盾
+x&gt;0, y≦0のとき、xy ≦ 0となるため仮定に矛盾
+よって、仮定に誤りがあるため背理法より
+x + y &gt; 0 ∧ xy &gt; 0 ⇒ x &gt; 0 ∧ y &gt; 0
+
+[i],[ii]より
+∴ x &gt; 0 ∧ y &gt; 0 ⇒ x + y &gt; 0 ∧ xy &gt; 0
+
+※ &lt; 0の場合も同様に示せる</code></pre>
+<h3 id="5">同値変形5</h3>
+<pre class="highlight"><code class="language-text">x≧0　∧ y ≧ 0の時、
+
+x = y ⇔ x² = y²
+x &gt; y ⇔ x² &gt; y²
+
+-------------------------
+
+[i] x = y ⇒ x² = y²
+
+x = yであるとき
+両辺にxをかけてx² = xy
+x = yであるためx² = y²
+
+[ii] x² = y² ⇒ x = y
+
+x² = y² ⇒ |x| = |y|が成り立つことと、
+条件より、負の値は考える必要がないことから
+x≧0　∧ y ≧ 0の時 x² = y² ⇒ |x| = |y| ⇒ x = y
+
+[i], [ii]よりx = y ⇔ x² = y²
+
+[iii] x &gt; y ⇒ x² &gt; y²
+
+命題の否定(x &gt; y)∧ (x²≦y²)を仮定する
+x²=y²の時、[ii]より、x = y. これは仮定と矛盾する
+x²&lt;y² ⇒ |x| &lt; |y|. 条件より負の値は考える必要がないのでx &lt; y
+これも仮定と矛盾する。
+∴ x &gt; y ⇒ x² &gt; y²
+
+[iv] x² &gt; y² ⇒ x &gt; y
+
+命題の否定(x² &gt; y²) ∧ (x ≦ y)を仮定する
+x² &gt; y² ⇒ |x| &gt; |y|
+条件より負の値は考える必要がないので、x &gt; y
+これは仮定と矛盾する
+∴ x² &gt; y² ⇒ x &gt; y
+
+[iii], [iv]より、x &gt; y ⇔ x² &gt; y²
+
+-------------------------
+
+※ x² = y² ⇒ |x| = |y|
+
+x² = y²
+⇔ x² - y² = 0
+⇔ (x+y)(x-y) = 0
+
+xy = 0 ⇔ x = 0 ∨ y = 0より
+x - y = 0, x + y = 0のいずれかが成り立つ
+
+[i] x - y = 0の場合、 x = y
+[ii] x + y = 0の場合、x = -y
+
+絶対値は原点からの距離を意味するので
+x = y ⇒ |x| = |y|
+x = -y ⇒ |x| = |-y| = |y|
+
+∴ x² = y² ⇒ |x| = |y|</code></pre>
+<h3 id="6">同値変形6</h3>
+<pre class="highlight"><code class="language-text">|x| = x  ⇔ x ≧ 0
+|x| &gt; x  ⇔ x &lt; 0
+
+[i] |x| = x ⇒ x ≧ 0
+
+命題の否定(|x| = x)∧(x &lt; 0)を仮定する
+x &lt; 0の時 |x| = -x　(絶対値関数の定義より)
+よって、仮定と矛盾する。
+∴ |x| = x ⇒ x ≧ 0
+
+[ii] x ≧ 0 ⇒ |x| = x
+x &gt; 0の時、|x| = x
+x = 0の時、|0| = 0
+∴ x ≧ 0 ⇒ |x| = x
+
+[i], [ii]より、 |x| = x  ⇔ x ≧ 0
+
+[iii] |x| &gt; x  ⇒ x &lt; 0
+
+命題の否定(|x| &gt; x)∧(x ≧ 0)を仮定する
+同値変形して|x| &gt; x　⇔ |x| - x &gt; 0
+x &gt; 0の時、|x| = xなので、
+|x| - x = 0. これは仮定と矛盾する
+
+x = 0の時、|0| - 0 = 0. これも仮定と矛盾する
+∴ |x| &gt; x  ⇒ x &lt; 0
+
+[iv] x &lt; 0 ⇒ |x| &gt; x
+x &lt; 0の時、|x| = -x
+同値変形して|x| &gt; x  ⇔ |x| - x &gt; 0
+|x| - x = -2x 
+x &lt; 0なので、-2x &gt; 0
+ゆえに、x &lt; 0 ⇒ |x| - x &gt; 0 ⇔ |x| &gt; x
+
+[iii], [iv]より、 |x| &gt; x  ⇔ x &lt; 0</code></pre>
+<h3 id="7">同値変形7</h3>
+<pre class="highlight"><code class="language-text">a &gt; 0の時、
+
+|x| = a ⇔ x = ±a
+|x| &lt; a ⇔ -a &lt; x &lt; a
+|x| &gt; a ⇔ x &lt; -a, a &lt; x
+
+※絶対値の定義と、絶対値が原点からの距離であることを考えればわかる</code></pre>
+<h3 id="8">同値変形8</h3>
+<pre class="highlight"><code class="language-text">aが何であっても、
+
+[1] |x| = a ⇔ x = ±a, a ≧ 0
+[2] |x| &lt; a ⇔ -a &lt; x &lt; a
+[3] |x| &gt; a ⇔ x &lt; -a, a &lt; x
+
+[1-i]
+a &gt; 0の時、|x| = a ⇔ x = ±a (原点からの距離より) ...(1)
+a = 0の時、|x| = 0 ⇔ x = ±0 より、これは(1)を満たす
+a &lt; 0の時、|x| = -aとなるxは存在しない。
+∴ |x| = a ⇔ x = ±a, a ≧ 0
+
+[2-i]
+a &gt; 0の時、|x| &lt; a ⇔ -a &lt; x &lt; a (原点からの距離より) ...(2)
+a = 0の時、|x| &lt; 0となるxは存在しない。0 &lt; x &lt; 0となるxも存在しない
+よって、これは(2)を満たす(空虚な真)
+
+a &lt; 0の時、|x| &lt; aとなるxは存在しない。また-a &lt; aとなるaも存在しない
+ため、この不等号にはさまれたxも当然存在しない.よってこれは(2)を満たす(空虚な真)
+∴ |x| &lt; a ⇔ -a &lt; x &lt; a
+
+[3-i]
+a &gt; 0の時、|x| = a ⇔ x &lt; -a, a &lt; x(原点からの距離より) ...(3)
+a = 0の時、|x| &gt; 0となるxはx以外の任意の実数
+x &lt; 0, 0 &lt; xとなるxもx以外の任意の実数である
+よってa=0の時も、(3)を満たす
+
+a &lt; 0の時、|x| &gt; aとなるxは任意の実数
+x &lt; a, a &lt; xとなるxも任意の実数.よってa &lt; 0の時も、(3)を満たす
+∴ |x| &gt; a ⇔ x &lt; -a, a &lt; x</code></pre>
+<h3 id="_45">例</h3>
+<pre class="highlight"><code class="language-text">|x-1| = 3 - 2x
+x - 1 = ±(3 - 2x) ただし、3 - 2x ≧ 0 ⇔ x ≦ 3/2
+x - 1 = 3 - 2xの時、x = 4/3
+x - 1 = 2x - 3の時  x = 2
+条件より、 x = 4/3
+
+--------------
+
+|3x + 4| ≧ 5x
+
+⇔ 3x + 4 ≦ -5x, 5x ≦ 3x + 4
+⇔ 8x ≦ -4, 2x≦4
+⇔ x≦ -(1/2), x≦2</code></pre>
+<h3 id="9">同値変形9</h3>
+<pre class="highlight"><code class="language-text">[1] |x| &gt; |y| ⇔ x² &gt; y²
+[2] |x| &lt; |y| ⇔ x² &lt; y²
+[3] |x| = |y| ⇔ x = ±y
+
+[1-i]
+絶対値は0以上であるため、
+同値変形: x≧0 ∧ y≧0の時、x &gt; y ⇔ x² &gt; y²が使える
+つまり、|x|≧0 ∧ |y|≧0なので、|x| &gt; |y| ⇔ |x|² &gt; |y|²
+
+x≧ 0の時、|x|² = x² 
+x &lt; 0の時、|x|² = (-x)² = x²
+yについても同様に考えると
+|x|² &gt; |y|² ⇔ x² &gt; y²
+
+∴ |x| &gt; |y| ⇔ x² &gt; y²
+
+[2-i]
+文字x,yを入れ替えれば問題ない    
+
+[3-i]
+
+|x| = |y| 
+⇔ x² = y² 
+⇔ x² - y² = 0
+⇔ (x + y)(x - y) = 0
+⇔ x = y ∨ x = -y
+⇔ x = ±y</code></pre>
+<h3 id="10">同値変形10</h3>
+<pre class="highlight"><code class="language-text">[1] (x/y) = 0 ⇔ x = 0 ∧ y ≠ 0
+[2] (x/y) &gt; 0 ⇔ xy &gt; 0
+[3] (x/y) &lt; 0 ⇔ xy &lt; 0
+
+[1] 分母0の数は定義されないことに注意する
+    よって、計算結果が0であることから、
+    (x/y) = 0 は分母がy ≠ 0であることを条件としている
+    y ≠ 0の時、1/y ≠ 0
+
+    [i] (x/y) = 0 ⇒ x = 0 ∧ y ≠ 0
+    xy = 0 ⇒ x = 0 ∨ y = 0と、条件よりy ≠ 0であることから
+    x = 0なので、成り立つ
+
+    [ii] x = 0 ∧ y ≠ 0 ⇒ (x/y) = 0
+    0/y = 0より成り立つ。
+
+    [i], [ii]より、(x/y) = 0 ⇔ x = 0 ∧ y ≠ 0
+
+[2] (x/y) &gt; 0の両辺にy²をかけると
+    xy &gt; 0
+
+[3] (x/y) &lt; 0の両辺にy²をかけて
+    xy &lt; 0
+
+----------------------
+
+[補足] (x/y)≧ 0 ⇔ xy ≧ 0 ∧ y ≠ 0
+
+分母がyであれば、(x/y)≧0という条件から
+暗黙的にy≠0が成り立っている事がわかる
+
+よって、※両辺に正の数y²をかけても不等号の向きは変わらないため
+(x/y) ≧ 0
+⇔ xy ≧ 0 ∧　y ≠ 0
+
+---------------------
+
+※a≧b ⇒　ac≧ bc (c≧0)
+  a ≧ b ∧ c &gt; 0
+  a - b ≧ 0の両辺にcをかけると
+  c(a-b) ≧ 0
+  分配法則を用いて
+  ca ≧ cb</code></pre>
+</details>
+<h2 id="q11">Q11 同値変形実用</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_46">例</h3>
+<pre class="highlight"><code class="language-text">x,yを実数としたとき、p,qが同値であることを示せ
+
+[1] 
+p: x &gt; 1 ∧ y &gt; 1
+q: x+y &gt; 2 ∧　(x-1)(y-1) &gt; 0
+---------------
+x &gt; 0 ∧ y &gt; 0 ⇔ x + y &gt; 0 ∧ xy &gt; 0 を使用する
+
+x &gt; 1 ∧ y &gt; 1 
+⇔ (x-1) &gt; 0 ∧ (y - 1) &gt; 0 
+⇔ (x-1) + (y-1) &gt; 0　∧ (x-1)(y-1) &gt; 0
+移項すると、以下になるため同値関係は示された
+x &gt; 1 ∧ y &gt; 1  ⇔ x + y &gt; 2　∧ (x-1)(y-1) &gt; 0</code></pre>
+<pre class="highlight"><code class="language-text">p : xy + 1 = x + y
+q : x,yの少なくとも一方が1 ⇔ x = 1 ∨ y = 1
+---------------------
+
+x,yの少なくとも一方が1
+⇔ x = 1 ∨ y = 1
+⇔ x - 1 = 0 ∨ y - 1 = 0
+⇔ (x-1)(y-1) = 0
+⇔ xy + 1 = x + y</code></pre>
+<pre class="highlight"><code class="language-text">p: x² + y² = 2(x + y - 1)
+q: x = y = 1
+----------------
+
+x = y = 1
+⇔ x = 1 ∧ y = 1
+⇔ x - 1 = 0 ∧ y - 1 = 0
+⇔ (x-1)² + (y-1)² = 0
+⇔ x² + y² = 2(x + y - 1)</code></pre>
+<pre class="highlight"><code class="language-text">p: x = y = 0
+q: x² - xy + y² = 0
+
+--------------
+x² + y² = 0　⇔ x = 0 ∧ y = 0を用いる
+
+
+x² - xy + y² = 0
+⇔ (x - y/2)² + (3/4)y² = 0
+⇔ x - (y/2) = 0 ∧ √(3/4)y = 0
+⇔ x - (y/2) = 0 ∧ y = 0
+⇔ x = 0 ∧ y = 0
+⇔ x = y = 0</code></pre>
+<pre class="highlight"><code class="language-text">p: x &gt; y
+q: x³ &gt; y³
+---------------
+
+x³ &gt; y³
+⇔ x³ - y³ &gt; 0
+⇔ (x-y)(x² + xy + y²) &gt; 0
+⇔ x - y &gt; 0
+⇔ x &gt; y
+
+※x² + xy + y²
+= (x + 1/2y)² + (3/4)y²
+= (x + 1/2y)² + (√3/2y)² ≧ 0</code></pre>
+<pre class="highlight"><code class="language-text">p: x² + y² + z² + xy + yz + zx = 0
+q: x = y = z = 0
+-------------
+x² + y² + z² = 0 ⇔ x = y = z = 0を利用する
+
+x² + y² + z² + xy + yz + zx = 0
+⇔ 2x² + 2y² + 2z² + 2xy + 2yz + 2zx = 0
+⇔ (x² + 2xy + y²) + (y² + 2yz + z²) + (z² + 2zx + x²) = 0
+⇔ (x + y)² + (y + z)² + (z + x)² = 0
+⇔ (x + y) = (y + z) = (z + x) = 0
+⇔ x = y = z = 0
+
+※ x + y = 0 ⇔ y = -x
+z + x = 0 ⇔ z = -x
+y + z = 0 ⇔ -2x = 0
+よって、x = y = z = 0</code></pre>
+<pre class="highlight"><code class="language-text">p: x² + y² + z² - xy - yz - zx = 0
+q: x = y = z
+---------------
+
+x² + y² + z² - xy - yz - zx = 0
+⇔ 2x² + 2y² + 2z² - 2xy - 2yz - 2zx = 0
+⇔ (x - y)² + (y - z)² + (z - x)² = 0
+⇔ x - y = y - z = z - x = 0
+⇔ x = y = z</code></pre>
+<pre class="highlight"><code class="language-text">p: x ≧ 0
+q: √{x²} = x
+-------------------
+
+|x| = x ⇔ x ≧ 0を利用する
+
+√{x²} = x
+⇔ |x| = x
+⇔ x ≧ 0</code></pre>
+<pre class="highlight"><code class="language-text">p: |x+y| = |x-y|
+q: xy = 0
+-------------
+
+※|x| = |y| ⇔ x = ±yを利用する
+
+|x| = -x ∨ x
+|y| = -y ∨ y
+x = ±y　∨ -x = ±y ⇔ x = ±y
+
+
+|x+y| = |x-y|
+⇔ (x + y = x - y) ∨ (x+ y = -x + y)
+⇔ y = 0 ∨ x = 0
+⇔ xy = 0 </code></pre>
+<pre class="highlight"><code class="language-text">p: |x + y| = |x| + |y|
+q: xy ≧ 0
+
+|x + y|, |x| + |y| ≧ 0より(※2乗すると絶対値が外せる)
+
+|x + y| = |x| + |y|
+⇔ (x + y)² = (|x| + |y|)²
+⇔ x² + 2xy + y² = |x|² + 2|x||y| + |y|²
+⇔ 2xy = 2|xy|
+⇔ xy = |xy| (|x| = x ⇔  x≧0)
+⇔ xy ≧ 0
+---------------
+
+|x||y| = |xy|
+
+x≧0, y≧0の時、
+|x||y| = xy, |xy| = xy
+
+x≧0, y &lt; 0の時、
+|x||y| = -xy, |xy| = -xy
+
+x&lt;0, y≧0の時
+|x||y| = -xy, |xy| = -xy
+
+x &lt; 0, y &lt; 0の時
+|x||y| = (-x)(-y) = xy, |xy| = xy</code></pre>
+<pre class="highlight"><code class="language-text">p: |x+y| &lt; |x|+|y| 
+q: xy &lt; 0
+
+|x + y|, |x| + |y| ≧ 0より(※2乗すると絶対値が外せる)
+
+|x+y|² &lt; (|x|+|y|)²
+⇔ x² + 2xy + y² &lt; |x|² + 2|x||y| + |y|²
+⇔ xy &lt; |xy| (※x &lt; |x| ⇔ x &lt; 0)
+⇔ xy &lt; 0 </code></pre>
+<pre class="highlight"><code class="language-text">p: xy &lt; 0
+q: (x/y) + (y/x) &lt; 0
+
+(x/y) + (y/x) &lt; 0
+⇔ (x² +  y²) / xy &lt; 0 (x/y &lt; 0　⇔ xy &lt; 0)
+⇔ (x² + y²)xy &lt; 0
+※xy &lt; 0 ⇔ (x &gt; 0 ∧ y &lt; 0) ∨ (x &lt; 0 ∧ y &gt; 0)より
+x² + y² ≧ 0なので、
+⇔ xy &lt; 0 ∧ x² + y² ≠ 0
+⇔ xy &lt; 0 ∧ ￢(x = y = 0)
+※より、xy &lt; 0であるとき、x = y = 0にはなりえないため
+⇔ xy &lt; 0</code></pre>
+</details>
+<h2 id="q12">Q12 必要条件と十分条件の判定</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_47">例</h3>
+<pre class="highlight"><code class="language-text">a,b,cを実数とする
+
+ac = bcは a = bであるための「」条件である
+
+ac = bc ⇒ a = bの真偽を考える
+(a,b,c) = (1,2,0)が反例としてあるため偽
+
+a = b　⇒ ac = bcの真偽を考える
+ac = bc
+⇔ ac - bc = 0
+⇔ c(a-b) = 0
+xy = 0 ⇔ x = 0 ∨ y = 0より
+これは、a = b ∨ c = 0と同値
+
+a = b ⇒ (a = b ∨ c = 0)
+これは真 (こう考えると、c = 0 ⇒ a = bはおかしいので反例を挙げるまでもない)
+また集合関係で考えると、a = b ⊂ (a = b ∨ c = 0)となるため真となることもわかる
+
+よって、a = b　⇒ ac = bc
+
+p ⇒ qが真ならば、
+pがqであるための十分条件と呼称した
+qがpであるための必要条件と呼称した
+
+よって、ac = bcはa = bであるための必要条件である</code></pre>
+<h3 id="_48">手順</h3>
+<pre class="highlight"><code class="language-text">1 同値変形して、他方が導かれるか考える
+2 双方向の含意を考える
+3 p ⇒ qが成り立ったら、pがqであるための十分条件と考える</code></pre>
+</details>
+<h2 id="q13">Q13 逆、裏、対偶</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_49">逆、裏、対偶</h3>
+<pre class="highlight"><code class="language-text">p ⇒ qの逆は、q ⇒ p
+p ⇒ qの裏は、￢p ⇒ ￢q
+p ⇒ qの対偶は、￢q ⇒ ￢p
+
+p⇒qが真　⇔ ￢q⇒￢pが真
+つまり、元の命題と対偶の命題は一致する。
+よって、元の命題を証明する代わりに、対偶命題を証明しても許される
+
+※集合で考える
+P: pの条件を満たす元の集合
+Q: qの条件を満たす元の集合と考えると
+p ⇒ q ⇔　P ⊂ Q ⇔ Q^C ⊂ P^C ⇔ ￢q ⇒ ￢p</code></pre>
+<h3 id="_50">例</h3>
+<pre class="highlight"><code class="language-text">x,yを実数とする
+
+以下の命題の逆、裏、対偶について真偽を述べよ
+
+[1] x = 1 ∧ y = 2 ⇒ x + y = 3
+これは真
+
+逆: x + y = 3 ⇒ x = 1 ∧ y = 2
+反例(x,y) = (2, 1)
+
+裏: ￢( x = 1 ∧ y = 2 ) ⇒ ￢(x + y = 3)
+x ≠ 1 ∨ y ≠ 2 ⇒ x + y ≠ 3
+反例(x,y) = (0,3)
+
+対偶: x + y ≠ 3 ⇒ x ≠ 1 ∨ y ≠ 2
+元の命題が真であるため、真</code></pre>
+</details>
+<h2 id="q14">Q14 対偶を利用した証明</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_51">対偶を利用して実数の性質を証明する</h3>
+<pre class="highlight"><code class="language-text">元の命題の結論qに、～でない、または、少なくとも1つのがある時
+対偶をとることで、～である、かつ、すべてのとなり扱いやすくなる</code></pre>
+<pre class="highlight"><code class="language-text">[1] 
+  整数m,nについて、m² + n²が奇数 ⇒ mが偶数 ∨ nが偶数であることを示せ
+
+  対偶をとると
+  ￢(mが偶数 ∨ nが偶数) ⇒ ￢(m² + n²が奇数)
+  ⇔ (mが奇数 ∧ nが奇数)　⇒ m² + n²が偶数
+
+  m,nは奇数であるため
+  m = 2k + 1
+  n = 2l + 1とおける。ただし、k,lは整数
+
+  この時、
+  (m² + n²) 
+  = (2k + 1)² + (2l + 1)²
+  = 4k² + 4k +1 + 4l² + 4l + 1
+  = 2(2k² + 2k + 2l² + 2l + 1)
+
+  ここで、k,lは整数より2k² + 2k + 2l² + 2l + 1は整数である
+  よって、2(2k² + 2k + 2l² + 2l + 1)は2の倍数であるため偶数
+  従って(mが奇数 ∧ nが奇数)　⇒ m² + n²が偶数は真
+
+  対偶が真であるため、元の命題も真である
+
+[2] 整数nについて、n²が3の倍数 ⇒ nが3の倍数 (※1)
+
+対偶をとると
+nが3の倍数でない　⇒ n²が3の倍数でない
+
+nは3の倍数でないため
+n = 3k + 1 ∨ 3k + 2 と表せる
+
+n = 3k + 1の時、
+n² = (3k + 1)² = 9k² + 6k + 1 = 3(3k² + 2k) + 1
+3k² + 2kは整数なので、3(3k² + 2k) + 1は3の倍数でない
+
+n = 3k + 2の時
+n² = (3k+2)² = 9k² + 12k + 4 = 3(3k² + 4k + 1) + 1
+3k² + 4k + 1は整数なので3(3k² + 4k + 1) + 1は3の倍数でない
+
+よって、nが3の倍数でない　⇒ n²が3の倍数でないは真である
+対偶が真であるため、元の命題も真である
+
+[3] 正の実数xが無理数 ⇒ √xも無理数(※2)
+
+対偶をとると
+√xが有理数 ⇒ xが有理数
+
+√xは有理数であるため
+√x = p/q (p,qは整数: q≠0)とおくと
+x = (√x)² = p²/q²　
+p², q²はいずれも整数であるため、xは有理数
+よって、√xが有理数 ⇒ xが有理数は真
+対偶が真であるため、元の命題も真である
+
+[4] 実数x,yについて、x,yがともに無理数 ⇒ x + y と x-yの少なくとも一方が無理数
+
+xは無理数 ∧ yは無理数 ⇒ (x+y)は無理数 ∨ (x-y)は無理数
+この対偶をとると
+
+(x+y)は有理数 ∧ (x-y)は有理数 ⇒ xは有理数 ∨ yは有理数
+
+x + y = p/q(p,qは整数: q≠0)
+x - y = r/s(r/sは整数: r≠0)とおく
+
+(x + y) + (x-y) 
+= 2x
+= (ps + qr / qs)より、
+
+x = (ps + qr / 2qs)である
+
+ps + qrは整数 ∧ 2qsは整数であるため(整数は乗法について、閉じている)
+よって(x+y)は有理数 ∧ (x-y)は有理数 ⇒ xは有理数 ⇒ xは有理数 ∨ yは有理数は真
+対偶が真であるため、元の命題も真である</code></pre>
+<h3 id="_52">補足</h3>
+<pre class="highlight"><code class="language-text">※1 n²からnを導くのは困難であるため、~nでないとなったが対偶をとった
+※2 有理数 = (整数) / (整数)で表されることを使う</code></pre>
+</details>
+<h2 id="q15">Q15 必要条件と十分条件の演習問題(実数編)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_53">二つの不等式の加法、乗法</h3>
+<pre class="highlight"><code class="language-text">a &gt; b, c &gt; dの時
+
+a &gt; b ⇒ a + c &gt; b + c
+c &gt; d ⇒ b + c &gt; b + d
+よって、a + c &gt; b + d
+
+a &gt; b &gt; 0,  c &gt; d &gt; 0の時
+
+a &gt; b ⇒ ac &gt; bc
+c &gt; d ⇒ bc &gt; bd
+よって、 ac &gt; bd</code></pre>
+<h3 id="_54">例</h3>
+<pre class="highlight"><code class="language-text">[1] xz = yzは、x = yであるための「」
+
+x = y ⇒ xz = yzは真
+xz = yz ⇒ x = y は偽より
+
+「必要条件であるが十分条件ではない」
+
+[2] xz &gt; yzはx &gt; yであるための「」
+
+x &gt; y ⇒ xz &gt; yzは偽
+(x,y,z) = (2,1,-1)が反例
+
+xz &gt; yz ⇒ x &gt; y
+(x,y,z) = (-2, -1, -1)が反例
+
+「必要条件でも十分条件でもない」
+
+[3] x + y = 0 は、xy = 0であるための「」
+
+x + y = 0 ⇒ xy = 0
+(x,y) = (-1, 1)が反例
+
+xy = 0 ⇒ x + y = 0
+(x,y) = (0,2)が反例
+
+「必要条件でも十分条件でもない」
+
+[4] x² + y² = 0は、xy = 0であるための「」
+
+x² + y² = 0 ⇒ xy = 0
+
+x² + y² = 0 ⇒ x = 0 ∧ y = 0 ⇒ xy = 0より真
+
+xy = 0 ⇒ x² + y² = 0
+xy = 0 ⇔ x = 0 ∨ y = 0より
+(x,y) = (1,0)が反例
+
+「十分条件だが必要条件ではない」
+
+[5] x &gt; 1 ∧ y &gt; 1は、x + y &gt; 2 ∧ xy &gt; 1であるための「」
+
+x &gt; 1 ∧ y &gt; 1 ⇒ x + y &gt; 2 ∧ xy &gt; 1
+
+x &gt; 1 ∧ y &gt; 1 ⇒ x + y &gt; 2
+x,y &gt; 0なので
+x &gt; 1 ∧ y &gt; 1 ⇒ xy &gt; 1
+
+x + y &gt; 2 ∧ xy &gt; 1 ⇒ x &gt; 1 ∧ y &gt; 1
+(x,y) = (3, 0.9)が反例
+
+「十分条件だが必要条件ではない」
+
+[6] x &gt; yは、x² &gt; y²であるための「」
+
+x &gt; y ⇒ x² &gt; y²
+(x,y) = (1,-4)が反例
+
+x² &gt; y² ⇒ x &gt; y
+(x,y) = (-4, 1)が反例
+
+「必要条件でも十分条件でもない」
+
+[7] x &gt; yは x³ &gt; y³であるための「」
+
+x³ &gt; y³
+⇔ x³ - y³ &gt; 0
+⇔ (x-y)(x² + xy + y²) &gt; 0
+⇔ x &gt; y
+
+「必要十分条件である」
+
+[8] x² &gt; y²は、x⁴ &gt; y⁴であるための「」
+
+x⁴ &gt; y⁴
+⇔ (x⁴ - y⁴) &gt; 0
+⇔ (x² +  y²)(x² - y²) &gt; 0
+⇔ x² &gt; y²
+
+「必要十分条件である」</code></pre>
+</details>
+<h2 id="q16">Q16 必要条件と十分条件の演習問題(絶対値編)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_55">例</h3>
+<pre class="highlight"><code class="language-text">[1] |x - 6| &gt; |2x - 9| は√x = x -2 であるための「」
+
+
+|x - 6|,|2x - 9| ≧ 0より
+
+|x - 6| &gt; |2x - 9| 
+⇔ |x-6|² &gt; |2x-9|²
+⇔ x² - 12x + 36 &gt; 4x² -36x + 81
+⇔ -3x² + 24x - 45 &gt; 0
+⇔ 3x² - 24x + 45 &lt; 0
+⇔ 3(x - 5)(x - 3) &lt; 0
+⇔ 3 &lt; x &lt; 5
+
+√x = x - 2 ⇒ x = (x-2)²
+⇔ x² - 5x + 4 = 0
+⇔ (x - 4)(x - 1) = 0
+⇔ x = 1, 4
+このうち、x = 4は√x = x - 2を満たす
+
+つまり
+√x = x - 2 ⇒ |x - 6| &gt; |2x - 9|
+⇔ x = 4 ⇒ |x - 6| &gt; |2x - 9|
+2 &gt; 1より、これは満たされる。よって、真
+
+一方|x - 6| &gt; |2x - 9| ⇒ √x = x - 2について考えると
+3 &lt; x &lt; 5 ⇒ x = 4は明らかに偽。
+
+「必要条件であって、十分条件ではない」
+
+[2]
+  |x| &lt; 1 ∧ |y| &lt; 1は、xy + 1 &gt; x + yであるための「」
+
+  |x| &lt; 1 ∧ |y| &lt; 1
+  ⇒ -1 &lt; x &lt; 1 ∧ -1 &lt; y &lt; 1
+
+  xy + 1 &gt; x + y
+  ⇔ xy - x -y + 1 &gt; 0
+  ⇔ (x - 1)(y - 1) &gt; 0
+  ⇔ (x - 1 &gt; 0 ∧ y - 1 &gt; 0) ∨ (x - 1 &lt; 0 ∧ y -1 &lt; 0)
+  ⇔ (x &gt; 1 ∧ y &gt; 1) ∨ (x &lt; 1 ∧ y &lt; 1)
+  座標平面において、領域を考えると
+
+  P: {x,y | |x| &lt; 1 ∧ |y| &lt; 1}
+  Q: {x,y | xy + 1 &gt; x + y}であるとき、
+  P⊂Qであって、P⊃Qではない。よってこの時
+  |x| &lt; 1 ∧ |y| &lt; 1　⇒ |x| &lt; 1 ∧ |y| &lt; 1
+  つまり、逆は成り立たない。よって、
+
+  「十分条件であって、必要条件ではない」
+
+[3] |x+y| = |x-y|はx = y = 0であるための「」
+
+※|x| = |y| ⇔ x = ±yを使う
+|x+y| = |x-y|
+⇔ x + y = x - y ∨ x + y = -x + y
+⇔ -2y = 0 ∨ 2x = 0
+⇔ y = 0 ∨ x = 0
+∴ x = y = 0 ⇒|x+y| = |x-y|は真
+
+|x+y| = |x-y| ⇒ x = y = 0は偽。反例は
+(x,y) = (0,1)
+
+「必要条件であって、十分条件ではない」
+
+[4] |x+y| = |x| + |y| は、x≧0 ∧ y≧0であるための「」
+
+|x+y|,|x| + |y| ≧ 0より
+|x+y| = |x| + |y|
+⇔ (x+y)² = |x|² + 2|x||y| + |y|²
+⇔ 2xy = 2|x||y|
+⇔ xy = |xy|
+|x| = x ⇔ x ≧ 0より
+⇔ xy ≧ 0
+
+よって、x≧0 ∧ y≧0 ⇒ |x+y| = |x| + |y|は真
+※ x≧ 0 ∧　y≧ 0 ⇒ xy ≧ 0
+
+|x+y| = |x| + |y| ⇒ x≧0 ∧ y≧0は
+(x,y) = (0, -1)という反例より偽
+
+「必要条件であって、十分条件ではない」
+
+[5] |x+y| &gt; x + yは xy &lt; 0であるための「」
+
+|x+y| &gt; x + y
+⇔ x + y &lt; 0
+
+xy &lt; 0　⇒ x + y &lt; 0は、
+(x,y) = (3, -1)という反例より偽
+
+x + y &lt; 0 ⇒ xy &lt; 0
+(x,y) = (-1,-1)という反例より偽
+
+「必要条件でも十分条件でもない」
+
+[6] |x| + |y| ≦ 1 は、x² + y²　≦　1　であるための「」
+
+領域で考えると、|x| + |y| ≦ 1については対称性より
+第一象限のみ考えると
+四点(1,0), (-1,0), (0,1), (0,-1)を頂点に持つ正方形の
+辺上とその内部であるとわかる
+
+x² + y²　≦　1については円である
+
+よって、
+P: {x,y | |x| + |y| ≦ 1}
+Q: {x,y | x² + y²　≦　1}とすると
+
+P ⊂ Qであって、P⊃Qではない
+よって、x² + y²　≦　1 ⇒ |x| + |y| ≦ 1は偽
+|x| + |y| ≦ 1 ⇒ x² + y²　≦ 1は真
+
+「十分条件であって、必要条件ではない」
+
+[8] |x| + |y| ≦ 1は |x+y|≦1であるための「」
+
+前者の領域は[7]と同一。後者の領域は帯であり、
+y = -x + 1と、y = -x -1に囲われた領域となる。
+つまり、P ⊂ Qであって、P⊃Qではない
+
+ゆえに、「十分条件であって、必要条件ではない」</code></pre>
+</details>
+<h2 id="q17-3">Q17 必要条件と十分条件の演習問題(3変数等式と図形)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_56">例</h3>
+<pre class="highlight"><code class="language-text">[1] x² + y² + z² = 0は、
+    x + y + z = 0 ∧ xy + yz + zx = 0であるための「」
+
+x² + y² + z² = 0 ⇔ x = 0 ∧ y = 0 ∧ z = 0を利用する
+
+(x² + y² + z² = 0)
+⇔ (x + y + z)² -2(xy + yz + zx) = 0
+⇔ x = y = z = 0 ∧ -2(xy + yz + zx) = 0
+⇔ x = y = z = 0 ∧ xy + yz + zx = 0
+
+「必要十分条件である」
+
+[2] x² + y² + z² = 0は、
+    x + y + z = 0 ∧ xyz = 0であるための「」
+
+xyz = 0 ⇔ x = 0 ∨ y = 0 ∨ z = 0を利用する
+
+(x² + y² + z² = 0) ⇔ x = y = z = 0 ∧ xy + yz + zx = 0
+であるため、x² + y² + z² = 0 ⇒ x + y + z = 0 ∧ xyz = 0は真
+
+x + y + z = 0 ∧ xyz = 0 ⇒ x² + y² + z² = 0
+(x,y,z) = (0,1,-1)が反例
+
+「十分条件であるが必要条件ではない」
+
+[3] x² + y² + z² - xy - yz - zx = 0は、
+    x² + y² + z² + xy + yz + zx = 0であるための「」
+
+※両辺2乗するとうまくいきそう
+
+x² + y² + z² - xy - yz - zx = 0
+⇔ 2x² + 2y² + 2z² -2xy -2yz -2zx = 0
+⇔ (x-y)² + (y-z)² + (z-x)² = 0
+⇔ x = y ∧ y = z ∧ z ∧ x
+⇔ x = y = z
+
+x² + y² + z² + xy + yz + zx = 0
+⇔ 2x² + 2y² + 2z² + 2xy + 2yz + 2zx = 0
+⇔ (x + y)² + (y + z)² + (z + x)² = 0
+⇔ x = -y ∧ y = -z ∧ z = -x
+⇔ x = y = z = 0
+
+x = y = z ⇒ x = y = z = 0は偽
+x = y = z = 0 ⇒ x = y = z は真であるため
+
+「必要条件であるが十分条件ではない」
+
+[4] (xy)²が無理数であることは、xとyの少なくとも一方が無理数であるための「」
+
+(xy)²が無理数 ⇒ xが無理数 ∨ yが無理数の対偶を考えると
+
+￢(xが無理数 ∨ yが無理数) ⇒ ￢((xy)²が無理数)
+⇔ xが有理数 ∧ yが有理数 ⇒　(xy)²が有理数となる
+
+x = p/q (p,qは整数: q≠0)
+y = r/s (r,sは整数: s≠0)とすると
+
+(xy)²
+= (pr/qs)²
+= p²r² / q²s²
+
+p²r², q²s²はそれぞれ整数で、q²s²は0でない数の積であるため≠0
+よって、(xy)²は有理数である
+対偶が真であるため、元の命題も真
+
+xが無理数 ∨ yが無理数 ⇒ (xy)²が無理数は
+(x,y) = (√2, √2)であるとき
+xy = 2^2 = 4で有理数になるため、これが反例
+
+「十分条件であるが、必要条件ではない」
+
+[5] xとyがともに無理数であることは、x+y, x-yの
+少なくとも一方が無理数であるための「」
+
+xが無理数 ∧ yが無理数 ⇒ x+yが無理数 ∨ x-yが無理数の対偶を考えると
+￢(x+yが無理数 ∨ x-yが無理数) ⇒ ￢(xが無理数 ∧ yが無理数)
+
+⇔ x+yが有理数 ∧ x-yが有理数 ⇒ xが有理数 ∨ yが有理数
+
+x + y = p/q (p,qは整数: q≠0)
+x - y = r/s (r,sは整数: s≠0)とすると
+
+x+yが有理数 ∧ x-yが有理数
+⇒ (x + y) + (x - y) = (ps + qr) / qs = 2xは有理数
+⇒ xは有理数
+※ps + qrは整数, qsは整数なので、2xは有理数
+  x = (ps + qr) / 2qsと表せ、2qsも整数なので、xは有理数
+
+よって、x+yが有理数 ∧ x-yが有理数 ⇒ xが有理数 ∨ yが有理数は真
+対偶が真なので、元の命題も真である
+
+x+yが無理数 ∨ x-yが無理数 ⇒ xが無理数 ∧ yが無理数の反例は
+(x,y) = (0, √2)
+
+「十分条件であって、要条件ではない」
+
+[6] △ABCについて、a² + b² - c² = 0であることは
+    △ABCが直角三角形であるための「」
+
+a² + b² - c² = 0 ⇒ △ABCが直角三角形
+ピタゴラスの定理より、これは真。△ABCは∠C = 90°の直角三角形になる
+
+△ABCが直角三角形 ⇒ a² + b² - c² = 0
+これは偽。∠B = 90°の可能性 (a² + c² - b² = 0)の可能性もありうる
+
+「十分条件であって、必要条件ではない」
+
+[7] △ABCについて、cosAcosBcosC &gt; 0であることは
+    △ABCが鋭角三角形であるための「」
+
+条件より、△ABCを形成することは保証されている
+cosAcosBcosC &gt; 0 ⇒　△ABCは鋭角三角形
+
+cosAcosBcosC &gt; 0 
+⇒ △ABCは直角三角形ではない。これは真
+
+cosAcosBcosC &gt; 0
+⇒ △ABCは鈍角三角形ではない。2つ以上が鈍角になる可能性はなく、
+1つが鈍角になると、マイナスになるため
+
+よって、cosAcosBcosC &gt; 0 ⇒ △ABCは鋭角三角形。これは真
+
+△ABCが鋭角三角形 ⇒ cosAcosBcosC &gt; 0
+鋭角三角形であれば、cosはいずれも正になるためこれは真
+
+「必要十分条件である」
+
+[8] 集合A,Bについて、A∪B = Aは、A∩B = Bであるための「」
+
+A∪B = A
+⇔ A ⊃ B
+
+A∩B = B
+⇔ A ⊃ B
+
+よって、「必要十分条件である」
+</code></pre>
+</details>
+<h2 id="q18">Q18 必要条件と十分条件の問題演習(整数の性質)</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_57">例</h3>
+<pre class="highlight"><code class="language-text">以下, x,yを実数, m,nを自然数とする
+
+[1] nが奇数であることは、nが素数であるための「」
+
+nが奇数 ⇒ nが素数
+(n) = (9) 反例
+
+nが素数 ⇒ nが奇数
+(n) = (2) 反例
+
+「必要条件でも十分条件でもない」
+
+[2] xとyがともに整数であることは、x + yとxyがともに整数であるための
+
+xが整数 ∧ yが整数 ⇒ x + yが整数 ∧ xyが整数
+整数は、乗法、加法について閉じているので、真
+
+x + yが整数 ∧ xyが整数 ⇒ xが整数 ∧ yが整数
+反例: (x,y) = (√2, -√2)
+
+「十分条件であって、必要条件でない」
+
+[3] nが12の倍数 ∧ 18の倍数であることは、nが6の倍数であるための「」
+
+nが12の倍数 ∧　nが18の倍数　⇒ nが6の倍数である
+
+nが12の倍数 ∧ nが18の倍数
+⇒ nは36の倍数
+⇒ nは6の倍数
+
+nが6の倍数 ⇒ nが12の倍数 ∧ 18の倍数である
+反例 : (n) = (6)
+
+「十分条件であって、必要条件でない」
+
+[4] nが2の倍数∧3の倍数でないことは、nが6の倍数でないための「」
+
+nが2の倍数 ∧ nが3の倍数でない ⇒ nが6の倍数でない
+6の倍数であるためには3の倍数である必要があるため、これは真
+
+nが6の倍数でない ⇒ nが2の倍数 ∧ nが3の倍数でない
+反例: (n) = (3)
+
+「十分条件であって、必要条件でない」
+
+[5] n²が2の倍数であることは、nが2の倍数であるための「」
+
+n²が2の倍数 ⇒ nが2の倍数
+※nが自然数であることに注意する
+対偶をとると
+￢(nが2の倍数) ⇒ ￢(n²が2の倍数)
+⇔ nが2の倍数でない ⇒ n²が2の倍数でない
+
+n = 2k + 1(k:0を含む自然数)とおくと
+n² = (2k + 1)² = 4k² + 4k + 1 = 2(2k² + 2k) + 1
+2k² + 2kは0を含む自然数なので、2(2k² + 2k) + 1は真
+対偶が真であるため、元の命題も真である
+
+
+nが2の倍数 ⇒ n²が2の倍数
+n = 2k(k:自然数)とおくと
+n² = (2k)² = 4k² = 2(2k²)
+2k²は自然数なので、2(2k²)は2の倍数
+∴nが2の倍数 ⇒ n²が2の倍数
+
+「必要十分条件である」
+
+[6] n²が4の倍数であることは、nが4の倍数であるための「」
+
+n²が4の倍数⇒ nが4の倍数
+対偶をとると、
+￢(nが4の倍数)⇒ ￢(n²が4の倍数)
+⇔ nが4の倍数でない ⇒ n²が4の倍数でない
+
+n = 4k + 1, 4k + 2, 4k + 3(k:0を含む自然数)と表せる
+n = 4k + 1の時、
+n² = (4k + 1)² = 16k² + 8k + 1 = 4(4k² + 2k) + 1
+4k² + 2kは0を含む自然数なので、4(4k² + 2k) + 1は4の倍数でない
+
+n = 4k + 2の時、
+n² = (4k + 2)² = 16k² + 16k + 4 = 4(4k² + 4k + 1)
+4k² + 4k + 1は自然数なので、 4(4k² + 4k + 1)は4の倍数
+
+従って、対偶が偽なので、元の命題
+n²が4の倍数⇒ nが4の倍数は偽
+
+nが4の倍数 ⇒ n²が4の倍数
+n = 4k(k:自然数)とおくと
+n² = (4k)² = 16k² = 4(4k²)
+4k²は自然数なので、4(4k²)は4の倍数
+∴nが4の倍数 ⇒ n²が4の倍数
+
+「必要条件であって、十分条件でない」
+
+[7] m²がnの倍数であることは、m²がn²の倍数であるための「」
+
+m²がnの倍数　⇒ m²がn²の倍数
+(反例): (m, n) = (4, 16)
+
+m²がn²の倍数 ⇒ m²がnの倍数
+m²がn²の倍数の時
+m² = n²k(k:自然数)と表せる
+n²k = n(nk). nkは自然数であるためn(nk)はnの倍数である
+
+「必要条件であって、十分条件ではない」
+
+[8] n²を7で割ると1余ることは、nを7で割ると1余るための「」
+
+n²を7で割ると1余る　⇒ nを7で割ると1余る
+(反例): n = 6
+
+nを7で割ると1余る ⇒ n²を7で割ると1余る
+
+nを7で割ると1余るとき、
+n = 7k + 1(kは0を含む自然数)と表せる
+n² = (7k + 1)²  = 49k² + 14k + 1 = 7(7k² + 2k) + 1
+7k² + 2kは0を含む自然数なので、7(7k² + 2k) + 1は7で割ると1余る数である
+∴nを7で割ると1余る ⇒ n²を7で割ると1余る
+
+「必要条件であって、十分条件ではない」
+
+[9] n²を4で割ると1余ることは、nを2で割ると1余るための「」
+
+n²を4で割ると1余る ⇒ nを2で割ると1余る
+命題の対偶をとると,以下になる
+nは2の倍数 ⇒ n²は4で割ると余りが1以外になる数
+
+nが2の倍数であるとき
+n = 2k(k:自然数)と表せる
+n² = (2k)² = 4k² = 4(k²)
+k²は自然数なので、4(k²)は4で割ると余りが1以外になる数である
+よって、対偶が真であるため、元の命題もまた真である
+
+nを2で割ると1余る　⇒ n²を4で割ると1余る
+nを2で割ると1余る時
+n = 2k + 1(k:自然数)と表せる
+n² = (2k + 1)² = 4k² + 4k + 1 = 4(k² + k) + 1
+k² + kは自然数なので、4(k² + k) + 1は4で割ると1余る数である
+∴nを2で割ると1余る　⇒ n²を4で割ると1余る
+
+「必要十分条件である」
+
+[10] mnが奇数であることは、m² + n²が偶数であるための「」
+
+mnが奇数 ⇒ m² + n²が偶数
+
+mnが奇数であるとき、m,nの偶奇の組み合わせを考えると
+奇*奇以外の組み合わせは偶数になるため、m,nは奇数と表せる
+よってm = 2k+1(k:0を含む自然数), n = 2l+1(l:0を含む自然数)とすると
+
+(2k+1)² + (2l+1)²
+= 4k² + 4k + 1 + 4l² + 4l + 1
+= 2(2k² + 2k + 2l² + 2l + 1)
+2k² + 2k + 2l² + 2l + 1は、自然数なので
+2(2k² + 2k + 2l² + 2l + 1)は偶数。
+∴mnが奇数 ⇒ m² + n²が偶数
+
+m² + n²が偶数 ⇒ mnが奇数
+m² + n² = (m + n)² - 2mnより
+m² + n²が偶数であるとき、m + nは偶数
+m + nが偶数になる時、
+m,nの組み合わせは(偶,偶), (奇, 奇)
+
+(偶,偶)であるとき
+mnは偶数。よって、反例(m,n) = (2,2)
+
+「十分条件であって、必要条件ではない」
+
+[11] m,nがともに偶数であることは、m + nとmnがともに偶数であるための「」
+
+mが偶数∧ nが偶数 ⇒ m+nが偶数 ∧ mnが偶数
+
+m = 2k(k:自然数)
+n = 2l(l:自然数)とすると
+
+m + n = 2(k + l), k + lは自然数なので2(k+l)は偶数
+mn = 2k*2l = 2(kl), klは自然数なので、2(kl)は偶数
+∴mが偶数∧ nが偶数 ⇒ m+nが偶数 ∧ mnが偶数
+
+m+nが偶数 ∧ mnが偶数 ⇒  mが偶数∧ nが偶数
+m + nが偶数であるとき、組み合わせは(偶,偶), (奇,奇)
+mnが偶数であるとき、組み合わせは(偶,偶), (偶,奇), (奇,偶)
+共通部分を考えると、(偶,偶)
+
+よって
+m = 2k(k:自然数)
+n = 2l(l:自然数)とおけるため、命題は真
+
+「必要十分条件である」
+
+[12] 整数a,bについて、a² + b²≦1は|a| + |b|≦1であるための「」
+
+|a| + |b|≦1の領域内の整数a,bの組み合わせについて考えると、
+(1,0),(-1,0),(0,1),(0,-1),(0,0)という格子点
+
+a² + b²≦1の領域は、半径1の円周上とその内部なので、格子点は同一で
+(1,0),(-1,0),(0,1),(0,-1),(0,0)
+
+集合が相等条件を満たすため、以下の結論が導ける
+
+「必要十分条件である」
+</code></pre>
+<h3 id="0">0を含む自然数</h3>
+<pre class="highlight"><code class="language-text">わざわざこう書くよりも以下のようにした方がいい
+ただしマイナスが登場するので、括弧の中身が自然数たりうるかどうかについて注意する
+
+[7] n²を7で割ると1余ることは、nを7で割ると1余るための「」
+
+n = 7k - 6(k:kは自然数)
+(n)² = (7k-6)² = 49k² - 84k + 36 = 7(7k² - 12k + 5) + 1
+7k² - 12k + 5は0を含む自然数なので。
+nを7で割ると1余る ⇒ n²を7で割ると1余る</code></pre>
+</details>
+<h2 id="q19">Q19 共通要素から集合の要素を決定する</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_58">例</h3>
+<pre class="highlight"><code class="language-text">[1] 整数を要素とする2つの集合A,Bを
+A = {2,5,a²}, B={4,a-1,a+b,9}とする
+
+A∩B = {5,9}となるような定数a,bの値を求めよ
+
+共通部分より、a² = 9である。
+
+a = 3の時、a - 1 = 2
+共通部分に{2}は存在しないため、a≠3
+よって、a = -3
+
+共通部分より、a + b = 5である
+a = -3より、b = 8
+
+{a,b} = {-3, 8}
+
+[2]
+  U = {x|xは実数}を全体集合とする
+  Uの部分集合A = {2,4,a² + 1}, B = {4,a +7, a² - 4a + 5}について
+
+  A∩B^C = {2,5}となるように定数aの値を定めよ
+
+  共通部分より、A = {2,4,5}であるため
+  a² + 1 = 5 ⇔ a² = 4
+  つまり、a = 2 ∨ a = -2
+
+  a = 2の時、
+  a + 7 = 9
+  a² - 4a + 5 = 4 - 8 + 5 = 1より条件を満たす
+
+  a = -2の時
+  a + 7 = 5
+  この時、A∩B^C = {2,5}を満たさない
+
+  よって、a = 2
+
+[3]
+  xについての2次方程式
+  x² + (3-a)x -3a = 0 ...(1)
+  x² - (b+1)x + b = 0 ...(2)
+  x² - (2a + 5b)x + 10ab = 0 ...(3)
+  があり、(1)~(3)の解の集合をP,Q,Rとする
+
+  集合P∩Q∩Rがただ1つの負の数からなる時のa,bの値を求めよ
+
+  x² + (3-a)x -3a = 0 
+  ⇔(x+3)(x-a) = 0
+  ⇔ x = -3, a
+
+  x² - (b+1)x + b = 0
+  ⇔(x-b)(x-1) = 0
+  ⇔ x = 1, b
+
+  x² - (2a + 5b)x + 10ab = 0
+  ⇔(x-2a)(x-5b) = 0
+  ⇔ x = 2a, 5b
+
+  b = -3の時、
+  (3)の解は、x = 2a, -15
+  よって、P∩Q∩R = {-3}となるaは、-3/2
+
+  a = b &lt; 0の時、
+  (3)の解はx = {2a, 5a}
+  a = 2a, a = 5aとしても、a = 0であるため条件を満たさない
+
+  ∴ (a,b) = (-3/2, -3)
+
+[4]
+  集合A,Bを A = {1,4,2a + 1, a²}, B = {9,b,b-3a}について
+  A ⊃ Bとなる時、a,bの組み合わせを全て求めよ
+
+  条件より、
+  2a + 1 = 9 ∨ a² = 9
+
+  [i] 2a + 1 = 9の時、
+  a = 4
+  この時、A = {1,4,9,16}
+  B = {9,b,b-12}
+
+  bとb-12は差が12であるため
+  A⊃Bとなるように、Aの中から差が12である組を探すと4,16
+  よって、b = 16の時、A⊃Bを満たす
+
+  [ii] a² = 9の時、a = ±3
+
+  a = 3
+  この時、A={1,4,7,9}
+  B = {9,b,b-9}
+
+  bとb+9は差が9であるが、差が9である組は集合Aに存在しない
+
+  a = -3
+  この時、A={1,4,-5,9}
+  B = {9,b, b +9}
+
+  bとb+9は差が9であり、Aの中から差が9である組を探すと4,-5
+  つまり、b = -5の時、b = -5, b+9 = 4. この時、A⊃Bを満たす
+
+  ∴ (a,b) = (4, 16) , (-3, -5)</code></pre>
+</details>
+<h2 id="q20">Q20 背理法</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="_59">背理法</h3>
+<pre class="highlight"><code class="language-text">命題が成立しないことを仮定して矛盾を導くことで
+元の命題が成立することを示す証明法
+
+(￢A ⇒ ⊥) ⇒ A
+
+特に条件法A ⇒ Bの形について背理法を使うと
+￢(A ⇒ B) ⇔ (A ∧ ￢B)であることから以下のようになる
+
+((A ∧ ￢B) ⇒ ⊥) ⇒ (A ⇒ B)
+
+[例]
+  n²が3の倍数 ⇒ nが3の倍数であることを示せ
+
+  元の命題を否定したものを仮定して、矛盾を示す
+  ￢(n²が3の倍数 ⇒ nが3の倍数である) ⇒ ⊥ 
+
+  ￢(n²が3の倍数 ⇒ nが3の倍数である) は分かりにくいので
+  同値変形して、(n²が3の倍数 ∧ ￢ nが3の倍数である)を
+  仮定して、⊥が導出されることから、元の命題が真であることを導く
+
+⇒⊥となっていることからわかる通り、全ての場合において⊥が
+導出されることを示して初めて、￢(A ⇒ B) ⇒ ⊥が真であるといえる
+[例]の場合であれば、(n²が3の倍数 ∧ ￢ nが3の倍数である)⇒⊥を示すには、
+(n²が3の倍数 ∧ nが3で割ると1余る数である) ⇒ ⊥
+(n²が3の倍数 ∧ nが3で割ると2余る数である) ⇒ ⊥を考えていく必要がある
+</code></pre>
+<h3 id="_60">無理数であることの証明</h3>
+<pre class="highlight"><code class="language-text">[1] 整数nについて、n²が偶数⇒nが偶数であることを示せ
+
+対偶を示せばわかりそう。
+今回は背理法で考える
+
+元の命題を否定すると、
+￢(n²が偶数⇒nが偶数) ⇔ n²が偶数∧nが奇数
+
+よって、n²が偶数∧nが奇数を仮定して、矛盾が導出されれば、
+元の命題が真であることがわかる。
+
+nが奇数である場合、
+n = 2k + 1(k:整数)とあらわせる
+
+この時、n² = (2k + 1)² = 4k² + 4k + 1 = 2(2k² + 2k) + 1
+2k² + 2kは整数なので、2(2k² + 2k) + 1は奇数。
+これは、n²が偶数と矛盾する。
+よって、元の命題は真であるため、整数nについて、n²が偶数⇒nが偶数
+
+[2] √2が無理数であることを示せ
+
+背理法で考える。
+元の命題を否定すると￢(√2が無理数)⇔√2が有理数
+⇔ √2 = p/q (p,qは互いに素な自然数)
+(※有理数 ⇒ 分母と分子が互いに素である既約分数で表せる
+今回は、√2 &gt; 0なので有理数なら互いに素な自然数となる)
+
+よって、√2 = p/q (p,qは互いに素な自然数)を仮定して、
+√2 = p/qを式変形すると、
+q√2 = p
+両辺が正であるため
+q√2 = p ⇔ 2q² = p² ⇔ 2(q²) = p²
+よって、p²は偶数である。
+
+[1]より、n²が偶数⇒nが偶数は真であるため、
+pも偶数である。
+よって、p = 2k(k:整数)と表せる
+
+上式にこれを代入すると
+2q² = (2k)²
+⇔ 2q² = 4k²
+⇔ q² = 2(k²)
+k²は整数なので、2k²は、偶数。
+よって、q²が偶数なので、qも偶数である
+
+p,qが偶数であることは、p,qが互いに素な自然数であるとした仮定と矛盾する
+よって、元の命題は真であるため、√2は無理数。
+
+[3] 1 + √2が無理数であることを示せ
+
+背理法で考える。
+命題を否定すると、￢(1 + √2は無理数である) ⇔ 1 + √2は有理数である
+
+よって、1 + √2 = r(rは有理数)を仮定すると
+r - 1 = √2 
+有理数は減法について閉じているので、r - 1,すなわち√2は有理数
+これは、√2が無理数であること([2]より)と矛盾する。
+よって、元の命題は真なので、1+√2は無理数である
+
+※有理数が減法について閉じている
+  整数の和,差,積が閉じていることが証明されているとすると
+  p,qをそれぞれ有理数であるとしたとき
+  p = a/b, q = c/dと表せる(a,b,c,d: 整数)
+
+  この時、p - q = a/b - c/d = (ad - bc) / bd
+  bdは整数の積なので、整数。ad, bcも同様に整数。
+  ad - bcも整数。整数/整数の形で表現できるのでp - qは有理数。
+  よって、有理数は減法について閉じている。
+
+[4] √3 + √6が無理数であることを示せ
+
+背理法で考える。
+命題を否定すると、￢(√3 + √6は無理数である) ⇔ √3 + √6は有理数である
+
+よって、√3 + √6 = r(rは有理数)を仮定すると
+√3 + √6 = r
+⇒ (√3 + √6)² = r²
+⇔ 3 + 6√2 + 6 = r²
+⇔ 9 + 6√2 = r²
+⇔ r² - 9 = 6√2
+⇔ (r² - 9) / 6 = √2
+
+有理数は乗法について閉じているので、r²は有理数
+有理数は減法について閉じているので、r² - 9は有理数
+0を除いた有理数は、除法について閉じているので、(r² - 9) / 6 = √2は有理数
+--&gt; [3]で減法の閉性を示したのと同様に示せる。
+[2]より√2は無理数であるとわかっているので、これはその事実と矛盾する
+
+よって、元の命題は真であるため、√3 + √6は無理数である
+
+[5] √3 + √2が無理数であることを示せ
+
+背理法で考える。
+命題を否定すると、￢(√3 + √2は無理数である)⇔√3 + √2は有理数である
+
+※√2が無理数であることは既に示しているのでこれを活用したい
+
+よって、√3 + √2 = r(rは有理数,ただしr≠0)を仮定すると
+√3 = r - √2
+⇒ (√3)² = (r - √2)²
+⇔ 3 = r² -2√2r + 2
+⇔ 2√2r = r² - 1
+⇔ (r² - 1) / 2r = √2
+
+有理数は乗法について閉じているので、r²-1,2rは有理数
+減法についても閉じているので、r² - 1は有理数
+0を除いた有理数は除法についても閉じているので、r²-1 / 2r = √2は有理数
+
+これは√2が無理数であることと矛盾する。
+よって、元の命題は真であるため、√3 + √2は無理数
+
+[6] a,bが有理数であるとき、a + b√2 = 0 ⇒ a = b = 0であることを示せ
+
+背理法で考える。
+命題を否定すると、￢(a + b√2 = 0 ⇒ a = b = 0)
+⇔ a + b√2 = 0 ∧ (a ≠ 0 ∨ b ≠ 0)
+
+よって、a + b√2 = 0 ∧ (a ≠ 0 ∨ b ≠ 0)を仮定すると
+a + b√2 = 0よりa = -b√2
+
+a ≠ 0の時、
+a  = -b√2 ≠ 0なので、b ≠ 0
+
+b ≠ 0の時、
+a = -b√2 ≠ 0なので、a ≠ 0
+
+a + b√2 = 0 (a,b ≠ 0)
+⇔ a  = -b√2 (a,b ≠ 0)
+⇔ - a/b = √2 (a,b ≠ 0)
+
+0を除いた有理数は除法について閉じているので、-a/b = √2は有理数
+これは、√2が無理数であることに矛盾する。
+よって、元の命題は真であるため、
+a,bが有理数であるとき、a + b√2 = 0 ⇒ a = b = 0
+
+※ b ≠ 0を仮定して、矛盾を示してもよい。b = 0が真であれば、a = 0も導ける
+
+[7] x(1 + √2) + y(3 - 2√2) = 1 + 6√2を満たす有理数x,yを求めよ
+
+左辺を式変形すると
+(x + 3y) + (x - 2y)√2 = 1 + 6√2
+
+[6]よりa,bが有理数であるとき、a + b√2 = 0　⇒ a = b = 0が示されている
+a,bが有理数, √kが無理数であるとき、a + b√k = 0 ⇒ a = b = 0を証明する
+
+背理法で考える。
+命題を否定すると、(a + b√k = 0) ∧ a ≠ 0 ∨ b ≠ 0
+
+よって、a,bが有理数であるとき(a + b√k = 0) ∧ a ≠ 0 ∨ b ≠ 0を仮定すると、
+a + b√k = 0を式変形して
+a = -b√k
+
+a ≠ 0の時、
+a = -b√k ≠ 0なのでb ≠ 0
+
+b ≠ 0の時, k = 0の時、√k = 0で無理数にならないため√k ≠ 0
+よって、-b√k ≠ 0
+-b√k ≠ a ≠ 0なので、a ≠ 0
+
+a + b√k = 0 (a,b ≠ 0)
+⇔ √k = -a/b (a,b ≠ 0)
+0を除いた有理数は除法について閉じているので、-a/b = √kは有理数
+これは、√kが無理数であるとする仮定と矛盾する
+
+よって、元の命題は正しいので、
+a,bが有理数, √kが無理数であるとき、a + b√k = 0 ⇒ a = b = 0
+また、a = b = 0を実際に代入すると逆も成り立つため
+a + b√k = 0 ⇔ a = b = 0
+
+ここでa,b,c,dが有理数, √kが無理数であるとき
+有理数は加法、減法について閉じているため
+(a - c) + (b - d)√k = 0 ⇔ a - c = b - d = 0と表せる
+
+また、(a - c) + (b - d)√k = 0　⇔ a + b√k = c + d√k
+と同値変形できる
+
+よって、以下の定理が成り立つ
+a + b√k = c + d√k = a = c ∧ b = d
+
+よって、以下の式からx,yが有理数であるような解を求める問題は
+(x + 3y) + (x - 2y)√2 = 1 + 6√2
+
+以下の連立方程式を解く問題へと帰着する
+x + 3y = 1
+x - 2y = 6
+
+∴ (x,y) = (4,-1)</code></pre>
+<h3 id="2_7">[2]の別解</h3>
+<pre class="highlight"><code class="language-text">[2] √2が無理数であることを示せ
+
+背理法で考える。
+命題を否定すると、√2は有理数である。
+
+また、√2 &gt; 0であるため
+√2 = m/n(m,n:互いに素な自然数)と表せる
+
+√2 = m/n(m,n:互いに素な自然数)を仮定して、
+m = √2nとして両辺を二乗すると
+m² = (√2n)²
+⇔ m² = 2n²
+
+左辺は素因数2が偶数個。右辺は素因数2が奇数個であるため
+これは※素因数分解の一意性に矛盾する。
+
+よって、元の命題は真なので、√2は無理数</code></pre>
+<h3 id="_61">素因数分解の一意性</h3>
+<pre class="highlight"><code class="language-text">ユークリッドの補題を用いて証明する
+
+※高校数学では自明として扱われることもあるらしい</code></pre>
+<h3 id="_62">ユークリッドの補題</h3>
+<pre class="highlight"><code class="language-text">素数pが2つの自然数a,bの積abを割り切る
+⇒ pはaまたはbのいずれか一方を割り切る
+
+[一般化すると]
+cがaと互いに素 ∧ c | ab ⇒ c | b
+※cがaと互いに素 ∧ abがcで割り切れる ⇒ bはcで割り切れる</code></pre>
+<h3 id="_63">ユークリッドの補題の証明</h3>
+<pre class="highlight"><code class="language-text">1 除法の原理で、整数aと自然数bに対して、a = qb + r(0≦r&lt;b)としたとき
+  q,rの組がただ1組存在することを示す
+
+2 ユークリッドの互除法を示す
+
+3 1,2よりベズーの補題を導く
+
+4 ベズーの補題を用いて、ユークリッドの補題の一般化を導く</code></pre>
+<h3 id="_64">以下に証明を記載</h3>
+<pre class="highlight"><code class="language-text">整数論の最初で行う</code></pre>
+</details>
+<h2 id="q21">Q21 その他背理法の証明</h2>
+<details class="success">
+<summary>Success</summary>
+<h3 id="3_2">√3が無理数である証明</h3>
+<pre class="highlight"><code class="language-text">[1] √3が無理数であることを示せ
+背理法で考える。
+命題を否定すると、￢(√3が無理数) ⇔　√3は有理数
+
+この時、√3 &gt; 0なので、√3 = p / q(p, qは互いに素な自然数)と表せる
+
+よって、√3 = p / q(p, qは互いに素な自然数)と仮定すると
+式変形して、√3q = p
+
+√3q = p ⇒ 3q² = p²
+よって、p²は3の倍数。この時、※1よりpは3の倍数
+よって、p = 3k(k:整数)と表せる
+
+3q² = (3k)²
+⇔ 3q² = 9k²
+⇔ q² = 3k²
+
+よって、q²は3の倍数。この時、※1よりqは3の倍数。
+ここで、p,qがともに3の倍数であることは、
+p, qは互いに素な自然数という仮定と矛盾する
+
+よって、元の命題は真であり、√3は無理数である
+
+------------------------------------
+※1 p²が3の倍数 ⇒ pは3の倍数を証明する
+背理法で考える。
+命題の否定を仮定すると￢(p²が3の倍数 ⇒ pは3の倍数) 
+同値変形して、 p²が3の倍数 ∧ pが3の倍数でない
+この仮定の下で矛盾が導かれれば、元の命題が示せる
+
+[i] p = 3k + 1(k:整数)とすると
+p² = (3k + 1)² = 9k² + 6k + 1 = 3(3k² + 2k) + 1
+3k² + 2kは整数なので、3(3k² + 2k) + 1 = p²は3の倍数でない。
+これは、p²が3の倍数であるという仮定に矛盾する
+
+[ii] p = 3k - 1(k:整数)とすると
+p² = (3k - 1)² = 9k² -6k + 1 = 3(3k² -2k) + 1
+3k² - 2kは整数なので、3(3k² - 2k) + 1 = p²は3の倍数でない。
+これも、p²が3の倍数であるという仮定に矛盾する
+
+よって、元の命題、p²が3の倍数 ⇒ pは3の倍数は真である</code></pre>
+<h3 id="tan1">tan1°が無理数であることを示せ</h3>
+<pre class="highlight"><code class="language-text">
+[2] tan1°が無理数であることを示せ
+背理法で考える。
+命題の否定tan1°は有理数であるを仮定して
+矛盾が導かれることを示し、元の命題が真であることを証明したい
+
+tan60° = sin60° / cos60°
+=(√3/ 2) / (1/2)
+= √3
+
+ここで、[1]より、√3は無理数である
+
+また、tanの加法定理より
+tan2° = tan(1° + 1°) = (tan1° + tan1°) / (1 - tan1°tan1°) 
+
+[i] 
+tan1°が有理数であるとき
+有理数の乗法,加法,乗法は閉じていることから、
+tan1° + tan1° = 有理数
+1 - tan1°tan1° = 有理数
+0を除く有理数は、閉じていることから
+(tan1° + tan1°) / (1 - tan1°tan1°) = 有理数と表せる
+※tan(90°の倍数)でない限り、分母≠0
+よって、tan1°が有理数 ⇒ tan2°は有理数であることが示せる
+
+[ii]
+tank°が有理数であるとき
+tan(k+1)° = tan(1° + tank°) = (tank° + tan1°) / (1 - tank°tan1°)
+tan2°の導出と同様に、有理数の閉性より、
+(tank° + tan1°) / (1 - tank°tan1°)は有理数と表せる
+
+よって、[i], [ii]より、tan1°が有理数 ⇒ tan60°は有理数
+
+ここで、tan60°が有理数であることは、tan60° = √3が無理数であることと矛盾する
+よって、元の命題は真であるため、tan1°は無理数である</code></pre>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  ページトップへ戻る
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 Toraneko0101
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.tabs.link", "navigation.top"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.ebd0bdb7.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../../javascripts/tablesort.js"></script>
+      
+        <script src="../../../javascripts/custom.js"></script>
+      
+        <script src="../../../javascripts/prism.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
